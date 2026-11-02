@@ -83,6 +83,8 @@ export type CheckoutOutcome = 'paid' | 'failed' | 'cancelled';
 export interface CheckoutReturn {
   purchaseId: string;
   courseId: string;
+  /** The page to come back to, when it is not the course's own (a bundle's). */
+  path?: string;
 }
 
 const KEY = (orderId: string) => `syniastrolms:course-checkout:${orderId}`;
@@ -103,7 +105,9 @@ export function recallCheckout(orderId: string, storage: Pick<Storage, 'getItem'
     if (!raw) return null;
     storage?.removeItem(KEY(orderId));
     const parsed = JSON.parse(raw) as Partial<CheckoutReturn>;
-    return typeof parsed.purchaseId === 'string' && typeof parsed.courseId === 'string' ? { purchaseId: parsed.purchaseId, courseId: parsed.courseId } : null;
+    return typeof parsed.purchaseId === 'string' && typeof parsed.courseId === 'string'
+      ? { purchaseId: parsed.purchaseId, courseId: parsed.courseId, ...(typeof parsed.path === 'string' && parsed.path.startsWith('/') ? { path: parsed.path } : {}) }
+      : null;
   } catch {
     return null;
   }
@@ -119,7 +123,7 @@ function safeSession(): Storage | undefined {
 
 /** Where a course purchase's hosted checkout sends the learner back to: the course page, which then asks the API. */
 export const courseReturnPath = (ret: CheckoutReturn, outcome: CheckoutOutcome) =>
-  `/learn/${encodeURIComponent(ret.courseId)}?purchase=${encodeURIComponent(ret.purchaseId)}&checkout=${outcome}`;
+  `${ret.path ?? `/learn/${encodeURIComponent(ret.courseId)}`}?purchase=${encodeURIComponent(ret.purchaseId)}&checkout=${outcome}`;
 
 /** The purchase a course page was sent back about, from its query string. */
 export function readCheckoutReturn(search: string): { purchaseId: string; outcome: CheckoutOutcome } | null {

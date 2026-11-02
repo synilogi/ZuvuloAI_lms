@@ -389,3 +389,14 @@
     padding: var(--s-5) var(--s-4);
   }
 }
+
+/* Buy now and details on a course card sit above the card's own link. */
+.cardActions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: auto;
+  padding-top: var(--s-2);
+}

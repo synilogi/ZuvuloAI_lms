@@ -56,6 +56,8 @@ const PUBLIC: RegExp[] = [
   // The website's editable words and the affiliate plan's published terms (docs/16 §2.6): public by design, plan terms only.
   /^GET \/public\/site$/,
   /^GET \/public\/affiliate-program$/,
+  // The marketplace's public reads (docs/17): figures, mentors without contact details, bundles, posts, placed images.
+  /^GET \/public\/(stats|mentors(\/:id)?|bundles(\/:slug)?|posts(\/:slug)?|images\/:mediaId)$/,
   // A referral link's landing data and QR (MLM-001): the code alone is the credential.
   /^GET \/public\/affiliates\/ref\/:code(\/qr\.svg)?$/,
   // The platform's logo and favicon: read by every page, changed only through /superadmin/branding.

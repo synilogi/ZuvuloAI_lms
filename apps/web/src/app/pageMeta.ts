@@ -24,6 +24,18 @@ const PUBLIC_PAGES: Record<string, PageText> = {
     title: 'Explore courses',
     description: 'Browse ZuviloAI’s online courses. See what each one covers, who teaches it and what it costs before you sign up.',
   },
+  '/bundles': {
+    title: 'Course bundles',
+    description: 'Several ZuviloAI courses sold together at one price. See what each bundle includes and what it costs.',
+  },
+  '/mentors': {
+    title: 'Our mentors',
+    description: 'Meet the instructors who teach on ZuviloAI and see the courses each of them offers.',
+  },
+  '/blog': {
+    title: 'Blog and resources',
+    description: 'Articles, free resources, webinars, live workshops and career guidance from ZuviloAI.',
+  },
   '/categories': {
     title: 'Course categories',
     description: 'Find a ZuviloAI course by subject, and see what each category covers.',
@@ -88,6 +100,9 @@ const PUBLIC_PAGES: Record<string, PageText> = {
 
 /** Public pages whose address carries an id. Their own content loads later; these words stand for the kind of page. */
 const PUBLIC_PATTERNS: [RegExp, PageText][] = [
+  [/^\/bundles\/[^/]+$/, { title: 'Course bundle', description: 'What this ZuviloAI course bundle includes and what it costs.' }],
+  [/^\/mentors\/[^/]+$/, { title: 'Mentor', description: 'A ZuviloAI instructor and the courses they offer.' }],
+  [/^\/blog\/[^/]+$/, { title: 'Blog and resources', description: 'An article or resource from ZuviloAI.' }],
   [/^\/support\/article\/[^/]+$/, { title: 'Help article', description: 'A step-by-step answer from the ZuviloAI Help Centre.' }],
   [/^\/support\/[^/]+$/, { title: 'Help topic', description: 'Guides on this topic from the ZuviloAI Help Centre.' }],
   [
@@ -122,8 +137,9 @@ function setMeta(doc: Document, attribute: 'name' | 'property', key: string, con
  * Writes a page's tags. `path` is its canonical address; without one (a page behind sign-in) there is no canonical
  * link and the shared tags describe the site.
  */
-export function setPageMeta({ title, description, path }: { title: string; description: string; path?: string }, doc: Document = document) {
+export function setPageMeta({ title, description, path, image }: { title: string; description: string; path?: string; image?: string }, doc: Document = document) {
   doc.title = title;
+  if (image) setMeta(doc, 'property', 'og:image', image);
   setMeta(doc, 'name', 'description', description);
   setMeta(doc, 'property', 'og:title', title);
   setMeta(doc, 'property', 'og:description', description);

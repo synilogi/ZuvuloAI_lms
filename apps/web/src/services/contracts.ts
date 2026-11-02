@@ -31,6 +31,15 @@ import type {
   Paged,
   PublicAffiliateProgram,
   SiteContent,
+  AdminBundle,
+  BlogKind,
+  BlogPost,
+  BlogPostInput,
+  BundleInput,
+  BundlePurchaseView,
+  PublicBundle,
+  PublicMentor,
+  PublicStats,
 } from '@syniastrolms/domain';
 /**
  * Service contracts. Screens depend on these interfaces only; the mock
@@ -1820,6 +1829,49 @@ export interface SiteService {
   /** The same document for the Super Admin to edit. */
   adminContent(): Promise<SiteContent>;
   saveContent(input: SiteContent): Promise<SiteContent>;
+  /** The home page's figures, counted from the records. Public. */
+  stats(): Promise<PublicStats>;
+  /** Instructors teaching a listed course: no email, no phone. Public. */
+  mentors(): Promise<PublicMentor[]>;
+  mentor(id: string): Promise<{ mentor: PublicMentor; courseSlugs: string[] }>;
+  /** Bundles on sale now. Public. */
+  bundles(): Promise<PublicBundle[]>;
+  bundle(slug: string): Promise<PublicBundle>;
+  /** Live posts, without their bodies. Public. */
+  posts(kind?: BlogKind): Promise<BlogPost[]>;
+  post(slug: string): Promise<BlogPost>;
+  /** What this learner would get from a bundle now. Holds nothing. */
+  quoteBundle(bundleId: string): Promise<BundleQuote>;
+  /** Opens the learner's order: the server prices it. */
+  startBundlePurchase(bundleId: string): Promise<BundleCheckoutStart>;
+  confirmBundlePurchase(purchaseId: string, completion: { paymentId: string; signature: string }): Promise<BundleConfirmation>;
+  getBundlePurchase(purchaseId: string): Promise<BundlePurchaseView>;
+  adminBundles(): Promise<AdminBundle[]>;
+  createBundle(input: BundleInput): Promise<AdminBundle>;
+  updateBundle(id: string, input: BundleInput): Promise<AdminBundle>;
+  deleteBundle(id: string): Promise<void>;
+  adminPosts(): Promise<BlogPost[]>;
+  createPost(input: BlogPostInput): Promise<BlogPost>;
+  updatePost(id: string, input: BlogPostInput): Promise<BlogPost>;
+  deletePost(id: string): Promise<void>;
+  /** Places an uploaded image on the website, so a visitor can read it. */
+  placeImage(mediaId: string): Promise<{ url: string }>;
+}
+
+export interface BundleQuote {
+  price: number;
+  charge: number;
+  alreadyHeldCourseIds: string[];
+}
+
+export interface BundleCheckoutStart {
+  purchase: BundlePurchaseView;
+  checkout: CoursePurchaseCheckout;
+}
+
+export interface BundleConfirmation {
+  purchase: BundlePurchaseView;
+  outcome: { status: string; enrolled: boolean; message: string };
 }
 
 /**

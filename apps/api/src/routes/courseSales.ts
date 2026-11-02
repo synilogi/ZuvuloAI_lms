@@ -1,6 +1,7 @@
 import { Router, type Request } from 'express';
 
 import { requireAuth } from '../lib/auth.js';
+import { bundlePurchaseStatus, confirmBundlePurchase, quoteBundlePurchase, startBundlePurchase } from '../lib/bundlePurchases.js';
 import { confirmCoursePurchase, coursePurchaseStatus, listCoursePurchases, quoteCoursePurchase, startCoursePurchase } from '../lib/coursePurchases.js';
 import { asyncHandler, badRequest } from '../lib/errors.js';
 import { assertNotSuspended } from '../lib/scope.js';
@@ -63,6 +64,41 @@ coursePurchaseRouter.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     res.json(await coursePurchaseStatus(await learnerOf(req), req.params.purchaseId));
+  }),
+);
+
+/* A bundle (docs/17): the same steps, and the same refusal to take an amount from the request. Coupons are for single courses. */
+coursePurchaseRouter.post(
+  '/bundles/:bundleId/quote',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    res.json(await quoteBundlePurchase(await learnerOf(req), req.params.bundleId));
+  }),
+);
+
+coursePurchaseRouter.post(
+  '/bundles/:bundleId/purchase',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    res.status(201).json(await startBundlePurchase(await learnerOf(req), req.params.bundleId));
+  }),
+);
+
+coursePurchaseRouter.post(
+  '/bundle-purchases/:purchaseId/confirm',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const studentId = await learnerOf(req);
+    const input = parseBody(req, z.object({ paymentId: z.string().trim().min(1).max(64), signature: z.string().trim().min(1).max(256) }));
+    res.json(await confirmBundlePurchase(studentId, req.params.purchaseId, input));
+  }),
+);
+
+coursePurchaseRouter.get(
+  '/bundle-purchases/:purchaseId',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    res.json(await bundlePurchaseStatus(await learnerOf(req), req.params.purchaseId));
   }),
 );
 

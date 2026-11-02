@@ -250,6 +250,7 @@ export const navigation: Record<Role, NavGroup[]> = {
           to: '/superadmin/sales/orders',
           children: [
             { label: 'Orders', to: '/superadmin/sales/orders' },
+            { label: 'Course bundles', to: '/superadmin/sales/bundles' },
             { label: 'Coupons', to: '/superadmin/sales/coupons' },
             { label: 'Payment events', to: '/superadmin/sales/events' },
             { label: 'Payment setup', to: '/superadmin/payment-gateways' },
@@ -294,7 +295,16 @@ export const navigation: Record<Role, NavGroup[]> = {
       label: 'Platform',
       items: [
         // Contact and support requests from the website.
-        { id: 'platform-website', label: 'Website', icon: I(Globe), to: '/superadmin/website' },
+        {
+          id: 'platform-website',
+          label: 'Website',
+          icon: I(Globe),
+          to: '/superadmin/website',
+          children: [
+            { label: 'Home page and content', to: '/superadmin/website' },
+            { label: 'Blog and resources', to: '/superadmin/website/posts' },
+          ],
+        },
         { id: 'platform-inbox', label: 'Inbox', icon: I(Tray), to: '/superadmin/inquiries' },
         { id: 'platform-notifications', label: 'Notifications', icon: I(Megaphone), to: '/superadmin/notifications' },
         { id: 'platform-audit', label: 'Activity log', short: 'Activity', icon: I(ClockCounterClockwise), to: '/superadmin/audit' },

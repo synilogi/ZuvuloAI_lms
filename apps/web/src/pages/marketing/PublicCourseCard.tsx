@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Clock, Users } from '@phosphor-icons/react';
 import { courseDurationMin, type Course, type Instructor } from '@syniastrolms/domain';
+import { LinkButton } from '@/components/ui/Button/Button';
 import { CourseCover } from '@/components/lms/course/CourseCover';
 import { Rating } from '@/components/lms/shared/Rating';
 import { saleDisplay } from '@/lib/coursePricing';
@@ -19,11 +20,14 @@ export function PublicCourseCard({
   course,
   instructors,
   headingLevel: Heading = 'h3',
+  showActions = false,
 }: {
   course: Course;
   instructors: Instructor[];
   /** The title's level in the page's outline: `h2` on a page where the cards sit straight under its `h1`. */
   headingLevel?: 'h2' | 'h3';
+  /** Buy now and details beneath the price, where the card sells as well as lists. */
+  showActions?: boolean;
 }) {
   const sale = saleDisplay(course);
   const teachers = teacherNames(course, instructors);
@@ -53,6 +57,16 @@ export function PublicCourseCard({
           <strong>{sale.label}</strong>
           {sale.kind === 'paid' && sale.wasLabel ? <s>{sale.wasLabel}</s> : null}
         </p>
+        {showActions && sale.kind !== 'unavailable' && (
+          <div className={styles.cardActions}>
+            <LinkButton to={`/learn/${course.id}`} variant="primary" size="sm">
+              {sale.kind === 'paid' ? 'Buy now' : 'Enrol now'}
+            </LinkButton>
+            <LinkButton to={`/courses/${course.slug}`} size="sm">
+              Details
+            </LinkButton>
+          </div>
+        )}
       </div>
     </li>
   );

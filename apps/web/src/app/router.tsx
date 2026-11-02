@@ -126,6 +126,14 @@ const AffiliateProgram = lazy(() => import('@/pages/marketing/AffiliateProgramPa
 const Website = lazy(() => import('@/pages/superadmin/site/WebsitePage'));
 const About = lazy(() => import('@/pages/marketing/SitePages').then((m) => ({ default: m.AboutPage })));
 const Faq = lazy(() => import('@/pages/marketing/SitePages').then((m) => ({ default: m.FaqPage })));
+const Bundles = lazy(() => import('@/pages/marketing/BundlePages').then((m) => ({ default: m.BundlesPage })));
+const BundleDetail = lazy(() => import('@/pages/marketing/BundlePages').then((m) => ({ default: m.BundleDetailPage })));
+const Mentors = lazy(() => import('@/pages/marketing/MentorPages').then((m) => ({ default: m.MentorsPage })));
+const MentorProfile = lazy(() => import('@/pages/marketing/MentorPages').then((m) => ({ default: m.MentorProfilePage })));
+const Blog = lazy(() => import('@/pages/marketing/BlogPages').then((m) => ({ default: m.BlogPage })));
+const BlogPost = lazy(() => import('@/pages/marketing/BlogPages').then((m) => ({ default: m.BlogPostPage })));
+const SiteBundles = lazy(() => import('@/pages/superadmin/site/BundlesPage'));
+const SitePosts = lazy(() => import('@/pages/superadmin/site/PostsPage'));
 const Login = lazy(() => import('@/pages/marketing/LoginPage'));
 const Register = lazy(() => import('@/pages/marketing/RegisterPage'));
 const Ref = lazy(() => import('@/pages/marketing/RefPage'));
@@ -369,6 +377,8 @@ export const router = createBrowserRouter(
         { path: 'superadmin/branding', element: lazyPage(<PlatformBranding />) },
         // The affiliate program (MLM-000 plan, MLM-002 network, MLM-003 orders and ledgers; later modules add wallets and payouts).
         { path: 'superadmin/website', element: lazyPage(<Website />) },
+        { path: 'superadmin/website/posts', element: lazyPage(<SitePosts />) },
+        { path: 'superadmin/sales/bundles', element: lazyPage(<SiteBundles />) },
         { path: 'superadmin/affiliates', element: <Navigate to="/superadmin/affiliates/overview" replace /> },
         { path: 'superadmin/affiliates/overview', element: lazyPage(<AffiliateOverview />) },
         { path: 'superadmin/affiliates/matching', element: lazyPage(<AffiliateMatching />) },
@@ -450,6 +460,12 @@ export const router = createBrowserRouter(
     { path: 'welcome', element: lazyPage(<Landing />) },
     // The website.
     { path: 'categories', element: lazyPage(<PublicCategories />) },
+    { path: 'bundles', element: lazyPage(<Bundles />) },
+    { path: 'bundles/:slug', element: lazyPage(<BundleDetail />) },
+    { path: 'mentors', element: lazyPage(<Mentors />) },
+    { path: 'mentors/:id', element: lazyPage(<MentorProfile />) },
+    { path: 'blog', element: lazyPage(<Blog />) },
+    { path: 'blog/:slug', element: lazyPage(<BlogPost />) },
     { path: 'become-an-instructor', element: lazyPage(<BecomeInstructor />) },
     { path: 'affiliate-program', element: lazyPage(<AffiliateProgram />) },
     // The SaaS era's product pages: the addresses forward, the pages are gone.

@@ -176,7 +176,7 @@ describe('tenant schema', () => {
     expect(new Set(classified).size).toBe(classified.length);
     expect([...classified].sort()).toEqual(all);
     // The SaaS-era tables are kept, retired, until a separate drop migration (docs/16 §3.1); the count holds.
-    expect(TENANT_OWNED_MODELS.length + TENANT_OR_PLATFORM_MODELS.length).toBe(74);
+    expect(TENANT_OWNED_MODELS.length + TENANT_OR_PLATFORM_MODELS.length).toBe(79);
   });
 
   it('gives every academy-owned table a tenantId — required where every row belongs to a workspace', async () => {

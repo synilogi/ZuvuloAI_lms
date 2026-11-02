@@ -1,8 +1,10 @@
-import { publicAffiliateProgram, readSiteContent } from '../lib/siteContent.js';
+import { publicAffiliateProgram, publicSiteContent } from '../lib/siteContent.js';
+import { getPublicBundle, listPublicBundles } from '../lib/bundles.js';
+import { getPublicPost, listPublicPosts, publicMentor, publicMentors, publicStats, sendPublicImage } from '../lib/sitePublic.js';
 import { Router } from 'express';
 import { referralQrSvg, resolveReferral } from '../lib/mlm/affiliates.js';
 
-import { INQUIRY_KINDS } from '@syniastrolms/domain';
+import { BLOG_KINDS, INQUIRY_KINDS } from '@syniastrolms/domain';
 
 import { asyncHandler } from '../lib/errors.js';
 import { ApiError } from '../lib/errors.js';
@@ -26,7 +28,7 @@ import { getSettings } from '../lib/settings.js';
 import { toProfile } from './auth.js';
 import { createPublicInquiry } from '../lib/inquiries.js';
 import { runInTenant } from '../lib/tenancy.js';
-import { email, parseBody, phoneNumber, z } from '../lib/validate.js';
+import { email, optionalEnum, parseBody, parseQuery, phoneNumber, z } from '../lib/validate.js';
 import { applyToTeach, PENDING_MESSAGE, requestInstructorAccess } from '../lib/instructorRequests.js';
 import { publicBrandingRouter } from './branding.js';
 
@@ -177,7 +179,66 @@ const joinSchema = z.object({
 publicSiteRouter.get(
   '/site',
   asyncHandler(async (_req, res) => {
-    res.json(await readSiteContent());
+    res.json(await publicSiteContent());
+  }),
+);
+
+/** The home page's figures, counted from the records. */
+publicSiteRouter.get(
+  '/stats',
+  asyncHandler(async (_req, res) => {
+    res.json(await publicStats());
+  }),
+);
+
+publicSiteRouter.get(
+  '/mentors',
+  asyncHandler(async (_req, res) => {
+    res.json(await publicMentors());
+  }),
+);
+
+publicSiteRouter.get(
+  '/mentors/:id',
+  asyncHandler(async (req, res) => {
+    res.json(await publicMentor(req.params.id));
+  }),
+);
+
+publicSiteRouter.get(
+  '/bundles',
+  asyncHandler(async (_req, res) => {
+    res.json(await listPublicBundles());
+  }),
+);
+
+publicSiteRouter.get(
+  '/bundles/:slug',
+  asyncHandler(async (req, res) => {
+    res.json(await getPublicBundle(req.params.slug));
+  }),
+);
+
+publicSiteRouter.get(
+  '/posts',
+  asyncHandler(async (req, res) => {
+    const { kind } = parseQuery(req, z.object({ kind: optionalEnum(BLOG_KINDS) }));
+    res.json(await listPublicPosts(kind));
+  }),
+);
+
+publicSiteRouter.get(
+  '/posts/:slug',
+  asyncHandler(async (req, res) => {
+    res.json(await getPublicPost(req.params.slug));
+  }),
+);
+
+/** An image placed on the website, or an active instructor's photo. Any other upload is the same 404. */
+publicSiteRouter.get(
+  '/images/:mediaId',
+  asyncHandler(async (req, res) => {
+    await sendPublicImage(req.params.mediaId, res);
   }),
 );
 

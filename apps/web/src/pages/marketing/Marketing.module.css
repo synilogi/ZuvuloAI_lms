@@ -1620,3 +1620,110 @@
   white-space: pre-line;
   overflow-wrap: anywhere;
 }
+
+
+/* The courses menu in the header (docs/17). */
+.megaRoot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.megaToggle {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 28px;
+  margin-left: -6px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--muted);
+}
+.megaToggle:hover {
+  color: var(--text);
+}
+.megaToggle[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+.megaPanel {
+  position: fixed;
+  top: var(--header-h);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(960px, calc(100vw - 32px));
+  padding: var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--sh-lg);
+  z-index: 20;
+}
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+}
+.megaHeading {
+  margin: 0 0 var(--s-3);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.megaCategories,
+.megaList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  margin: 0 0 var(--s-3);
+  padding: 0;
+}
+.megaCategories a,
+.megaList a {
+  display: flex;
+  border-radius: var(--r-sm);
+  padding: 6px 8px;
+  color: var(--text);
+  font-size: 14px;
+}
+.megaCategories a {
+  align-items: center;
+  gap: var(--s-2);
+}
+.megaList a {
+  flex-direction: column;
+}
+.megaList strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.megaList small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.megaCategories a:hover,
+.megaList a:hover {
+  background: var(--surface-2);
+  text-decoration: none;
+}
+.megaMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.megaEmpty {
+  margin: 0;
+  color: var(--muted);
+}
+.footerSocials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  list-style: none;
+  margin: var(--s-2) 0 0;
+  padding: 0;
+}

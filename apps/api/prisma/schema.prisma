@@ -99,6 +99,11 @@ model Tenant {
   invitationRows           Invitation[]
   pendingAccountRows       PendingAccount[]
   siteContent              SiteContent?
+  siteImageRows            SiteImage[]
+  blogPostRows             BlogPost[]
+  courseBundleRows         CourseBundle[]
+  courseBundleCourseRows   CourseBundleCourse[]
+  bundlePurchaseRows       BundlePurchase[]
   mlmMatchingRuns          MlmMatchingRun[]
   mlmRankHistory           MlmRankHistory[]
   mlmRewards               MlmReward[]
@@ -1022,6 +1027,8 @@ model MediaAsset {
 
   /// Courses showing this image as their cover.
   coverOf Course[] @relation("CourseCoverImage")
+  /// Set when the Super Admin placed this image on the public website: only such images are served without a session.
+  siteImage SiteImage?
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
 
@@ -1158,6 +1165,7 @@ model Course {
   issuedCertificates  IssuedCertificate[]
   purchases           CoursePurchase[]
   coupons             Coupon[]
+  bundleLinks         CourseBundleCourse[]
   reviews             CourseReview[]
   coverImage         MediaAsset?          @relation("CourseCoverImage", fields: [coverImageId], references: [id], onDelete: SetNull)
 
@@ -1267,6 +1275,7 @@ model Student {
   liveRegs     LiveRegistration[]
   certificates IssuedCertificate[]
   purchases    CoursePurchase[]
+  bundlePurchases BundlePurchase[]
   drafts       AssignmentDraft[]
   affiliate    Affiliate?
   reviews      CourseReview[]
@@ -1981,6 +1990,8 @@ model CoursePurchase {
   refundedAt        DateTime?
   /// The gateway reported a lost dispute (docs/15 §6.8).
   chargebackAt      DateTime?
+  /// This course's share of a bundle order (lib/bundlePurchases.ts). The gateway's order and payment are on the bundle; this row has provider `bundle` and earns no CV.
+  bundlePurchaseId  String?
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @default(now()) @updatedAt
   paidAt            DateTime?
@@ -1994,6 +2005,7 @@ model CoursePurchase {
   mlmOrder   MlmOrder?
   refunds    CoursePurchaseRefund[]
   redemption CouponRedemption?
+  bundlePurchase BundlePurchase? @relation(fields: [bundlePurchaseId], references: [id], onDelete: Restrict)
 
   @@unique([provider, providerOrderId])
   @@unique([provider, providerPaymentId])
@@ -2001,6 +2013,7 @@ model CoursePurchase {
   @@index([studentId, courseId])
   @@index([courseId])
   @@index([status, createdAt])
+  @@index([bundlePurchaseId])
 }
 
 /// A course-payment webhook already received: one row per (academy, provider, event id), so a redelivery or a replay
@@ -2343,6 +2356,135 @@ model SiteContent {
   updatedAt   DateTime @updatedAt
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+}
+
+// ─── The public website's marketplace (docs/17) ─────────────────────────────
+
+/// An image the Super Admin placed on the public website. Its presence is what lets `/public/images/:id` serve the file.
+model SiteImage {
+  id        String   @id @default(cuid())
+  tenantId  String
+  mediaId   String   @unique
+  createdAt DateTime @default(now())
+
+  tenant Tenant     @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  media  MediaAsset @relation(fields: [mediaId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+/// An article, resource, webinar, workshop, community note or career guide on the website.
+model BlogPost {
+  id          String    @id @default(cuid())
+  tenantId    String
+  slug        String
+  /// 'article' | 'resource' | 'webinar' | 'workshop' | 'community' | 'career'.
+  kind        String    @default("article")
+  title       String
+  excerpt     String    @default("")
+  body        String    @default("")
+  coverUrl    String    @default("")
+  /// Where a webinar is held or a resource lives; empty when the page itself is the content.
+  externalUrl String    @default("")
+  /// When a webinar or workshop takes place.
+  eventAt     DateTime?
+  /// 'draft' | 'published'. A published post with `publishAt` ahead stays hidden until then.
+  status      String    @default("draft")
+  publishAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([tenantId, slug])
+  @@index([status, publishAt])
+}
+
+/// Several courses sold together at one price. It earns no affiliate volume, so it may not hold an eligible course.
+model CourseBundle {
+  id          String    @id @default(cuid())
+  tenantId    String
+  slug        String
+  title       String
+  summary     String    @default("")
+  description String    @default("")
+  coverUrl    String    @default("")
+  /// Whole rupees, all-inclusive, as a course's price is.
+  price       Int
+  /// 'draft' | 'published' | 'archived'. Bundles with orders are archived, never deleted.
+  status      String    @default("draft")
+  /// A published bundle with `publishAt` ahead stays hidden until then.
+  publishAt   DateTime?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  tenant    Tenant               @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  courses   CourseBundleCourse[]
+  purchases BundlePurchase[]
+
+  @@unique([tenantId, slug])
+}
+
+model CourseBundleCourse {
+  id       String @id @default(cuid())
+  tenantId String
+  bundleId String
+  courseId String
+  order    Int    @default(0)
+
+  tenant Tenant       @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  bundle CourseBundle @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  course Course       @relation(fields: [courseId], references: [id], onDelete: Restrict)
+
+  @@unique([bundleId, courseId])
+  @@index([tenantId])
+  @@index([courseId])
+}
+
+/// One gateway order for a bundle. On payment each course gets a paid `CoursePurchase` child, whose amounts sum to `amount`.
+model BundlePurchase {
+  id                String    @id @default(cuid())
+  tenantId          String
+  studentId         String
+  bundleId          String
+  /// The charge in paise, fixed when the order is made.
+  amount            Int
+  currency          String    @default("INR")
+  /// The bundle's price in whole rupees when the order was made, for the receipt.
+  price             Int
+  /// JSON array of `{ courseId, listPrice }` when the order was made: what this order buys, whatever the bundle becomes.
+  termsJson         String
+  provider          String
+  environment       String
+  providerOrderId   String
+  providerPaymentId String?
+  /// 'created' | 'paid' | 'expired'.
+  status            String    @default("created")
+  failureCode       String?
+  failureMessage    String?
+  reviewReason      String?
+  orderNumber       String?   @unique
+  /// 'requested' | 'pending' | 'succeeded' | 'failed'; null until a refund is asked for.
+  refundStatus      String?
+  providerRefundId  String?
+  refundedAt        DateTime?
+  chargebackAt      DateTime?
+  paidAt            DateTime?
+  expiresAt         DateTime
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  tenant   Tenant           @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  student  Student          @relation(fields: [studentId], references: [id], onDelete: Restrict)
+  bundle   CourseBundle     @relation(fields: [bundleId], references: [id], onDelete: Restrict)
+  children CoursePurchase[]
+
+  @@unique([provider, providerOrderId])
+  @@unique([provider, providerPaymentId])
+  @@index([tenantId])
+  @@index([studentId, bundleId])
+  @@index([status, createdAt])
 }
 
 // ─── The affiliate program's earnings (docs/15 MLM-004 to MLM-007) ───

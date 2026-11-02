@@ -5,7 +5,10 @@ import {
   ChalkboardTeacher,
   ChartLineUp,
   ClipboardText,
+  Clock,
   CreditCard,
+  DeviceMobile,
+  Devices,
   Exam,
   Eye,
   GraduationCap,
@@ -117,3 +120,33 @@ export const COMPANY = {
 
 /** The address on one line, for running text. */
 export const COMPANY_ADDRESS = COMPANY.addressLines.join(', ');
+
+/** Why learn here, on the home page. Each is true of the product today; access follows each course's own terms. */
+export const HOME_WHY: SiteFeature[] = [
+  { icon: Devices, title: 'Learn anytime, anywhere', text: 'Lessons work on your phone, tablet or computer, and pick up where you stopped.' },
+  { icon: ChalkboardTeacher, title: 'Expert-led courses', text: 'Every course is taught by an instructor our team has reviewed and approved.' },
+  { icon: ListChecks, title: 'Structured learning', text: 'Chapters and lessons in order, so you always know what comes next and how far you have come.' },
+  { icon: ClipboardText, title: 'Practical assignments', text: 'Quizzes and assignments check what you have learned, and instructors review the work that needs a person.' },
+  { icon: VideoCamera, title: 'Live learning sessions', text: 'Courses with live classes show them on your calendar, and you join from the course.' },
+  { icon: Certificate, title: 'Certificates', text: 'Courses that award one say so on their page, and anyone can check it on our Verify page.' },
+  { icon: Clock, title: 'Clear access terms', text: 'You keep a course for as long as its terms say, and your progress stays with your account.' },
+  { icon: DeviceMobile, title: 'Made for mobile', text: 'A layout built for small screens, not a shrunken desktop page.' },
+];
+
+/** How it works, on the home page. */
+export const HOME_STEPS: Step[] = [
+  { icon: MagnifyingGlass, title: 'Explore courses', text: 'Search the catalogue, or filter by category, level and price. No account needed.' },
+  { icon: Eye, title: 'Choose your program', text: 'See the outline, the instructor and the price, and pick a single course or a bundle.' },
+  { icon: CreditCard, title: 'Purchase and enrol', text: 'Pay through our gateway. Your course opens as soon as the payment is confirmed.' },
+  { icon: GraduationCap, title: 'Learn, practise and grow', text: 'Work through the lessons and assignments, and earn the certificate where a course offers one.' },
+];
+
+/** The affiliate program on the home page, in the order someone goes through it. Nothing here promises income (D-PLAT-13). */
+export const AFFILIATE_POINTS: string[] = [
+  'Learn through ZuviloAI',
+  'Join the affiliate program',
+  'Get your referral link',
+  'Refer eligible customers',
+  'Track verified sales and eligible commissions',
+  'View your network and rewards',
+];

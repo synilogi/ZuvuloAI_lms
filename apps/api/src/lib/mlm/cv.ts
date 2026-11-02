@@ -54,6 +54,8 @@ const amount = (value: bigint): number => {
 
 /** Records the order for a settled purchase of an eligible course, and activates the buyer's affiliate account. */
 export async function recordMlmOrder(tx: DbClient, purchase: CoursePurchase): Promise<string | null> {
+  // A bundle earns no volume (docs/17): its courses' shares never become orders, whatever the plan names later.
+  if (purchase.bundlePurchaseId) return null;
   const plan = await runAsPlatform('the program academy is named by the active plan', () => activeMlmPlan());
   if (!plan || plan.programTenantId !== purchase.tenantId || !plan.eligibleCourseIds.includes(purchase.courseId)) return null;
   const existing = await tx.mlmOrder.findUnique({ where: { purchaseId: purchase.id }, select: { id: true } });
@@ -267,7 +269,7 @@ export async function repairOrders(now = new Date()): Promise<number> {
   // Only recent sales: this mends a failed hook, and must not give volume to sales made before a course became eligible.
   const since = new Date(Math.max(Date.parse(plan.activatedAt), now.getTime() - 86_400_000));
   const missing = await db.coursePurchase.findMany({
-    where: { courseId: { in: plan.eligibleCourseIds }, status: 'paid', refundedAt: null, chargebackAt: null, mlmOrder: null, paidAt: { gte: since } },
+    where: { courseId: { in: plan.eligibleCourseIds }, status: 'paid', refundedAt: null, chargebackAt: null, mlmOrder: null, bundlePurchaseId: null, paidAt: { gte: since } },
     take: 100,
   });
   for (const purchase of missing) {

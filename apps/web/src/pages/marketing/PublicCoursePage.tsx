@@ -240,7 +240,9 @@ function CourseDetail() {
                   <li key={t.id}>
                     <Avatar name={t.name} size={48} />
                     <div>
-                      <strong className={styles.courseTeacherName}>{t.name}</strong>
+                      <strong className={styles.courseTeacherName}>
+                        <Link to={`/mentors/${t.id}`}>{t.name}</Link>
+                      </strong>
                       <span className={styles.courseBuyNote}>{t.title}</span>
                       {t.bio && <p className={styles.courseTeacherBio}>{t.bio}</p>}
                     </div>

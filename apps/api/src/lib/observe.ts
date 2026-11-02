@@ -28,6 +28,8 @@ export const SIGNALS = [
   // Course sales (an academy selling its courses to its learners): a purchase paid, and the academy's sales settings.
   'course_purchase.paid',
   'course_purchase.refunded',
+  'bundle_purchase.paid',
+  'bundle_purchase.refunded',
   'course_sales.changed',
   // The affiliate program (MLM-002 …): a manual placement by the Super Admin.
   'mlm.placement.manual',
@@ -65,6 +67,8 @@ const DEFAULT_LEVEL: Record<Signal, SignalLevel> = {
   'request.failed': 'error',
   'course_purchase.paid': 'info',
   'course_purchase.refunded': 'warn',
+  'bundle_purchase.paid': 'info',
+  'bundle_purchase.refunded': 'warn',
   'course_sales.changed': 'info',
   'mlm.placement.manual': 'info',
   'mlm.order.recorded': 'info',

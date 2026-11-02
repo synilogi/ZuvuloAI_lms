@@ -1,10 +1,32 @@
 import { useEffect, useId, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowLeft, BookOpenText, Certificate, Exam, Eye, LockKey, List, VideoCamera, X } from '@phosphor-icons/react';
+import {
+  ArrowLeft,
+  BookOpenText,
+  Certificate,
+  Exam,
+  Eye,
+  FacebookLogo,
+  InstagramLogo,
+  LinkedinLogo,
+  List,
+  LockKey,
+  TelegramLogo,
+  VideoCamera,
+  WhatsappLogo,
+  X,
+  XLogo,
+  YoutubeLogo,
+  type Icon,
+} from '@phosphor-icons/react';
+import { DEFAULT_SITE_CONTENT, type SiteSocialPlatform } from '@syniastrolms/domain';
 import { BrandLogo, type BrandLogoVariant } from '@/branding/BrandLogo';
 import { BRAND_NAME } from '@/branding/defaults';
 import { LinkButton } from '@/components/ui/Button/Button';
+import { useAsync } from '@/hooks/useAsync';
 import { API_MODE } from '@/lib/apiMode';
+import { services } from '@/services';
+import { ExploreMenu } from './MegaMenu';
 import { COMPANY, COMPANY_ADDRESS, SUPPORT_EMAIL } from './siteContent';
 import styles from './Marketing.module.css';
 
@@ -16,12 +38,22 @@ import styles from './Marketing.module.css';
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'Explore Courses', to: '/courses' },
-  { label: 'Categories', to: '/categories' },
+  { label: 'Course Bundles', to: '/bundles' },
+  { label: 'Our Mentors', to: '/mentors' },
   { label: 'Become an Instructor', to: '/become-an-instructor' },
   { label: 'Affiliate Program', to: '/affiliate-program' },
-  { label: 'About', to: '/about' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'About Us', to: '/about' },
 ];
+
+const SOCIAL_ICONS: Record<SiteSocialPlatform, { icon: Icon; label: string }> = {
+  youtube: { icon: YoutubeLogo, label: 'YouTube' },
+  instagram: { icon: InstagramLogo, label: 'Instagram' },
+  facebook: { icon: FacebookLogo, label: 'Facebook' },
+  linkedin: { icon: LinkedinLogo, label: 'LinkedIn' },
+  x: { icon: XLogo, label: 'X' },
+  whatsapp: { icon: WhatsappLogo, label: 'WhatsApp' },
+  telegram: { icon: TelegramLogo, label: 'Telegram' },
+};
 
 const FOOTER_COLUMNS = [
   {
@@ -29,6 +61,8 @@ const FOOTER_COLUMNS = [
     links: [
       { label: 'Explore courses', to: '/courses' },
       { label: 'Categories', to: '/categories' },
+      { label: 'Course bundles', to: '/bundles' },
+      { label: 'Our mentors', to: '/mentors' },
       { label: 'Verify a certificate', to: '/verify' },
       { label: 'Create an account', to: '/register' },
       { label: 'Log in', to: '/login' },
@@ -44,7 +78,8 @@ const FOOTER_COLUMNS = [
   {
     title: 'Company',
     links: [
-      { label: 'About', to: '/about' },
+      { label: 'About us', to: '/about' },
+      { label: 'Blog and resources', to: '/blog' },
       { label: 'FAQ', to: '/faq' },
       { label: 'Help Centre', to: '/support' },
       { label: 'Contact', to: '/contact' },
@@ -82,11 +117,15 @@ export function MarketingHeader() {
       <div className={styles.headerInner}>
         <Wordmark />
         <nav className={styles.headerNav} aria-label="Site">
-          {NAV_LINKS.map((l) => (
-            <NavLink key={l.to} to={l.to} end={l.to === '/'} className={({ isActive }) => (isActive ? styles.navActive : undefined)}>
-              {l.label}
-            </NavLink>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.to === '/courses' ? (
+              <ExploreMenu key={l.to} pathKey={`${location.pathname}${location.search}`} />
+            ) : (
+              <NavLink key={l.to} to={l.to} end={l.to === '/'} className={({ isActive }) => (isActive ? styles.navActive : undefined)}>
+                {l.label}
+              </NavLink>
+            ),
+          )}
         </nav>
         <div className={styles.headerActions}>
           <LinkButton to="/login" variant="secondary" size="sm">
@@ -117,13 +156,31 @@ export function MarketingHeader() {
 }
 
 export function MarketingFooter() {
+  // The footer's own words and links are the Super Admin's; it reads fine with the defaults until they load.
+  const content = useAsync('site:content', () => services.site.content().catch(() => DEFAULT_SITE_CONTENT)).data ?? DEFAULT_SITE_CONTENT;
   return (
     <footer className={styles.footer}>
       <div className={styles.footerInner}>
         <div className={styles.footerBrand}>
           <Wordmark />
-          <p>Online courses with lessons, assessments, live classes and certificates you can verify. Run by {COMPANY.legalName}, Kota.</p>
+          <p>
+            {content.footerAbout} Run by {COMPANY.legalName}, Kota.
+          </p>
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+          {content.socials.length > 0 && (
+            <ul className={styles.footerSocials} aria-label="Follow us">
+              {content.socials.map((s) => {
+                const { icon: SocialIcon, label } = SOCIAL_ICONS[s.platform];
+                return (
+                  <li key={s.platform}>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                      <SocialIcon size={20} aria-hidden="true" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
         <div className={styles.footerCols}>
           {FOOTER_COLUMNS.map((col) => (

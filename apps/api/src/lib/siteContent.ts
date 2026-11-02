@@ -1,4 +1,4 @@
-import { DEFAULT_SITE_CONTENT, type PublicAffiliateProgram, type SiteContent } from '@syniastrolms/domain';
+import { DEFAULT_SITE_CONTENT, isLive, orderedSections, type PublicAffiliateProgram, type SiteContent } from '@syniastrolms/domain';
 import type { Request } from 'express';
 
 import { recordAuditLog } from './audit.js';
@@ -15,7 +15,14 @@ import { runInTenant } from './tenancy.js';
 export async function readSiteContent(): Promise<SiteContent> {
   const row = await db.siteContent.findFirst();
   if (!row) return DEFAULT_SITE_CONTENT;
-  return { ...DEFAULT_SITE_CONTENT, ...(JSON.parse(row.contentJson) as Partial<SiteContent>) };
+  const saved = { ...DEFAULT_SITE_CONTENT, ...(JSON.parse(row.contentJson) as Partial<SiteContent>) };
+  return { ...saved, sections: orderedSections(saved.sections) };
+}
+
+/** What a visitor may read: testimonials and banners that are switched on and inside their dates. */
+export async function publicSiteContent(now = new Date()): Promise<SiteContent> {
+  const content = await readSiteContent();
+  return { ...content, testimonials: content.testimonials.filter((t) => isLive(t, now)), banners: content.banners.filter((b) => isLive(b, now)) };
 }
 
 export async function saveSiteContent(req: Request, content: SiteContent): Promise<SiteContent> {
@@ -29,7 +36,7 @@ export async function saveSiteContent(req: Request, content: SiteContent): Promi
       action: 'site.content_updated',
       targetType: 'site',
       targetId: tenantId,
-      meta: { featured: content.featuredCourseIds.length, testimonials: content.testimonials.length, faqs: content.faqs.length },
+      meta: { featured: content.featuredCourseIds.length, bundles: content.featuredBundleIds.length, testimonials: content.testimonials.length, banners: content.banners.length, faqs: content.faqs.length },
     });
     return content;
   });

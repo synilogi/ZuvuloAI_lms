@@ -57,7 +57,7 @@ test('the navigation is the platform’s, and no page sells software to institut
   await page.setViewportSize({ width: 1366, height: 900 });
   await page.goto('/');
   const site = page.getByRole('navigation', { name: 'Site', exact: true });
-  for (const label of ['Home', 'Explore Courses', 'Categories', 'Become an Instructor', 'Affiliate Program', 'About', 'Contact']) {
+  for (const label of ['Home', 'Explore Courses', 'Course Bundles', 'Our Mentors', 'Become an Instructor', 'Affiliate Program', 'About Us']) {
     await expect(site.getByRole('link', { name: label, exact: true })).toBeVisible();
   }
   await expect(page.getByRole('link', { name: 'Login', exact: true }).first()).toBeVisible();

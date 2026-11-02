@@ -1,4 +1,6 @@
+import { listPublicBundles } from './bundles.js';
 import { observe } from './observe.js';
+import { listPublicPosts } from './sitePublic.js';
 import { db } from './db.js';
 import { workspaceId } from './requestContext.js';
 import { runInTenant } from './tenancy.js';
@@ -22,6 +24,9 @@ const STATIC_PAGES: SitemapEntry[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
   { path: '/courses', changefreq: 'daily', priority: 0.9 },
   { path: '/categories', changefreq: 'weekly', priority: 0.8 },
+  { path: '/bundles', changefreq: 'weekly', priority: 0.8 },
+  { path: '/mentors', changefreq: 'weekly', priority: 0.7 },
+  { path: '/blog', changefreq: 'weekly', priority: 0.6 },
   { path: '/become-an-instructor', changefreq: 'monthly', priority: 0.7 },
   { path: '/teach/apply', changefreq: 'monthly', priority: 0.6 },
   { path: '/affiliate-program', changefreq: 'monthly', priority: 0.6 },
@@ -38,15 +43,19 @@ const STATIC_PAGES: SitemapEntry[] = [
 
 /** Published public courses and help articles. Unlisted and draft courses stay out. */
 export async function loadSitemapEntries(): Promise<SitemapEntry[]> {
-  const [courses, articles] = await runInTenant(await workspaceId(), () =>
+  const [courses, articles, bundles, posts] = await runInTenant(await workspaceId(), () =>
     Promise.all([
       db.course.findMany({ where: { status: 'published', visibility: 'public' }, select: { slug: true, updatedAt: true } }),
       db.helpArticle.findMany({ select: { slug: true, updatedAt: true } }),
+      listPublicBundles(),
+      listPublicPosts(),
     ]),
   );
   return [
     ...courses.map((c) => ({ path: `/courses/${encodeURIComponent(c.slug)}`, changefreq: 'weekly' as const, priority: 0.8, lastmod: c.updatedAt })),
     ...articles.map((a) => ({ path: `/support/article/${encodeURIComponent(a.slug)}`, changefreq: 'monthly' as const, priority: 0.4, lastmod: a.updatedAt })),
+    ...bundles.map((b) => ({ path: `/bundles/${encodeURIComponent(b.slug)}`, changefreq: 'weekly' as const, priority: 0.8 })),
+    ...posts.map((p) => ({ path: `/blog/${encodeURIComponent(p.slug)}`, changefreq: 'monthly' as const, priority: 0.5, lastmod: new Date(p.updatedAt) })),
   ];
 }
 

@@ -1,3 +1,4 @@
+import { reconcileBundlePurchases } from './bundlePurchases.js';
 import { reconcileCoursePurchases } from './coursePurchases.js';
 import { placePendingAffiliates } from './mlm/placement.js';
 import { repairOrders, settleEligibleOrders } from './mlm/cv.js';
@@ -81,6 +82,9 @@ export const runScheduledJobs = async (now = new Date()) => {
   // Course purchases nobody confirmed (the app closed, a webhook was lost): asked of each academy's gateway again.
   await leased('course-purchase-recovery', () =>
     watchJob('course-purchase-recovery', () => forEachTenant(() => reconcileCoursePurchases(now), 'course-purchase-recovery')),
+  );
+  await leased('bundle-purchase-recovery', () =>
+    watchJob('bundle-purchase-recovery', () => forEachTenant(() => reconcileBundlePurchases(now), 'bundle-purchase-recovery')),
   );
   // Affiliates who have a sponsor and no position yet (MLM-002): placed by the plan's spillover rule, oldest first.
   await leased('mlm-placement', () => watchJob('mlm-placement', () => forEachTenant(() => placePendingAffiliates(), 'mlm-placement')));

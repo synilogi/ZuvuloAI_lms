@@ -1,4 +1,6 @@
-import { SITE_LIMITS as L } from '@syniastrolms/domain';
+import { BLOG_KINDS, BLOG_LIMITS, BUNDLE_LIMITS, HOME_SECTIONS, SITE_IMAGE_PATTERN, SITE_LIMITS as L, SITE_SOCIAL_PLATFORMS } from '@syniastrolms/domain';
+import { createBundle, deleteBundle, listAdminBundles, updateBundle } from '../lib/bundles.js';
+import { createPost, deletePost, listAdminPosts, registerSiteImage, updatePost } from '../lib/sitePublic.js';
 import { readSiteContent, saveSiteContent } from '../lib/siteContent.js';
 import { Router, type NextFunction, type Request, type Response } from 'express';
 import type { Prisma } from '@prisma/client';
@@ -280,18 +282,73 @@ superadminSalesRouter.get(
   }),
 );
 
-/* The website's editable document: what it features, its testimonials and its questions (docs/16 §2.6). */
+/* The website's editable document: what it features, its testimonials and its questions (docs/16 §2.6, docs/17). */
+const siteImage = z.string().trim().regex(SITE_IMAGE_PATTERN, 'Choose an uploaded website image.').or(z.literal(''));
+const webLink = z
+  .string()
+  .trim()
+  .max(L.link)
+  .regex(/^https:\/\/\S+$/i, 'A link must start with https://.');
+const isoDate = z.string().datetime({ offset: true });
+const schedule = { published: z.boolean().optional(), publishAt: isoDate.or(z.literal('')).optional() };
+
 const siteContentBody = z
   .object({
+    heroEyebrow: z.string().trim().max(L.heroEyebrow),
     heroTitle: z.string().trim().min(3).max(L.heroTitle),
     heroText: z.string().trim().min(3).max(L.heroText),
+    heroImageUrl: siteImage,
+    heroBundleId: z.string().max(40),
     featuredCourseIds: z.array(z.string().min(1)).max(L.featured),
+    featuredBundleIds: z.array(z.string().min(1)).max(L.featured),
+    featuredMentorIds: z.array(z.string().min(1)).max(L.featured),
+    sections: z
+      .array(z.object({ id: z.enum(HOME_SECTIONS), visible: z.boolean() }).strict())
+      .max(HOME_SECTIONS.length)
+      .refine((all) => new Set(all.map((s) => s.id)).size === all.length, 'A section can appear only once.'),
+    stats: z.object({ learners: z.boolean(), courses: z.boolean(), instructors: z.boolean(), learningHours: z.boolean() }).strict(),
     testimonials: z
       .array(
-        z.object({ quote: z.string().trim().min(3).max(L.quote), name: z.string().trim().min(1).max(L.name), role: z.string().trim().max(L.role) }).strict(),
+        z
+          .object({
+            quote: z.string().trim().min(3).max(L.quote),
+            name: z.string().trim().min(1).max(L.name),
+            role: z.string().trim().max(L.role),
+            imageUrl: siteImage.optional(),
+            videoUrl: webLink.or(z.literal('')).optional(),
+            ...schedule,
+          })
+          .strict(),
       )
       .max(L.testimonials),
+    banners: z
+      .array(
+        z
+          .object({
+            title: z.string().trim().min(3).max(L.bannerTitle),
+            text: z.string().trim().max(L.bannerText),
+            imageUrl: siteImage.optional(),
+            linkLabel: z.string().trim().max(L.linkLabel).optional(),
+            linkTo: z
+              .string()
+              .trim()
+              .max(L.link)
+              .regex(/^(\/(?!\/)\S*|https:\/\/\S+)?$/, 'A link must be a page of this site or start with https://.')
+              .optional(),
+            endsAt: isoDate.or(z.literal('')).optional(),
+            ...schedule,
+          })
+          .strict(),
+      )
+      .max(L.banners),
     faqs: z.array(z.object({ q: z.string().trim().min(3).max(L.q), a: z.string().trim().min(3).max(L.a) }).strict()).max(L.faqs),
+    affiliateTitle: z.string().trim().min(3).max(L.affiliateTitle),
+    affiliateText: z.string().trim().min(3).max(L.affiliateText),
+    footerAbout: z.string().trim().max(L.footerAbout),
+    socials: z.array(z.object({ platform: z.enum(SITE_SOCIAL_PLATFORMS), url: webLink }).strict()).max(L.socials),
+    seoTitle: z.string().trim().max(L.seoTitle),
+    seoDescription: z.string().trim().max(L.seoDescription),
+    seoImageUrl: siteImage,
   })
   .strict();
 
@@ -306,5 +363,102 @@ superadminSalesRouter.put(
   '/site',
   asyncHandler(async (req, res) => {
     res.json(await saveSiteContent(req, parseBody(req, siteContentBody)));
+  }),
+);
+
+/** Places an already uploaded image on the website, so a visitor can read it. */
+superadminSalesRouter.post(
+  '/site/images',
+  asyncHandler(async (req, res) => {
+    const { mediaId } = parseBody(req, z.object({ mediaId: z.string().trim().min(1).max(40) }));
+    res.status(201).json(await registerSiteImage(req, mediaId));
+  }),
+);
+
+/* Course bundles (docs/17). The price is the Super Admin's; the rules for what may be sold are in lib/bundles.ts. */
+const bundleBody = z
+  .object({
+    title: z.string().trim().min(3, 'Give the bundle a name.').max(BUNDLE_LIMITS.title),
+    summary: z.string().trim().max(BUNDLE_LIMITS.summary),
+    description: z.string().trim().max(BUNDLE_LIMITS.description),
+    coverUrl: siteImage,
+    price: z.number().int().min(1, 'Enter a price of at least ₹1.').max(BUNDLE_LIMITS.maxPrice),
+    courseIds: z.array(z.string().min(1)).max(BUNDLE_LIMITS.maxCourses),
+    status: z.enum(['draft', 'published', 'archived']),
+    publishAt: isoDate.nullable().optional(),
+    order: z.number().int().min(0).max(100_000),
+  })
+  .strict();
+
+superadminSalesRouter.get(
+  '/bundles',
+  asyncHandler(async (_req, res) => {
+    res.json(await listAdminBundles());
+  }),
+);
+
+superadminSalesRouter.post(
+  '/bundles',
+  asyncHandler(async (req, res) => {
+    res.status(201).json(await createBundle(req, parseBody(req, bundleBody)));
+  }),
+);
+
+superadminSalesRouter.put(
+  '/bundles/:id',
+  asyncHandler(async (req, res) => {
+    res.json(await updateBundle(req, req.params.id, parseBody(req, bundleBody)));
+  }),
+);
+
+superadminSalesRouter.delete(
+  '/bundles/:id',
+  asyncHandler(async (req, res) => {
+    await deleteBundle(req, req.params.id);
+    res.status(204).end();
+  }),
+);
+
+/* The website's blog, resources, webinars and workshops (docs/17). */
+const postBody = z
+  .object({
+    kind: z.enum(BLOG_KINDS),
+    title: z.string().trim().min(3, 'Give the post a title.').max(BLOG_LIMITS.title),
+    excerpt: z.string().trim().max(BLOG_LIMITS.excerpt),
+    body: z.string().max(BLOG_LIMITS.body),
+    coverUrl: siteImage,
+    externalUrl: webLink.or(z.literal('')),
+    eventAt: isoDate.nullable().optional(),
+    status: z.enum(['draft', 'published']),
+    publishAt: isoDate.nullable().optional(),
+  })
+  .strict();
+
+superadminSalesRouter.get(
+  '/posts',
+  asyncHandler(async (_req, res) => {
+    res.json(await listAdminPosts());
+  }),
+);
+
+superadminSalesRouter.post(
+  '/posts',
+  asyncHandler(async (req, res) => {
+    res.status(201).json(await createPost(req, parseBody(req, postBody)));
+  }),
+);
+
+superadminSalesRouter.put(
+  '/posts/:id',
+  asyncHandler(async (req, res) => {
+    res.json(await updatePost(req, req.params.id, parseBody(req, postBody)));
+  }),
+);
+
+superadminSalesRouter.delete(
+  '/posts/:id',
+  asyncHandler(async (req, res) => {
+    await deletePost(req, req.params.id);
+    res.status(204).end();
   }),
 );

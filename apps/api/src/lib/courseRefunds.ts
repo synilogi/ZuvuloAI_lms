@@ -3,6 +3,7 @@ import type { Request } from 'express';
 import type { CoursePurchase } from '@prisma/client';
 
 import { recordAuditLog } from './audit.js';
+import { onBundleChargeback, onBundleRefundEvent, refundBundleShare } from './bundlePurchases.js';
 import { providerForPurchase } from './coursePayments.js';
 import { db } from './db.js';
 import { ApiError, conflict, notFound } from './errors.js';
@@ -76,6 +77,8 @@ async function settleRefund(purchase: CoursePurchase, refundId: string, provider
 export async function refundCoursePurchase(req: Request, purchaseId: string, input: { reason: string; note?: string }) {
   const purchase = await db.coursePurchase.findUnique({ where: { id: purchaseId } });
   if (!purchase) throw notFound('Order not found.');
+  // A course's share of a bundle has no payment of its own: the whole bundle goes back.
+  if (purchase.bundlePurchaseId) return refundBundleShare(req, purchaseId, purchase.bundlePurchaseId, input);
   if (purchase.status !== 'paid' || !purchase.providerPaymentId) throw conflict('Only a paid order can be refunded.');
   if (purchase.refundedAt) throw conflict('This order has already been refunded.');
 
@@ -157,7 +160,7 @@ export async function onGatewayRefundEvent(
   event: { providerRefundId: string; providerPaymentId: string; status: 'pending' | 'succeeded' | 'failed'; refundRef?: string },
 ) {
   const purchase = await db.coursePurchase.findFirst({ where: { provider: provider.name, providerPaymentId: event.providerPaymentId } });
-  if (!purchase) return;
+  if (!purchase) return void (await onBundleRefundEvent(provider, event));
   const known =
     (await db.coursePurchaseRefund.findFirst({ where: { purchaseId: purchase.id, providerRefundId: event.providerRefundId } })) ??
     (event.refundRef ? await db.coursePurchaseRefund.findFirst({ where: { id: event.refundRef, purchaseId: purchase.id } }) : null);
@@ -212,7 +215,7 @@ export async function onGatewayRefundEvent(
 /** A dispute the company lost. The volume is reversed once, and the order is flagged so a person can decide about access (docs/15 §6.8). */
 export async function onGatewayChargeback(provider: PaymentProvider, providerPaymentId: string): Promise<void> {
   const purchase = await db.coursePurchase.findFirst({ where: { provider: provider.name, providerPaymentId } });
-  if (!purchase) return;
+  if (!purchase) return void (await onBundleChargeback(provider, providerPaymentId));
   await db.coursePurchase.update({
     where: { id: purchase.id },
     data: {

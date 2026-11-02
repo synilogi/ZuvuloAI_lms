@@ -2,6 +2,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import { Prisma, type CoursePurchase as PurchaseRow } from '@prisma/client';
 import { chargeOf, courseSale, type CoursePricing, type CoursePurchase, type CourseQuote } from '@syniastrolms/domain';
 
+import { settleBundleFromWebhook } from './bundlePurchases.js';
 import { redeemCoupon, resolveCoupon } from './coupons.js';
 import { onGatewayChargeback, onGatewayRefundEvent } from './courseRefunds.js';
 
@@ -70,7 +71,8 @@ async function viewOf(row: PurchaseRow): Promise<CoursePurchase> {
     ...(row.reviewReason ? { needsReview: true } : {}),
     createdAt: row.createdAt.toISOString(),
     ...(row.paidAt ? { paidAt: row.paidAt.toISOString() } : {}),
-    ...(row.status === 'paid' && row.providerPaymentId ? { paymentReference: row.providerPaymentId } : {}),
+    // A bundle's share has no gateway payment of its own to quote.
+    ...(row.status === 'paid' && row.providerPaymentId && !row.bundlePurchaseId ? { paymentReference: row.providerPaymentId } : {}),
   };
 }
 
@@ -109,7 +111,7 @@ async function sellable(studentId: string, courseId: string) {
 }
 
 /** The next order number: `ORD-YYYY-NNNNNN`, unique for good. A number lost to a failed checkout is simply skipped. */
-async function nextOrderNumber(at = new Date()) {
+export async function nextOrderNumber(at = new Date()) {
   const year = at.getFullYear();
   const row = await db.orderSequence.upsert({ where: { year }, create: { year, last: 1 }, update: { last: { increment: 1 } } });
   return `ORD-${year}-${String(row.last).padStart(6, '0')}`;
@@ -133,7 +135,7 @@ export async function startCoursePurchase(studentId: string, courseId: string, c
   const { course, price, listPrice, charge: gross, student } = await sellable(studentId, courseId);
   const now = Date.now();
 
-  const open = await db.coursePurchase.findFirst({ where: { studentId, courseId, status: 'created' } });
+  const open = await db.coursePurchase.findFirst({ where: { studentId, courseId, status: 'created', bundlePurchaseId: null } });
   // The learner's own open order holds no place against them, so reusing it is not refused for the coupon it holds.
   const applied = couponCode ? await resolveCoupon(couponCode, { courseId, studentId, charge: gross, ignorePurchaseId: open?.id }) : null;
   const discount = applied?.discount ?? 0;
@@ -445,6 +447,7 @@ export async function receiveCoursePaymentWebhook(providerName: string, raw: Buf
       });
       // Settled through the environment the purchase was made in, re-reading the payment from the gateway.
       if (purchase) await settle(purchase, parsed.event.providerPaymentId, await providerForPurchase(purchase));
+      else await settleBundleFromWebhook(provider.name, parsed.event.providerOrderId, parsed.event.providerPaymentId);
     }
     if (parsed.event.kind === 'refund') await onGatewayRefundEvent(provider, parsed.event);
     await db.coursePaymentEvent.update({ where: { id: event.id }, data: { processedAt: new Date() } });
@@ -461,7 +464,7 @@ export async function receiveCoursePaymentWebhook(providerName: string, raw: Buf
  */
 export async function reconcileCoursePurchases(now = new Date()) {
   const open = await db.coursePurchase.findMany({
-    where: { status: 'created', createdAt: { lte: new Date(now.getTime() - 60_000) } },
+    where: { status: 'created', bundlePurchaseId: null, createdAt: { lte: new Date(now.getTime() - 60_000) } },
     orderBy: { createdAt: 'asc' },
     take: 50,
   });
