@@ -11,6 +11,7 @@ import { assertTenancyConfig } from './lib/tenancy.js';
 import { assertRegistrationConfig } from './lib/registration.js';
 import { assertTestOtpConfig, testOtpEnabled } from './lib/testOtp.js';
 import { liveRoomConfig, liveRoomUsable } from './lib/liveRoom.js';
+import { startAlerts } from './lib/alerts.js';
 import { runScheduledJobs } from './lib/scheduler.js';
 import { serveWebApp } from './web.js';
 
@@ -79,6 +80,8 @@ if (process.env.LIVE_REMINDERS !== 'off') {
   tick();
   setInterval(tick, 60_000).unref();
 }
+
+startAlerts();
 
 // A failure nothing caught is still a visible, redacted signal rather than a silent crash loop.
 process.on('unhandledRejection', (err) => observe('request.failed', { reason: 'unhandled rejection', error: describeError(err) }));

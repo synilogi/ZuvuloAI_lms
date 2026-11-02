@@ -1,5 +1,6 @@
 import { lazy, Suspense, type ReactNode } from 'react';
 import { createBrowserRouter, Navigate, useLocation, type RouteObject } from 'react-router-dom';
+import { countVisit } from '@/lib/siteTelemetry';
 import { applyPageMeta } from './pageMeta';
 import { useSession } from '@/providers/SessionProvider';
 import { API_MODE } from '@/lib/apiMode';
@@ -134,6 +135,7 @@ const Blog = lazy(() => import('@/pages/marketing/BlogPages').then((m) => ({ def
 const BlogPost = lazy(() => import('@/pages/marketing/BlogPages').then((m) => ({ default: m.BlogPostPage })));
 const SiteBundles = lazy(() => import('@/pages/superadmin/site/BundlesPage'));
 const SitePosts = lazy(() => import('@/pages/superadmin/site/PostsPage'));
+const SiteVisitors = lazy(() => import('@/pages/superadmin/site/VisitorsPage'));
 const Login = lazy(() => import('@/pages/marketing/LoginPage'));
 const Register = lazy(() => import('@/pages/marketing/RegisterPage'));
 const Ref = lazy(() => import('@/pages/marketing/RefPage'));
@@ -378,6 +380,7 @@ export const router = createBrowserRouter(
         // The affiliate program (MLM-000 plan, MLM-002 network, MLM-003 orders and ledgers; later modules add wallets and payouts).
         { path: 'superadmin/website', element: lazyPage(<Website />) },
         { path: 'superadmin/website/posts', element: lazyPage(<SitePosts />) },
+        { path: 'superadmin/website/visitors', element: lazyPage(<SiteVisitors />) },
         { path: 'superadmin/sales/bundles', element: lazyPage(<SiteBundles />) },
         { path: 'superadmin/affiliates', element: <Navigate to="/superadmin/affiliates/overview" replace /> },
         { path: 'superadmin/affiliates/overview', element: lazyPage(<AffiliateOverview />) },
@@ -553,9 +556,11 @@ export const router = createBrowserRouter(
 if (typeof document !== 'undefined') {
   let metaPath = router.state.location.pathname;
   applyPageMeta(metaPath);
+  countVisit(metaPath);
   router.subscribe(({ location }) => {
     if (location.pathname === metaPath) return;
     metaPath = location.pathname;
     applyPageMeta(metaPath);
+    countVisit(metaPath);
   });
 }

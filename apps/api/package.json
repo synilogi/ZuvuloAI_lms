@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
+    "build": "node scripts/build.mjs",
+    "start:built": "node dist/index.js",
     "typecheck": "tsc --noEmit",
     "pretest": "tsx scripts/prepare-test-db.ts",
     "test": "vitest run",
@@ -52,6 +54,7 @@
     "@types/node": "^22.20.2",
     "@types/nodemailer": "^6.4.24",
     "@types/supertest": "^7.2.1",
+    "esbuild": "0.28.2",
     "prisma": "^6.16.3",
     "supertest": "^7.2.2",
     "tsx": "^4.19.2",

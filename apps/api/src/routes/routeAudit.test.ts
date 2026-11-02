@@ -57,6 +57,7 @@ const PUBLIC: RegExp[] = [
   /^GET \/public\/site$/,
   /^GET \/public\/affiliate-program$/,
   // The marketplace's public reads (docs/17): figures, mentors without contact details, bundles, posts, placed images.
+  /^POST \/public\/(metrics|client-errors)$/,
   /^GET \/public\/(stats|mentors(\/:id)?|bundles(\/:slug)?|posts(\/:slug)?|images\/:mediaId)$/,
   // A referral link's landing data and QR (MLM-001): the code alone is the credential.
   /^GET \/public\/affiliates\/ref\/:code(\/qr\.svg)?$/,

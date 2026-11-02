@@ -91,6 +91,11 @@ export default function PrivacyPage() {
             Your learning activity is used to run your courses: unlocking chapters, routing submissions to the right instructor, issuing certificates, and
             showing you and your instructors accurate progress. We do not use your coursework to train models without asking first.
           </p>
+          <p>
+            To see which pages of our public website are useful, we count how many times each is opened each day. These are totals only: we set no cookie for
+            this and record nothing that identifies you, and a browser that asks not to be tracked is not counted. If a page breaks in your browser, it sends us
+            the error message and the page&apos;s address so we can fix it.
+          </p>
         </section>
 
         <section>

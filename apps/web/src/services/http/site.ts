@@ -7,6 +7,7 @@ import type {
   PublicMentor,
   PublicStats,
   SiteContent,
+  VisitorReport,
 } from '@syniastrolms/domain';
 import type { BundleCheckoutStart, BundleConfirmation, BundleQuote, SiteService } from '../contracts';
 import { del, get, post, put } from './client';
@@ -44,5 +45,6 @@ export const httpSite: SiteService = {
   deletePost: async (id) => {
     await del<void>(`/superadmin/sales/posts/${encodeURIComponent(id)}`);
   },
+  visitors: (days) => get<VisitorReport>('/superadmin/sales/visitors', { days }),
   placeImage: (mediaId) => post<{ url: string }>('/superadmin/sales/site/images', { mediaId }),
 };

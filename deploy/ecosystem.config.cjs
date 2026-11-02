@@ -4,9 +4,8 @@
  * name comes from PM2_NAME in the environment or <site>/deploy.conf (written by bootstrap.sh),
  * defaulting to "<site dir name>-api", and logs go to the user's CloudPanel logs directory.
  *
- * The API is started through tsx rather than a compiled bundle: `@syniastrolms/domain`
- * is consumed as TypeScript source (its package `exports` point at src/index.ts), so a
- * plain `tsc` build of apps/api alone would not resolve it. tsx loads both at runtime.
+ * The API runs as one compiled bundle under plain node (apps/api/scripts/build.mjs), so production
+ * needs none of the development tools at run time.
  */
 const fs = require('node:fs');
 const os = require('node:os');
@@ -31,9 +30,10 @@ module.exports = {
   apps: [
     {
       name,
+      // The checkout's apps/api, for its .env. The code is the compiled release deploy.sh points <site>/api at, so a build or an
+      // install in the checkout cannot disturb the running API.
       cwd: path.join(APP, 'apps', 'api'),
-      script: path.join(APP, 'node_modules', 'tsx', 'dist', 'cli.mjs'),
-      args: 'src/index.ts',
+      script: path.join(SITE, 'api', 'index.js'),
       // The node running PM2, by absolute path: the @reboot cron has a minimal PATH, and CloudPanel keeps node under the user's nvm.
       interpreter: process.execPath,
       // One instance: the notification scheduler in src/index.ts is in-process. Scaling out means LIVE_REMINDERS=off on the others.

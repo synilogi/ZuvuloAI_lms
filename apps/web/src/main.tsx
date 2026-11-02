@@ -14,6 +14,9 @@ import './styles/base.css';
 import './styles/typography.css';
 
 import { App } from './app/App';
+import { watchForErrors } from './lib/siteTelemetry';
+
+watchForErrors();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

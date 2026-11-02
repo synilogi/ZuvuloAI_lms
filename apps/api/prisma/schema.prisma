@@ -100,6 +100,7 @@ model Tenant {
   pendingAccountRows       PendingAccount[]
   siteContent              SiteContent?
   siteImageRows            SiteImage[]
+  siteMetricRows           SiteMetricDay[]
   blogPostRows             BlogPost[]
   courseBundleRows         CourseBundle[]
   courseBundleCourseRows   CourseBundleCourse[]
@@ -2359,6 +2360,21 @@ model SiteContent {
 }
 
 // ─── The public website's marketplace (docs/17) ─────────────────────────────
+
+/// How many times a public page was opened on one day. Counts only: no cookie, address, account or anything else about a person.
+model SiteMetricDay {
+  id       String @id @default(cuid())
+  tenantId String
+  /// `YYYY-MM-DD`, India time.
+  day      String @db.VarChar(10)
+  path     String @db.VarChar(191)
+  count    Int    @default(0)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([tenantId, day, path])
+  @@index([day])
+}
 
 /// An image the Super Admin placed on the public website. Its presence is what lets `/public/images/:id` serve the file.
 model SiteImage {

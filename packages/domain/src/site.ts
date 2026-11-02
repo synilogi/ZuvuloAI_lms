@@ -405,3 +405,47 @@ export interface PublicAffiliateProgram {
   withdrawalRequiresKyc: boolean;
   ranks: PublicAffiliateRank[];
 }
+
+/** The first part of an address the website counts visits to. Sign-in workspaces are never counted. */
+export const COUNTED_PAGES = [
+  'courses',
+  'categories',
+  'bundles',
+  'mentors',
+  'blog',
+  'about',
+  'faq',
+  'contact',
+  'login',
+  'register',
+  'become-an-instructor',
+  'affiliate-program',
+] as const;
+
+/** The path to count for an address, without its query, or null when it is not a page of the public website. */
+export function countedPath(pathname: string): string | null {
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+  if (path.length > 180 || !/^\/[A-Za-z0-9/_-]*$/.test(path)) return null;
+  if (path === '/' || path === '/welcome') return '/';
+  return (COUNTED_PAGES as readonly string[]).includes(path.split('/')[1]) ? path : null;
+}
+
+export interface VisitorFunnelStep {
+  label: string;
+  count: number;
+}
+
+export interface VisitorReport {
+  days: number;
+  from: string;
+  to: string;
+  /** Page views a day, oldest first. A day with none is listed as zero. */
+  daily: { day: string; views: number }[];
+  topPages: { path: string; views: number }[];
+  funnel: VisitorFunnelStep[];
+}
+
+/** What share of the step before each step reached it, as a whole percentage. The first step has none. */
+export function funnelRates(steps: readonly VisitorFunnelStep[]): (number | null)[] {
+  return steps.map((step, i) => (i === 0 ? null : steps[i - 1].count > 0 ? Math.round((step.count / steps[i - 1].count) * 100) : null));
+}

@@ -1,5 +1,7 @@
 import { publicAffiliateProgram, publicSiteContent } from '../lib/siteContent.js';
 import { getPublicBundle, listPublicBundles } from '../lib/bundles.js';
+import { countPageView, isBot } from '../lib/siteMetrics.js';
+import { observe } from '../lib/observe.js';
 import { getPublicPost, listPublicPosts, publicMentor, publicMentors, publicStats, sendPublicImage } from '../lib/sitePublic.js';
 import { Router } from 'express';
 import { referralQrSvg, resolveReferral } from '../lib/mlm/affiliates.js';
@@ -180,6 +182,26 @@ publicSiteRouter.get(
   '/site',
   asyncHandler(async (_req, res) => {
     res.json(await publicSiteContent());
+  }),
+);
+
+/** One view of a public page. Answers the same whatever happened: a visitor's page never waits on or learns from this. */
+publicSiteRouter.post(
+  '/metrics',
+  asyncHandler(async (req, res) => {
+    const { path } = parseBody(req, z.object({ path: z.string().max(300) }));
+    if (!isBot(req.get('user-agent'))) await countPageView(path).catch(() => undefined);
+    res.status(204).end();
+  }),
+);
+
+/** An error in a visitor's browser, so a page broken for someone reaches the Super Admin's system view instead of nobody. */
+publicSiteRouter.post(
+  '/client-errors',
+  asyncHandler(async (req, res) => {
+    const input = parseBody(req, z.object({ message: z.string().max(500), source: z.string().max(300).optional(), path: z.string().max(300).optional() }));
+    if (!isBot(req.get('user-agent'))) observe('client.error', input);
+    res.status(204).end();
   }),
 );
 

@@ -148,5 +148,6 @@ export const siteService: SiteService = {
     respond(() => {
       posts = posts.filter((p) => p.id !== id);
     }),
+  visitors: (days) => respond(() => ({ days, from: '', to: '', daily: [], topPages: [], funnel: [] })),
   placeImage: (mediaId) => respond(() => ({ url: `/public/images/${mediaId}` })),
 };

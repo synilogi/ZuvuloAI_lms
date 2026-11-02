@@ -28,6 +28,7 @@ export const SIGNALS = [
   // Course sales (an academy selling its courses to its learners): a purchase paid, and the academy's sales settings.
   'course_purchase.paid',
   'course_purchase.refunded',
+  'client.error',
   'bundle_purchase.paid',
   'bundle_purchase.refunded',
   'course_sales.changed',
@@ -67,6 +68,7 @@ const DEFAULT_LEVEL: Record<Signal, SignalLevel> = {
   'request.failed': 'error',
   'course_purchase.paid': 'info',
   'course_purchase.refunded': 'warn',
+  'client.error': 'warn',
   'bundle_purchase.paid': 'info',
   'bundle_purchase.refunded': 'warn',
   'course_sales.changed': 'info',
@@ -154,6 +156,13 @@ const consoleSink: Sink = (line, o) => {
 
 let sink: Sink = consoleSink;
 
+let errorListener: ((observation: Observation) => void) | undefined;
+
+/** Hears every error-level signal once it is redacted (`lib/alerts.ts`). */
+export function onObservationError(listener: ((observation: Observation) => void) | undefined) {
+  errorListener = listener;
+}
+
 /** Replaces where signal lines go — tests capture them; `undefined` restores the server log. */
 export function setObservationSink(next: Sink | undefined) {
   sink = next ?? consoleSink;
@@ -169,6 +178,13 @@ export function observe(signal: Signal, fields: Record<string, unknown> = {}, le
   if (level !== 'info') {
     recent.push(observation);
     if (recent.length > WINDOW) recent.shift();
+  }
+  if (level === 'error') {
+    try {
+      errorListener?.(observation);
+    } catch {
+      // Reporting a failure never becomes a second one.
+    }
   }
   try {
     sink(JSON.stringify({ observability: signal, level, at: observation.at, ...observation.fields }), observation);

@@ -1,0 +1,17 @@
+# Checks the live site from outside every 15 minutes. GitHub emails the repository's owner when a run fails, so an outage reaches someone
+# even if the server itself is gone. GitHub pauses scheduled runs after 60 days without a commit, and warns by email first.
+name: Uptime
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  live-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: The API answers
+        run: curl -fsS --retry 3 --retry-delay 20 --retry-all-errors -m 20 https://zuviloai.com/api/health
+      - name: The website answers
+        run: curl -fsS --retry 3 --retry-delay 20 --retry-all-errors -m 20 -o /dev/null https://zuviloai.com/

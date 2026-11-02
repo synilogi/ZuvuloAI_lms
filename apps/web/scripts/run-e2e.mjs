@@ -158,7 +158,9 @@ async function main() {
   // by src/index.ts) never overwrites a variable already present in the environment, so this wins.
   // SUBSCRIPTION_INVOICE_LEAD_DAYS=31: a monthly subscription started during the run is invoiced for its next
   // period on the scheduler's next tick, so the billing spec can pay a real renewal invoice without moving a clock.
-  const api = run(npx, ['tsx', 'src/index.ts'], {
+  // E2E_API_BUNDLE=1 tests what production runs: the compiled bundle, not the TypeScript.
+  if (process.env.E2E_API_BUNDLE === '1') await step('Building the API', ['tsx', 'scripts/build.mjs']);
+  const api = run(process.env.E2E_API_BUNDLE === '1' ? process.execPath : npx, process.env.E2E_API_BUNDLE === '1' ? ['dist/index.js'] : ['tsx', 'src/index.ts'], {
     cwd: apiRoot,
     // PAYMENT_SANDBOX=on: no real gateway is configured in the E2E database, so the sandbox gateway takes payments —
     // its test checkout drives pay, decline and cancel through the real signed-webhook path (SAAS-030). APP_URL is

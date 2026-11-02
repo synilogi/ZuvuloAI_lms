@@ -40,6 +40,7 @@ import type {
   PublicBundle,
   PublicMentor,
   PublicStats,
+  VisitorReport,
 } from '@syniastrolms/domain';
 /**
  * Service contracts. Screens depend on these interfaces only; the mock
@@ -1856,6 +1857,8 @@ export interface SiteService {
   deletePost(id: string): Promise<void>;
   /** Places an uploaded image on the website, so a visitor can read it. */
   placeImage(mediaId: string): Promise<{ url: string }>;
+  /** Who reached the website over the last `days` days, and how far they got. */
+  visitors(days: number): Promise<VisitorReport>;
 }
 
 export interface BundleQuote {

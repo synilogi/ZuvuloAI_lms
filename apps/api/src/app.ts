@@ -107,6 +107,9 @@ export function createApp(options: AppOptions = {}): Express {
     makeLimiter(Math.max(5, Math.floor(limits.auth / 3)), limits.windowMs, 'Too many messages. Try again later.', { skipGet: true }),
   );
   // Registering is a sign-up, on the sign-up budget.
+  // A visitor's page views and browser errors: generous for one person, far short of what would fill the tables.
+  app.use('/public/metrics', makeLimiter(limits.global, limits.windowMs, 'Too many requests. Try again later.'));
+  app.use('/public/client-errors', makeLimiter(Math.max(5, Math.floor(limits.auth / 3)), limits.windowMs, 'Too many requests. Try again later.'));
   app.use('/public/register', makeLimiter(limits.auth, limits.windowMs, 'Too many sign-up attempts. Try again later.'));
   app.use('/public/instructor-applications', makeLimiter(limits.auth, limits.windowMs, 'Too many sign-up attempts. Try again later.'));
   // A referral code names its sponsor, so codes are not to be tried at speed (docs/15 §5.1).

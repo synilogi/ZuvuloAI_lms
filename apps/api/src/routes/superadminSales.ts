@@ -1,6 +1,7 @@
 import { BLOG_KINDS, BLOG_LIMITS, BUNDLE_LIMITS, HOME_SECTIONS, SITE_IMAGE_PATTERN, SITE_LIMITS as L, SITE_SOCIAL_PLATFORMS } from '@syniastrolms/domain';
 import { createBundle, deleteBundle, listAdminBundles, updateBundle } from '../lib/bundles.js';
 import { createPost, deletePost, listAdminPosts, registerSiteImage, updatePost } from '../lib/sitePublic.js';
+import { visitorReport } from '../lib/siteMetrics.js';
 import { readSiteContent, saveSiteContent } from '../lib/siteContent.js';
 import { Router, type NextFunction, type Request, type Response } from 'express';
 import type { Prisma } from '@prisma/client';
@@ -372,6 +373,15 @@ superadminSalesRouter.post(
   asyncHandler(async (req, res) => {
     const { mediaId } = parseBody(req, z.object({ mediaId: z.string().trim().min(1).max(40) }));
     res.status(201).json(await registerSiteImage(req, mediaId));
+  }),
+);
+
+/* Who reaches the website, and how far they get (docs/19). */
+superadminSalesRouter.get(
+  '/visitors',
+  asyncHandler(async (req, res) => {
+    const { days } = parseQuery(req, z.object({ days: z.coerce.number().int().min(1).max(365).default(30) }));
+    res.json(await visitorReport(days));
   }),
 );
 

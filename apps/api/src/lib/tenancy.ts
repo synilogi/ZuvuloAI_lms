@@ -77,6 +77,7 @@ export const TENANT_OWNED_MODELS = [
   'Coupon',
   'SiteContent',
   'SiteImage',
+  'SiteMetricDay',
   'BlogPost',
   'CourseBundle',
   'CourseBundleCourse',

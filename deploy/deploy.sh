@@ -115,6 +115,9 @@ log "Generating the Prisma client"
 cd "$APP/apps/api"
 npx prisma generate
 
+log "Building the API"
+npm run build --silent
+
 log "Backing up the database"
 # A consistent copy (mysqldump, gzipped) under $DATA/backups, owner-only, newest DB_BACKUP_KEEP kept — taken before
 # every migration so a bad release can be rolled back with its data. A failed backup stops the deploy here,
@@ -150,12 +153,27 @@ log "Publishing Android App Links"
 # Android checks is written there, from ANDROID_APP_LINK_SHA256 in apps/api/.env (removed when unset).
 (cd "$APP/apps/api" && APP_LINKS_DIR="$SITE/.well-known" npm run app-links:publish --silent)
 
+log "Publishing the API"
+# The bundle plus the one thing it loads from disk: Prisma's generated client and query engine.
+API_RELEASE=$RELEASES/api-$STAMP
+mkdir -p "$API_RELEASE/node_modules/@prisma"
+cp "$APP/apps/api/dist/index.js" "$APP/apps/api/dist/index.js.map" "$API_RELEASE/"
+printf '{"type":"module"}\n' > "$API_RELEASE/package.json"
+cp -r "$APP/node_modules/@prisma/client" "$API_RELEASE/node_modules/@prisma/client"
+cp -r "$APP/node_modules/.prisma" "$API_RELEASE/node_modules/.prisma"
+ln -sfn "$API_RELEASE" "$SITE/api.new"
+mv -Tf "$SITE/api.new" "$SITE/api"
+# shellcheck disable=SC2012
+ls -1dt "$RELEASES"/api-* | tail -n +$((KEEP + 1)) | xargs -r rm -rf
+
 log "Restarting the API ($PM2_NAME)"
 cd "$SITE"
 export PM2_NAME
-if pm2 describe "$PM2_NAME" >/dev/null 2>&1; then
+# A reload keeps the script a process was started with, so one still on an older layout is started afresh.
+if pm2 describe "$PM2_NAME" 2>/dev/null | grep -q "script path.*$SITE/api/index.js"; then
   pm2 reload "$APP/deploy/ecosystem.config.cjs" --update-env
 else
+  pm2 delete "$PM2_NAME" >/dev/null 2>&1 || true
   pm2 start "$APP/deploy/ecosystem.config.cjs"
 fi
 pm2 save --force >/dev/null

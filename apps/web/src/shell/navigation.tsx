@@ -303,6 +303,7 @@ export const navigation: Record<Role, NavGroup[]> = {
           children: [
             { label: 'Home page and content', to: '/superadmin/website' },
             { label: 'Blog and resources', to: '/superadmin/website/posts' },
+            { label: 'Visitors', to: '/superadmin/website/visitors' },
           ],
         },
         { id: 'platform-inbox', label: 'Inbox', icon: I(Tray), to: '/superadmin/inquiries' },
