@@ -5,7 +5,21 @@
  */
 
 /** The home page's sections that can be moved or hidden. The hero comes first and the footer last, always. */
-export const HOME_SECTIONS = ['stats', 'bundles', 'categories', 'courses', 'mentors', 'why', 'how', 'teach', 'affiliate', 'testimonials', 'resources', 'faq', 'cta'] as const;
+export const HOME_SECTIONS = [
+  'stats',
+  'bundles',
+  'categories',
+  'courses',
+  'mentors',
+  'why',
+  'how',
+  'teach',
+  'affiliate',
+  'testimonials',
+  'resources',
+  'faq',
+  'cta',
+] as const;
 export type HomeSectionId = (typeof HOME_SECTIONS)[number];
 
 export const HOME_SECTION_LABELS: Record<HomeSectionId, string> = {

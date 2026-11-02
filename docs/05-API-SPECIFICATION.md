@@ -8,6 +8,7 @@
 | --- | --- |
 | 🔓 `POST /public/register` · `POST /public/instructor-applications` | Registration and instructor application, each confirmed by `POST /public/verifications/verify` |
 | 🔓 `GET /public/site` · `GET /public/affiliate-program` | The website's editable words; the active plan's published terms |
+| 🔓 `GET /public/stats` · `GET /public/mentors`, `/:id` · `GET /public/bundles`, `/:slug` · `GET /public/posts?kind=`, `/:slug` · `GET /public/images/:mediaId` | The marketplace's reads (`docs/17`): counted figures, mentors without contact details, bundles on sale, live posts, images placed on the website |
 | 🔓 `GET /catalog/*` | The public catalogue (unchanged) |
 | 🔐 `POST /learning/courses/:courseId/quote` · `POST …/purchase` with `couponCode` | The price with a coupon; the checkout |
 | 🔓 `POST /webhooks/:provider/courses` | Signed gateway events, one per event id. `payment.dispute.lost` reverses the sale's volume and flags the order |

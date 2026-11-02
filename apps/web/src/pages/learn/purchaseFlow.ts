@@ -106,7 +106,11 @@ export function recallCheckout(orderId: string, storage: Pick<Storage, 'getItem'
     storage?.removeItem(KEY(orderId));
     const parsed = JSON.parse(raw) as Partial<CheckoutReturn>;
     return typeof parsed.purchaseId === 'string' && typeof parsed.courseId === 'string'
-      ? { purchaseId: parsed.purchaseId, courseId: parsed.courseId, ...(typeof parsed.path === 'string' && parsed.path.startsWith('/') ? { path: parsed.path } : {}) }
+      ? {
+          purchaseId: parsed.purchaseId,
+          courseId: parsed.courseId,
+          ...(typeof parsed.path === 'string' && parsed.path.startsWith('/') ? { path: parsed.path } : {}),
+        }
       : null;
   } catch {
     return null;

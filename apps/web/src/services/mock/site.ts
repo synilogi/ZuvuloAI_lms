@@ -75,7 +75,8 @@ export const siteService: SiteService = {
       stored = input;
       return stored;
     }),
-  stats: () => respond(() => ({ learners: courses.reduce((n, c) => n + c.enrolledCount, 0), courses: courses.length, instructors: mentorsOf().length, learningHours: 0 })),
+  stats: () =>
+    respond(() => ({ learners: courses.reduce((n, c) => n + c.enrolledCount, 0), courses: courses.length, instructors: mentorsOf().length, learningHours: 0 })),
   mentors: () => respond(mentorsOf),
   mentor: (id) =>
     respond(() => {

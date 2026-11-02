@@ -293,6 +293,8 @@ The checklist is in [`docs/09-SECURITY.md`](docs/09-SECURITY.md). The highlights
 
 ## Platform: sales and the affiliate program
 
+The public website's marketplace (bundles, mentors, blog, site management) is in [`docs/17-WEBSITE-MARKETPLACE.md`](docs/17-WEBSITE-MARKETPLACE.md).
+
 The conversion from multi-tenant SaaS is told in [`docs/16-PLATFORM-CONVERSION.md`](docs/16-PLATFORM-CONVERSION.md), and the
 affiliate program in [`docs/15-MLM-AFFILIATE-ARCHITECTURE.md`](docs/15-MLM-AFFILIATE-ARCHITECTURE.md). Retired SaaS code is kept in `.retired/`.
 

@@ -269,7 +269,15 @@ export async function repairOrders(now = new Date()): Promise<number> {
   // Only recent sales: this mends a failed hook, and must not give volume to sales made before a course became eligible.
   const since = new Date(Math.max(Date.parse(plan.activatedAt), now.getTime() - 86_400_000));
   const missing = await db.coursePurchase.findMany({
-    where: { courseId: { in: plan.eligibleCourseIds }, status: 'paid', refundedAt: null, chargebackAt: null, mlmOrder: null, bundlePurchaseId: null, paidAt: { gte: since } },
+    where: {
+      courseId: { in: plan.eligibleCourseIds },
+      status: 'paid',
+      refundedAt: null,
+      chargebackAt: null,
+      mlmOrder: null,
+      bundlePurchaseId: null,
+      paidAt: { gte: since },
+    },
     take: 100,
   });
   for (const purchase of missing) {

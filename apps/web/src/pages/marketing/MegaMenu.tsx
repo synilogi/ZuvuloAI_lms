@@ -27,7 +27,9 @@ function MegaPanel() {
     );
   }
   if (!data) return <Skeleton height={220} radius="var(--r-lg)" />;
-  const categories = data.categories.filter((c) => c.status === 'active' && data.courses.some((course) => course.categoryId === c.id)).slice(0, SHOWN.categories);
+  const categories = data.categories
+    .filter((c) => c.status === 'active' && data.courses.some((course) => course.categoryId === c.id))
+    .slice(0, SHOWN.categories);
   const courses = [...data.courses].sort((a, b) => b.enrolledCount - a.enrolledCount).slice(0, SHOWN.courses);
   const bundles = data.bundles.slice(0, SHOWN.bundles);
   return (
@@ -93,6 +95,8 @@ export function ExploreMenu({ pathKey }: { pathKey: string }) {
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const closing = useRef<number | undefined>(undefined);
+  // Reaching the button with a mouse has already opened the panel, so that click must not shut it again.
+  const openedByHover = useRef(false);
 
   useEffect(() => setOpen(false), [pathKey]);
   useEffect(() => {
@@ -117,17 +121,25 @@ export function ExploreMenu({ pathKey }: { pathKey: string }) {
 
   const hoverOpen = () => {
     window.clearTimeout(closing.current);
+    if (!open) openedByHover.current = true;
     setOpen(true);
+  };
+  const toggle = () => {
+    if (openedByHover.current) openedByHover.current = false;
+    else setOpen((v) => !v);
   };
   // A short grace, so crossing the gap between the link and the panel doesn't close it.
   const hoverClose = () => {
-    closing.current = window.setTimeout(() => setOpen(false), 160);
+    closing.current = window.setTimeout(() => {
+      openedByHover.current = false;
+      setOpen(false);
+    }, 160);
   };
 
   return (
     <div ref={root} className={styles.megaRoot} onMouseEnter={hoverOpen} onMouseLeave={hoverClose}>
       <Link to="/courses">Explore Courses</Link>
-      <button type="button" className={styles.megaToggle} aria-expanded={open} aria-label="Show the courses menu" onClick={() => setOpen((v) => !v)}>
+      <button type="button" className={styles.megaToggle} aria-expanded={open} aria-label="Show the courses menu" onClick={toggle}>
         <CaretDown size={13} aria-hidden="true" />
       </button>
       {open && (

@@ -36,7 +36,13 @@ export async function saveSiteContent(req: Request, content: SiteContent): Promi
       action: 'site.content_updated',
       targetType: 'site',
       targetId: tenantId,
-      meta: { featured: content.featuredCourseIds.length, bundles: content.featuredBundleIds.length, testimonials: content.testimonials.length, banners: content.banners.length, faqs: content.faqs.length },
+      meta: {
+        featured: content.featuredCourseIds.length,
+        bundles: content.featuredBundleIds.length,
+        testimonials: content.testimonials.length,
+        banners: content.banners.length,
+        faqs: content.faqs.length,
+      },
     });
     return content;
   });

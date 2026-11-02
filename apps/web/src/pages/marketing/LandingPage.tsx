@@ -134,7 +134,16 @@ export default function LandingPage() {
       services.site.stats().catch(() => null),
       services.site.posts().catch(() => []),
       services.site.content().catch(() => DEFAULT_SITE_CONTENT),
-    ]).then(([courses, categories, instructors, bundles, mentors, stats, posts, content]): HomeData => ({ courses, categories, instructors, bundles, mentors, stats, posts, content })),
+    ]).then(([courses, categories, instructors, bundles, mentors, stats, posts, content]): HomeData => ({
+      courses,
+      categories,
+      instructors,
+      bundles,
+      mentors,
+      stats,
+      posts,
+      content,
+    })),
   );
   const data = query.data;
   const content = data?.content ?? DEFAULT_SITE_CONTENT;
@@ -306,7 +315,21 @@ function Banners({ banners }: { banners: SiteBanner[] }) {
   );
 }
 
-function Section({ id, eyebrow, title, intro, action, children }: { id: string; eyebrow: string; title: string; intro?: string; action?: ReactNode; children: ReactNode }) {
+function Section({
+  id,
+  eyebrow,
+  title,
+  intro,
+  action,
+  children,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  action?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <section className={styles.section} aria-labelledby={`${id}-title`} id={id}>
       <div className={styles.sectionHead}>
@@ -487,7 +510,9 @@ function TeachSection() {
       <div>
         <p className={styles.eyebrow}>Become an instructor</p>
         <h2 id="home-teach">Share your knowledge. Inspire the next generation.</h2>
-        <p className={styles.sectionIntro}>Apply to teach on ZuviloAI. Our team reviews each application, and approved instructors build and run their courses here.</p>
+        <p className={styles.sectionIntro}>
+          Apply to teach on ZuviloAI. Our team reviews each application, and approved instructors build and run their courses here.
+        </p>
         <ol className={styles.miniSteps}>
           {INSTRUCTOR_STEPS.map((s) => (
             <li key={s.title}>
@@ -613,7 +638,8 @@ function FaqSection({ content }: { content: SiteContent }) {
         <p className={styles.eyebrow}>FAQ</p>
         <h2 id="home-faq">Questions learners ask first</h2>
         <p className={styles.sectionIntro}>
-          Something else? Read the <Link to="/faq">full FAQ</Link>, <Link to="/contact">contact us</Link> or write to <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+          Something else? Read the <Link to="/faq">full FAQ</Link>, <Link to="/contact">contact us</Link> or write to{' '}
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
       </div>
       <FaqList faqs={content.faqs.slice(0, 7)} />

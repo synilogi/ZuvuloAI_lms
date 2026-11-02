@@ -103,8 +103,11 @@ export async function registerSiteImage(req: Request, mediaId: string) {
  */
 export async function sendPublicImage(mediaId: string, res: Response) {
   const placed = await db.siteImage.findUnique({ where: { mediaId }, select: { id: true } });
-  const allowed = placed ?? (await db.instructor.findFirst({ where: { ...STAFF_ONLY, status: 'active', photoJson: { contains: `"${mediaId}"` } }, select: { id: true } }));
-  const image = allowed ? await db.mediaAsset.findUnique({ where: { id: mediaId }, select: { storageName: true, mime: true, originalName: true, kind: true } }) : null;
+  const allowed =
+    placed ?? (await db.instructor.findFirst({ where: { ...STAFF_ONLY, status: 'active', photoJson: { contains: `"${mediaId}"` } }, select: { id: true } }));
+  const image = allowed
+    ? await db.mediaAsset.findUnique({ where: { id: mediaId }, select: { storageName: true, mime: true, originalName: true, kind: true } })
+    : null;
   if (!image || image.kind !== 'image') throw notFound('Image not found.');
   await new Promise<void>((resolve, reject) =>
     res.sendFile(
@@ -148,7 +151,11 @@ const livePosts = (now: Date) => ({ status: 'published', OR: [{ publishAt: null 
 
 /** Live posts, newest first, without their bodies. */
 export async function listPublicPosts(kind?: BlogKind, now = new Date()): Promise<BlogPost[]> {
-  const rows = await db.blogPost.findMany({ where: { ...livePosts(now), ...(kind ? { kind } : {}) }, orderBy: [{ publishAt: 'desc' }, { createdAt: 'desc' }], take: 100 });
+  const rows = await db.blogPost.findMany({
+    where: { ...livePosts(now), ...(kind ? { kind } : {}) },
+    orderBy: [{ publishAt: 'desc' }, { createdAt: 'desc' }],
+    take: 100,
+  });
   return rows.map((r) => ({ ...mapPost(r), body: '' }));
 }
 

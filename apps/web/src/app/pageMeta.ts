@@ -137,7 +137,10 @@ function setMeta(doc: Document, attribute: 'name' | 'property', key: string, con
  * Writes a page's tags. `path` is its canonical address; without one (a page behind sign-in) there is no canonical
  * link and the shared tags describe the site.
  */
-export function setPageMeta({ title, description, path, image }: { title: string; description: string; path?: string; image?: string }, doc: Document = document) {
+export function setPageMeta(
+  { title, description, path, image }: { title: string; description: string; path?: string; image?: string },
+  doc: Document = document,
+) {
   doc.title = title;
   if (image) setMeta(doc, 'property', 'og:image', image);
   setMeta(doc, 'name', 'description', description);

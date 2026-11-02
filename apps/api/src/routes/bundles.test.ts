@@ -22,7 +22,13 @@ let fake: FakeProvider;
 let instructorId: string;
 
 const paidCourse = async (price: number) => {
-  const created = await admin.post('/courses', { title: `Bundle Course ${unique()}`, description: 'A course.', instructorIds: [instructorId], pricing: 'paid', priceAmount: price });
+  const created = await admin.post('/courses', {
+    title: `Bundle Course ${unique()}`,
+    description: 'A course.',
+    instructorIds: [instructorId],
+    pricing: 'paid',
+    priceAmount: price,
+  });
   expect(created.status, JSON.stringify(created.body)).toBe(201);
   expect((await admin.post(`/courses/${created.body.id}/publish`)).status).toBe(200);
   return created.body as { id: string; slug: string };
@@ -43,7 +49,13 @@ const draft = (courseIds: string[], over: Record<string, unknown> = {}) => ({
 
 const newBundle = async (prices: number[] = [1000, 2000], price = 1500) => {
   const courses = await Promise.all(prices.map(paidCourse));
-  const res = await owner.post('/superadmin/sales/bundles', draft(courses.map((c) => c.id), { price }));
+  const res = await owner.post(
+    '/superadmin/sales/bundles',
+    draft(
+      courses.map((c) => c.id),
+      { price },
+    ),
+  );
   expect(res.status, JSON.stringify(res.body)).toBe(201);
   return { bundle: res.body as { id: string; slug: string; separatePrice: number }, courses };
 };
@@ -160,7 +172,9 @@ describe('buying a bundle', () => {
     const learner = await newStudent();
     const started = await start(learner, bundle.id);
     const forged = fake.pay(started.checkout.orderId, 'paid');
-    expect((await learner.post(`/learning/bundle-purchases/${started.purchase.id}/confirm`, { paymentId: forged.paymentId, signature: 'nope' })).status).toBe(400);
+    expect((await learner.post(`/learning/bundle-purchases/${started.purchase.id}/confirm`, { paymentId: forged.paymentId, signature: 'nope' })).status).toBe(
+      400,
+    );
     const wrong = fake.pay(started.checkout.orderId, 'paid', { amount: 1 });
     const res = await learner.post(`/learning/bundle-purchases/${started.purchase.id}/confirm`, wrong);
     expect(res.body.outcome.status).toBe('failed');
@@ -177,7 +191,9 @@ describe('buying a bundle', () => {
   it('skips a course the learner already has, and refuses when they have them all', async () => {
     const { bundle, courses } = await newBundle();
     const learner = await newStudent();
-    await runInTenant(ACADEMY, () => db.enrollment.create({ data: { tenantId: ACADEMY, studentId: learner.studentId, courseId: courses[0].id, source: 'admin' } }));
+    await runInTenant(ACADEMY, () =>
+      db.enrollment.create({ data: { tenantId: ACADEMY, studentId: learner.studentId, courseId: courses[0].id, source: 'admin' } }),
+    );
     const quote = await learner.post(`/learning/bundles/${bundle.id}/quote`, {});
     expect(quote.body.alreadyHeldCourseIds).toEqual([courses[0].id]);
     const { started } = await buy(learner, bundle.id);
@@ -193,7 +209,11 @@ describe('buying a bundle', () => {
     const started = await start(learner, bundle.id);
     fake.pay(started.checkout.orderId, 'paid');
     await runInTenant(ACADEMY, async () => {
-      await platformDb.$executeRawUnsafe(`UPDATE "BundlePurchase" SET "createdAt" = ? WHERE "id" = ?`, new Date(Date.now() - 120_000).toISOString(), started.purchase.id);
+      await platformDb.$executeRawUnsafe(
+        `UPDATE "BundlePurchase" SET "createdAt" = ? WHERE "id" = ?`,
+        new Date(Date.now() - 120_000).toISOString(),
+        started.purchase.id,
+      );
       await reconcileBundlePurchases();
     });
     expect((await learner.get(`/learning/bundle-purchases/${started.purchase.id}`)).body).toMatchObject({ status: 'paid', enrolled: true });

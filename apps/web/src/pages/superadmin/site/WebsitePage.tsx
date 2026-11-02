@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
 import { ArrowDown, ArrowUp, Plus, Trash } from '@phosphor-icons/react';
-import { HOME_SECTION_LABELS, SITE_LIMITS, SITE_SOCIAL_PLATFORMS, orderedSections, type SiteBanner, type SiteContent, type SiteSocialPlatform, type SiteTestimonial } from '@syniastrolms/domain';
+import {
+  HOME_SECTION_LABELS,
+  SITE_LIMITS,
+  SITE_SOCIAL_PLATFORMS,
+  orderedSections,
+  type SiteBanner,
+  type SiteContent,
+  type SiteSocialPlatform,
+  type SiteTestimonial,
+} from '@syniastrolms/domain';
 import { Link } from 'react-router-dom';
 import { PageHeader } from '@/components/page/PageHeader';
 import { useToast } from '@/components/overlays/Toast/ToastProvider';
@@ -42,7 +51,8 @@ export function siteContentIssues(c: SiteContent): Record<string, string> {
   });
   c.banners.forEach((b, i) => {
     if (b.title.trim().length < 3) issues[`site-banner-title-${i}`] = `Banner ${i + 1} needs its title.`;
-    if (b.linkTo && !SITE_LINK.test(b.linkTo.trim())) issues[`site-banner-link-${i}`] = `Banner ${i + 1}: a link must be a page of this site or start with https://.`;
+    if (b.linkTo && !SITE_LINK.test(b.linkTo.trim()))
+      issues[`site-banner-link-${i}`] = `Banner ${i + 1}: a link must be a page of this site or start with https://.`;
   });
   c.faqs.forEach((f, i) => {
     if (f.q.trim().length < 3) issues[`site-faq-q-${i}`] = `Question ${i + 1} needs its question.`;
@@ -93,7 +103,8 @@ export default function WebsitePage() {
         : 'Loading…';
   const publishedBundles = (bundles.data ?? []).filter((b) => b.status === 'published');
   const bundleName = (id: string) => bundles.data?.find((b) => b.id === id)?.title ?? (bundles.data ? 'A bundle that is not published now' : 'Loading…');
-  const mentorName = (id: string) => mentors.data?.find((m) => m.id === id)?.name ?? (mentors.data ? 'An instructor not teaching a listed course now' : 'Loading…');
+  const mentorName = (id: string) =>
+    mentors.data?.find((m) => m.id === id)?.name ?? (mentors.data ? 'An instructor not teaching a listed course now' : 'Loading…');
   const unusedSocials = SITE_SOCIAL_PLATFORMS.filter((p) => !form.socials.some((s) => s.platform === p));
 
   const save = async () => {
@@ -141,7 +152,12 @@ export default function WebsitePage() {
         <Field label="Line under the headline" error={issues['site-hero-text']}>
           <Textarea id="site-hero-text" rows={3} value={form.heroText} maxLength={SITE_LIMITS.heroText} onChange={(e) => patch({ heroText: e.target.value })} />
         </Field>
-        <SiteImageField label="Hero image" hint="Without one, the featured bundle or course shows its cover." value={form.heroImageUrl} onChange={(heroImageUrl) => patch({ heroImageUrl })} />
+        <SiteImageField
+          label="Hero image"
+          hint="Without one, the featured bundle or course shows its cover."
+          value={form.heroImageUrl}
+          onChange={(heroImageUrl) => patch({ heroImageUrl })}
+        />
         <Field label="Bundle to feature in the hero" optional>
           <Select id="site-hero-bundle" value={form.heroBundleId} onChange={(e) => patch({ heroBundleId: e.target.value })}>
             <option value="">The first featured bundle</option>
@@ -166,7 +182,12 @@ export default function WebsitePage() {
             />
             <span className={styles.rowActions}>
               <IconButton label={`Move ${HOME_SECTION_LABELS[s.id]} up`} icon={<ArrowUp size={15} />} disabled={i === 0} onClick={() => moveSection(i, -1)} />
-              <IconButton label={`Move ${HOME_SECTION_LABELS[s.id]} down`} icon={<ArrowDown size={15} />} disabled={i === sections.length - 1} onClick={() => moveSection(i, 1)} />
+              <IconButton
+                label={`Move ${HOME_SECTION_LABELS[s.id]} down`}
+                icon={<ArrowDown size={15} />}
+                disabled={i === sections.length - 1}
+                onClick={() => moveSection(i, 1)}
+              />
             </span>
           </div>
         ))}
@@ -177,8 +198,16 @@ export default function WebsitePage() {
         <p className={styles.muted}>Counted from the platform’s records and never typed in. Choose which to show; a figure of zero stays hidden.</p>
         <Checkbox label="Learners" checked={form.stats.learners} onChange={(e) => patch({ stats: { ...form.stats, learners: e.target.checked } })} />
         <Checkbox label="Courses" checked={form.stats.courses} onChange={(e) => patch({ stats: { ...form.stats, courses: e.target.checked } })} />
-        <Checkbox label="Expert instructors" checked={form.stats.instructors} onChange={(e) => patch({ stats: { ...form.stats, instructors: e.target.checked } })} />
-        <Checkbox label="Hours of learning" checked={form.stats.learningHours} onChange={(e) => patch({ stats: { ...form.stats, learningHours: e.target.checked } })} />
+        <Checkbox
+          label="Expert instructors"
+          checked={form.stats.instructors}
+          onChange={(e) => patch({ stats: { ...form.stats, instructors: e.target.checked } })}
+        />
+        <Checkbox
+          label="Hours of learning"
+          checked={form.stats.learningHours}
+          onChange={(e) => patch({ stats: { ...form.stats, learningHours: e.target.checked } })}
+        />
       </section>
 
       <section className={styles.form} aria-labelledby="site-featured">
@@ -195,7 +224,11 @@ export default function WebsitePage() {
         {form.featuredCourseIds.map((id) => (
           <div key={id} className={styles.formActions}>
             <span>{featuredName(id)}</span>
-            <IconButton label="Remove from featured" icon={<Trash size={16} />} onClick={() => patch({ featuredCourseIds: form.featuredCourseIds.filter((x) => x !== id) })} />
+            <IconButton
+              label="Remove from featured"
+              icon={<Trash size={16} />}
+              onClick={() => patch({ featuredCourseIds: form.featuredCourseIds.filter((x) => x !== id) })}
+            />
           </div>
         ))}
         {form.featuredCourseIds.length < SITE_LIMITS.featured && (
@@ -227,7 +260,11 @@ export default function WebsitePage() {
         {form.featuredBundleIds.map((id) => (
           <div key={id} className={styles.formActions}>
             <span>{bundleName(id)}</span>
-            <IconButton label="Remove from featured" icon={<Trash size={16} />} onClick={() => patch({ featuredBundleIds: form.featuredBundleIds.filter((x) => x !== id) })} />
+            <IconButton
+              label="Remove from featured"
+              icon={<Trash size={16} />}
+              onClick={() => patch({ featuredBundleIds: form.featuredBundleIds.filter((x) => x !== id) })}
+            />
           </div>
         ))}
         {form.featuredBundleIds.length < SITE_LIMITS.featured && (
@@ -261,7 +298,11 @@ export default function WebsitePage() {
         {form.featuredMentorIds.map((id) => (
           <div key={id} className={styles.formActions}>
             <span>{mentorName(id)}</span>
-            <IconButton label="Remove from featured" icon={<Trash size={16} />} onClick={() => patch({ featuredMentorIds: form.featuredMentorIds.filter((x) => x !== id) })} />
+            <IconButton
+              label="Remove from featured"
+              icon={<Trash size={16} />}
+              onClick={() => patch({ featuredMentorIds: form.featuredMentorIds.filter((x) => x !== id) })}
+            />
           </div>
         ))}
         {form.featuredMentorIds.length < SITE_LIMITS.featured && (
@@ -304,7 +345,12 @@ export default function WebsitePage() {
               <SiteImageField label="Image" value={b.imageUrl ?? ''} onChange={(imageUrl) => set({ imageUrl })} />
               <div className={styles.fieldRow}>
                 <Field label="Button words" optional>
-                  <Input id={`site-banner-label-${i}`} value={b.linkLabel ?? ''} maxLength={SITE_LIMITS.linkLabel} onChange={(e) => set({ linkLabel: e.target.value })} />
+                  <Input
+                    id={`site-banner-label-${i}`}
+                    value={b.linkLabel ?? ''}
+                    maxLength={SITE_LIMITS.linkLabel}
+                    onChange={(e) => set({ linkLabel: e.target.value })}
+                  />
                 </Field>
                 <Field label="Button link" hint="A page such as /courses, or an https:// address." error={issues[`site-banner-link-${i}`]} optional>
                   <Input id={`site-banner-link-${i}`} value={b.linkTo ?? ''} maxLength={SITE_LIMITS.link} onChange={(e) => set({ linkTo: e.target.value })} />
@@ -336,10 +382,21 @@ export default function WebsitePage() {
         <h2 id="site-affiliate">Affiliate program section</h2>
         <p className={styles.muted}>Describe how the program works, and promise no income. A note that income is never guaranteed always shows beneath it.</p>
         <Field label="Heading" error={issues['site-affiliate-title']}>
-          <Input id="site-affiliate-title" value={form.affiliateTitle} maxLength={SITE_LIMITS.affiliateTitle} onChange={(e) => patch({ affiliateTitle: e.target.value })} />
+          <Input
+            id="site-affiliate-title"
+            value={form.affiliateTitle}
+            maxLength={SITE_LIMITS.affiliateTitle}
+            onChange={(e) => patch({ affiliateTitle: e.target.value })}
+          />
         </Field>
         <Field label="Text" error={issues['site-affiliate-text']}>
-          <Textarea id="site-affiliate-text" rows={3} value={form.affiliateText} maxLength={SITE_LIMITS.affiliateText} onChange={(e) => patch({ affiliateText: e.target.value })} />
+          <Textarea
+            id="site-affiliate-text"
+            rows={3}
+            value={form.affiliateText}
+            maxLength={SITE_LIMITS.affiliateText}
+            onChange={(e) => patch({ affiliateText: e.target.value })}
+          />
         </Field>
       </section>
 
@@ -417,7 +474,13 @@ export default function WebsitePage() {
       <section className={styles.form} aria-labelledby="site-footer">
         <h2 id="site-footer">Footer and social links</h2>
         <Field label="About line" optional>
-          <Textarea id="site-footer-about" rows={2} value={form.footerAbout} maxLength={SITE_LIMITS.footerAbout} onChange={(e) => patch({ footerAbout: e.target.value })} />
+          <Textarea
+            id="site-footer-about"
+            rows={2}
+            value={form.footerAbout}
+            maxLength={SITE_LIMITS.footerAbout}
+            onChange={(e) => patch({ footerAbout: e.target.value })}
+          />
         </Field>
         {form.socials.map((s, i) => (
           <div key={s.platform} className={styles.fieldRow}>
@@ -464,7 +527,13 @@ export default function WebsitePage() {
           <Input id="site-seo-title" value={form.seoTitle} maxLength={SITE_LIMITS.seoTitle} onChange={(e) => patch({ seoTitle: e.target.value })} />
         </Field>
         <Field label="Description" optional>
-          <Textarea id="site-seo-description" rows={2} value={form.seoDescription} maxLength={SITE_LIMITS.seoDescription} onChange={(e) => patch({ seoDescription: e.target.value })} />
+          <Textarea
+            id="site-seo-description"
+            rows={2}
+            value={form.seoDescription}
+            maxLength={SITE_LIMITS.seoDescription}
+            onChange={(e) => patch({ seoDescription: e.target.value })}
+          />
         </Field>
         <SiteImageField label="Sharing image" value={form.seoImageUrl} onChange={(seoImageUrl) => patch({ seoImageUrl })} />
       </section>

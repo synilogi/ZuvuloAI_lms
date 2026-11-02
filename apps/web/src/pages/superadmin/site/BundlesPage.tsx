@@ -57,11 +57,13 @@ export default function BundlesPage() {
   const patch = (next: Partial<BundleInput>) => setEditing((e) => e && { ...e, input: { ...e.input, ...next } });
   const paidCourses = (courses.data ?? []).filter((c) => saleDisplay(c).kind === 'paid');
   const courseName = (id: string) => courses.data?.find((c) => c.id === id)?.title ?? 'A course not on sale now';
-  const separate = editing ? editing.input.courseIds.reduce((sum, id) => {
-    const sale = courses.data?.find((c) => c.id === id);
-    const shown = sale ? saleDisplay(sale) : undefined;
-    return sum + (shown?.kind === 'paid' ? shown.amount : 0);
-  }, 0) : 0;
+  const separate = editing
+    ? editing.input.courseIds.reduce((sum, id) => {
+        const sale = courses.data?.find((c) => c.id === id);
+        const shown = sale ? saleDisplay(sale) : undefined;
+        return sum + (shown?.kind === 'paid' ? shown.amount : 0);
+      }, 0)
+    : 0;
 
   const move = (index: number, by: -1 | 1) => {
     if (!editing) return;
@@ -134,7 +136,11 @@ export default function BundlesPage() {
                     <span className={styles.cellMeta}>/bundles/{b.slug}</span>
                   </td>
                   <td>
-                    <Badge tone={STATUS_TONE[b.status]}>{b.status === 'published' && b.publishAt && Date.parse(b.publishAt) > Date.now() ? 'Scheduled' : b.status[0].toUpperCase() + b.status.slice(1)}</Badge>
+                    <Badge tone={STATUS_TONE[b.status]}>
+                      {b.status === 'published' && b.publishAt && Date.parse(b.publishAt) > Date.now()
+                        ? 'Scheduled'
+                        : b.status[0].toUpperCase() + b.status.slice(1)}
+                    </Badge>
                   </td>
                   <td>{plural(b.courseIds.length, 'course')}</td>
                   <td>{formatINR(b.price)}</td>
@@ -183,19 +189,40 @@ export default function BundlesPage() {
               <Input id="bundle-summary" value={editing.input.summary} maxLength={BUNDLE_LIMITS.summary} onChange={(e) => patch({ summary: e.target.value })} />
             </Field>
             <Field label="Full description" optional>
-              <Textarea id="bundle-description" rows={4} value={editing.input.description} maxLength={BUNDLE_LIMITS.description} onChange={(e) => patch({ description: e.target.value })} />
+              <Textarea
+                id="bundle-description"
+                rows={4}
+                value={editing.input.description}
+                maxLength={BUNDLE_LIMITS.description}
+                onChange={(e) => patch({ description: e.target.value })}
+              />
             </Field>
-            <SiteImageField label="Cover image" hint="Without one, the covers of the first courses are shown." value={editing.input.coverUrl} onChange={(coverUrl) => patch({ coverUrl })} />
+            <SiteImageField
+              label="Cover image"
+              hint="Without one, the covers of the first courses are shown."
+              value={editing.input.coverUrl}
+              onChange={(coverUrl) => patch({ coverUrl })}
+            />
 
             <fieldset className={styles.form}>
               <legend>Courses</legend>
+              <p className={styles.muted}>A bundle needs at least two published, paid courses. A course on the affiliate plan can’t be included.</p>
               {editing.input.courseIds.map((id, i) => (
                 <div key={id} className={styles.formActions} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
                   <span>{courseName(id)}</span>
                   <span className={styles.rowActions}>
                     <IconButton label="Move up" icon={<ArrowUp size={15} />} disabled={i === 0} onClick={() => move(i, -1)} />
-                    <IconButton label="Move down" icon={<ArrowDown size={15} />} disabled={i === editing.input.courseIds.length - 1} onClick={() => move(i, 1)} />
-                    <IconButton label="Remove from bundle" icon={<Trash size={15} />} onClick={() => patch({ courseIds: editing.input.courseIds.filter((x) => x !== id) })} />
+                    <IconButton
+                      label="Move down"
+                      icon={<ArrowDown size={15} />}
+                      disabled={i === editing.input.courseIds.length - 1}
+                      onClick={() => move(i, 1)}
+                    />
+                    <IconButton
+                      label="Remove from bundle"
+                      icon={<Trash size={15} />}
+                      onClick={() => patch({ courseIds: editing.input.courseIds.filter((x) => x !== id) })}
+                    />
                   </span>
                 </div>
               ))}
@@ -233,7 +260,14 @@ export default function BundlesPage() {
                 />
               </Field>
               <Field label="Order on the website" hint="Lower numbers come first.">
-                <Input id="bundle-order" type="number" min={0} step={1} value={editing.input.order} onChange={(e) => patch({ order: Math.max(0, Math.trunc(Number(e.target.value)) || 0) })} />
+                <Input
+                  id="bundle-order"
+                  type="number"
+                  min={0}
+                  step={1}
+                  value={editing.input.order}
+                  onChange={(e) => patch({ order: Math.max(0, Math.trunc(Number(e.target.value)) || 0) })}
+                />
               </Field>
             </div>
             <div className={styles.fieldRow}>
@@ -244,7 +278,12 @@ export default function BundlesPage() {
                   <option value="archived">Archived: no longer sold</option>
                 </Select>
               </Field>
-              <DateTimeField label="Publish from" hint="Leave empty to publish straight away." value={editing.input.publishAt} onChange={(publishAt) => patch({ publishAt: publishAt ?? null })} />
+              <DateTimeField
+                label="Publish from"
+                hint="Leave empty to publish straight away."
+                value={editing.input.publishAt}
+                onChange={(publishAt) => patch({ publishAt: publishAt ?? null })}
+              />
             </div>
           </div>
         )}

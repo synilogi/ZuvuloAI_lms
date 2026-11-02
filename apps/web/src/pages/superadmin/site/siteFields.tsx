@@ -23,7 +23,17 @@ export function fromLocalInput(value: string): string | undefined {
 }
 
 /** A date and time, or none. */
-export function DateTimeField({ label, hint, value, onChange }: { label: string; hint?: string; value: string | null | undefined; onChange: (iso: string | undefined) => void }) {
+export function DateTimeField({
+  label,
+  hint,
+  value,
+  onChange,
+}: {
+  label: string;
+  hint?: string;
+  value: string | null | undefined;
+  onChange: (iso: string | undefined) => void;
+}) {
   const id = useId();
   return (
     <Field label={label} hint={hint} optional>

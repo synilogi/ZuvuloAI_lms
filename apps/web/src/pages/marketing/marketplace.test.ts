@@ -50,7 +50,17 @@ describe('the home page’s fixed words', () => {
 });
 
 describe('saving a bundle', () => {
-  const ok: BundleInput = { title: 'Two courses', summary: '', description: '', coverUrl: '', price: 999, courseIds: ['a', 'b'], status: 'published', publishAt: null, order: 0 };
+  const ok: BundleInput = {
+    title: 'Two courses',
+    summary: '',
+    description: '',
+    coverUrl: '',
+    price: 999,
+    courseIds: ['a', 'b'],
+    status: 'published',
+    publishAt: null,
+    order: 0,
+  };
 
   it('needs a name, a whole price and, to publish, two courses', () => {
     expect(bundleIssue(ok)).toBeUndefined();

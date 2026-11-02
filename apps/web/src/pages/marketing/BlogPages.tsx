@@ -85,7 +85,13 @@ export function BlogPostPage() {
   const post = query.data;
 
   useEffect(() => {
-    if (post) setPageMeta({ title: `${post.title} · ZuviloAI`, description: metaDescription(post.excerpt), path: `/blog/${post.slug}`, ...(post.coverUrl ? { image: siteImageSrc(post.coverUrl) } : {}) });
+    if (post)
+      setPageMeta({
+        title: `${post.title} · ZuviloAI`,
+        description: metaDescription(post.excerpt),
+        path: `/blog/${post.slug}`,
+        ...(post.coverUrl ? { image: siteImageSrc(post.coverUrl) } : {}),
+      });
   }, [post]);
   useJsonLd(
     post && {

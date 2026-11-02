@@ -35,7 +35,14 @@ describe('the figures', () => {
     expect(Object.keys(before).sort()).toEqual(['courses', 'instructors', 'learners', 'learningHours']);
     await newStudent();
     expect((await request(app).get('/public/stats')).body.learners).toBe(before.learners + 1);
-    expect((await owner.put('/superadmin/sales/site', { ...DEFAULT_SITE_CONTENT, stats: { learners: 100000, courses: true, instructors: true, learningHours: true } })).status).toBe(400);
+    expect(
+      (
+        await owner.put('/superadmin/sales/site', {
+          ...DEFAULT_SITE_CONTENT,
+          stats: { learners: 100000, courses: true, instructors: true, learningHours: true },
+        })
+      ).status,
+    ).toBe(400);
   });
 });
 
@@ -119,12 +126,25 @@ describe('the document’s scheduled parts', () => {
     expect((await owner.put('/superadmin/sales/site', banner('//evil.example'))).status).toBe(400);
     expect((await owner.put('/superadmin/sales/site', banner('/courses'))).status).toBe(200);
     expect((await owner.put('/superadmin/sales/site', { ...DEFAULT_SITE_CONTENT, heroImageUrl: 'https://evil.example/x.png' })).status).toBe(400);
-    expect((await owner.put('/superadmin/sales/site', { ...DEFAULT_SITE_CONTENT, socials: [{ platform: 'x', url: 'http://not-secure.example' }] })).status).toBe(400);
+    expect(
+      (await owner.put('/superadmin/sales/site', { ...DEFAULT_SITE_CONTENT, socials: [{ platform: 'x', url: 'http://not-secure.example' }] })).status,
+    ).toBe(400);
   });
 
   it('reads a document saved before these fields existed, with every section in place', async () => {
     const row = await db.siteContent.findFirstOrThrow();
-    await db.siteContent.update({ where: { id: row.id }, data: { contentJson: JSON.stringify({ heroTitle: 'An older headline', heroText: 'Older words.', featuredCourseIds: [], testimonials: [{ quote: 'Older quote.', name: 'A', role: '' }], faqs: [] }) } });
+    await db.siteContent.update({
+      where: { id: row.id },
+      data: {
+        contentJson: JSON.stringify({
+          heroTitle: 'An older headline',
+          heroText: 'Older words.',
+          featuredCourseIds: [],
+          testimonials: [{ quote: 'Older quote.', name: 'A', role: '' }],
+          faqs: [],
+        }),
+      },
+    });
     const shown = (await request(app).get('/public/site')).body;
     expect(shown.heroTitle).toBe('An older headline');
     expect(shown.testimonials).toHaveLength(1);
@@ -137,7 +157,10 @@ describe('the document’s scheduled parts', () => {
 describe('website images', () => {
   it('are served only when placed on the website', async () => {
     const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==', 'base64');
-    const uploaded = await request(app).post('/media/upload').set('Authorization', `Bearer ${owner.token}`).attach('file', png, { filename: 'hero.png', contentType: 'image/png' });
+    const uploaded = await request(app)
+      .post('/media/upload')
+      .set('Authorization', `Bearer ${owner.token}`)
+      .attach('file', png, { filename: 'hero.png', contentType: 'image/png' });
     expect(uploaded.status, JSON.stringify(uploaded.body)).toBe(201);
     const id = uploaded.body.id as string;
     expect((await request(app).get(`/public/images/${id}`)).status).toBe(404);

@@ -146,6 +146,9 @@ export function MarketingHeader() {
             {l.label}
           </Link>
         ))}
+        <Link to="/categories">Categories</Link>
+        <Link to="/blog">Blog and resources</Link>
+        <Link to="/contact">Contact</Link>
         <Link to="/login">Login</Link>
         <LinkButton to="/register" variant="primary" block>
           Sign up

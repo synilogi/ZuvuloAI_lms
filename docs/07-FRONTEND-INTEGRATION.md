@@ -28,7 +28,7 @@ screen (listed) · ⬜ still mock-only / not wired
 | Area | Screens | Status | Notes |
 | --- | --- | --- | --- |
 | Marketing & auth | `/welcome`, `/login`, `/register`, `/reset-password/:token`, `/privacy`, `/terms`, `/signed-out` | ✅ | Login/register/forgot/reset real; `?next=` return after sign-in; `RequireSession` guard. |
-| Company website | `/`, `/welcome`, `/features`, `/solutions`, `/how-it-works`, `/pricing`, `/about`, `/faq`, `/contact`, `/get-started` | ✅ | Sells the LMS to the organisation that will run it — see "The public website" below. Plans and prices from `GET /public/plans`. |
+| Company website | `/`, `/welcome`, `/courses`, `/categories`, `/bundles`, `/bundles/:slug`, `/mentors`, `/mentors/:id`, `/blog`, `/blog/:slug`, `/become-an-instructor`, `/affiliate-program`, `/about`, `/faq`, `/contact` | ✅ | The marketplace, from the platform's records and the document the Super Admin edits. See `docs/17`. The SaaS era's `/features`, `/solutions`, `/how-it-works`, `/pricing` and `/get-started` forward. |
 | Shared links / verify / support | `/courses/:slug`, `/courses/:id/enroll`, `/join/:slug`, `/invite/:token`, `/verify/:id`, `/support/*` | ✅ | Pages an LMS's own people arrive at by a link. `/courses` (the old public catalogue) only forwards. |
 | Shell | sidebar, header, bell, account menu, command palette | ✅ | Bell keyed on the signed-in account (F0). "View as (demo)" is mock-only. `useWorkspace` uses the signed-in instructor id (F1). |
 | Dashboard | `/admin`, `/teach` | 🟨 | KPIs/trends real; `events` are placeholders, `liveAttendance` 0, attention limited (F15). |
@@ -56,9 +56,8 @@ screen (listed) · ⬜ still mock-only / not wired
 
 ## The public website
 
-ZuviloAI is software an organisation subscribes to for an LMS of its own. The public website sells that
-subscription to the person who will be the LMS's Admin. **It lists no courses and sells none** — courses
-live inside each customer's LMS, behind sign-in, scoped to that customer by the server.
+ZuviloAI is one platform selling its own courses and bundles (`docs/16` §2.6). The website is a marketplace: its
+pages, data and rules are in `docs/17-WEBSITE-MARKETPLACE.md`.
 
 **The look** (1 Nov 2026) is the ZuviloAi brand: ink, warm paper and the logo's one orange. The site's
 colours are set as the ordinary tokens on the chrome (`Marketing.module.css` › `.chrome`, with a dark

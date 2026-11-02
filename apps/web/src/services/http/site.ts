@@ -1,4 +1,13 @@
-import type { AdminBundle, BlogPost, BundlePurchaseView, PublicAffiliateProgram, PublicBundle, PublicMentor, PublicStats, SiteContent } from '@syniastrolms/domain';
+import type {
+  AdminBundle,
+  BlogPost,
+  BundlePurchaseView,
+  PublicAffiliateProgram,
+  PublicBundle,
+  PublicMentor,
+  PublicStats,
+  SiteContent,
+} from '@syniastrolms/domain';
 import type { BundleCheckoutStart, BundleConfirmation, BundleQuote, SiteService } from '../contracts';
 import { del, get, post, put } from './client';
 
@@ -20,7 +29,8 @@ export const httpSite: SiteService = {
   post: (slug) => get<BlogPost>(`/public/posts/${encodeURIComponent(slug)}`),
   quoteBundle: (bundleId) => post<BundleQuote>(`/learning/bundles/${encodeURIComponent(bundleId)}/quote`),
   startBundlePurchase: (bundleId) => post<BundleCheckoutStart>(`/learning/bundles/${encodeURIComponent(bundleId)}/purchase`),
-  confirmBundlePurchase: (purchaseId, completion) => post<BundleConfirmation>(`/learning/bundle-purchases/${encodeURIComponent(purchaseId)}/confirm`, completion),
+  confirmBundlePurchase: (purchaseId, completion) =>
+    post<BundleConfirmation>(`/learning/bundle-purchases/${encodeURIComponent(purchaseId)}/confirm`, completion),
   getBundlePurchase: (purchaseId) => get<BundlePurchaseView>(`/learning/bundle-purchases/${encodeURIComponent(purchaseId)}`),
   adminBundles: () => get<AdminBundle[]>('/superadmin/sales/bundles'),
   createBundle: (input) => post<AdminBundle>('/superadmin/sales/bundles', input),

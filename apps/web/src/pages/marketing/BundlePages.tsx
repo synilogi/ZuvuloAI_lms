@@ -13,7 +13,16 @@ import { ALL_INCLUSIVE } from '@/lib/coursePricing';
 import { formatDuration, formatINR, plural } from '@/lib/format';
 import { CHECKOUT_UNAVAILABLE, planCheckout } from '@/lib/gatewayCheckout';
 import { openRazorpayOrder } from '@/lib/razorpayCheckout';
-import { CANCELLED_MESSAGE, POLL_EVERY_MS, POLL_FOR_MS, SLOW_MESSAGE, readCheckoutReturn, refusalPhase, rememberCheckout, type PurchasePhase } from '@/pages/learn/purchaseFlow';
+import {
+  CANCELLED_MESSAGE,
+  POLL_EVERY_MS,
+  POLL_FOR_MS,
+  SLOW_MESSAGE,
+  readCheckoutReturn,
+  refusalPhase,
+  rememberCheckout,
+  type PurchasePhase,
+} from '@/pages/learn/purchaseFlow';
 import { API_MODE, useSession } from '@/providers/SessionProvider';
 import { services } from '@/services';
 import { BundleCard, BundleCover, BundlePrice } from './BundleCard';
@@ -85,7 +94,8 @@ export function BundleDetailPage() {
   const bundle = query.data;
 
   useEffect(() => {
-    if (bundle) setPageMeta({ title: `${bundle.title} · ZuviloAI`, description: metaDescription(bundle.summary || bundle.description), path: `/bundles/${bundle.slug}` });
+    if (bundle)
+      setPageMeta({ title: `${bundle.title} · ZuviloAI`, description: metaDescription(bundle.summary || bundle.description), path: `/bundles/${bundle.slug}` });
   }, [bundle]);
   useJsonLd(
     bundle && {
@@ -339,7 +349,14 @@ function BundleBuy({ bundle, onHeld }: { bundle: PublicBundle; onHeld: (ids: str
   const busy = phase.kind === 'starting' || phase.kind === 'checkout' || phase.kind === 'verifying';
   return (
     <>
-      <Button size="lg" variant="primary" iconStart={<ShoppingCartSimple size={16} />} loading={busy} disabled={busy || phase.kind === 'blocked' || phase.kind === 'slow'} onClick={() => void buy()}>
+      <Button
+        size="lg"
+        variant="primary"
+        iconStart={<ShoppingCartSimple size={16} />}
+        loading={busy}
+        disabled={busy || phase.kind === 'blocked' || phase.kind === 'slow'}
+        onClick={() => void buy()}
+      >
         Buy now · {formatINR(bundle.price)}
       </Button>
       {phase.kind === 'verifying' && (

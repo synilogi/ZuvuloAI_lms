@@ -65,13 +65,22 @@ export function MentorsPage() {
 export function MentorProfilePage() {
   const { id = '' } = useParams();
   const query = useAsync(`site:mentor:${id}`, () =>
-    Promise.all([services.site.mentor(id), services.catalog.listCourses(), services.catalog.listInstructors()]).then(([found, courses, instructors]) => ({ ...found, courses, instructors })),
+    Promise.all([services.site.mentor(id), services.catalog.listCourses(), services.catalog.listInstructors()]).then(([found, courses, instructors]) => ({
+      ...found,
+      courses,
+      instructors,
+    })),
   );
   const data = query.data;
   const courses = useMemo(() => (data ? data.courses.filter((c) => data.courseSlugs.includes(c.slug)) : []), [data]);
 
   useEffect(() => {
-    if (data) setPageMeta({ title: `${data.mentor.name} · ZuviloAI`, description: metaDescription(data.mentor.bio || data.mentor.title), path: `/mentors/${data.mentor.id}` });
+    if (data)
+      setPageMeta({
+        title: `${data.mentor.name} · ZuviloAI`,
+        description: metaDescription(data.mentor.bio || data.mentor.title),
+        path: `/mentors/${data.mentor.id}`,
+      });
   }, [data]);
 
   if (query.status === 'error' && !data) {

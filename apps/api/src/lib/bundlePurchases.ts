@@ -244,7 +244,12 @@ export async function settleBundlePurchase(row: PurchaseRow, providerPaymentId: 
     return { status: 'failed', enrolled: false, message };
   }
   if (payment.status === 'refunded') {
-    observe('payment.unmatched', { scope: 'bundle', reason: 'payment was refunded at the provider before it was recorded', purchaseId: row.id, providerPaymentId });
+    observe('payment.unmatched', {
+      scope: 'bundle',
+      reason: 'payment was refunded at the provider before it was recorded',
+      purchaseId: row.id,
+      providerPaymentId,
+    });
     const message = 'This payment was refunded, so the courses were not opened. You can pay again.';
     await noteFailure(row.id, 'REFUNDED', message);
     return { status: 'failed', enrolled: false, message };
@@ -303,7 +308,8 @@ async function ensureChildren(row: PurchaseRow) {
 
 /** Records the payment and opens every course, together and once. */
 async function markPaid(row: PurchaseRow, providerPaymentId: string): Promise<Settled> {
-  if (row.status === 'paid' && row.providerPaymentId === providerPaymentId) return { status: 'paid', enrolled: true, message: 'Payment confirmed. Your courses are open.' };
+  if (row.status === 'paid' && row.providerPaymentId === providerPaymentId)
+    return { status: 'paid', enrolled: true, message: 'Payment confirmed. Your courses are open.' };
   const children = await ensureChildren(row);
   const rules = await learnerRules();
   const opened: string[] = [];
@@ -334,21 +340,34 @@ async function markPaid(row: PurchaseRow, providerPaymentId: string): Promise<Se
           },
         });
       } else if (existing.status === 'expired') {
-        await tx.enrollment.update({ where: { id: existing.id }, data: { status: 'active', purchaseId: child.id, expiresAt: expiryFor(new Date(), rules.accessMonths) } });
+        await tx.enrollment.update({
+          where: { id: existing.id },
+          data: { status: 'active', purchaseId: child.id, expiresAt: expiryFor(new Date(), rules.accessMonths) },
+        });
       } else {
         // They gained the course after the order was divided (staff added them): recorded and flagged, as for a single course.
-        await tx.coursePurchase.update({ where: { id: child.id }, data: { reviewReason: 'The learner already had this course when the bundle payment arrived.' } });
+        await tx.coursePurchase.update({
+          where: { id: child.id },
+          data: { reviewReason: 'The learner already had this course when the bundle payment arrived.' },
+        });
         continue;
       }
       await tx.course.update({ where: { id: child.courseId }, data: { enrolledCount: { increment: 1 } } });
       opened.push(child.courseId);
     }
-    if (children.length === 0) await tx.bundlePurchase.update({ where: { id: row.id }, data: { reviewReason: 'The learner already had every course when the payment arrived.' } });
+    if (children.length === 0)
+      await tx.bundlePurchase.update({ where: { id: row.id }, data: { reviewReason: 'The learner already had every course when the payment arrived.' } });
     return 'opened' as const;
   });
 
   if (result === 'second-payment' || children.length === 0) {
-    observe('payment.unmatched', { scope: 'bundle', reason: 'money taken that opens nothing: refund review needed', purchaseId: row.id, providerPaymentId, tenantId: row.tenantId });
+    observe('payment.unmatched', {
+      scope: 'bundle',
+      reason: 'money taken that opens nothing: refund review needed',
+      purchaseId: row.id,
+      providerPaymentId,
+      tenantId: row.tenantId,
+    });
     return { status: 'paid', enrolled: true, message: 'You already have these courses. The platform will review the extra payment.' };
   }
   if (result === 'opened') {
@@ -402,7 +421,12 @@ async function settleRefund(parentId: string, providerRefundId: string | null) {
     }
     await recordAuditLog(
       { type: 'system', job: 'bundle-refund' },
-      { action: 'bundle_purchase.refund_settled', targetType: 'bundle_purchase', targetId: parentId, meta: { orderNumber: parent.orderNumber, amount: parent.amount } },
+      {
+        action: 'bundle_purchase.refund_settled',
+        targetType: 'bundle_purchase',
+        targetId: parentId,
+        meta: { orderNumber: parent.orderNumber, amount: parent.amount },
+      },
       tx,
     );
     return true;
@@ -428,11 +452,24 @@ async function settleRefund(parentId: string, providerRefundId: string | null) {
 }
 
 /** Writes the refund's record on the order and on each course's share, before the gateway is asked. */
-async function openRefund(parent: PurchaseRow, children: { id: string; amount: number }[], fields: { reason: string; note?: string | null; requestedById?: string | null }) {
+async function openRefund(
+  parent: PurchaseRow,
+  children: { id: string; amount: number }[],
+  fields: { reason: string; note?: string | null; requestedById?: string | null },
+) {
   await db.bundlePurchase.update({ where: { id: parent.id }, data: { refundStatus: 'requested' } });
   for (const child of children) {
     await db.coursePurchaseRefund.create({
-      data: { ...tenant(), purchaseId: child.id, amount: child.amount, reason: fields.reason, note: fields.note ?? null, requestedById: fields.requestedById ?? null, provider: BUNDLE_SHARE_PROVIDER, status: 'requested' },
+      data: {
+        ...tenant(),
+        purchaseId: child.id,
+        amount: child.amount,
+        reason: fields.reason,
+        note: fields.note ?? null,
+        requestedById: fields.requestedById ?? null,
+        provider: BUNDLE_SHARE_PROVIDER,
+        status: 'requested',
+      },
     });
   }
 }
@@ -467,7 +504,11 @@ export async function refundBundleShare(req: Request, childPurchaseId: string, b
   let settledId: string | null | undefined;
   try {
     const provider = await providerForPurchase(parent);
-    const answer = await provider.refundPayment({ providerPaymentId: parent.providerPaymentId, amount: parent.amount, notes: { kind: 'bundle', purchaseId: parent.id } });
+    const answer = await provider.refundPayment({
+      providerPaymentId: parent.providerPaymentId,
+      amount: parent.amount,
+      notes: { kind: 'bundle', purchaseId: parent.id },
+    });
     if (answer.status === 'failed') {
       await markRefundRows(parent.id, { refundStatus: 'failed', providerRefundId: answer.providerRefundId }, 'The gateway refused the refund.');
       throw new ApiError(502, 'The gateway refused the refund. Nothing changed for the learner.', undefined, 'PAYMENT_FAILED');
@@ -486,7 +527,9 @@ export async function refundBundleShare(req: Request, childPurchaseId: string, b
     observe('payment.failed', { scope: 'bundle', operation: 'refund', purchaseId: parent.id, refused });
     throw new ApiError(
       502,
-      refused ? 'The gateway refused the refund. Nothing changed for the learner.' : 'The gateway gave no clear answer, so the refund is marked pending. Check its dashboard.',
+      refused
+        ? 'The gateway refused the refund. Nothing changed for the learner.'
+        : 'The gateway gave no clear answer, so the refund is marked pending. Check its dashboard.',
       undefined,
       'PAYMENT_FAILED',
     );
@@ -504,7 +547,8 @@ export async function onBundleRefundEvent(
   const parent = await db.bundlePurchase.findFirst({ where: { provider: provider.name, providerPaymentId: event.providerPaymentId } });
   if (!parent) return false;
   if (event.status === 'failed') {
-    if (parent.refundStatus && LIVE_REFUND.includes(parent.refundStatus)) await markRefundRows(parent.id, { refundStatus: 'failed' }, 'The gateway reported that the refund failed.');
+    if (parent.refundStatus && LIVE_REFUND.includes(parent.refundStatus))
+      await markRefundRows(parent.id, { refundStatus: 'failed' }, 'The gateway reported that the refund failed.');
     return true;
   }
   if (event.status !== 'succeeded' || parent.refundedAt) return true;
@@ -515,7 +559,10 @@ export async function onBundleRefundEvent(
   // A refund made in the gateway's own dashboard counts only when the whole payment went back; this system has no rule for a part.
   const payment = await provider.fetchPayment(event.providerPaymentId);
   if (payment.status !== 'refunded') {
-    await db.bundlePurchase.update({ where: { id: parent.id }, data: { reviewReason: 'Part of this payment was refunded at the gateway. Access was left as it is.' } });
+    await db.bundlePurchase.update({
+      where: { id: parent.id },
+      data: { reviewReason: 'Part of this payment was refunded at the gateway. Access was left as it is.' },
+    });
     observe('payment.unmatched', { scope: 'bundle', reason: 'a part refund made at the gateway', purchaseId: parent.id });
     return true;
   }

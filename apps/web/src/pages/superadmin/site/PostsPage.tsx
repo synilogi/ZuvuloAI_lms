@@ -16,7 +16,17 @@ import { PLATFORM_EYEBROW, PlatformError } from '../platformMeta';
 import { DateTimeField, SiteImageField } from './siteFields';
 import styles from '../affiliates/Affiliates.module.css';
 
-const EMPTY: BlogPostInput = { kind: 'article', title: '', excerpt: '', body: '', coverUrl: '', externalUrl: '', eventAt: null, status: 'draft', publishAt: null };
+const EMPTY: BlogPostInput = {
+  kind: 'article',
+  title: '',
+  excerpt: '',
+  body: '',
+  coverUrl: '',
+  externalUrl: '',
+  eventAt: null,
+  status: 'draft',
+  publishAt: null,
+};
 
 const inputOf = (p: BlogPost): BlogPostInput => ({
   kind: p.kind,
@@ -177,7 +187,13 @@ export default function PostsPage() {
               <Input id="post-title" value={editing.input.title} maxLength={BLOG_LIMITS.title} onChange={(e) => patch({ title: e.target.value })} />
             </Field>
             <Field label="Short summary" optional>
-              <Textarea id="post-excerpt" rows={2} value={editing.input.excerpt} maxLength={BLOG_LIMITS.excerpt} onChange={(e) => patch({ excerpt: e.target.value })} />
+              <Textarea
+                id="post-excerpt"
+                rows={2}
+                value={editing.input.excerpt}
+                maxLength={BLOG_LIMITS.excerpt}
+                onChange={(e) => patch({ excerpt: e.target.value })}
+              />
             </Field>
             <Field label="Text" hint="Headings with ##, **bold**, lists and links, as in a lesson article." optional>
               <Textarea id="post-body" rows={10} value={editing.input.body} maxLength={BLOG_LIMITS.body} onChange={(e) => patch({ body: e.target.value })} />
@@ -187,8 +203,18 @@ export default function PostsPage() {
               <Input id="post-link" value={editing.input.externalUrl} maxLength={BLOG_LIMITS.link} onChange={(e) => patch({ externalUrl: e.target.value })} />
             </Field>
             <div className={styles.fieldRow}>
-              <DateTimeField label="Takes place" hint="For a webinar or workshop." value={editing.input.eventAt} onChange={(eventAt) => patch({ eventAt: eventAt ?? null })} />
-              <DateTimeField label="Publish from" hint="Leave empty to publish straight away." value={editing.input.publishAt} onChange={(publishAt) => patch({ publishAt: publishAt ?? null })} />
+              <DateTimeField
+                label="Takes place"
+                hint="For a webinar or workshop."
+                value={editing.input.eventAt}
+                onChange={(eventAt) => patch({ eventAt: eventAt ?? null })}
+              />
+              <DateTimeField
+                label="Publish from"
+                hint="Leave empty to publish straight away."
+                value={editing.input.publishAt}
+                onChange={(publishAt) => patch({ publishAt: publishAt ?? null })}
+              />
             </div>
           </div>
         )}

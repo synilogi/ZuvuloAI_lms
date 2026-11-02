@@ -1,5 +1,15 @@
 import type { Prisma } from '@prisma/client';
-import { chargeOf, courseDurationMin, courseSale, slugify, type AdminBundle, type BundleCourse, type BundleInput, type CoursePricing, type PublicBundle } from '@syniastrolms/domain';
+import {
+  chargeOf,
+  courseDurationMin,
+  courseSale,
+  slugify,
+  type AdminBundle,
+  type BundleCourse,
+  type BundleInput,
+  type CoursePricing,
+  type PublicBundle,
+} from '@syniastrolms/domain';
 import type { Request } from 'express';
 
 import { recordAuditLog } from './audit.js';
@@ -165,7 +175,12 @@ export async function createBundle(req: Request, input: BundleInput): Promise<Ad
     data: { ...tenant(), slug: await uniqueSlug(input.title), ...fieldsOf(input), courses: { create: linksOf(input) } },
     include: BUNDLE_INCLUDE,
   });
-  await recordAuditLog(req, { action: 'bundle.created', targetType: 'bundle', targetId: row.id, meta: { title: row.title, price: row.price, courses: input.courseIds.length } });
+  await recordAuditLog(req, {
+    action: 'bundle.created',
+    targetType: 'bundle',
+    targetId: row.id,
+    meta: { title: row.title, price: row.price, courses: input.courseIds.length },
+  });
   return mapAdmin(row);
 }
 
@@ -176,7 +191,12 @@ export async function updateBundle(req: Request, id: string, input: BundleInput)
   await db.courseBundleCourse.deleteMany({ where: { bundleId: id } });
   await db.courseBundleCourse.createMany({ data: linksOf(input).map((l) => ({ ...l, bundleId: id })) });
   const row = await db.courseBundle.update({ where: { id }, data: fieldsOf(input), include: BUNDLE_INCLUDE });
-  await recordAuditLog(req, { action: 'bundle.updated', targetType: 'bundle', targetId: id, meta: { title: row.title, price: row.price, status: row.status, courses: input.courseIds.length } });
+  await recordAuditLog(req, {
+    action: 'bundle.updated',
+    targetType: 'bundle',
+    targetId: id,
+    meta: { title: row.title, price: row.price, status: row.status, courses: input.courseIds.length },
+  });
   return mapAdmin(row);
 }
 
