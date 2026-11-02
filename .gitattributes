@@ -1,0 +1,2 @@
+# Shell scripts run on Linux servers, whatever machine they were committed from.
+*.sh text eol=lf
