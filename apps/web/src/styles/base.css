@@ -1,0 +1,309 @@
+/* Base layer — the shell's global rules, plus reduced-motion and screen-reader utilities. */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+h1,
+h2 {
+  font-weight: 700;
+}
+p {
+  margin: 0;
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+/* No browser-default bevel or grey fill on a button a component forgot to style; any class's own rules still win (zero specificity). */
+:where(button) {
+  border: 0;
+  background-color: transparent;
+}
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-xs);
+}
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+::placeholder {
+  color: var(--faint);
+  opacity: 1;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+dl,
+dd {
+  margin: 0;
+}
+svg {
+  flex: none;
+}
+
+@keyframes om-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes om-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes om-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes om-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes om-toast {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes om-shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+/* LMS additions — same curve family */
+@keyframes om-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes om-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes om-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--danger) 45%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+@keyframes om-settle {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--faint) 45%, transparent);
+  border-radius: var(--r-pill);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--faint) 70%, transparent);
+  background-clip: content-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  left: var(--s-3);
+  top: var(--s-3);
+  z-index: var(--z-toast);
+  padding: 9px 15px;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+  font-size: var(--fs-ui);
+  transform: translateY(-160%);
+  transition: transform var(--t-fast);
+}
+.skip-link:focus-visible {
+  transform: none;
+  color: var(--accent-fg);
+  text-decoration: none;
+}
+
+/* Reduced motion — honours the OS setting, and data-motion="reduced" lets the design system preview it. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root[data-motion='reduced'] *,
+:root[data-motion='reduced'] *::before,
+:root[data-motion='reduced'] *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+  scroll-behavior: auto !important;
+}
+
+.contents {
+  display: contents;
+}
+
+/* The hidden attribute always wins over component display rules. */
+[hidden] {
+  display: none !important;
+}
+
+/* Printing one part of a page (a receipt): whatever holds [data-print-area] flows as ordinary blocks, everything beside
+   it stays off the paper, and so does anything inside it marked data-print-hide. */
+@media print {
+  *:has([data-print-area]) {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    background: none !important;
+  }
+  *:has([data-print-area]) > *:not([data-print-area]):not(:has([data-print-area])),
+  [data-print-area] [data-print-hide] {
+    display: none !important;
+  }
+}
+
+/* Printing one dialog. `printSheet()` sets data-print="sheet" on <html> for the length of the print
+   job; while it is there the app behind the dialog, the scrim and anything marked data-print-hide
+   stay off the paper, and the dialog itself flows as an ordinary block. */
+@media print {
+  :root[data-print='sheet'] #root,
+  :root[data-print='sheet'] [data-overlay-scrim],
+  :root[data-print='sheet'] [data-print-hide] {
+    display: none !important;
+  }
+  :root[data-print='sheet'] [data-overlay] {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    background: none !important;
+  }
+  :root[data-print='sheet'] [data-overlay] [role='dialog'] {
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+}

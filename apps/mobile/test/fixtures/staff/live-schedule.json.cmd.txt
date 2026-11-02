@@ -1,0 +1,4 @@
+Captured 2026-09-30T09:08:49Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /live?pageSize=20 admin staff/live-schedule.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

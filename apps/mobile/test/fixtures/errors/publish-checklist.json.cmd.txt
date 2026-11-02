@@ -1,0 +1,4 @@
+Captured 2026-09-29T13:26:00Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /courses/cmumpluz700o9mmy7p08oup21/publish admin errors/publish-checklist.json
+HTTP status: 409
+Tokens and e-mail addresses scrubbed.

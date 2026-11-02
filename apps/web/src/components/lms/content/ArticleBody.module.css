@@ -1,0 +1,35 @@
+/* Article — the immersive reading canvas */
+.article {
+  max-width: 68ch;
+  font-size: 16px;
+  line-height: var(--lh-reading);
+  text-wrap: pretty;
+}
+.article > * + * {
+  margin-top: var(--s-4);
+}
+.article h3 {
+  margin-top: var(--s-6);
+  font-size: var(--fs-h3);
+}
+.article h3:first-child {
+  margin-top: 0;
+}
+.article blockquote {
+  margin-left: 0;
+  padding: var(--s-2) var(--s-4);
+  border-left: 3px solid var(--accent);
+  color: var(--muted);
+  font-style: italic;
+}
+.article ul,
+.article ol {
+  padding-left: 1.4em;
+}
+.article li + li {
+  margin-top: 4px;
+}
+.article a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+}

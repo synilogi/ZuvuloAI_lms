@@ -1,0 +1,4103 @@
+{
+  "@@locale": "en",
+  "actionRetry": "Try again",
+  "actionCancel": "Cancel",
+  "actionConfirm": "Confirm",
+  "actionClose": "Close",
+  "actionBack": "Back",
+  "actionGoHome": "Go home",
+  "actionClearFilters": "Clear filters",
+  "actionFilters": "Filters",
+  "@actionFilters": {
+    "description": "A list's Filters button, and the title of the sheet it opens."
+  },
+  "filtersActiveCount": "{count, plural, =1{Filters, 1 on} other{Filters, {count} on}}",
+  "@filtersActiveCount": {
+    "description": "The Filters button's label while some of a list's filters are on.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pagerPageOf": "Page {page} of {pages}",
+  "@pagerPageOf": {
+    "description": "Between Previous and Next under a paged list.",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "actionSave": "Save",
+  "actionDone": "Done",
+  "actionUndo": "Undo",
+  "actionMore": "More",
+  "actionSeeAll": "See all",
+  "@actionSeeAll": {
+    "description": "A section header's link to the full list behind it."
+  },
+  "actionShowAll": "Show all",
+  "actionShowLess": "Show less",
+  "actionApply": "Apply",
+  "actionReset": "Reset",
+  "actionShowPassword": "Show password",
+  "actionHidePassword": "Hide password",
+  "actionClearSearch": "Clear search",
+  "actionReviewPlan": "Review plan",
+  "actionShowAsList": "Show as list",
+  "actionShowAsChart": "Show as chart",
+  "actionIncrease": "Increase",
+  "actionDecrease": "Decrease",
+  "actionPickDate": "Choose date",
+  "actionPickTime": "Choose time",
+  "actionRemoveFile": "Remove file",
+  "actionCancelUpload": "Cancel upload",
+  "actionPrevious": "Previous",
+  "actionNext": "Next",
+  "actionMarkComplete": "Mark complete",
+  "actionOpenCurriculum": "Curriculum",
+  "actionSubmit": "Submit",
+  "searchHint": "Search",
+  "selectPlaceholder": "Select",
+  "loadingLabel": "Loading",
+  "stillWorking": "Still working…",
+  "requiredFieldMarker": "Required",
+  "stateErrorTitle": "Something went wrong",
+  "stateErrorBody": "We couldn't load this. Check your connection and try again.",
+  "stateOfflineBanner": "You're offline. Showing what was loaded.",
+  "stateNoMatchesTitle": "No matches",
+  "stateNoMatchesBody": "Nothing matches these filters.",
+  "statePermissionDeniedTitle": "You don't have access to this.",
+  "statePermissionDeniedBody": "Ask your admin.",
+  "stateFeatureUnavailableTitle": "Not included in your LMS plan.",
+  "stateFeatureUnavailableBodyAdmin": "Review the plan to add this to your LMS.",
+  "stateFeatureUnavailableBodyMember": "Your LMS plan doesn't include this. Contact your admin.",
+  "stateSubscriptionRequiredTitle": "Your LMS needs an active plan.",
+  "stateSubscriptionExpiredTitle": "Your LMS's subscription has ended.",
+  "stateSubscriptionBody": "Existing content stays available.",
+  "stateSubscriptionBodyMember": "Contact your admin to continue.",
+  "stateNotFoundTitle": "This isn't available.",
+  "stateNotFoundBody": "It may have been moved or removed.",
+  "stateLockedLessonTitle": "This lesson is locked",
+  "errorSummaryTitle": "{count, plural, =1{Fix 1 problem to continue} other{Fix {count} problems to continue}}",
+  "@errorSummaryTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "destructiveAcknowledge": "I understand this can't be undone",
+  "fileUploading": "Uploading {percent}%",
+  "@fileUploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "fileUploadFailed": "Upload failed — try again",
+  "fileSizeMb": "{size} MB",
+  "@fileSizeMb": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "progressPercentComplete": "{percent}% complete",
+  "@progressPercentComplete": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "kpiDeltaUp": "Up {value} {comparison}",
+  "@kpiDeltaUp": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "comparison": {
+        "type": "String"
+      }
+    }
+  },
+  "kpiDeltaDown": "Down {value} {comparison}",
+  "@kpiDeltaDown": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "comparison": {
+        "type": "String"
+      }
+    }
+  },
+  "kpiDeltaFlat": "No change {comparison}",
+  "@kpiDeltaFlat": {
+    "placeholders": {
+      "comparison": {
+        "type": "String"
+      }
+    }
+  },
+  "chartReadoutItem": "{label}: {value}",
+  "@chartReadoutItem": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "studyDayMinutes": "{day}: {minutes, plural, =0{no study} =1{1 minute} other{{minutes} minutes}}",
+  "@studyDayMinutes": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "rankLabel": "Rank: {name}",
+  "@rankLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "curriculumProgress": "{done} of {total} lessons",
+  "@curriculumProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "quizQuestionCount": "Question {number} of {total}",
+  "@quizQuestionCount": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "rubricCriterionScore": "{criterion}: {score} of {max}",
+  "@rubricCriterionScore": {
+    "placeholders": {
+      "criterion": {
+        "type": "String"
+      },
+      "score": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "rubricTotal": "Total {score} / {max}",
+  "@rubricTotal": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "certificateCredentialId": "Credential ID {id}",
+  "@certificateCredentialId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "certificateIssuedOn": "Issued {date}",
+  "@certificateIssuedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "certificateVerifiedSeal": "Verified certificate",
+  "certificateAwardedTo": "This certifies that",
+  "courseCoverLabel": "Course cover",
+  "lessonTypeVideo": "Video",
+  "lessonTypeReading": "Reading",
+  "lessonTypeDocument": "Document",
+  "lessonTypePractice": "Practice",
+  "lessonTypeLive": "Live class",
+  "lessonTypeQuiz": "Quiz",
+  "lessonTypeAssignment": "Assignment",
+  "statusLocked": "Locked",
+  "statusNotEnrolled": "Not enrolled",
+  "statusEnrolled": "Enrolled",
+  "statusInProgress": "In progress",
+  "statusCompleted": "Completed",
+  "statusUpcoming": "Upcoming",
+  "statusLive": "Live now",
+  "statusExpired": "Expired",
+  "statusSubmitted": "Submitted",
+  "statusUnderReview": "Under review",
+  "statusPassed": "Passed",
+  "statusNotPassed": "Not passed",
+  "statusEligible": "Eligible",
+  "statusNotEligible": "Not yet eligible",
+  "statusNotStarted": "Not started",
+  "statusDraftSaved": "Draft saved",
+  "statusOverdue": "Overdue",
+  "statusStartingSoon": "Starting soon",
+  "statusCancelled": "Cancelled",
+  "statusDraft": "Draft",
+  "statusPublished": "Published",
+  "statusArchived": "Archived",
+  "statusClosed": "Closed",
+  "statusNotSubmitted": "Not submitted",
+  "statusOverdueReview": "Overdue review",
+  "statusToReview": "To review",
+  "statusDraftReview": "Draft review",
+  "statusResubmissionRequested": "Resubmission requested",
+  "statusGraded": "Graded",
+  "statusLate": "Late",
+  "statusIssued": "Issued",
+  "statusReadyToIssue": "Ready to issue",
+  "statusRevoked": "Revoked",
+  "statusScheduled": "Scheduled",
+  "statusEnded": "Ended",
+  "statusRecordingExpired": "Recording expired",
+  "statusDone": "Done",
+  "statusDueSoon": "Due soon",
+  "statusClosesSoon": "Closes soon",
+  "statusActive": "Active",
+  "statusAtRisk": "At risk",
+  "statusSuspended": "Suspended",
+  "statusInactive": "Inactive",
+  "statusPaused": "Paused",
+  "statusInvited": "Invited",
+  "statusHidden": "Hidden",
+  "statusTrial": "Trial",
+  "statusPastDue": "Past due",
+  "statusCanceling": "Canceling",
+  "statusCanceled": "Canceled",
+  "statusPaid": "Paid",
+  "statusPending": "Pending",
+  "statusFailed": "Failed",
+  "statusRefunded": "Refunded",
+  "statusVoided": "Void",
+  "statusFreePreview": "Free preview",
+  "statusImportant": "Important",
+  "devComponentGallery": "Component gallery",
+  "quizTrue": "True",
+  "quizFalse": "False",
+  "quizShortAnswerLabel": "Your answer",
+  "quizChooseOne": "Choose one answer",
+  "quizChooseAll": "Choose all that apply",
+  "lessonLockedReason": "Locked: {reason}",
+  "curriculumChapterLabel": "{title}, {done} of {total} lessons done",
+  "lessonCompleteAction": "Completed",
+  "@lessonLockedReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@curriculumChapterLabel": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "certificateDateOfIssue": "Date of issue",
+  "relativeNow": "now",
+  "relativeMinutesFuture": "{count, plural, =1{in 1 minute} other{in {count} minutes}}",
+  "@relativeMinutesFuture": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeMinutesPast": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
+  "@relativeMinutesPast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeHoursFuture": "{count, plural, =1{in 1 hour} other{in {count} hours}}",
+  "@relativeHoursFuture": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeHoursPast": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+  "@relativeHoursPast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeDaysFuture": "{count, plural, =1{tomorrow} other{in {count} days}}",
+  "@relativeDaysFuture": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "relativeDaysPast": "{count, plural, =1{yesterday} other{{count} days ago}}",
+  "@relativeDaysPast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationMinutes": "{minutes} min",
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHours": "{hours}h",
+  "@durationHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHoursMinutes": "{hours}h {minutes}m",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "greetingMorning": "Good morning",
+  "greetingAfternoon": "Good afternoon",
+  "greetingEvening": "Good evening",
+  "timeWithZone": "{time} IST",
+  "@timeWithZone": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timeRangeWithZone": "{start} – {end} IST",
+  "@timeRangeWithZone": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBoundaryTitle": "This screen stopped working",
+  "errorBoundaryBody": "Something went wrong on our side. Go home and try again.",
+  "configErrorTitle": "This build isn't set up correctly",
+  "appTagline": "Learn anywhere with ZuviloAI.",
+  "welcomeIntro": "Courses, live classes, assignments and certificates, all in one place.",
+  "actionSignIn": "Sign in",
+  "actionCreateAccount": "Create account",
+  "actionBrowseCourses": "Browse courses",
+  "actionSignOut": "Sign out",
+  "actionForgotPassword": "Forgot password?",
+  "actionSendLink": "Send link",
+  "actionSetPassword": "Save password",
+  "fieldEmail": "Email",
+  "fieldPassword": "Password",
+  "fieldEmailHint": "name@example.com",
+  "fieldPasswordHint": "Enter your password",
+  "fieldName": "Full name",
+  "fieldWorkspace": "LMS address",
+  "fieldWorkspaceHelp": "From your join link, e.g. saraswati-coaching. You can paste the whole link.",
+  "validationWorkspace": "Enter the LMS address from your join link.",
+  "registerWorkspaceNotFound": "No LMS has this address",
+  "accountSuspendedTitle": "This account is suspended",
+  "accountClosedTitle": "This account has been closed",
+  "fieldNewPassword": "New password",
+  "fieldConfirmPassword": "Confirm password",
+  "validationEmail": "Enter a valid email address.",
+  "validationPasswordRequired": "Enter your password.",
+  "validationPasswordMin": "Use at least 8 characters.",
+  "validationNameMin": "Enter your full name.",
+  "validationPasswordsMatch": "Both passwords must match.",
+  "loginTitle": "Sign in",
+  "loginSubtitle": "Continue where you left off.",
+  "loginFailedTitle": "We couldn't sign you in.",
+  "loginNoAccount": "New here?",
+  "registerHaveAccount": "Already have an account?",
+  "accountTypeTitle": "Create an account",
+  "accountTypeSubtitle": "Choose how you will use ZuviloAI.",
+  "accountTypeLearnerTitle": "I want to learn",
+  "accountTypeLearnerBody": "Join ZuviloAI as a learner.",
+  "accountTypeAcademyTitle": "I want to teach — start my LMS",
+  "accountTypeAcademyBody": "Register your academy as its admin, then choose a plan or start a free trial.",
+  "accountTypeInstructorTitle": "I'm an instructor",
+  "accountTypeInstructorBody": "Instructors are added by their academy's admin. Ask your admin to invite you, then sign in with the email they used.",
+  "academySignupTitle": "Start your LMS",
+  "academySignupSubtitle": "You'll be its admin. After this you can start a free trial or choose a plan.",
+  "fieldAcademyName": "Academy or organisation name",
+  "fieldAcademyAddress": "LMS address",
+  "fieldAcademyAddressHelp": "Learners join at {address}",
+  "@fieldAcademyAddressHelp": {"placeholders": {"address": {"type": "String"}}},
+  "fieldYourName": "Your full name",
+  "academySignupAgree": "I agree to the Terms of Service and Privacy Policy",
+  "validationAcademyName": "Enter your organisation's name.",
+  "validationAcademyAddress": "Use 3 to 40 lowercase letters, digits and single hyphens.",
+  "validationAgreeTerms": "Agree to the Terms of Service and Privacy Policy to continue.",
+  "academySignupFailedTitle": "We couldn't start your LMS.",
+  "academyVerifyTitle": "Check your email",
+  "academyVerifySubtitle": "We sent a 6-digit code to {email}. Enter it to create your LMS.",
+  "@academyVerifySubtitle": {"placeholders": {"email": {"type": "String"}}},
+  "fieldVerificationCode": "Verification code",
+  "validationVerificationCode": "Enter the 6-digit code from the email.",
+  "academyVerifyAction": "Verify and create my LMS",
+  "academyVerifyFailedTitle": "That code didn't work.",
+  "academyResendCode": "Send a new code",
+  "academyResendIn": "Send a new code in {seconds}s",
+  "@academyResendIn": {"placeholders": {"seconds": {"type": "int"}}},
+  "academyCodeResent": "A new code is on its way.",
+  "academyChangeDetails": "Change my details",
+  "accountVerifySubtitle": "We sent a 6-digit code to {email}. Enter it to finish joining {lms}.",
+  "@accountVerifySubtitle": {"placeholders": {"email": {"type": "String"}, "lms": {"type": "String"}}},
+  "accountVerifyInstructorSubtitle": "We sent a 6-digit code to {email}. Enter it to send your request to teach at {lms}.",
+  "@accountVerifyInstructorSubtitle": {"placeholders": {"email": {"type": "String"}, "lms": {"type": "String"}}},
+  "accountVerifySubtitleGeneric": "We sent a 6-digit code to {email}. Enter it to finish registering.",
+  "@accountVerifySubtitleGeneric": {"placeholders": {"email": {"type": "String"}}},
+  "accountVerifyExpiresIn": "{minutes, plural, =1{The code works for 1 more minute.} other{The code works for {minutes} more minutes.}}",
+  "@accountVerifyExpiresIn": {"placeholders": {"minutes": {"type": "int"}}},
+  "accountVerifyExpired": "This code has expired. Send a new code.",
+  "accountVerifyAction": "Verify and create my account",
+  "accountVerifyInstructorAction": "Verify and send my request",
+  "accountVerifyResendFailedTitle": "We couldn't send a new code.",
+  "accountVerifyClosedTitle": "This registration is no longer open",
+  "accountVerifyClosedBody": "Start again to get a new code.",
+  "accountVerifyStartAgain": "Start again",
+  "invitationRequiredTitle": "Invitation needed",
+  "invitationRequiredBody": "This LMS adds learners by invitation only. Ask your teacher or school for an invitation link.",
+  "fieldJoinLinkOrAddressHelp": "Paste the link, or type the LMS address (for example saraswati-coaching).",
+  "instructorLinkTitle": "Which LMS will you teach at?",
+  "instructorLinkBody": "Open the teaching link the LMS sent you on this device, paste it here, or type the LMS address.",
+  "accountTypeInstructorAction": "Register as an instructor and wait for the LMS Admin to approve you.",
+  "instructorSignupTitle": "Register as an instructor",
+  "instructorSignupSubtitle": "Your account is reviewed by the LMS Admin. You can sign in once it is approved.",
+  "instructorSignupJoinTitle": "Teach at {name}",
+  "@instructorSignupJoinTitle": {"placeholders": {"name": {"type": "String"}}},
+  "fieldInstructorTitle": "Your title (optional)",
+  "fieldInstructorTitleHelp": "For example: Senior Maths Faculty, Physics lecturer",
+  "instructorSignupAction": "Submit registration",
+  "instructorSignupFailedTitle": "We couldn't submit your registration.",
+  "instructorPendingScreenTitle": "Registration submitted",
+  "instructorPendingHeading": "Registration submitted successfully.",
+  "instructorPendingBody": "Your account is pending Admin approval. You will be able to sign in after the Admin approves your account.",
+  "instructorPendingNext": "Once approved, sign in with your registered email and password. We will also email you.",
+  "instructorPendingTitle": "Waiting for Admin approval",
+  "instructorRejectedTitle": "Registration not approved",
+  "instructorRequestsTitle": "Pending instructor requests",
+  "instructorRequestRegistered": "Registered {date}",
+  "@instructorRequestRegistered": {"placeholders": {"date": {"type": "String"}}},
+  "instructorRequestPending": "Pending",
+  "instructorRequestApprove": "Approve",
+  "instructorRequestReject": "Reject",
+  "instructorRequestRejectTitle": "Reject {name}?",
+  "@instructorRequestRejectTitle": {"placeholders": {"name": {"type": "String"}}},
+  "instructorRequestRejectBody": "They will not be able to sign in as an instructor. They are told by email.",
+  "instructorRequestApproved": "{name} is now an instructor and can sign in.",
+  "@instructorRequestApproved": {"placeholders": {"name": {"type": "String"}}},
+  "instructorRequestRejected": "{name}'s request was rejected.",
+  "@instructorRequestRejected": {"placeholders": {"name": {"type": "String"}}},
+  "registerTitle": "Create your account",
+  "registerSubtitle": "Learners sign up here, or through a link from their teacher or school. Instructors ask to teach and wait for admin approval.",
+  "registerDefaultSubtitle": "Enter your details to start learning.",
+  "registerFailedTitle": "We couldn't create your account.",
+  "registerLimitReached": "This LMS isn't accepting new learners right now.",
+  "registerLinkTitle": "Open the link you were sent",
+  "registerLinkBody": "An invitation, a course link or a join link from your teacher or school brings you straight to ZuviloAI. Open it on this device, or paste it here.",
+  "fieldJoinLink": "Paste your link",
+  "fieldJoinLinkHelp": "It starts with https://zuviloai.com/",
+  "validationJoinLink": "Paste the link you were sent.",
+  "joinLinkNotRecognised": "This isn't a valid link for joining. Check the link you were sent, or ask your teacher or school for a new one.",
+  "actionContinue": "Continue",
+  "registerNoLinkNote": "No link? Ask your teacher or school for one. Already have an account? Sign in with your email.",
+  "joinLmsTitle": "Join {lms}",
+  "@joinLmsTitle": {
+    "placeholders": {
+      "lms": {
+        "type": "String"
+      }
+    }
+  },
+  "joinLmsSubtitle": "Create your learner account at {lms}.",
+  "@joinLmsSubtitle": {
+    "placeholders": {
+      "lms": {
+        "type": "String"
+      }
+    }
+  },
+  "joinLmsClosedTitle": "This LMS isn't accepting new learners right now",
+  "joinLmsClosedBody": "Contact your teacher or school for help.",
+  "joinSignedInTitle": "You're signed in as {name}",
+  "@joinSignedInTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "joinSignedInBody": "This link is for joining an LMS. To use it, sign out first, then create your account or sign in with the account it is for.",
+  "actionSignOutAndContinue": "Sign out and continue",
+  "joinOtherLmsTitle": "This account belongs to another LMS",
+  "inviteInvalidTitle": "This invitation link isn't valid",
+  "inviteInvalidBody": "It may have expired, been used or been withdrawn. Ask your teacher or school for a new one.",
+  "inviteSubtitle": "You've been invited to learn at {lms}. Create your account, or sign in if you already learn there.",
+  "@inviteSubtitle": {
+    "placeholders": {
+      "lms": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteSignInSubtitle": "Sign in with the account you already have at {lms}.",
+  "@inviteSignInSubtitle": {
+    "placeholders": {
+      "lms": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteEmailLocked": "This invitation is for this email address.",
+  "inviteWrongEmailTitle": "This invitation is for a different email address",
+  "inviteNoAccount": "No account yet?",
+  "actionSignInAndJoin": "Sign in and join",
+  "courseLinkInvalidTitle": "This course link isn't available",
+  "courseLinkInvalidBody": "The course may no longer be offered, or the link was copied incorrectly. Ask your teacher or school for a new one.",
+  "courseLinkSubtitle": "A course at {lms}.",
+  "@courseLinkSubtitle": {
+    "placeholders": {
+      "lms": {
+        "type": "String"
+      }
+    }
+  },
+  "courseLinkCreateBody": "Create your learner account at {lms} to enrol.",
+  "@courseLinkCreateBody": {
+    "placeholders": {
+      "lms": {
+        "type": "String"
+      }
+    }
+  },
+  "actionCreateAndEnrol": "Create account and enrol",
+  "courseLinkEnrolBody": "Enrol to add it to My Courses.",
+  "courseLinkOtherLmsTitle": "This course belongs to another LMS",
+  "courseLinkStaffTitle": "Course links are for learners",
+  "courseLinkStaffBody": "Staff accounts can't enrol in courses. Sign out and use a learner account to enrol.",
+  "courseLinkAccountReadyTitle": "Your account is ready",
+  "courseLinkNotEnrolledBody": "You're not enrolled in this course yet.",
+  "forgotTitle": "Reset your password",
+  "forgotSubtitle": "We'll email you a link to set a new password.",
+  "forgotConfirmationTitle": "Check your email",
+  "forgotConfirmationBody": "If an account exists for that email, we've sent a link. It works for one hour.",
+  "resetTitle": "Set a new password",
+  "resetSubtitle": "Choose a password you have not used before.",
+  "resetInvalidTitle": "This link is no longer valid",
+  "resetInvalidBody": "Request a new reset link and try again.",
+  "resetDoneTitle": "Password updated",
+  "resetDoneBody": "Sign in with your new password.",
+  "sessionEndedMessage": "Your session ended. Sign in again.",
+  "splashOfflineTitle": "Can't reach ZuviloAI",
+  "splashOfflineBody": "Check your connection and try again.",
+  "unsupportedRoleTitle": "Platform administration is on the web",
+  "unsupportedRoleBody": "Super Admin tools aren't available in the app. Sign in on the web to continue.",
+  "offlineActionDisabled": "You're offline. Connect to continue.",
+  "signedInAs": "Signed in as {name}",
+  "roleLearner": "Learner",
+  "roleInstructor": "Instructor",
+  "roleAdmin": "Admin",
+  "@signedInAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "navHome": "Home",
+  "navExplore": "Explore",
+  "navLive": "Live",
+  "navProfile": "Profile",
+  "navDashboard": "Dashboard",
+  "navReview": "Review",
+  "navCourses": "Courses",
+  "navPeople": "People",
+  "navMore": "More",
+  "navStudents": "Students",
+  "navQuizzes": "Quizzes",
+  "navCalendar": "Calendar",
+  "navInstructors": "Instructors",
+  "navCertificates": "Certificates",
+  "navReports": "Reports",
+  "navBilling": "Billing",
+  "navNotifications": "Notifications",
+  "navHelp": "Help",
+  "navAssignments": "Assignments",
+  "navAssessments": "Assessments",
+  "navRanks": "Rank ladder",
+  "navSettings": "Settings",
+  "navCatalog": "Catalogue",
+  "navVerify": "Verify a certificate",
+  "navTests": "Tests",
+  "navMyCourses": "My Courses",
+  "moreSheetTitle": "More",
+  "moreGroupTeaching": "Teaching",
+  "@moreGroupTeaching": {
+    "description": "Heading in the staff More sheet over the day-to-day teaching pages (review, students, calendar, quizzes)."
+  },
+  "moreGroupAcademy": "Platform",
+  "@moreGroupAcademy": {
+    "description": "Heading in the staff More sheet over the academy's own pages (instructors, reports, billing)."
+  },
+  "moreGroupAccount": "Account",
+  "@moreGroupAccount": {
+    "description": "Heading in the staff More sheet over the person's own pages (profile, notifications, help)."
+  },
+  "comingSoonTitle": "Coming in a later update",
+  "comingSoonBody": "This part of the app is still being built.",
+  "notificationsBellLabel": "Notifications",
+  "notificationsBellWithCount": "Notifications, {count} unread",
+  "myLearningInProgress": "In progress",
+  "myLearningCompleted": "Completed",
+  "myLearningSaved": "Saved",
+  "@notificationsBellWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "entitlementLimitReachedTitle": "This is as far as your plan goes",
+  "entitlementLimitReachedBody": "Your LMS has reached what its plan allows.",
+  "restrictedBannerTitle": "Your LMS has no active plan",
+  "restrictedBannerBody": "Existing courses and learners stay available. New ones need a plan.",
+  "restrictedBannerMember": "Your LMS plan has lapsed. Contact your admin.",
+  "subscriptionStatusTrialing": "Trial",
+  "subscriptionStatusActive": "Active",
+  "subscriptionStatusPastDue": "Past due",
+  "subscriptionStatusPaused": "Paused",
+  "subscriptionStatusCanceling": "Canceling",
+  "subscriptionStatusCanceled": "Canceled",
+  "subscriptionStatusExpired": "Expired",
+  "limitMeter": "{label} {used} of {allowed}",
+  "limitMeterUnlimited": "{label} {used} · unlimited",
+  "permissionDeniedInline": "You don't have access to this.",
+  "@limitMeter": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "used": {
+        "type": "String"
+      },
+      "allowed": {
+        "type": "String"
+      }
+    }
+  },
+  "@limitMeterUnlimited": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "used": {
+        "type": "String"
+      }
+    }
+  },
+  "uploadRejectedType": "Only MP4/WebM/MOV video, PDF documents and PNG/JPG/WebP images can be uploaded.",
+  "uploadRejectedVideoStaff": "Only instructors and admins can upload video.",
+  "uploadRejectedContents": "The file’s contents do not match its type. Upload the original PDF, image or video.",
+  "uploadRejectedSizeVideo": "Videos can be at most {mb} MB.",
+  "uploadRejectedSizeDocument": "Documents can be at most {mb} MB.",
+  "uploadRejectedSizeImage": "Images can be at most {mb} MB.",
+  "uploadChooseFile": "Choose a file",
+  "uploadReplaceFile": "Choose another file",
+  "mediaVideoFailed": "This video couldn't be played",
+  "mediaVideoEnded": "Finished",
+  "mediaMobileDataNotice": "You're on mobile data. This video is {mb} MB.",
+  "mediaMobileDataContinue": "Play anyway",
+  "mediaDocumentFailed": "This document couldn't be opened",
+  "mediaDocumentLoading": "Opening document…",
+  "mediaPageOf": "Page {page} of {total}",
+  "mediaPlay": "Play",
+  "mediaPause": "Pause",
+  "mediaBack10": "Back 10 seconds",
+  "mediaForward10": "Forward 10 seconds",
+  "mediaFullscreen": "Full screen",
+  "mediaExitFullscreen": "Exit full screen",
+  "mediaSpeed": "Playback speed",
+  "mediaSpeedValue": "{speed}×",
+  "@uploadRejectedSizeVideo": {
+    "placeholders": {
+      "mb": {
+        "type": "int"
+      }
+    }
+  },
+  "@uploadRejectedSizeDocument": {
+    "placeholders": {
+      "mb": {
+        "type": "int"
+      }
+    }
+  },
+  "@uploadRejectedSizeImage": {
+    "placeholders": {
+      "mb": {
+        "type": "int"
+      }
+    }
+  },
+  "@mediaMobileDataNotice": {
+    "placeholders": {
+      "mb": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@mediaSpeedValue": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "actionVerifyCertificate": "Verify a certificate",
+  "actionHelpCentre": "Help centre",
+  "catalogTitle": "Courses",
+  "catalogSearchHint": "Search courses",
+  "catalogFilterAllLevels": "All levels",
+  "catalogFilterAllTopics": "All topics",
+  "catalogEmptyTitle": "No courses published yet",
+  "catalogEmptyBody": "New courses appear here as soon as the LMS publishes them.",
+  "catalogCourseCount": "{count, plural, =1{1 course} other{{count} courses}}",
+  "@catalogCourseCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "courseLessonCount": "{count, plural, =1{1 lesson} other{{count} lessons}}",
+  "@courseLessonCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coursePriceFree": "Free",
+  "courseRatingSummary": "{rating} ({count})",
+  "@courseRatingSummary": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "courseRatingLabel": "Rated {rating} out of 5 by {count} learners",
+  "@courseRatingLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "courseWeeks": "{count, plural, =1{1 week} other{{count} weeks}}",
+  "@courseWeeks": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "courseFormatSelfPaced": "Self-paced",
+  "courseFormatCohort": "Cohort",
+  "courseFormatHybrid": "Hybrid",
+  "courseAboutTitle": "About this course",
+  "courseOutcomesTitle": "What you will learn",
+  "courseCurriculumTitle": "Curriculum",
+  "courseInstructorsTitle": "Taught by",
+  "courseCertificateLabel": "Certificate",
+  "courseLanguageLabel": "Language",
+  "courseFormatLabel": "Format",
+  "courseLevelLabel": "Level",
+  "coursePreviewNote": "{count, plural, =1{1 lesson is free to preview} other{{count} lessons are free to preview}}",
+  "@coursePreviewNote": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actionEnrol": "Enrol",
+  "actionSignInToEnrol": "Sign in to enrol",
+  "actionOpenCourse": "Open course",
+  "actionViewCourse": "View course",
+  "coursePriceTagLabel": "Price",
+  "courseIncludesTitle": "What’s included",
+  "courseIncludesVideos": "{count, plural, =1{1 video lesson} other{{count} video lessons}}",
+  "@courseIncludesVideos": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesReadings": "{count, plural, =1{1 reading} other{{count} readings}}",
+  "@courseIncludesReadings": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesDocuments": "{count, plural, =1{1 PDF document} other{{count} PDF documents}}",
+  "@courseIncludesDocuments": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesTests": "{count, plural, =1{1 test} other{{count} tests}}",
+  "@courseIncludesTests": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesAssignments": "{count, plural, =1{1 assignment} other{{count} assignments}}",
+  "@courseIncludesAssignments": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesLive": "{count, plural, =1{1 live class} other{{count} live classes}}",
+  "@courseIncludesLive": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesPreviews": "{count, plural, =1{1 lesson free to preview} other{{count} lessons free to preview}}",
+  "@courseIncludesPreviews": {"placeholders": {"count": {"type": "int"}}},
+  "courseIncludesCertificate": "Certificate: {title}",
+  "@courseIncludesCertificate": {"placeholders": {"title": {"type": "String"}}},
+  "previewTitle": "Free preview",
+  "previewLockedTitle": "Enrol to watch this lesson",
+  "previewLockedBody": "This lesson is part of the course. Enrol to open it.",
+  "previewUnsupportedTitle": "Preview not available",
+  "previewUnsupportedBody": "Free previews cover readings, videos and documents.",
+  "verifyTitle": "Verify a certificate",
+  "verifyIntro": "Enter the credential ID printed on the certificate.",
+  "verifyFieldLabel": "Credential ID",
+  "verifyFieldHint": "SA-JY-2026-00142",
+  "actionVerify": "Verify",
+  "actionVerifyAnother": "Check another ID",
+  "verifyRequired": "Enter a credential ID.",
+  "verifyTooLong": "A credential ID is at most 64 characters.",
+  "verifyCheckingTitle": "Checking this credential…",
+  "verifyNotFoundTitle": "No certificate found for this ID",
+  "verifyNotFoundBody": "Check the ID and try again. A certificate that has not been issued yet cannot be verified.",
+  "verifyValidTitle": "This certificate is valid",
+  "verifyRevokedTitle": "This certificate has been revoked",
+  "verifyRevokedBody": "The LMS withdrew it, so it is no longer a valid credential.",
+  "verifyExpiredTitle": "This certificate has expired",
+  "verifyExpiredBody": "It was valid until {date}.",
+  "@verifyExpiredBody": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyAwardedToLabel": "Awarded to",
+  "verifyCourseLabel": "Course",
+  "verifyLevelLabel": "Level",
+  "verifyCityLabel": "City",
+  "verifyIssuedOnLabel": "Issued on",
+  "verifyCompletedOnLabel": "Completed on",
+  "verifyValidUntilLabel": "Valid until",
+  "verifyScoreLabel": "Final score",
+  "verifyScoreValue": "{score}%",
+  "@verifyScoreValue": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "verifyHoursLabel": "Study hours",
+  "verifyHoursValue": "{hours, plural, =1{1 hour} other{{hours} hours}}",
+  "@verifyHoursValue": {
+    "description": "A course's study hours, which the academy rounds to the nearest half hour — so it is not always whole.",
+    "placeholders": {
+      "hours": {
+        "type": "num"
+      }
+    }
+  },
+  "verifyRevokedReasonLabel": "Reason",
+  "helpTitle": "Help centre",
+  "helpSearchHint": "Search help",
+  "helpPopularTitle": "Popular articles",
+  "helpTopicsTitle": "Browse by topic",
+  "helpArticleCount": "{count, plural, =0{No articles} =1{1 article} other{{count} articles}}",
+  "@helpArticleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "helpReadMinutes": "{count, plural, =1{1 min read} other{{count} min read}}",
+  "@helpReadMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "helpUpdatedOn": "Updated {date}",
+  "@helpUpdatedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "helpRelatedTitle": "Related articles",
+  "helpEmptyTitle": "No articles yet",
+  "helpEmptyBody": "The LMS has not published any help articles.",
+  "helpLinkFailed": "That link could not be opened.",
+  "legalPrivacyTitle": "Privacy policy",
+  "legalTermsTitle": "Terms of use",
+  "legalBody": "The current text is published on the web, so what you read is always the version in force.",
+  "actionOpenOnWeb": "Open on the web",
+  "courseDurationLabel": "Length",
+  "courseLessonsLabel": "Lessons",
+  "courseLiveSessionsLabel": "Live sessions",
+  "courseEnrolledLabel": "Enrolled",
+  "previewSignInTitle": "Sign in to watch this preview",
+  "previewSignInBody": "The LMS serves course media to signed-in accounts only.",
+  "previewMissingTitle": "Nothing to show yet",
+  "previewMissingBody": "The LMS has not attached a file to this lesson.",
+  "actionOpenDocument": "Open the document",
+  "homeGreetingName": "{greeting}, {name}",
+  "@homeGreetingName": {
+    "placeholders": {
+      "greeting": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeContinueTitle": "Continue learning",
+  "homeComingUpTitle": "Coming up",
+  "homeYourCoursesTitle": "Your courses",
+  "homeThisWeekTitle": "This week",
+  "homeRecentTitle": "Recently viewed",
+  "homeNextLiveTitle": "Next live class",
+  "homeToDoTitle": "To do",
+  "homeExploreBody": "Find your next course in the LMS’s catalogue",
+  "homeEmptyTitle": "Your learning starts here",
+  "homeEmptyBody": "Browse the LMS’s courses and enrol in the one you want to begin.",
+  "actionResume": "Resume",
+  "actionStart": "Start",
+  "actionExplore": "Explore courses",
+  "courseRemaining": "{minutes} left",
+  "@courseRemaining": {
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "lessonNumberAndLength": "{number} · {length}",
+  "@lessonNumberAndLength": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      },
+      "length": {
+        "type": "String"
+      }
+    }
+  },
+  "homeWeekTotal": "{minutes} studied",
+  "homeStudiedThisWeek": "Studied this week",
+  "homeEnrolledOn": "Enrolled {date}",
+  "@homeEnrolledOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "homeDiscoverTitle": "Discover more courses",
+  "@homeWeekTotal": {
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "upcomingKindLive": "Live class",
+  "upcomingKindAssignment": "Assignment",
+  "upcomingKindQuiz": "Quiz",
+  "upcomingReadyNow": "Ready now",
+  "myLearningTitle": "My learning",
+  "myLearningEmptyInProgress": "Nothing in progress",
+  "myLearningEmptyInProgressBody": "Enrol in a course and it appears here.",
+  "myLearningEmptyCompleted": "No courses completed yet",
+  "myLearningEmptyCompletedBody": "Finish a course and it moves here with its certificate.",
+  "myLearningEmptySaved": "Nothing saved",
+  "myLearningEmptySavedBody": "Save a course from the Courses tab to come back to it.",
+  "enrolmentExpiredOn": "Access ended on {date}",
+  "@enrolmentExpiredOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "enrolmentPausedNote": "Paused by the LMS.",
+  "exploreSearchHint": "Search the LMS’s courses",
+  "exploreEnrolledFilter": "Already enrolled",
+  "actionSaveCourse": "Save this course",
+  "actionUnsaveCourse": "Remove from saved",
+  "saveFailed": "That could not be saved. Try again.",
+  "enrolConfirmTitle": "Enrol in this course?",
+  "enrolConfirmBody": "Your place is confirmed straight away and the course appears in My Courses, under Profile.",
+  "enrolFailedTitle": "Could not enrol",
+  "enrolDoneMessage": "You are enrolled. The course is in My Courses.",
+  "enrolAccessEnds": "Access ends on {date}",
+  "@enrolAccessEnds": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "courseEnrolToUnlock": "Enrol to unlock",
+  "courseLockedChapter": "Finish “{chapter}” to open this chapter.",
+  "@courseLockedChapter": {
+    "placeholders": {
+      "chapter": {
+        "type": "String"
+      }
+    }
+  },
+  "courseLockedQuiz": "Finish the other lessons in “{chapter}” to take this quiz.",
+  "@courseLockedQuiz": {
+    "placeholders": {
+      "chapter": {
+        "type": "String"
+      }
+    }
+  },
+  "courseLockedInOrder": "This lesson opens after the ones before it.",
+  "courseFreePreviewsTitle": "Try it free",
+  "actionPreviewLesson": "Preview",
+  "courseScheduleLabel": "Schedule",
+  "courseOverviewTitle": "Course",
+  "exploreEnrolledAlready": "You are already enrolled",
+  "lessonPositionOf": "{index} of {total}",
+  "@lessonPositionOf": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "lessonCompletedOn": "Completed on {date}",
+  "@lessonCompletedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lessonLockedTitle": "Not open yet",
+  "lessonNotEnrolledTitle": "Enrol to open this lesson",
+  "lessonNotEnrolledBody": "This lesson is part of the course. Enrol to study it.",
+  "lessonUnavailableTitle": "This lesson is not available",
+  "noteTitle": "Your notes",
+  "noteHint": "Write your working, or anything you want to remember.",
+  "noteSaving": "Saving…",
+  "noteSavedAt": "Saved {time}",
+  "@noteSavedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "noteFailed": "Not saved. Try again.",
+  "noteCounter": "{count} of {max}",
+  "@noteCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "actionBookmarkLesson": "Bookmark this lesson",
+  "actionRemoveBookmark": "Remove bookmark",
+  "chapterCompleteTitle": "Chapter complete",
+  "chapterCompleteBody": "{title} is done.",
+  "@chapterCompleteBody": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "courseCompleteTitle": "Course complete",
+  "courseCompleteBody": "You have finished every lesson of this course.",
+  "ruleHintWatched": "Watch {percent}% to complete",
+  "@ruleHintWatched": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "ruleHintPassed": "Pass the quiz to complete this lesson",
+  "ruleHintSubmitted": "Hand in your work to complete this lesson",
+  "quizSummaryTitle": "Quiz",
+  "quizSummaryFacts": "{questions} questions · pass {passMark}%",
+  "@quizSummaryFacts": {
+    "placeholders": {
+      "questions": {
+        "type": "int"
+      },
+      "passMark": {
+        "type": "int"
+      }
+    }
+  },
+  "quizAttemptsAllowed": "{count, plural, =1{1 attempt} other{{count} attempts}}",
+  "@quizAttemptsAllowed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quizBestScore": "Best so far {percent}%",
+  "@quizBestScore": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "quizTimeLimit": "{minutes} minute limit",
+  "@quizTimeLimit": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentSummaryTitle": "Assignment",
+  "assignmentDueOn": "Due {date}",
+  "@assignmentDueOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "actionOpenAssignment": "Open assignment",
+  "liveSummaryTitle": "Live class",
+  "liveStartsAt": "Starts {when}",
+  "@liveStartsAt": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "liveDuration": "{minutes} minutes",
+  "@liveDuration": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "lessonResumeFrom": "Resuming from {time}",
+  "@lessonResumeFrom": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "courseNextLessonTitle": "Next up",
+  "courseLiveTitle": "Live classes",
+  "courseAssignmentsTitle": "Assignments",
+  "actionOpenLesson": "Open lesson",
+  "assessmentsTitle": "Assessments",
+  "assessmentsEmptyTitle": "No quizzes yet",
+  "assessmentsEmptyBody": "Quizzes appear here as you reach them in your courses.",
+  "assessmentRowFacts": "{questions} questions · pass {passMark}%",
+  "@assessmentRowFacts": {
+    "placeholders": {
+      "questions": {
+        "type": "int"
+      },
+      "passMark": {
+        "type": "int"
+      }
+    }
+  },
+  "assessmentAttemptsLeft": "{count, plural, =0{No attempts left} =1{1 attempt left} other{{count} attempts left}}",
+  "@assessmentAttemptsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "assessmentAttemptsUnlimited": "Unlimited attempts",
+  "quizIntroTitle": "Before you start",
+  "actionStartQuiz": "Start the quiz",
+  "actionReviewAnswers": "Review answers",
+  "actionSubmitQuiz": "Submit",
+  "actionTryAgain": "Try again",
+  "quizSubmitConfirmTitle": "Submit this attempt?",
+  "quizSubmitConfirmBody": "Your answers go to the LMS to be marked. You cannot change them afterwards.",
+  "quizUnansweredWarning": "{count, plural, =1{1 question is unanswered} other{{count} questions are unanswered}}",
+  "@quizUnansweredWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quizAllAnswered": "Every question is answered.",
+  "quizReviewTitle": "Your answers",
+  "quizAnsweredLabel": "Answered",
+  "quizUnansweredLabel": "Not answered",
+  "quizTimeLeft": "{time} left",
+  "@quizTimeLeft": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "quizTimeUp": "Time is up. Your saved answers are being handed in.",
+  "quizPassedTitle": "Passed",
+  "quizNotPassedTitle": "Not passed this time",
+  "quizBestAfterAttempt": "Your best score is {percent}%",
+  "@quizBestAfterAttempt": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "actionContinueCourse": "Back to the course",
+  "quizQuestionNavigator": "Questions",
+  "quizSubmitOffline": "You are offline. Your answers are kept until you reconnect.",
+  "assignmentsEmptyTitle": "No assignments yet",
+  "assignmentsEmptyBody": "Coursework appears here as you reach it in your courses.",
+  "assignmentBriefTitle": "The brief",
+  "assignmentAttachmentsTitle": "From your instructor",
+  "assignmentRubricTitle": "How it is marked",
+  "assignmentRubricPoints": "{points} points",
+  "@assignmentRubricPoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentWorkTitle": "Your work",
+  "assignmentWorkHint": "Write your answer here.",
+  "assignmentWordCount": "{count} words",
+  "@assignmentWordCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentWordLimit": "{count} of {limit} words",
+  "@assignmentWordLimit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentFilesTitle": "Your files",
+  "assignmentChartTitle": "Birth details",
+  "assignmentChartLabel": "Whose chart",
+  "assignmentChartDate": "Date of birth",
+  "assignmentChartTime": "Time of birth",
+  "assignmentChartPlace": "Place of birth",
+  "assignmentChartLagna": "Lagna",
+  "assignmentChartMoonSign": "Moon sign",
+  "assignmentChartNakshatra": "Nakshatra",
+  "assignmentDraftSaving": "Saving…",
+  "assignmentDraftSaved": "Draft saved {time}",
+  "@assignmentDraftSaved": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "assignmentDraftFailed": "Draft not saved. Try again.",
+  "assignmentDraftOffline": "You are offline. Your work is kept here until you reconnect.",
+  "actionSubmitAssignment": "Submit",
+  "actionResubmitAssignment": "Submit again",
+  "assignmentSubmitConfirmTitle": "Hand this in?",
+  "assignmentSubmitConfirmBody": "Your work goes to your instructor to be marked.",
+  "assignmentLateWarning": "This is past its deadline. The LMS takes {percent}% off a late hand-in.",
+  "@assignmentLateWarning": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentLateNoPenalty": "This is past its deadline, and late work is still accepted.",
+  "assignmentSubmittedOn": "Handed in {date}",
+  "@assignmentSubmittedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "assignmentAttemptNumber": "Attempt {number}",
+  "@assignmentAttemptNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentLateBadge": "Handed in late",
+  "assignmentReviewTitle": "Your review",
+  "assignmentScore": "{score} of {max}",
+  "@assignmentScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentPassMark": "Pass mark {points}",
+  "assignmentPassMarkLabel": "Pass mark",
+  "assignmentTotalLabel": "Total",
+  "@assignmentPassMark": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentReturnedTitle": "Returned for changes",
+  "assignmentAwaitingReview": "With your instructor.",
+  "assignmentClosedNote": "This assignment is closed to new submissions.",
+  "assignmentDueRelative": "Due {when}",
+  "@assignmentDueRelative": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "assignmentNoDeadline": "No deadline",
+  "assignmentSaveDraft": "Save draft",
+  "assignmentSubmissionTitle": "What you handed in",
+  "assignmentFeedbackTitle": "Feedback",
+  "assignmentNoFiles": "No files yet.",
+  "assignmentFilesLimit": "{count, plural, =1{One file.} other{Up to {count} files.}}",
+  "@assignmentFilesLimit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentTotalPoints": "Out of {points} points",
+  "@assignmentTotalPoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentCriterionScore": "{score} of {points}",
+  "@assignmentCriterionScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentLatePenaltyNote": "{percent}% is taken off work handed in late.",
+  "@assignmentLatePenaltyNote": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "assignmentChartNote": "Fill in every detail — the chart is taken as one.",
+  "assignmentTextTooLong": "Your answer is too long to save. Shorten it.",
+  "assignmentInterpretationLabel": "Your interpretation",
+  "assignmentAttachmentSize": "{size} MB",
+  "@assignmentAttachmentSize": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "certificatesTabIssued": "Issued",
+  "certificatesTabPending": "Pending",
+  "certificatesTabWorking": "Working towards",
+  "certificatesEmptyTitle": "No certificates yet",
+  "certificatesEmptyBody": "Complete a course to earn your first certificate.",
+  "certificatesPendingEmpty": "Nothing waiting to be claimed.",
+  "certificatesWorkingEmpty": "You are not working towards a certificate right now.",
+  "certificateClaimAction": "Claim certificate",
+  "certificateClaimedTitle": "Certificate issued",
+  "certificateClaimedBody": "It is in your wallet, and the credential can be verified by anyone you share it with.",
+  "certificateShareAction": "Share verification link",
+  "certificateOpenVerification": "Open the verification page",
+  "certificateShareSubject": "My certificate: {title}",
+  "@certificateShareSubject": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "certificateDetailsTitle": "Certificate details",
+  "certificateCompletedOn": "Completed {date}",
+  "@certificateCompletedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "certificateVerificationCount": "{count, plural, =0{Not verified yet} =1{Verified once} other{Verified {count} times}}",
+  "@certificateVerificationCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "certificateRevokedTitle": "Withdrawn by the LMS",
+  "certificatePendingNote": "You have earned this. Claim it to add it to your wallet.",
+  "certificateCanvasLabel": "{heading} for {course}, awarded to {name}. Credential {id}.",
+  "@certificateCanvasLabel": {
+    "placeholders": {
+      "heading": {
+        "type": "String"
+      },
+      "course": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "certificateCanvasUnavailable": "The certificate cannot be drawn here. Its details are below.",
+  "certificateCriteriaTitle": "What is left",
+  "certificateCriterionProgress": "{current}{unit} of {required}{unit}",
+  "@certificateCriterionProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "required": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "ranksTitle": "Rank ladder",
+  "ranksCurrentLabel": "Where you are now",
+  "ranksAchievedLabel": "Reached",
+  "ranksNextLabel": "Next rank",
+  "ranksFutureLabel": "Later",
+  "ranksRequirementsTitle": "What it asks for",
+  "ranksRequirement": "{label}: {required}{unit}",
+  "@ranksRequirement": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "required": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "ranksNoRequirements": "No requirements — this is where everyone starts.",
+  "ranksProgressUnknown": "Your LMS does not publish how far along you are.",
+  "ranksEmptyTitle": "No ranks yet",
+  "ranksEmptyBody": "Your LMS has not set up a rank ladder.",
+  "liveTabLiveNow": "Live now",
+  "liveTabUpcoming": "Upcoming",
+  "liveTabRecordings": "Recordings",
+  "liveEmptyTitle": "No live classes scheduled",
+  "liveEmptyBody": "Live classes for your courses appear here.",
+  "liveJoinAction": "Join the class",
+  "liveJoinOpensNote": "Join opens 15 minutes before the start.",
+  "liveRoomUnavailable": "The class couldn’t open on this phone. Check your connection and try again.",
+  "liveConnecting": "Connecting to the class…",
+  "liveWaitingForHost": "Waiting for {name} to start the class. Join appears here as soon as they do.",
+  "@liveWaitingForHost": {"placeholders": {"name": {"type": "String"}}},
+  "liveJoinedSoFar": "{count, plural, =0{Nobody has joined yet} =1{1 learner has joined} other{{count} learners have joined}}",
+  "@liveJoinedSoFar": {"placeholders": {"count": {"type": "int"}}},
+  "liveYouAttended": "You attended this class",
+  "liveYouMissed": "You missed this class",
+  "liveAttendanceTitle": "Your attendance",
+  "liveAttendedBadge": "Attended",
+  "liveMissedBadge": "Missed",
+  "liveJoinedBadge": "Joined",
+  "liveOpenedLinkBadge": "Opened the link",
+  "liveConnectionLost": "The class connection was lost. If the class is still on, join again.",
+  "liveLinkUnusable": "This class’s meeting link can’t be opened. Ask your LMS for a new one.",
+  "liveLinkNotOpened": "The meeting link couldn’t be opened on this phone. Check that a browser is installed, then try again.",
+  "liveRefreshFailed": "Couldn’t refresh. Showing the last update.",
+  "liveJoinOtherHostBody": "The meeting is now on {host}. This opens it outside the app.",
+  "@liveJoinOtherHostBody": {"placeholders": {"host": {"type": "String"}}},
+  "liveWatchRecording": "Watch recording",
+  "liveRecordingProcessing": "The recording is being prepared. It is usually ready a few minutes after the class.",
+  "liveRegisterAction": "Save my seat",
+  "liveUnregisterAction": "Give up my seat",
+  "liveRegisteredBadge": "Registered",
+  "liveSpotsLeft": "{count, plural, =0{No seats left} =1{1 seat left} other{{count} seats left}}",
+  "@liveSpotsLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "liveCapacityLabel": "{count, plural, =1{1 seat} other{{count} seats}}",
+  "@liveCapacityLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "liveCancelledNote": "This class was cancelled.",
+  "liveEndedOn": "Ended {date}",
+  "@liveEndedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "liveRecordingUntil": "Recording available until {date}",
+  "@liveRecordingUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "liveRecordingLength": "Recording · {minutes} minutes",
+  "@liveRecordingLength": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "liveRecordingNotPlayable": "This recording can’t be played here.",
+  "liveAgendaTitle": "What happens",
+  "liveAgendaItem": "{title} · {minutes} min",
+  "@liveAgendaItem": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "liveWithInstructor": "With {name}",
+  "@liveWithInstructor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "liveRemindersNote": "Registrants are reminded before it starts.",
+  "liveJoinConfirmTitle": "Open the meeting?",
+  "liveJoinConfirmBody": "This opens {host} outside the app.",
+  "@liveJoinConfirmBody": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "liveNotInSchedule": "This class is not in your schedule.",
+  "liveAboutTitle": "About this class",
+  "notificationsTabAll": "All",
+  "notificationsTabUnread": "Unread",
+  "notificationsEmptyTitle": "You're all caught up",
+  "notificationsEmptyBody": "New notices from your LMS appear here.",
+  "notificationsFilterEmpty": "Nothing here right now.",
+  "notificationsMarkAllRead": "Mark all read",
+  "notificationsMarkedRead": "{count, plural, =0{Nothing to mark} =1{1 marked read} other{{count} marked read}}",
+  "@notificationsMarkedRead": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsClear": "Clear",
+  "notificationsClearConfirmTitle": "Clear these notifications?",
+  "notificationsClearConfirmBody": "{count, plural, =1{1 notification will be removed.} other{{count} notifications will be removed.}}",
+  "@notificationsClearConfirmBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsCleared": "{count, plural, =1{1 cleared} other{{count} cleared}}",
+  "@notificationsCleared": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsMarkRead": "Mark read",
+  "notificationsMarkUnread": "Mark unread",
+  "notificationsRemove": "Remove",
+  "notificationsRemoved": "Notification removed",
+  "notificationsRestored": "Put back",
+  "notificationsUnreadBadge": "{count, plural, =1{1 unread notification} other{{count} unread notifications}}",
+  "@notificationsUnreadBadge": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsShowMore": "Show older",
+  "notificationImportant": "Important",
+  "notificationRelatedTitle": "More like this",
+  "notificationSentOn": "Sent to: {channels}",
+  "@notificationSentOn": {
+    "placeholders": {
+      "channels": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationChannelApp": "the app",
+  "notificationChannelEmail": "email",
+  "notificationChannelSms": "SMS",
+  "notificationCategoryCourse": "Courses",
+  "notificationCategoryAssignment": "Assignments",
+  "notificationCategoryQuiz": "Quizzes",
+  "notificationCategoryLive": "Live classes",
+  "notificationCategoryCertificate": "Certificates",
+  "notificationCategoryEnrollment": "Enrolments",
+  "notificationCategorySystem": "Account",
+  "notificationPrefsTitle": "Notification settings",
+  "notificationPrefsCategoriesTitle": "What you hear about",
+  "notificationPrefsChannelApp": "In the app",
+  "notificationPrefsChannelEmail": "Email",
+  "notificationPrefsChannelSms": "SMS",
+  "notificationPrefsSmsUnavailable": "Your LMS cannot send text messages yet.",
+  "notificationPrefsLocked": "Account and security notices stay on in the app and by email.",
+  "notificationPrefsDigestTitle": "Email digest",
+  "notificationPrefsDigestInstant": "As they happen",
+  "notificationPrefsDigestDaily": "Once a day",
+  "notificationPrefsDigestWeekly": "Once a week",
+  "notificationPrefsDigestOff": "No email digest",
+  "notificationPrefsQuietTitle": "Quiet hours",
+  "notificationPrefsQuietEnabled": "Nothing between these times",
+  "notificationPrefsQuietFrom": "From",
+  "notificationPrefsQuietTo": "To",
+  "notificationPrefsQuietNote": "Times are your LMS’s, in IST.",
+  "notificationPrefsPauseTitle": "Pause",
+  "notificationPrefsPausedUntil": "Paused until {date}",
+  "@notificationPrefsPausedUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationPrefsPauseAction": "Pause notifications",
+  "notificationPrefsResumeAction": "Turn notifications back on",
+  "notificationPrefsPauseNote": "Important notices still arrive while notifications are paused.",
+  "notificationPrefsSaved": "Settings saved",
+  "notificationPrefsUnsavedTitle": "Leave without saving?",
+  "notificationPrefsUnsavedBody": "Your changes to these settings have not been saved.",
+  "notificationPrefsDiscard": "Leave",
+  "profileTitle": "Profile",
+  "profileSignedInAs": "Signed in as",
+  "profileRankTitle": "Your standing",
+  "profileActivityTitle": "Recently",
+  "profileActivityEmpty": "What you do in your courses shows up here.",
+  "profileWeekTitle": "This week",
+  "profileWeekMinutes": "{minutes} minutes this week",
+  "@profileWeekMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "profileLinksTitle": "More",
+  "profileGroupAccount": "Account",
+  "profileGroupLearning": "Learning",
+  "profileMyCoursesSubtitle": "In progress, completed and saved",
+  "profileGroupSupport": "Help & support",
+  "profileGroupAbout": "About",
+  "profileChangePassword": "Change password",
+  "profileChangePasswordBody": "Your LMS sends a link to {email}. Open it to set a new password.",
+  "@profileChangePasswordBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "profileChangePasswordSent": "Check your email for the link.",
+  "profileSignOutConfirmTitle": "Sign out?",
+  "profileSignOutConfirmBody": "Your downloads and cached pages on this device are removed. Your work stays with your LMS.",
+  "profileAboutTitle": "About this app",
+  "profileAboutVersion": "Version {version} ({build})",
+  "@profileAboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "build": {
+        "type": "String"
+      }
+    }
+  },
+  "profileContactSupport": "Contact support",
+  "profileContactSupportBody": "Email synilogicteam@gmail.com. We reply within a working day.",
+  "supportEmailSubject": "ZuviloAI app support",
+  "deleteAccountTitle": "Delete account",
+  "deleteAccountIntro": "Deleting your account is immediate and cannot be undone. You will be signed out on every device, and you cannot sign back in to this account.",
+  "deleteAccountRemovedTitle": "What is deleted",
+  "deleteAccountRemovedIdentity": "Your name and email address. The address is free to register again.",
+  "deleteAccountRemovedPersonal": "Your lesson notes, bookmarks, saved courses, assignment drafts and live-class registrations.",
+  "deleteAccountRemovedDevice": "Your notifications, notification preferences and every signed-in session and device.",
+  "deleteAccountKeptTitle": "What is kept",
+  "deleteAccountKeptRecords": "Course progress, quiz and assignment records and issued certificates stay with the LMS, no longer linked to your name, so a credential someone relies on still verifies.",
+  "deleteAccountWeb": "You can also delete your account on the web at zuviloai.com/delete-account.",
+  "deleteAccountAction": "Delete my account",
+  "deleteAccountConfirmTitle": "Delete your account?",
+  "deleteAccountConfirmBody": "Enter your password to confirm it is you.",
+  "deleteAccountAcknowledge": "I understand my account is deleted for good.",
+  "deleteAccountDoneMessage": "Your account has been deleted.",
+  "deleteAccountStaffTitle": "Deleting a staff account",
+  "deleteAccountStaffBody": "Instructor and admin accounts belong to your LMS, so its admin closes them. Ask them to remove your account, or contact support.",
+  "registerAgreement": "By creating an account you agree to the terms of use and acknowledge the privacy policy.",
+  "settingsTitle": "App settings",
+  "settingsAppearanceTitle": "Appearance",
+  "settingsThemeSystem": "Match my phone",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsReducedMotion": "Reduce motion",
+  "settingsReducedMotionBody": "Less movement in animations, on top of your phone’s own setting.",
+  "settingsTextSizeTitle": "Text size",
+  "settingsTextSizeBody": "This is a preview. Your phone’s own text size setting is what really decides.",
+  "settingsTextSizeSample": "The Moon is in Rohini today.",
+  "settingsStorageTitle": "Storage",
+  "settingsClearImageCache": "Clear cached images",
+  "settingsClearImageCacheBody": "Frees space on this device. Nothing is removed from your LMS.",
+  "settingsImageCacheCleared": "Cached images cleared",
+  "activityEnrolled": "Enrolled",
+  "activityLessonCompleted": "Lesson completed",
+  "activityChapterCompleted": "Chapter completed",
+  "activityLiveAttended": "Live class attended",
+  "activityAssignmentSubmitted": "Assignment handed in",
+  "activityAssessmentPassed": "Quiz passed",
+  "activityCertificateIssued": "Certificate issued",
+  "activityRankAchieved": "New rank",
+  "dashboardTitle": "Dashboard",
+  "dashboardAttentionTitle": "Needs you",
+  "dashboardHeroTitle": "Your platform at a glance",
+  "dashboardHeroAttention": "Waiting on you",
+  "dashboardHeroLive": "Live classes ahead",
+  "dashboardHeroLearners": "Your learners",
+  "dashboardAttentionEmpty": "Nothing is waiting for you.",
+  "dashboardQuickActionsTitle": "Do next",
+  "dashboardActionReview": "Review queue",
+  "dashboardActionScheduleLive": "Schedule a live class",
+  "dashboardActionStudents": "Learners",
+  "dashboardActionEnrol": "Add an enrolment",
+  "dashboardUpcomingLiveTitle": "Coming up live",
+  "dashboardKpisTitle": "How things stand",
+  "dashboardKpiCourses": "Courses",
+  "dashboardKpiStudents": "Learners",
+  "dashboardKpiInstructors": "Active instructors",
+  "dashboardKpiWaitingReview": "Waiting for review",
+  "dashboardKpiCompletion": "Completion rate",
+  "dashboardComparison": "vs the period before",
+  "dashboardTrendsTitle": "Enrolments and completions",
+  "dashboardTrendEnrollments": "New enrolments",
+  "dashboardTrendCompletions": "Completions",
+  "dashboardEngagementTitle": "Engagement this week",
+  "dashboardEngagementLessons": "Lessons completed",
+  "dashboardEngagementQuizzes": "Quiz attempts",
+  "dashboardEngagementSubmissions": "Hand-ins",
+  "dashboardEngagementLive": "Live attendance",
+  "dashboardActivityTitle": "Recently",
+  "dashboardActivityEmpty": "Nothing has happened yet.",
+  "dashboardCoursesTitle": "Course performance",
+  "dashboardCourseFacts": "{enrolled} enrolled · {active} active in the last 2 weeks",
+  "@dashboardCourseFacts": {
+    "placeholders": {
+      "enrolled": {
+        "type": "int"
+      },
+      "active": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardCourseProgress": "{completion}% complete · {progress}% average progress",
+  "@dashboardCourseProgress": {
+    "placeholders": {
+      "completion": {
+        "type": "String"
+      },
+      "progress": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardScopeAcademy": "Whole platform",
+  "dashboardScopeInstructor": "One instructor",
+  "dashboardScopePick": "Choose an instructor",
+  "dashboardGeneratedAt": "As of {time}",
+  "@dashboardGeneratedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardEmptyTitle": "Nothing to show yet",
+  "dashboardEmptyBody": "Figures appear here as your LMS teaches.",
+  "dashboardSparkline": "{label} over the last {count} periods",
+  "@dashboardSparkline": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffCoursesTitle": "Courses",
+  "staffCoursesSearch": "Search courses",
+  "staffCoursesEmptyTitle": "No courses yet",
+  "staffCoursesEmptyBody": "Courses are created on the web. They appear here once they exist.",
+  "staffCourseStatusAll": "All",
+  "staffCourseStatusDraft": "Draft",
+  "staffCourseStatusPublished": "Published",
+  "staffCourseStatusArchived": "Archived",
+  "staffCourseSortUpdated": "Recently updated",
+  "staffCourseSortTitle": "Title",
+  "staffCourseSortLearners": "Learners",
+  "staffCourseSortCreated": "Newest",
+  "staffCourseLearners": "{count, plural, =1{1 learner} other{{count} learners}}",
+  "@staffCourseLearners": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffCourseLessons": "{count, plural, =1{1 lesson} other{{count} lessons}}",
+  "@staffCourseLessons": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffCourseOverviewTitle": "Overview",
+  "staffCourseStatsTitle": "How it is going",
+  "staffCourseStatEnrolled": "Enrolled",
+  "staffCourseStatActive": "Active",
+  "staffCourseStatCompletion": "Completion",
+  "staffCourseStatProgress": "Average progress",
+  "staffCourseStatCertificates": "Certificates issued",
+  "staffCourseStatReviews": "Waiting for review",
+  "staffCourseStatMinutes": "Published minutes",
+  "staffCourseCurriculumTitle": "Curriculum",
+  "staffCourseCurriculumFacts": "{chapters} chapters · {lessons} lessons",
+  "@staffCourseCurriculumFacts": {
+    "placeholders": {
+      "chapters": {
+        "type": "int"
+      },
+      "lessons": {
+        "type": "int"
+      }
+    }
+  },
+  "staffCourseChapterProgress": "{started}% started · {completed}% completed",
+  "@staffCourseChapterProgress": {
+    "placeholders": {
+      "started": {
+        "type": "String"
+      },
+      "completed": {
+        "type": "String"
+      }
+    }
+  },
+  "staffCourseLessonCompleted": "{percent}% completed it",
+  "@staffCourseLessonCompleted": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "staffCourseOutcomesTitle": "What learners will be able to do",
+  "staffCourseInstructorsTitle": "Who teaches it",
+  "staffCourseRecentTitle": "Recent learners",
+  "staffCourseActionPublish": "Publish",
+  "staffCourseActionUnpublish": "Unpublish",
+  "staffCourseActionArchive": "Archive",
+  "staffCourseActionRestore": "Restore",
+  "staffCourseEditOnWeb": "Edit on the web",
+  "staffCoursePublishConfirmTitle": "Take this course live?",
+  "staffCoursePublishConfirmBody": "Learners will find it in the catalogue and can enrol.",
+  "staffCourseUnpublishConfirmTitle": "Take it out of the catalogue?",
+  "staffCourseUnpublishConfirmBody": "Learners already enrolled keep their access; nobody new can find it.",
+  "staffCourseArchiveConfirmTitle": "Archive this course?",
+  "staffCourseArchiveConfirmBody": "It leaves the catalogue and the course lists. It can be restored later.",
+  "staffCourseRestoreConfirmTitle": "Bring this course back?",
+  "staffCourseRestoreConfirmBody": "It returns as a draft.",
+  "staffCourseChecklistTitle": "Not ready to publish yet",
+  "staffCourseChecklistBody": "Your LMS asks for these before a course goes live.",
+  "staffCoursePublished": "The course is live",
+  "staffCourseUnpublished": "The course is a draft again",
+  "staffCourseArchived": "The course is archived",
+  "staffCourseRestored": "The course is back as a draft",
+  "staffLessonPreviewBadge": "Free preview",
+  "staffLessonObjectivesTitle": "What this lesson covers",
+  "staffLessonContentUnavailable": "This lesson has nothing in it yet.",
+  "staffLessonEditOnWeb": "Edit this lesson on the web",
+  "staffCoursesFilterAnyCategory": "Any category",
+  "staffCoursesFilterAnyInstructor": "Any instructor",
+  "staffCoursesCategoryLabel": "Category",
+  "staffCoursesInstructorLabel": "Instructor",
+  "staffCoursesSortLabel": "Sort by",
+  "staffCoursesPageOf": "Page {page} of {pages}",
+  "@staffCoursesPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "staffCourseVisibilityLabel": "Who can find it",
+  "staffCourseVisibilityPublic": "Anyone",
+  "staffCourseVisibilityUnlisted": "Only with the link",
+  "staffCourseVisibilityPrivate": "Invited learners only",
+  "staffCourseProgressSpreadTitle": "How far learners have got",
+  "staffCourseWeeklyTitle": "New enrolments a week",
+  "staffCourseUpcomingLiveTitle": "Live classes coming up",
+  "staffCourseCurriculumEmpty": "No chapters yet. Build the curriculum on the web.",
+  "staffCourseNoLearnersYet": "Nobody has enrolled yet.",
+  "staffCourseActionsTitle": "Course actions",
+  "staffCourseArchiveAcknowledge": "I understand learners will no longer find this course",
+  "staffCourseChecklistMet": "Done",
+  "staffCourseChecklistUnmet": "Still needed",
+  "staffCourseChapterLessons": "{count, plural, =1{1 lesson} other{{count} lessons}}",
+  "@staffCourseChapterLessons": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLessonNeighbourHint": "Lesson {index} of {total} in this course",
+  "@staffLessonNeighbourHint": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLessonDueAfterDays": "{count, plural, =1{Due 1 day after a learner starts it} other{Due {count} days after a learner starts it}}",
+  "@staffLessonDueAfterDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLessonDeliversTitle": "What it delivers",
+  "staffLessonContentTitle": "Lesson content",
+  "reviewTitle": "Review",
+  "reviewQueueToReview": "To review",
+  "reviewQueueOverdue": "Overdue",
+  "reviewQueueByCourse": "By course",
+  "reviewQueueClearTitle": "Nothing to review",
+  "reviewQueueClearBody": "Every hand-in has been looked at. Nice work.",
+  "reviewSearchHint": "Search by learner",
+  "reviewTabToReview": "To review",
+  "reviewTabGraded": "Graded",
+  "reviewTabReturned": "Returned",
+  "reviewTabMissing": "Missing",
+  "reviewTabAll": "All",
+  "reviewSortLabel": "Sort by",
+  "reviewSortOldest": "Oldest first",
+  "reviewSortNewest": "Newest first",
+  "reviewSortScore": "Highest score",
+  "reviewAssignmentLabel": "Assignment",
+  "reviewAllAssignments": "Every assignment",
+  "reviewNotHandedIn": "Nothing handed in yet",
+  "reviewAttemptNumber": "Attempt {number}",
+  "@reviewAttemptNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewSubmittedOn": "Handed in {date}",
+  "@reviewSubmittedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewScoreOf": "{score} of {max}",
+  "@reviewScoreOf": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "staffReviewCourseLabel": "Course",
+  "staffReviewAllCourses": "Every course",
+  "reviewPageOf": "Page {page} of {pages}",
+  "@reviewPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewEmptyTitle": "Nothing here",
+  "reviewEmptyBody": "No hand-in matches what you are looking at.",
+  "reviewBriefTitle": "The brief",
+  "reviewLearnerWorkTitle": "What the learner handed in",
+  "reviewLearnerProgress": "{percent}% through the course",
+  "@reviewLearnerProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewEnrolledOn": "Enrolled {date}",
+  "@reviewEnrolledOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewScoreTitle": "The score",
+  "reviewPointsLabel": "Points out of {max}",
+  "@reviewPointsLabel": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewFeedbackTitle": "Feedback for the learner",
+  "reviewFeedbackHint": "What was good, and what to do next.",
+  "reviewPrivateNoteTitle": "Private note",
+  "reviewPrivateNoteHint": "Anything you want to remember about this hand-in.",
+  "reviewPrivateNoteOnlyStaff": "Only staff see this. The learner never does.",
+  "reviewActionSaveDraft": "Save draft",
+  "reviewActionReturn": "Return for changes",
+  "reviewActionGrade": "Grade",
+  "reviewDraftSaved": "Your draft review is saved",
+  "reviewGradedMessage": "Graded. The learner has been told.",
+  "reviewReturnedMessage": "Sent back for another attempt.",
+  "reviewGradeConfirmTitle": "Send this grade to the learner?",
+  "reviewGradeConfirmBody": "They will be told their score and can read your feedback. The LMS works the final score out itself.",
+  "reviewGradeEstimate": "About {score} of {max} — the LMS works out the final score",
+  "@reviewGradeEstimate": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewGradeEstimatePass": "Above the pass mark of {passMark}",
+  "@reviewGradeEstimatePass": {
+    "placeholders": {
+      "passMark": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewGradeEstimateFail": "Below the pass mark of {passMark}",
+  "@reviewGradeEstimateFail": {
+    "placeholders": {
+      "passMark": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewLatePenaltyNote": "This hand-in was late. The LMS may take {percent}% off.",
+  "@reviewLatePenaltyNote": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewReturnConfirmTitle": "Ask for another attempt?",
+  "reviewReturnConfirmBody": "The learner keeps your feedback and can hand in again.",
+  "reviewNextInQueue": "Next to review",
+  "reviewQueuePosition": "{position} of {total} waiting",
+  "@reviewQueuePosition": {
+    "placeholders": {
+      "position": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewLeaveConfirmTitle": "Leave without saving?",
+  "reviewLeaveConfirmBody": "Your score and feedback have not been sent. Save a draft first to keep them.",
+  "reviewLeaveConfirmAction": "Leave",
+  "reviewRemindAction": "Remind who is missing",
+  "reviewRemindConfirmTitle": "Remind the learners who owe this?",
+  "reviewRemindConfirmBody": "Everyone who has not handed in gets a notice. The LMS decides who that is.",
+  "reviewRemindSent": "{count, plural, =0{Nobody needed a reminder} =1{1 learner was reminded} other{{count} learners were reminded}}",
+  "@reviewRemindSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewMissingTitle": "Still to hand in",
+  "reviewOpenAssignment": "All hand-ins for this assignment",
+  "reviewScoredOutOf": "Scored out of {points}",
+  "@reviewScoredOutOf": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "staffQuizzesTitle": "Quizzes",
+  "staffQuizzesSearch": "Search quizzes",
+  "staffQuizzesEmptyTitle": "No quizzes yet",
+  "staffQuizzesEmptyBody": "Quizzes are built on the web. They appear here once they exist.",
+  "staffQuizCourseLabel": "Course",
+  "staffQuizAllCourses": "Every course",
+  "staffQuizStatusAll": "All",
+  "staffQuizStatusDraft": "Draft",
+  "staffQuizStatusPublished": "Published",
+  "staffQuizPoints": "{points, plural, =1{1 point} other{{points} points}}",
+  "@staffQuizPoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "staffQuizQuestions": "{count, plural, =1{1 question} other{{count} questions}}",
+  "@staffQuizQuestions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffQuizAttempts": "{count, plural, =0{No attempts yet} =1{1 attempt} other{{count} attempts}}",
+  "@staffQuizAttempts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffQuizNoAttemptsTitle": "No attempts yet",
+  "staffQuizNoAttemptsBody": "Once learners take it, this is where the LMS’s figures appear.",
+  "staffQuizStatAttempts": "Attempts",
+  "staffQuizStatLearners": "Learners",
+  "staffQuizStatPassRate": "Pass rate",
+  "staffQuizStatAvgScore": "Average score",
+  "staffQuizStatMedianTime": "Typical time",
+  "staffQuizDistributionTitle": "How the scores fell",
+  "staffQuizSettingsTitle": "How it is set up",
+  "staffQuizPassMarkLabel": "Pass mark",
+  "staffQuizAttemptsLabel": "Attempts allowed",
+  "staffQuizAttemptsUnlimited": "As many as they like",
+  "staffQuizTimeLimitLabel": "Time limit",
+  "staffQuizNoTimeLimit": "No limit",
+  "staffQuizShuffleLabel": "Shuffled",
+  "staffQuizShuffleQuestions": "Questions",
+  "staffQuizShuffleOptions": "Answers",
+  "staffQuizShuffleNothing": "Nothing",
+  "staffQuizResultsLabel": "What learners see afterwards",
+  "staffQuizResultsScoreAndAnswers": "Their score and the answers",
+  "staffQuizResultsScoreOnly": "Their score only",
+  "staffQuizResultsHidden": "Nothing",
+  "staffQuizQuestionsTitle": "The questions",
+  "staffQuizAnswerKeyNote": "The answers below are shown to staff only.",
+  "staffQuizCorrectAnswer": "Correct",
+  "staffQuizAcceptedAnswers": "Accepted: {answers}",
+  "@staffQuizAcceptedAnswers": {
+    "placeholders": {
+      "answers": {
+        "type": "String"
+      }
+    }
+  },
+  "staffQuizExplanationLabel": "Explanation",
+  "staffQuizOptionalQuestion": "Optional",
+  "staffQuizCorrectRate": "{percent}% got it right",
+  "@staffQuizCorrectRate": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "staffQuizCommonWrong": "Most often chosen instead: {option}",
+  "@staffQuizCommonWrong": {
+    "placeholders": {
+      "option": {
+        "type": "String"
+      }
+    }
+  },
+  "staffQuizEditOnWeb": "Edit on the web",
+  "staffQuizMinutes": "{minutes} min",
+  "@staffQuizMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "staffQuizStatsTitle": "How learners did",
+  "studentsTitle": "Learners",
+  "studentsSearch": "Search by name or email",
+  "studentsEmptyTitle": "No learners yet",
+  "studentsEmptyBody": "Learners appear here once they enrol in one of your courses.",
+  "studentsTabAll": "All",
+  "studentsTabActive": "Active",
+  "studentsTabAtRisk": "At risk",
+  "studentsTabInactive": "Inactive",
+  "studentsTabSuspended": "Suspended",
+  "studentsSortLabel": "Sort by",
+  "studentsSortActive": "Last active",
+  "studentsSortName": "Name",
+  "studentsSortProgress": "Progress",
+  "studentsSortJoined": "Recently joined",
+  "studentsCourseLabel": "Course",
+  "studentsAllCourses": "Every course",
+  "staffStudentsProgressByCourse": "Course by course",
+  "staffStudentsEnrolmentLabel": "Enrolment",
+  "studentsPageOf": "Page {page} of {pages}",
+  "@studentsPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "studentsCourseCount": "{count, plural, =0{No courses} =1{1 course} other{{count} courses}}",
+  "@studentsCourseCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "studentsProgressLabel": "{percent}% through",
+  "@studentsProgressLabel": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "studentsQuietDays": "{count, plural, =0{Active today} =1{Quiet for a day} other{Quiet for {count} days}}",
+  "@studentsQuietDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "studentsSelected": "{count, plural, =1{1 learner selected} other{{count} learners selected}}",
+  "@studentsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "studentsSelectAction": "Select",
+  "studentsClearSelection": "Clear",
+  "studentsMessageAction": "Message",
+  "studentsMessageTitle": "Message the learners you picked",
+  "studentsMessageSubject": "Subject",
+  "studentsMessageBody": "Message",
+  "studentsMessageBodyHint": "What you want them to know.",
+  "studentsMessageChannels": "Send it",
+  "studentsMessageChannelApp": "In the app",
+  "studentsMessageChannelEmail": "By email",
+  "studentsMessageSend": "Send",
+  "studentsMessageSent": "{count, plural, =0{Nobody could be reached} =1{Sent to 1 learner} other{Sent to {count} learners}}",
+  "@studentsMessageSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "studentsMessageBodyTooShort": "Write at least {count} characters so the message says something.",
+  "@studentsMessageBodyTooShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "studentTabOverview": "Overview",
+  "studentTabCourses": "Courses",
+  "studentTabProgress": "Progress",
+  "studentTabActivity": "Activity",
+  "studentJoinedOn": "Joined {date}",
+  "@studentJoinedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "studentSummaryTitle": "How they are doing",
+  "studentStatEnrolled": "Enrolled",
+  "studentStatActive": "In progress",
+  "studentStatCompleted": "Completed",
+  "studentStatAvgProgress": "Average progress",
+  "studentStatStudyMinutes": "Time studying",
+  "studentStatSubmissions": "Hand-ins",
+  "studentStatAvgScore": "Average score",
+  "studentCertificatesTitle": "Certificates",
+  "studentCertificateIssued": "Issued {date} · {credential}",
+  "@studentCertificateIssued": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "credential": {
+        "type": "String"
+      }
+    }
+  },
+  "studentNoCertificates": "No certificates yet.",
+  "studentCoursesEmpty": "Not on any of your courses.",
+  "studentCourseFacts": "{chaptersDone} of {chapters} chapters · {lessonsDone} of {lessons} lessons",
+  "@studentCourseFacts": {
+    "placeholders": {
+      "chaptersDone": {
+        "type": "int"
+      },
+      "chapters": {
+        "type": "int"
+      },
+      "lessonsDone": {
+        "type": "int"
+      },
+      "lessons": {
+        "type": "int"
+      }
+    }
+  },
+  "studentNextUp": "Up next: {title}",
+  "@studentNextUp": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "studentTaughtBy": "Taught by {names}",
+  "@studentTaughtBy": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "studentEnrolAction": "Enrol in a course",
+  "studentEnrolConfirmTitle": "Enrol this learner?",
+  "studentEnrolConfirmBody": "They get access straight away and are told about it. The LMS sets how long access lasts.",
+  "studentEnrolled": "They are enrolled",
+  "studentPauseAction": "Pause",
+  "studentResumeAction": "Resume",
+  "studentPauseConfirmTitle": "Pause this enrolment?",
+  "studentPauseConfirmBody": "They keep their progress but the course stops counting towards their standing.",
+  "studentPaused": "The enrolment is paused",
+  "studentResumed": "The enrolment is active again",
+  "studentRemoveAction": "Remove",
+  "studentRemoveConfirmTitle": "Remove this enrolment?",
+  "studentRemoveConfirmBody": "They lose access to the course. Their progress goes with it.",
+  "studentRemoveAcknowledge": "I understand their progress in this course will be lost",
+  "studentRemoved": "The enrolment is removed",
+  "studentSuspendAction": "Suspend",
+  "studentRestoreAction": "Restore",
+  "studentSuspendConfirmTitle": "Suspend this learner?",
+  "studentSuspendConfirmBody": "They cannot sign in or learn until they are restored.",
+  "studentSuspendAcknowledge": "I understand they will be signed out",
+  "studentSuspendReasonLabel": "Why (only staff see this)",
+  "studentRestoreConfirmTitle": "Restore this learner?",
+  "studentRestoreConfirmBody": "They can sign in and carry on where they left off.",
+  "studentSuspended": "The learner is suspended",
+  "studentRestored": "The learner is restored",
+  "studentProgressEmpty": "Nothing to show yet.",
+  "studentQuizzesTitle": "Quizzes",
+  "studentQuizBest": "Best {percent}% of a pass mark of {passMark}%",
+  "@studentQuizBest": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "passMark": {
+        "type": "String"
+      }
+    }
+  },
+  "studentAssignmentsTitle": "Hand-ins",
+  "studentStudyWeeksTitle": "Time studying, week by week",
+  "studentActivityEmpty": "Nothing recorded yet.",
+  "studentActivityAll": "Everything",
+  "studentContactTitle": "How to reach them",
+  "studentStaffOnlyNote": "Contact details are shown to staff only.",
+  "studentPhoneLabel": "Phone",
+  "studentJoinedLabel": "Joined",
+  "studentEmailLabel": "Email",
+  "staffLiveTitle": "Live classes",
+  "staffLiveSearch": "Search classes",
+  "staffLiveTabUpcoming": "Upcoming",
+  "staffLiveTabLive": "Live now",
+  "staffLiveTabHistory": "History",
+  "staffLiveTabCancelled": "Cancelled",
+  "staffLiveEmptyTitle": "Nothing scheduled",
+  "staffLiveEmptyBody": "Schedule a class and the enrolled learners are told straight away.",
+  "staffLivePageOf": "Page {page} of {pages}",
+  "@staffLivePageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveScheduleAction": "Schedule a class",
+  "staffLiveRegisteredCount": "{count, plural, =0{No seats taken} =1{1 seat taken} other{{count} seats taken}}",
+  "@staffLiveRegisteredCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveOfCapacity": "{taken} of {capacity} seats taken",
+  "@staffLiveOfCapacity": {
+    "placeholders": {
+      "taken": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveAttendeesTitle": "Who registered",
+  "staffLiveNoAttendees": "Nobody has taken a seat yet.",
+  "staffLiveAttended": "Came",
+  "staffLiveMissed": "Did not come",
+  "staffLiveJoinAction": "Open the meeting",
+  "staffLiveJoinNotReady": "The join link opens 15 minutes before the start.",
+  "staffLiveRoomNote": "Learners join in the app or on the web once you start the class. Attendance is taken as they join.",
+  "staffLiveStartAction": "Start class",
+  "staffLiveRejoinAction": "Rejoin as host",
+  "staffLiveEndAction": "End class",
+  "staffLiveEndConfirmTitle": "End this class?",
+  "staffLiveEndConfirmBody": "The room closes and nobody else can join. Learners who held a place and never came are marked missed.",
+  "staffLiveEnded": "Class ended. Attendance is saved.",
+  "staffLiveStartNote": "Learners can join once you start the class. They are told the moment you do.",
+  "staffLiveStartNotYet": "You can start the class from 15 minutes before its start time.",
+  "staffLiveJoinedAt": "Joined {time}",
+  "@staffLiveJoinedAt": {"placeholders": {"time": {"type": "String"}}},
+  "staffLiveLinkUnusable": "This class’s meeting link can’t be opened. Edit the class and paste the full link, starting with https://",
+  "staffLiveOpenedLinkAt": "Opened the link {time}",
+  "@staffLiveOpenedLinkAt": {"placeholders": {"time": {"type": "String"}}},
+  "staffLiveFormMeetingKind": "Where the class runs",
+  "staffLiveMeetingRoom": "Built-in live room",
+  "staffLiveMeetingExternal": "Outside meeting link",
+  "staffLiveRecordingNone": "The video service doesn’t record classes yet.",
+  "staffLiveRecordingHow": "Start recording from the room’s menu. Learners can watch it here after the class.",
+  "staffLiveEditAction": "Edit",
+  "staffLiveEditClosedStarted": "A class that has started can no longer be edited.",
+  "staffLiveEditClosedCancelled": "A cancelled class can no longer be edited.",
+  "staffLiveRemindAction": "Remind them now",
+  "staffLiveRemindSent": "{count, plural, =0{Nobody needed a reminder} =1{1 learner was reminded} other{{count} learners were reminded}}",
+  "@staffLiveRemindSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveCancelAction": "Cancel the class",
+  "staffLiveCancelConfirmTitle": "Call this class off?",
+  "staffLiveCancelConfirmBody": "Registered learners are told at once, with the reason you give.",
+  "staffLiveCancelReasonLabel": "Why (learners see this)",
+  "staffLiveCancelled": "The class is cancelled",
+  "staffLiveCancelReason": "Cancelled: {reason}",
+  "@staffLiveCancelReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "staffLiveRemindersTitle": "When learners are reminded",
+  "staffLiveReminderOffset": "{minutes} min before",
+  "@staffLiveReminderOffset": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveReminderHours": "{hours} h before",
+  "@staffLiveReminderHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveReminderDay": "A day before",
+  "staffLiveRemindersSaved": "Reminders saved",
+  "staffLiveNewTitle": "Schedule a class",
+  "staffLiveEditTitle": "Edit the class",
+  "staffLiveFormCourse": "Course",
+  "staffLiveFormTitle": "Title",
+  "staffLiveFormInstructor": "Who teaches it",
+  "staffLiveFormStart": "Starts",
+  "staffLiveFormDuration": "How long (minutes)",
+  "staffLiveFormDurationHelp": "Between {min} and {max} minutes.",
+  "@staffLiveFormDurationHelp": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveFormCapacity": "Seats (optional)",
+  "staffLiveFormDescription": "What it covers",
+  "staffLiveFormVisibility": "Who can see it",
+  "staffLiveVisibilityEnrolled": "Learners on the course",
+  "staffLiveVisibilityCohort": "The cohort",
+  "staffLiveVisibilityPublic": "Anyone",
+  "staffLiveFormMeeting": "Meeting link",
+  "staffLiveFormMeetingHelp": "Starts with https://",
+  "staffLiveFormAgenda": "What happens",
+  "staffLiveFormAgendaAdd": "Add an item",
+  "staffLiveFormAgendaItem": "Item",
+  "staffLiveFormAgendaMinutes": "Minutes",
+  "staffLiveFormAgendaTooLong": "The agenda runs {agenda} minutes — longer than the class.",
+  "@staffLiveFormAgendaTooLong": {
+    "placeholders": {
+      "agenda": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveFormSave": "Save",
+  "staffLiveFormSchedule": "Schedule it",
+  "staffLiveScheduled": "The class is scheduled and the learners are told",
+  "staffLiveSaved": "The class is saved",
+  "staffLiveLeaveConfirmTitle": "Leave without saving?",
+  "staffLiveLeaveConfirmBody": "The class has not been saved.",
+  "staffLiveLeaveConfirmAction": "Leave",
+  "staffLiveStartInPast": "Choose a time later than now.",
+  "staffLiveRecordingViews": "{count, plural, =1{Watched once} other{Watched {count} times}}",
+  "@staffLiveRecordingViews": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffLiveFormAgendaRemove": "Remove this item",
+  "staffLiveDetailsTitle": "Class details",
+  "staffLiveFormSectionClass": "The class",
+  "staffLiveFormSectionWhen": "Date and length",
+  "staffLiveFormSectionWhere": "Where it happens",
+  "staffLiveFormSectionLearners": "For learners",
+  "staffCalendarDetailsTitle": "Event details",
+  "staffCalendarFormSectionEvent": "The event",
+  "staffCalendarFormSectionWhen": "Date and time",
+  "staffCalendarFormSectionLinks": "Audience and links",
+  "staffCalendarFormSectionNotes": "Reminder and notes",
+  "calendarTitle": "Calendar",
+  "calendarToday": "Today",
+  "calendarWeekOf": "Week of {date}",
+  "@calendarWeekOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarMonthView": "Month",
+  "calendarWeekView": "Week",
+  "calendarDayEmpty": "Nothing on this day",
+  "calendarRangeEmpty": "Nothing in this range",
+  "calendarRangeEmptyBody": "Live classes, deadlines and your own reminders appear here.",
+  "calendarTypeAll": "Everything",
+  "calendarTypeLive": "Live",
+  "calendarTypeAssignment": "Deadlines",
+  "calendarTypeQuiz": "Quizzes",
+  "calendarTypeMilestone": "Milestones",
+  "calendarTypeReminder": "Reminders",
+  "calendarAllDay": "All day",
+  "calendarMoment": "At {time}",
+  "@calendarMoment": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarAddAction": "Add to the calendar",
+  "calendarNewTitle": "Add to the calendar",
+  "calendarEditTitle": "Edit the event",
+  "calendarFormType": "What it is",
+  "calendarFormTitle": "Title",
+  "calendarFormDescription": "Notes",
+  "calendarFormTiming": "When",
+  "calendarTimingTimed": "A time and a length",
+  "calendarTimingMoment": "A moment",
+  "calendarTimingAllDay": "The whole day",
+  "calendarFormStart": "Starts",
+  "calendarFormDay": "Day",
+  "calendarFormDuration": "How long (minutes)",
+  "calendarFormDurationHelp": "Between {min} minutes and 12 hours.",
+  "@calendarFormDurationHelp": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarFormCourse": "Course",
+  "calendarFormChapter": "Chapter",
+  "calendarFormQuiz": "Quiz",
+  "calendarFormMilestone": "What kind of milestone",
+  "calendarFormAudience": "Who it is for",
+  "calendarAudienceMe": "Only me",
+  "calendarAudienceLearners": "The course’s learners",
+  "calendarFormNotify": "Remind me",
+  "calendarNotifyNone": "No reminder",
+  "calendarFormSave": "Save",
+  "calendarFormAdd": "Add it",
+  "calendarAdded": "It is on the calendar",
+  "calendarSaved": "The event is saved",
+  "calendarRemoveAction": "Remove",
+  "calendarRemoveConfirmTitle": "Remove this event?",
+  "calendarRemoveConfirmBody": "It disappears from the calendar. Anyone it reminds will not be reminded.",
+  "calendarRemoved": "The event is removed",
+  "calendarDoneAction": "Mark it done",
+  "calendarUndoneAction": "Not done after all",
+  "calendarDoneBadge": "Done",
+  "calendarLeaveConfirmTitle": "Leave without saving?",
+  "calendarLeaveConfirmBody": "The event has not been saved.",
+  "calendarLeaveConfirmAction": "Leave",
+  "calendarNotEditableLive": "A live class is changed in Live classes.",
+  "calendarNotEditableAssignment": "A deadline is changed on the assignment itself.",
+  "calendarNotEditableOther": "This event belongs to someone else.",
+  "calendarOpenLive": "Open the live class",
+  "calendarOpenSubmissions": "See the hand-ins",
+  "calendarOpenQuiz": "Open the quiz",
+  "calendarAudienceSize": "{count, plural, =1{1 learner} other{{count} learners}}",
+  "@calendarAudienceSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarDueSummary": "{submitted} of {learners} have handed in",
+  "@calendarDueSummary": {
+    "placeholders": {
+      "submitted": {
+        "type": "int"
+      },
+      "learners": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarLearnersDueTitle": "Still to hand in",
+  "calendarHandedIn": "Handed in",
+  "calendarMilestoneCohortStarts": "A cohort starts",
+  "calendarMilestoneChapterRelease": "A chapter opens",
+  "calendarMilestoneEnrolmentCloses": "Enrolment closes",
+  "calendarMilestoneCohortEnds": "A cohort ends",
+  "calendarMilestoneCourseLaunch": "A course launches",
+  "calendarStartInPast": "Choose a time later than now.",
+  "calendarDayInPast": "Choose a day that has not passed.",
+  "calendarEventsOnDay": "{count, plural, =1{1 event} other{{count} events}}",
+  "@calendarEventsOnDay": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorsSearch": "Search by name or title",
+  "instructorsTabAll": "All",
+  "instructorsTabActive": "Active",
+  "instructorsTabInvited": "Invited",
+  "instructorsTabInactive": "Inactive",
+  "instructorsSortLabel": "Sort by",
+  "instructorsSortName": "Name",
+  "instructorsSortStudents": "Most learners",
+  "instructorsSortRating": "Highest rated",
+  "instructorsSortJoined": "Recently joined",
+  "instructorsExpertiseLabel": "Expertise",
+  "instructorsAllExpertise": "Any expertise",
+  "instructorsEmptyTitle": "No instructors yet",
+  "instructorsEmptyBody": "Invite the first instructor and they will be sent a link to choose a password.",
+  "instructorsInviteAction": "Invite an instructor",
+  "instructorsCourseCount": "{count, plural, =0{No courses} =1{1 course} other{{count} courses}}",
+  "@instructorsCourseCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorsLearnerCount": "{count, plural, =1{1 learner} other{{count} learners}}",
+  "@instructorsLearnerCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorsRating": "{rating} from {count} ratings",
+  "@instructorsRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorsNotRated": "Not rated yet",
+  "instructorsCompletion": "{percent}% complete the course",
+  "@instructorsCompletion": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorsToReview": "{count, plural, =1{1 to review} other{{count} to review}}",
+  "@instructorsToReview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorsOverdue": "{count} past the review window",
+  "@instructorsOverdue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorTabOverview": "Overview",
+  "instructorTabCourses": "Courses",
+  "instructorTabPerformance": "Performance",
+  "instructorAboutTitle": "About",
+  "instructorNoBio": "No bio yet. Learners see this on every course page.",
+  "instructorDetailsTitle": "Details",
+  "instructorEmailLabel": "Email",
+  "instructorPhoneLabel": "Phone",
+  "instructorCityLabel": "City",
+  "instructorLanguagesLabel": "Teaches in",
+  "instructorYearsLabel": "Years teaching",
+  "instructorJoinedLabel": "Joined",
+  "instructorExpertiseTitle": "Expertise",
+  "instructorReachTitle": "Their learners",
+  "instructorReachStudents": "Learners",
+  "instructorReachActive": "Active",
+  "instructorReachCompleted": "Completed",
+  "instructorReachNewThisMonth": "New this month",
+  "instructorCitiesTitle": "Where they are",
+  "instructorCityLearners": "{count, plural, =1{1 learner} other{{count} learners}}",
+  "@instructorCityLearners": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorActivityTitle": "Recent work",
+  "instructorActivityEmpty": "Nothing recorded yet.",
+  "instructorCoursesEmpty": "No courses assigned yet.",
+  "instructorRoleLead": "Lead instructor",
+  "instructorRoleCo": "Co-instructor",
+  "instructorCourseEnrolled": "{count, plural, =1{1 enrolled} other{{count} enrolled}}",
+  "@instructorCourseEnrolled": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorCourseActive": "{count} active in the last fortnight",
+  "@instructorCourseActive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorCourseLessons": "{count, plural, =1{1 lesson} other{{count} lessons}}",
+  "@instructorCourseLessons": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorPerformanceRating": "Rating",
+  "instructorPerformanceCompletion": "Completion",
+  "instructorVsAcademy": "vs the platform",
+  "instructorReviewTitle": "Reviewing",
+  "instructorReviewMedian": "Median turnaround",
+  "instructorReviewMedianHours": "{hours}h",
+  "@instructorReviewMedianHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "instructorReviewOnTime": "Inside 48 hours",
+  "instructorReviewed": "Reviewed",
+  "instructorReviewWaiting": "Waiting",
+  "instructorLiveTitle": "Live teaching",
+  "instructorLiveDelivered": "Delivered",
+  "instructorLiveUpcoming": "Upcoming",
+  "instructorAttendance": "Attendance",
+  "instructorEnrolmentsTitle": "Enrolments by month",
+  "instructorNoFigureYet": "—",
+  "instructorEditAction": "Edit details",
+  "instructorResendInviteAction": "Send the invitation again",
+  "instructorResendInviteSent": "Invitation sent to {email}",
+  "@instructorResendInviteSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "instructorMakeActiveAction": "Make active",
+  "instructorMakeInactiveAction": "Make inactive",
+  "instructorMakeActiveTitle": "Make this instructor active?",
+  "instructorMakeActiveBody": "They will be able to sign in and teach.",
+  "instructorMakeInactiveTitle": "Make this instructor inactive?",
+  "instructorMakeInactiveBody": "They will no longer be able to sign in. Their courses and their learners stay exactly as they are.",
+  "instructorStatusChanged": "Status changed.",
+  "instructorFormInviteTitle": "Invite an instructor",
+  "instructorFormEditTitle": "Edit the instructor",
+  "instructorFormNameLabel": "Full name",
+  "instructorFormTitleLabel": "Professional title",
+  "instructorFormTitleHint": "Senior Maths Faculty",
+  "instructorFormEmailLabel": "Email",
+  "instructorFormEmailHelp": "The invitation to choose a password is sent here.",
+  "instructorFormBioLabel": "Bio",
+  "instructorFormBioHelp": "At least 60 characters once they are active — learners read it on every course page.",
+  "instructorFormCityLabel": "City",
+  "instructorFormPhoneLabel": "Phone",
+  "instructorFormYearsLabel": "Years teaching",
+  "instructorFormStatusLabel": "Status",
+  "instructorFormStatusInvited": "Invited — send them an invitation",
+  "instructorFormStatusActive": "Active — they can sign in already",
+  "instructorFormStatusInactive": "Inactive — no sign-in, no seat",
+  "instructorFormExpertiseLabel": "Expertise",
+  "instructorFormExpertiseHint": "Add an area of expertise",
+  "instructorFormLanguagesLabel": "Languages",
+  "instructorFormLanguagesHint": "Add a language",
+  "instructorFormCoursesLabel": "Courses they teach",
+  "instructorFormCoursesHelp": "They can edit these courses, run their live classes and review their submissions.",
+  "instructorFormNoPhoto": "A photo is added on the web. Learners see their initials until then.",
+  "instructorFormSaveAction": "Save the instructor",
+  "instructorFormInviteAction": "Send the invitation",
+  "instructorFormAddTag": "Add",
+  "staffInstructorsFormWhoTitle": "Who they are",
+  "@staffInstructorsFormWhoTitle": {"description": "Instructor invite/edit form: heading over name, title, email and status."},
+  "staffInstructorsFormProfileTitle": "Their profile",
+  "@staffInstructorsFormProfileTitle": {"description": "Instructor invite/edit form: heading over bio, city, phone and years teaching."},
+  "instructorSaved": "Instructor saved.",
+  "instructorInvited": "Invitation sent.",
+  "instructorProblemName": "Enter their full name.",
+  "instructorProblemTitle": "Add a professional title.",
+  "instructorProblemEmail": "Enter a valid email address.",
+  "instructorProblemPhone": "Enter 8 to 15 digits, or leave it empty.",
+  "instructorProblemBio": "Write a bio of at least 60 characters.",
+  "instructorProblemExpertise": "Add at least one area of expertise.",
+  "instructorProblemLanguages": "Add the languages they teach in.",
+  "instructorProblemYears": "Years teaching should be between 0 and 70.",
+  "registerSearch": "Search by learner, email or credential",
+  "registerTabAll": "All",
+  "registerTabRevoked": "Revoked",
+  "registerCourseLabel": "Course",
+  "registerAllCourses": "All courses",
+  "registerEmptyTitle": "No certificates yet",
+  "registerEmptyBody": "A certificate appears here once a learner finishes a course that awards one.",
+  "registerRevokedOn": "Revoked {date}",
+  "@registerRevokedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "registerPendingNote": "Not issued yet. Nothing is public until it is.",
+  "registerIssueAction": "Issue the certificate",
+  "registerIssueTitle": "Issue this certificate?",
+  "registerIssueBody": "The learner is told at once and the credential can be verified publicly from then on.",
+  "registerIssued": "Certificate issued.",
+  "registerRevokeAction": "Revoke",
+  "registerRevokeTitle": "Revoke this certificate?",
+  "registerRevokeBody": "The learner is told, and the reason you give is what they read. Public verification will show it as revoked.",
+  "registerRevokeReasonLabel": "Reason",
+  "registerRevokeReasonHelp": "At least 3 characters. The learner reads this.",
+  "registerRevoked": "Certificate revoked.",
+  "registerRestoreAction": "Restore",
+  "registerRestoreTitle": "Restore this certificate?",
+  "registerRestoreBody": "It goes back to issued, and the revocation reason is cleared.",
+  "registerRestored": "Certificate restored.",
+  "registerRevokedReasonTitle": "Why it was revoked",
+  "registerLearnerTitle": "The learner",
+  "registerVerifyTitle": "Public verification",
+  "registerVerifyPath": "Anyone can check this credential at {path} on the web.",
+  "@registerVerifyPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "registerOpenLearner": "Open the learner",
+  "instructorFormLeaveTitle": "Leave without saving?",
+  "instructorFormLeaveBody": "The changes to this instructor have not been sent to the LMS.",
+  "instructorFormLeaveAction": "Leave",
+  "registerPageOf": "Page {page} of {pages}",
+  "@registerPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "registerCredentialLabel": "Credential",
+  "registerCompletedLabel": "Finished",
+  "registerIssuedLabel": "Issued",
+  "registerRevokedLabel": "Revoked",
+  "registerLearnerNameLabel": "Name",
+  "registerLearnerEmailLabel": "Email",
+  "registerLearnerCityLabel": "City",
+  "reportsTabOverview": "Overview",
+  "reportsTabCourses": "Courses",
+  "reportsTabLearners": "Learners",
+  "reportsTabInstructors": "Instructors",
+  "reportsTabEnrolments": "Enrolments",
+  "reportsFiltersAction": "Filters",
+  "reportsFiltersTitle": "What these reports cover",
+  "reportsRangeLabel": "Period",
+  "reportsRange30d": "Last 30 days",
+  "reportsRange90d": "Last 90 days",
+  "reportsRange6m": "Last 6 months",
+  "reportsRange12m": "Last 12 months",
+  "reportsSegmentLabel": "Learners",
+  "reportsSegmentAll": "All learners",
+  "reportsSegmentNew": "New",
+  "reportsSegmentActive": "Active",
+  "reportsSegmentAtRisk": "At risk",
+  "reportsSegmentInactive": "Inactive",
+  "reportsSegmentCompleters": "Completed a course",
+  "reportsCategoryLabel": "Category",
+  "reportsAllCategories": "All categories",
+  "reportsCourseLabel": "Course",
+  "reportsAllCourses": "All courses",
+  "reportsInstructorLabel": "Instructor",
+  "reportsAllInstructors": "All instructors",
+  "reportsClearFilters": "Clear the filters",
+  "reportsApplyFilters": "Show the reports",
+  "reportsCovering": "{period} · {courses, plural, =1{1 course} other{{courses} courses}}",
+  "@reportsCovering": {
+    "placeholders": {
+      "period": {
+        "type": "String"
+      },
+      "courses": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsNarrowedBy": "{count, plural, =1{1 filter} other{{count} filters}}",
+  "@reportsNarrowedBy": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsComparedWith": "vs the previous {period}",
+  "@reportsComparedWith": {
+    "placeholders": {
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "reportsNoFigure": "—",
+  "reportsEmptyTitle": "Nothing to report yet",
+  "reportsEmptyBody": "Once learners enrol and start work, their figures appear here.",
+  "reportsFilteredEmpty": "No figures match these filters.",
+  "reportsReadOut": "Read the figures",
+  "reportsEnrolments": "Enrolments",
+  "reportsCompletions": "Completions",
+  "reportsCompletionRate": "Completion rate",
+  "reportsActiveLearners": "Active learners",
+  "reportsAvgProgress": "Average progress",
+  "reportsQuizzesTitle": "Quizzes",
+  "reportsQuizAttempts": "Attempts",
+  "reportsPassRate": "Pass rate",
+  "reportsAvgScore": "Average score",
+  "reportsAssignmentsTitle": "Assignments",
+  "reportsSubmitted": "Handed in",
+  "reportsOnTime": "Reviewed on time",
+  "reportsReviewHours": "Median review hours",
+  "reportsEngagementTitle": "Engagement",
+  "reportsLessonsCompleted": "Lessons finished",
+  "reportsLessonsPerLearner": "Lessons per learner",
+  "reportsLiveAttendance": "Live attendance",
+  "reportsProgressBandsTitle": "How far learners have got",
+  "reportsCategoriesTitle": "By category",
+  "reportsTopCoursesTitle": "Busiest courses",
+  "reportsSeriesEnrolments": "Enrolments over time",
+  "reportsSeriesCompletions": "Completions over time",
+  "reportsSeriesActive": "Active learners over time",
+  "reportsBandLearners": "{count, plural, =1{1 learner} other{{count} learners}}",
+  "@reportsBandLearners": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCategoryEnrolments": "{count} enrolled · {rate}% complete",
+  "@reportsCategoryEnrolments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCategoryEnrolmentsOnly": "{count} enrolled",
+  "@reportsCategoryEnrolmentsOnly": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCourseEnrolments": "{count, plural, =1{1 enrolment} other{{count} enrolments}}",
+  "@reportsCourseEnrolments": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCoursePrevious": "{count} in the previous period",
+  "@reportsCoursePrevious": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCourseActive": "{count} active",
+  "@reportsCourseActive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCourseCompletions": "{count} completed",
+  "@reportsCourseCompletions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCourseRating": "Rated {rating}",
+  "@reportsCourseRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "reportsCoursesEmpty": "No course had any activity in this period.",
+  "reportsOpenCourseReport": "Open the course report",
+  "reportsCourseFunnelTitle": "How far the intake got",
+  "reportsCourseChaptersTitle": "Chapters reached",
+  "reportsCourseChapterReached": "{percent}% reached it",
+  "@reportsCourseChapterReached": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCourseQuizzesTitle": "Quizzes in this course",
+  "reportsCourseAssignmentsTitle": "Assignments in this course",
+  "reportsQuizSummary": "{attempts} attempts · {pass}% passed",
+  "@reportsQuizSummary": {
+    "placeholders": {
+      "attempts": {
+        "type": "int"
+      },
+      "pass": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsAssignmentSummary": "{submitted} handed in · {pass}% passed",
+  "@reportsAssignmentSummary": {
+    "placeholders": {
+      "submitted": {
+        "type": "int"
+      },
+      "pass": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCourseNotFound": "There is no report for this course — it may still be a draft.",
+  "reportsLearnersCount": "Learners",
+  "reportsLearnersActive": "Active",
+  "reportsLearnersAtRisk": "At risk",
+  "reportsLearnerSearch": "Search learners",
+  "reportsSortLabel": "Order by",
+  "reportsSortName": "Name",
+  "reportsSortCourses": "Courses",
+  "reportsSortProgress": "Progress",
+  "reportsSortAssignments": "Assignment average",
+  "reportsSortLastActive": "Last seen",
+  "reportsSortDescending": "Highest first",
+  "reportsSortAscending": "Lowest first",
+  "reportsLearnerCourses": "{courses, plural, =1{1 course} other{{courses} courses}} · {completed} completed",
+  "@reportsLearnerCourses": {
+    "placeholders": {
+      "courses": {
+        "type": "int"
+      },
+      "completed": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsLearnerProgress": "{percent}% through",
+  "@reportsLearnerProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsLearnerAssignments": "Assignments {percent}%",
+  "@reportsLearnerAssignments": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsLearnerLastSeen": "Last seen {when}",
+  "@reportsLearnerLastSeen": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "reportsLearnerNeverSeen": "Not seen yet",
+  "reportsStatusesTitle": "Where learners stand",
+  "reportsLearnersEmpty": "No learner matches this search.",
+  "reportsPageOf": "Page {page} of {pages}",
+  "@reportsPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsSelfShare": "Enrolled themselves",
+  "reportsSourcesTitle": "Where enrolments came from",
+  "reportsSourceSelf": "Learner themselves",
+  "reportsSourceAdmin": "Added by the LMS",
+  "reportsSourceImport": "Imported",
+  "reportsSourceGift": "Gifted",
+  "reportsSourceSummary": "{count} · {share}% of all",
+  "@reportsSourceSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "share": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCohortsTitle": "Each month’s intake",
+  "reportsCohortEnrolled": "{count, plural, =1{1 enrolled} other{{count} enrolled}}",
+  "@reportsCohortEnrolled": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCohortWithin": "Finished within {days} days",
+  "@reportsCohortWithin": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsCohortToDate": "Finished so far",
+  "reportsInstructorsTitle": "How the teaching is going",
+  "reportsInstructorReviews": "Reviews",
+  "reportsInstructorReviewHours": "Median review hours",
+  "reportsInstructorOnTime": "Reviewed on time",
+  "reportsInstructorAttendance": "Live attendance",
+  "reportsInstructorSummary": "{courses, plural, =1{1 course} other{{courses} courses}} · {learners, plural, =1{1 learner} other{{learners} learners}}",
+  "@reportsInstructorSummary": {
+    "placeholders": {
+      "courses": {
+        "type": "int"
+      },
+      "learners": {
+        "type": "int"
+      }
+    }
+  },
+  "reportsInstructorsEmpty": "No instructor had activity in this period.",
+  "reportsPeriod30d": "30 days",
+  "reportsPeriod90d": "90 days",
+  "reportsPeriod6m": "6 months",
+  "reportsPeriod12m": "12 months",
+  "billingTitle": "Your plan",
+  "billingNoPlanTitle": "Your LMS isn’t on a plan yet",
+  "billingNoPlanBody": "Everything you have stays as it is. A plan adds room to grow, and the LMS will tell you what each one includes.",
+  "billingSeePlans": "See the plans",
+  "billingUpgradeAction": "Upgrade to a paid plan",
+  "billingPlanCycleMonthly": "Billed monthly",
+  "billingPlanCycleAnnual": "Billed yearly",
+  "billingRenewsOn": "Renews {date}",
+  "@billingRenewsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingEndsOn": "Ends {date}",
+  "@billingEndsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingTrialDaysLeft": "{days, plural, =0{Your trial ends today} =1{1 day of your trial left} other{{days} days of your trial left}}",
+  "@billingTrialDaysLeft": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "billingPastDueTitle": "A payment didn’t go through",
+  "billingPastDueBody": "Your account owes {amount}. Access stays open until {date}.",
+  "@billingPastDueBody": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingRetryOn": "The next attempt is {date}",
+  "@billingRetryOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingCancelingTitle": "Your plan ends {date}",
+  "@billingCancelingTitle": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingCancelingBody": "Everything keeps working until then.",
+  "billingPausedTitle": "Your plan is paused",
+  "billingPausedResumes": "It resumes {date}",
+  "@billingPausedResumes": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingExpiredTitle": "Your plan has ended",
+  "billingExpiredBody": "You keep and can edit everything you have. Renewing reopens the room to add more.",
+  "billingNotEnforcedNote": "Plan limits aren’t enforced yet, so nothing is being blocked.",
+  "billingUsageTitle": "What you’re using",
+  "billingUsageOf": "{used} of {allowed}",
+  "@billingUsageOf": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "allowed": {
+        "type": "String"
+      }
+    }
+  },
+  "billingUnlimited": "Unlimited",
+  "billingUsageRemaining": "{count} left",
+  "@billingUsageRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "billingUsageFull": "Nothing left",
+  "billingFeaturesTitle": "What your plan includes",
+  "billingFeatureIncluded": "Included",
+  "billingFeatureNotIncluded": "Not included",
+  "billingFeaturePlanned": "Coming soon",
+  "billingInvoicesTitle": "Invoices",
+  "billingInvoicesEmpty": "No invoices yet.",
+  "billingPaymentsTitle": "Payments",
+  "billingPaymentsEmpty": "No payments yet.",
+  "billingOpenChangeUpgradeTitle": "An upgrade to {plan} is waiting to be paid",
+  "@billingOpenChangeUpgradeTitle": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "billingOpenChangeScheduledTitle": "Moving to {plan} on {date}",
+  "@billingOpenChangeScheduledTitle": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingOpenChangeCharge": "{amount} to pay now",
+  "@billingOpenChangeCharge": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingOpenChangeCredit": "{amount} credited from what you have already paid",
+  "@billingOpenChangeCredit": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingOpenChangeGiveUp": "Give up this change",
+  "billingOpenChangeGiveUpTitle": "Give up this plan change?",
+  "billingOpenChangeGiveUpBody": "The quote is withdrawn. Nothing you have now changes, and you can ask again at any time.",
+  "billingOpenChangeGaveUp": "The plan change was given up.",
+  "billingChangePlanAction": "Change plan",
+  "billingCancelAction": "Cancel the plan",
+  "billingCancelTitle": "Cancel at the end of the period?",
+  "billingCancelBody": "Everything keeps working until the period ends. After that the LMS keeps what it has and cannot add more until it renews.",
+  "billingCancelReasonLabel": "Why are you cancelling?",
+  "billingCancelReasonHelp": "At least 3 characters. The LMS keeps this on its record.",
+  "billingCanceled": "Your plan will end when the period does.",
+  "billingResumeAction": "Resume the plan",
+  "billingResumeTitle": "Resume this plan?",
+  "billingResumeBody": "The plan carries on as it was, and billing resumes on its usual date.",
+  "billingResumed": "Your plan is running again.",
+  "billingPaymentUnavailable": "Online payment isn’t available yet. The platform team will tell you when it is.",
+  "billingPayInvoiceAction": "Pay this invoice",
+  "billingPayChangeAction": "Pay for this upgrade",
+  "billingPaymentNotCompleted": "Payment not completed. Nothing has changed — you can try again.",
+  "billingPaymentWaiting": "Your bank hasn’t settled this yet. Checking again…",
+  "billingBilledTo": "Billed to",
+  "billingPaymentMethod": "Paid by",
+  "invoiceTitle": "Invoice {number}",
+  "@invoiceTitle": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "invoicePeriod": "{from} to {to}",
+  "@invoicePeriod": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "invoiceIssued": "Issued {date}",
+  "@invoiceIssued": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "invoicePaidOn": "Paid {date}",
+  "@invoicePaidOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "invoiceLinesTitle": "What this covers",
+  "invoiceLineQuantity": "×{count}",
+  "@invoiceLineQuantity": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "invoiceSubtotal": "Subtotal",
+  "invoiceTax": "Tax",
+  "invoiceTaxPercent": "Tax ({percent}%)",
+  "@invoiceTaxPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "invoiceTotal": "Total",
+  "invoiceStatusPaid": "Paid",
+  "invoiceStatusPending": "Open",
+  "invoiceStatusFailed": "Failed",
+  "invoiceStatusRefunded": "Refunded",
+  "invoiceStatusVoid": "Withdrawn",
+  "invoiceAmountsMissing": "This invoice’s totals were not sent.",
+  "plansTitle": "Plans",
+  "plansEmpty": "No plans are on sale right now.",
+  "plansPerMonth": "{amount} a month",
+  "@plansPerMonth": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "plansPerYear": "{amount} a year",
+  "@plansPerYear": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "plansTrial": "{days}-day free trial",
+  "@plansTrial": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "plansLimitsTitle": "What it allows",
+  "plansFeaturesTitle": "What it includes",
+  "plansCurrentPlan": "Your plan",
+  "plansChooseMonthly": "Choose monthly",
+  "plansChooseAnnual": "Choose yearly",
+  "plansQuoted": "This change has been quoted.",
+  "plansLimitUnlimited": "Unlimited",
+  "plansSubscribeMonthly": "Subscribe monthly",
+  "plansSubscribeAnnual": "Subscribe yearly",
+  "billingInvoiceReadyTitle": "Your invoice is ready",
+  "billingInvoiceReady": "Your invoice {number} for {amount} is ready. Online payment isn’t available right now, so it stays open until it is.",
+  "@billingInvoiceReady": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingPaymentNotOffered": "Online payment isn’t available right now",
+  "billingCheckoutHostedTitle": "Finish paying on the payment page",
+  "billingCheckoutHostedBody": "The payment page opened outside the app. Your plan changes here only once the payment is confirmed to the platform.",
+  "billingCheckoutConfirmed": "The payment is confirmed.",
+  "billingDetailsTitle": "Billing details",
+  "billingDetailsBody": "Invoices are addressed to these details, and tax is worked out from the country and region.",
+  "billingDetailsLegalName": "Name to bill",
+  "billingDetailsEmail": "Email for invoices",
+  "billingDetailsAddressLine1": "Street address",
+  "billingDetailsAddressLine2": "Address line 2",
+  "billingDetailsCity": "City",
+  "billingDetailsRegion": "Region code",
+  "billingDetailsPostalCode": "Postal code",
+  "billingDetailsCountry": "Country code",
+  "billingDetailsTaxRegistration": "Tax registration",
+  "billingDetailsSave": "Save billing details",
+  "billingDetailsSaved": "Billing details saved.",
+  "billingDetailsErrorLegalName": "Give the name the LMS bills under.",
+  "billingDetailsErrorEmail": "Give an email address for invoices.",
+  "billingDetailsErrorAddress": "Give the street address.",
+  "billingDetailsErrorCity": "Give the city.",
+  "billingDetailsErrorPostalCode": "Give the postal code.",
+  "billingDetailsErrorCountry": "Choose the country by its two-letter code, e.g. IN.",
+  "billingDetailsErrorRegion": "A region is a short code, e.g. KA.",
+  "billingDetailsErrorTax": "A tax registration is 3–32 letters, digits or hyphens.",
+  "billingDetailsNeeded": "This change is charged, and its tax depends on the LMS’s billing address. Add it first.",
+  "billingDetailsAddAction": "Add billing details",
+  "planChangeTitle": "Move to {plan}",
+  "@planChangeTitle": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "planChangeCredit": "Credit for the time already paid",
+  "planChangeNet": "Charge",
+  "planChangeTax": "Tax",
+  "planChangeTotal": "Total to pay",
+  "planChangeAppliesOnPayment": "It applies as soon as it is paid.",
+  "planChangeAppliesOn": "It applies on {date}. Nothing is charged now.",
+  "@planChangeAppliesOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "planChangeConflictsTitle": "Already over the new plan’s limits",
+  "planChangeConflict": "{limit}: you use {usage}, the new plan allows {allowed}",
+  "@planChangeConflict": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      },
+      "usage": {
+        "type": "int"
+      },
+      "allowed": {
+        "type": "int"
+      }
+    }
+  },
+  "planChangeConfirm": "Ask for this change",
+  "planChangeContinueToPayment": "Continue to payment",
+  "pastDueBannerTitle": "Payment overdue",
+  "pastDueBannerBody": "A payment for your LMS plan didn’t go through.",
+  "actionOpenBilling": "Open billing",
+  "moduleCoursesName": "Courses",
+  "moduleQuizzesName": "Quizzes",
+  "moduleAssignmentsName": "Assignments",
+  "moduleCertificatesName": "Certificates",
+  "moduleLiveName": "Live classes",
+  "moduleReportsName": "Reports",
+  "moduleBrandingName": "Custom branding",
+  "moduleCoursesDescription": "Build courses with chapters and lessons, and publish them to your learners.",
+  "moduleQuizzesDescription": "Create quizzes and see how your learners score.",
+  "moduleAssignmentsDescription": "Set assignments and review and grade what learners hand in.",
+  "moduleCertificatesDescription": "Issue, verify and manage the certificates your learners earn.",
+  "moduleLiveDescription": "Schedule live classes, send reminders and teach in real time.",
+  "moduleReportsDescription": "See how your courses, learners and enrolments are doing.",
+  "moduleBrandingDescription": "Give your LMS its own look.",
+  "restrictedBannerBodyNew": "Start a free trial or choose a plan to open courses, classes and more.",
+  "actionChoosePlan": "Choose a plan",
+  "actionSeePlans": "See plans",
+  "trialBannerTitle": "{days, plural, =0{Free trial · ends today} =1{Free trial · 1 day left} other{Free trial · {days} days left}}",
+  "@trialBannerTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialBannerBody": "Choose a plan before it ends to keep everything open.",
+  "trialBannerBodyPlan": "You’re trying {plan}. Choose a plan before it ends.",
+  "@trialBannerBodyPlan": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "readOnlyBannerTitle": "{module} is read-only",
+  "@readOnlyBannerTitle": {
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "readOnlyBannerBodyAdmin": "Your plan no longer includes it. What you made stays readable; adding new needs a plan.",
+  "readOnlyBannerBodyMember": "Your LMS plan no longer includes it. What you made stays readable; ask your admin to renew.",
+  "readOnlyActionReason": "Adding to {module} needs an active plan.",
+  "@readOnlyActionReason": {
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "navLockedHint": "Locked. Upgrade the plan to use it.",
+  "navReadOnlyHint": "Read-only",
+  "navUpgradeBadge": "Upgrade",
+  "navReadOnlyBadge": "Read-only",
+  "academySetupTitle": "Your LMS is being set up",
+  "academySetupBody": "Your admin is choosing a plan. {module} will open here as soon as they do.",
+  "@academySetupBody": {
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "limitLearners": "Learners",
+  "limitInstructors": "Instructors",
+  "limitCourses": "Courses",
+  "limitStorage": "Media storage",
+  "limitLiveClasses": "Live classes a month",
+  "limitAdminAccounts": "Admin accounts",
+  "limitStorageGb": "{size} GB",
+  "@limitStorageGb": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "limitStorageMb": "{size} MB",
+  "@limitStorageMb": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "featureCoursesManage": "Course management",
+  "featureAssessmentsManage": "Quizzes and assignments",
+  "featureCertificatesManage": "Certificates",
+  "featureLiveClasses": "Live classes",
+  "featureReportsBasic": "Reports",
+  "featureReportsAdvanced": "Advanced reports",
+  "featureAnalyticsAdvanced": "Advanced analytics",
+  "featureCustomBranding": "Custom branding",
+  "featurePrioritySupport": "Priority support",
+  "trialErrorPlanUnavailable": "This plan doesn’t offer a free trial any more. The plans have been refreshed.",
+  "trialErrorAlreadySubscribed": "Your LMS already has a plan or has used its free trial. The plans have been refreshed.",
+  "onboardingAppBarTitle": "Get started",
+  "onboardingTitle": "Welcome! Choose a plan to get started",
+  "onboardingTitleAcademy": "Welcome to {academy}",
+  "@onboardingTitleAcademy": {
+    "placeholders": {
+      "academy": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingBodyTrial": "Start a free trial to open courses, quizzes, live classes and more. No payment needed — choose a paid plan any time.",
+  "onboardingBody": "Choose a plan to open courses, quizzes, live classes and more.",
+  "onboardingNoBillingEdit": "Only an admin who can change billing can start a plan. Ask them to choose one.",
+  "onboardingTrialUsed": "Your LMS has already used its free trial.",
+  "onboardingNoPlansTitle": "No plans on sale",
+  "onboardingCycleLabel": "Billing cycle",
+  "onboardingCycleMonthly": "Monthly",
+  "onboardingCycleAnnual": "Yearly",
+  "onboardingNotSoldMonthly": "Not sold monthly",
+  "onboardingNotSoldAnnual": "Not sold yearly",
+  "onboardingStartTrial": "Start {days}-day free trial",
+  "@onboardingStartTrial": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingBuy": "Buy for {price}",
+  "@onboardingBuy": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingPaymentUnavailable": "Paid plans can’t be bought in the app right now. You can still start a free trial.",
+  "onboardingNotNow": "Not now — go to the dashboard",
+  "onboardingTrialStartedTitle": "Your free trial has started",
+  "onboardingTrialStartedBody": "Everything in the plan is open. Choose a paid plan any time before the trial ends.",
+  "onboardingTrialStartedUntil": "Everything in the plan is open until {date}. Choose a paid plan any time before then.",
+  "@onboardingTrialStartedUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingGoToDashboard": "Go to the dashboard",
+  "onboardingAlreadyOnPlanTitle": "Your LMS is on a plan",
+  "trialOfferTitle": "{days, plural, =1{Try a plan free for 1 day} other{Try a plan free for {days} days}}",
+  "@trialOfferTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "trialOfferBody": "Start a free trial to see everything your LMS can do. No payment needed.",
+  "trialOfferDismiss": "Dismiss the free trial offer",
+  "trialOfferAction": "See plans and start a trial",
+  "planGateLockedTitle": "Not included in your LMS plan",
+  "planGateAskAdmin": "Ask your admin to upgrade the plan.",
+  "planGateNoPlanIncludes": "No plan on sale includes this yet.",
+  "planGateIncludedIn": "Included in",
+  "planGatePlansUnavailable": "The plans couldn’t be loaded.",
+  "reportsSourcePurchase": "Purchased",
+  "coursePriceNotOpen": "Not open yet",
+  "courseSaleUnavailable": "Not open for enrolment yet",
+  "courseNotSoldInApp": "This course can’t be bought in the app.",
+  "actionBuyCourse": "Buy course · {price}",
+  "@actionBuyCourse": {"placeholders": {"price": {"type": "String", "example": "₹2,999"}}},
+  "actionPayAmount": "Pay {price}",
+  "@actionPayAmount": {"placeholders": {"price": {"type": "String", "example": "₹2,999"}}},
+  "purchaseSummaryTitle": "Order summary",
+  "purchaseSummaryCourse": "Course",
+  "purchaseSummaryTotal": "Total",
+  "purchaseSummaryAllInclusive": "All-inclusive price",
+  "purchaseSummaryNote": "The course opens as soon as your payment is confirmed.",
+  "purchaseStarting": "Opening the payment…",
+  "purchaseAtGateway": "Finish paying in the payment window.",
+  "purchaseConfirming": "Confirming your payment…",
+  "purchaseWaiting": "Your payment is being confirmed. The course opens as soon as it is.",
+  "purchaseStillWaiting": "Your payment is still being confirmed. The course opens as soon as it is, even if you leave this page.",
+  "purchaseAwayAtPage": "Finish paying on the payment page, then come back here.",
+  "purchasePaid": "Payment confirmed. The course is open.",
+  "purchaseFailed": "The payment didn’t go through, so the course wasn’t opened. You can try again.",
+  "purchaseCancelled": "Payment cancelled. You weren’t charged.",
+  "purchaseOffline": "We’ll confirm your payment when you’re back online.",
+  "purchaseNotSetUp": "Online payments aren’t available yet.",
+  "purchaseNotForSale": "This course isn’t open for enrolment yet.",
+  "purchaseAlreadyEnrolled": "You already have this course.",
+  "purchaseUnsupported": "This payment can’t be completed in this version of the app.",
+  "purchaseRefused": "The payment couldn’t be started.",
+  "actionCheckAgain": "Check again",
+  "purchasesTitle": "Purchases",
+  "purchasesSubtitle": "Courses you’ve bought",
+  "purchasesEmptyTitle": "No purchases yet",
+  "purchasesEmptyBody": "Courses you buy are listed here.",
+  "purchaseNeedsReview": "This payment is being reviewed.",
+  "quizTotalPoints": "{count, plural, =1{1 mark} other{{count} marks}}",
+  "@quizTotalPoints": {"placeholders": {"count": {"type": "int"}}},
+  "quizNoTimeLimit": "No time limit",
+  "quizAttemptsUsedOf": "{used} of {allowed} attempts used",
+  "@quizAttemptsUsedOf": {"placeholders": {"used": {"type": "int"}, "allowed": {"type": "int"}}},
+  "quizAttemptsUsedUnlimited": "{used, plural, =0{No attempts used} =1{1 attempt used} other{{used} attempts used}} · no limit",
+  "@quizAttemptsUsedUnlimited": {"placeholders": {"used": {"type": "int"}}},
+  "quizOpensAt": "Opens {time}",
+  "@quizOpensAt": {"placeholders": {"time": {"type": "String"}}},
+  "quizClosesAt": "Closes {time}",
+  "@quizClosesAt": {"placeholders": {"time": {"type": "String"}}},
+  "quizClosedAt": "Closed {time}",
+  "@quizClosedAt": {"placeholders": {"time": {"type": "String"}}},
+  "quizNegativeMarkingNotice": "Wrong answers lose marks. Leaving a question blank costs nothing.",
+  "quizResultsAfterClose": "Results are shown once the quiz closes.",
+  "quizPassedPractice": "You’ve passed. Further attempts are practice.",
+  "actionResumeQuiz": "Resume the quiz",
+  "quizAttemptUnderWay": "Attempt {number} is under way.",
+  "@quizAttemptUnderWay": {"placeholders": {"number": {"type": "int"}}},
+  "quizStartTimedNotice": "The timer starts when you tap Start and keeps running if you leave the app.",
+  "quizStartUsesAttempt": "Starting uses one attempt.",
+  "quizStandingFailed": "We couldn’t check your attempts.",
+  "quizNotOpenUntil": "This quiz opens {time}.",
+  "@quizNotOpenUntil": {"placeholders": {"time": {"type": "String"}}},
+  "quizNoLongerOpen": "This quiz is no longer open for attempts.",
+  "quizStartFailed": "The quiz didn’t start. Check your connection and try again.",
+  "quizTimerSemantics": "Time left: {time}",
+  "@quizTimerSemantics": {"placeholders": {"time": {"type": "String"}}},
+  "quizWarnFiveMinutes": "5 minutes left.",
+  "quizWarnOneMinute": "1 minute left. Your saved answers are handed in when time runs out.",
+  "quizSaveUnsaved": "Not saved yet",
+  "quizSaveSaving": "Saving…",
+  "quizSaveSaved": "Saved",
+  "quizSaveRetrying": "Retrying…",
+  "quizSaveFailed": "Not saved",
+  "quizSaveUnsavedHint": "Answered on this phone, not saved yet.",
+  "quizSaveSavingHint": "Sending your answers to the server.",
+  "quizSaveSavedHint": "Your answers are saved on the server.",
+  "quizSaveRetryingHint": "Couldn’t reach the server. Trying again.",
+  "quizSaveFailedHint": "Your latest answers are not saved.",
+  "quizOfflineBanner": "You’re offline. Your answers stay on this phone and are saved when you reconnect. The timer keeps running.",
+  "quizPaletteItem": "Question {number}, {status}",
+  "@quizPaletteItem": {"placeholders": {"number": {"type": "int"}, "status": {"type": "String"}}},
+  "quizPaletteCurrent": "Question {number}, {status}, on screen",
+  "@quizPaletteCurrent": {"placeholders": {"number": {"type": "int"}, "status": {"type": "String"}}},
+  "quizQuestionMarks": "{count, plural, =1{1 mark} other{{count} marks}}",
+  "@quizQuestionMarks": {"placeholders": {"count": {"type": "int"}}},
+  "quizQuestionNegative": "{marks} · a wrong answer costs {negative}",
+  "@quizQuestionNegative": {"placeholders": {"marks": {"type": "String"}, "negative": {"type": "String"}}},
+  "quizAnsweredNotSaved": "Answered · not saved yet",
+  "actionBackToQuestions": "Back to questions",
+  "quizSubmitFailed": "Couldn’t hand in your attempt. Your saved answers are safe — try again.",
+  "quizHandingIn": "Handing in your attempt…",
+  "quizHandInRetrying": "Still handing in — waiting for the connection.",
+  "quizReceivedTitle": "Attempt handed in",
+  "quizResultPercent": "{percent}%",
+  "@quizResultPercent": {"placeholders": {"percent": {"type": "int"}}},
+  "quizResultPoints": "{points} of {max} marks",
+  "@quizResultPoints": {"placeholders": {"points": {"type": "String"}, "max": {"type": "String"}}},
+  "quizResultPassMark": "Pass mark {passMark}%",
+  "@quizResultPassMark": {"placeholders": {"passMark": {"type": "int"}}},
+  "quizResultSemantics": "Score {percent} percent, {points} of {max} marks",
+  "@quizResultSemantics": {"placeholders": {"percent": {"type": "int"}, "points": {"type": "String"}, "max": {"type": "String"}}},
+  "quizKeyWithheld": "Correct answers are shown once you pass or have no attempts left.",
+  "quizResultsHeldUntil": "Your attempt is in. Results are shown on {time}.",
+  "@quizResultsHeldUntil": {"placeholders": {"time": {"type": "String"}}},
+  "quizResultsHidden": "Your attempt is in. This quiz doesn’t show scores.",
+  "quizExpiredNotice": "Time ran out — your saved answers were marked.",
+  "quizNegativeScoreNote": "Wrong answers cost marks, so a total can fall below zero.",
+  "quizBreakdownTitle": "Question by question",
+  "quizAnswerCorrect": "Correct",
+  "quizAnswerIncorrect": "Wrong",
+  "quizAnswerPartial": "Partly right",
+  "quizAnswerUnanswered": "Not answered",
+  "quizQuestionNumber": "Question {number}",
+  "@quizQuestionNumber": {"placeholders": {"number": {"type": "int"}}},
+  "quizQuestionScored": "{marks} marks",
+  "@quizQuestionScored": {"placeholders": {"marks": {"type": "String"}}},
+  "quizYourAnswer": "Your answer: {answer}",
+  "@quizYourAnswer": {"placeholders": {"answer": {"type": "String"}}},
+  "quizRightAnswer": "Answer: {answer}",
+  "@quizRightAnswer": {"placeholders": {"answer": {"type": "String"}}},
+  "quizHistoryTitle": "Your attempts",
+  "quizHistoryAttempt": "Attempt {number}",
+  "@quizHistoryAttempt": {"placeholders": {"number": {"type": "int"}}},
+  "quizHistoryExpired": "Time ran out",
+  "quizHistoryHeld": "Result after the quiz closes",
+  "quizHistoryReceived": "Handed in",
+  "quizResultUnavailable": "Your attempt was handed in. We couldn’t load the result.",
+  "quizLeaveTitle": "Leave the quiz?",
+  "quizLeaveBodyTimed": "Your answers are saved; the timer keeps running.",
+  "quizLeaveBodyUntimed": "Your answers are saved. You can come back and finish.",
+  "quizLeaveUnsaved": "Answers not saved yet are sent as you leave.",
+  "quizLeaveAction": "Leave",
+  "assessmentInProgressDeadline": "Hand in by {time}",
+  "@assessmentInProgressDeadline": {"placeholders": {"time": {"type": "String"}}},
+  "assessmentOpensAt": "Opens {time}",
+  "@assessmentOpensAt": {"placeholders": {"time": {"type": "String"}}},
+  "assessmentClosedAt": "Closed {time}",
+  "@assessmentClosedAt": {"placeholders": {"time": {"type": "String"}}},
+  "assessmentClosesAt": "Closes {time}",
+  "@assessmentClosesAt": {"placeholders": {"time": {"type": "String"}}},
+  "assessmentResultsHeld": "Score shown after the quiz closes",
+  "staffQuizStatusArchived": "Archived",
+  "assessmentNegativeMarking": "Negative marking: wrong answers lose marks",
+  "assessmentResultsHeldUntil": "Score shown {time}",
+  "@assessmentResultsHeldUntil": {"placeholders": {"time": {"type": "String"}}}
+}

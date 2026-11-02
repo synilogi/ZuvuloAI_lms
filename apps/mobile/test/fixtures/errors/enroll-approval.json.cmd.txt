@@ -1,0 +1,4 @@
+Captured 2026-09-23T12:03:40Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /learning/courses/cmudqd8g30035mmgzwtgr0mcl/enroll student errors/enroll-approval.json
+HTTP status: 409
+Tokens and e-mail addresses scrubbed.

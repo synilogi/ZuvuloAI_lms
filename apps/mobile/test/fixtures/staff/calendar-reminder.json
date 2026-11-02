@@ -1,0 +1,15 @@
+{
+  "event": {
+    "id": "cmuny9kh50233mmt97aaznv4q",
+    "type": "reminder",
+    "title": "Fixture reminder — prepare the chart pack",
+    "description": "Print the chart pack before the class.",
+    "timing": "timed",
+    "startsAt": "2026-10-08T09:30:00.000Z",
+    "durationMin": 30,
+    "audience": "me",
+    "ownerId": "cmumqigs9000pmmos1tduws1f",
+    "notifyMin": 60
+  },
+  "editable": true
+}

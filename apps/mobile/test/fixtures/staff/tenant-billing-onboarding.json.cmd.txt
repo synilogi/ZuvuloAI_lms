@@ -1,0 +1,6 @@
+Constructed 2026-10-03 (constructed-from-source: the local contract server was not running, so this is NOT a capture).
+Derived from the captured staff/tenant-billing-none.json (never subscribed) with the two fields the
+backend added since: `trialAvailable: true` (apps/api/src/lib/billingViews.ts → subscriptions.ts
+trialAvailable) and `enforced: true` (ENTITLEMENT_ENFORCEMENT on). Everything else is the capture.
+Replace with: tool/capture_fixture.sh GET /tenant/billing admin staff/tenant-billing-onboarding.json
+when the server is up on a freshly seeded academy with enforcement on.

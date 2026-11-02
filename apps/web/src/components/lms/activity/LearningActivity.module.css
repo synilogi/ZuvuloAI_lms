@@ -1,0 +1,188 @@
+.root {
+  container-type: inline-size;
+}
+.layout {
+  display: grid;
+  gap: var(--s-6);
+}
+@container (min-width: 760px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--s-7);
+    align-items: start;
+  }
+}
+
+/* ─── Study rhythm ─── */
+.rhythm {
+  margin: 0;
+}
+.rhythmHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.figure {
+  display: flex;
+  flex-direction: column;
+}
+.figureValue {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-numeric);
+}
+.figureLabel {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.figureAside {
+  font-size: var(--fs-caption);
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.plot {
+  position: relative;
+  height: 148px;
+  padding-bottom: 22px;
+}
+.goalArea {
+  position: absolute;
+  inset: 0 0 22px 0;
+  pointer-events: none;
+}
+.goal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px dashed var(--border-strong);
+}
+.goalLabel {
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  font-size: 10.5px;
+  color: var(--faint);
+  background: var(--bg);
+  padding-left: 6px;
+}
+
+.bars {
+  list-style: none;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+}
+.barCol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 22px;
+  cursor: default;
+}
+.bar {
+  width: min(28px, 70%);
+  min-height: 2px;
+  border-radius: 4px 4px 1px 1px;
+  background: color-mix(in srgb, var(--accent) 42%, var(--surface-2));
+  transition:
+    height var(--t-progress),
+    background var(--t-fast);
+}
+.barCol:hover .bar {
+  background: color-mix(in srgb, var(--accent) 62%, var(--surface-2));
+}
+.today,
+.barCol:hover .today {
+  background: var(--accent);
+}
+.zero {
+  height: 2px;
+  background: var(--border-strong);
+  border-radius: 1px;
+}
+.day {
+  position: absolute;
+  bottom: 0;
+  font-size: var(--fs-label);
+  color: var(--faint);
+}
+.dayToday {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.tip {
+  position: absolute;
+  bottom: calc(100% - 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-tooltip);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--r-xs);
+  background: var(--text);
+  color: var(--surface);
+  font-size: var(--fs-meta);
+  white-space: nowrap;
+  box-shadow: var(--sh-md);
+  pointer-events: none;
+  animation: global(om-fade) 120ms ease both;
+}
+.tip strong {
+  font-weight: 600;
+  font-size: var(--fs-caption);
+}
+
+/* ─── Feed ─── */
+.feed {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.event {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+.event:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.eventText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.eventTitle {
+  font-size: var(--fs-body-sm);
+  line-height: 1.45;
+}
+.eventVerb {
+  color: var(--muted);
+}
+.eventContext {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+}
+.eventTime {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+  white-space: nowrap;
+}

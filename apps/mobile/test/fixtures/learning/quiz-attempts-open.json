@@ -1,0 +1,29 @@
+{
+  "attempts": [],
+  "standing": {
+    "quizId": "cmvoydm15007jmmrotrx5oxax",
+    "serverNow": "2026-10-26T07:46:37.289Z",
+    "window": "open",
+    "attemptsAllowed": 2,
+    "attemptsUsed": 1,
+    "passed": false,
+    "openSession": {
+      "id": "cmvoydpgz000dmmtfl72u5oqz",
+      "quizId": "cmvoydm15007jmmrotrx5oxax",
+      "attemptNo": 1,
+      "status": "active",
+      "startedAt": "2026-10-26T07:46:37.229Z",
+      "deadlineAt": "2026-10-26T08:01:37.229Z",
+      "serverNow": "2026-10-26T07:46:37.289Z",
+      "remainingSec": 899,
+      "answers": {
+        "q1": [
+          "b"
+        ]
+      },
+      "answersSeq": 1,
+      "savedAt": "2026-10-26T07:46:37.249Z"
+    },
+    "canStart": true
+  }
+}

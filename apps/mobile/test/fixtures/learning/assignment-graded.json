@@ -1,0 +1,46 @@
+{
+  "assignment": {
+    "id": "cmum8kcfo007tmmzwozrjpi3v",
+    "courseId": "cmum8kc7v001rmmzwxpi3c713",
+    "chapterId": "cmum8kc870021mmzw9s40zk57",
+    "lessonId": "cmum8kc8f0029mmzwf364wgp1",
+    "title": "Your first assignment: reading a friend’s chart",
+    "instructions": "Cast a birth chart for someone you know (with their permission) and write a half-page summary of their planetary placements — sign, house and one observation per planet.",
+    "attachments": [],
+    "format": "chart",
+    "due": {
+      "kind": "relative",
+      "days": 7
+    },
+    "acceptsLate": true,
+    "latePenalty": 10,
+    "rubric": [],
+    "maxScore": 100,
+    "passMark": 60,
+    "status": "published",
+    "createdAt": "2026-09-29T05:28:42.229Z",
+    "updatedAt": "2026-09-29T05:28:42.229Z"
+  },
+  "courseTitle": "Foundations of Vedic Astrology",
+  "chapterTitle": "Signs and Houses",
+  "lessonId": "cmum8kc8f0029mmzwf364wgp1",
+  "state": "graded",
+  "dueAt": "2026-10-06T05:53:31.314Z",
+  "submission": {
+    "id": "cmum8kcfu007xmmzwz25ncmye",
+    "assignmentId": "cmum8kcfo007tmmzwozrjpi3v",
+    "studentId": "cmum8kbu2000xmmzwgfj37kut",
+    "attempt": 1,
+    "submittedAt": "2026-09-27T05:28:42.233Z",
+    "late": false,
+    "text": "Sun in Leo in the 10th house, Moon in Rohini in the 4th... (sample submission)",
+    "files": [],
+    "review": {
+      "status": "graded",
+      "scores": {},
+      "points": 82,
+      "score": 82,
+      "feedback": "Clear reading of the ascendant. Say more about the Moon’s nakshatra next time."
+    }
+  }
+}

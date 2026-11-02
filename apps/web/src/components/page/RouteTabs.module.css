@@ -1,0 +1,59 @@
+/* The shell's pill tablist, for navigation between sub-pages */
+.track {
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--border);
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  font-size: var(--fs-ui);
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background var(--t-fast),
+    color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+.tab:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+.active,
+.active:hover {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow:
+    var(--sh-sm),
+    0 0 0 1px var(--border);
+}
+:global(:root[data-theme='dark']) .active {
+  background: var(--surface-3);
+}
+.count {
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767px) {
+  .tab {
+    min-height: var(--touch);
+    padding: 0 14px;
+  }
+}

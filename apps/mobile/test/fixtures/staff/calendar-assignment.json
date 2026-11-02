@@ -1,0 +1,62 @@
+{
+  "event": {
+    "id": "assignment-cmuny9t09023bmmt9bqtkbn2k",
+    "type": "assignment",
+    "title": "Fixture assignment — dated deadline",
+    "timing": "moment",
+    "startsAt": "2026-10-20T18:30:00.000Z",
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "source": {
+      "kind": "assignment",
+      "id": "cmuny9t09023bmmt9bqtkbn2k"
+    }
+  },
+  "courseTitle": "Foundations of Vedic Astrology",
+  "editable": false,
+  "due": {
+    "learners": 17,
+    "submitted": 0
+  },
+  "learnersDue": [
+    {
+      "id": "cmumqiibf00cgmmoselil2ixr",
+      "name": "Gaurav Joshi",
+      "submitted": false
+    },
+    {
+      "id": "cmumqii2800aymmosszurxm5k",
+      "name": "Suresh Reddy",
+      "submitted": false
+    },
+    {
+      "id": "cmumqijk600immmosop9rawbs",
+      "name": "Imran Kulkarni",
+      "submitted": false
+    },
+    {
+      "id": "cmumqihlp008dmmosbglzi65k",
+      "name": "Aditi Kulkarni",
+      "submitted": false
+    },
+    {
+      "id": "cmumqiixo00fammos57a4m3ce",
+      "name": "Manish Patel",
+      "submitted": false
+    },
+    {
+      "id": "cmumqijss00jqmmosmld2xo1h",
+      "name": "Vivek Banerjee",
+      "submitted": false
+    },
+    {
+      "id": "cmumqihzx00ahmmosu8kuqpra",
+      "name": "Kavya Reddy",
+      "submitted": false
+    },
+    {
+      "id": "cmumqij6p00ghmmosaagkqpyl",
+      "name": "Suresh Ghosh",
+      "submitted": false
+    }
+  ]
+}

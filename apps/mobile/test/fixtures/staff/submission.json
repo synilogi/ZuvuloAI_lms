@@ -1,0 +1,54 @@
+{
+  "submission": {
+    "id": "cmumqihj9007xmmos74j4712i",
+    "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+    "studentId": "cmumqigxx000xmmossb0hdlxp",
+    "attempt": 1,
+    "submittedAt": "2026-09-27T13:51:08.612Z",
+    "late": false,
+    "text": "Sun in Leo in the 10th house, Moon in Rohini in the 4th... (sample submission)",
+    "files": [],
+    "review": {
+      "status": "waiting",
+      "scores": {},
+      "feedback": ""
+    }
+  },
+  "assignment": {
+    "id": "cmumqihj3007tmmosfjcqkxfs",
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "chapterId": "cmumqihbu0021mmos6bi0tip1",
+    "lessonId": "cmumqihc20029mmos6t7kl916",
+    "title": "Your first assignment: reading a friend’s chart",
+    "instructions": "Cast a birth chart for someone you know (with their permission) and write a half-page summary of their planetary placements — sign, house and one observation per planet.",
+    "attachments": [],
+    "format": "chart",
+    "due": {
+      "kind": "relative",
+      "days": 7
+    },
+    "acceptsLate": true,
+    "latePenalty": 10,
+    "rubric": [],
+    "maxScore": 100,
+    "passMark": 60,
+    "status": "published",
+    "createdAt": "2026-09-29T13:51:08.608Z",
+    "updatedAt": "2026-09-29T13:51:08.608Z"
+  },
+  "courseTitle": "Foundations of Vedic Astrology",
+  "chapterTitle": "Signs and Houses",
+  "student": {
+    "id": "cmumqigxx000xmmossb0hdlxp",
+    "name": "Ananya Rao",
+    "email": "user@example.test",
+    "city": "Bengaluru",
+    "progress": 38,
+    "enrolledAt": "2026-08-31T06:48:31.501Z"
+  },
+  "queue": {
+    "position": 1,
+    "total": 2,
+    "nextId": "cmunm8zde001dmmt9dswkl906"
+  }
+}

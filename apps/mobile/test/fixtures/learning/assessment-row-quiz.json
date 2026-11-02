@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cmvoydm15007jmmrotrx5oxax",
+    "lessonId": "cmvoydltn001zmmroczqbyrwj",
+    "courseId": "cmvoydlte001rmmro0lh7xmub",
+    "courseTitle": "Maths Foundations for Classes 6–8",
+    "title": "Integers: check your understanding",
+    "questions": 3,
+    "durationMin": 15,
+    "passMark": 70,
+    "attemptsAllowed": 2,
+    "attemptsUsed": 1,
+    "state": "failed",
+    "score": 33,
+    "window": "open",
+    "negativeMarking": false
+  }
+]

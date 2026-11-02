@@ -1,0 +1,25 @@
+.step {
+  display: grid;
+  gap: var(--s-4);
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  color: var(--accent-ink);
+}
+.codeInput {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  letter-spacing: 0.4em;
+  text-align: center;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-2);
+}

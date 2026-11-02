@@ -1,0 +1,137 @@
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.order {
+  margin: var(--s-1) 0 0;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.company {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-body-sm);
+  font-style: normal;
+  color: var(--muted);
+}
+.company strong {
+  color: var(--text);
+}
+.refunded {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--s-3) var(--s-5);
+  margin: 0;
+}
+.facts dt {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.facts dd {
+  margin: 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.reference {
+  font-variant-numeric: tabular-nums;
+}
+.lines {
+  width: 100%;
+  border-collapse: collapse;
+}
+.lines th {
+  padding: var(--s-2) 0;
+  font-weight: 400;
+  text-align: start;
+}
+.lines td {
+  padding: var(--s-2) 0;
+  text-align: end;
+  white-space: nowrap;
+}
+.lines tbody tr {
+  border-top: 1px solid var(--border);
+}
+.lines tfoot tr {
+  border-top: 2px solid var(--text);
+}
+.lines tfoot th,
+.lines tfoot td {
+  font-weight: 700;
+}
+.note {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+
+/* The paper: black on white, no card around it. The page's own furniture is taken away in styles/base.css. */
+@media print {
+  .page {
+    max-width: none;
+  }
+  .sheet {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    color: #000;
+  }
+  .order,
+  .company,
+  .company strong,
+  .facts dt,
+  .note {
+    color: #000;
+  }
+  .lines tbody tr,
+  .refunded {
+    border-color: #000;
+  }
+  .lines tfoot tr {
+    border-top-color: #000;
+  }
+}

@@ -1,0 +1,852 @@
+{
+  "project": "SyniastroLMS SaaS — Subscriptions, Billing & Entitlements",
+  "scope": "FULL_STACK",
+  "spec": "subscriptions.md",
+  "permits": [
+    "backend code and services",
+    "database schema and migrations",
+    "tenant architecture",
+    "authentication and authorization changes",
+    "payment provider integration",
+    "webhooks",
+    "background jobs"
+  ],
+  "notes": "Separate from .claude/modules.json (scope UI_ONLY), which is complete. Read .claude/saas/subscriptions.md §0 before starting: it is the scope permission this phase runs under. Work one module at a time in dependency order; a module is completed only when its database, backend, API, frontend integration, tests and audit entries are all in place.",
+  "verification": [
+    "npm run typecheck",
+    "npm run lint",
+    "npm test",
+    "npm run build",
+    "npm run format:check",
+    "apps/api test suite"
+  ],
+  "modules": [
+    {
+      "id": "SAAS-000",
+      "name": "Tenant Foundation",
+      "phase": "A",
+      "priority": 0,
+      "status": "completed",
+      "dependencies": [],
+      "spec": "subscriptions.md#4-core-entities",
+      "sections": [
+        "4 Tenant",
+        "20",
+        "37",
+        "39",
+        "40"
+      ],
+      "notes": "Tenant model (id, name, slug, status, owner, timestamps) with unique slug. Tenant context derived from the authenticated server session, never from a client-supplied tenantId. Tenant-scoped query boundary and indexes on every tenant-owned table (courses, lessons, students, instructors, enrollments, certificates). Backfill migration that makes the existing single academy tenant #1 and assigns every existing record to it. Enforcement stays behind a flag until the backfill is verified. The existing 'admin' role is NOT renamed to tenantAdmin in this module.",
+      "doneWhen": [
+        "Every tenant-owned table has a tenant FK and a tenant-scoped index",
+        "Changing an id in a URL cannot read or mutate another tenant's record",
+        "Existing records all carry a valid tenant relationship before enforcement is switched on",
+        "Cross-tenant access tests pass"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-001",
+      "name": "Plan Tables & Versioning",
+      "phase": "B",
+      "priority": 1,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-000"
+      ],
+      "spec": "subscriptions.md#4-core-entities",
+      "sections": [
+        "4 Plan",
+        "4 Plan versioning",
+        "26",
+        "28",
+        "37"
+      ],
+      "notes": "Database-backed plans replacing the in-memory fixtures from LMS-019: name, code (unique), description, status (draft/active/archived), displayOrder, monthlyPrice, annualPrice, currency, trialDays, archivedAt. Immutable/versioned commercial configuration so a price edit never rewrites a historical subscription or invoice. Money moves to the smallest currency unit (paise) in this module, in one deliberate migration — the prototype stores whole rupees. Port validatePlan from packages/domain/src/subscription.ts to the API and keep the two in sync.",
+      "doneWhen": [
+        "Plan codes are unique at the database level",
+        "An archived plan cannot be chosen for a new subscription but existing ones keep it",
+        "Editing a plan's price leaves every historical record's terms untouched",
+        "Amounts are integers in the smallest currency unit throughout"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-002",
+      "name": "Feature Catalogue & Limits",
+      "phase": "B",
+      "priority": 2,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-001"
+      ],
+      "spec": "subscriptions.md#features-and-entitlements",
+      "sections": [
+        "4 Features and entitlements",
+        "4 Usage limits",
+        "42"
+      ],
+      "notes": "Central entitlement catalogue (courses.manage, assessments.manage, certificates.manage, live_classes, reports.basic, reports.advanced, analytics.advanced, custom_branding, priority_support) and limit catalogue (learners.max, instructors.max, courses.max, storage.bytes, live_classes.max, admin_accounts.max), both as data with per-plan grants. Produce the §42 plan enforcement matrix as the source of truth, with every permission key verified against packages/domain/src/permission.ts. No plan-name checks anywhere in the codebase.",
+      "doneWhen": [
+        "No `plan === \"...\"` comparison exists anywhere in the application",
+        "The enforcement matrix is written down and every permission key in it is real",
+        "A plan's features and limits are rows, not code"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-003",
+      "name": "Entitlement Service",
+      "phase": "B",
+      "priority": 3,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-002"
+      ],
+      "spec": "subscriptions.md#22-entitlement-service",
+      "sections": [
+        "22",
+        "33",
+        "41"
+      ],
+      "notes": "getTenantEntitlements, hasFeature, getLimit, getUsage, canConsume as the single way any module asks about a plan. Authorization order is fixed: authenticated -> role/permission -> tenant isolation -> subscription/entitlement -> operation. Entitlement never replaces authorization; both must pass (admin permission courses.edit = true AND entitlement courses.manage = false => DENIED). No controller reads subscription tables directly.",
+      "doneWhen": [
+        "No controller queries subscription or plan tables directly",
+        "Permission-denied and entitlement-denied are distinguishable in the error model",
+        "Unit tests cover both-pass, permission-only and entitlement-only cases"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-004",
+      "name": "Subscription Model & State Machine",
+      "phase": "C",
+      "priority": 4,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-003"
+      ],
+      "spec": "subscriptions.md#5-subscription-model",
+      "sections": [
+        "5",
+        "6",
+        "9",
+        "19"
+      ],
+      "notes": "Subscription table (tenantId, planId + version, status, billingCycle, currency, amount, period start/end, cancelAtPeriodEnd, canceledAt, cancellationReason, gracePeriodEndAt, provider references, timestamps) and the seven statuses trialing/active/past_due/paused/canceling/canceled/expired. Transitions enforced in the backend; an arbitrary status write is refused. Subscription lifecycle event log written on every transition, with tenant, subscription, actor/source, event, timestamp and metadata. Document the exact allowed transitions before production.",
+      "doneWhen": [
+        "A status can only change through a named transition, never by direct write",
+        "Every transition writes a lifecycle event",
+        "Unit tests cover every edge of the state machine, including refused transitions"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-005",
+      "name": "Trials & Grace Period",
+      "phase": "C",
+      "priority": 5,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-004"
+      ],
+      "spec": "subscriptions.md#7-trial",
+      "sections": [
+        "7",
+        "8"
+      ],
+      "notes": "Trial configuration from the plan; trialStartAt, trialEndAt and expiry decided entirely server-side — the frontend clock is never trusted. Repeat trials for the same tenant are prevented unless explicitly allowed. Grace period after a failed payment with a configurable duration, stored timestamps and stored reasons: past_due -> retry -> success/active, or retries exhausted -> grace -> restricted/expired.",
+      "doneWhen": [
+        "Changing the client clock cannot extend a trial",
+        "A tenant cannot start a second trial unless the rule allows it",
+        "Grace duration is configuration, not a constant in code",
+        "Trial-expiry and grace-expiry unit tests pass"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-006",
+      "name": "Upgrade, Downgrade, Cancellation & Reactivation",
+      "phase": "C",
+      "priority": 6,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-005"
+      ],
+      "spec": "subscriptions.md#10-upgrade",
+      "sections": [
+        "10",
+        "11",
+        "12",
+        "45"
+      ],
+      "notes": "Write down and implement the upgrade policy: immediate vs next-cycle, proration, effective date, payment requirement, when entitlements activate. Start with the safe model — entitlements activate only after confirmed payment, never on a frontend callback. Downgrade does not delete data: it takes effect per policy (usually next period), existing data stays, new usage beyond the new limit is restricted, and the tenant is told about the conflict. Cancel immediately or at period end, resume before the effective date; record actor, timestamp, reason and effective date. A fully canceled subscription is replaced by a new one rather than mutated.",
+      "doneWhen": [
+        "The upgrade policy is documented before it is coded",
+        "A downgrade with usage over the new limit keeps the data and restricts new usage",
+        "Cancel/resume records actor, timestamp, reason and effective date",
+        "Upgrade and downgrade unit tests pass, including the limit-conflict case"
+      ],
+      "completedAt": "2026-09-21"
+    },
+    {
+      "id": "SAAS-007",
+      "name": "Money, Tax & Currency",
+      "phase": "D",
+      "priority": 7,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-001"
+      ],
+      "spec": "subscriptions.md#26-money-handling",
+      "sections": [
+        "26",
+        "27",
+        "28"
+      ],
+      "notes": "All monetary arithmetic in the smallest currency unit with integers; no floating point in any financial total. The client never controls the payable amount — the server calculates it from the plan. Tax kept separate from base pricing (type, percentage, amount, inclusive flag, billing address, GST/registration where applicable), with no country-specific rules baked into generic subscription logic. Currency belongs to the price/subscription/invoice context; INR first, but the model must not block future currencies.",
+      "doneWhen": [
+        "No float arithmetic reaches a stored total",
+        "A client-supplied amount is ignored and the server figure is used",
+        "Tax calculation unit tests pass",
+        "Adding a second currency needs no schema change"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-008",
+      "name": "Payment Records & Invoices",
+      "phase": "D",
+      "priority": 8,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-006",
+        "SAAS-007"
+      ],
+      "spec": "subscriptions.md#14-payment-records",
+      "sections": [
+        "14",
+        "15",
+        "16",
+        "29",
+        "37",
+        "38"
+      ],
+      "notes": "Immutable payment records (tenantId, subscriptionId, provider, providerPaymentId, amount, currency, status pending/paid/failed/refunded/partially_refunded, failureCode, failureMessage, paidAt, refundedAt) — a successful payment is never overwritten to represent a later event. Invoices with unique invoice numbers, billing period, subtotal, tax, total, status and provider reference; a plan change never rewrites a historical invoice. Payment methods stored only as provider-safe references plus masked display metadata (Visa •••• 4242, UPI) — never raw card details. Refunds are separate financial events, full or partial, and never delete the original payment. No destructive cascades.",
+      "doneWhen": [
+        "No code path updates or deletes a paid payment",
+        "Invoice numbers are unique at the database level",
+        "No raw card data exists anywhere in the schema or logs",
+        "A refund leaves the original payment row intact"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-009",
+      "name": "Payment Provider Abstraction",
+      "phase": "D",
+      "priority": 9,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-008"
+      ],
+      "spec": "subscriptions.md#13-payment-provider-architecture",
+      "sections": [
+        "13",
+        "43",
+        "44",
+        "45"
+      ],
+      "notes": "A PaymentProvider interface (createCustomer, createSubscription, cancelSubscription, pauseSubscription, resumeSubscription, changePlan, createPayment, refundPayment, verifyWebhook) with one adapter chosen from the business requirement — do not integrate two gateways without one. Implements the §43 payment flow end to end, with the rule that a frontend success callback alone never activates a subscription, and the §44 failed-payment flow. Credentials come from secrets, never from the repository.",
+      "doneWhen": [
+        "The LMS contains no direct gateway SDK call outside the adapter",
+        "Activating a subscription requires a verified provider event, not a browser callback",
+        "The failed-payment path records the failure and moves to past_due",
+        "No secret is committed"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-010",
+      "name": "Webhooks & Idempotency",
+      "phase": "E",
+      "priority": 10,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-009"
+      ],
+      "spec": "subscriptions.md#17-webhooks",
+      "sections": [
+        "17",
+        "18",
+        "19"
+      ],
+      "notes": "POST /webhooks/:provider/subscription. Every event: verify the signature, validate the payload, identify the event, enforce idempotency, persist the receipt, update internal state transactionally, record audit information, return the right response. An unsigned webhook is never trusted. Webhook events persisted with provider, providerEventId, eventType, receivedAt, processedAt, status and payload reference, under a unique constraint on provider + providerEventId, so a replayed event repeats no side effect. Lifecycle events written from webhook processing, not from the UI.",
+      "doneWhen": [
+        "A forged or unsigned webhook is rejected",
+        "The same providerEventId delivered twice causes exactly one state change",
+        "Webhook state updates are transactional",
+        "Forged-webhook, duplicate-webhook and replay tests pass"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-011",
+      "name": "Usage Tracking & Enforcement",
+      "phase": "F",
+      "priority": 11,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-003",
+        "SAAS-004"
+      ],
+      "spec": "subscriptions.md#23-usage-tracking",
+      "sections": [
+        "21",
+        "23"
+      ],
+      "notes": "Usage for learners, instructors, courses, storage, admin accounts and live sessions, with a documented decision per metric (live-calculated, cached, counter-based or reconciled). Concurrency-safe: two simultaneous requests must not both pass a check against the same stale usage and push the tenant over a hard limit. Restricted mode on expiry with per-operation policies for read, create, update, publishing, live classes, advanced reports, storage and learner/instructor creation — existing data stays per policy and the tenant is shown an upgrade prompt rather than a blank wall.",
+      "doneWhen": [
+        "A concurrency test cannot exceed a hard limit",
+        "Each metric's calculation strategy is written down",
+        "Restricted mode blocks creation without destroying access to existing data",
+        "Usage enforcement integration tests pass"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-012",
+      "name": "Background Jobs",
+      "phase": "F",
+      "priority": 12,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-010",
+        "SAAS-011"
+      ],
+      "spec": "subscriptions.md#30-background-jobs",
+      "sections": [
+        "30"
+      ],
+      "notes": "trial-expiry-check, subscription-renewal-check, past-due-retry, grace-period-expiry, scheduled-cancellation, usage-reconciliation, webhook-retry and invoice-generation. Every job idempotent, retryable, observable and safe to run more than once — running a job twice must not double-charge, double-cancel or double-notify. Reuse the existing scheduler from the notification and live-class work (phases F10–F12) rather than adding a second one.",
+      "doneWhen": [
+        "Running each job twice in a row changes nothing the second time",
+        "Job failures are observable",
+        "The scheduler is the existing one, not a new mechanism"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-013",
+      "name": "Platform & Tenant APIs",
+      "phase": "D/F",
+      "priority": 13,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-008",
+        "SAAS-011"
+      ],
+      "spec": "subscriptions.md#32-api-design",
+      "sections": [
+        "24",
+        "25",
+        "32",
+        "33",
+        "34"
+      ],
+      "notes": "Super Admin platform endpoints (plans CRUD, archive/restore, subscriptions, payments, invoices) and Tenant Admin endpoints (subscription, usage, entitlements, invoices, payments, upgrade, downgrade, cancel, resume), following the conventions in docs/05-API-SPECIFICATION.md. Tenant Admin can never manage platform plans or another tenant. Stable machine-readable errors (SUBSCRIPTION_REQUIRED, SUBSCRIPTION_PAST_DUE, SUBSCRIPTION_EXPIRED, FEATURE_NOT_INCLUDED, LIMIT_REACHED, PAYMENT_REQUIRED, PAYMENT_FAILED, PLAN_UNAVAILABLE, INVALID_SUBSCRIPTION_STATE) that never leak provider or database internals.",
+      "doneWhen": [
+        "A Tenant Admin request for another tenant's subscription is refused",
+        "Every error is one of the documented codes",
+        "No provider or database detail appears in an error body",
+        "Subscription API integration tests pass"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-014",
+      "name": "Audit & Observability",
+      "phase": "H",
+      "priority": 14,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-013"
+      ],
+      "spec": "subscriptions.md#36-audit-requirements",
+      "sections": [
+        "36",
+        "48"
+      ],
+      "notes": "Extend the existing audit log (apps/api/src/lib/audit.ts) with plan.created/updated/archived/restored, subscription.created/plan_changed/cancel_requested/canceled/resumed/paused, payment.succeeded/failed/refunded, invoice.created/paid/failed, entitlement.changed and limit.changed. System and provider events identify themselves as such rather than borrowing a human actor. Observability for payment failures, webhook failures, subscription state changes, job failures, entitlement failures and limit violations. Payment secrets, webhook secrets, raw card data, passwords and tokens are never logged.",
+      "doneWhen": [
+        "Every sensitive mutation writes an audit entry naming its actor or source",
+        "A log sweep finds no secret, card number, password or token",
+        "Failures in payments, webhooks and jobs are all visible"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-015",
+      "name": "Frontend Integration",
+      "phase": "G",
+      "priority": 15,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-013"
+      ],
+      "spec": "subscriptions.md#24-tenant-admin-experience",
+      "sections": [
+        "24",
+        "25",
+        "34"
+      ],
+      "notes": "Replace services/mock/subscriptions.ts with a real http implementation of the existing SubscriptionService contract, so the LMS-019 screens keep their design and only change where the data comes from. Remove the prototype note and the 'same records in both API modes' wiring in services/http/httpServices.ts. Add the Tenant Admin view: current plan, status, cycle, renewal date, usage against limits, enabled features, invoices, payment history and upgrade options. Surface the §34 error codes as the states the screens already have (past due, expired, limit reached, feature not included).",
+      "doneWhen": [
+        "No screen reads a mock subscription fixture",
+        "mock mode still works for the demo, with the prototype note only where data really is invented",
+        "Tenant Admin sees their own subscription and cannot reach the platform screens",
+        "Every §34 error code renders as a real state, not a raw message"
+      ],
+      "completedAt": "2026-09-22"
+    },
+    {
+      "id": "SAAS-016",
+      "name": "Hardening, Migration Verification & Rollout",
+      "phase": "H",
+      "priority": 16,
+      "status": "blocked",
+      "dependencies": [
+        "SAAS-012",
+        "SAAS-014",
+        "SAAS-015"
+      ],
+      "spec": "subscriptions.md#35-security-requirements",
+      "sections": [
+        "35",
+        "38",
+        "46",
+        "47",
+        "49",
+        "50",
+        "53"
+      ],
+      "notes": "Security audit against §35, tenant isolation audit, payment audit, webhook replay tests, failure recovery and migration verification. Full test pass: unit (state transitions, pricing, entitlements, limits, trial expiry, grace, cancellation, upgrade, downgrade, tax, refunds, webhook idempotency), integration (tenant isolation, subscription APIs, payment records, webhook processing, entitlement and usage enforcement), security (cross-tenant access, forged tenant IDs, unauthorized plan changes, unauthorized refunds, forged and duplicate webhooks, expired-subscription bypass, client-modified price/plan/entitlement) and regression (the existing Super Admin, Admin, Instructor and Student workflows, the 239 tests and the route crawl in .claude/progress.md). Then the §49 deployment checklist and the §50 rollout: development, staging, internal tenant, limited production tenants, full rollout, with enforcement behind feature flags.",
+      "doneWhen": [
+        "Every item in §53 Definition of Done is true",
+        "Every security test in §47 passes",
+        "Existing LMS regression tests pass unchanged",
+        "Enforcement rollout is flag-controlled and reversible",
+        "Deployment is tested, including webhook retries and payment failures"
+      ],
+      "blockedReason": "Deployment has not been tested where Razorpay can reach the system. A human must deploy to a staging (or production, test-mode) server and configure the Razorpay webhook there: URL /api/webhooks/razorpay/subscription, and a secret set as RAZORPAY_WEBHOOK_SECRET. Only the account owner can create that credential, and the deploy is an outward action. Everything else, including a production-mode rehearsal with real Razorpay test payments, is done."
+    },
+    {
+      "id": "SAAS-017",
+      "name": "Multi-Gateway Payments & Runtime Gateway Configuration",
+      "phase": "D",
+      "priority": 17,
+      "status": "blocked",
+      "startedAt": "2026-09-23",
+      "dependencies": [
+        "SAAS-009",
+        "SAAS-010",
+        "SAAS-013",
+        "SAAS-014",
+        "SAAS-015"
+      ],
+      "spec": "subscriptions.md#13-payment-provider-architecture",
+      "sections": [
+        "13",
+        "14",
+        "17",
+        "18",
+        "29",
+        "35",
+        "36",
+        "43",
+        "48"
+      ],
+      "notes": "Product decision D11 (23 Sep 2026): more than one payment gateway, chosen at runtime by the Super Admin. A provider-neutral PaymentProvider with a registry and factory (Razorpay, VyaparGateway, and room for more) that subscription, invoice and payment logic depend on. Gateway credentials encrypted at rest in the database (PaymentGatewayConfig), the key a deployment secret, never returned or logged. Exactly one active gateway, enabled and configured; switching it affects only new payment attempts — an invoice keeps the gateway its first checkout used, and confirmations, webhooks, refunds and reconciliation always use the gateway recorded on the order or payment. Super Admin API and screen to configure, enable or disable, test and activate gateways, all audited. Razorpay moves from environment variables to the database. VyaparGateway is implemented only from its actual API contract.",
+      "doneWhen": [
+        "Business logic reaches a gateway only through the provider abstraction and factory",
+        "Gateway credentials are encrypted at rest, never in source, env files, API responses, logs or audit entries",
+        "Exactly one active gateway, enabled and configured, is enforced in the database and the API",
+        "Switching the active gateway affects only new payments; existing invoices, orders, webhooks and refunds keep their original gateway",
+        "Razorpay runs from database configuration with its webhook secret separate from its API secret",
+        "VyaparGateway is implemented from its actual API contract, with verified webhooks",
+        "Super Admin can configure, enable, disable, test and activate gateways; every change is audited",
+        "All existing payment, subscription, webhook, first-purchase and refund tests pass unchanged in behaviour"
+      ],
+      "blockedReason": "VyaparGateway's API contract is not published. Its public pages describe two different, incomplete APIs: POST /api/v1/create_order on one, POST /v1/intents with GET /api/intents/{id}/status on another. Neither documents response fields, the authentication header, refunds, or exactly what the webhook signature (x-vyapargateway-signature, HMAC-SHA256) covers. The /docs endpoint returns Not Found, and there is no SDK. The full reference is only in the merchant dashboard. A human with a VyaparGateway merchant account must supply the API reference or OpenAPI spec, test-mode credentials, and the webhook signature scheme. Everything else in SAAS-017 is implemented and verified; VyaparGateway is registered as not implemented and cannot be configured, enabled or activated."
+    },
+    {
+      "id": "SAAS-018",
+      "name": "Learner Assessment Integrity",
+      "phase": "E",
+      "priority": 18,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-013"
+      ],
+      "spec": "subscriptions.md#47-security-tests",
+      "sections": [
+        "35",
+        "47"
+      ],
+      "notes": "Backend security findings (QA pass 23 Sep 2026; Flutter plan §28.4). The learner lesson endpoint sends quiz answer keys (correct, acceptedAnswers, explanation) before an attempt. Strip them from every learner-facing payload; return the attempt result to the learner only as the quiz showResults setting allows (Flutter B7); enforce the quiz time limit on the server rather than trusting client-reported duration; enforce assignment format and word limit on submit and refuse file ids the learner does not own. Backend only — no web or mobile change.",
+      "doneWhen": [
+        "No learner-facing response carries correct, acceptedAnswers or explanation before an attempt, proven by a test that walks every learner endpoint",
+        "The attempt response returns per-question results only when showResults allows it, and never the key when it is score-only or hidden",
+        "The quiz time limit is decided: server enforcement needs an exam-mode product decision, recorded in progress.md",
+        "Assignment submissions are refused when they break the format or word limit, or name a file the learner does not own",
+        "Staff endpoints still return the full quiz for authoring"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-019",
+      "name": "Academy Lifecycle & Provisioning",
+      "phase": "E",
+      "priority": 19,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-013",
+        "SAAS-014"
+      ],
+      "spec": "subscriptions.md#3-tenant-model",
+      "sections": [
+        "3",
+        "4",
+        "21",
+        "35",
+        "36"
+      ],
+      "notes": "The platform has no way to create or manage an academy: tenants exist only through the migration and fixtures, Tenant.status (active|suspended|archived) is set and enforced nowhere, and a new academy has no levels, ranks, settings or certificate template, so it cannot create a course. Build a transactional provisioning service (tenant, first admin with the permission catalogue, settings, levels, ranks, default certificate template — derived from what the LMS requires, not the demo seed), Super Admin endpoints to create, view, update, suspend, reactivate and archive an academy and read its users, subscription and usage, and enforce tenant status on every request. Deactivation keeps every row. Backend only.",
+      "doneWhen": [
+        "POST /superadmin/tenants provisions an academy atomically — a failure at any step leaves no rows",
+        "A provisioned academy can immediately sign in its admin and create a category and a course",
+        "Super Admin can view, update, suspend, reactivate and archive an academy and read its users, subscription and usage",
+        "A suspended or archived academy is refused on every authenticated route and on its public surface, with a stable code, and keeps all its data",
+        "Every lifecycle change is audited; slugs are validated and unique; the default academy cannot be archived",
+        "Tenant isolation, billing and existing Super Admin tests pass unchanged"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-020",
+      "name": "Sessions: Logout, Revocation & Account Self-Service",
+      "phase": "E",
+      "priority": 20,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-019"
+      ],
+      "spec": "subscriptions.md#35-security-rules",
+      "sections": [
+        "35",
+        "47",
+        "48"
+      ],
+      "notes": "Flutter B1 and B3; docs/11 §24 known limitation. Tokens cannot be revoked and there is no logout endpoint, change-password or profile update for a signed-in account. Add server-side sessions carried in the token (sid) and checked on the per-request account read — POST /auth/logout, POST /auth/logout-all, change password (revokes every other session), profile update — and revoke sessions on password reset and deactivation. Tokens issued before this change stay valid until they expire, so existing web and mobile clients keep working. Refresh tokens (B2) are not added: they change the client contract and the 7-day lifetime stands.",
+      "doneWhen": [
+        "POST /auth/logout revokes the calling token only; POST /auth/logout-all revokes every session of the account",
+        "Changing or resetting a password revokes the other sessions and requires the current password to change it",
+        "Profile update changes name only through a validated schema; email and role cannot be changed there",
+        "A revoked session answers 401 on every protected route",
+        "Pre-existing tokens without a session id still work until expiry",
+        "Auth rate limits cover the new endpoints"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-021",
+      "name": "Notification Delivery: Email Worker, Device Tokens & Push",
+      "phase": "E",
+      "priority": 21,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-012",
+        "SAAS-020"
+      ],
+      "spec": "subscriptions.md#48-observability",
+      "sections": [
+        "36",
+        "48"
+      ],
+      "notes": "Email is written to the outbox and never delivered, retried or given a final status; there is no device-token registration and no push transport (Flutter B4). Add an email delivery worker behind a transport abstraction (outbox/log today; SMTP when configured) with attempts, backoff, final status and deduplication; device-token registration and unregistration endpoints bound to the session; and a push dispatcher behind a provider abstraction that sends a hint (notification id and category) for in-app notifications the recipient’s preferences allow. An FCM provider needs Firebase credentials — that live verification is blocked until they exist.",
+      "doneWhen": [
+        "Queued email is delivered by a scheduled worker with bounded retries, backoff, final status and an attempt count",
+        "The same message is not queued twice within its dedup window",
+        "POST/DELETE /notifications/devices register and remove a device token for the signed-in account, tenant-scoped, and sign-out removes the session’s tokens",
+        "Push delivery respects preferences and quiet hours, records its outcome, and never carries notification content beyond id and category",
+        "With no push provider configured, nothing fails and nothing is sent"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-022",
+      "name": "Job Leases & Multi-Instance Safety",
+      "phase": "E",
+      "priority": 22,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-012"
+      ],
+      "spec": "subscriptions.md#28-background-jobs",
+      "sections": [
+        "28",
+        "48"
+      ],
+      "notes": "The in-process scheduler runs every minute in every API process. With two instances each job would run twice at once. Add a database lease per job so only one instance runs a job at a time, taken atomically, expiring if its holder dies, and observable to the Super Admin.",
+      "doneWhen": [
+        "Two schedulers running concurrently never run the same job at the same time",
+        "A lease held by a dead process expires and is taken over",
+        "Lease state is visible in GET /superadmin/system",
+        "Existing billing and notification job tests pass unchanged"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-023",
+      "name": "Media Security",
+      "phase": "E",
+      "priority": 23,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-019"
+      ],
+      "spec": "subscriptions.md#47-security-tests",
+      "sections": [
+        "35",
+        "47"
+      ],
+      "notes": "Audit every media endpoint: upload authorization, type and size validation, tenant ownership, course and lesson ownership on download, delete authorization, and whether files are reachable without authorization. Fix what the audit finds and add regression tests.",
+      "doneWhen": [
+        "Every media endpoint has an authorization, validation and cross-tenant test",
+        "A learner can read only media attached to content they may open, or their own uploads",
+        "Files are never served from a guessable public path"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-024",
+      "name": "Backend Audit & Documentation",
+      "phase": "E",
+      "priority": 24,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-018",
+        "SAAS-019",
+        "SAAS-020",
+        "SAAS-021",
+        "SAAS-022",
+        "SAAS-023"
+      ],
+      "spec": "subscriptions.md#53-definition-of-done",
+      "sections": [
+        "47",
+        "53"
+      ],
+      "notes": "Endpoint-by-endpoint audit of the whole API (authentication, authorization, validation, tenant scope, errors, tests), the billing lifecycle test matrix, database indexes and delete behaviour, and the backend documentation brought up to date with the system as built.",
+      "doneWhen": [
+        "Every route is listed with its guard, validation, tenant scope and covering test, and gaps are fixed",
+        "Every billing scenario in the test matrix is covered by a named test",
+        "docs/04, docs/05, docs/10 and the README describe the system as built"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-025",
+      "name": "Entitlement Enforcement Readiness & Enablement",
+      "phase": "E",
+      "priority": 25,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-003",
+        "SAAS-011",
+        "SAAS-024"
+      ],
+      "spec": "subscriptions.md#21-subscription-enforcement",
+      "sections": [
+        "21",
+        "22",
+        "23",
+        "33",
+        "41",
+        "42",
+        "50"
+      ],
+      "notes": "Access-control audit (23 Sep 2026): layers 1–3 always enforced; subscription, entitlement and usage off because ENTITLEMENT_ENFORCEMENT is unset. Close the gaps first — instructor activation bypassing instructors.max, category writes with no explicit restricted-mode policy, restricted-mode reads that let an unsubscribed academy use features a lower paid tier does not have, analytics.advanced and priority_support with no route representation, the unused requireUnrestricted — then prove permission and subscription stay independent, run the full access matrix with enforcement on, and enable it in the development environment.",
+      "doneWhen": [
+        "Activating or reactivating an instructor is checked against instructors.max transactionally, and concurrent activations cannot exceed it",
+        "Category writes follow an explicit, documented restricted-mode policy",
+        "In restricted mode no academy can use a feature its last plan did not include; an unsubscribed academy is never more privileged than a subscribed lower tier",
+        "analytics.advanced and priority_support are represented as planned and service-level entitlements, not implied routes",
+        "requireUnrestricted is used or removed",
+        "Tests prove a plan never grants or restores a permission, and permission never bypasses a plan",
+        "The full access matrix and every subscription state pass with enforcement on",
+        "Enforcement is enabled for development with grace and retry configured, and every academy has a documented subscription state"
+      ],
+      "completedAt": "2026-09-23"
+    },
+    {
+      "id": "SAAS-026",
+      "name": "Self-Serve Admin Registration & Public Plans",
+      "phase": "F",
+      "priority": 26,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-019",
+        "SAAS-020",
+        "SAAS-025"
+      ],
+      "spec": "subscriptions.md#43-payment-flow",
+      "sections": [
+        "7",
+        "20",
+        "24",
+        "33",
+        "35",
+        "36",
+        "43"
+      ],
+      "notes": "Multi-admin SaaS gap analysis (3 Oct 2026): a customer can only become an Admin when the Super Admin provisions them. Build Get Started: organisation + admin account, email OTP verification, academy provisioned through lib/academies (one academy per admin, D1), then plan choice handing off to the existing trial (D21) and first-purchase checkout. Public read-only plan catalogue for the pricing page; the server calculates every price.",
+      "doneWhen": [
+        "GET /public/plans lists plans on sale with server prices, cycles, trial, features and limits; no auth; nothing private exposed",
+        "POST /signup/start validates organisation, admin name, email (platform-unique, D2), password and slug; stores a pending signup with a hashed code and hashed password; emails a 6-digit code",
+        "POST /signup/verify creates the academy and its owner admin in one transaction only for a correct, unexpired code; attempts are limited; a code works once; returns a session",
+        "POST /signup/resend has a cooldown; nothing reveals whether an email belongs to an existing account beyond the documented conflict",
+        "The new academy starts with no subscription; a paid plan activates only through verified payment; the trial path is the existing self-serve trial",
+        "Rate limits on every public signup route; audit entry academy.self_registered",
+        "Web /get-started wizard: account & organisation → verify code → choose plan (monthly/annual from /public/plans) → trial or billing checkout → admin dashboard; loading, error, empty states; mobile",
+        "API tests: happy path, duplicate email, duplicate slug, wrong code, expired code, attempts exhausted, replay, client-supplied tenantId/role ignored; web tests for the wizard logic"
+      ],
+      "completedAt": "2026-10-03"
+    },
+    {
+      "id": "SAAS-027",
+      "name": "SaaS Marketing Website & Contact Sales",
+      "phase": "F",
+      "priority": 27,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-026"
+      ],
+      "spec": "subscriptions.md#24-tenant-admin-experience",
+      "sections": [
+        "24",
+        "25",
+        "35"
+      ],
+      "notes": "The public site is one astrology academy's storefront. Convert it into the company's SaaS website: Home, Product/Features, Solutions, Pricing (live plans), How it works, Demo/Contact sales, About, FAQ, Help/Support, Privacy, Terms, Login, Get started. Contact/demo requests are stored server-side (no fake form) and appear to the Super Admin.",
+      "doneWhen": [
+        "Marketing chrome (header, mobile nav, footer) links every page; Get started goes to the registration wizard",
+        "Pricing reads /public/plans with a monthly/annual toggle and plan limits; falls back to a clear error state, never invented prices",
+        "POST /public/inquiries stores a validated, rate-limited demo/sales/support request; Super Admin can list it and change its status; audited",
+        "Privacy and Terms describe the platform as a SaaS provider with academies as customers",
+        "Every page responsive, accessible and free of console errors; web tests for the inquiry form and pricing"
+      ],
+      "completedAt": "2026-10-03"
+    },
+    {
+      "id": "SAAS-028",
+      "name": "Admin-Created Learners & Academy Join Links",
+      "phase": "F",
+      "priority": 28,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-026"
+      ],
+      "spec": "subscriptions.md#20-tenant-isolation",
+      "sections": [
+        "20",
+        "23",
+        "33",
+        "35"
+      ],
+      "notes": "An admin cannot add a student directly, and public learner sign-up always joins the host's default academy, so Admin B's learners cannot join Admin B. Add admin-created learners (invite email with set-password link, learners.max enforced) and a per-academy public join page /join/:slug. /auth/register stays unchanged for the Flutter app.",
+      "doneWhen": [
+        "POST /students creates a learner in the admin's own academy only, counted through withinLimit(learners.max), with an invitation to set a password; permission-gated and audited",
+        "GET /public/academies/:slug and POST /public/academies/:slug/register: an active academy only; the slug selects a public storefront, never authorises",
+        "Admin students page has Add student; settings show the academy join link",
+        "Tests: cross-academy (Admin A cannot read/modify Admin B learners), limit reached, suspended academy join refused"
+      ],
+      "completedAt": "2026-10-03"
+    },
+    {
+      "id": "SAAS-029",
+      "name": "Client-Centric Super Admin & Support Inbox",
+      "phase": "F",
+      "priority": 29,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-027"
+      ],
+      "spec": "subscriptions.md#25-super-admin-experience",
+      "sections": [
+        "25",
+        "36"
+      ],
+      "notes": "Product hierarchy is Super Admin → Admins (clients) → their users. Present academies as clients led by their owner admin, and give the Super Admin one inbox for sales inquiries and admin support requests.",
+      "doneWhen": [
+        "Super Admin navigation and list present each client as its admin + academy, with plan, status and usage",
+        "Admins can raise a support request from Help; it carries their academy from the server context; Super Admin inbox lists and resolves it",
+        "Tests: an admin sees only their own requests; a forged tenantId is ignored"
+      ],
+      "completedAt": "2026-10-03"
+    },
+    {
+      "id": "SAAS-030",
+      "name": "Sandbox Payment Gateway (non-production)",
+      "phase": "F",
+      "priority": 30,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-009",
+        "SAAS-010"
+      ],
+      "spec": "subscriptions.md#13-payment-provider-architecture",
+      "sections": [
+        "13",
+        "17",
+        "18",
+        "43",
+        "44",
+        "47"
+      ],
+      "notes": "Browser E2E cannot drive Razorpay's hosted checkout. Add a sandbox PaymentProvider (refused in production) with a hosted test checkout page offering success, failure and cancel, sending HMAC-signed webhooks through the normal webhook route, so the real server-side verification path is exercised end to end.",
+      "doneWhen": [
+        "Sandbox adapter implements PaymentProvider; registry refuses it when NODE_ENV=production",
+        "Success, failure and cancel outcomes reach the subscription only through verified checkout confirmation or signed webhook; duplicate webhooks idempotent",
+        "API tests for each outcome and for a forged signature"
+      ],
+      "completedAt": "2026-10-03"
+    },
+    {
+      "id": "SAAS-031",
+      "name": "Multi-Admin Live E2E & Isolation QA",
+      "phase": "F",
+      "priority": 31,
+      "status": "completed",
+      "dependencies": [
+        "SAAS-026",
+        "SAAS-027",
+        "SAAS-028",
+        "SAAS-029",
+        "SAAS-030"
+      ],
+      "spec": "subscriptions.md#47-testing",
+      "sections": [
+        "47",
+        "53"
+      ],
+      "notes": "The full live journey in a browser against the real API on its own database.",
+      "doneWhen": [
+        "Playwright: Super Admin login → create Admin A → Admin A login/dashboard → create student and instructor → create Admin B → Admin A cannot reach Admin B ids (API 404/403) → self-serve registration → plan purchase with success, failure and cancel → activation → logout/login → expired/inactive behaviour",
+        "Broad smoke crawl of every route per role with clean console",
+        "Full verification suite green; final report written"
+      ],
+      "completedAt": "2026-10-03"
+    }
+  ]
+}

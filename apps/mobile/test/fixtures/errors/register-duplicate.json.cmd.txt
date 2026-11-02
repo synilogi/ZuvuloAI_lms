@@ -1,0 +1,4 @@
+Captured 2026-09-23T07:12:55Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /auth/register none errors/register-duplicate.json '{"name":"Ananya Rao","email":"ananya@syniastrolms.test","password":"syniastrolms123"}'
+HTTP status: 409
+Tokens and e-mail addresses scrubbed.

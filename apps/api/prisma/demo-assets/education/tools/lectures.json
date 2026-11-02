@@ -1,0 +1,35 @@
+{
+  "rajasthan-integration": {
+    "course": "RAS Prelims Foundation Batch",
+    "slides": [
+      {"title": "Integration of Rajasthan: 7 stages", "lines": ["The princely states of Rajputana joined in seven", "stages between 18 March 1948 and 1 November 1956.", "", "30 March, the date Greater Rajasthan was formed in 1949,", "is celebrated as Rajasthan Diwas."]},
+      {"title": "Stages 1 to 3 (1948)", "lines": ["1. Matsya Union, 18 Mar 1948: Alwar, Bharatpur,", "   Dholpur, Karauli (and the Neemrana thikana)", "2. Rajasthan Union, 25 Mar 1948: capital Kota", "3. United State of Rajasthan, 18 Apr 1948: Udaipur joins"]},
+      {"title": "Stages 4 and 5 (1949)", "lines": ["4. Greater Rajasthan, 30 Mar 1949: Jaipur, Jodhpur,", "   Bikaner and Jaisalmer join; Jaipur becomes capital", "5. United State of Greater Rajasthan, 15 May 1949:", "   the Matsya Union merges"]},
+      {"title": "Stages 6 and 7 (1950, 1956)", "lines": ["6. 26 Jan 1950: Sirohi joins (except Abu and Delwara)", "7. 1 Nov 1956: Abu, Delwara, Ajmer-Merwara and", "   Sunel Tappa join; Sironj goes to Madhya Pradesh", "", "Rajasthan takes the shape we know today."]}
+    ]
+  },
+  "quadratic-equations": {
+    "course": "Class 10 Mathematics",
+    "slides": [
+      {"title": "Quadratic equations", "lines": ["Standard form: ax² + bx + c = 0, with a ≠ 0", "", "Example: x² − 5x + 6 = 0", "Factorise: (x − 2)(x − 3) = 0, so x = 2 or x = 3"]},
+      {"title": "The quadratic formula", "lines": ["x = (−b ± √D) / 2a,  where D = b² − 4ac", "", "For x² − 5x + 6 = 0: D = 25 − 24 = 1", "x = (5 ± 1) / 2 = 3 or 2"]},
+      {"title": "Nature of roots", "lines": ["D > 0: two distinct real roots", "D = 0: two equal real roots", "D < 0: no real roots"]}
+    ]
+  },
+  "percentage-shortcuts": {
+    "course": "Quantitative Aptitude",
+    "slides": [
+      {"title": "Percentage basics", "lines": ["x% of y = (x × y) / 100", "x% of y is always equal to y% of x", "", "Example: 16% of 25 = 25% of 16 = 4"]},
+      {"title": "Successive change", "lines": ["Two changes of a% and b% in a row give a net change of", "a + b + (a × b) / 100  (use − for a decrease)", "", "+20% then −10%: 20 − 10 − 2 = +8%"]},
+      {"title": "Percentage change", "lines": ["Change % = (new − old) / old × 100", "", "Price rises from ₹400 to ₹500:", "(500 − 400) / 400 × 100 = 25%"]}
+    ]
+  },
+  "fundamental-rights": {
+    "course": "Indian Polity and Constitution",
+    "slides": [
+      {"title": "Fundamental Rights: Part III", "lines": ["Part III of the Constitution, Articles 12 to 35.", "They can be enforced in court:", "Article 32 lets a citizen go straight to the Supreme Court."]},
+      {"title": "The six rights", "lines": ["Right to Equality (Articles 14–18)", "Right to Freedom (19–22)", "Right against Exploitation (23–24)", "Freedom of Religion (25–28)", "Cultural and Educational Rights (29–30)", "Right to Constitutional Remedies (32)"]},
+      {"title": "Right to Property", "lines": ["The 44th Amendment (1978) removed the Right to Property", "from Fundamental Rights.", "", "It is now a legal right under Article 300A."]}
+    ]
+  }
+}

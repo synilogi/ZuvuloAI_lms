@@ -1,0 +1,29 @@
+[
+  {
+    "id": "cmudqd8la007jmmgzvsycp0bl",
+    "lessonId": "cmudqd8en001zmmgzg3xageb9",
+    "courseId": "cmudqd8e8001rmmgzw9ydq2ly",
+    "courseTitle": "Foundations of Vedic Astrology",
+    "title": "The Nine Planets: check your understanding",
+    "questions": 3,
+    "durationMin": 10,
+    "passMark": 70,
+    "attemptsAllowed": 3,
+    "attemptsUsed": 1,
+    "state": "passed",
+    "score": 83
+  },
+  {
+    "id": "cmudqd8ld007lmmgze0qdh7vu",
+    "lessonId": "cmudqd8fi002pmmgzt3n0jr3z",
+    "courseId": "cmudqd8f4002bmmgzh5bprztq",
+    "courseTitle": "The 27 Nakshatras in Depth",
+    "title": "Magha to Moola: check your understanding",
+    "questions": 3,
+    "durationMin": 15,
+    "passMark": 70,
+    "attemptsAllowed": 3,
+    "attemptsUsed": 0,
+    "state": "passed"
+  }
+]

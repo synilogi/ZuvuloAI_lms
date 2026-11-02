@@ -1,0 +1,18 @@
+{
+  "id": "cmuo4cupo02ljmmt9od66kyzk",
+  "tenantId": "tenant-1",
+  "planId": "cmumqijv200kmmmosbznts0a6",
+  "planVersionId": "ver_growth_1",
+  "status": "canceling",
+  "billingCycle": "annual",
+  "currency": "INR",
+  "amount": 3999000,
+  "currentPeriodStartAt": "2026-09-30T13:06:26.550Z",
+  "currentPeriodEndAt": "2027-09-30T13:06:26.550Z",
+  "cancelAtPeriodEnd": true,
+  "cancelRequestedAt": "2026-10-03T09:12:40.118Z",
+  "cancellationReason": "Too expensive for us this year.",
+  "provider": "manual",
+  "createdAt": "2026-09-30T13:06:26.556Z",
+  "updatedAt": "2026-10-03T09:12:40.118Z"
+}

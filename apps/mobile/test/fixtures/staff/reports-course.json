@@ -1,0 +1,381 @@
+{
+  "window": {
+    "from": "2026-07-01T12:44:44.031Z",
+    "to": "2026-09-30T12:44:44.031Z",
+    "previousFrom": "2026-04-01T12:44:44.031Z",
+    "previousTo": "2026-07-01T12:44:44.031Z"
+  },
+  "courseCount": 1,
+  "row": {
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "title": "Foundations of Vedic Astrology",
+    "categoryTitle": "Vedic Foundations",
+    "instructorNames": [
+      "Dr. Meenakshi Iyer"
+    ],
+    "status": "published",
+    "enrollments": 12,
+    "previousEnrollments": 3,
+    "completions": 4,
+    "completionRate": 57,
+    "activeLearners": 13,
+    "avgProgress": 51,
+    "quizPassRate": 55,
+    "assignmentPassRate": 9,
+    "rating": 4.798859190813784,
+    "trend": [
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      3,
+      1,
+      1,
+      0,
+      1,
+      1,
+      2
+    ]
+  },
+  "kpis": {
+    "enrollments": {
+      "value": 12,
+      "previous": 3,
+      "series": [
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        3,
+        1,
+        1,
+        0,
+        1,
+        1,
+        2
+      ],
+      "unit": "count"
+    },
+    "completionRate": {
+      "value": 57,
+      "previous": 100,
+      "series": [
+        100,
+        100,
+        100,
+        75,
+        75,
+        75,
+        60,
+        60,
+        50,
+        57
+      ],
+      "unit": "%"
+    },
+    "activeLearners": {
+      "value": 13,
+      "previous": 3,
+      "series": [
+        1,
+        1,
+        1,
+        1,
+        3,
+        3,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        8
+      ],
+      "unit": "count"
+    },
+    "avgProgress": {
+      "value": 51,
+      "previous": 38,
+      "series": [
+        11,
+        15,
+        5,
+        2,
+        14,
+        15,
+        17,
+        20,
+        39,
+        59
+      ],
+      "unit": "%"
+    }
+  },
+  "series": {
+    "enrollments": [
+      {
+        "from": "2026-07-01T12:44:44.031Z",
+        "to": "2026-07-08T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-08T12:44:44.031Z",
+        "to": "2026-07-15T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-15T12:44:44.031Z",
+        "to": "2026-07-22T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-22T12:44:44.031Z",
+        "to": "2026-07-29T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-29T12:44:44.031Z",
+        "to": "2026-08-05T12:44:44.031Z",
+        "value": 2
+      },
+      {
+        "from": "2026-08-05T12:44:44.031Z",
+        "to": "2026-08-12T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-12T12:44:44.031Z",
+        "to": "2026-08-19T12:44:44.031Z",
+        "value": 3
+      },
+      {
+        "from": "2026-08-19T12:44:44.031Z",
+        "to": "2026-08-26T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-26T12:44:44.031Z",
+        "to": "2026-09-02T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-09-02T12:44:44.031Z",
+        "to": "2026-09-09T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-09T12:44:44.031Z",
+        "to": "2026-09-16T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-09-16T12:44:44.031Z",
+        "to": "2026-09-23T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-09-23T12:44:44.031Z",
+        "to": "2026-09-30T12:44:44.031Z",
+        "value": 2,
+        "partial": true
+      }
+    ],
+    "completions": [
+      {
+        "from": "2026-07-01T12:44:44.031Z",
+        "to": "2026-07-08T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-08T12:44:44.031Z",
+        "to": "2026-07-15T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-15T12:44:44.031Z",
+        "to": "2026-07-22T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-22T12:44:44.031Z",
+        "to": "2026-07-29T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-29T12:44:44.031Z",
+        "to": "2026-08-05T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-05T12:44:44.031Z",
+        "to": "2026-08-12T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-12T12:44:44.031Z",
+        "to": "2026-08-19T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-19T12:44:44.031Z",
+        "to": "2026-08-26T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-26T12:44:44.031Z",
+        "to": "2026-09-02T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-02T12:44:44.031Z",
+        "to": "2026-09-09T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-09T12:44:44.031Z",
+        "to": "2026-09-16T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-09-16T12:44:44.031Z",
+        "to": "2026-09-23T12:44:44.031Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-23T12:44:44.031Z",
+        "to": "2026-09-30T12:44:44.031Z",
+        "value": 3,
+        "partial": true
+      }
+    ],
+    "activeLearners": [
+      {
+        "from": "2026-07-01T12:44:44.031Z",
+        "to": "2026-07-08T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-08T12:44:44.031Z",
+        "to": "2026-07-15T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-15T12:44:44.031Z",
+        "to": "2026-07-22T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-22T12:44:44.031Z",
+        "to": "2026-07-29T12:44:44.031Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-29T12:44:44.031Z",
+        "to": "2026-08-05T12:44:44.031Z",
+        "value": 3
+      },
+      {
+        "from": "2026-08-05T12:44:44.031Z",
+        "to": "2026-08-12T12:44:44.031Z",
+        "value": 3
+      },
+      {
+        "from": "2026-08-12T12:44:44.031Z",
+        "to": "2026-08-19T12:44:44.031Z",
+        "value": 6
+      },
+      {
+        "from": "2026-08-19T12:44:44.031Z",
+        "to": "2026-08-26T12:44:44.031Z",
+        "value": 6
+      },
+      {
+        "from": "2026-08-26T12:44:44.031Z",
+        "to": "2026-09-02T12:44:44.031Z",
+        "value": 7
+      },
+      {
+        "from": "2026-09-02T12:44:44.031Z",
+        "to": "2026-09-09T12:44:44.031Z",
+        "value": 7
+      },
+      {
+        "from": "2026-09-09T12:44:44.031Z",
+        "to": "2026-09-16T12:44:44.031Z",
+        "value": 8
+      },
+      {
+        "from": "2026-09-16T12:44:44.031Z",
+        "to": "2026-09-23T12:44:44.031Z",
+        "value": 8
+      },
+      {
+        "from": "2026-09-23T12:44:44.031Z",
+        "to": "2026-09-30T12:44:44.031Z",
+        "value": 8,
+        "partial": true
+      }
+    ]
+  },
+  "funnel": [
+    {
+      "label": "Enrolled",
+      "value": 12
+    },
+    {
+      "label": "Started",
+      "value": 11
+    },
+    {
+      "label": "Halfway",
+      "value": 6
+    },
+    {
+      "label": "Finished",
+      "value": 4
+    }
+  ],
+  "chapters": [
+    {
+      "chapterId": "cmumqihbm001tmmos40unpr21",
+      "title": "The Nine Planets",
+      "reached": 92
+    },
+    {
+      "chapterId": "cmumqihbu0021mmos6bi0tip1",
+      "title": "Signs and Houses",
+      "reached": 62
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "cmumqihis007jmmos7isultgq",
+      "title": "The Nine Planets: check your understanding",
+      "attempts": 22,
+      "passRate": 55,
+      "avgScore": 58
+    }
+  ],
+  "assignments": [
+    {
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "title": "Your first assignment: reading a friend’s chart",
+      "submitted": 41,
+      "passRate": 13,
+      "avgScore": 10,
+      "onTime": 56
+    },
+    {
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "submitted": 18,
+      "passRate": 0,
+      "avgScore": 0,
+      "onTime": 100
+    }
+  ]
+}

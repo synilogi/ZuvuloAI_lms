@@ -1,0 +1,4 @@
+Captured 2026-09-30T06:38:51Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /quizzes/cmumqihis007jmmos7isultgq/stats admin staff/quiz-stats.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

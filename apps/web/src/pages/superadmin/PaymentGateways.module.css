@@ -1,0 +1,124 @@
+/* Payment gateways (SAAS-017) — only what the shared subscription styles do not already cover: the small
+   environment switch, the side-by-side credential slots and the secret input's show/hide toggle. Built from
+   the shell's tokens; nothing here introduces a new colour. */
+
+.statusRows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: var(--s-3) var(--s-4);
+  margin: 0;
+}
+
+/* The environment switch: the shell's pill track, as a radio group that can hold a disabled option. */
+.envSwitch {
+  display: inline-flex;
+  gap: var(--s-1);
+  width: fit-content;
+  margin: 0;
+  padding: 3px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+}
+.envOption {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.envOption:hover {
+  color: var(--text);
+}
+.envOption input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.envOption:has(input:focus-visible) {
+  box-shadow: var(--sh-ring);
+}
+.envSelected {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--sh-sm);
+}
+:root[data-theme='dark'] .envSelected {
+  background: var(--surface-3);
+}
+.envDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.envDisabled:hover {
+  color: var(--muted);
+}
+
+/* Test | Live, side by side. */
+.slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-3);
+}
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  min-width: 0;
+}
+.slotHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.slotTitle {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* A secret input with its show/hide toggle inside the field. */
+.secretRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.secretRow > :first-child {
+  flex: 1;
+  padding-right: 42px;
+}
+.secretToggle {
+  position: absolute;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+}
+.secretToggle:hover {
+  color: var(--text);
+}
+.secretToggle:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-ring);
+}

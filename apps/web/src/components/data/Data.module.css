@@ -1,0 +1,139 @@
+/* ─── Delta ─── */
+.deltaWrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  font-size: var(--fs-caption);
+  line-height: 1.35;
+}
+.delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.delta svg {
+  align-self: center;
+}
+.good {
+  color: var(--accent-ink);
+}
+.bad {
+  color: var(--danger-ink);
+}
+.flat {
+  color: var(--muted);
+}
+.period {
+  color: var(--faint);
+}
+
+/* ─── KPI cards — one card per figure, a brand rule along the top edge ─── */
+.stripWrap {
+  container-type: inline-size;
+}
+.strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+}
+.kpi {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+  overflow: hidden;
+}
+.kpi::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--brand-gradient);
+  opacity: 0.85;
+}
+.kpiLabel {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.kpiBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.kpiValueRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.kpiValue {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--tracking-numeric);
+  font-variant-numeric: tabular-nums;
+}
+.kpiSpark {
+  display: none;
+  margin-bottom: 2px;
+}
+.kpiNote {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+@container (min-width: 440px) {
+  .kpiSpark {
+    display: block;
+  }
+}
+
+@container (min-width: 760px) {
+  .strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .kpi {
+    padding: var(--s-4) var(--s-5) var(--s-4) var(--s-4);
+  }
+  .kpiValue {
+    font-size: 30px;
+  }
+}
+
+/* ─── Figure ─── */
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.figureValue {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-numeric);
+  font-variant-numeric: tabular-nums;
+}
+.figureLabel {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  line-height: 1.35;
+}

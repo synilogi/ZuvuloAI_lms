@@ -1,0 +1,57 @@
+/*
+ * The platform logo's sizes. Each variant sets how tall it is drawn (`--brand-size`) and how wide it may get
+ * (`--brand-max`); a spot that needs another size sets those two on its own class. The image is never stretched:
+ * one side follows the other, and a saved logo of any proportion is fitted inside the same box.
+ */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  max-width: 100%;
+  line-height: 0;
+}
+.logo img {
+  display: block;
+  height: var(--brand-size);
+  width: auto;
+  max-width: min(var(--brand-max), 100%);
+  object-fit: contain;
+}
+
+.lockup {
+  --brand-size: 36px;
+  --brand-max: 240px;
+}
+.full {
+  --brand-size: 150px;
+  --brand-max: 240px;
+}
+.mark {
+  --brand-size: 32px;
+  --brand-max: 32px;
+}
+.mark img {
+  width: var(--brand-size);
+}
+
+/* A saved file is drawn at its own size, up to the box — never enlarged past it, never distorted. */
+.saved img {
+  width: auto;
+  height: auto;
+  max-height: var(--brand-size);
+}
+.saved.mark img {
+  width: var(--brand-size);
+  height: var(--brand-size);
+}
+
+/* The built-in artwork comes in two settings; the theme picks one. */
+.onDark {
+  display: none !important;
+}
+:global(:root[data-theme='dark']) .onLight {
+  display: none !important;
+}
+:global(:root[data-theme='dark']) .onDark {
+  display: block !important;
+}

@@ -1,0 +1,10 @@
+{
+  "user": {
+    "id": "cmudqd816000vmmgz8ftkdpi4",
+    "name": "Ananya Rao",
+    "email": "user@example.test",
+    "role": "student",
+    "descriptor": "Beginner · Rank I",
+    "permissions": []
+  }
+}

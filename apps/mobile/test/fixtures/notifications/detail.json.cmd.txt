@@ -1,0 +1,4 @@
+Captured 2026-09-29T10:08:39Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /notifications/cmumijxoj0001mmy7rf7n8arn student notifications/detail.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

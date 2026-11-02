@@ -1,0 +1,19 @@
+{
+  "enforced": false,
+  "status": "active",
+  "restricted": false,
+  "plan": {
+    "id": "cmumqijv200kmmmosbznts0a6",
+    "code": "GROWTH",
+    "name": "Growth"
+  },
+  "features": [
+    "courses.manage",
+    "assessments.manage",
+    "live_classes",
+    "certificates.manage",
+    "reports.basic"
+  ],
+  "lastFeatures": [],
+  "renewsAt": "2027-09-30T13:06:26.550Z"
+}

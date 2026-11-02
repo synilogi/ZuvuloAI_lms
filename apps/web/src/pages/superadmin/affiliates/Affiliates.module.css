@@ -1,0 +1,288 @@
+/* Super Admin — the affiliate program: plan versions, ranks and bands, and later the network and ledgers. Built from
+   the shell's tokens like the platform's other screens; written for someone who is not technical. */
+
+.page {
+  max-width: var(--container-page);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.narrow {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.muted {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+}
+.faint {
+  color: var(--faint);
+}
+.strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.nowrap {
+  white-space: nowrap;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.cellTitle {
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+.cellTitle:hover {
+  text-decoration: underline;
+}
+.cellMeta {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.amount {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-numeric);
+}
+.rowActions {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+/* Panels ------------------------------------------------------------------ */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-card);
+  padding: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.panelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.panelTitle {
+  margin: 0;
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  color: var(--text);
+}
+.panelHint {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: var(--s-2);
+  margin: 0;
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+.factLabel {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--muted);
+}
+.factValue {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.empty {
+  padding: var(--s-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+
+/* Plain tables for a version's ranks and bands (short, fixed lists) ------- */
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+}
+.table th,
+.table td {
+  padding: var(--s-2) var(--s-3);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.table th {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--surface-2);
+}
+.table tr:last-child td {
+  border-bottom: 0;
+}
+.table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The editor ------------------------------------------------------------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--s-2);
+}
+.fieldRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--s-3);
+}
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.courseRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.editTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+}
+.editTable th,
+.editTable td {
+  padding: var(--s-1) var(--s-2);
+  text-align: left;
+  vertical-align: top;
+}
+.editTable th {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.editTable input,
+.editTable select {
+  min-width: 90px;
+}
+.editTable .wide input {
+  min-width: 150px;
+}
+.rowRemove {
+  white-space: nowrap;
+}
+.tableActions {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--s-2);
+}
+.issue {
+  font-size: var(--fs-caption);
+  color: var(--danger-ink);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+/* Finding a member by code or name ---------------------------------------- */
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.pickerChosen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.pickerList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  max-height: 240px;
+  overflow-y: auto;
+}
+.pickerOption {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  text-align: start;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+.pickerOption:hover,
+.pickerOption:focus-visible {
+  background: var(--surface-2);
+}

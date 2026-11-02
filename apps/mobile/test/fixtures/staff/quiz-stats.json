@@ -1,0 +1,66 @@
+{
+  "quizId": "cmumqihis007jmmos7isultgq",
+  "attempts": 15,
+  "learners": 10,
+  "passRate": 67,
+  "avgScore": 68,
+  "medianMinutes": 5,
+  "distribution": [
+    {
+      "label": "0–9%",
+      "value": 3
+    },
+    {
+      "label": "10–19%",
+      "value": 0
+    },
+    {
+      "label": "20–29%",
+      "value": 0
+    },
+    {
+      "label": "30–39%",
+      "value": 0
+    },
+    {
+      "label": "40–49%",
+      "value": 1
+    },
+    {
+      "label": "50–59%",
+      "value": 0
+    },
+    {
+      "label": "60–69%",
+      "value": 1
+    },
+    {
+      "label": "70–79%",
+      "value": 1
+    },
+    {
+      "label": "80–89%",
+      "value": 2
+    },
+    {
+      "label": "90–100%",
+      "value": 7
+    }
+  ],
+  "questions": [
+    {
+      "questionId": "q1",
+      "correctRate": 20,
+      "commonWrongOptionId": "d"
+    },
+    {
+      "questionId": "q2",
+      "correctRate": 20,
+      "commonWrongOptionId": "true"
+    },
+    {
+      "questionId": "q3",
+      "correctRate": 20
+    }
+  ]
+}

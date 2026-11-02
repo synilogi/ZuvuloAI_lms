@@ -1,0 +1,428 @@
+{
+  "rows": [
+    {
+      "student": {
+        "id": "cmumqih7i001hmmoswshn1xza",
+        "name": "Arjun Das",
+        "email": "user@example.test",
+        "city": "Kolkata",
+        "joinedAt": "2026-06-26T13:51:08.189Z",
+        "lastActiveAt": "2026-09-30T07:20:00.309Z",
+        "rankId": "cmumqigp5000bmmosdsvmvlar"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 56,
+          "status": "active"
+        },
+        {
+          "id": "cmumqihdf003dmmosiq6u19sc",
+          "title": "Krishnamurti Paddhati (KP) Fundamentals",
+          "progress": 45,
+          "status": "active"
+        }
+      ],
+      "progress": 51
+    },
+    {
+      "student": {
+        "id": "cmumqigxx000xmmossb0hdlxp",
+        "name": "Ananya Rao",
+        "email": "user@example.test",
+        "city": "Bengaluru",
+        "joinedAt": "2026-09-09T13:51:07.844Z",
+        "lastActiveAt": "2026-09-30T07:19:56.496Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihc7002bmmosdnc8er9m",
+          "title": "The 27 Nakshatras in Depth",
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "cmumqihco002rmmosr0ijyuku",
+          "title": "Reading the Dasha System",
+          "progress": 15,
+          "status": "active"
+        },
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 38,
+          "status": "active"
+        }
+      ],
+      "progress": 27
+    },
+    {
+      "student": {
+        "id": "cmunrxllc00ybmmt9xd3h0ner",
+        "name": "Suspended Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T07:18:39.503Z",
+        "lastActiveAt": "2026-09-30T07:18:39.503Z",
+        "suspended": true,
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "suspended",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmunrx8yi00y7mmt9q18n692v",
+        "name": "Flutter Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T07:18:23.129Z",
+        "lastActiveAt": "2026-09-30T07:18:23.129Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmumqigzt0011mmosdvh2xmuw",
+        "name": "Rohit Sharma",
+        "email": "user@example.test",
+        "city": "Pune",
+        "joinedAt": "2026-08-25T13:51:07.912Z",
+        "lastActiveAt": "2026-09-30T07:14:25.344Z",
+        "rankId": "cmumqigp50009mmosqlfg72x7"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihco002rmmosr0ijyuku",
+          "title": "Reading the Dasha System",
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 62,
+          "status": "active"
+        }
+      ],
+      "progress": 62
+    },
+    {
+      "student": {
+        "id": "cmumqih3n0019mmos4l92hz5d",
+        "name": "Karan Mehta",
+        "email": "user@example.test",
+        "city": "Ahmedabad",
+        "joinedAt": "2026-07-26T13:51:08.050Z",
+        "lastActiveAt": "2026-09-30T07:10:43.794Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihc7002bmmosdnc8er9m",
+          "title": "The 27 Nakshatras in Depth",
+          "progress": 40,
+          "status": "active"
+        },
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 8,
+          "status": "active"
+        }
+      ],
+      "progress": 24
+    },
+    {
+      "student": {
+        "id": "cmumqihbc001pmmost77d68f5",
+        "name": "Vikram Singh",
+        "email": "user@example.test",
+        "city": "Jaipur",
+        "joinedAt": "2026-05-27T13:51:08.327Z",
+        "lastActiveAt": "2026-09-30T07:00:34.893Z",
+        "rankId": "cmumqigp50009mmosqlfg72x7"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihco002rmmosr0ijyuku",
+          "title": "Reading the Dasha System",
+          "progress": 88,
+          "status": "active"
+        },
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "progress": 88
+    },
+    {
+      "student": {
+        "id": "cmunq6ya600ptmmt9b6oen0zn",
+        "name": "Suspended Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T06:29:56.621Z",
+        "lastActiveAt": "2026-09-30T06:29:56.621Z",
+        "suspended": true,
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "suspended",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmunq6ija00ppmmt9s1piv0fx",
+        "name": "Flutter Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T06:29:36.214Z",
+        "lastActiveAt": "2026-09-30T06:29:36.214Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmumqih9g001lmmoszgtcvnv1",
+        "name": "Meera Pillai",
+        "email": "user@example.test",
+        "city": "Thiruvananthapuram",
+        "joinedAt": "2026-06-11T13:51:08.259Z",
+        "lastActiveAt": "2026-09-30T06:26:39.057Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 0,
+          "status": "active"
+        }
+      ],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmunpb92u00hpmmt90guk3lz5",
+        "name": "Suspended Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T06:05:17.622Z",
+        "lastActiveAt": "2026-09-30T06:05:17.622Z",
+        "suspended": true,
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "suspended",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmunpaw1y00hlmmt9sbug31ov",
+        "name": "Flutter Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T06:05:00.741Z",
+        "lastActiveAt": "2026-09-30T06:05:00.741Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmunmts65007pmmt9lyxra2a5",
+        "name": "Suspended Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T04:55:43.325Z",
+        "lastActiveAt": "2026-09-30T04:55:43.325Z",
+        "suspended": true,
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "suspended",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmunmtgnm007lmmt9ylsyzhwb",
+        "name": "Flutter Learner",
+        "email": "user@example.test",
+        "city": "",
+        "joinedAt": "2026-09-30T04:55:28.402Z",
+        "lastActiveAt": "2026-09-30T04:55:28.402Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [],
+      "progress": 0
+    },
+    {
+      "student": {
+        "id": "cmumqiig100d4mmosflkinszs",
+        "name": "Imran Chauhan",
+        "email": "user@example.test",
+        "city": "Indore",
+        "joinedAt": "2026-06-06T13:51:08.625Z",
+        "lastActiveAt": "2026-09-28T13:51:08.625Z",
+        "rankId": "cmumqigp50009mmosqlfg72x7"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihd50035mmos6u0fhpdn",
+          "title": "Jaimini Astrology: Chara Karakas",
+          "progress": 50,
+          "status": "active"
+        },
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "progress": 50
+    },
+    {
+      "student": {
+        "id": "cmumqij4g00g8mmos3xw2p91y",
+        "name": "Kavya Ghosh",
+        "email": "user@example.test",
+        "city": "Bhopal",
+        "joinedAt": "2026-06-15T13:51:08.625Z",
+        "lastActiveAt": "2026-09-28T13:51:08.625Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihco002rmmosr0ijyuku",
+          "title": "Reading the Dasha System",
+          "progress": 25,
+          "status": "active"
+        }
+      ],
+      "progress": 25
+    },
+    {
+      "student": {
+        "id": "cmumqijb100h4mmos0hk6zhlx",
+        "name": "Prakash Rao",
+        "email": "user@example.test",
+        "city": "Coimbatore",
+        "joinedAt": "2026-01-12T13:51:08.625Z",
+        "lastActiveAt": "2026-09-28T13:51:08.625Z",
+        "rankId": "cmumqigp5000ammosyemfxgw2"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihdp003lmmoslirj2d3m",
+          "title": "Prashna: Horary Astrology",
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "cmumqihd50035mmos6u0fhpdn",
+          "title": "Jaimini Astrology: Chara Karakas",
+          "progress": 50,
+          "status": "active"
+        }
+      ],
+      "progress": 50
+    },
+    {
+      "student": {
+        "id": "cmumqijfq00hwmmostzlihhfi",
+        "name": "Gaurav Rao",
+        "email": "user@example.test",
+        "city": "Patna",
+        "joinedAt": "2026-06-20T13:51:08.625Z",
+        "lastActiveAt": "2026-09-28T13:51:08.625Z",
+        "rankId": "cmumqigp5000bmmosdsvmvlar"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihdp003lmmoslirj2d3m",
+          "title": "Prashna: Horary Astrology",
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "progress": 100
+    },
+    {
+      "student": {
+        "id": "cmumqijqo00jimmos1g5tpft8",
+        "name": "Nandini Banerjee",
+        "email": "user@example.test",
+        "city": "Mumbai",
+        "joinedAt": "2026-03-26T13:51:08.625Z",
+        "lastActiveAt": "2026-09-28T13:51:08.625Z",
+        "rankId": "cmumqigp50009mmosqlfg72x7"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihd50035mmos6u0fhpdn",
+          "title": "Jaimini Astrology: Chara Karakas",
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "progress": 100
+    },
+    {
+      "student": {
+        "id": "cmumqih5l001dmmosej26nbyq",
+        "name": "Sneha Iyer",
+        "email": "user@example.test",
+        "city": "Chennai",
+        "joinedAt": "2026-07-11T13:51:08.120Z",
+        "lastActiveAt": "2026-09-28T13:51:08.120Z",
+        "rankId": "cmumqigp50009mmosqlfg72x7"
+      },
+      "status": "active",
+      "courses": [
+        {
+          "id": "cmumqihc7002bmmosdnc8er9m",
+          "title": "The 27 Nakshatras in Depth",
+          "progress": 71,
+          "status": "active"
+        }
+      ],
+      "progress": 71
+    }
+  ],
+  "total": 52,
+  "counts": {
+    "all": 52,
+    "active": 17,
+    "at-risk": 10,
+    "inactive": 21,
+    "suspended": 4
+  }
+}

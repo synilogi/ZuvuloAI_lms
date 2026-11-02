@@ -1,0 +1,22 @@
+[
+  {
+    "category": {
+      "id": "cmudqdau300kammgzk20ly7uc",
+      "name": "Getting started",
+      "description": "Your first steps on ZuviloAI.",
+      "icon": "rocket",
+      "order": 1
+    },
+    "articleCount": 1
+  },
+  {
+    "category": {
+      "id": "cmudqdau400kbmmgze8q7aavi",
+      "name": "Courses & lessons",
+      "description": "Finding and studying a course.",
+      "icon": "book",
+      "order": 2
+    },
+    "articleCount": 0
+  }
+]

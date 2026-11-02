@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cmudqd7rm0003mmgzrix967b0",
+    "name": "Beginner",
+    "order": 1,
+    "summary": "New to Vedic astrology"
+  },
+  {
+    "id": "cmudqd7rm0005mmgzd9rz8b24",
+    "name": "Intermediate",
+    "order": 2,
+    "summary": "Comfortable with charts"
+  },
+  {
+    "id": "cmudqd7rm0004mmgz0b2bll90",
+    "name": "Advanced",
+    "order": 3,
+    "summary": "Specialised systems"
+  }
+]

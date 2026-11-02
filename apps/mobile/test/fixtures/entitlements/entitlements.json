@@ -1,0 +1,15 @@
+{
+  "tenantId": "tenant-1",
+  "status": null,
+  "planVersionId": null,
+  "plan": null,
+  "features": [],
+  "limits": {
+    "learners.max": 0,
+    "instructors.max": 0,
+    "courses.max": 0,
+    "storage.bytes": 0,
+    "live_classes.max": 0,
+    "admin_accounts.max": 0
+  }
+}

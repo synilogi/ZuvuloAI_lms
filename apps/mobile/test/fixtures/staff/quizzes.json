@@ -1,0 +1,191 @@
+{
+  "rows": [
+    {
+      "quiz": {
+        "id": "cmumqihis007jmmos7isultgq",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "chapterId": "cmumqihbm001tmmos40unpr21",
+        "lessonId": "cmumqihbs001zmmose9rrw1rg",
+        "title": "The Nine Planets: check your understanding",
+        "instructions": "Answer every question. You can retake this quiz.",
+        "status": "published",
+        "questions": [
+          {
+            "id": "q1",
+            "type": "single",
+            "prompt": "Which house is considered a kendra?",
+            "options": [
+              {
+                "id": "a",
+                "text": "1st house"
+              },
+              {
+                "id": "b",
+                "text": "2nd house"
+              },
+              {
+                "id": "c",
+                "text": "3rd house"
+              },
+              {
+                "id": "d",
+                "text": "6th house"
+              }
+            ],
+            "correct": [
+              "a"
+            ],
+            "acceptedAnswers": [],
+            "points": 10,
+            "required": true
+          },
+          {
+            "id": "q2",
+            "type": "true-false",
+            "prompt": "Saturn is always read as harmful wherever it sits.",
+            "options": [
+              {
+                "id": "true",
+                "text": "True"
+              },
+              {
+                "id": "false",
+                "text": "False"
+              }
+            ],
+            "correct": [
+              "false"
+            ],
+            "acceptedAnswers": [],
+            "points": 10,
+            "required": true
+          },
+          {
+            "id": "q3",
+            "type": "short",
+            "prompt": "Name the deity of the Ashwini nakshatra.",
+            "options": [],
+            "correct": [],
+            "acceptedAnswers": [
+              "ashwini kumaras",
+              "the ashwini kumaras"
+            ],
+            "points": 10,
+            "required": true
+          }
+        ],
+        "settings": {
+          "passMark": 70,
+          "attempts": 3,
+          "shuffleQuestions": false,
+          "shuffleOptions": true,
+          "showResults": "score-and-answers"
+        },
+        "createdAt": "2026-09-29T13:51:08.596Z",
+        "updatedAt": "2026-09-30T06:31:10.019Z"
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "chapterTitle": "The Nine Planets",
+      "points": 30,
+      "attempts": 15,
+      "passRate": 67,
+      "avgScore": 68
+    },
+    {
+      "quiz": {
+        "id": "cmumqihiu007lmmostv7ptr7p",
+        "courseId": "cmumqihc7002bmmosdnc8er9m",
+        "chapterId": "cmumqihcf002jmmos1004wgif",
+        "lessonId": "cmumqihck002pmmosc32x4l8a",
+        "title": "Magha to Moola: check your understanding",
+        "instructions": "Answer every question. You can retake this quiz.",
+        "status": "published",
+        "questions": [
+          {
+            "id": "q1",
+            "type": "single",
+            "prompt": "Which house is considered a kendra?",
+            "options": [
+              {
+                "id": "a",
+                "text": "1st house"
+              },
+              {
+                "id": "b",
+                "text": "2nd house"
+              },
+              {
+                "id": "c",
+                "text": "3rd house"
+              },
+              {
+                "id": "d",
+                "text": "6th house"
+              }
+            ],
+            "correct": [
+              "a"
+            ],
+            "acceptedAnswers": [],
+            "points": 10,
+            "required": true
+          },
+          {
+            "id": "q2",
+            "type": "true-false",
+            "prompt": "Saturn is always read as harmful wherever it sits.",
+            "options": [
+              {
+                "id": "true",
+                "text": "True"
+              },
+              {
+                "id": "false",
+                "text": "False"
+              }
+            ],
+            "correct": [
+              "false"
+            ],
+            "acceptedAnswers": [],
+            "points": 10,
+            "required": true
+          },
+          {
+            "id": "q3",
+            "type": "short",
+            "prompt": "Name the deity of the Ashwini nakshatra.",
+            "options": [],
+            "correct": [],
+            "acceptedAnswers": [
+              "ashwini kumaras",
+              "the ashwini kumaras"
+            ],
+            "points": 10,
+            "required": true
+          }
+        ],
+        "settings": {
+          "passMark": 70,
+          "attempts": 3,
+          "shuffleQuestions": false,
+          "shuffleOptions": true,
+          "showResults": "score-and-answers"
+        },
+        "createdAt": "2026-09-29T13:51:08.599Z",
+        "updatedAt": "2026-09-29T13:51:08.599Z"
+      },
+      "courseTitle": "The 27 Nakshatras in Depth",
+      "chapterTitle": "Magha to Moola",
+      "points": 30,
+      "attempts": 3,
+      "passRate": 67,
+      "avgScore": 75
+    }
+  ],
+  "counts": {
+    "all": 2,
+    "draft": 0,
+    "published": 2
+  }
+}

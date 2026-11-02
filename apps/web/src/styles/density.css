@@ -1,0 +1,60 @@
+/*
+ * Density modes. Components read --d-* variables, so the same component can sit in an
+ * immersive lesson, a balanced learner view or a dense admin table without forking.
+ *
+ *   immersive — lesson, video, reading: focus over information
+ *   balanced  — dashboards, discovery, my learning (default; matches the shell)
+ *   dense     — admin, instructor management, analytics, bulk operations
+ */
+
+:root,
+[data-density='balanced'] {
+  --d-section: var(--s-6);
+  --d-gap: var(--s-4);
+  --d-inset: var(--s-4);
+  --d-row-y: 12px;
+  --d-row-x: var(--s-3);
+  --d-text: var(--fs-body);
+  --d-text-lh: var(--lh-body);
+  --d-title: var(--fs-h4);
+  --d-meta: var(--fs-caption);
+  --d-control-h: 40px;
+  --d-radius: var(--r-md);
+  --d-icon: 18px;
+  --d-node: 20px;
+  --d-container: var(--container-page);
+}
+
+[data-density='immersive'] {
+  --d-section: var(--s-7);
+  --d-gap: var(--s-5);
+  --d-inset: var(--s-5);
+  --d-row-y: 16px;
+  --d-row-x: var(--s-4);
+  --d-text: var(--fs-body-lg);
+  --d-text-lh: 1.65;
+  --d-title: var(--fs-h3);
+  --d-meta: 12.5px;
+  --d-control-h: 44px;
+  --d-radius: var(--r-lg);
+  --d-icon: 20px;
+  --d-node: 24px;
+  --d-container: var(--container-reading);
+}
+
+[data-density='dense'] {
+  --d-section: var(--s-5);
+  --d-gap: var(--s-3);
+  --d-inset: var(--s-3);
+  --d-row-y: 8px;
+  --d-row-x: var(--s-3);
+  --d-text: var(--fs-body-sm);
+  --d-text-lh: 1.4;
+  --d-title: var(--fs-ui);
+  --d-meta: var(--fs-meta);
+  --d-control-h: 34px;
+  --d-radius: var(--r-sm);
+  --d-icon: 16px;
+  --d-node: 16px;
+  --d-container: var(--container-wide);
+}

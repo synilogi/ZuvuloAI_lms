@@ -1,0 +1,309 @@
+{
+  "academy": {
+    "id": "tenant-1",
+    "name": "ZuviloAI"
+  },
+  "subscription": {
+    "id": "cmuo4cupo02ljmmt9od66kyzk",
+    "customer": {
+      "id": "tenant-1",
+      "name": "ZuviloAI",
+      "email": "user@example.test",
+      "city": "Bengaluru",
+      "country": "IN",
+      "learners": 60
+    },
+    "planId": "cmumqijv200kmmmosbznts0a6",
+    "status": "active",
+    "cycle": "annual",
+    "amount": 3999000,
+    "currency": "INR",
+    "startedAt": "2026-09-30T13:06:26.556Z",
+    "renewsAt": "2027-09-30T13:06:26.550Z",
+    "paymentMethod": {
+      "kind": "invoice",
+      "brand": "Invoice"
+    }
+  },
+  "plan": {
+    "id": "cmumqijv200kmmmosbznts0a6",
+    "name": "Growth",
+    "description": "A small faculty running scheduled batches, certificates and weekly live classes.",
+    "code": "GROWTH",
+    "monthlyPrice": 399900,
+    "annualPrice": 3999000,
+    "currency": "INR",
+    "cycles": [
+      "monthly",
+      "annual"
+    ],
+    "trialEnabled": true,
+    "trialDays": 14,
+    "limits": {
+      "learners.max": 750,
+      "instructors.max": 8,
+      "courses.max": 40,
+      "storage.bytes": 161061273600,
+      "live_classes.max": 20,
+      "admin_accounts.max": 3
+    },
+    "features": [
+      "courses.manage",
+      "assessments.manage",
+      "live_classes",
+      "certificates.manage",
+      "reports.basic"
+    ],
+    "status": "active",
+    "order": 2,
+    "createdAt": "2026-09-29T13:51:11.630Z",
+    "updatedAt": "2026-09-29T13:51:11.635Z"
+  },
+  "restricted": false,
+  "enforced": false,
+  "openChange": null,
+  "usage": [
+    {
+      "limit": "learners.max",
+      "label": "Learners",
+      "used": 60,
+      "allowed": 750,
+      "remaining": 690
+    },
+    {
+      "limit": "instructors.max",
+      "label": "Instructors",
+      "used": 3,
+      "allowed": 8,
+      "remaining": 5
+    },
+    {
+      "limit": "courses.max",
+      "label": "Courses",
+      "used": 7,
+      "allowed": 40,
+      "remaining": 33
+    },
+    {
+      "limit": "storage.bytes",
+      "label": "Media storage",
+      "used": 33606,
+      "allowed": 161061273600,
+      "remaining": 161061239994
+    },
+    {
+      "limit": "live_classes.max",
+      "label": "Live classes a month",
+      "used": 2,
+      "allowed": 20,
+      "remaining": 18
+    },
+    {
+      "limit": "admin_accounts.max",
+      "label": "Admin accounts",
+      "used": 1,
+      "allowed": 3,
+      "remaining": 2
+    }
+  ],
+  "features": [
+    {
+      "key": "courses.manage",
+      "label": "Course management",
+      "included": true,
+      "enforcement": "route"
+    },
+    {
+      "key": "assessments.manage",
+      "label": "Assessments",
+      "included": true,
+      "enforcement": "route"
+    },
+    {
+      "key": "live_classes",
+      "label": "Live classes",
+      "included": true,
+      "enforcement": "route"
+    },
+    {
+      "key": "certificates.manage",
+      "label": "Certificates",
+      "included": true,
+      "enforcement": "route"
+    },
+    {
+      "key": "reports.basic",
+      "label": "Reports",
+      "included": true,
+      "enforcement": "route"
+    },
+    {
+      "key": "reports.advanced",
+      "label": "Advanced reports",
+      "included": false,
+      "enforcement": "route"
+    },
+    {
+      "key": "analytics.advanced",
+      "label": "Advanced analytics",
+      "included": false,
+      "enforcement": "planned"
+    },
+    {
+      "key": "custom_branding",
+      "label": "Custom branding",
+      "included": false,
+      "enforcement": "route"
+    },
+    {
+      "key": "priority_support",
+      "label": "Priority support",
+      "included": false,
+      "enforcement": "service"
+    }
+  ],
+  "invoices": [],
+  "payments": [],
+  "plans": [
+    {
+      "id": "cmumqijur00kkmmoslkcygj8f",
+      "name": "Starter",
+      "description": "One teacher taking a first cohort online, with quizzes and a course catalog.",
+      "code": "STARTER",
+      "monthlyPrice": 149900,
+      "annualPrice": 1499000,
+      "currency": "INR",
+      "cycles": [
+        "monthly",
+        "annual"
+      ],
+      "trialEnabled": true,
+      "trialDays": 14,
+      "limits": {
+        "learners.max": 150,
+        "instructors.max": 2,
+        "courses.max": 10,
+        "storage.bytes": 26843545600,
+        "live_classes.max": 4,
+        "admin_accounts.max": 1
+      },
+      "features": [
+        "courses.manage",
+        "assessments.manage"
+      ],
+      "status": "active",
+      "order": 1,
+      "createdAt": "2026-09-29T13:51:11.619Z",
+      "updatedAt": "2026-09-29T13:51:11.626Z"
+    },
+    {
+      "id": "cmumqijv200kmmmosbznts0a6",
+      "name": "Growth",
+      "description": "A small faculty running scheduled batches, certificates and weekly live classes.",
+      "code": "GROWTH",
+      "monthlyPrice": 399900,
+      "annualPrice": 3999000,
+      "currency": "INR",
+      "cycles": [
+        "monthly",
+        "annual"
+      ],
+      "trialEnabled": true,
+      "trialDays": 14,
+      "limits": {
+        "learners.max": 750,
+        "instructors.max": 8,
+        "courses.max": 40,
+        "storage.bytes": 161061273600,
+        "live_classes.max": 20,
+        "admin_accounts.max": 3
+      },
+      "features": [
+        "courses.manage",
+        "assessments.manage",
+        "live_classes",
+        "certificates.manage",
+        "reports.basic"
+      ],
+      "status": "active",
+      "order": 2,
+      "createdAt": "2026-09-29T13:51:11.630Z",
+      "updatedAt": "2026-09-29T13:51:11.635Z"
+    },
+    {
+      "id": "cmumqijva00kommosrabmizys",
+      "name": "Professional",
+      "description": "An established academy with several tracks, deep reporting and its own branding.",
+      "code": "PRO",
+      "monthlyPrice": 899900,
+      "annualPrice": 8999000,
+      "currency": "INR",
+      "cycles": [
+        "monthly",
+        "annual"
+      ],
+      "trialEnabled": true,
+      "trialDays": 21,
+      "limits": {
+        "learners.max": 2500,
+        "instructors.max": 25,
+        "courses.max": 150,
+        "storage.bytes": 536870912000,
+        "live_classes.max": 80,
+        "admin_accounts.max": 8
+      },
+      "features": [
+        "courses.manage",
+        "assessments.manage",
+        "live_classes",
+        "certificates.manage",
+        "reports.basic",
+        "reports.advanced",
+        "analytics.advanced",
+        "custom_branding"
+      ],
+      "status": "active",
+      "order": 3,
+      "createdAt": "2026-09-29T13:51:11.639Z",
+      "updatedAt": "2026-09-29T13:51:11.643Z"
+    },
+    {
+      "id": "cmumqijvi00kqmmos8aae9wgq",
+      "name": "Enterprise",
+      "description": "Institutions with no ceiling on learners or courses, billed against a signed agreement.",
+      "code": "ENTERPRISE",
+      "monthlyPrice": 0,
+      "annualPrice": 24999000,
+      "currency": "INR",
+      "cycles": [
+        "annual"
+      ],
+      "trialEnabled": false,
+      "trialDays": 0,
+      "limits": {
+        "learners.max": null,
+        "instructors.max": null,
+        "courses.max": null,
+        "storage.bytes": 2147483648000,
+        "live_classes.max": null,
+        "admin_accounts.max": 20
+      },
+      "features": [
+        "courses.manage",
+        "assessments.manage",
+        "live_classes",
+        "certificates.manage",
+        "reports.basic",
+        "reports.advanced",
+        "analytics.advanced",
+        "custom_branding",
+        "priority_support"
+      ],
+      "status": "active",
+      "order": 4,
+      "createdAt": "2026-09-29T13:51:11.646Z",
+      "updatedAt": "2026-09-29T13:51:11.651Z"
+    }
+  ],
+  "checkoutAvailable": false
+}

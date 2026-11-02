@@ -1,0 +1,4 @@
+Captured 2026-09-23T10:19:45Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /certificates/verify/SA-JY-2026-00231 none errors/verify-pending.json
+HTTP status: 404
+Tokens and e-mail addresses scrubbed.

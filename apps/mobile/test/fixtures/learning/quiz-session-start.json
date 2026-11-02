@@ -1,0 +1,67 @@
+{
+  "session": {
+    "id": "cmvoydpgz000dmmtfl72u5oqz",
+    "quizId": "cmvoydm15007jmmrotrx5oxax",
+    "attemptNo": 1,
+    "status": "active",
+    "startedAt": "2026-10-26T07:46:37.229Z",
+    "deadlineAt": "2026-10-26T08:01:37.229Z",
+    "serverNow": "2026-10-26T07:46:37.236Z",
+    "remainingSec": 899,
+    "answers": {},
+    "answersSeq": 0
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "prompt": "What is (−3) × (−4)?",
+      "options": [
+        {
+          "id": "b",
+          "text": "−12"
+        },
+        {
+          "id": "a",
+          "text": "12"
+        },
+        {
+          "id": "d",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "−7"
+        }
+      ],
+      "points": 10,
+      "required": true
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "prompt": "Every fraction can be written as a decimal that ends.",
+      "options": [
+        {
+          "id": "true",
+          "text": "True"
+        },
+        {
+          "id": "false",
+          "text": "False"
+        }
+      ],
+      "points": 10,
+      "required": true
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "prompt": "Write 3/4 as a percentage.",
+      "options": [],
+      "points": 10,
+      "required": true
+    }
+  ],
+  "resumed": false
+}

@@ -1,0 +1,141 @@
+{
+  "rows": [
+    {
+      "instructor": {
+        "id": "cmumqigq0000lmmosg7u679j6",
+        "name": "Acharya Vinod Shastri",
+        "title": "Predictive Astrologer",
+        "yearsTeaching": 20,
+        "email": "user@example.test",
+        "bio": "Specialises in dasha timing and transit analysis for two decades of practising astrologers.",
+        "expertise": [
+          "Vimshottari Dasha",
+          "Transits",
+          "Muhurta"
+        ],
+        "status": "active",
+        "joinedAt": "2025-04-27T13:51:07.559Z",
+        "city": "Varanasi",
+        "languages": [
+          "English",
+          "Hindi"
+        ]
+      },
+      "courses": [
+        {
+          "id": "cmumqihco002rmmosr0ijyuku",
+          "title": "Reading the Dasha System",
+          "status": "published"
+        },
+        {
+          "id": "cmumqihd50035mmos6u0fhpdn",
+          "title": "Jaimini Astrology: Chara Karakas",
+          "status": "published"
+        }
+      ],
+      "students": 23,
+      "rating": 4.6,
+      "ratingCount": 433,
+      "completion": 35,
+      "toReview": 0,
+      "overdue": 0
+    },
+    {
+      "instructor": {
+        "id": "cmumqigpx000jmmosxe7nko8c",
+        "name": "Dr. Meenakshi Iyer",
+        "title": "Jyotish Acharya",
+        "yearsTeaching": 14,
+        "email": "user@example.test",
+        "bio": "Twenty years of chart readings and fourteen years teaching foundational Jyotish to serious students.",
+        "expertise": [
+          "Nakshatras",
+          "Chart reading",
+          "Remedial astrology"
+        ],
+        "status": "active",
+        "joinedAt": "2024-08-10T13:51:07.557Z",
+        "city": "Chennai",
+        "languages": [
+          "English",
+          "Tamil"
+        ]
+      },
+      "courses": [
+        {
+          "id": "cmumqihbi001rmmos6cypzr5m",
+          "title": "Foundations of Vedic Astrology",
+          "status": "published"
+        },
+        {
+          "id": "cmumqihc7002bmmosdnc8er9m",
+          "title": "The 27 Nakshatras in Depth",
+          "status": "published"
+        }
+      ],
+      "students": 24,
+      "rating": 4.8,
+      "ratingCount": 393,
+      "completion": 42,
+      "toReview": 3,
+      "overdue": 1
+    },
+    {
+      "instructor": {
+        "id": "cmumqigq2000nmmosiltg8gr7",
+        "name": "Pt. Sanjay Rathore",
+        "title": "KP & Divisional Charts Specialist",
+        "yearsTeaching": 11,
+        "email": "user@example.test",
+        "bio": "Trains advanced students in Krishnamurti Paddhati and divisional chart interpretation.",
+        "expertise": [
+          "KP System",
+          "Divisional charts",
+          "Horary astrology"
+        ],
+        "status": "active",
+        "joinedAt": "2026-02-01T13:51:07.562Z",
+        "city": "Jaipur",
+        "languages": [
+          "English",
+          "Hindi"
+        ]
+      },
+      "courses": [
+        {
+          "id": "cmumqihdf003dmmosiq6u19sc",
+          "title": "Krishnamurti Paddhati (KP) Fundamentals",
+          "status": "published"
+        },
+        {
+          "id": "cmumqihdp003lmmoslirj2d3m",
+          "title": "Prashna: Horary Astrology",
+          "status": "published"
+        }
+      ],
+      "students": 15,
+      "rating": 4.7,
+      "ratingCount": 847,
+      "completion": 53,
+      "toReview": 0,
+      "overdue": 0
+    }
+  ],
+  "counts": {
+    "all": 3,
+    "active": 3,
+    "invited": 0,
+    "inactive": 0
+  },
+  "expertise": [
+    "Chart reading",
+    "Divisional charts",
+    "Horary astrology",
+    "KP System",
+    "Muhurta",
+    "Nakshatras",
+    "Remedial astrology",
+    "Transits",
+    "Vimshottari Dasha"
+  ]
+}

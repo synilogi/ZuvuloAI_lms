@@ -1,0 +1,201 @@
+/* The Super Admin's branding settings: one card per asset, each with the asset drawn as visitors will see it. */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.cardTitle {
+  margin: 0;
+  font-size: var(--fs-h4);
+  font-weight: 600;
+}
+
+/* The preview. Its two surfaces are fixed colours on purpose — they show the asset on light and on dark whatever
+   theme the page itself is in. */
+.stage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-2);
+  padding: var(--s-2);
+  border: 1px dashed var(--border-strong, var(--border));
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  transition: border-color 120ms ease;
+}
+.stageOver {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.swatch,
+.tab {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  min-width: 0;
+}
+.swatch::before {
+  content: none;
+}
+.swatch > img,
+.tabChip {
+  box-sizing: border-box;
+  border-radius: var(--r-sm);
+}
+.swatch > img {
+  width: 100%;
+  height: 112px;
+  padding: var(--s-4);
+  object-fit: contain;
+  border: 1px solid transparent;
+}
+.swatchLight > img {
+  background: #f6f6fa;
+  border-color: #e4e4ec;
+}
+.swatchDark > img {
+  background: #1c162c;
+  border-color: #2e2643;
+}
+/* The logo is previewed at the height a header gives it; the favicon at a size its detail can be judged. */
+.swatch > img.logo {
+  padding: 36px var(--s-4);
+}
+.swatch > img.favicon {
+  padding: 24px;
+}
+.swatch figcaption,
+.tab figcaption {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+  text-align: center;
+}
+.tab {
+  grid-column: 1 / -1;
+  align-items: center;
+}
+.tabChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid #d9dce3;
+  border-bottom-color: transparent;
+  border-radius: 10px 10px 0 0;
+  background: #fff;
+  color: #1f2430;
+  font-size: 12px;
+  line-height: 1;
+}
+.tabChip img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  margin: 0;
+}
+.fact {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--fs-body-sm);
+}
+.fact dt {
+  flex: none;
+  color: var(--muted);
+}
+.fact dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.hint {
+  margin: 0;
+  font-size: var(--fs-meta);
+  color: var(--muted);
+}
+.limits {
+  color: var(--faint);
+}
+
+.saveBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.saveNote {
+  margin: 0;
+  flex: 1 1 260px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.saveActions {
+  display: flex;
+  gap: var(--s-2);
+}
+.confirmNote {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .saveActions {
+    width: 100%;
+  }
+  .saveActions > * {
+    flex: 1;
+  }
+}

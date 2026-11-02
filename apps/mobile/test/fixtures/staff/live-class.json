@@ -1,0 +1,59 @@
+{
+  "liveClass": {
+    "id": "cmumqihjm0087mmosieytg5to",
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "title": "Reading dignities in real charts",
+    "instructorId": "cmumqigpx000jmmosxe7nko8c",
+    "startsAt": "2026-10-01T13:51:08.625Z",
+    "durationMin": 60,
+    "capacity": 40,
+    "registered": 1,
+    "attending": 1,
+    "attended": 0,
+    "description": "A live walkthrough of planetary dignity across several real birth charts.",
+    "agenda": [
+      {
+        "title": "Recap of dignity rules",
+        "minutes": 10
+      },
+      {
+        "title": "Live chart reading",
+        "minutes": 40
+      },
+      {
+        "title": "Q&A",
+        "minutes": 10
+      }
+    ],
+    "visibility": "enrolled",
+    "meeting": {
+      "kind": "room"
+    },
+    "reminders": [
+      1440,
+      60
+    ]
+  },
+  "phase": "upcoming",
+  "courseTitle": "Foundations of Vedic Astrology",
+  "instructorName": "Dr. Meenakshi Iyer",
+  "instructorTitle": "Jyotish Acharya",
+  "attendees": [
+    {
+      "id": "cmumqigxx000xmmossb0hdlxp",
+      "name": "Ananya Rao",
+      "city": "Bengaluru"
+    }
+  ],
+  "attendeeTotal": 1,
+  "previous": {
+    "id": "cmunvbb6001b9mmt97cna9qt0",
+    "title": "Contract check — joining ten minutes ahead",
+    "startsAt": "2026-09-30T09:03:17.098Z"
+  },
+  "next": {
+    "id": "cmunmoe0t0055mmt9rovvu9m2",
+    "title": "Contract check — cancelled class",
+    "startsAt": "2026-10-03T04:51:31.809Z"
+  }
+}

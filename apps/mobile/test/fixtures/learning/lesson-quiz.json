@@ -1,0 +1,318 @@
+{
+  "course": {
+    "id": "cmudqd8f4002bmmgzh5bprztq",
+    "slug": "nakshatras-depth",
+    "title": "The 27 Nakshatras in Depth",
+    "subtitle": "Deities, shaktis, symbols and padas as a complete language.",
+    "description": "A close study of all twenty-seven nakshatras — their ruling deities, symbols, shaktis and four padas — and how they refine a planet’s expression beyond its sign.",
+    "levelId": "cmudqd7rm0005mmgzd9rz8b24",
+    "categoryId": "cmudqd7t8000dmmgzkc9qsfwk",
+    "instructorIds": [
+      "cmudqd7ti000jmmgzsa8zg84a"
+    ],
+    "format": "self-paced",
+    "language": "en-IN",
+    "coverMotif": "nakshatra",
+    "chapters": [
+      {
+        "id": "cmudqd8f7002dmmgzln15rtxv",
+        "title": "Ashwini to Ashlesha",
+        "summary": "The first nine nakshatras.",
+        "objective": "By the end of this chapter, learners can describe the first nine nakshatras’ core themes.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8f9002fmmgzknd8eqfe",
+            "title": "Ashwini, Bharani and Krittika",
+            "type": "video",
+            "durationMin": 20,
+            "isPreview": true,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.941Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "group1.mp4",
+                  "sizeMb": 88
+                },
+                "durationSec": 1200,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8fb002hmmgzk019y26l",
+            "title": "Rohini through Ashlesha",
+            "type": "reading",
+            "durationMin": 16,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.943Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "Rohini is ruled by Brahma and carries themes of growth and fertility; Mrigashira by Soma, the searching mind; Ardra by Rudra, transformation through storm.\n\nPunarvasu, ruled by Aditi, brings renewal; Pushya, ruled by Brihaspati, nourishment; Ashlesha, ruled by the Nagas, entwining and penetrating insight."
+              }
+            },
+            "settings": {}
+          }
+        ]
+      },
+      {
+        "id": "cmudqd8fc002jmmgz5nvn050e",
+        "title": "Magha to Moola",
+        "summary": "The middle nine nakshatras.",
+        "objective": "By the end of this chapter, learners can place a planet’s pada and its elemental quality.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8fe002lmmgz1ebuo0jv",
+            "title": "The Pitru nakshatras",
+            "type": "video",
+            "durationMin": 19,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.947Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "group2.mp4",
+                  "sizeMb": 90
+                },
+                "durationSec": 1140,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8fg002nmmgzzmk53feh",
+            "title": "Working with padas",
+            "type": "practice",
+            "durationMin": 20,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.948Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "For each planet in your sample chart, identify its nakshatra and pada, then note the navamsha sign that pada corresponds to."
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8fi002pmmgzt3n0jr3z",
+            "title": "Nakshatra quiz",
+            "type": "assessment",
+            "durationMin": 15,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.950Z",
+            "objectives": [],
+            "content": {},
+            "settings": {}
+          }
+        ]
+      }
+    ],
+    "liveSessions": 1,
+    "estimatedWeeks": 4,
+    "certificateTitle": "Certificate in The 27 Nakshatras in Depth",
+    "price": {
+      "amount": 3499,
+      "currency": "INR"
+    },
+    "enrolledCount": 8,
+    "status": "published",
+    "visibility": "public",
+    "outcomes": [
+      "Identify all 27 nakshatras and their deities",
+      "Read a planet’s nakshatra pada",
+      "Use nakshatra compatibility in matching"
+    ],
+    "tags": [
+      "Intermediate",
+      "Nakshatras"
+    ],
+    "createdAt": "2026-09-23T06:37:07.937Z",
+    "updatedAt": "2026-09-23T13:01:35.506Z",
+    "publishedAt": "2026-07-25T06:37:07.935Z",
+    "rating": 4.750130845823733,
+    "ratingCount": 92
+  },
+  "enrolled": true,
+  "snapshot": {
+    "courseId": "cmudqd8f4002bmmgzh5bprztq",
+    "lessons": {
+      "cmudqd8f9002fmmgzknd8eqfe": {
+        "lessonId": "cmudqd8f9002fmmgzknd8eqfe",
+        "state": "completed",
+        "fraction": 1,
+        "positionSec": 1180,
+        "completedAt": "2026-09-23T13:01:35.586Z"
+      },
+      "cmudqd8fb002hmmgzk019y26l": {
+        "lessonId": "cmudqd8fb002hmmgzk019y26l",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-23T13:20:14.184Z"
+      },
+      "cmudqd8fe002lmmgz1ebuo0jv": {
+        "lessonId": "cmudqd8fe002lmmgz1ebuo0jv",
+        "state": "completed",
+        "fraction": 1,
+        "positionSec": 1140,
+        "completedAt": "2026-09-23T13:31:58.461Z"
+      },
+      "cmudqd8fg002nmmgzzmk53feh": {
+        "lessonId": "cmudqd8fg002nmmgzzmk53feh",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-23T13:31:58.514Z"
+      }
+    },
+    "lastLessonId": "cmudqd8fg002nmmgzzmk53feh",
+    "lastActiveAt": "2026-09-23T13:31:58.514Z"
+  },
+  "progress": {
+    "completed": 4,
+    "total": 5,
+    "percent": 83,
+    "remainingMin": 15,
+    "state": "in-progress"
+  },
+  "chapterIndex": 1,
+  "lessonIndex": 2,
+  "lesson": {
+    "id": "cmudqd8fi002pmmgzt3n0jr3z",
+    "title": "Nakshatra quiz",
+    "type": "assessment",
+    "durationMin": 15,
+    "status": "published",
+    "updatedAt": "2026-09-23T06:37:07.950Z",
+    "objectives": [],
+    "content": {
+      "quiz": {
+        "quizId": "cmudqd8ld007lmmgze0qdh7vu",
+        "questions": 4,
+        "passMark": 70,
+        "attempts": 3
+      }
+    },
+    "settings": {}
+  },
+  "number": "2.3",
+  "position": {
+    "index": 4,
+    "total": 5
+  },
+  "state": "not-started",
+  "access": "open",
+  "previous": {
+    "id": "cmudqd8fg002nmmgzzmk53feh",
+    "title": "Working with padas"
+  },
+  "quiz": {
+    "id": "cmudqd8ld007lmmgze0qdh7vu",
+    "courseId": "cmudqd8f4002bmmgzh5bprztq",
+    "chapterId": "cmudqd8fc002jmmgz5nvn050e",
+    "lessonId": "cmudqd8fi002pmmgzt3n0jr3z",
+    "title": "Magha to Moola: check your understanding",
+    "instructions": "Answer every question. You can retake this quiz.",
+    "status": "published",
+    "questions": [
+      {
+        "id": "q1",
+        "type": "single",
+        "prompt": "Which house is considered a kendra?",
+        "options": [
+          {
+            "id": "a",
+            "text": "1st house"
+          },
+          {
+            "id": "b",
+            "text": "2nd house"
+          },
+          {
+            "id": "c",
+            "text": "3rd house"
+          },
+          {
+            "id": "d",
+            "text": "6th house"
+          }
+        ],
+        "points": 10,
+        "required": true
+      },
+      {
+        "id": "q2",
+        "type": "true-false",
+        "prompt": "Saturn is always read as harmful wherever it sits.",
+        "options": [
+          {
+            "id": "true",
+            "text": "True"
+          },
+          {
+            "id": "false",
+            "text": "False"
+          }
+        ],
+        "points": 10,
+        "required": true
+      },
+      {
+        "id": "q3",
+        "type": "short",
+        "prompt": "Name the deity of the Ashwini nakshatra.",
+        "options": [],
+        "points": 10,
+        "required": true
+      },
+      {
+        "id": "q4",
+        "type": "multiple",
+        "prompt": "Which of these are kendra houses?",
+        "options": [
+          {
+            "id": "a",
+            "text": "1st"
+          },
+          {
+            "id": "b",
+            "text": "4th"
+          },
+          {
+            "id": "c",
+            "text": "5th"
+          },
+          {
+            "id": "d",
+            "text": "10th"
+          }
+        ],
+        "points": 10,
+        "required": true
+      }
+    ],
+    "settings": {
+      "passMark": 70,
+      "attempts": 3,
+      "shuffleQuestions": false,
+      "shuffleOptions": true,
+      "showResults": "score-and-answers"
+    },
+    "createdAt": "2026-09-23T06:37:08.161Z",
+    "updatedAt": "2026-09-23T13:31:58.435Z"
+  },
+  "instructorNames": [
+    "Dr. Meenakshi Iyer"
+  ],
+  "note": "",
+  "bookmarked": false,
+  "threshold": 90
+}

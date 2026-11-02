@@ -1,0 +1,23 @@
+{
+  "event": {
+    "id": "cmuny9khs0237mmt9pbevi4eg",
+    "type": "quiz",
+    "title": "Fixture quiz window — the Nine Planets",
+    "timing": "moment",
+    "startsAt": "2026-10-15T10:00:00.000Z",
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "quizId": "cmumqihis007jmmos7isultgq",
+    "ownerId": "cmumqigs9000pmmos1tduws1f"
+  },
+  "courseTitle": "Foundations of Vedic Astrology",
+  "audienceSize": 17,
+  "editable": true,
+  "quiz": {
+    "id": "cmumqihis007jmmos7isultgq",
+    "title": "The Nine Planets: check your understanding",
+    "status": "published",
+    "questions": 3,
+    "attempts": 3,
+    "passMark": 70
+  }
+}

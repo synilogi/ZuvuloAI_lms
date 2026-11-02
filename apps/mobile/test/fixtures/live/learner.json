@@ -1,0 +1,188 @@
+{
+  "live": [],
+  "upcoming": [
+    {
+      "liveClass": {
+        "id": "cmum8kcg70087mmzwqracp24y",
+        "courseId": "cmum8kc7v001rmmzwxpi3c713",
+        "title": "Reading dignities in real charts",
+        "instructorId": "cmum8kbm5000jmmzwc5svfbsn",
+        "startsAt": "2026-10-01T05:28:42.246Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "description": "A live walkthrough of planetary dignity across several real birth charts.",
+        "agenda": [
+          {
+            "title": "Recap of dignity rules",
+            "minutes": 10
+          },
+          {
+            "title": "Live chart reading",
+            "minutes": 40
+          },
+          {
+            "title": "Q&A",
+            "minutes": 10
+          }
+        ],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60
+        ]
+      },
+      "phase": "upcoming",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer",
+      "registered": false
+    }
+  ],
+  "recordings": [
+    {
+      "liveClass": {
+        "id": "cmum8kcg90089mmzw0y2kxtrc",
+        "courseId": "cmum8kc94002rmmzwf4g28hlf",
+        "title": "Dasha timing office hours",
+        "instructorId": "cmum8kbm6000lmmzwdz3zq3ht",
+        "startsAt": "2026-09-24T05:28:42.246Z",
+        "durationMin": 45,
+        "capacity": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "recording": {
+          "durationMin": 42,
+          "availableUntil": "2026-10-24T05:28:42.246Z"
+        },
+        "description": "Open office hours on dasha timing questions.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Reading the Dasha System",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "liveClass": {
+        "id": "cmum8kes200jzmmzw45q2ck05",
+        "courseId": "cmum8kc7v001rmmzwxpi3c713",
+        "title": "Dignity and debilitation: worked charts",
+        "instructorId": "cmum8kbm5000jmmzwc5svfbsn",
+        "startsAt": "2026-09-05T05:28:42.246Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T05:28:42.246Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmum8kes900k1mmzw1t9fov9e",
+        "courseId": "cmum8kc7v001rmmzwxpi3c713",
+        "title": "Houses in practice: a live reading",
+        "instructorId": "cmum8kbm5000jmmzwc5svfbsn",
+        "startsAt": "2026-08-08T05:28:42.246Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T05:28:42.246Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmum8kesf00k3mmzwd29j2sng",
+        "courseId": "cmum8kc8k002bmmzwcpugw8he",
+        "title": "Nakshatra padas: your questions answered",
+        "instructorId": "cmum8kbm5000jmmzwc5svfbsn",
+        "startsAt": "2026-07-10T05:28:42.246Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T05:28:42.246Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "The 27 Nakshatras in Depth",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmum8kesk00k5mmzwiuubu0ji",
+        "courseId": "cmum8kc94002rmmzwf4g28hlf",
+        "title": "Vimshottari timing: case studies",
+        "instructorId": "cmum8kbm6000lmmzwdz3zq3ht",
+        "startsAt": "2026-06-11T05:28:42.246Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T05:28:42.246Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Reading the Dasha System",
+      "instructorName": "Acharya Vinod Shastri"
+    }
+  ]
+}

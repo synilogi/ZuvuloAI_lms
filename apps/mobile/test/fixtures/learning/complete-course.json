@@ -1,0 +1,31 @@
+{
+  "snapshot": {
+    "courseId": "cmudqd8g30035mmgzwtgr0mcl",
+    "lessons": {
+      "cmudqd8g60039mmgz4h7x3lmc": {
+        "lessonId": "cmudqd8g60039mmgz4h7x3lmc",
+        "state": "completed",
+        "fraction": 1,
+        "positionSec": 1500,
+        "completedAt": "2026-09-23T12:45:56.942Z"
+      },
+      "cmudqd8g8003bmmgz043r24w3": {
+        "lessonId": "cmudqd8g8003bmmgz043r24w3",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-23T12:46:09.485Z"
+      }
+    },
+    "lastLessonId": "cmudqd8g8003bmmgz043r24w3",
+    "lastActiveAt": "2026-09-23T12:46:09.485Z"
+  },
+  "progress": {
+    "completed": 2,
+    "total": 2,
+    "percent": 100,
+    "remainingMin": 0,
+    "state": "completed"
+  },
+  "chapterCompleted": "The Seven Karakas",
+  "courseCompleted": true
+}

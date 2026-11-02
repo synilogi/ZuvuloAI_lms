@@ -1,0 +1,4 @@
+Captured 2026-09-23T10:19:46Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /help/categories?audience=all none help/categories-visitor.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

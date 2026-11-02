@@ -1,0 +1,275 @@
+{
+  "courses": [
+    {
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "progress": 38,
+      "status": "active",
+      "chapters": [
+        {
+          "id": "cmumqihbm001tmmos40unpr21",
+          "title": "The Nine Planets",
+          "percent": 100,
+          "completed": 3,
+          "total": 3
+        },
+        {
+          "id": "cmumqihbu0021mmos6bi0tip1",
+          "title": "Signs and Houses",
+          "percent": 0,
+          "completed": 0,
+          "total": 4
+        }
+      ]
+    },
+    {
+      "courseId": "cmumqihc7002bmmosdnc8er9m",
+      "courseTitle": "The 27 Nakshatras in Depth",
+      "progress": 100,
+      "status": "completed",
+      "chapters": [
+        {
+          "id": "cmumqihca002dmmosqbwn32ns",
+          "title": "Ashwini to Ashlesha",
+          "percent": 100,
+          "completed": 2,
+          "total": 2
+        },
+        {
+          "id": "cmumqihcf002jmmos1004wgif",
+          "title": "Magha to Moola",
+          "percent": 100,
+          "completed": 3,
+          "total": 3
+        }
+      ]
+    },
+    {
+      "courseId": "cmumqihco002rmmosr0ijyuku",
+      "courseTitle": "Reading the Dasha System",
+      "progress": 15,
+      "status": "active",
+      "chapters": [
+        {
+          "id": "cmumqihcr002tmmosdgt5j3lz",
+          "title": "How Vimshottari Works",
+          "percent": 50,
+          "completed": 1,
+          "total": 2
+        },
+        {
+          "id": "cmumqihcx002zmmosskfn7wt5",
+          "title": "Reading Antardashas",
+          "percent": 0,
+          "completed": 0,
+          "total": 2
+        }
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "cmumqihis007jmmos7isultgq",
+      "title": "The Nine Planets: check your understanding",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "attempts": 1,
+      "best": 83,
+      "passMark": 70,
+      "lastAt": "2026-09-29T13:51:08.601Z"
+    }
+  ],
+  "assignments": [
+    {
+      "submissionId": "cmunrp61w00tfmmt9bdan4v6m",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T07:12:06.116Z",
+      "status": "waiting",
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunrp5xq00t5mmt967j5cyl8",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T07:12:05.966Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunpzp8w00l3mmt9t5fks8lp",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T06:24:18.321Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunpzp3t00ktmmt9e3u0gp9o",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T06:24:18.137Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunp2o5h00ctmmt9666h44qb",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T05:58:37.253Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunp2o1000cjmmt9ha604d5b",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T05:58:37.093Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunodghg009hmmt9eyv9kqte",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T05:39:00.916Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunodgdf0099mmt9zcu1cgmm",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T05:39:00.771Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmuno85h1008rmmt9s6m133xm",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T05:34:53.365Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmunnj61i008dmmt9059izm2l",
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "title": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-30T05:15:27.702Z",
+      "status": "returned",
+      "score": 0,
+      "max": 50,
+      "passMark": 30,
+      "late": false
+    },
+    {
+      "submissionId": "cmumqihj9007xmmos74j4712i",
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "title": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submittedAt": "2026-09-27T13:51:08.612Z",
+      "status": "waiting",
+      "max": 100,
+      "passMark": 60,
+      "late": false
+    }
+  ],
+  "studyWeeks": [
+    {
+      "label": "8 Jul",
+      "detail": "Week of 8 Jul",
+      "minutes": 0
+    },
+    {
+      "label": "15 Jul",
+      "detail": "Week of 15 Jul",
+      "minutes": 0
+    },
+    {
+      "label": "22 Jul",
+      "detail": "Week of 22 Jul",
+      "minutes": 0
+    },
+    {
+      "label": "29 Jul",
+      "detail": "Week of 29 Jul",
+      "minutes": 0
+    },
+    {
+      "label": "5 Aug",
+      "detail": "Week of 5 Aug",
+      "minutes": 0
+    },
+    {
+      "label": "12 Aug",
+      "detail": "Week of 12 Aug",
+      "minutes": 0
+    },
+    {
+      "label": "19 Aug",
+      "detail": "Week of 19 Aug",
+      "minutes": 0
+    },
+    {
+      "label": "26 Aug",
+      "detail": "Week of 26 Aug",
+      "minutes": 0
+    },
+    {
+      "label": "2 Sept",
+      "detail": "Week of 2 Sept",
+      "minutes": 0
+    },
+    {
+      "label": "9 Sept",
+      "detail": "Week of 9 Sept",
+      "minutes": 0
+    },
+    {
+      "label": "16 Sept",
+      "detail": "Week of 16 Sept",
+      "minutes": 36
+    },
+    {
+      "label": "This week",
+      "detail": "Week of 23 Sept",
+      "minutes": 127
+    }
+  ]
+}

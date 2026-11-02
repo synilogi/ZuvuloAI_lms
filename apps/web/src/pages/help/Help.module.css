@@ -1,0 +1,272 @@
+/* Help Centre — hub, category and article pages */
+
+.page {
+  max-width: var(--container-page);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.narrowPage {
+  max-width: var(--container-reading);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.muted {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.searchRow {
+  max-width: 480px;
+}
+
+/* ─── Category grid (hub) ─── */
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.categoryTile {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  height: 100%;
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+  color: var(--text);
+  transition:
+    border-color var(--t-fast),
+    box-shadow var(--t-fast),
+    transform var(--t-fast);
+}
+.categoryTile:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: var(--sh-md);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.categoryTile:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-ring);
+}
+.categoryText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.categoryName {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--text);
+}
+.categoryCount {
+  margin-top: 2px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+.categoryHeadIcon {
+  display: flex;
+}
+
+/* ─── Article list ─── */
+.articleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.articleRow {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  transition:
+    border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+.articleRow:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: var(--sh-sm);
+}
+.articleLink {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  color: var(--text);
+}
+.articleLink:hover {
+  text-decoration: none;
+}
+.articleLink:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-ring);
+  border-radius: var(--r-md);
+}
+.articleMain {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.articleTitle {
+  font-weight: 600;
+  color: var(--text);
+}
+.articleSummary {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.articleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-caption);
+  color: var(--faint);
+}
+.articleArrow {
+  flex: none;
+  color: var(--faint);
+}
+.articleFacts {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+
+/* ─── Article body ─── */
+.articleCard {
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+
+/* ─── Feedback ─── */
+.feedbackCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+}
+.feedbackLabel {
+  font-weight: 600;
+}
+.feedbackButtons {
+  display: flex;
+  gap: var(--s-2);
+}
+.feedbackThanks {
+  font-size: var(--fs-caption);
+  color: var(--accent-ink);
+}
+
+/* ─── Contact card ─── */
+.contactCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  color: var(--accent-ink);
+}
+.contactText {
+  flex: 1;
+  min-width: 220px;
+  color: var(--text);
+}
+.contactTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  margin-bottom: 2px;
+}
+
+@media (max-width: 767px) {
+  .contactCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contactCard > button,
+  .contactCard > a {
+    width: 100%;
+  }
+}
+
+/* Platform support for academy admins (SAAS-029). */
+.supportCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.supportForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  max-width: 640px;
+}
+.supportList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.supportItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.supportItemHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.supportMessage {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 767px) {
+  .supportCard {
+    padding: var(--s-4);
+  }
+}

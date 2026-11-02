@@ -1,0 +1,4 @@
+Captured 2026-09-30T10:16:17Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /calendar?from=2026-10-01&to=2026-10-31 admin staff/calendar-month.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

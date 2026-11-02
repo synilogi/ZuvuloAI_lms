@@ -1,0 +1,46 @@
+{
+  "certificate": {
+    "id": "cmumqihjk0085mmosxt5bck3c",
+    "credentialId": "SA-JY-2026-00231",
+    "studentId": "cmumqihbc001pmmost77d68f5",
+    "courseId": "cmumqihco002rmmosr0ijyuku",
+    "title": "Certificate in Reading the Dasha System",
+    "templateId": "cmumqihe0003vmmos92qeuavf",
+    "status": "pending",
+    "completedAt": "2026-09-28T13:51:08.622Z",
+    "finalScore": 79,
+    "hours": 8,
+    "verifications": 0
+  },
+  "student": {
+    "id": "cmumqihbc001pmmost77d68f5",
+    "name": "Vikram Singh",
+    "email": "user@example.test",
+    "city": "Jaipur"
+  },
+  "courseTitle": "Reading the Dasha System",
+  "levelTitle": "Intermediate",
+  "template": {
+    "id": "cmumqihe0003vmmos92qeuavf",
+    "name": "Classic seal",
+    "style": "classic",
+    "accent": "emerald",
+    "heading": "Certificate of Completion",
+    "statement": "has completed the course of study in",
+    "signatories": [
+      {
+        "name": "Dr. Meenakshi Iyer",
+        "title": "Director of Studies"
+      },
+      {
+        "name": "Kavita Menon",
+        "title": "Academy Director"
+      }
+    ],
+    "showScore": true,
+    "showHours": true,
+    "isDefault": true,
+    "updatedAt": "2026-09-29T13:51:08.424Z"
+  },
+  "verifyUrl": "/verify/SA-JY-2026-00231"
+}

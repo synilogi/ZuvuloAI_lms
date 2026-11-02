@@ -1,0 +1,4 @@
+Captured 2026-09-30T09:08:50Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /live/cmumqihjp0089mmosaaldvbsd admin staff/live-class-ended.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

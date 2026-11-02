@@ -1,0 +1,595 @@
+{
+  "rows": [
+    {
+      "liveClass": {
+        "id": "cmunvbcjg01dbmmt97arwn4lj",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — cancelled class",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-03T08:53:18.876Z",
+        "durationMin": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "The instructor is unwell."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmuntzz8r014jmmt982vn0cbk",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — cancelled class",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-03T08:16:28.827Z",
+        "durationMin": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "The instructor is unwell."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunrqnrz00vrmmt9k1nuumgz",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — cancelled class",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-03T07:13:15.839Z",
+        "durationMin": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "The instructor is unwell."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunq17rl00nfmmt98wf5yw76",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — cancelled class",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-03T06:25:29.089Z",
+        "durationMin": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "The instructor is unwell."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunp48au00f5mmt9rl0lb6v0",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — cancelled class",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-03T05:59:50.150Z",
+        "durationMin": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "The instructor is unwell."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunmoe0t0055mmt9rovvu9m2",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — cancelled class",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-03T04:51:31.809Z",
+        "durationMin": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "The instructor is unwell."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqihjm0087mmosieytg5to",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Reading dignities in real charts",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-01T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "description": "A live walkthrough of planetary dignity across several real birth charts.",
+        "agenda": [
+          {
+            "title": "Recap of dignity rules",
+            "minutes": 10
+          },
+          {
+            "title": "Live chart reading",
+            "minutes": 40
+          },
+          {
+            "title": "Q&A",
+            "minutes": 10
+          }
+        ],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60
+        ]
+      },
+      "phase": "upcoming",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunvbb6001b9mmt97cna9qt0",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — joining ten minutes ahead",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-30T09:03:17.098Z",
+        "durationMin": 30,
+        "capacity": 5,
+        "registered": 1,
+        "attending": 1,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "external",
+          "link": "https://meet.example.com/dignities"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "Contract check finished."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmuntzxkl012hmmt9msrg0x04",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — joining ten minutes ahead",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-30T08:26:26.659Z",
+        "durationMin": 30,
+        "capacity": 5,
+        "registered": 1,
+        "attending": 1,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "external",
+          "link": "https://meet.example.com/dignities"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "Contract check finished."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunrqm3j00tpmmt9d14h26lf",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — joining ten minutes ahead",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-30T07:23:13.657Z",
+        "durationMin": 30,
+        "capacity": 5,
+        "registered": 1,
+        "attending": 1,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "external",
+          "link": "https://meet.example.com/dignities"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "Contract check finished."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunq162x00ldmmt9l8tgygxj",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — joining ten minutes ahead",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-30T06:35:26.909Z",
+        "durationMin": 30,
+        "capacity": 5,
+        "registered": 1,
+        "attending": 1,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "external",
+          "link": "https://meet.example.com/dignities"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "Contract check finished."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunp46ph00d3mmt9msa8yybk",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — joining ten minutes ahead",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-30T06:09:48.077Z",
+        "durationMin": 30,
+        "capacity": 5,
+        "registered": 1,
+        "attending": 1,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "external",
+          "link": "https://meet.example.com/dignities"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "Contract check finished."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmunmocqt0033mmt9u53q028e",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Contract check — joining ten minutes ahead",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-30T05:01:30.151Z",
+        "durationMin": 30,
+        "capacity": 5,
+        "registered": 1,
+        "attending": 1,
+        "attended": 0,
+        "cancelled": true,
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "external",
+          "link": "https://meet.example.com/dignities"
+        },
+        "reminders": [
+          1440,
+          60,
+          15
+        ],
+        "cancelReason": "Contract check finished."
+      },
+      "phase": "cancelled",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqihjp0089mmosaaldvbsd",
+        "courseId": "cmumqihco002rmmosr0ijyuku",
+        "title": "Dasha timing office hours",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "startsAt": "2026-09-24T13:51:08.625Z",
+        "durationMin": 45,
+        "capacity": 30,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "recording": {
+          "durationMin": 42,
+          "availableUntil": "2026-10-24T13:51:08.625Z"
+        },
+        "description": "Open office hours on dasha timing questions.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Reading the Dasha System",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqijte00jzmmos6qxhbf7f",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Dignity and debilitation: worked charts",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-09-05T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 13,
+        "attending": 0,
+        "attended": 9,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T13:51:08.625Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqijtk00k1mmos7rkzvxxn",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Houses in practice: a live reading",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-08-08T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 8,
+        "attending": 0,
+        "attended": 7,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T13:51:08.625Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqijtp00k3mmos6zvcdb28",
+        "courseId": "cmumqihc7002bmmosdnc8er9m",
+        "title": "Nakshatra padas: your questions answered",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-07-10T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 2,
+        "attending": 0,
+        "attended": 2,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T13:51:08.625Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "The 27 Nakshatras in Depth",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqijtu00k5mmos7tvkvtmg",
+        "courseId": "cmumqihco002rmmosr0ijyuku",
+        "title": "Vimshottari timing: case studies",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "startsAt": "2026-06-11T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 4,
+        "attending": 0,
+        "attended": 4,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T13:51:08.625Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Reading the Dasha System",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqijtz00k7mmosjvcvxasw",
+        "courseId": "cmumqihdf003dmmosiq6u19sc",
+        "title": "KP sub-lords: open office hours",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "startsAt": "2026-05-06T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 4,
+        "attending": 0,
+        "attended": 4,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T13:51:08.625Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Krishnamurti Paddhati (KP) Fundamentals",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "liveClass": {
+        "id": "cmumqiju400k9mmos3acydhfi",
+        "courseId": "cmumqihdp003lmmoslirj2d3m",
+        "title": "Prashna: judging the querent",
+        "instructorId": "cmumqigq2000nmmosiltg8gr7",
+        "startsAt": "2026-04-09T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 1,
+        "attending": 0,
+        "attended": 1,
+        "recording": {
+          "durationMin": 58,
+          "availableUntil": "2026-12-28T13:51:08.625Z"
+        },
+        "description": "A session from the academy archive, with the recording kept for enrolled learners.",
+        "agenda": [],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": []
+      },
+      "phase": "ended",
+      "courseTitle": "Prashna: Horary Astrology",
+      "instructorName": "Pt. Sanjay Rathore"
+    }
+  ],
+  "total": 20,
+  "counts": {
+    "upcoming": 1,
+    "live": 0,
+    "history": 7,
+    "cancelled": 12
+  }
+}

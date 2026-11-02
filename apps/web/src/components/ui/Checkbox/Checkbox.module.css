@@ -1,0 +1,64 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  font-size: var(--fs-body-sm);
+}
+.boxWrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.input {
+  position: absolute;
+  inset: -6px;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.box {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--surface);
+  color: transparent;
+  transition:
+    background var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast),
+    box-shadow var(--t-fast);
+  pointer-events: none;
+}
+.input:hover + .box {
+  border-color: var(--accent);
+}
+.input:focus-visible + .box {
+  box-shadow: var(--sh-ring);
+  border-color: var(--accent);
+}
+.input:checked + .box,
+.input:indeterminate + .box {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+.input:disabled + .box {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+.label {
+  color: var(--text);
+}
+
+@media (max-width: 767px) {
+  .input {
+    inset: -13px;
+  }
+}

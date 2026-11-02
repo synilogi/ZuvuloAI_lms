@@ -1,0 +1,24 @@
+.glyph {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: var(--r-md);
+  background: var(--accent-soft);
+}
+.art {
+  width: 78%;
+  height: 78%;
+  fill: none;
+  stroke: var(--accent-ink);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+.dot {
+  fill: var(--accent);
+  stroke: none;
+}
+.faint {
+  opacity: 0.45;
+}

@@ -1,0 +1,29 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.star {
+  color: var(--warn);
+}
+.count {
+  color: var(--faint);
+  font-weight: 400;
+}
+.large {
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 28px;
+}
+.large .count {
+  font-family: var(--font-body);
+  font-size: var(--fs-meta);
+}
+.empty {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+}

@@ -1,0 +1,221 @@
+/* ─── Learner management ─── */
+.management {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 40px;
+}
+.search {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+.filter {
+  position: relative;
+  flex: 0 0 180px;
+}
+.filter select {
+  padding-left: 34px;
+}
+.filterIcon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--faint);
+  z-index: 1;
+  pointer-events: none;
+}
+.bulkBar {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 4px 6px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  animation: global(om-fade) 120ms ease both;
+}
+.bulkCount {
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--accent-ink);
+  margin-right: auto;
+}
+
+.person {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.personText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+.personName {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.personEmail {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.muted {
+  color: var(--muted);
+}
+.truncate {
+  display: block;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.nowrap {
+  white-space: nowrap;
+  color: var(--muted);
+}
+.progressCell {
+  display: grid;
+  grid-template-columns: minmax(60px, 1fr) 36px;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+
+@container (max-width: 520px) {
+  .filter {
+    flex: 1 1 100%;
+  }
+}
+
+/* ─── Specimen pages ─── */
+.specimenPage {
+  max-width: var(--container-page);
+  margin: 0 auto;
+}
+.specimenWide {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+}
+.specimenNote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--s-5);
+  font-size: var(--fs-caption);
+  color: var(--faint);
+}
+
+.overview {
+  display: grid;
+  gap: var(--s-7);
+}
+.overviewMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-7);
+  min-width: 0;
+}
+.overviewAside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.overviewPanel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  box-shadow: var(--sh-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.overviewProgress {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+.overviewSectionTitle {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--s-4);
+}
+@media (min-width: 1024px) {
+  .overview {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+}
+
+.lesson {
+  display: grid;
+  gap: var(--s-6);
+}
+.lessonCanvas {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 5vw, 56px);
+}
+.lessonInner {
+  max-width: var(--container-reading);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.lessonTitle {
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.lessonProse {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.lessonProse h3 {
+  font-size: var(--fs-h3);
+  margin-top: var(--s-3);
+}
+.lessonTools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border);
+}
+.lessonSide {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .lesson {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    align-items: start;
+  }
+  .lessonSide {
+    display: block;
+    position: sticky;
+    top: 0;
+  }
+  .lessonPanelTrigger {
+    display: none;
+  }
+}

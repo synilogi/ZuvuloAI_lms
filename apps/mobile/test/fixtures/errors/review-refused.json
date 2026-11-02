@@ -1,0 +1,13 @@
+{
+  "message": "Check the review before submitting it.",
+  "issues": [
+    {
+      "field": "points",
+      "message": "Give a score from 0 to 100."
+    },
+    {
+      "field": "feedback",
+      "message": "Leave the learner a line of feedback with their grade."
+    }
+  ]
+}

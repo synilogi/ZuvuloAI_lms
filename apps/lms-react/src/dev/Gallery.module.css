@@ -1,0 +1,32 @@
+.page {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: var(--s-6) var(--s-4);
+  display: grid;
+  gap: var(--s-6);
+}
+
+.section {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-4);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: center;
+}

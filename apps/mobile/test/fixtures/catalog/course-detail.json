@@ -1,0 +1,141 @@
+{
+  "id": "cmudqd8e8001rmmgzw9ydq2ly",
+  "slug": "foundations-vedic",
+  "title": "Foundations of Vedic Astrology",
+  "subtitle": "Planets, signs, houses and nakshatras — the language of a birth chart.",
+  "description": "A ground-up introduction to Vedic astrology: the nine planets, twelve signs, twelve houses and twenty-seven nakshatras, and how to read them together in a birth chart.",
+  "levelId": "cmudqd7rm0003mmgzrix967b0",
+  "categoryId": "cmudqd7t8000dmmgzkc9qsfwk",
+  "instructorIds": [
+    "cmudqd7ti000jmmgzsa8zg84a"
+  ],
+  "format": "self-paced",
+  "language": "en-IN",
+  "coverMotif": "houses",
+  "chapters": [
+    {
+      "id": "cmudqd8ec001tmmgzjfrfyysr",
+      "title": "The Nine Planets",
+      "summary": "What each graha signifies.",
+      "objective": "By the end of this chapter, learners can name what each planet governs.",
+      "status": "published",
+      "lessons": [
+        {
+          "id": "cmudqd8eg001vmmgzl6ymelfw",
+          "title": "Introduction to the Navagrahas",
+          "type": "video",
+          "durationMin": 18,
+          "isPreview": true,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.912Z",
+          "objectives": [],
+          "content": {
+            "video": {
+              "file": {
+                "name": "navagrahas-intro.mp4",
+                "sizeMb": 84
+              },
+              "durationSec": 1080,
+              "captions": true,
+              "markers": []
+            }
+          },
+          "settings": {}
+        },
+        {
+          "id": "cmudqd8ej001xmmgz7y4351pu",
+          "title": "Benefics and malefics",
+          "type": "reading",
+          "durationMin": 12,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.916Z",
+          "objectives": [],
+          "content": {}
+        },
+        {
+          "id": "cmudqd8en001zmmgzg3xageb9",
+          "title": "Chapter check",
+          "type": "assessment",
+          "durationMin": 10,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.919Z",
+          "objectives": [],
+          "content": {}
+        }
+      ]
+    },
+    {
+      "id": "cmudqd8eq0021mmgzllbpxboh",
+      "title": "Signs and Houses",
+      "summary": "The twelve rashis and bhavas.",
+      "objective": "By the end of this chapter, learners can map a planet to its sign and house meaning together.",
+      "status": "published",
+      "lessons": [
+        {
+          "id": "cmudqd8es0023mmgzwqae9u8i",
+          "title": "The twelve rashis",
+          "type": "video",
+          "durationMin": 22,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.924Z",
+          "objectives": [],
+          "content": {}
+        },
+        {
+          "id": "cmudqd8eu0025mmgzos5jra6a",
+          "title": "Reading the houses",
+          "type": "reading",
+          "durationMin": 15,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.927Z",
+          "objectives": [],
+          "content": {}
+        },
+        {
+          "id": "cmudqd8ex0027mmgzs5l716tb",
+          "title": "Chart-reading practice",
+          "type": "practice",
+          "durationMin": 25,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.929Z",
+          "objectives": [],
+          "content": {}
+        },
+        {
+          "id": "cmudqd8ez0029mmgz7hfhtfb4",
+          "title": "Your first assignment: reading a friend’s chart",
+          "type": "assignment",
+          "durationMin": 40,
+          "status": "published",
+          "updatedAt": "2026-09-23T06:37:07.932Z",
+          "objectives": [],
+          "content": {}
+        }
+      ]
+    }
+  ],
+  "liveSessions": 1,
+  "estimatedWeeks": 4,
+  "certificateTitle": "Certificate in Foundations of Vedic Astrology",
+  "price": {
+    "amount": 2999,
+    "currency": "INR"
+  },
+  "enrolledCount": 15,
+  "status": "published",
+  "visibility": "public",
+  "outcomes": [
+    "Read a birth chart’s planets, signs and houses",
+    "Identify a nakshatra and its ruling deity",
+    "Judge a planet’s basic strength"
+  ],
+  "tags": [
+    "Beginner",
+    "Foundations"
+  ],
+  "createdAt": "2026-09-23T06:37:07.905Z",
+  "updatedAt": "2026-09-23T06:37:11.032Z",
+  "publishedAt": "2026-07-25T06:37:07.902Z",
+  "rating": 4.661066094985708,
+  "ratingCount": 44
+}

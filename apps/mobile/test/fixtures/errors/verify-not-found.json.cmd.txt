@@ -1,0 +1,4 @@
+Captured 2026-09-23T10:19:46Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /certificates/verify/NOPE-1 none errors/verify-not-found.json
+HTTP status: 404
+Tokens and e-mail addresses scrubbed.

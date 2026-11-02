@@ -1,0 +1,78 @@
+/* The platform team's inbox. */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  align-items: center;
+}
+.fromButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: none;
+  padding: 0;
+  text-align: left;
+  min-width: 0;
+}
+.fromName {
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+.fromButton:hover .fromName {
+  text-decoration: underline;
+}
+.fromMeta {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+  overflow-wrap: anywhere;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.facts {
+  display: grid;
+  gap: var(--s-2);
+  margin: 0;
+  font-size: var(--fs-body-sm);
+}
+.facts > div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: var(--s-2);
+}
+.facts dt {
+  color: var(--muted);
+}
+.facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.facts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.muted {
+  color: var(--muted);
+}
+.subject {
+  font-weight: 600;
+}
+.message {
+  white-space: pre-wrap;
+  padding: var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  overflow-wrap: anywhere;
+}

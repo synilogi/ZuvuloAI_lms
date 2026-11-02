@@ -1,0 +1,16 @@
+{
+  "enforced": true,
+  "status": "trialing",
+  "restricted": false,
+  "plan": {
+    "id": "cmumqijur00kkmmoslkcygj8f",
+    "code": "STARTER",
+    "name": "Starter"
+  },
+  "features": [
+    "courses.manage",
+    "assessments.manage"
+  ],
+  "lastFeatures": [],
+  "trialEndsAt": "2026-10-17T09:30:00.000Z"
+}

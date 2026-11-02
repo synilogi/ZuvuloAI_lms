@@ -1,0 +1,213 @@
+/* Button atom: 13.5px/600, 9px 15px, r-md; primary carries the brand gradient, secondary a hairline and a whisper of shadow */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--fs-ui);
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 9px 16px;
+  min-height: 38px;
+  border-radius: var(--r-md);
+  letter-spacing: -0.005em;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  transition:
+    background var(--t-fast),
+    color var(--t-fast),
+    border-color var(--t-fast),
+    box-shadow var(--t-fast),
+    transform var(--t-fast);
+}
+.button:hover {
+  text-decoration: none;
+}
+.button:active:not(:disabled),
+.button[data-force='active'] {
+  transform: translateY(0.5px);
+}
+.button:focus-visible,
+.button[data-force='focus'] {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.primary {
+  background-color: var(--accent);
+  background-image: var(--brand-gradient);
+  color: var(--accent-fg);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.18),
+    0 1px 2px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 6px 14px -6px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.primary:hover,
+.primary[data-force='hover'] {
+  background-image: linear-gradient(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.1)), var(--brand-gradient);
+  color: var(--accent-fg);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.18),
+    0 1px 2px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 10px 20px -8px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.primary:active:not(:disabled),
+.primary[data-force='active'] {
+  background-image: linear-gradient(rgb(0 0 0 / 0.18), rgb(0 0 0 / 0.18)), var(--brand-gradient);
+}
+
+.secondary {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--sh-xs);
+}
+.secondary:hover,
+.secondary[data-force='hover'] {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.secondary:active:not(:disabled),
+.secondary[data-force='active'] {
+  background: var(--surface-3);
+}
+.secondary[aria-pressed='true'],
+.secondary[data-force='selected'] {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  color: var(--accent-ink);
+}
+
+.ghost {
+  color: var(--accent-ink);
+}
+.ghost:hover,
+.ghost[data-force='hover'] {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+.quiet {
+  color: var(--muted);
+}
+.quiet:hover,
+.quiet[data-force='hover'] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.danger {
+  color: var(--danger-ink);
+  background: var(--danger-soft);
+}
+.danger:hover,
+.danger[data-force='hover'] {
+  background: color-mix(in srgb, var(--danger) 16%, var(--danger-soft));
+  color: var(--danger-ink);
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  background: var(--surface-2);
+  background-image: none;
+  border-color: transparent;
+  color: var(--faint);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.sm {
+  font-size: 12.5px;
+  padding: 6px 12px;
+  min-height: 32px;
+  border-radius: var(--r-sm);
+}
+.lg {
+  font-size: 14.5px;
+  padding: 11px 20px;
+  min-height: var(--touch);
+  border-radius: var(--r-md);
+}
+.block {
+  width: 100%;
+}
+
+.loading {
+  color: transparent !important;
+}
+.loading > :not(.spinner) {
+  visibility: hidden;
+}
+.spinner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.primary.loading .spinner {
+  color: var(--accent-fg);
+}
+.secondary.loading .spinner,
+.ghost.loading .spinner,
+.quiet.loading .spinner {
+  color: var(--accent-ink);
+}
+.loading:disabled {
+  background-color: var(--accent);
+  background-image: var(--brand-gradient);
+}
+.secondary.loading:disabled {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* Success confirmation — the label swaps with a settling check */
+.success {
+  background: var(--accent-soft);
+  background-image: none;
+  color: var(--accent-ink);
+  box-shadow: none;
+  border-color: transparent;
+}
+.success:hover {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.success svg:first-child {
+  animation: global(om-settle) 260ms var(--ease) both;
+}
+
+/* Icon-only — sizes match the shell: 38 header, 34 boxed, 28 small, 44 touch */
+.icon {
+  padding: 0;
+  width: 38px;
+  height: 38px;
+  min-height: 0;
+  color: var(--muted);
+  border-radius: var(--r-md);
+}
+.icon.sm {
+  width: 28px;
+  height: 28px;
+}
+.icon.boxed {
+  width: 34px;
+  height: 34px;
+}
+.icon.lg {
+  width: var(--touch);
+  height: var(--touch);
+}
+.icon.secondary {
+  color: var(--text);
+}
+.icon.quiet:hover {
+  color: var(--text);
+}

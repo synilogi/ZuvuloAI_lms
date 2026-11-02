@@ -1,0 +1,294 @@
+/*
+ * ZuviloAI — token layer
+ *
+ * Part A is the app's foundation layer: brand color, neutrals, type and shape. Change a
+ * value here and it changes everywhere, because every component reads these — never a
+ * one-off hex or px.
+ *
+ * Part B is the LMS extension. Every value in it is either an alias of Part A or derived
+ * from it (color-mix, a step on an existing scale).
+ *
+ * Part C is the category hues: colour that tells kinds of content apart (see its own note).
+ *
+ * Direction: "Ink & Indigo" — a modern SaaS console. Cool, faintly violet neutrals on a soft
+ * canvas, white cards with a hairline and a whisper of shadow, one confident indigo-violet
+ * brand color, and a deep-ink sidebar (Part D) that frames the workspace. Interface and
+ * headings share one geometric sans (Plus Jakarta Sans) set tight and bold; the serif
+ * (Fraunces) is kept for certificates only, where a formal document wants it. Antique gold
+ * stays reserved for what's earned (rating, rank, certificate).
+ */
+
+:root {
+  /* ─── A. Foundation tokens ────────────────────────────────────────────── */
+  --bg: oklch(0.974 0.005 280);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.966 0.006 280);
+  --surface-3: oklch(0.928 0.009 280);
+  --text: oklch(0.2 0.028 278);
+  --muted: oklch(0.47 0.024 278);
+  --faint: oklch(0.6 0.019 278);
+  --border: oklch(0.918 0.008 280);
+
+  --accent: oklch(0.505 0.2 286);
+  --accent-hover: oklch(0.45 0.195 286);
+  --accent-press: oklch(0.4 0.18 286);
+  --accent-soft: oklch(0.956 0.028 286);
+  --accent-ink: oklch(0.435 0.18 286);
+  --accent-fg: #ffffff;
+  --info: oklch(0.58 0.15 245);
+  --info-soft: oklch(0.955 0.025 245);
+  --info-ink: oklch(0.43 0.13 245);
+  --warn: oklch(0.76 0.15 75);
+  --warn-soft: oklch(0.965 0.045 85);
+  --warn-ink: oklch(0.47 0.11 60);
+  --danger: oklch(0.58 0.2 22);
+  --danger-soft: oklch(0.962 0.025 18);
+  --danger-ink: oklch(0.47 0.18 22);
+
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 18px;
+  --r-pill: 999px;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  --sh-xs: 0 1px 2px oklch(0.2 0.03 280 / 0.06);
+  --sh-sm: 0 1px 2px oklch(0.2 0.03 280 / 0.06), 0 1px 3px oklch(0.2 0.03 280 / 0.08);
+  --sh-md: 0 8px 24px -6px oklch(0.2 0.04 280 / 0.12), 0 2px 6px -2px oklch(0.2 0.03 280 / 0.06);
+  --sh-lg: 0 28px 64px -16px oklch(0.2 0.05 280 / 0.24), 0 4px 14px oklch(0.2 0.03 280 / 0.07);
+  --sh-ring: 0 0 0 4px oklch(0.505 0.2 286 / 0.16);
+  /* Cards rest on the canvas with a hairline and a whisper of depth; they lift on hover where they're links. */
+  --sh-card: 0 1px 2px oklch(0.2 0.03 280 / 0.04), 0 2px 6px -2px oklch(0.2 0.03 280 / 0.05);
+  --sh-card-hover: 0 10px 28px -10px oklch(0.2 0.05 280 / 0.18), 0 2px 6px -2px oklch(0.2 0.03 280 / 0.06);
+  /* The brand gradient — primary buttons, the sign-in panel, the active rail marker. */
+  --brand-gradient: linear-gradient(135deg, oklch(0.56 0.2 280) 0%, oklch(0.5 0.21 292) 100%);
+
+  --t-fast: 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* ─── B. LMS extension ────────────────────────────────────────────────── */
+
+  /* Semantic aliases — LMS states map onto the shell's four tones plus neutral */
+  --success: var(--accent);
+  --success-soft: var(--accent-soft);
+  --success-ink: var(--accent-ink);
+  --neutral: var(--faint);
+  --neutral-soft: var(--surface-2);
+  --neutral-ink: var(--muted);
+
+  /* Lines and tracks */
+  --border-strong: color-mix(in srgb, var(--text) 18%, var(--surface));
+  --track: color-mix(in srgb, var(--accent) 13%, var(--surface-2)); /* same-ramp meter track */
+  --track-neutral: var(--surface-3);
+  --hatch: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in srgb, var(--text) 9%, transparent) 5px 6px);
+
+  /* Media stage — video always sits on a deep indigo-black ground, in either theme */
+  --media-ground: #0e0d18;
+  --media-ink: #ffffff;
+
+  /* Overlay scrims — the shell's two backdrop values */
+  --scrim: rgba(14, 12, 28, 0.5);
+  --scrim-light: rgba(14, 12, 28, 0.42);
+
+  /* Surface levels (named roles over the shell's surfaces) */
+  --level-base: var(--bg);
+  --level-primary: var(--surface);
+  --level-secondary: var(--surface-2);
+  --level-sunken: var(--surface-3);
+  --level-elevated-shadow: var(--sh-md);
+  --level-floating-shadow: var(--sh-lg);
+
+  /* Typography — the shell's sizes, named; display/48 is the shell's large numeric */
+  --fs-display: 44px;
+  --fs-h1: 28px;
+  --fs-h1-mobile: 23px;
+  --fs-h2: 21px;
+  --fs-h3: 17px;
+  --fs-h4: 15px;
+  --fs-body-lg: 15px;
+  --fs-body: 14px;
+  --fs-ui: 13.5px; /* buttons, nav items, menu rows */
+  --fs-body-sm: 13px;
+  --fs-caption: 12px;
+  --fs-meta: 11.5px;
+  --fs-label: 11px; /* uppercase section labels */
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-body: 1.5;
+  --lh-reading: 1.72;
+  --tracking-display: -0.022em;
+  --tracking-numeric: -0.025em;
+  --tracking-eyebrow: 0.05em;
+  --tracking-label: 0.08em;
+
+  /* Motion — the shell's curve and durations, plus the overlay/progress durations it already uses */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 240ms;
+  --dur-progress: 300ms;
+  --t-slow: var(--dur-slow) var(--ease);
+  --t-progress: var(--dur-progress) var(--ease);
+
+  /* Layout */
+  --container-page: 1200px; /* shell content width */
+  --container-reading: 720px; /* immersive reading canvas */
+  --container-wide: 1480px; /* dense management views */
+  --sidebar-w: 260px;
+  --sidebar-w-collapsed: 72px;
+  --header-h: 64px;
+  --header-h-mobile: 58px;
+  --bottom-nav-h: 58px;
+  --touch: 44px;
+
+  /* Z-index — the shell's ladder */
+  --z-raised: 1;
+  --z-sticky: 20;
+  --z-tooltip: 60;
+  --z-popover: 70;
+  --z-nav-drawer: 90;
+  --z-search-sheet: 95;
+  --z-drawer: 98;
+  --z-modal: 100;
+  --z-toast: 110;
+
+  /* ─── C. Category hues ────────────────────────────────────────────────── */
+  /* Colour that sorts content into kinds (a section, a feature, a step) — never status, which is the tones' job — and
+   * always paired with an icon or a label. The same six hues as the mobile app's `Hues`. `-ink` is text-safe on `-soft`
+   * and on the page. `--spotlight-*` is the deep brand violet behind white text on a feature band, in either theme. */
+  --hue-violet: #5e3faf;
+  --hue-violet-soft: #efebff;
+  --hue-violet-ink: #4b3090;
+  --hue-blue: #2f7cf6;
+  --hue-blue-soft: #e6f0ff;
+  --hue-blue-ink: #1a4fa8;
+  --hue-green: #1e9e63;
+  --hue-green-soft: #e3f6ec;
+  --hue-green-ink: #0f6b41;
+  --hue-orange: #f26b1d;
+  --hue-orange-soft: #ffede2;
+  --hue-orange-ink: #b2470a;
+  --hue-pink: #e0457b;
+  --hue-pink-soft: #fde8f0;
+  --hue-pink-ink: #a02355;
+  --hue-gold: #dca416;
+  --hue-gold-soft: #fff2d6;
+  --hue-gold-ink: #804c00;
+  --spotlight-a: #5e3faf;
+  --spotlight-b: #3b2389;
+}
+
+:root[data-theme='dark'] {
+  --bg: oklch(0.158 0.014 280);
+  --surface: oklch(0.198 0.017 280);
+  --surface-2: oklch(0.236 0.019 280);
+  --surface-3: oklch(0.286 0.021 280);
+  --text: oklch(0.952 0.006 280);
+  --muted: oklch(0.75 0.014 280);
+  --faint: oklch(0.6 0.016 280);
+  --border: oklch(0.29 0.019 280);
+  --accent: oklch(0.71 0.155 286);
+  --accent-hover: oklch(0.765 0.135 286);
+  --accent-press: oklch(0.655 0.155 286);
+  --accent-soft: oklch(0.3 0.07 286);
+  --accent-ink: oklch(0.84 0.095 286);
+  --accent-fg: #0e0c1c;
+  --info-soft: oklch(0.29 0.05 245);
+  --info-ink: oklch(0.84 0.08 245);
+  --warn-soft: oklch(0.31 0.06 80);
+  --warn-ink: oklch(0.87 0.1 85);
+  --danger-soft: oklch(0.3 0.07 20);
+  --danger-ink: oklch(0.85 0.09 20);
+  --sh-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --sh-md: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+  --sh-lg: 0 28px 64px -12px rgba(0, 0, 0, 0.72);
+  --sh-ring: 0 0 0 4px oklch(0.71 0.155 286 / 0.28);
+  --sh-card: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --sh-card-hover: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
+  --brand-gradient: linear-gradient(135deg, oklch(0.66 0.17 280) 0%, oklch(0.6 0.19 292) 100%);
+
+  --track: color-mix(in srgb, var(--accent) 16%, var(--surface-2));
+  --scrim: rgba(0, 0, 0, 0.6);
+  --scrim-light: rgba(0, 0, 0, 0.52);
+
+  /* C. Category hues, dark: softer solids, deep tinted grounds. */
+  --hue-violet: #aa98fa;
+  --hue-violet-soft: #2e2849;
+  --hue-violet-ink: #d0c8ff;
+  --hue-blue: #6fa8ff;
+  --hue-blue-soft: #132a4a;
+  --hue-blue-ink: #b5d3ff;
+  --hue-green: #4cc98c;
+  --hue-green-soft: #10352a;
+  --hue-green-ink: #a6e9c6;
+  --hue-orange: #ff9a5c;
+  --hue-orange-soft: #46250f;
+  --hue-orange-ink: #ffc9a6;
+  --hue-pink: #f27ba6;
+  --hue-pink-soft: #4a1a2c;
+  --hue-pink-ink: #ffc0d6;
+  --hue-gold: #dca416;
+  --hue-gold-soft: #423007;
+  --hue-gold-ink: #efd18f;
+  --spotlight-a: #4b3090;
+  --spotlight-b: #2a1868;
+}
+
+/* ─── D. Ink surface ─────────────────────────────────────────────────────────
+ * The deep-ink ground the sidebar sits on, in either theme. Anything inside an element marked
+ * data-surface="ink" reads these values instead of the page's — buttons, badges, meters and
+ * tooltips keep working unchanged because they only ever read tokens. Derived Part B tokens
+ * are restated so they mix from the ink values, not the page's. */
+[data-surface='ink'] {
+  --surface: oklch(0.215 0.045 283);
+  --surface-2: oklch(0.265 0.05 283);
+  --surface-3: oklch(0.32 0.055 283);
+  --text: oklch(0.97 0.008 283);
+  --muted: oklch(0.79 0.03 283);
+  --faint: oklch(0.64 0.035 283);
+  --border: oklch(0.3 0.045 283);
+  --accent: oklch(0.7 0.16 286);
+  --accent-hover: oklch(0.76 0.14 286);
+  --accent-press: oklch(0.64 0.16 286);
+  --accent-soft: oklch(0.33 0.09 286);
+  --accent-ink: oklch(0.88 0.08 286);
+  --accent-fg: #ffffff;
+  --info-soft: oklch(0.32 0.06 245);
+  --info-ink: oklch(0.86 0.08 245);
+  --warn-soft: oklch(0.34 0.07 80);
+  --warn-ink: oklch(0.89 0.1 85);
+  --danger-soft: oklch(0.34 0.08 20);
+  --danger-ink: oklch(0.88 0.08 20);
+  --success-soft: var(--accent-soft);
+  --success-ink: var(--accent-ink);
+  --neutral-soft: var(--surface-2);
+  --neutral-ink: var(--muted);
+  --border-strong: color-mix(in srgb, var(--text) 22%, var(--surface));
+  --track: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+  --track-neutral: var(--surface-3);
+  --sh-ring: 0 0 0 4px oklch(0.7 0.16 286 / 0.3);
+  --hue-gold-soft: #423007;
+  --hue-gold-ink: #efd18f;
+  color: var(--text);
+  background: var(--surface);
+}
+:root[data-theme='dark'] [data-surface='ink'] {
+  --surface: oklch(0.175 0.03 283);
+  --surface-2: oklch(0.225 0.038 283);
+  --surface-3: oklch(0.28 0.045 283);
+  --border: oklch(0.26 0.035 283);
+}

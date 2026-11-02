@@ -1,0 +1,45 @@
+{
+  "session": {
+    "id": "cmvoydpgz000dmmtfl72u5oqz",
+    "quizId": "cmvoydm15007jmmrotrx5oxax",
+    "attemptNo": 1,
+    "status": "submitted",
+    "startedAt": "2026-10-26T07:46:37.229Z",
+    "deadlineAt": "2026-10-26T08:01:37.229Z",
+    "serverNow": "2026-10-26T07:46:37.311Z",
+    "remainingSec": 0,
+    "answers": {
+      "q1": [
+        "a"
+      ]
+    },
+    "answersSeq": 2,
+    "savedAt": "2026-10-26T07:46:37.302Z",
+    "finishedAt": "2026-10-26T07:46:37.302Z",
+    "attemptId": "cmvoydpiz000fmmtfbqwn32qd"
+  },
+  "completion": null,
+  "answersAccepted": true,
+  "review": {
+    "attemptId": "cmvoydpiz000fmmtfbqwn32qd",
+    "submittedAt": "2026-10-26T07:46:37.307Z",
+    "showResults": "score-only",
+    "passed": false,
+    "percent": 33,
+    "points": 10,
+    "max": 30,
+    "passMark": 70,
+    "attemptNo": 1,
+    "finish": "submitted",
+    "keyWithheld": true
+  },
+  "standing": {
+    "quizId": "cmvoydm15007jmmrotrx5oxax",
+    "serverNow": "2026-10-26T07:46:37.310Z",
+    "window": "open",
+    "attemptsAllowed": 2,
+    "attemptsUsed": 1,
+    "passed": false,
+    "canStart": true
+  }
+}

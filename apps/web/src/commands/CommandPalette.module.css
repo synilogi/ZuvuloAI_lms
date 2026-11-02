@@ -1,0 +1,197 @@
+/* Shell command menu: 600px, 11vh from top, scrim with 2px blur, r-lg, om-rise 180ms */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  place-items: start center;
+  padding: 11vh var(--s-4) var(--s-4);
+}
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-light);
+  backdrop-filter: blur(2px);
+  animation: global(om-fade) 140ms ease both;
+}
+.dialog {
+  position: relative;
+  width: min(600px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+  overflow: hidden;
+  animation: global(om-rise) 180ms var(--ease) both;
+}
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--border);
+}
+.headIcon {
+  color: var(--faint);
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-body-lg);
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+.input:focus-visible {
+  outline: none;
+}
+
+.list {
+  max-height: min(54vh, 420px);
+  overflow-y: auto;
+  padding: 6px;
+}
+.group {
+  padding: 10px 11px 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 11px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  font-size: var(--fs-body);
+  color: var(--text);
+}
+.active {
+  background: var(--surface-2);
+}
+.optionIcon {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.optionText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.optionLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hint {
+  font-size: var(--fs-label);
+  color: var(--faint);
+  white-space: nowrap;
+}
+.live {
+  color: var(--danger-ink);
+  font-weight: 600;
+}
+.due {
+  color: var(--warn-ink);
+  font-weight: 600;
+}
+.empty {
+  padding: var(--s-7) var(--s-4);
+  text-align: center;
+  color: var(--faint);
+}
+.empty p {
+  margin-top: var(--s-2);
+  font-size: var(--fs-body-sm);
+}
+.foot {
+  display: flex;
+  gap: var(--s-4);
+  padding: 10px var(--s-4);
+  font-size: var(--fs-label);
+  color: var(--faint);
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+/* Mobile search sheet — shell: full screen, bg, 16px input */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-search-sheet);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  animation: global(om-fade) 140ms ease both;
+}
+.sheetHead {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.sheetHead .input {
+  height: 46px;
+  padding: 0 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 16px;
+}
+.sheetHead .input:focus {
+  border-color: var(--accent);
+  box-shadow: var(--sh-ring);
+}
+.sheet .list {
+  flex: 1;
+  max-height: none;
+  padding: var(--s-3);
+}
+.sheet .option {
+  min-height: 56px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+.sheet .active {
+  background: var(--surface);
+  box-shadow:
+    var(--sh-sm),
+    inset 0 0 0 1.5px var(--accent);
+}
+.sheet .optionText {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.sheet .optionLabel {
+  white-space: normal;
+  font-size: var(--fs-body-lg);
+  font-weight: 500;
+}
+.sheet .hint {
+  white-space: normal;
+  font-size: var(--fs-caption);
+}
+.mobileArrow {
+  color: var(--faint);
+  flex: none;
+}

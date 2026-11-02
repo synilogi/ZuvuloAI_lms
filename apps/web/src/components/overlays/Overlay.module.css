@@ -1,0 +1,192 @@
+.root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+}
+.modalRoot {
+  z-index: var(--z-modal);
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+}
+.drawerRoot {
+  z-index: var(--z-drawer);
+  justify-content: flex-end;
+}
+.sheetRoot {
+  z-index: var(--z-drawer);
+  align-items: flex-end;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  animation: global(om-fade) 150ms ease both;
+}
+
+.panel {
+  position: relative;
+  outline: none;
+}
+.panel:focus-visible {
+  outline: none;
+}
+
+/* Modal — shell: 500px, r-lg, sh-lg, om-rise 190ms */
+.modal {
+  max-height: calc(100dvh - var(--s-6));
+  display: flex;
+}
+.modalInner {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-lg);
+  animation: global(om-rise) 190ms var(--ease) both;
+}
+.modalHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-5) var(--s-5) 0;
+}
+.modalIcon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-md);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.headText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: -0.018em;
+}
+.description {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.body {
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-5);
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-2) 60%, var(--surface));
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+}
+
+/* Drawer — shell: right edge, 440px, sh-lg, om-right 240ms */
+.drawer {
+  height: 100%;
+}
+.drawerInner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  box-shadow: var(--sh-lg);
+  animation: global(om-right) var(--dur-slow) var(--ease) both;
+}
+.drawerHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--border);
+}
+.scrollBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.drawerInner .footer {
+  border-radius: 0;
+}
+
+/* Bottom sheet — LMS extension: r-xl top corners, grabber, om-up 240ms */
+.sheet {
+  width: 100%;
+}
+.sheetInner {
+  width: 100%;
+  max-height: 88dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  box-shadow: var(--sh-lg);
+  animation: global(om-up) var(--dur-slow) var(--ease) both;
+  transition: transform var(--t-fast);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.grabZone {
+  display: grid;
+  place-items: center;
+  padding: 10px 0 2px;
+  cursor: grab;
+  touch-action: none;
+}
+.grabber {
+  width: 38px;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--surface-3);
+}
+.sheetHead {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0 var(--s-2) var(--s-2) var(--s-4);
+}
+.sheetFooter {
+  border-radius: 0;
+  justify-content: stretch;
+}
+.sheetFooter > * {
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .modalRoot {
+    align-items: flex-end;
+    padding: var(--s-3);
+    padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom));
+  }
+}
+
+/* Confirm dialog — consequences, acknowledgement, error */
+.confirmBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}

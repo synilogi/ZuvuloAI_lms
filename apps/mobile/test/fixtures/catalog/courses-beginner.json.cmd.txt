@@ -1,0 +1,4 @@
+Captured 2026-09-23T10:20:24Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /catalog/courses?levelId=cmudqd7rm0003mmgzrix967b0 none catalog/courses-beginner.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

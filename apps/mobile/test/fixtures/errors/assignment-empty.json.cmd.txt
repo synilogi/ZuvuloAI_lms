@@ -1,0 +1,4 @@
+Captured 2026-09-29T07:02:33Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /learning/assignments/cmum8kcfr007vmmzwwd5td1b4/submit student errors/assignment-empty.json '{"text":"","files":[]}'
+HTTP status: 409
+Tokens and e-mail addresses scrubbed.

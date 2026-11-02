@@ -1,0 +1,188 @@
+{
+  "events": [
+    {
+      "id": "sub-cmunrp61w00tfmmt9bdan4v6m",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T07:12:06.116Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunrp5xq00t5mmt967j5cyl8",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T07:12:05.966Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunpzp8w00l3mmt9t5fks8lp",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T06:24:18.321Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunpzp3t00ktmmt9e3u0gp9o",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T06:24:18.137Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunp2o5h00ctmmt9666h44qb",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T05:58:37.253Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunp2o1000cjmmt9ha604d5b",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T05:58:37.093Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunodghg009hmmt9eyv9kqte",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T05:39:00.916Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunodgdf0099mmt9zcu1cgmm",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T05:39:00.771Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmuno85h1008rmmt9s6m133xm",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T05:34:53.365Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmunnj61i008dmmt9059izm2l",
+      "kind": "assignment-submitted",
+      "title": "Rubric fixture: chart interpretation",
+      "at": "2026-09-30T05:15:27.702Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "qa-cmumqihix007nmmosulroi0wn",
+      "kind": "assessment-passed",
+      "title": "The Nine Planets: check your understanding",
+      "at": "2026-09-29T13:51:08.601Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "sub-cmumqihj9007xmmos74j4712i",
+      "kind": "assignment-submitted",
+      "title": "Your first assignment: reading a friend’s chart",
+      "at": "2026-09-27T13:51:08.612Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "lp-cmumqihf0004pmmosdzn2ttx6",
+      "kind": "lesson-completed",
+      "title": "The 120-year cycle",
+      "at": "2026-09-27T13:51:08.459Z",
+      "courseId": "cmumqihco002rmmosr0ijyuku"
+    },
+    {
+      "id": "lp-cmumqiheu004lmmosfcbdayev",
+      "kind": "lesson-completed",
+      "title": "Nakshatra quiz",
+      "at": "2026-09-27T13:51:08.454Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "lp-cmumqihee0047mmosxjds8ypm",
+      "kind": "lesson-completed",
+      "title": "Chapter check",
+      "at": "2026-09-27T13:51:08.437Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "lp-cmumqihes004jmmosjgkmjcxa",
+      "kind": "lesson-completed",
+      "title": "Working with padas",
+      "at": "2026-09-25T13:51:08.452Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "lp-cmumqihec0045mmos43j2f6u4",
+      "kind": "lesson-completed",
+      "title": "Benefics and malefics",
+      "at": "2026-09-25T13:51:08.435Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "lp-cmumqiheq004hmmosyf8r4qjn",
+      "kind": "lesson-completed",
+      "title": "The Pitru nakshatras",
+      "at": "2026-09-23T13:51:08.450Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "lp-cmumqihea0043mmosyjuecqzq",
+      "kind": "lesson-completed",
+      "title": "Introduction to the Navagrahas",
+      "at": "2026-09-23T13:51:08.433Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    },
+    {
+      "id": "lp-cmumqiheo004fmmosalu8ftwz",
+      "kind": "lesson-completed",
+      "title": "Rohini through Ashlesha",
+      "at": "2026-09-21T13:51:08.448Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "lp-cmumqihem004dmmos9dd1dr3n",
+      "kind": "lesson-completed",
+      "title": "Ashwini, Bharani and Krittika",
+      "at": "2026-09-19T13:51:08.446Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "enr-cmumqihej004bmmos7ft870i6",
+      "kind": "enrolled",
+      "title": "Enrolled in The 27 Nakshatras in Depth",
+      "at": "2026-09-19T07:52:03.766Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "enr-cmumqihew004nmmosg348le8o",
+      "kind": "enrolled",
+      "title": "Enrolled in Reading the Dasha System",
+      "at": "2026-09-08T02:04:58.126Z",
+      "courseId": "cmumqihco002rmmosr0ijyuku"
+    },
+    {
+      "id": "cert-cmumqihje0081mmos9mwzxbat",
+      "kind": "certificate-issued",
+      "title": "Certificate in The 27 Nakshatras in Depth",
+      "at": "2026-08-31T13:51:08.617Z",
+      "courseId": "cmumqihc7002bmmosdnc8er9m"
+    },
+    {
+      "id": "enr-cmumqihe50041mmosqrcpcpas",
+      "kind": "enrolled",
+      "title": "Enrolled in Foundations of Vedic Astrology",
+      "at": "2026-08-31T06:48:31.501Z",
+      "courseId": "cmumqihbi001rmmos6cypzr5m"
+    }
+  ],
+  "total": 25,
+  "counts": {
+    "all": 25,
+    "assignment-submitted": 11,
+    "assessment-passed": 1,
+    "lesson-completed": 9,
+    "enrolled": 3,
+    "certificate-issued": 1
+  }
+}

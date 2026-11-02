@@ -1,0 +1,384 @@
+{
+  "rows": [
+    {
+      "phase": "upcoming",
+      "event": {
+        "id": "live-cmumqihjm0087mmosieytg5to",
+        "type": "live",
+        "title": "Reading dignities in real charts",
+        "timing": "timed",
+        "startsAt": "2026-10-01T13:51:08.625Z",
+        "durationMin": 60,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "source": {
+          "kind": "live-class",
+          "id": "cmumqihjm0087mmosieytg5to"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunmoe0t0055mmt9rovvu9m2",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T04:51:31.809Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunmoe0t0055mmt9rovvu9m2"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunp48au00f5mmt9rl0lb6v0",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T05:59:50.150Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunp48au00f5mmt9rl0lb6v0"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunq17rl00nfmmt98wf5yw76",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T06:25:29.089Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunq17rl00nfmmt98wf5yw76"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunrqnrz00vrmmt9k1nuumgz",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T07:13:15.839Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunrqnrz00vrmmt9k1nuumgz"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmuntzz8r014jmmt982vn0cbk",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T08:16:28.827Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmuntzz8r014jmmt982vn0cbk"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunvbcjg01dbmmt97arwn4lj",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T08:53:18.876Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunvbcjg01dbmmt97arwn4lj"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "upcoming",
+      "event": {
+        "id": "live-cmunwqtek01gpmmt9mv24rpqk",
+        "type": "live",
+        "title": "Fixture class — staff live",
+        "timing": "timed",
+        "startsAt": "2026-10-03T09:33:00.000Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "source": {
+          "kind": "live-class",
+          "id": "cmunwqtek01gpmmt9mv24rpqk"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunxjveo01zrmmt9nqsjq7tk",
+        "type": "live",
+        "title": "Contract check — cancelled class",
+        "timing": "timed",
+        "startsAt": "2026-10-03T09:55:55.801Z",
+        "durationMin": 30,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunxjveo01zrmmt9nqsjq7tk"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunwquyk01inmmt964j3p8ct",
+        "type": "live",
+        "title": "Fixture class — a learner is told",
+        "timing": "timed",
+        "startsAt": "2026-10-04T09:33:22.191Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunwquyk01inmmt964j3p8ct"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunwt5mk01mjmmt9x73ypu7f",
+        "type": "live",
+        "title": "Fixture class — a learner is told",
+        "timing": "timed",
+        "startsAt": "2026-10-04T09:35:09.325Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunwt5mk01mjmmt9x73ypu7f"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunx4na001qfmmt9vegb29c7",
+        "type": "live",
+        "title": "Fixture class — a learner is told",
+        "timing": "timed",
+        "startsAt": "2026-10-04T09:44:05.419Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunx4na001qfmmt9vegb29c7"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunwqvvo01klmmt9nsx0kp8n",
+        "type": "live",
+        "title": "Fixture class — cancelled by the app",
+        "timing": "timed",
+        "startsAt": "2026-10-05T09:33:23.367Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunwqvvo01klmmt9nsx0kp8n"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunwt6k901ohmmt9hgwa5h02",
+        "type": "live",
+        "title": "Fixture class — cancelled by the app",
+        "timing": "timed",
+        "startsAt": "2026-10-05T09:35:10.537Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunwt6k901ohmmt9hgwa5h02"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "phase": "cancelled",
+      "event": {
+        "id": "live-cmunx4o9701sdmmt9tv1d2p7b",
+        "type": "live",
+        "title": "Fixture class — cancelled by the app",
+        "timing": "timed",
+        "startsAt": "2026-10-05T09:44:06.692Z",
+        "durationMin": 45,
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "instructorId": "cmumqigq0000lmmosg7u679j6",
+        "cancelled": true,
+        "source": {
+          "kind": "live-class",
+          "id": "cmunx4o9701sdmmt9tv1d2p7b"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Acharya Vinod Shastri"
+    },
+    {
+      "event": {
+        "id": "cmuny9kh50233mmt97aaznv4q",
+        "type": "reminder",
+        "title": "Fixture reminder — prepare the chart pack",
+        "description": "Print the chart pack before the class.",
+        "timing": "timed",
+        "startsAt": "2026-10-08T09:30:00.000Z",
+        "durationMin": 30,
+        "audience": "me",
+        "ownerId": "cmumqigs9000pmmos1tduws1f",
+        "notifyMin": 60
+      }
+    },
+    {
+      "event": {
+        "id": "cmuny9khz0239mmt9j9pz1j79",
+        "type": "reminder",
+        "title": "Fixture reminder — tell the learners",
+        "timing": "moment",
+        "startsAt": "2026-10-09T05:00:00.000Z",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "audience": "learners",
+        "ownerId": "cmumqigs9000pmmos1tduws1f",
+        "notifyMin": 1440
+      },
+      "courseTitle": "Foundations of Vedic Astrology"
+    },
+    {
+      "event": {
+        "id": "cmuny9khl0235mmt9azyt4olb",
+        "type": "milestone",
+        "title": "Fixture milestone — chapter two opens",
+        "timing": "all-day",
+        "startsAt": "2026-10-12T00:00:00.000Z",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "chapterId": "cmumqihbm001tmmos40unpr21",
+        "milestone": "chapter-release",
+        "ownerId": "cmumqigs9000pmmos1tduws1f"
+      },
+      "courseTitle": "Foundations of Vedic Astrology"
+    },
+    {
+      "event": {
+        "id": "cmuny9khs0237mmt9pbevi4eg",
+        "type": "quiz",
+        "title": "Fixture quiz window — the Nine Planets",
+        "timing": "moment",
+        "startsAt": "2026-10-15T10:00:00.000Z",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "quizId": "cmumqihis007jmmos7isultgq",
+        "ownerId": "cmumqigs9000pmmos1tduws1f"
+      },
+      "courseTitle": "Foundations of Vedic Astrology"
+    },
+    {
+      "event": {
+        "id": "assignment-cmuny9t09023bmmt9bqtkbn2k",
+        "type": "assignment",
+        "title": "Fixture assignment — dated deadline",
+        "timing": "moment",
+        "startsAt": "2026-10-20T18:30:00.000Z",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "source": {
+          "kind": "assignment",
+          "id": "cmuny9t09023bmmt9bqtkbn2k"
+        }
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "due": {
+        "learners": 17,
+        "submitted": 0
+      }
+    }
+  ],
+  "counts": {
+    "live": 15,
+    "assignment": 1,
+    "quiz": 1,
+    "milestone": 1,
+    "reminder": 2
+  },
+  "total": 20
+}

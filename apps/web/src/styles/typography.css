@@ -1,0 +1,115 @@
+/*
+ * Type roles. Headings use the display face set tight and bold; body roles use the same sans at reading weights.
+ * Typography carries hierarchy first — reach for these before reaching for a container.
+ */
+
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.type-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+.type-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-display);
+}
+.type-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-display);
+}
+.type-h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.type-body-lg {
+  font-size: var(--fs-body-lg);
+  line-height: 1.6;
+}
+.type-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+.type-body-sm {
+  font-size: var(--fs-body-sm);
+  line-height: 1.45;
+}
+.type-caption {
+  font-size: var(--fs-caption);
+  line-height: 1.4;
+  font-weight: 500;
+}
+.type-meta {
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+  color: var(--faint);
+}
+.type-label {
+  font-size: var(--fs-label);
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.type-eyebrow {
+  font-size: var(--fs-label);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.type-numeric {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-numeric);
+  font-variant-numeric: tabular-nums;
+}
+.type-reading {
+  font-size: 16px;
+  line-height: var(--lh-reading);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.tone-muted {
+  color: var(--muted);
+}
+.tone-faint {
+  color: var(--faint);
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.pretty {
+  text-wrap: pretty;
+}
+
+@media (max-width: 767px) {
+  .type-display {
+    font-size: 34px;
+  }
+  .type-h1 {
+    font-size: var(--fs-h1-mobile);
+  }
+  .type-h2 {
+    font-size: 19px;
+  }
+}

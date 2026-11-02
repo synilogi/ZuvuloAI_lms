@@ -1,0 +1,192 @@
+.root {
+  container-type: inline-size;
+  min-width: 0;
+}
+.framed .tableWrap,
+.framed .list {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.framed .list {
+  padding: var(--s-1) var(--s-4);
+}
+.framed .table thead th {
+  border-radius: 0;
+}
+
+/* ─── Table: 11px uppercase headers on a faint band, hairline rows, soft row hover ─── */
+.tableWrap {
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--d-text, 13.5px);
+}
+.table th {
+  text-align: left;
+  padding: 11px var(--s-3);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface-2) 70%, var(--surface));
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.table thead th:first-child {
+  border-top-left-radius: var(--r-md);
+}
+.table thead th:last-child {
+  border-top-right-radius: var(--r-md);
+}
+.table th:first-child {
+  padding-left: var(--s-4);
+}
+.table th:last-child {
+  padding-right: var(--s-4);
+}
+.table td {
+  padding: var(--d-row-y, 12px) var(--s-3);
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table td:first-child {
+  padding-left: var(--s-4);
+}
+.table td:last-child {
+  padding-right: var(--s-4);
+}
+.table tbody tr {
+  transition: background var(--t-fast);
+}
+.table tbody tr:first-child td {
+  border-top: 0;
+}
+.table tbody tr:hover {
+  background: color-mix(in srgb, var(--accent-soft) 35%, var(--surface-2));
+}
+.end {
+  text-align: right !important;
+}
+.checkCol {
+  width: 44px;
+  padding-right: 0 !important;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.sortButton:hover {
+  color: var(--text);
+}
+.selectedRow,
+.table tbody tr.selectedRow:hover {
+  background: color-mix(in srgb, var(--accent-soft) 70%, transparent);
+}
+
+/* ─── List ─── */
+.list {
+  list-style: none;
+  display: none;
+}
+.item {
+  display: flex;
+  gap: var(--s-3);
+  padding: var(--s-3) 0;
+  border-top: 1px solid var(--border);
+}
+.item:first-child {
+  border-top: 0;
+}
+.itemCheck {
+  align-self: flex-start;
+  padding-top: 2px;
+}
+.itemBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.itemHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.itemPrimary {
+  min-width: 0;
+}
+.itemMeta {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.itemToggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 0 8px;
+  margin-left: -8px;
+  border: 0;
+  border-radius: var(--r-xs);
+  background: transparent;
+  color: var(--accent-ink);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  cursor: pointer;
+}
+.itemToggle:hover {
+  background: var(--accent-soft);
+}
+.itemCaret {
+  transition: transform var(--t);
+}
+.itemCaretOpen {
+  transform: rotate(180deg);
+}
+.itemDetail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px var(--s-4);
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  font-size: var(--fs-caption);
+  animation: global(om-fade) 160ms ease both;
+}
+.itemDetail > div {
+  display: contents;
+}
+.itemDetail dt {
+  color: var(--faint);
+}
+
+.empty {
+  padding: var(--s-4) 0;
+}
+
+@container (max-width: 639px) {
+  .tableWrap {
+    display: none;
+  }
+  .list {
+    display: block;
+  }
+}

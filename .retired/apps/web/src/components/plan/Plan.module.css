@@ -1,0 +1,137 @@
+/* The plan-aware workspace: the upsell for a locked area, the read-only notice, and gated create actions. */
+
+/* ─── Locked area ─── */
+.locked {
+  max-width: 760px;
+  margin: var(--s-4) auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+  padding: var(--s-7) var(--s-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+.compact {
+  margin-top: 0;
+  max-width: none;
+  padding: var(--s-5);
+  gap: var(--s-3);
+  box-shadow: none;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.title {
+  font-size: var(--fs-h1);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.compact .title {
+  font-size: var(--fs-h3);
+}
+.lead {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: var(--fs-body-lg);
+  text-wrap: pretty;
+}
+.compact .lead {
+  font-size: var(--fs-body);
+}
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.sectionTitle {
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.planList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--s-2);
+}
+.planItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+.planName {
+  font-weight: 600;
+}
+.planPrice {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+}
+.note {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+
+/* ─── Read-only notice above a page ─── */
+.banner {
+  max-width: var(--container-page);
+  margin: 0 auto var(--s-4);
+}
+
+/* ─── Gated create action ─── */
+.action {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px var(--s-2);
+}
+.capacity {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.capacityReached {
+  color: var(--warn-ink);
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .locked {
+    margin-top: 0;
+    padding: var(--s-5) var(--s-4);
+    border-radius: var(--r-lg);
+  }
+  .title {
+    font-size: var(--fs-h1-mobile);
+  }
+  .actions > * {
+    flex: 1 1 100%;
+  }
+  .action {
+    justify-content: flex-start;
+  }
+}

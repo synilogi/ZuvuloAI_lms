@@ -1,0 +1,53 @@
+.purchase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+  max-width: 560px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.note,
+.status {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.summary {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.summary > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-body-sm);
+}
+.summary > div:last-child {
+  border-bottom: 0;
+}
+.summary dt {
+  color: var(--muted);
+}
+.summary dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+.total dd {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.fine {
+  margin: var(--s-2) 0 0;
+  font-size: var(--fs-caption, 12px);
+  color: var(--muted);
+}

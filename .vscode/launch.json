@@ -1,0 +1,33 @@
+{
+  // Flutter runs target the USB-connected test phone (Infinix X6525) only — never an emulator.
+  // Before running: `adb reverse tcp:4100 tcp:4100` if the app talks to the local contract server.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Mobile (dev, live server) — USB phone",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "apps/mobile",
+      "program": "lib/main.dart",
+      "deviceId": "11015313C8063805"
+    },
+    {
+      "name": "Mobile (dev, local contract server) — USB phone",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "apps/mobile",
+      "program": "lib/main_dev.dart",
+      "deviceId": "11015313C8063805",
+      "args": ["--flavor", "dev", "--dart-define-from-file=config/dev_device.json"]
+    },
+    {
+      "name": "Mobile (prod) — USB phone",
+      "type": "dart",
+      "request": "launch",
+      "cwd": "apps/mobile",
+      "program": "lib/main_prod.dart",
+      "deviceId": "11015313C8063805",
+      "args": ["--flavor", "prod", "--dart-define-from-file=config/prod.json"]
+    }
+  ]
+}

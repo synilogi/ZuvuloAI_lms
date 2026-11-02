@@ -1,0 +1,4 @@
+Captured 2026-09-29T06:21:57Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /learning/assignments/cmum8kcfo007tmmzwozrjpi3v student learning/assignment-graded.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

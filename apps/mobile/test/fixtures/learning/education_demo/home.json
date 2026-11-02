@@ -1,0 +1,1057 @@
+{
+  "firstName": "Ananya",
+  "courses": [
+    {
+      "course": {
+        "id": "edu-course-ras-prelims",
+        "slug": "ras-prelims",
+        "title": "RAS Prelims Foundation Batch",
+        "subtitle": "राजस्थान प्रशासनिक सेवा प्रारंभिक परीक्षा · Rajasthan GK, geography, polity and exam strategy, in Hindi and English.",
+        "description": "A foundation batch for the RPSC Rajasthan Administrative Services preliminary exam. It starts with the topics most often asked about the state — how Rajasthan was formed and its physical geography — and builds towards the full general-studies syllabus, with notes, a recorded lecture and a practice test.\n\nCover image: “Hawa Mahal in Jaipur India”, Wander-earth, CC BY-SA 4.0, via Wikimedia Commons (cropped).",
+        "levelId": "edu-level-foundation",
+        "categoryId": "edu-category-rajasthan",
+        "instructorIds": [
+          "edu-faculty-general-studies",
+          "edu-faculty-rajasthan-gk"
+        ],
+        "format": "self-paced",
+        "language": "en-IN",
+        "coverMotif": "houses",
+        "coverImageId": "edu-media-cover-ras-prelims",
+        "coverImageUrl": "/catalog/covers/edu-media-cover-ras-prelims",
+        "chapters": [
+          {
+            "id": "edu-chapter-ras-prelims-state",
+            "title": "Rajasthan: integration and geography",
+            "summary": "How the state was formed, and its land.",
+            "objective": "By the end of this chapter, you can list the integration stages and the physical divisions of Rajasthan.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-ras-prelims-formation",
+                "title": "Formation of Rajasthan at a glance | राजस्थान का एकीकरण",
+                "type": "reading",
+                "durationMin": 10,
+                "isPreview": true,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.650Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Rajasthan was formed by joining the princely states of Rajputana in seven stages, from the Matsya Union on 18 March 1948 to the reorganisation of 1 November 1956, when Abu, Delwara and Ajmer-Merwara joined the state.\n\nThe fourth stage, on 30 March 1949, brought the large states of Jaipur, Jodhpur, Bikaner and Jaisalmer into Greater Rajasthan and made Jaipur the capital. That is why 30 March is celebrated as Rajasthan Diwas."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ras-prelims-integration-lecture",
+                "title": "Integration of Rajasthan in 7 stages",
+                "type": "video",
+                "durationMin": 1,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.660Z",
+                "description": "A short silent slide lecture: every stage with its date and what changed.",
+                "objectives": [],
+                "content": {
+                  "video": {
+                    "file": {
+                      "id": "edu-media-lecture-rajasthan-integration",
+                      "name": "rajasthan-integration.mp4",
+                      "sizeMb": 0.84,
+                      "url": "/media/edu-media-lecture-rajasthan-integration",
+                      "mime": "video/mp4"
+                    },
+                    "durationSec": 48,
+                    "captions": false,
+                    "markers": [
+                      {
+                        "atSec": 12,
+                        "title": "Stages 1–3"
+                      },
+                      {
+                        "atSec": 24,
+                        "title": "Stages 4–5"
+                      },
+                      {
+                        "atSec": 36,
+                        "title": "Stages 6–7"
+                      }
+                    ]
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ras-prelims-ekikaran-notes",
+                "title": "Ekikaran notes (PDF)",
+                "type": "document",
+                "durationMin": 5,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.666Z",
+                "description": "All seven stages in one printable table.",
+                "objectives": [],
+                "content": {
+                  "document": {
+                    "file": {
+                      "id": "edu-media-note-rajasthan-ekikaran",
+                      "name": "rajasthan-ekikaran-notes.pdf",
+                      "sizeMb": 0,
+                      "url": "/media/edu-media-note-rajasthan-ekikaran",
+                      "mime": "application/pdf"
+                    },
+                    "downloadable": true
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ras-prelims-physical-divisions",
+                "title": "Physical divisions of Rajasthan | राजस्थान के भौतिक विभाग",
+                "type": "reading",
+                "durationMin": 12,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.668Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Rajasthan is usually described in four physical divisions: the north-western sandy desert (the Thar), the Aravalli hill region, the eastern plains, and the south-eastern plateau of Hadoti.\n\nThe Aravalli range crosses the state from south-west to north-east and divides the dry west from the wetter east. Its highest peak, Guru Shikhar (about 1,722 m), is at Mount Abu in Sirohi district. Jaisalmer is the largest district by area."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ras-prelims-basics-test",
+                "title": "Practice test: Rajasthan basics",
+                "type": "assessment",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.671Z",
+                "objectives": [],
+                "content": {
+                  "quiz": {
+                    "quizId": "edu-quiz-ras-basics",
+                    "questions": 4,
+                    "passMark": 60,
+                    "attempts": 3
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "edu-chapter-ras-prelims-strategy",
+            "title": "Exam strategy",
+            "summary": "How the exam works and how to plan.",
+            "objective": "By the end of this chapter, you have a written study plan for the prelims.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-ras-prelims-exam-stages",
+                "title": "How the RAS exam is structured",
+                "type": "reading",
+                "durationMin": 8,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.679Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "RPSC selects candidates for the Rajasthan State and Subordinate Services in three stages: a preliminary exam, a main exam and an interview. The preliminary exam is an objective screening paper on general knowledge and general science; it decides who may sit the mains, and its marks do not count in the final merit list.\n\nPatterns and syllabi are revised from time to time, so always read the latest RPSC notification before you plan."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ras-prelims-study-plan",
+                "title": "Make your prelims study plan",
+                "type": "practice",
+                "durationMin": 20,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.681Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Download the latest RPSC syllabus. List every unit, mark the ones you are weakest in, and give each a week in a sixteen-week calendar. Keep the last three weeks for revision and full-length practice tests."
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          }
+        ],
+        "liveSessions": 1,
+        "estimatedWeeks": 16,
+        "certificateTitle": "Certificate of completion: RAS Prelims Foundation Batch",
+        "price": {
+          "amount": 4999,
+          "currency": "INR"
+        },
+        "enrolledCount": 1,
+        "status": "published",
+        "visibility": "public",
+        "outcomes": [
+          "Explain the seven stages of Rajasthan’s integration",
+          "Describe Rajasthan’s physical divisions",
+          "Plan your preparation around the RAS exam stages"
+        ],
+        "tags": [
+          "RAS",
+          "RPSC",
+          "Bilingual"
+        ],
+        "createdAt": "2026-10-13T12:23:33.219Z",
+        "updatedAt": "2026-10-13T12:25:08.109Z",
+        "publishedAt": "2026-10-13T12:23:33.107Z"
+      },
+      "enrollment": {
+        "id": "edu-enrolment-demo-ras-prelims",
+        "studentId": "cmurzngro000xmmrnlpafe9jv",
+        "courseId": "edu-course-ras-prelims",
+        "enrolledAt": "2026-09-25T12:25:07.526Z",
+        "status": "active",
+        "progress": 32,
+        "source": "self",
+        "lastActiveAt": "2026-10-12T18:25:07.526Z",
+        "lastLessonId": "edu-lesson-ras-prelims-physical-divisions"
+      },
+      "progress": {
+        "completed": 3,
+        "total": 7,
+        "percent": 32,
+        "remainingMin": 45,
+        "state": "in-progress"
+      },
+      "snapshot": {
+        "courseId": "edu-course-ras-prelims",
+        "lessons": {
+          "edu-lesson-ras-prelims-ekikaran-notes": {
+            "lessonId": "edu-lesson-ras-prelims-ekikaran-notes",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-10-06T12:25:07.526Z"
+          },
+          "edu-lesson-ras-prelims-formation": {
+            "lessonId": "edu-lesson-ras-prelims-formation",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-09-27T12:25:07.526Z"
+          },
+          "edu-lesson-ras-prelims-integration-lecture": {
+            "lessonId": "edu-lesson-ras-prelims-integration-lecture",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-10-01T12:25:07.526Z"
+          },
+          "edu-lesson-ras-prelims-physical-divisions": {
+            "lessonId": "edu-lesson-ras-prelims-physical-divisions",
+            "state": "in-progress",
+            "fraction": 0.4
+          },
+          "edu-lesson-ras-prelims-basics-test": {
+            "lessonId": "edu-lesson-ras-prelims-basics-test",
+            "state": "locked"
+          },
+          "edu-lesson-ras-prelims-exam-stages": {
+            "lessonId": "edu-lesson-ras-prelims-exam-stages",
+            "state": "locked"
+          },
+          "edu-lesson-ras-prelims-study-plan": {
+            "lessonId": "edu-lesson-ras-prelims-study-plan",
+            "state": "locked"
+          }
+        },
+        "lastLessonId": "edu-lesson-ras-prelims-physical-divisions",
+        "lastActiveAt": "2026-10-12T18:25:07.526Z"
+      },
+      "next": {
+        "id": "edu-lesson-ras-prelims-physical-divisions",
+        "title": "Physical divisions of Rajasthan | राजस्थान के भौतिक विभाग",
+        "type": "reading",
+        "durationMin": 12,
+        "chapterIndex": 0,
+        "chapterTitle": "Rajasthan: integration and geography",
+        "lessonNumber": "1.4",
+        "state": "in-progress",
+        "fraction": 0.4
+      },
+      "instructorNames": [
+        "General Studies Faculty",
+        "Rajasthan GK Faculty"
+      ],
+      "levelTitle": "Foundation",
+      "lastActiveAt": "2026-10-12T18:25:07.526Z"
+    },
+    {
+      "course": {
+        "id": "edu-course-ssc-gd",
+        "slug": "ssc-gd",
+        "title": "SSC GD Constable Complete Course",
+        "subtitle": "एसएससी जीडी कांस्टेबल · Reasoning, general awareness, elementary maths and language practice.",
+        "description": "A complete course for the SSC GD Constable computer-based exam: what each section tests, the reasoning and maths shortcuts that save time, and daily practice — followed by practice tests.\n\nCover image: “The waving Indian flag”, Sisheer Philip, CC BY-SA 4.0, via Wikimedia Commons (cropped).",
+        "levelId": "edu-level-complete",
+        "categoryId": "edu-category-central",
+        "instructorIds": [
+          "edu-faculty-aptitude",
+          "edu-faculty-general-studies"
+        ],
+        "format": "self-paced",
+        "language": "en-IN",
+        "coverMotif": "orbits",
+        "coverImageId": "edu-media-cover-ssc-gd",
+        "coverImageUrl": "/catalog/covers/edu-media-cover-ssc-gd",
+        "chapters": [
+          {
+            "id": "edu-chapter-ssc-gd-start",
+            "title": "Getting started",
+            "summary": "The exam and your first practice set.",
+            "objective": "By the end of this chapter, you know the exam’s sections and have taken a first practice test.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-ssc-gd-pattern",
+                "title": "SSC GD exam pattern: an overview",
+                "type": "reading",
+                "durationMin": 8,
+                "isPreview": true,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.757Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "The SSC GD Constable recruitment starts with a computer-based exam in four sections: General Intelligence and Reasoning, General Knowledge and General Awareness, Elementary Mathematics, and English or Hindi. Candidates who qualify go on to physical standard and efficiency tests and a medical examination.\n\nMarks, timing and negative marking can change between recruitment cycles, so check the current SSC notice before you plan."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ssc-gd-series",
+                "title": "Number series: finding the rule | संख्या श्रृंखला",
+                "type": "reading",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.760Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Most number-series questions follow one rule: a fixed difference, differences that grow, multiplication, or squares and cubes. Write the differences between terms under the series first — the pattern usually shows at once.\n\nExample: 2, 6, 12, 20, 30, ? The differences are 4, 6, 8, 10, so the next is 12 and the answer is 42."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ssc-gd-practice-test",
+                "title": "Practice test 1",
+                "type": "assessment",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.764Z",
+                "objectives": [],
+                "content": {
+                  "quiz": {
+                    "quizId": "edu-quiz-ssc-gd-practice",
+                    "questions": 4,
+                    "passMark": 60,
+                    "attempts": 3
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "edu-chapter-ssc-gd-maths",
+            "title": "Elementary maths",
+            "summary": "Percentages and daily practice.",
+            "objective": "By the end of this chapter, you can solve percentage questions in under a minute.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-ssc-gd-percent",
+                "title": "Percentages in one page | प्रतिशत",
+                "type": "reading",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.772Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Learn the fraction for each common percentage: 50% = 1/2, 25% = 1/4, 20% = 1/5, 12.5% = 1/8, 10% = 1/10. Then 12.5% of 640 is simply 640 ÷ 8 = 80.\n\nRemember that x% of y equals y% of x: 4% of 75 is the same as 75% of 4, which is 3."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-ssc-gd-daily",
+                "title": "Daily practice: 10 questions",
+                "type": "practice",
+                "durationMin": 15,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.774Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Set a timer for ten minutes. Solve ten percentage questions from your practice book without a calculator, then check your answers and note the type of every question you got wrong."
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          }
+        ],
+        "liveSessions": 1,
+        "estimatedWeeks": 10,
+        "certificateTitle": "Certificate of completion: SSC GD Constable Complete Course",
+        "price": {
+          "amount": 1999,
+          "currency": "INR"
+        },
+        "enrolledCount": 1,
+        "status": "published",
+        "visibility": "public",
+        "outcomes": [
+          "Know what each section of the exam tests",
+          "Solve number-series questions quickly",
+          "Work percentages without a calculator"
+        ],
+        "tags": [
+          "SSC",
+          "GD Constable",
+          "Bilingual"
+        ],
+        "createdAt": "2026-10-13T12:23:33.330Z",
+        "updatedAt": "2026-10-13T12:25:08.117Z",
+        "publishedAt": "2026-10-13T12:23:33.107Z"
+      },
+      "enrollment": {
+        "id": "edu-enrolment-demo-ssc-gd",
+        "studentId": "cmurzngro000xmmrnlpafe9jv",
+        "courseId": "edu-course-ssc-gd",
+        "enrolledAt": "2026-10-11T12:25:07.526Z",
+        "status": "active",
+        "progress": 34,
+        "source": "self",
+        "lastActiveAt": "2026-10-12T14:25:07.526Z",
+        "lastLessonId": "edu-lesson-ssc-gd-series"
+      },
+      "progress": {
+        "completed": 2,
+        "total": 5,
+        "percent": 34,
+        "remainingMin": 35,
+        "state": "in-progress"
+      },
+      "snapshot": {
+        "courseId": "edu-course-ssc-gd",
+        "lessons": {
+          "edu-lesson-ssc-gd-pattern": {
+            "lessonId": "edu-lesson-ssc-gd-pattern",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-10-12T12:25:07.526Z"
+          },
+          "edu-lesson-ssc-gd-series": {
+            "lessonId": "edu-lesson-ssc-gd-series",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-10-12T14:25:07.526Z"
+          },
+          "edu-lesson-ssc-gd-percent": {
+            "lessonId": "edu-lesson-ssc-gd-percent",
+            "state": "locked"
+          },
+          "edu-lesson-ssc-gd-daily": {
+            "lessonId": "edu-lesson-ssc-gd-daily",
+            "state": "locked"
+          }
+        },
+        "lastLessonId": "edu-lesson-ssc-gd-series",
+        "lastActiveAt": "2026-10-12T14:25:07.526Z"
+      },
+      "next": {
+        "id": "edu-lesson-ssc-gd-practice-test",
+        "title": "Practice test 1",
+        "type": "assessment",
+        "durationMin": 10,
+        "chapterIndex": 0,
+        "chapterTitle": "Getting started",
+        "lessonNumber": "1.3",
+        "state": "not-started"
+      },
+      "instructorNames": [
+        "Reasoning & Maths Faculty",
+        "General Studies Faculty"
+      ],
+      "levelTitle": "Complete Course",
+      "lastActiveAt": "2026-10-12T14:25:07.526Z"
+    },
+    {
+      "course": {
+        "id": "edu-course-class-10-maths",
+        "slug": "class-10-maths",
+        "title": "Class 10 Mathematics (CBSE / RBSE)",
+        "subtitle": "Quadratic equations, arithmetic progressions, trigonometry and coordinate geometry.",
+        "description": "Class 10 board mathematics, chapter by chapter, with a recorded lecture, a formula sheet, a homework assignment and a test.\n\nCover image: “Set of polygons - Musée des arts et métiers - Inv 3142”, Poulpy, CC BY-SA 4.0, via Wikimedia Commons (cropped).",
+        "levelId": "edu-level-complete",
+        "categoryId": "edu-category-school-9-10",
+        "instructorIds": [
+          "edu-faculty-school-maths"
+        ],
+        "format": "self-paced",
+        "language": "en-IN",
+        "coverMotif": "orbits",
+        "coverImageId": "edu-media-cover-class-10-maths",
+        "coverImageUrl": "/catalog/covers/edu-media-cover-class-10-maths",
+        "chapters": [
+          {
+            "id": "edu-chapter-class-10-maths-quadratics",
+            "title": "Quadratic equations",
+            "summary": "Factorisation and the quadratic formula.",
+            "objective": "By the end of this chapter, you can solve any quadratic equation and describe its roots.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-class-10-maths-quadratic-lecture",
+                "title": "Quadratic equations: formula and roots",
+                "type": "video",
+                "durationMin": 1,
+                "isPreview": true,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.891Z",
+                "description": "A short silent slide lecture: the standard form, the formula and the discriminant.",
+                "objectives": [],
+                "content": {
+                  "video": {
+                    "file": {
+                      "id": "edu-media-lecture-quadratic-equations",
+                      "name": "quadratic-equations.mp4",
+                      "sizeMb": 0.35,
+                      "url": "/media/edu-media-lecture-quadratic-equations",
+                      "mime": "video/mp4"
+                    },
+                    "durationSec": 36,
+                    "captions": false,
+                    "markers": [
+                      {
+                        "atSec": 12,
+                        "title": "The quadratic formula"
+                      },
+                      {
+                        "atSec": 24,
+                        "title": "Nature of roots"
+                      }
+                    ]
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-class-10-maths-factorisation",
+                "title": "Solving by factorisation",
+                "type": "reading",
+                "durationMin": 12,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.894Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "To factorise x² + bx + c, find two numbers whose product is c and whose sum is b. For x² − 7x + 12 = 0 they are −3 and −4, so (x − 3)(x − 4) = 0 and x = 3 or x = 4.\n\nWhen a ≠ 1, split the middle term using two numbers whose product is ac: 2x² + 7x + 3 = 2x² + 6x + x + 3 = (2x + 1)(x + 3)."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-class-10-maths-quadratic-homework",
+                "title": "Homework: five quadratic equations",
+                "type": "assignment",
+                "durationMin": 30,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.898Z",
+                "objectives": [],
+                "content": {
+                  "assignment": {
+                    "assignmentId": "edu-assignment-quadratic-practice",
+                    "brief": "Solve these five equations, showing every step, and state the nature of the roots for each: x² − 5x + 6 = 0; x² + 4x + 4 = 0; 2x² + 7x + 3 = 0; x² − 2x + 5 = 0; 3x² − 12 = 0.",
+                    "dueAfterDays": 5,
+                    "maxScore": 100,
+                    "submission": "text"
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "edu-chapter-class-10-maths-progressions",
+            "title": "Arithmetic progressions and trigonometry",
+            "summary": "APs, identities and the formula sheet.",
+            "objective": "By the end of this chapter, you can find terms and sums of APs and use the trigonometric identities.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-class-10-maths-ap",
+                "title": "Arithmetic progressions",
+                "type": "reading",
+                "durationMin": 12,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.906Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "In an AP each term differs from the one before by a fixed common difference d. The nth term is aₙ = a + (n − 1)d, so the 10th term of 3, 7, 11, … is 3 + 9 × 4 = 39.\n\nThe sum of the first n terms is Sₙ = n/2 × [2a + (n − 1)d]. The sum of the first 10 terms of that AP is 5 × (6 + 36) = 210."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-class-10-maths-formula-sheet",
+                "title": "Class 10 formula sheet (PDF)",
+                "type": "document",
+                "durationMin": 5,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.910Z",
+                "description": "Algebra, AP, trigonometry, coordinate geometry and mensuration formulas on two pages.",
+                "objectives": [],
+                "content": {
+                  "document": {
+                    "file": {
+                      "id": "edu-media-note-maths-formula-sheet",
+                      "name": "class-10-maths-formula-sheet.pdf",
+                      "sizeMb": 0,
+                      "url": "/media/edu-media-note-maths-formula-sheet",
+                      "mime": "application/pdf"
+                    },
+                    "downloadable": true
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-class-10-maths-maths-test",
+                "title": "Chapter test",
+                "type": "assessment",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.913Z",
+                "objectives": [],
+                "content": {
+                  "quiz": {
+                    "quizId": "edu-quiz-maths-test",
+                    "questions": 4,
+                    "passMark": 60,
+                    "attempts": 3
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          }
+        ],
+        "liveSessions": 1,
+        "estimatedWeeks": 20,
+        "certificateTitle": "Certificate of completion: Class 10 Mathematics (CBSE / RBSE)",
+        "price": {
+          "amount": 1499,
+          "currency": "INR"
+        },
+        "enrolledCount": 1,
+        "status": "published",
+        "visibility": "public",
+        "outcomes": [
+          "Solve quadratic equations by factorisation and by formula",
+          "Find the nth term and sum of an AP",
+          "Use the basic trigonometric identities"
+        ],
+        "tags": [
+          "Class 10",
+          "Maths",
+          "Board exam"
+        ],
+        "createdAt": "2026-10-13T12:23:33.498Z",
+        "updatedAt": "2026-10-13T12:25:08.131Z",
+        "publishedAt": "2026-10-13T12:23:33.107Z"
+      },
+      "enrollment": {
+        "id": "edu-enrolment-demo-class-10-maths",
+        "studentId": "cmurzngro000xmmrnlpafe9jv",
+        "courseId": "edu-course-class-10-maths",
+        "enrolledAt": "2026-10-01T12:25:07.526Z",
+        "status": "active",
+        "progress": 1,
+        "source": "self",
+        "lastActiveAt": "2026-10-10T12:25:07.526Z",
+        "lastLessonId": "edu-lesson-class-10-maths-quadratic-lecture"
+      },
+      "progress": {
+        "completed": 0,
+        "total": 6,
+        "percent": 1,
+        "remainingMin": 70,
+        "state": "in-progress"
+      },
+      "snapshot": {
+        "courseId": "edu-course-class-10-maths",
+        "lessons": {
+          "edu-lesson-class-10-maths-quadratic-lecture": {
+            "lessonId": "edu-lesson-class-10-maths-quadratic-lecture",
+            "state": "in-progress",
+            "fraction": 0.5,
+            "positionSec": 18
+          },
+          "edu-lesson-class-10-maths-ap": {
+            "lessonId": "edu-lesson-class-10-maths-ap",
+            "state": "locked"
+          },
+          "edu-lesson-class-10-maths-formula-sheet": {
+            "lessonId": "edu-lesson-class-10-maths-formula-sheet",
+            "state": "locked"
+          },
+          "edu-lesson-class-10-maths-maths-test": {
+            "lessonId": "edu-lesson-class-10-maths-maths-test",
+            "state": "locked"
+          }
+        },
+        "lastLessonId": "edu-lesson-class-10-maths-quadratic-lecture",
+        "lastActiveAt": "2026-10-10T12:25:07.526Z"
+      },
+      "next": {
+        "id": "edu-lesson-class-10-maths-quadratic-lecture",
+        "title": "Quadratic equations: formula and roots",
+        "type": "video",
+        "durationMin": 1,
+        "chapterIndex": 0,
+        "chapterTitle": "Quadratic equations",
+        "lessonNumber": "1.1",
+        "state": "in-progress",
+        "fraction": 0.5,
+        "positionSec": 18
+      },
+      "instructorNames": [
+        "School Mathematics Faculty"
+      ],
+      "levelTitle": "Complete Course",
+      "lastActiveAt": "2026-10-10T12:25:07.526Z"
+    },
+    {
+      "course": {
+        "id": "edu-course-reasoning",
+        "slug": "reasoning",
+        "title": "Reasoning for Competitive Exams",
+        "subtitle": "तर्कशक्ति · Coding-decoding, direction sense, blood relations and puzzles.",
+        "description": "The verbal and logical reasoning topics that appear in almost every recruitment exam, each taught with a method and worked examples, ending with a test.\n\nCover image: “Chess pieces close up”, Aaaatu, CC BY-SA 4.0, via Wikimedia Commons (cropped).",
+        "levelId": "edu-level-foundation",
+        "categoryId": "edu-category-aptitude",
+        "instructorIds": [
+          "edu-faculty-aptitude"
+        ],
+        "format": "self-paced",
+        "language": "en-IN",
+        "coverMotif": "houses",
+        "coverImageId": "edu-media-cover-reasoning",
+        "coverImageUrl": "/catalog/covers/edu-media-cover-reasoning",
+        "chapters": [
+          {
+            "id": "edu-chapter-reasoning-verbal",
+            "title": "Verbal reasoning",
+            "summary": "Codes and directions.",
+            "objective": "By the end of this chapter, you can solve coding and direction questions reliably.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-reasoning-coding",
+                "title": "Coding-decoding | कूटलेखन",
+                "type": "reading",
+                "durationMin": 10,
+                "isPreview": true,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.785Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "In letter-shift codes each letter moves a fixed number of places in the alphabet. If CAT is written DBU, every letter moves one place forward, so DOG becomes EPH.\n\nNumber the alphabet (A = 1 … Z = 26) on your rough sheet; it makes shifts and reversed-alphabet codes much faster."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-reasoning-directions",
+                "title": "Direction sense | दिशा ज्ञान",
+                "type": "reading",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.787Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Always draw the route. Facing north, a right turn faces east and a left turn faces west; facing east, a right turn faces south.\n\nTo find the distance between start and finish, use Pythagoras on the final east-west and north-south distances: 3 km east and 4 km north is 5 km in a straight line."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-reasoning-reasoning-test",
+                "title": "Reasoning test",
+                "type": "assessment",
+                "durationMin": 8,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.790Z",
+                "objectives": [],
+                "content": {
+                  "quiz": {
+                    "quizId": "edu-quiz-reasoning-test",
+                    "questions": 4,
+                    "passMark": 60,
+                    "attempts": 3
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "edu-chapter-reasoning-logical",
+            "title": "Logical reasoning",
+            "summary": "Relations and puzzles.",
+            "objective": "By the end of this chapter, you can solve blood-relation and simple arrangement puzzles.",
+            "status": "published",
+            "lessons": [
+              {
+                "id": "edu-lesson-reasoning-blood-relations",
+                "title": "Blood relations | रक्त संबंध",
+                "type": "reading",
+                "durationMin": 10,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.798Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Draw a family tree: males as squares, females as circles, a horizontal line for a married couple and a vertical line for parent and child.\n\nExample: “A is the son of B. B is the daughter of C.” Then C is A’s maternal grandparent — and the statement does not tell you whether C is male or female."
+                  }
+                },
+                "settings": {}
+              },
+              {
+                "id": "edu-lesson-reasoning-puzzles",
+                "title": "Puzzle practice",
+                "type": "practice",
+                "durationMin": 20,
+                "status": "published",
+                "updatedAt": "2026-10-13T12:25:07.800Z",
+                "objectives": [],
+                "content": {
+                  "article": {
+                    "body": "Solve three seating-arrangement puzzles from your practice book. For each, draw the seats first, place the definite clues, then the conditional ones, and write down which clue fixed the final position."
+                  }
+                },
+                "settings": {}
+              }
+            ]
+          }
+        ],
+        "liveSessions": 1,
+        "estimatedWeeks": 4,
+        "certificateTitle": "Certificate of completion: Reasoning for Competitive Exams",
+        "price": {
+          "amount": 799,
+          "currency": "INR"
+        },
+        "enrolledCount": 1,
+        "status": "published",
+        "visibility": "public",
+        "outcomes": [
+          "Crack letter-shift codes",
+          "Solve direction-sense questions with a diagram",
+          "Draw family trees for blood-relation questions"
+        ],
+        "tags": [
+          "Reasoning",
+          "All exams"
+        ],
+        "createdAt": "2026-10-13T12:23:33.366Z",
+        "updatedAt": "2026-10-13T12:25:08.120Z",
+        "publishedAt": "2026-10-13T12:23:33.107Z"
+      },
+      "enrollment": {
+        "id": "edu-enrolment-demo-reasoning",
+        "studentId": "cmurzngro000xmmrnlpafe9jv",
+        "courseId": "edu-course-reasoning",
+        "enrolledAt": "2026-09-13T12:25:07.526Z",
+        "status": "completed",
+        "progress": 100,
+        "source": "self",
+        "lastActiveAt": "2026-10-03T12:25:07.526Z",
+        "completedAt": "2026-10-03T12:25:07.526Z",
+        "lastLessonId": "edu-lesson-reasoning-puzzles"
+      },
+      "progress": {
+        "completed": 5,
+        "total": 5,
+        "percent": 100,
+        "remainingMin": 0,
+        "state": "completed"
+      },
+      "snapshot": {
+        "courseId": "edu-course-reasoning",
+        "lessons": {
+          "edu-lesson-reasoning-blood-relations": {
+            "lessonId": "edu-lesson-reasoning-blood-relations",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-09-29T12:25:07.526Z"
+          },
+          "edu-lesson-reasoning-coding": {
+            "lessonId": "edu-lesson-reasoning-coding",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-09-17T12:25:07.526Z"
+          },
+          "edu-lesson-reasoning-directions": {
+            "lessonId": "edu-lesson-reasoning-directions",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-09-21T12:25:07.526Z"
+          },
+          "edu-lesson-reasoning-puzzles": {
+            "lessonId": "edu-lesson-reasoning-puzzles",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-10-03T12:25:07.526Z"
+          },
+          "edu-lesson-reasoning-reasoning-test": {
+            "lessonId": "edu-lesson-reasoning-reasoning-test",
+            "state": "completed",
+            "fraction": 1,
+            "completedAt": "2026-09-25T12:25:07.526Z"
+          }
+        },
+        "lastLessonId": "edu-lesson-reasoning-puzzles",
+        "lastActiveAt": "2026-10-03T12:25:07.526Z"
+      },
+      "instructorNames": [
+        "Reasoning & Maths Faculty"
+      ],
+      "levelTitle": "Foundation",
+      "lastActiveAt": "2026-10-03T12:25:07.526Z"
+    }
+  ],
+  "saved": [],
+  "recent": [
+    {
+      "courseId": "edu-course-ras-prelims",
+      "courseTitle": "RAS Prelims Foundation Batch",
+      "lessonId": "edu-lesson-ras-prelims-physical-divisions",
+      "lessonTitle": "Physical divisions of Rajasthan | राजस्थान के भौतिक विभाग",
+      "type": "reading",
+      "at": "2026-10-12T18:25:07.526Z",
+      "state": "in-progress"
+    },
+    {
+      "courseId": "edu-course-ssc-gd",
+      "courseTitle": "SSC GD Constable Complete Course",
+      "lessonId": "edu-lesson-ssc-gd-series",
+      "lessonTitle": "Number series: finding the rule | संख्या श्रृंखला",
+      "type": "reading",
+      "at": "2026-10-12T14:25:07.526Z",
+      "state": "completed"
+    },
+    {
+      "courseId": "edu-course-ssc-gd",
+      "courseTitle": "SSC GD Constable Complete Course",
+      "lessonId": "edu-lesson-ssc-gd-pattern",
+      "lessonTitle": "SSC GD exam pattern: an overview",
+      "type": "reading",
+      "at": "2026-10-12T12:25:07.526Z",
+      "state": "completed"
+    },
+    {
+      "courseId": "edu-course-class-10-maths",
+      "courseTitle": "Class 10 Mathematics (CBSE / RBSE)",
+      "lessonId": "edu-lesson-class-10-maths-quadratic-lecture",
+      "lessonTitle": "Quadratic equations: formula and roots",
+      "type": "video",
+      "at": "2026-10-10T12:25:07.526Z",
+      "state": "in-progress"
+    },
+    {
+      "courseId": "edu-course-ras-prelims",
+      "courseTitle": "RAS Prelims Foundation Batch",
+      "lessonId": "edu-lesson-ras-prelims-ekikaran-notes",
+      "lessonTitle": "Ekikaran notes (PDF)",
+      "type": "document",
+      "at": "2026-10-06T12:25:07.526Z",
+      "state": "completed"
+    }
+  ],
+  "upcoming": [
+    {
+      "id": "edu-assignment-quadratic-practice",
+      "kind": "assignment",
+      "title": "Homework: five quadratic equations",
+      "context": "Class 10 Mathematics (CBSE / RBSE)",
+      "at": "2026-10-15T12:25:07.526Z",
+      "to": "/assignments/edu-assignment-quadratic-practice",
+      "flag": "due-soon"
+    },
+    {
+      "id": "edu-lesson-ssc-gd-practice-test",
+      "kind": "quiz",
+      "title": "Practice test 1",
+      "context": "SSC GD Constable Complete Course · ready to take",
+      "at": "2026-10-13T12:26:23.426Z",
+      "to": "/learn/edu-course-ssc-gd/lessons/edu-lesson-ssc-gd-practice-test"
+    },
+    {
+      "id": "edu-live-ras-geography",
+      "kind": "live",
+      "title": "Rajasthan geography: live revision",
+      "context": "RAS Prelims Foundation Batch · 90 min",
+      "at": "2026-10-15T12:30:00.000Z",
+      "to": "/live/edu-live-ras-geography"
+    },
+    {
+      "id": "edu-live-quadratic-doubts",
+      "kind": "live",
+      "title": "Quadratic equations: doubt-clearing class",
+      "context": "Class 10 Mathematics (CBSE / RBSE) · 60 min",
+      "at": "2026-10-18T11:30:00.000Z",
+      "to": "/live/edu-live-quadratic-doubts"
+    },
+    {
+      "id": "edu-live-ssc-practice-discussion",
+      "kind": "live",
+      "title": "Practice test 1: solutions discussion",
+      "context": "SSC GD Constable Complete Course · 60 min",
+      "at": "2026-10-21T13:30:00.000Z",
+      "to": "/live/edu-live-ssc-practice-discussion"
+    }
+  ],
+  "week": [
+    {
+      "date": "2026-10-07",
+      "minutes": 0
+    },
+    {
+      "date": "2026-10-08",
+      "minutes": 0
+    },
+    {
+      "date": "2026-10-09",
+      "minutes": 0
+    },
+    {
+      "date": "2026-10-10",
+      "minutes": 1
+    },
+    {
+      "date": "2026-10-11",
+      "minutes": 0
+    },
+    {
+      "date": "2026-10-12",
+      "minutes": 23
+    },
+    {
+      "date": "2026-10-13",
+      "minutes": 0
+    }
+  ]
+}

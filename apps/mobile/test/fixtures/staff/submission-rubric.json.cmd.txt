@@ -1,0 +1,4 @@
+Captured 2026-09-30T05:15:37Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /assignments/submissions/cmunnj61i008dmmt9059izm2l admin staff/submission-rubric.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

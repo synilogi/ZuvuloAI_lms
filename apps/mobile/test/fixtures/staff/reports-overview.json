@@ -1,0 +1,586 @@
+{
+  "window": {
+    "from": "2026-07-01T12:43:52.619Z",
+    "to": "2026-09-30T12:43:52.619Z",
+    "previousFrom": "2026-04-01T12:43:52.619Z",
+    "previousTo": "2026-07-01T12:43:52.619Z"
+  },
+  "courseCount": 6,
+  "kpis": {
+    "enrollments": {
+      "value": 35,
+      "previous": 12,
+      "series": [
+        0,
+        0,
+        1,
+        1,
+        5,
+        1,
+        5,
+        4,
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "unit": "count"
+    },
+    "completions": {
+      "value": 13,
+      "previous": 7,
+      "series": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        0,
+        8
+      ],
+      "unit": "count"
+    },
+    "completionRate": {
+      "value": 58,
+      "previous": 69,
+      "series": [
+        71,
+        72,
+        70,
+        67,
+        65,
+        62,
+        59,
+        59,
+        57,
+        58
+      ],
+      "unit": "%"
+    },
+    "activeLearners": {
+      "value": 28,
+      "previous": 13,
+      "series": [
+        5,
+        4,
+        4,
+        4,
+        7,
+        8,
+        13,
+        14,
+        17,
+        17,
+        16,
+        13,
+        13
+      ],
+      "unit": "count"
+    },
+    "avgProgress": {
+      "value": 59,
+      "previous": 50,
+      "series": [
+        16,
+        23,
+        28,
+        19,
+        25,
+        24,
+        27,
+        27,
+        39,
+        62
+      ],
+      "unit": "%"
+    }
+  },
+  "series": {
+    "enrollments": [
+      {
+        "from": "2026-07-01T12:43:52.619Z",
+        "to": "2026-07-08T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-08T12:43:52.619Z",
+        "to": "2026-07-15T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-15T12:43:52.619Z",
+        "to": "2026-07-22T12:43:52.619Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-22T12:43:52.619Z",
+        "to": "2026-07-29T12:43:52.619Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-29T12:43:52.619Z",
+        "to": "2026-08-05T12:43:52.619Z",
+        "value": 5
+      },
+      {
+        "from": "2026-08-05T12:43:52.619Z",
+        "to": "2026-08-12T12:43:52.619Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-12T12:43:52.619Z",
+        "to": "2026-08-19T12:43:52.619Z",
+        "value": 5
+      },
+      {
+        "from": "2026-08-19T12:43:52.619Z",
+        "to": "2026-08-26T12:43:52.619Z",
+        "value": 4
+      },
+      {
+        "from": "2026-08-26T12:43:52.619Z",
+        "to": "2026-09-02T12:43:52.619Z",
+        "value": 3
+      },
+      {
+        "from": "2026-09-02T12:43:52.619Z",
+        "to": "2026-09-09T12:43:52.619Z",
+        "value": 3
+      },
+      {
+        "from": "2026-09-09T12:43:52.619Z",
+        "to": "2026-09-16T12:43:52.619Z",
+        "value": 4
+      },
+      {
+        "from": "2026-09-16T12:43:52.619Z",
+        "to": "2026-09-23T12:43:52.619Z",
+        "value": 4
+      },
+      {
+        "from": "2026-09-23T12:43:52.619Z",
+        "to": "2026-09-30T12:43:52.619Z",
+        "value": 4,
+        "partial": true
+      }
+    ],
+    "completions": [
+      {
+        "from": "2026-07-01T12:43:52.619Z",
+        "to": "2026-07-08T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-08T12:43:52.619Z",
+        "to": "2026-07-15T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-15T12:43:52.619Z",
+        "to": "2026-07-22T12:43:52.619Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-22T12:43:52.619Z",
+        "to": "2026-07-29T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-29T12:43:52.619Z",
+        "to": "2026-08-05T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-05T12:43:52.619Z",
+        "to": "2026-08-12T12:43:52.619Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-12T12:43:52.619Z",
+        "to": "2026-08-19T12:43:52.619Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-19T12:43:52.619Z",
+        "to": "2026-08-26T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-26T12:43:52.619Z",
+        "to": "2026-09-02T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-02T12:43:52.619Z",
+        "to": "2026-09-09T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-09T12:43:52.619Z",
+        "to": "2026-09-16T12:43:52.619Z",
+        "value": 2
+      },
+      {
+        "from": "2026-09-16T12:43:52.619Z",
+        "to": "2026-09-23T12:43:52.619Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-23T12:43:52.619Z",
+        "to": "2026-09-30T12:43:52.619Z",
+        "value": 8,
+        "partial": true
+      }
+    ],
+    "activeLearners": [
+      {
+        "from": "2026-07-01T12:43:52.619Z",
+        "to": "2026-07-08T12:43:52.619Z",
+        "value": 5
+      },
+      {
+        "from": "2026-07-08T12:43:52.619Z",
+        "to": "2026-07-15T12:43:52.619Z",
+        "value": 4
+      },
+      {
+        "from": "2026-07-15T12:43:52.619Z",
+        "to": "2026-07-22T12:43:52.619Z",
+        "value": 4
+      },
+      {
+        "from": "2026-07-22T12:43:52.619Z",
+        "to": "2026-07-29T12:43:52.619Z",
+        "value": 4
+      },
+      {
+        "from": "2026-07-29T12:43:52.619Z",
+        "to": "2026-08-05T12:43:52.619Z",
+        "value": 7
+      },
+      {
+        "from": "2026-08-05T12:43:52.619Z",
+        "to": "2026-08-12T12:43:52.619Z",
+        "value": 8
+      },
+      {
+        "from": "2026-08-12T12:43:52.619Z",
+        "to": "2026-08-19T12:43:52.619Z",
+        "value": 13
+      },
+      {
+        "from": "2026-08-19T12:43:52.619Z",
+        "to": "2026-08-26T12:43:52.619Z",
+        "value": 14
+      },
+      {
+        "from": "2026-08-26T12:43:52.619Z",
+        "to": "2026-09-02T12:43:52.619Z",
+        "value": 17
+      },
+      {
+        "from": "2026-09-02T12:43:52.619Z",
+        "to": "2026-09-09T12:43:52.619Z",
+        "value": 17
+      },
+      {
+        "from": "2026-09-09T12:43:52.619Z",
+        "to": "2026-09-16T12:43:52.619Z",
+        "value": 16
+      },
+      {
+        "from": "2026-09-16T12:43:52.619Z",
+        "to": "2026-09-23T12:43:52.619Z",
+        "value": 13
+      },
+      {
+        "from": "2026-09-23T12:43:52.619Z",
+        "to": "2026-09-30T12:43:52.619Z",
+        "value": 13,
+        "partial": true
+      }
+    ]
+  },
+  "quizzes": {
+    "attempts": {
+      "value": 23,
+      "previous": 3,
+      "series": [],
+      "unit": "count"
+    },
+    "passRate": {
+      "value": 57,
+      "previous": 100,
+      "series": [],
+      "unit": "%"
+    },
+    "avgScore": {
+      "value": 59,
+      "previous": 80,
+      "series": [],
+      "unit": "%"
+    }
+  },
+  "assignments": {
+    "submitted": {
+      "value": 60,
+      "previous": 1,
+      "series": [],
+      "unit": "count"
+    },
+    "passRate": {
+      "value": 11,
+      "previous": 100,
+      "series": [],
+      "unit": "%"
+    },
+    "onTime": {
+      "value": 70,
+      "previous": 100,
+      "series": [],
+      "unit": "%"
+    },
+    "reviewHours": {
+      "value": 0,
+      "previous": 51,
+      "series": [],
+      "unit": "count"
+    }
+  },
+  "engagement": {
+    "lessonsCompleted": {
+      "value": 100,
+      "previous": 25,
+      "series": [],
+      "unit": "count"
+    },
+    "lessonsPerLearner": {
+      "value": 3.6,
+      "previous": 1.9,
+      "series": [],
+      "unit": "count"
+    },
+    "liveAttendance": {
+      "value": 78,
+      "previous": 100,
+      "series": [],
+      "unit": "%"
+    }
+  },
+  "progressBands": [
+    {
+      "label": "0–24%",
+      "value": 9
+    },
+    {
+      "label": "25–49%",
+      "value": 8
+    },
+    {
+      "label": "50–74%",
+      "value": 7
+    },
+    {
+      "label": "75–99%",
+      "value": 3
+    },
+    {
+      "label": "Finished",
+      "value": 14
+    }
+  ],
+  "categories": [
+    {
+      "categoryId": "cmumqigpm000dmmos3nzis7ri",
+      "title": "Vedic Foundations",
+      "enrollments": 17,
+      "completionRate": 67
+    },
+    {
+      "categoryId": "cmumqigpu000hmmosm0v3e206",
+      "title": "Specialised Systems",
+      "enrollments": 12,
+      "completionRate": 50
+    },
+    {
+      "categoryId": "cmumqigpq000fmmoskhnc3409",
+      "title": "Predictive Techniques",
+      "enrollments": 6,
+      "completionRate": 67
+    }
+  ],
+  "topCourses": [
+    {
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "title": "Foundations of Vedic Astrology",
+      "categoryTitle": "Vedic Foundations",
+      "instructorNames": [
+        "Dr. Meenakshi Iyer"
+      ],
+      "status": "published",
+      "enrollments": 12,
+      "previousEnrollments": 3,
+      "completions": 4,
+      "completionRate": 57,
+      "activeLearners": 13,
+      "avgProgress": 51,
+      "quizPassRate": 55,
+      "assignmentPassRate": 9,
+      "rating": 4.798859190813784,
+      "trend": [
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        3,
+        1,
+        1,
+        0,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "courseId": "cmumqihd50035mmos6u0fhpdn",
+      "title": "Jaimini Astrology: Chara Karakas",
+      "categoryTitle": "Specialised Systems",
+      "instructorNames": [
+        "Acharya Vinod Shastri"
+      ],
+      "status": "published",
+      "enrollments": 7,
+      "previousEnrollments": 1,
+      "completions": 2,
+      "completionRate": 33,
+      "activeLearners": 7,
+      "avgProgress": 62,
+      "quizPassRate": null,
+      "assignmentPassRate": null,
+      "rating": 4.600602356565785,
+      "trend": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "courseId": "cmumqihco002rmmosr0ijyuku",
+      "title": "Reading the Dasha System",
+      "categoryTitle": "Predictive Techniques",
+      "instructorNames": [
+        "Acharya Vinod Shastri"
+      ],
+      "status": "published",
+      "enrollments": 6,
+      "previousEnrollments": 3,
+      "completions": 2,
+      "completionRate": 67,
+      "activeLearners": 8,
+      "avgProgress": 57,
+      "quizPassRate": null,
+      "assignmentPassRate": 100,
+      "rating": 4.706556565676229,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "courseId": "cmumqihc7002bmmosdnc8er9m",
+      "title": "The 27 Nakshatras in Depth",
+      "categoryTitle": "Vedic Foundations",
+      "instructorNames": [
+        "Dr. Meenakshi Iyer"
+      ],
+      "status": "published",
+      "enrollments": 5,
+      "previousEnrollments": 0,
+      "completions": 1,
+      "completionRate": 100,
+      "activeLearners": 5,
+      "avgProgress": 58,
+      "quizPassRate": 100,
+      "assignmentPassRate": null,
+      "rating": 4.842720776091521,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "courseId": "cmumqihdp003lmmoslirj2d3m",
+      "title": "Prashna: Horary Astrology",
+      "categoryTitle": "Specialised Systems",
+      "instructorNames": [
+        "Pt. Sanjay Rathore"
+      ],
+      "status": "published",
+      "enrollments": 3,
+      "previousEnrollments": 0,
+      "completions": 2,
+      "completionRate": 100,
+      "activeLearners": 3,
+      "avgProgress": 74,
+      "quizPassRate": null,
+      "assignmentPassRate": null,
+      "rating": 4.662219857411197,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

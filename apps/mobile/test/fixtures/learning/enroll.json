@@ -1,0 +1,123 @@
+{
+  "course": {
+    "id": "cmudqd8g30035mmgzwtgr0mcl",
+    "slug": "jaimini-chara-karakas",
+    "title": "Jaimini Astrology: Chara Karakas",
+    "subtitle": "A parallel system of significators and argala.",
+    "description": "An introduction to Jaimini astrology through chara karakas — the significators that shift chart to chart — and how they complement Parashari technique.",
+    "levelId": "cmudqd7rm0004mmgz0b2bll90",
+    "categoryId": "cmudqd7tf000hmmgzysjk4jlp",
+    "instructorIds": [
+      "cmudqd7tk000lmmgz0mp93je3"
+    ],
+    "format": "self-paced",
+    "language": "en-IN",
+    "coverMotif": "ecliptic",
+    "chapters": [
+      {
+        "id": "cmudqd8g50037mmgzaajipn25",
+        "title": "The Seven Karakas",
+        "summary": "Atmakaraka through the rest.",
+        "objective": "By the end of this chapter, learners can assign all seven chara karakas.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8g60039mmgz4h7x3lmc",
+            "title": "Assigning the karakas",
+            "type": "video",
+            "durationMin": 26,
+            "isPreview": true,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.975Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "karakas.mp4",
+                  "sizeMb": 110
+                },
+                "durationSec": 1560,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8g8003bmmgz043r24w3",
+            "title": "The Atmakaraka in depth",
+            "type": "reading",
+            "durationMin": 18,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.977Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "The Atmakaraka, the planet at the highest degree, is read as the soul-significator in Jaimini technique. Its sign and house placement, and the karakamsha it forms, carry particular weight for life direction.\n\nUnlike Parashari house lordship, karaka assignment changes chart to chart based purely on degree, making it a genuinely different lens on the same data."
+              }
+            },
+            "settings": {}
+          }
+        ]
+      }
+    ],
+    "liveSessions": 1,
+    "estimatedWeeks": 2,
+    "certificateTitle": "Certificate in Jaimini Astrology: Chara Karakas",
+    "price": {
+      "amount": 4999,
+      "currency": "INR"
+    },
+    "enrolledCount": 12,
+    "status": "published",
+    "visibility": "public",
+    "outcomes": [
+      "Assign chara karakas from any chart",
+      "Read the Atmakaraka’s significance",
+      "Apply basic argala analysis"
+    ],
+    "tags": [
+      "Advanced",
+      "Jaimini"
+    ],
+    "createdAt": "2026-09-23T06:37:07.971Z",
+    "updatedAt": "2026-09-23T12:04:09.191Z",
+    "publishedAt": "2026-07-25T06:37:07.969Z",
+    "rating": 4.88851334134491,
+    "ratingCount": 282
+  },
+  "enrollment": {
+    "id": "cmue21s9z0001mmta1uyz8e1y",
+    "studentId": "cmudqd8320011mmgz18kw0t7d",
+    "courseId": "cmudqd8g30035mmgzwtgr0mcl",
+    "enrolledAt": "2026-09-23T12:04:09.191Z",
+    "status": "active",
+    "progress": 0,
+    "source": "self"
+  },
+  "progress": {
+    "completed": 0,
+    "total": 2,
+    "percent": 0,
+    "remainingMin": 44,
+    "state": "not-started"
+  },
+  "snapshot": {
+    "courseId": "cmudqd8g30035mmgzwtgr0mcl",
+    "lessons": {}
+  },
+  "next": {
+    "id": "cmudqd8g60039mmgz4h7x3lmc",
+    "title": "Assigning the karakas",
+    "type": "video",
+    "durationMin": 26,
+    "chapterIndex": 0,
+    "chapterTitle": "The Seven Karakas",
+    "lessonNumber": "1.1",
+    "state": "not-started"
+  },
+  "instructorNames": [
+    "Acharya Vinod Shastri"
+  ],
+  "levelTitle": "Advanced"
+}

@@ -1,0 +1,36 @@
+{
+  "liveClass": {
+    "id": "cmumqihjp0089mmosaaldvbsd",
+    "courseId": "cmumqihco002rmmosr0ijyuku",
+    "title": "Dasha timing office hours",
+    "instructorId": "cmumqigq0000lmmosg7u679j6",
+    "startsAt": "2026-09-24T13:51:08.625Z",
+    "durationMin": 45,
+    "capacity": 30,
+    "registered": 0,
+    "attending": 0,
+    "attended": 0,
+    "recording": {
+      "durationMin": 42,
+      "availableUntil": "2026-10-24T13:51:08.625Z"
+    },
+    "description": "Open office hours on dasha timing questions.",
+    "agenda": [],
+    "visibility": "enrolled",
+    "meeting": {
+      "kind": "room"
+    },
+    "reminders": []
+  },
+  "phase": "ended",
+  "courseTitle": "Reading the Dasha System",
+  "instructorName": "Acharya Vinod Shastri",
+  "instructorTitle": "Predictive Astrologer",
+  "attendees": [],
+  "attendeeTotal": 0,
+  "previous": {
+    "id": "cmumqijtu00k5mmos7tvkvtmg",
+    "title": "Vimshottari timing: case studies",
+    "startsAt": "2026-06-11T13:51:08.625Z"
+  }
+}

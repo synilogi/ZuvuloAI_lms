@@ -1,0 +1,211 @@
+{
+  "course": {
+    "id": "cmudqd8fm002rmmgzjewos57p",
+    "slug": "dasha-system",
+    "title": "Reading the Dasha System",
+    "subtitle": "Time events with Vimshottari mahadasha and antardasha.",
+    "description": "Learn to time life events using the Vimshottari dasha system — mahadashas, antardashas and how to judge which planets are active in a chart at a given moment.",
+    "levelId": "cmudqd7rm0005mmgzd9rz8b24",
+    "categoryId": "cmudqd7tc000fmmgzvemokor0",
+    "instructorIds": [
+      "cmudqd7tk000lmmgz0mp93je3"
+    ],
+    "format": "self-paced",
+    "language": "en-IN",
+    "coverMotif": "orbits",
+    "chapters": [
+      {
+        "id": "cmudqd8fp002tmmgz70h4w7xn",
+        "title": "How Vimshottari Works",
+        "summary": "The 120-year cycle.",
+        "objective": "By the end of this chapter, learners can calculate a dasha balance at birth.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8fq002vmmgzyj7ctevt",
+            "title": "The 120-year cycle",
+            "type": "video",
+            "durationMin": 24,
+            "isPreview": true,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.959Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "cycle.mp4",
+                  "sizeMb": 102
+                },
+                "durationSec": 1440,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8ft002xmmgzy11us0nt",
+            "title": "Calculating the balance at birth",
+            "type": "reading",
+            "durationMin": 14,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.961Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "The Moon’s nakshatra at birth sets both the starting dasha lord and how much of that period remains. Divide the Moon’s position within the nakshatra to find the elapsed and balance portions.\n\nOnce the balance is found, the dasha sequence proceeds in the fixed Vimshottari order regardless of chart specifics."
+              }
+            },
+            "settings": {}
+          }
+        ]
+      },
+      {
+        "id": "cmudqd8fu002zmmgz8xebrxe2",
+        "title": "Reading Antardashas",
+        "summary": "Sub-periods within a mahadasha.",
+        "objective": "By the end of this chapter, learners can identify the active antardasha for a date.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8fw0031mmgz494me4at",
+            "title": "Sub-period timing",
+            "type": "video",
+            "durationMin": 20,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.964Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "antardasha.mp4",
+                  "sizeMb": 91
+                },
+                "durationSec": 1200,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8fy0033mmgz1qkiy1zv",
+            "title": "Timing exercise",
+            "type": "assignment",
+            "durationMin": 35,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.966Z",
+            "objectives": [],
+            "content": {
+              "assignment": {
+                "brief": "For the sample chart, calculate the current mahadasha and antardasha as of today, and write two paragraphs on what themes are active.",
+                "dueAfterDays": 10,
+                "maxScore": 100,
+                "submission": "text"
+              }
+            },
+            "settings": {}
+          }
+        ]
+      }
+    ],
+    "liveSessions": 1,
+    "estimatedWeeks": 4,
+    "certificateTitle": "Certificate in Reading the Dasha System",
+    "price": {
+      "amount": 3999,
+      "currency": "INR"
+    },
+    "enrolledCount": 12,
+    "status": "published",
+    "visibility": "public",
+    "outcomes": [
+      "Calculate a Vimshottari dasha sequence",
+      "Judge dasha lord strength",
+      "Time an event within an antardasha"
+    ],
+    "tags": [
+      "Intermediate",
+      "Predictive"
+    ],
+    "createdAt": "2026-09-23T06:37:07.954Z",
+    "updatedAt": "2026-09-23T06:37:10.479Z",
+    "publishedAt": "2026-07-25T06:37:07.953Z",
+    "rating": 4.63468560225876,
+    "ratingCount": 173
+  },
+  "enrolled": true,
+  "snapshot": {
+    "courseId": "cmudqd8fm002rmmgzjewos57p",
+    "lessons": {
+      "cmudqd8fq002vmmgzyj7ctevt": {
+        "lessonId": "cmudqd8fq002vmmgzyj7ctevt",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-21T06:37:08.034Z"
+      },
+      "cmudqd8ft002xmmgzy11us0nt": {
+        "lessonId": "cmudqd8ft002xmmgzy11us0nt",
+        "state": "in-progress",
+        "fraction": 0.4,
+        "positionSec": 300
+      },
+      "cmudqd8fw0031mmgz494me4at": {
+        "lessonId": "cmudqd8fw0031mmgz494me4at",
+        "state": "locked"
+      },
+      "cmudqd8fy0033mmgz1qkiy1zv": {
+        "lessonId": "cmudqd8fy0033mmgz1qkiy1zv",
+        "state": "locked"
+      }
+    },
+    "lastLessonId": "cmudqd8fq002vmmgzyj7ctevt",
+    "lastActiveAt": "2026-09-21T06:37:08.034Z"
+  },
+  "progress": {
+    "completed": 1,
+    "total": 4,
+    "percent": 32,
+    "remainingMin": 63,
+    "state": "in-progress"
+  },
+  "chapterIndex": 1,
+  "lessonIndex": 0,
+  "lesson": {
+    "id": "cmudqd8fw0031mmgz494me4at",
+    "title": "Sub-period timing",
+    "type": "video",
+    "durationMin": 20,
+    "status": "published",
+    "updatedAt": "2026-09-23T06:37:07.964Z",
+    "objectives": [],
+    "content": {}
+  },
+  "number": "2.1",
+  "position": {
+    "index": 2,
+    "total": 4
+  },
+  "state": "locked",
+  "lessonProgress": {
+    "lessonId": "cmudqd8fw0031mmgz494me4at",
+    "state": "locked"
+  },
+  "access": "locked",
+  "lockedReason": "Finish “How Vimshottari Works” to open this chapter.",
+  "previous": {
+    "id": "cmudqd8ft002xmmgzy11us0nt",
+    "title": "Calculating the balance at birth"
+  },
+  "next": {
+    "id": "cmudqd8fy0033mmgz1qkiy1zv",
+    "title": "Timing exercise",
+    "locked": true
+  },
+  "instructorNames": [
+    "Acharya Vinod Shastri"
+  ],
+  "note": "",
+  "bookmarked": false,
+  "threshold": 90
+}

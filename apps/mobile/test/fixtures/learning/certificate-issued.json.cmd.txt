@@ -1,0 +1,4 @@
+Captured 2026-09-29T07:42:58Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /learning/certificates/cmum8kcfz0081mmzweme7qun1 student learning/certificate-issued.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

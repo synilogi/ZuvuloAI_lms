@@ -1,0 +1,44 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: var(--tone-soft);
+  color: var(--tone-ink);
+  user-select: none;
+}
+.accent {
+  --tone-soft: var(--accent-soft);
+  --tone-ink: var(--accent-ink);
+}
+.info {
+  --tone-soft: var(--info-soft);
+  --tone-ink: var(--info-ink);
+}
+.warn {
+  --tone-soft: var(--warn-soft);
+  --tone-ink: var(--warn-ink);
+}
+.danger {
+  --tone-soft: var(--danger-soft);
+  --tone-ink: var(--danger-ink);
+}
+.neutral {
+  --tone-soft: var(--surface-3);
+  --tone-ink: var(--muted);
+}
+
+.group {
+  display: inline-flex;
+  align-items: center;
+}
+.stacked {
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.stacked + .stacked {
+  margin-left: -9px;
+}

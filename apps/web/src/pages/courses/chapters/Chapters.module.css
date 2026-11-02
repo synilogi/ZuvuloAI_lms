@@ -1,0 +1,329 @@
+/* ─── Panels ─── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  container-type: inline-size;
+}
+.impact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 18px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.note {
+  font-size: var(--fs-caption);
+  color: var(--faint);
+}
+.positions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  max-height: 50vh;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.positions li + li {
+  border-top: 1px solid var(--border);
+}
+.position {
+  display: grid;
+  grid-template-columns: auto 28px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s-3);
+  padding: 10px var(--s-3);
+  font-size: var(--fs-body-sm);
+  cursor: pointer;
+}
+.position:hover {
+  background: var(--surface-2);
+}
+.position input {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+.positionIndex {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.positionText {
+  min-width: 0;
+  text-wrap: pretty;
+}
+
+/* ─── Overview ─── */
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+  max-width: 920px;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--s-3);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--muted);
+}
+.back:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+.headerRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--s-4);
+}
+.bigIndex {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--accent-ink);
+  opacity: 0.35;
+  font-variant-numeric: tabular-nums;
+}
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.eyebrow {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.title {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.summary {
+  max-width: 64ch;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-3);
+  margin-top: 2px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.actions {
+  display: flex;
+  gap: var(--s-2);
+}
+.objective {
+  display: flex;
+  gap: var(--s-3);
+  margin: 0;
+  padding: var(--s-4) var(--s-5);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--surface);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.objective svg {
+  flex: none;
+  margin-top: 4px;
+  color: var(--accent-ink);
+}
+.objectiveLabel {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.missing {
+  font-size: var(--fs-body-sm);
+  color: var(--faint);
+}
+.inlineLink {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-4);
+  padding: var(--s-4) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.lessonsSection {
+  min-width: 0;
+}
+.typeLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-3);
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.typeLine span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.typeLine svg {
+  color: var(--accent-ink);
+}
+.lessonList {
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+.lessonItem {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) minmax(180px, 260px);
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.lessonNumber {
+  font-size: var(--fs-caption);
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.lessonMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.lessonName {
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+.lessonMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.lessonMeta svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent-ink);
+}
+.lessonRate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px auto;
+  align-items: center;
+  gap: var(--s-2);
+}
+.rateValue {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.dropNote {
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  color: var(--warn-ink);
+  white-space: nowrap;
+}
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.pagerLink {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  max-width: 48%;
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color var(--t-fast);
+}
+.pagerLink:hover {
+  border-color: var(--border-strong);
+  text-decoration: none;
+}
+.pagerLink > span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.pagerNext {
+  margin-left: auto;
+  text-align: right;
+}
+.pagerLabel {
+  font-size: var(--fs-caption);
+  color: var(--faint);
+}
+.pagerTitle {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media (max-width: 767px) {
+  .headerRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bigIndex {
+    display: none;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .objective {
+    font-size: var(--fs-body-lg);
+    padding: var(--s-3) var(--s-4);
+  }
+  .figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lessonItem {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+  .lessonRate {
+    grid-column: 2;
+  }
+  .pager {
+    flex-direction: column;
+  }
+  .pagerLink {
+    max-width: none;
+  }
+}

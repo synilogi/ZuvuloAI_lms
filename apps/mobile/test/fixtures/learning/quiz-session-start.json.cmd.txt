@@ -1,0 +1,4 @@
+Captured 2026-10-26 from the running API (real responses, scratch data, seed course 'Maths Foundations for Classes 6–8').
+Command: POST /learning/courses/<c>/lessons/<l>/quiz-session {startKey}
+HTTP status: 201
+E-mail addresses are the scratch learner's; no tokens.

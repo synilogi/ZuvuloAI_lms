@@ -1,0 +1,334 @@
+/* Reports — overview, courses, learners, instructors, enrolment and completion */
+
+.page {
+  max-width: var(--container-page);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.report {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  transition: opacity var(--t-fast);
+}
+.report[aria-busy='true'] {
+  opacity: 0.65;
+}
+.periodLine {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+}
+.periodSelect {
+  width: 180px;
+}
+
+/* ─── Filters ─── */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--s-2) var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.filterField {
+  flex: 1 1 170px;
+  min-width: 0;
+  max-width: 260px;
+}
+.resetButton {
+  margin-bottom: 4px;
+}
+@media (max-width: 767px) {
+  .filterBar {
+    padding: var(--s-3);
+  }
+  .filterField {
+    flex-basis: calc(50% - var(--s-2));
+    max-width: none;
+  }
+}
+
+/* ─── Sections ─── */
+.section {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+@media (max-width: 767px) {
+  .section {
+    padding: var(--s-4);
+  }
+}
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-3);
+}
+.sectionText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: min(100%, 220px);
+  flex: 1;
+}
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+}
+.sectionDescription {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+  text-wrap: pretty;
+}
+.sectionActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.twoColumns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+.groupTitle {
+  margin-top: var(--s-1);
+  color: var(--muted);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.emptyNote {
+  padding: var(--s-4) 0;
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+
+/* ─── Metrics: figures in a hairline band ─── */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: var(--s-3) var(--s-3) var(--s-3) 0;
+}
+.metricLabel {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+}
+.metricBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  margin: 0;
+}
+.metricValue {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+.metricHint {
+  color: var(--faint);
+  font-size: var(--fs-caption);
+}
+.metricBand {
+  padding: 0 var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+
+.activityGroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--s-2) var(--s-6);
+}
+.activityGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+/* ─── Chart figures ─── */
+.chartFigures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-6);
+}
+.figureInline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.figureInlineValue {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.figureInlineLabel {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+}
+
+/* ─── Table cells ─── */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.cellTitle {
+  color: var(--text);
+  font-weight: 600;
+  text-wrap: pretty;
+}
+.cellMeta {
+  display: block;
+  color: var(--muted);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+}
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 0;
+}
+.meterCell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3ch;
+  align-items: center;
+  gap: var(--s-2);
+  min-width: 90px;
+  font-size: var(--fs-body-sm);
+}
+.numberCell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+.up,
+.down,
+.flat {
+  font-size: var(--fs-caption);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.up {
+  color: var(--accent-ink);
+}
+.down {
+  color: var(--danger-ink);
+}
+.flat {
+  color: var(--muted);
+}
+.tableTools {
+  max-width: 360px;
+}
+.linkish {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.linkish:hover {
+  color: var(--accent-ink);
+  text-decoration: underline;
+}
+.linkish[aria-pressed='true'] {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.linkish:focus-visible {
+  border-radius: var(--r-xs);
+  outline: none;
+  box-shadow: var(--sh-ring);
+}
+
+/* ─── Plain tables ─── */
+.tableScroll {
+  overflow-x: auto;
+  margin-inline: calc(var(--s-2) * -1);
+  padding-inline: var(--s-2);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+}
+.table th,
+.table td {
+  padding: 10px var(--s-2);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+.table thead th {
+  color: var(--muted);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.table tbody th {
+  font-weight: 600;
+}
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cohortTable {
+  min-width: 560px;
+}
+.heatCell {
+  font-weight: 600;
+}

@@ -1,0 +1,126 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- The built-in live room (jitsi_meet_flutter_sdk): camera and microphone are asked for at run time,
+         the first time a learner or host goes into a class, never before. -->
+    <!-- Push notifications (Android 13+ asks the person once, after sign-in). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <!-- The Jitsi SDK's ongoing-class service (JitsiMeetOngoingConferenceService, types mediaPlayback|microphone) is
+         kept, with its FOREGROUND_SERVICE_MICROPHONE and _MEDIA_PLAYBACK permissions from the SDK's manifest: it
+         keeps a class the learner joined running, with a notification, when they press Home or switch apps.
+         Android Go phones have no picture-in-picture, so without it every sound stopped both ways (L3, 2026-10-26).
+         It runs only while the person is in a class they joined, and stops when they leave. Play Console needs a
+         foreground-service declaration for both types (docs/14-LAUNCH-CHECKLIST.md, L3).
+         What the SDK brings but the app does not ship: screen capture (screens are shared from the web room; the
+         flag is off in live_room.dart) and the calendar (calendar.enabled is off). -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" tools:node="remove"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" tools:node="remove"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" tools:node="remove"/>
+    <!-- The app shows no ads and measures nothing with an advertising ID; firebase_analytics (a Firebase dependency the
+         code never calls) would otherwise merge these in, and Play's data-safety form would have to declare them. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" tools:node="remove"/>
+
+    <!-- tools:replace — the Jitsi SDK's own manifest names the app and allows backup; this build's label
+         wins, and backup stays off (a session token must never land in a device backup). -->
+    <application
+        tools:replace="android:label,android:allowBackup"
+        android:label="${appLabel}"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:usesCleartextTraffic="false"
+        android:networkSecurityConfig="@xml/network_security_config">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <!-- Android App Links for the academy's own host (FLUTTER-028, §12). `autoVerify` asks
+                 Android to check https://zuviloai.com/.well-known/assetlinks.json
+                 against this build's signing certificate; until that file is served (B13) the links
+                 open the browser instead, which the web app handles. Only these paths are
+                 claimed, and each id is validated again in Dart before anything opens — a link is
+                 untrusted input (§18). -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="zuviloai.com"/>
+                <data android:pathPrefix="/reset-password/"/>
+                <data android:pathPrefix="/verify/"/>
+                <data android:pathPrefix="/courses/"/>
+                <data android:pathPrefix="/join/"/>
+                <data android:pathPrefix="/invite/"/>
+                <data android:pathPrefix="/learn/"/>
+                <data android:pathPrefix="/live/"/>
+                <data android:pathPrefix="/notifications"/>
+            </intent-filter>
+            <!-- Flutter's own deep-link handling, so go_router receives the URL rather than the
+                 engine opening a bare activity. -->
+            <meta-data android:name="flutter_deeplinking_enabled" android:value="true"/>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+        <!-- Crashlytics sends nothing until the app turns collection on, which it does only in a build
+             with CRASH_REPORTING_ENABLED=true (lib/core/logging/crashlytics_reporter.dart). -->
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
+        <!-- Analytics collects nothing: the app never logs an event, and Firebase is initialised only for push. -->
+        <meta-data
+            android:name="firebase_analytics_collection_deactivated"
+            android:value="true" />
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+        <!-- Screen capture's foreground service is not shipped; the ongoing-class service is (see the permissions above). -->
+        <service android:name="com.oney.WebRTCModule.MediaProjectionService" tools:node="remove"/>
+    </application>
+    <!-- Required to query activities that can process text, see:
+         https://developer.android.com/training/package-visibility and
+         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+
+         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- url_launcher (Android 11+ package visibility): the support e-mail link, and the web
+             pages the app opens in the browser (policies, account deletion, lesson links). -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO"/>
+            <data android:scheme="mailto"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+    </queries>
+</manifest>

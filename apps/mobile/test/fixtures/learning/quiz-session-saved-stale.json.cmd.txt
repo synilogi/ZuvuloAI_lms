@@ -1,0 +1,4 @@
+Captured 2026-10-26 from the running API (real responses, scratch data, seed course 'Maths Foundations for Classes 6–8').
+Command: PUT …/quiz-session/<s>/answers with seq 1 again (stale): the stored session comes back unchanged
+HTTP status: 200
+E-mail addresses are the scratch learner's; no tokens.

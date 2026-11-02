@@ -1,0 +1,9 @@
+{
+  "ENV_NAME": "staging",
+  "API_BASE_URL": "https://zuviloai.com/api",
+  "WEB_BASE_URL": "https://zuviloai.com",
+  "BILLING_CHECKOUT_ENABLED": false,
+  "COURSE_CHECKOUT_ENABLED": false,
+  "PUSH_ENABLED": true,
+  "CRASH_REPORTING_ENABLED": false
+}

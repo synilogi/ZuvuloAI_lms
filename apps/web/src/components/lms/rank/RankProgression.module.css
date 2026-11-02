@@ -1,0 +1,290 @@
+/* ─── Emblem ─── */
+.emblem {
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+.tick {
+  stroke: var(--faint);
+  stroke-width: 1;
+  opacity: 0.45;
+}
+.orbitAchieved {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+.orbitTrack {
+  fill: none;
+  stroke: var(--track);
+  stroke-width: 3;
+}
+.orbitProgress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray var(--t-progress);
+}
+.orbitBody {
+  fill: var(--accent);
+  stroke: var(--bg);
+  stroke-width: 2.5;
+}
+.orbitFuture {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+}
+.core {
+  fill: var(--accent-soft);
+}
+.coreText {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  fill: var(--accent-ink);
+  letter-spacing: 0.02em;
+}
+
+/* ─── Layout ─── */
+.root {
+  container-type: inline-size;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.lead {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+.leadEmblem {
+  width: 104px;
+  height: 104px;
+}
+.leadText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.currentTitle {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.leadNext {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.leadNext strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.leadPct {
+  font-weight: 600;
+  color: var(--accent-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ladder {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.rung {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: var(--s-3);
+  padding: var(--s-4) 0;
+  border-top: 1px solid var(--border);
+}
+.rung:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.numeral {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+.rungBody {
+  min-width: 0;
+}
+.rungHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px var(--s-3);
+}
+.rungTitle {
+  font-size: var(--fs-h3);
+}
+.descriptor {
+  margin-top: 4px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+.future .rungTitle,
+.future .numeral {
+  color: var(--faint);
+}
+.future .descriptor {
+  color: var(--faint);
+}
+.current .numeral,
+.achieved .numeral {
+  color: var(--accent-ink);
+}
+.next .numeral {
+  color: var(--text);
+}
+.next .rungTitle {
+  font-size: 22px;
+}
+
+.stateAchieved,
+.stateCurrent,
+.stateFuture {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-caption);
+  white-space: nowrap;
+}
+.stateAchieved {
+  color: var(--muted);
+}
+.stateAchieved svg,
+.stateCurrent svg {
+  color: var(--accent);
+}
+.stateCurrent {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.stateNext {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--accent-ink);
+  font-variant-numeric: tabular-nums;
+}
+.stateFuture {
+  color: var(--faint);
+}
+
+.criteria {
+  list-style: none;
+  margin-top: var(--s-4);
+  display: grid;
+  gap: var(--s-3);
+}
+.criterion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.criterionHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-body-sm);
+}
+.criterionLabel {
+  flex: 1;
+  min-width: 0;
+  color: var(--text);
+}
+.criterionValue {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.metIcon {
+  color: var(--accent);
+}
+.openDot {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--border-strong);
+}
+.met .criterionLabel {
+  color: var(--muted);
+}
+
+@container (min-width: 680px) {
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--s-7);
+    align-items: start;
+  }
+  .lead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-5);
+    position: sticky;
+    top: var(--s-4);
+  }
+  .leadEmblem {
+    width: 208px;
+    height: 208px;
+  }
+  .currentTitle {
+    font-size: var(--fs-h1);
+  }
+  .criteria {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    column-gap: var(--s-5);
+  }
+}
+
+/* ─── Compact meter — the shell's storage card, repurposed ─── */
+.meterCard {
+  padding: var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.meterRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.meterTrack {
+  height: 5px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  overflow: hidden;
+  margin: 8px 0 6px;
+}
+.meterFill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  transition: width var(--t-progress);
+}
+.meterCaption {
+  font-size: var(--fs-label);
+  opacity: 0.85;
+}

@@ -1,0 +1,39 @@
+{
+  "notification": {
+    "id": "cmumijxoj0001mmy7rf7n8arn",
+    "recipientId": "cmumibp5m000vmmqd8ndw7y0w",
+    "category": "assignment",
+    "title": "“Your first assignment: reading a friend’s chart” has been graded",
+    "summary": "You scored 84 / 100 — passed.",
+    "body": [
+      "A clear reading of the ascendant. Say more about the nakshatra next time."
+    ],
+    "createdAt": "2026-09-29T10:08:19.267Z",
+    "readAt": "2026-09-29T10:08:39.341Z",
+    "actor": "Dr. Meenakshi Iyer",
+    "facts": [
+      {
+        "label": "Score",
+        "value": "84 / 100"
+      },
+      {
+        "label": "Pass mark",
+        "value": "60"
+      },
+      {
+        "label": "Course",
+        "value": "Foundations of Vedic Astrology"
+      }
+    ],
+    "action": {
+      "label": "Read the feedback",
+      "to": "/assignments/cmumibpuy007tmmqd2qxmak5j"
+    }
+  },
+  "related": [],
+  "channels": {
+    "app": true,
+    "email": true,
+    "sms": false
+  }
+}

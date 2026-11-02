@@ -1,0 +1,747 @@
+{
+  "rows": [
+    {
+      "id": "cmumibpmu0035mmqd1kuzhlid",
+      "slug": "jaimini-chara-karakas",
+      "title": "Jaimini Astrology: Chara Karakas",
+      "subtitle": "A parallel system of significators and argala.",
+      "description": "An introduction to Jaimini astrology through chara karakas — the significators that shift chart to chart — and how they complement Parashari technique.",
+      "levelId": "cmumibovb0004mmqdxg0g3jpf",
+      "categoryId": "cmumibowx000hmmqd98nt394p",
+      "instructorIds": [
+        "cmumibox1000lmmqdp6c52nzy"
+      ],
+      "format": "self-paced",
+      "language": "en-IN",
+      "coverMotif": "ecliptic",
+      "chapters": [
+        {
+          "id": "cmumibpmx0037mmqd2dbnhsf7",
+          "title": "The Seven Karakas",
+          "summary": "Atmakaraka through the rest.",
+          "objective": "By the end of this chapter, learners can assign all seven chara karakas.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibpmz0039mmqd1h8ls9vp",
+              "title": "Assigning the karakas",
+              "type": "video",
+              "durationMin": 26,
+              "isPreview": true,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.596Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "karakas.mp4",
+                    "sizeMb": 110
+                  },
+                  "durationSec": 1560,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpn2003bmmqdxv7cp8pp",
+              "title": "The Atmakaraka in depth",
+              "type": "reading",
+              "durationMin": 18,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.598Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "The Atmakaraka, the planet at the highest degree, is read as the soul-significator in Jaimini technique. Its sign and house placement, and the karakamsha it forms, carry particular weight for life direction.\n\nUnlike Parashari house lordship, karaka assignment changes chart to chart based purely on degree, making it a genuinely different lens on the same data."
+                }
+              },
+              "settings": {}
+            }
+          ]
+        }
+      ],
+      "liveSessions": 1,
+      "estimatedWeeks": 2,
+      "certificateTitle": "Certificate in Jaimini Astrology: Chara Karakas",
+      "price": {
+        "amount": 4999,
+        "currency": "INR"
+      },
+      "enrolledCount": 11,
+      "status": "published",
+      "visibility": "public",
+      "outcomes": [
+        "Assign chara karakas from any chart",
+        "Read the Atmakaraka’s significance",
+        "Apply basic argala analysis"
+      ],
+      "tags": [
+        "Advanced",
+        "Jaimini"
+      ],
+      "createdAt": "2026-09-29T10:01:55.591Z",
+      "updatedAt": "2026-09-29T12:28:01.297Z",
+      "publishedAt": "2026-07-31T10:01:55.589Z",
+      "rating": 4.635530103144612,
+      "ratingCount": 227
+    },
+    {
+      "id": "cmumibpn7003dmmqd9orov440",
+      "slug": "kp-fundamentals",
+      "title": "Krishnamurti Paddhati (KP) Fundamentals",
+      "subtitle": "Placidus cusps, star lords and sub-lords for precise judgements.",
+      "description": "The essentials of the KP system: Placidus house cusps, nakshatra star lords and sub-lords, and how they sharpen yes/no predictive judgements.",
+      "levelId": "cmumibovb0004mmqdxg0g3jpf",
+      "categoryId": "cmumibowx000hmmqd98nt394p",
+      "instructorIds": [
+        "cmumibox3000nmmqdlj7aqk88"
+      ],
+      "format": "self-paced",
+      "language": "en-IN",
+      "coverMotif": "orbits",
+      "chapters": [
+        {
+          "id": "cmumibpna003fmmqds0onny4c",
+          "title": "Cusps and Sub-Lords",
+          "summary": "The KP building blocks.",
+          "objective": "By the end of this chapter, learners can read a cuspal sub-lord table.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibpnc003hmmqd27zuh3wa",
+              "title": "Placidus house cusps",
+              "type": "video",
+              "durationMin": 21,
+              "isPreview": true,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.609Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "cusps.mp4",
+                    "sizeMb": 95
+                  },
+                  "durationSec": 1260,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpnf003jmmqd7vke9shh",
+              "title": "Star and sub lords",
+              "type": "reading",
+              "durationMin": 17,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.611Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "Each cusp’s sub-lord, found by subdividing its nakshatra into Vimshottari proportions, is the final word on whether that house’s matters will favour or deny the native.\n\nThis fine subdivision is what lets KP practitioners give sharper yes/no answers than sign-based technique alone allows."
+                }
+              },
+              "settings": {}
+            }
+          ]
+        }
+      ],
+      "liveSessions": 1,
+      "estimatedWeeks": 2,
+      "certificateTitle": "Certificate in Krishnamurti Paddhati (KP) Fundamentals",
+      "price": {
+        "amount": 4999,
+        "currency": "INR"
+      },
+      "enrolledCount": 11,
+      "status": "published",
+      "visibility": "public",
+      "outcomes": [
+        "Cast a KP-style chart with Placidus cusps",
+        "Identify star and sub lords",
+        "Judge a simple yes/no question"
+      ],
+      "tags": [
+        "Advanced",
+        "KP"
+      ],
+      "createdAt": "2026-09-29T10:01:55.603Z",
+      "updatedAt": "2026-09-29T12:19:07.865Z",
+      "publishedAt": "2026-07-31T10:01:55.601Z",
+      "rating": 4.897458466734331,
+      "ratingCount": 74
+    },
+    {
+      "id": "cmumibplp002bmmqd9vuh8t77",
+      "slug": "nakshatras-depth",
+      "title": "The 27 Nakshatras in Depth",
+      "subtitle": "Deities, shaktis, symbols and padas as a complete language.",
+      "description": "A close study of all twenty-seven nakshatras — their ruling deities, symbols, shaktis and four padas — and how they refine a planet’s expression beyond its sign.",
+      "levelId": "cmumibovb0005mmqd2mvnrvz2",
+      "categoryId": "cmumibowr000dmmqde40gn58b",
+      "instructorIds": [
+        "cmumibowz000jmmqd1gtm5z8x"
+      ],
+      "format": "self-paced",
+      "language": "en-IN",
+      "coverMotif": "nakshatra",
+      "chapters": [
+        {
+          "id": "cmumibpls002dmmqdtoxtbx97",
+          "title": "Ashwini to Ashlesha",
+          "summary": "The first nine nakshatras.",
+          "objective": "By the end of this chapter, learners can describe the first nine nakshatras’ core themes.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibplt002fmmqd1c9jbo4q",
+              "title": "Ashwini, Bharani and Krittika",
+              "type": "video",
+              "durationMin": 20,
+              "isPreview": true,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.554Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "group1.mp4",
+                    "sizeMb": 88
+                  },
+                  "durationSec": 1200,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibplv002hmmqdeqf8s3ys",
+              "title": "Rohini through Ashlesha",
+              "type": "reading",
+              "durationMin": 16,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.556Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "Rohini is ruled by Brahma and carries themes of growth and fertility; Mrigashira by Soma, the searching mind; Ardra by Rudra, transformation through storm.\n\nPunarvasu, ruled by Aditi, brings renewal; Pushya, ruled by Brihaspati, nourishment; Ashlesha, ruled by the Nagas, entwining and penetrating insight."
+                }
+              },
+              "settings": {}
+            }
+          ]
+        },
+        {
+          "id": "cmumibplx002jmmqdnpxna2bq",
+          "title": "Magha to Moola",
+          "summary": "The middle nine nakshatras.",
+          "objective": "By the end of this chapter, learners can place a planet’s pada and its elemental quality.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibplz002lmmqdkukxoiwz",
+              "title": "The Pitru nakshatras",
+              "type": "video",
+              "durationMin": 19,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.559Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "group2.mp4",
+                    "sizeMb": 90
+                  },
+                  "durationSec": 1140,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpm1002nmmqdvhlpb6um",
+              "title": "Working with padas",
+              "type": "practice",
+              "durationMin": 20,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.561Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "For each planet in your sample chart, identify its nakshatra and pada, then note the navamsha sign that pada corresponds to."
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpm2002pmmqdderqryqb",
+              "title": "Nakshatra quiz",
+              "type": "assessment",
+              "durationMin": 15,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.563Z",
+              "objectives": [],
+              "content": {},
+              "settings": {}
+            }
+          ]
+        }
+      ],
+      "liveSessions": 1,
+      "estimatedWeeks": 4,
+      "certificateTitle": "Certificate in The 27 Nakshatras in Depth",
+      "price": {
+        "amount": 3499,
+        "currency": "INR"
+      },
+      "enrolledCount": 7,
+      "status": "published",
+      "visibility": "public",
+      "outcomes": [
+        "Identify all 27 nakshatras and their deities",
+        "Read a planet’s nakshatra pada",
+        "Use nakshatra compatibility in matching"
+      ],
+      "tags": [
+        "Intermediate",
+        "Nakshatras"
+      ],
+      "createdAt": "2026-09-29T10:01:55.549Z",
+      "updatedAt": "2026-09-29T11:29:30.330Z",
+      "publishedAt": "2026-07-31T10:01:55.547Z",
+      "rating": 4.657648416349318,
+      "ratingCount": 51
+    },
+    {
+      "id": "cmumibpkw001rmmqdg7gbub52",
+      "slug": "foundations-vedic",
+      "title": "Foundations of Vedic Astrology",
+      "subtitle": "Planets, signs, houses and nakshatras — the language of a birth chart.",
+      "description": "A ground-up introduction to Vedic astrology: the nine planets, twelve signs, twelve houses and twenty-seven nakshatras, and how to read them together in a birth chart.",
+      "levelId": "cmumibovb0001mmqdxe2pp0fd",
+      "categoryId": "cmumibowr000dmmqde40gn58b",
+      "instructorIds": [
+        "cmumibowz000jmmqd1gtm5z8x"
+      ],
+      "format": "self-paced",
+      "language": "en-IN",
+      "coverMotif": "houses",
+      "chapters": [
+        {
+          "id": "cmumibpl0001tmmqdntu7n6nb",
+          "title": "The Nine Planets",
+          "summary": "What each graha signifies.",
+          "objective": "By the end of this chapter, learners can name what each planet governs.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibpl3001vmmqdn56u2m9u",
+              "title": "Introduction to the Navagrahas",
+              "type": "video",
+              "durationMin": 18,
+              "isPreview": true,
+              "status": "published",
+              "updatedAt": "2026-09-29T12:24:57.958Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "navagrahas-intro.mp4",
+                    "sizeMb": 84
+                  },
+                  "durationSec": 1080,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpl5001xmmqd60epwcf1",
+              "title": "Benefics and malefics",
+              "type": "reading",
+              "durationMin": 12,
+              "status": "published",
+              "updatedAt": "2026-09-29T12:35:46.008Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "Planets are read as functional benefics or malefics depending on the chart they fall in, not fixed labels. Jupiter and Venus are natural benefics; Saturn, Mars, the Sun and the nodes are natural malefics, with Mercury’s nature following its company.\n\nA malefic in a good house can still support a life area it rules, while a benefic in a difficult house can strain it. Judge each placement on its own terms before generalising."
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpl7001zmmqde4hlf67r",
+              "title": "Chapter check",
+              "type": "assessment",
+              "durationMin": 10,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.532Z",
+              "objectives": [],
+              "content": {},
+              "settings": {}
+            }
+          ]
+        },
+        {
+          "id": "cmumibpla0021mmqdzdh35keb",
+          "title": "Signs and Houses",
+          "summary": "The twelve rashis and bhavas.",
+          "objective": "By the end of this chapter, learners can map a planet to its sign and house meaning together.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibplc0023mmqd2mqx94hc",
+              "title": "The twelve rashis",
+              "type": "video",
+              "durationMin": 22,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.536Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "rashis.mp4",
+                    "sizeMb": 96
+                  },
+                  "durationSec": 1320,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibple0025mmqd43surjo5",
+              "title": "Reading the houses",
+              "type": "reading",
+              "durationMin": 15,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.538Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "Each of the twelve houses governs a department of life, from the first house of self to the twelfth house of loss and release. A planet’s house placement shapes which department it most strongly colours.\n\nKendras (1, 4, 7, 10) anchor the chart’s structure; trikonas (1, 5, 9) carry fortune and dharma; dusthanas (6, 8, 12) bring struggle that can still mature into strength."
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibplg0027mmqd1a8zh10n",
+              "title": "Chart-reading practice",
+              "type": "practice",
+              "durationMin": 25,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.540Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "Using the sample chart provided, note each planet’s sign and house, then write two sentences on what that combination suggests."
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpli0029mmqd579vjokr",
+              "title": "Your first assignment: reading a friend’s chart",
+              "type": "assignment",
+              "durationMin": 40,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.543Z",
+              "objectives": [],
+              "content": {
+                "assignment": {
+                  "brief": "Cast a birth chart for someone you know (with their permission) and write a half-page summary of their planetary placements — sign, house and one observation per planet.",
+                  "dueAfterDays": 7,
+                  "maxScore": 100,
+                  "submission": "chart"
+                }
+              },
+              "settings": {}
+            }
+          ]
+        }
+      ],
+      "liveSessions": 1,
+      "estimatedWeeks": 4,
+      "certificateTitle": "Certificate in Foundations of Vedic Astrology",
+      "price": {
+        "amount": 2999,
+        "currency": "INR"
+      },
+      "enrolledCount": 17,
+      "status": "published",
+      "visibility": "public",
+      "outcomes": [
+        "Read a birth chart’s planets, signs and houses",
+        "Identify a nakshatra and its ruling deity",
+        "Judge a planet’s basic strength"
+      ],
+      "tags": [
+        "Beginner",
+        "Foundations"
+      ],
+      "createdAt": "2026-09-29T10:01:55.521Z",
+      "updatedAt": "2026-09-29T11:23:50.931Z",
+      "publishedAt": "2026-07-31T10:01:55.518Z",
+      "rating": 4.614036822381917,
+      "ratingCount": 322
+    },
+    {
+      "id": "cmumibpnj003lmmqdgqikdpvw",
+      "slug": "prashna-horary",
+      "title": "Prashna: Horary Astrology",
+      "subtitle": "Answering questions from the moment they are asked.",
+      "description": "Horary astrology from Sanjay Rathore: casting a chart for the moment a question is asked, and reading it to answer specific, timely questions.",
+      "levelId": "cmumibovb0004mmqdxg0g3jpf",
+      "categoryId": "cmumibowx000hmmqd98nt394p",
+      "instructorIds": [
+        "cmumibox3000nmmqdlj7aqk88"
+      ],
+      "format": "self-paced",
+      "language": "en-IN",
+      "coverMotif": "houses",
+      "chapters": [
+        {
+          "id": "cmumibpnm003nmmqd3vex7zew",
+          "title": "Foundations of Prashna",
+          "summary": "The moment of the question and the querent.",
+          "objective": "By the end of this chapter, learners can cast and read a basic prashna chart.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibpno003pmmqd5ynyo3ro",
+              "title": "When prashna is the right tool",
+              "type": "video",
+              "durationMin": 18,
+              "isPreview": true,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.621Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "prashna-intro.mp4",
+                    "sizeMb": 80
+                  },
+                  "durationSec": 1080,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpnq003rmmqdjesfh71c",
+              "title": "Casting the prashna chart",
+              "type": "video",
+              "durationMin": 22,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.623Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "prashna-cast.mp4",
+                    "sizeMb": 94
+                  },
+                  "durationSec": 1320,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpns003tmmqdlek6c4sp",
+              "title": "Omens and the state of the querent",
+              "type": "reading",
+              "durationMin": 16,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.625Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "The querent’s state and manner of asking — hesitant, anxious, direct — are read alongside the chart itself in classical prashna technique.\n\nOmens noticed at the moment of the question, from a chance sound to an unexpected visitor, traditionally colour the reading as much as planetary positions."
+                }
+              },
+              "settings": {}
+            }
+          ]
+        }
+      ],
+      "liveSessions": 1,
+      "estimatedWeeks": 2,
+      "certificateTitle": "Certificate in Prashna: Horary Astrology",
+      "price": {
+        "amount": 3999,
+        "currency": "INR"
+      },
+      "enrolledCount": 5,
+      "status": "published",
+      "visibility": "public",
+      "outcomes": [
+        "Cast a prashna chart for a question’s moment",
+        "Judge the querent’s significator",
+        "Answer a yes/no horary question"
+      ],
+      "tags": [
+        "Advanced",
+        "Horary"
+      ],
+      "createdAt": "2026-09-29T10:01:55.615Z",
+      "updatedAt": "2026-09-29T10:01:58.885Z",
+      "publishedAt": "2026-07-31T10:01:55.613Z",
+      "rating": 4.883368698406737,
+      "ratingCount": 202
+    },
+    {
+      "id": "cmumibpm9002rmmqdnh0t2kru",
+      "slug": "dasha-system",
+      "title": "Reading the Dasha System",
+      "subtitle": "Time events with Vimshottari mahadasha and antardasha.",
+      "description": "Learn to time life events using the Vimshottari dasha system — mahadashas, antardashas and how to judge which planets are active in a chart at a given moment.",
+      "levelId": "cmumibovb0005mmqd2mvnrvz2",
+      "categoryId": "cmumibowu000fmmqd2rjb4u5c",
+      "instructorIds": [
+        "cmumibox1000lmmqdp6c52nzy"
+      ],
+      "format": "self-paced",
+      "language": "en-IN",
+      "coverMotif": "orbits",
+      "chapters": [
+        {
+          "id": "cmumibpmd002tmmqd194i1q4z",
+          "title": "How Vimshottari Works",
+          "summary": "The 120-year cycle.",
+          "objective": "By the end of this chapter, learners can calculate a dasha balance at birth.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibpmg002vmmqdn2fvqclj",
+              "title": "The 120-year cycle",
+              "type": "video",
+              "durationMin": 24,
+              "isPreview": true,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.576Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "cycle.mp4",
+                    "sizeMb": 102
+                  },
+                  "durationSec": 1440,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpmj002xmmqd6rwg8dor",
+              "title": "Calculating the balance at birth",
+              "type": "reading",
+              "durationMin": 14,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.579Z",
+              "objectives": [],
+              "content": {
+                "article": {
+                  "body": "The Moon’s nakshatra at birth sets both the starting dasha lord and how much of that period remains. Divide the Moon’s position within the nakshatra to find the elapsed and balance portions.\n\nOnce the balance is found, the dasha sequence proceeds in the fixed Vimshottari order regardless of chart specifics."
+                }
+              },
+              "settings": {}
+            }
+          ]
+        },
+        {
+          "id": "cmumibpml002zmmqdqdwp6sj3",
+          "title": "Reading Antardashas",
+          "summary": "Sub-periods within a mahadasha.",
+          "objective": "By the end of this chapter, learners can identify the active antardasha for a date.",
+          "status": "published",
+          "lessons": [
+            {
+              "id": "cmumibpmn0031mmqd757lxeeb",
+              "title": "Sub-period timing",
+              "type": "video",
+              "durationMin": 20,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.583Z",
+              "objectives": [],
+              "content": {
+                "video": {
+                  "file": {
+                    "name": "antardasha.mp4",
+                    "sizeMb": 91
+                  },
+                  "durationSec": 1200,
+                  "captions": true,
+                  "markers": []
+                }
+              },
+              "settings": {}
+            },
+            {
+              "id": "cmumibpmp0033mmqdatt3vfty",
+              "title": "Timing exercise",
+              "type": "assignment",
+              "durationMin": 35,
+              "status": "published",
+              "updatedAt": "2026-09-29T10:01:55.586Z",
+              "objectives": [],
+              "content": {
+                "assignment": {
+                  "brief": "For the sample chart, calculate the current mahadasha and antardasha as of today, and write two paragraphs on what themes are active.",
+                  "dueAfterDays": 10,
+                  "maxScore": 100,
+                  "submission": "text"
+                }
+              },
+              "settings": {}
+            }
+          ]
+        }
+      ],
+      "liveSessions": 1,
+      "estimatedWeeks": 4,
+      "certificateTitle": "Certificate in Reading the Dasha System",
+      "price": {
+        "amount": 3999,
+        "currency": "INR"
+      },
+      "enrolledCount": 12,
+      "status": "published",
+      "visibility": "public",
+      "outcomes": [
+        "Calculate a Vimshottari dasha sequence",
+        "Judge dasha lord strength",
+        "Time an event within an antardasha"
+      ],
+      "tags": [
+        "Intermediate",
+        "Predictive"
+      ],
+      "createdAt": "2026-09-29T10:01:55.569Z",
+      "updatedAt": "2026-09-29T10:01:58.792Z",
+      "publishedAt": "2026-07-31T10:01:55.567Z",
+      "rating": 4.723348547430604,
+      "ratingCount": 349
+    }
+  ],
+  "total": 6,
+  "counts": {
+    "all": 6,
+    "draft": 0,
+    "published": 6,
+    "archived": 0
+  }
+}

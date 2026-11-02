@@ -1,0 +1,519 @@
+{
+  "rows": [
+    {
+      "id": "cmumqiibt00ctmmosditileu6",
+      "submission": {
+        "id": "cmumqiibt00ctmmosditileu6",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqiibf00cgmmoselil2ixr",
+        "attempt": 1,
+        "submittedAt": "2025-12-23T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 81,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2025-12-24T10:23:28.427Z"
+        }
+      },
+      "student": {
+        "id": "cmumqiibf00cgmmoselil2ixr",
+        "name": "Gaurav Joshi",
+        "email": "user@example.test",
+        "city": "Indore"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqii4z00bnmmosdv422lap",
+      "submission": {
+        "id": "cmumqii4z00bnmmosdv422lap",
+        "assignmentId": "cmumqihj6007vmmoskwneasog",
+        "studentId": "cmumqii4l00bfmmosqbu2y13g",
+        "attempt": 1,
+        "submittedAt": "2026-01-08T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigq0000lmmosg7u679j6",
+          "scores": {},
+          "score": 88,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-01-11T03:48:59.550Z"
+        }
+      },
+      "student": {
+        "id": "cmumqii4l00bfmmosqbu2y13g",
+        "name": "Anjali Reddy",
+        "email": "user@example.test",
+        "city": "Surat"
+      },
+      "assignmentId": "cmumqihj6007vmmoskwneasog",
+      "assignmentTitle": "Timing exercise",
+      "courseTitle": "Reading the Dasha System",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqihr4009hmmosxwcnpzzx",
+      "submission": {
+        "id": "cmumqihr4009hmmosxwcnpzzx",
+        "assignmentId": "cmumqihj6007vmmoskwneasog",
+        "studentId": "cmumqihqs0099mmos0tbfssw6",
+        "attempt": 1,
+        "submittedAt": "2026-03-22T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigq0000lmmosg7u679j6",
+          "scores": {},
+          "score": 56,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-03-24T13:22:27.443Z"
+        }
+      },
+      "student": {
+        "id": "cmumqihqs0099mmos0tbfssw6",
+        "name": "Shreya Kulkarni",
+        "email": "user@example.test",
+        "city": "Surat"
+      },
+      "assignmentId": "cmumqihj6007vmmoskwneasog",
+      "assignmentTitle": "Timing exercise",
+      "courseTitle": "Reading the Dasha System",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqijkk00izmmoscqt5huc1",
+      "submission": {
+        "id": "cmumqijkk00izmmoscqt5huc1",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqijk600immmosop9rawbs",
+        "attempt": 1,
+        "submittedAt": "2026-05-29T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 82,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-05-31T16:30:21.164Z"
+        }
+      },
+      "student": {
+        "id": "cmumqijk600immmosop9rawbs",
+        "name": "Imran Kulkarni",
+        "email": "user@example.test",
+        "city": "Surat"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqihm8008ommos9xt60j7b",
+      "submission": {
+        "id": "cmumqihm8008ommos9xt60j7b",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqihlp008dmmosbglzi65k",
+        "attempt": 1,
+        "submittedAt": "2026-07-12T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 84,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-07-15T16:37:03.894Z"
+        }
+      },
+      "student": {
+        "id": "cmumqihlp008dmmosbglzi65k",
+        "name": "Aditi Kulkarni",
+        "email": "user@example.test",
+        "city": "Lucknow"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqii0d00aummosyrpjq91f",
+      "submission": {
+        "id": "cmumqii0d00aummosyrpjq91f",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqihzx00ahmmosu8kuqpra",
+        "attempt": 1,
+        "submittedAt": "2026-08-08T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 84,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-08-09T02:33:02.317Z"
+        }
+      },
+      "student": {
+        "id": "cmumqihzx00ahmmosu8kuqpra",
+        "name": "Kavya Reddy",
+        "email": "user@example.test",
+        "city": "Patna"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqii9i00ccmmosii7rlvka",
+      "submission": {
+        "id": "cmumqii9i00ccmmosii7rlvka",
+        "assignmentId": "cmumqihj6007vmmoskwneasog",
+        "studentId": "cmumqii9000bzmmos8gn1o5uf",
+        "attempt": 1,
+        "submittedAt": "2026-08-16T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigq0000lmmosg7u679j6",
+          "scores": {},
+          "score": 60,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-08-19T19:27:21.094Z"
+        }
+      },
+      "student": {
+        "id": "cmumqii9000bzmmos8gn1o5uf",
+        "name": "Ritu Joshi",
+        "email": "user@example.test",
+        "city": "Nagpur"
+      },
+      "assignmentId": "cmumqihj6007vmmoskwneasog",
+      "assignmentTitle": "Timing exercise",
+      "courseTitle": "Reading the Dasha System",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqij7300gtmmosi0v1657d",
+      "submission": {
+        "id": "cmumqij7300gtmmosi0v1657d",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqij6p00ghmmosaagkqpyl",
+        "attempt": 1,
+        "submittedAt": "2026-08-17T13:51:08.625Z",
+        "late": false,
+        "text": "A worked reading of the set chart, with the reasoning behind each judgement.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 60,
+          "feedback": "Sound reasoning. Look again at house lordship before the next hand-in.",
+          "updatedAt": "2026-08-19T01:32:27.028Z"
+        }
+      },
+      "student": {
+        "id": "cmumqij6p00ghmmosaagkqpyl",
+        "name": "Suresh Ghosh",
+        "email": "user@example.test",
+        "city": "Hyderabad"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqihjb007zmmosvqx8jpi1",
+      "submission": {
+        "id": "cmumqihjb007zmmosvqx8jpi1",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqih1p0015mmos2mjmvk96",
+        "attempt": 1,
+        "submittedAt": "2026-09-09T13:51:08.614Z",
+        "late": false,
+        "text": "A full reading of the sample chart, covering all nine planets across their signs and houses.",
+        "files": [],
+        "review": {
+          "status": "graded",
+          "scores": {},
+          "score": 88,
+          "feedback": "Clear and well-organised — good use of house lordship throughout.",
+          "updatedAt": "2026-09-11T13:51:08.614Z"
+        }
+      },
+      "student": {
+        "id": "cmumqih1p0015mmos2mjmvk96",
+        "name": "Priya Nair",
+        "email": "user@example.test",
+        "city": "Kochi"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmumqihj9007xmmos74j4712i",
+      "submission": {
+        "id": "cmumqihj9007xmmos74j4712i",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqigxx000xmmossb0hdlxp",
+        "attempt": 1,
+        "submittedAt": "2026-09-27T13:51:08.612Z",
+        "late": false,
+        "text": "Sun in Leo in the 10th house, Moon in Rohini in the 4th... (sample submission)",
+        "files": [],
+        "review": {
+          "status": "waiting",
+          "scores": {},
+          "feedback": ""
+        }
+      },
+      "student": {
+        "id": "cmumqigxx000xmmossb0hdlxp",
+        "name": "Ananya Rao",
+        "email": "user@example.test",
+        "city": "Bengaluru"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": true
+    },
+    {
+      "id": "cmunm8wzq000hmmt93a5jwccd",
+      "submission": {
+        "id": "cmunm8wzq000hmmt93a5jwccd",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqih7i001hmmoswshn1xza",
+        "attempt": 1,
+        "submittedAt": "2026-09-30T04:39:29.799Z",
+        "late": false,
+        "text": "Leo ascendant, Sun in the 10th, Moon in Rohini in the 4th.",
+        "files": [],
+        "chart": {
+          "label": "A friend",
+          "date": "1994-03-02",
+          "time": "05:40",
+          "place": "Jaipur",
+          "lagna": "Leo",
+          "moonSign": "Taurus",
+          "nakshatra": "Rohini"
+        },
+        "review": {
+          "status": "returned",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 0,
+          "feedback": "Please add the nakshatra pada for the Moon and hand this in again.",
+          "updatedAt": "2026-09-30T04:39:30.261Z"
+        }
+      },
+      "student": {
+        "id": "cmumqih7i001hmmoswshn1xza",
+        "name": "Arjun Das",
+        "email": "user@example.test",
+        "city": "Kolkata"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmunm8xeh000rmmt9ekc0wiaq",
+      "submission": {
+        "id": "cmunm8xeh000rmmt9ekc0wiaq",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqih7i001hmmoswshn1xza",
+        "attempt": 2,
+        "submittedAt": "2026-09-30T04:39:30.330Z",
+        "late": false,
+        "text": "Leo ascendant, Moon in Rohini.",
+        "files": [],
+        "chart": {
+          "label": "A friend",
+          "date": "1994-03-02",
+          "time": "05:40",
+          "place": "Jaipur",
+          "lagna": "Leo",
+          "moonSign": "Taurus",
+          "nakshatra": "Rohini"
+        },
+        "review": {
+          "status": "graded",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "points": 78,
+          "score": 78,
+          "feedback": "A clear reading of the ascendant. Say more about the nakshatra next time.",
+          "updatedAt": "2026-09-30T04:39:30.472Z"
+        }
+      },
+      "student": {
+        "id": "cmumqih7i001hmmoswshn1xza",
+        "name": "Arjun Das",
+        "email": "user@example.test",
+        "city": "Kolkata"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmunm8z7r0011mmt90q0t3tyl",
+      "submission": {
+        "id": "cmunm8z7r0011mmt90q0t3tyl",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqihbc001pmmost77d68f5",
+        "attempt": 1,
+        "submittedAt": "2026-09-30T04:39:32.680Z",
+        "late": true,
+        "text": "A first attempt at the reading.",
+        "files": [],
+        "chart": {
+          "label": "A friend",
+          "date": "1994-03-02",
+          "time": "05:40",
+          "place": "Jaipur",
+          "lagna": "Leo",
+          "moonSign": "Taurus",
+          "nakshatra": "Rohini"
+        },
+        "review": {
+          "status": "returned",
+          "reviewerId": "cmumqigpx000jmmosxe7nko8c",
+          "scores": {},
+          "score": 0,
+          "feedback": "Please add the Moon’s nakshatra pada and hand this in once more.",
+          "updatedAt": "2026-09-30T04:39:32.770Z"
+        }
+      },
+      "student": {
+        "id": "cmumqihbc001pmmost77d68f5",
+        "name": "Vikram Singh",
+        "email": "user@example.test",
+        "city": "Jaipur"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmunm8zde001dmmt9dswkl906",
+      "submission": {
+        "id": "cmunm8zde001dmmt9dswkl906",
+        "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+        "studentId": "cmumqihbc001pmmost77d68f5",
+        "attempt": 2,
+        "submittedAt": "2026-09-30T04:39:32.882Z",
+        "late": true,
+        "text": "A first attempt at the reading. Moon in Rohini pada 2.",
+        "files": [],
+        "chart": {
+          "label": "A friend",
+          "date": "1994-03-02",
+          "time": "05:40",
+          "place": "Jaipur",
+          "lagna": "Leo",
+          "moonSign": "Taurus",
+          "nakshatra": "Rohini"
+        },
+        "review": {
+          "status": "waiting",
+          "scores": {},
+          "feedback": ""
+        }
+      },
+      "student": {
+        "id": "cmumqihbc001pmmost77d68f5",
+        "name": "Vikram Singh",
+        "email": "user@example.test",
+        "city": "Jaipur"
+      },
+      "assignmentId": "cmumqihj3007tmmosfjcqkxfs",
+      "assignmentTitle": "Your first assignment: reading a friend’s chart",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 100,
+      "overdue": false
+    },
+    {
+      "id": "cmunnj61i008dmmt9059izm2l",
+      "submission": {
+        "id": "cmunnj61i008dmmt9059izm2l",
+        "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+        "studentId": "cmumqigxx000xmmossb0hdlxp",
+        "attempt": 1,
+        "submittedAt": "2026-09-30T05:15:27.702Z",
+        "late": false,
+        "text": "The lagna is Vrishabha, which steadies the whole chart and gives the person a patient, deliberate way of moving through the world. Venus as lagna lord sits in the ninth, which lifts the chart towards teaching and travel.\n\nThe moon sits in Kataka, in its own sign, so the emotional life is strong and tidal. Feelings arrive in waves and the person reads a room before they speak in it.\n\nThe ruling nakshatra is Pushya, the nourisher, ruled by Saturn and presided over by Brihaspati. It gives the chart its teaching instinct and its patience with slow work, and it explains the pull towards study that the ninth-house Venus only hints at.",
+        "files": [],
+        "review": {
+          "status": "waiting",
+          "scores": {},
+          "feedback": ""
+        }
+      },
+      "student": {
+        "id": "cmumqigxx000xmmossb0hdlxp",
+        "name": "Ananya Rao",
+        "email": "user@example.test",
+        "city": "Bengaluru"
+      },
+      "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+      "assignmentTitle": "Rubric fixture: chart interpretation",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "maxScore": 50,
+      "overdue": false
+    }
+  ],
+  "total": 15,
+  "counts": {
+    "all": 15,
+    "to-review": 3,
+    "graded": 10,
+    "returned": 2,
+    "missing": 33
+  }
+}

@@ -1,0 +1,4 @@
+Captured 2026-09-30T10:16:17Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /calendar/cmuny9khs0237mmt9pbevi4eg admin staff/calendar-quiz-event.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

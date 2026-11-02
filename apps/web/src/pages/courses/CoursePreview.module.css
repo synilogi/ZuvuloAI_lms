@@ -1,0 +1,212 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  max-width: var(--container-wide);
+  margin: 0 auto;
+}
+
+/* Preview controls — a quiet info band, clearly not part of the learner page */
+.bar {
+  position: sticky;
+  top: calc(var(--s-6) * -1);
+  z-index: var(--z-sticky);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  margin: calc(var(--s-6) * -1) calc(var(--s-5) * -1) 0;
+  padding: var(--s-3) var(--s-5);
+  background: var(--info-soft);
+  color: var(--info-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--info) 25%, var(--border));
+}
+.barLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: var(--fs-body-sm);
+}
+.barNote {
+  flex: 1 1 220px;
+  font-size: var(--fs-body-sm);
+}
+.barActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  transition: padding var(--t-slow);
+}
+.canvas {
+  width: 100%;
+  max-width: var(--container-page);
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+  transition: max-width var(--t-slow);
+}
+.stageMobile {
+  padding: var(--s-4) 0 var(--s-6);
+}
+.stageMobile .canvas {
+  max-width: 390px;
+  padding: var(--s-5) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--bg);
+  box-shadow:
+    var(--sh-lg),
+    0 0 0 8px var(--surface);
+}
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-6);
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-7);
+  min-width: 0;
+}
+.aside {
+  order: -1;
+}
+@container (min-width: 900px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+  .aside {
+    order: 0;
+    position: sticky;
+    top: 72px;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: var(--s-4);
+  font-size: var(--fs-h2);
+}
+.prose {
+  max-width: 68ch;
+  font-size: var(--fs-body-lg);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.outcomes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--s-3) var(--s-6);
+}
+.outcomes li {
+  display: flex;
+  gap: var(--s-3);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.outcomeIndex {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+.empty {
+  color: var(--muted);
+}
+.instructors {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.instructors li {
+  display: flex;
+  gap: var(--s-4);
+}
+.instructorName {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+}
+.instructorTitle {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.instructorBio {
+  margin-top: var(--s-2);
+  max-width: 64ch;
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.enroll {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-md);
+}
+.enroll > span {
+  display: block;
+}
+.price {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-numeric);
+  line-height: 1;
+}
+.priceNote {
+  margin-top: -6px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.includes li {
+  display: flex;
+  gap: 8px;
+}
+.includes svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--accent-ink);
+}
+
+@media (max-width: 767px) {
+  .bar {
+    top: calc(var(--s-4) * -1);
+    margin: calc(var(--s-4) * -1) calc(var(--s-3) * -1) 0;
+    padding: var(--s-2) var(--s-3);
+  }
+}

@@ -1,0 +1,28 @@
+# ZuviloAI — the company website is public; every workspace behind sign-in is not for search.
+User-agent: *
+Disallow: /admin
+Disallow: /superadmin
+Disallow: /teach
+Allow: /teach/apply
+Disallow: /home
+Disallow: /my-learning
+Disallow: /explore
+Disallow: /assignments
+Disallow: /assessments
+Disallow: /live
+Disallow: /certificates
+Disallow: /purchases
+Disallow: /notifications
+Disallow: /help
+# A disallow matches by prefix, so the public /affiliate-program page needs its own allow.
+Disallow: /affiliate
+Allow: /affiliate-program
+Disallow: /ref/
+Disallow: /signed-out
+Disallow: /learn/
+Disallow: /invite/
+Disallow: /reset-password/
+Disallow: /sandbox-checkout/
+Disallow: /api/
+
+Sitemap: https://zuviloai.com/sitemap.xml

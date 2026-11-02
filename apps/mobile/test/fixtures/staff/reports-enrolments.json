@@ -1,0 +1,379 @@
+{
+  "window": {
+    "from": "2026-07-01T12:43:53.357Z",
+    "to": "2026-09-30T12:43:53.357Z",
+    "previousFrom": "2026-04-01T12:43:53.357Z",
+    "previousTo": "2026-07-01T12:43:53.357Z"
+  },
+  "courseCount": 6,
+  "kpis": {
+    "enrollments": {
+      "value": 35,
+      "previous": 12,
+      "series": [
+        0,
+        0,
+        1,
+        1,
+        5,
+        1,
+        5,
+        4,
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "unit": "count"
+    },
+    "completions": {
+      "value": 13,
+      "previous": 7,
+      "series": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        0,
+        8
+      ],
+      "unit": "count"
+    },
+    "completionRate": {
+      "value": 58,
+      "previous": 69,
+      "series": [
+        71,
+        72,
+        70,
+        67,
+        65,
+        62,
+        59,
+        59,
+        57,
+        58
+      ],
+      "unit": "%"
+    },
+    "selfShare": {
+      "value": 80,
+      "previous": 42,
+      "series": [],
+      "unit": "%"
+    }
+  },
+  "series": {
+    "enrollments": [
+      {
+        "from": "2026-07-01T12:43:53.357Z",
+        "to": "2026-07-08T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-08T12:43:53.357Z",
+        "to": "2026-07-15T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-15T12:43:53.357Z",
+        "to": "2026-07-22T12:43:53.357Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-22T12:43:53.357Z",
+        "to": "2026-07-29T12:43:53.357Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-29T12:43:53.357Z",
+        "to": "2026-08-05T12:43:53.357Z",
+        "value": 5
+      },
+      {
+        "from": "2026-08-05T12:43:53.357Z",
+        "to": "2026-08-12T12:43:53.357Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-12T12:43:53.357Z",
+        "to": "2026-08-19T12:43:53.357Z",
+        "value": 5
+      },
+      {
+        "from": "2026-08-19T12:43:53.357Z",
+        "to": "2026-08-26T12:43:53.357Z",
+        "value": 4
+      },
+      {
+        "from": "2026-08-26T12:43:53.357Z",
+        "to": "2026-09-02T12:43:53.357Z",
+        "value": 3
+      },
+      {
+        "from": "2026-09-02T12:43:53.357Z",
+        "to": "2026-09-09T12:43:53.357Z",
+        "value": 3
+      },
+      {
+        "from": "2026-09-09T12:43:53.357Z",
+        "to": "2026-09-16T12:43:53.357Z",
+        "value": 4
+      },
+      {
+        "from": "2026-09-16T12:43:53.357Z",
+        "to": "2026-09-23T12:43:53.357Z",
+        "value": 4
+      },
+      {
+        "from": "2026-09-23T12:43:53.357Z",
+        "to": "2026-09-30T12:43:53.357Z",
+        "value": 4,
+        "partial": true
+      }
+    ],
+    "completions": [
+      {
+        "from": "2026-07-01T12:43:53.357Z",
+        "to": "2026-07-08T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-08T12:43:53.357Z",
+        "to": "2026-07-15T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-15T12:43:53.357Z",
+        "to": "2026-07-22T12:43:53.357Z",
+        "value": 1
+      },
+      {
+        "from": "2026-07-22T12:43:53.357Z",
+        "to": "2026-07-29T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-07-29T12:43:53.357Z",
+        "to": "2026-08-05T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-05T12:43:53.357Z",
+        "to": "2026-08-12T12:43:53.357Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-12T12:43:53.357Z",
+        "to": "2026-08-19T12:43:53.357Z",
+        "value": 1
+      },
+      {
+        "from": "2026-08-19T12:43:53.357Z",
+        "to": "2026-08-26T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-08-26T12:43:53.357Z",
+        "to": "2026-09-02T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-02T12:43:53.357Z",
+        "to": "2026-09-09T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-09T12:43:53.357Z",
+        "to": "2026-09-16T12:43:53.357Z",
+        "value": 2
+      },
+      {
+        "from": "2026-09-16T12:43:53.357Z",
+        "to": "2026-09-23T12:43:53.357Z",
+        "value": 0
+      },
+      {
+        "from": "2026-09-23T12:43:53.357Z",
+        "to": "2026-09-30T12:43:53.357Z",
+        "value": 8,
+        "partial": true
+      }
+    ],
+    "activeLearners": [
+      {
+        "from": "2026-07-01T12:43:53.357Z",
+        "to": "2026-07-08T12:43:53.357Z",
+        "value": 5
+      },
+      {
+        "from": "2026-07-08T12:43:53.357Z",
+        "to": "2026-07-15T12:43:53.357Z",
+        "value": 4
+      },
+      {
+        "from": "2026-07-15T12:43:53.357Z",
+        "to": "2026-07-22T12:43:53.357Z",
+        "value": 4
+      },
+      {
+        "from": "2026-07-22T12:43:53.357Z",
+        "to": "2026-07-29T12:43:53.357Z",
+        "value": 4
+      },
+      {
+        "from": "2026-07-29T12:43:53.357Z",
+        "to": "2026-08-05T12:43:53.357Z",
+        "value": 7
+      },
+      {
+        "from": "2026-08-05T12:43:53.357Z",
+        "to": "2026-08-12T12:43:53.357Z",
+        "value": 8
+      },
+      {
+        "from": "2026-08-12T12:43:53.357Z",
+        "to": "2026-08-19T12:43:53.357Z",
+        "value": 13
+      },
+      {
+        "from": "2026-08-19T12:43:53.357Z",
+        "to": "2026-08-26T12:43:53.357Z",
+        "value": 14
+      },
+      {
+        "from": "2026-08-26T12:43:53.357Z",
+        "to": "2026-09-02T12:43:53.357Z",
+        "value": 17
+      },
+      {
+        "from": "2026-09-02T12:43:53.357Z",
+        "to": "2026-09-09T12:43:53.357Z",
+        "value": 17
+      },
+      {
+        "from": "2026-09-09T12:43:53.357Z",
+        "to": "2026-09-16T12:43:53.357Z",
+        "value": 16
+      },
+      {
+        "from": "2026-09-16T12:43:53.357Z",
+        "to": "2026-09-23T12:43:53.357Z",
+        "value": 13
+      },
+      {
+        "from": "2026-09-23T12:43:53.357Z",
+        "to": "2026-09-30T12:43:53.357Z",
+        "value": 13,
+        "partial": true
+      }
+    ]
+  },
+  "sources": [
+    {
+      "source": "self",
+      "enrollments": 28,
+      "share": 80,
+      "completionRate": 56
+    },
+    {
+      "source": "cohort",
+      "enrollments": 2,
+      "share": 6,
+      "completionRate": 63
+    },
+    {
+      "source": "admin",
+      "enrollments": 3,
+      "share": 9,
+      "completionRate": 50
+    },
+    {
+      "source": "scholarship",
+      "enrollments": 2,
+      "share": 6,
+      "completionRate": 67
+    }
+  ],
+  "categories": [
+    {
+      "categoryId": "cmumqigpm000dmmos3nzis7ri",
+      "title": "Vedic Foundations",
+      "enrollments": 17,
+      "previousEnrollments": 3,
+      "completionRate": 67
+    },
+    {
+      "categoryId": "cmumqigpu000hmmosm0v3e206",
+      "title": "Specialised Systems",
+      "enrollments": 12,
+      "previousEnrollments": 6,
+      "completionRate": 50
+    },
+    {
+      "categoryId": "cmumqigpq000fmmoskhnc3409",
+      "title": "Predictive Techniques",
+      "enrollments": 6,
+      "previousEnrollments": 3,
+      "completionRate": 67
+    }
+  ],
+  "cohorts": [
+    {
+      "month": "Aug 2026",
+      "enrolled": 16,
+      "within30": null,
+      "within60": null,
+      "within90": null,
+      "toDate": 19
+    },
+    {
+      "month": "Jul 2026",
+      "enrolled": 4,
+      "within30": 0,
+      "within60": 50,
+      "within90": null,
+      "toDate": 50
+    },
+    {
+      "month": "Jun 2026",
+      "enrolled": 7,
+      "within30": 0,
+      "within60": 14,
+      "within90": 29,
+      "toDate": 29
+    },
+    {
+      "month": "May 2026",
+      "enrolled": 4,
+      "within30": 50,
+      "within60": 75,
+      "within90": 75,
+      "toDate": 75
+    },
+    {
+      "month": "Apr 2026",
+      "enrolled": 1,
+      "within30": 0,
+      "within60": 0,
+      "within90": 100,
+      "toDate": 100
+    },
+    {
+      "month": "Mar 2026",
+      "enrolled": 4,
+      "within30": 25,
+      "within60": 50,
+      "within90": 75,
+      "toDate": 75
+    }
+  ]
+}

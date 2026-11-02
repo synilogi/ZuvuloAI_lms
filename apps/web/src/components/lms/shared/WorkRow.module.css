@@ -1,0 +1,164 @@
+.listWrap {
+  container-type: inline-size;
+}
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--s-3);
+}
+
+/* Rows subgrid onto the list so leads, titles, states and actions align across rows */
+.row {
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-areas:
+    'lead main'
+    'lead status'
+    'lead action';
+  column-gap: inherit;
+  row-gap: 6px;
+  padding: calc(var(--d-row-y) + 4px) 0;
+  border-top: 1px solid var(--border);
+}
+.list > .row:first-child {
+  border-top: 0;
+}
+
+.lead {
+  grid-area: lead;
+  display: flex;
+  align-items: flex-start;
+}
+.main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.eyebrow {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+}
+.title {
+  font-weight: 600;
+  font-size: var(--d-text);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+.meta {
+  font-size: var(--d-meta);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.status {
+  grid-area: status;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+.action {
+  grid-area: action;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: 4px;
+}
+.action > * {
+  flex: 1 1 auto;
+}
+
+.muted .title {
+  color: var(--muted);
+}
+
+/* Live: a hairline of the live tone on the leading edge — the row is not boxed */
+.live::before,
+.attention::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: var(--r-pill);
+  background: var(--danger);
+}
+.attention::before {
+  background: var(--warn);
+}
+
+.standalone {
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--s-3);
+}
+
+@container (min-width: 640px) {
+  .list {
+    grid-template-columns: auto minmax(0, 1fr) minmax(160px, 0.45fr) auto;
+  }
+  .standalone {
+    grid-template-columns: auto minmax(0, 1fr) minmax(160px, 0.45fr) auto;
+  }
+  .row {
+    grid-template-areas: 'lead main status action';
+    align-items: center;
+  }
+  .status {
+    align-items: flex-start;
+  }
+  .action {
+    margin-top: 0;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+  .action > * {
+    flex: none;
+  }
+}
+
+/* ─── Date block ─── */
+.date {
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0 6px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  line-height: 1;
+}
+.dateWeekday {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.dateDay {
+  margin: 3px 0 2px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.dateMonth {
+  font-size: var(--fs-label);
+  color: var(--muted);
+}
+.dateHighlight {
+  background: var(--danger-soft);
+}
+.dateHighlight .dateWeekday,
+.dateHighlight .dateMonth {
+  color: var(--danger-ink);
+}
+.dateHighlight .dateDay {
+  color: var(--danger-ink);
+}

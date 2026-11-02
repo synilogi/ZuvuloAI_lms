@@ -1,0 +1,138 @@
+{
+  "note": "Course cover images for the sample education catalogue (scripts/seed-education.ts). Each is a 1280x720 WebP cropped from the Wikimedia Commons file named here and re-encoded. Licence data was read from the Commons API (extmetadata) on 2026-10-13; adapted files keep their source licence.",
+  "covers": [
+    {
+      "key": "ras-prelims",
+      "file": "covers/ras-prelims.webp",
+      "title": "Hawa Mahal in Jaipur India",
+      "source": "https://commons.wikimedia.org/wiki/File:Hawa_Mahal_in_Jaipur_India.jpg",
+      "author": "Wander-earth",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "rajasthan-gk",
+      "file": "covers/rajasthan-gk.webp",
+      "title": "Chittor Fort - Chittorgarh - Rajasthan - 005",
+      "source": "https://commons.wikimedia.org/wiki/File:Chittor_Fort_-_Chittorgarh_-_Rajasthan_-_005.jpg",
+      "author": "Rupeshsarkar",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "indian-polity",
+      "file": "covers/indian-polity.webp",
+      "title": "Sansad Bhavan, Delhi, BNK",
+      "source": "https://commons.wikimedia.org/wiki/File:Sansad_Bhavan,_Delhi,_BNK.jpg",
+      "author": "Nikhilb239",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "ssc-gd",
+      "file": "covers/ssc-gd.webp",
+      "title": "The waving Indian flag",
+      "source": "https://commons.wikimedia.org/wiki/File:The_waving_Indian_flag.jpg",
+      "author": "Sisheer Philip",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "reasoning",
+      "file": "covers/reasoning.webp",
+      "title": "Chess pieces close up",
+      "source": "https://commons.wikimedia.org/wiki/File:Chess_pieces_close_up.jpg",
+      "author": "Aaaatu",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "quant",
+      "file": "covers/quant.webp",
+      "title": "20th Century Small Wooden Abacus",
+      "source": "https://commons.wikimedia.org/wiki/File:20th_Century_Small_Wooden_Abacus.jpg",
+      "author": "Deinodactyla",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "reet-level-2",
+      "file": "covers/reet-level-2.webp",
+      "title": "Mathematics (cryptography) on a blackboard",
+      "source": "https://commons.wikimedia.org/wiki/File:Mathematics_(cryptography)_on_a_blackboard.jpg",
+      "author": "David Malone",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "patwari",
+      "file": "covers/patwari.webp",
+      "title": "Agriculture Rajasthan India - 2009 Mustard crop",
+      "source": "https://commons.wikimedia.org/wiki/File:Agriculture_Rajasthan_India_-_2009_Mustard_crop.jpg",
+      "author": "Trees ForTheFuture",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "class-10-maths",
+      "file": "covers/class-10-maths.webp",
+      "title": "Set of polygons - Musée des arts et métiers - Inv 3142",
+      "source": "https://commons.wikimedia.org/wiki/File:Set_of_polygons_-_Mus%C3%A9e_des_arts_et_m%C3%A9tiers_-_Inv_3142.jpg",
+      "author": "Poulpy",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "class-10-science",
+      "file": "covers/class-10-science.webp",
+      "title": "Close-up of a test tube rack in front of a chemistry book with microscope in a blurry background",
+      "source": "https://commons.wikimedia.org/wiki/File:Close-up_of_a_test_tube_rack_in_front_of_a_chemistry_book_with_microscope_in_a_blurry_background.jpg",
+      "author": "Shixart1985",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "class-12-physics",
+      "file": "covers/class-12-physics.webp",
+      "title": "Newton's Cradle (15221366308)",
+      "source": "https://commons.wikimedia.org/wiki/File:Newton%27s_Cradle_(15221366308).jpg",
+      "author": "Sheila Sund from Salem, United States",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "class-12-chemistry",
+      "file": "covers/class-12-chemistry.webp",
+      "title": "Vintage laboratory glassware at Chemical Faculty, Gdansk University of Technology, Poland",
+      "source": "https://commons.wikimedia.org/wiki/File:Vintage_laboratory_glassware_at_Chemical_Faculty,_Gdansk_University_of_Technology,_Poland.jpg",
+      "author": "LukaszKatlewa",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    },
+    {
+      "key": "english-grammar",
+      "file": "covers/english-grammar.webp",
+      "title": "Library stacks of books and bookshelf",
+      "source": "https://commons.wikimedia.org/wiki/File:Library_stacks_of_books_and_bookshelf.jpg",
+      "author": "Shixart1985",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Cropped to 16:9, resized to 1280x720, WebP"
+    }
+  ],
+  "lectures": {
+    "note": "lectures/*.mp4 are silent slide lectures written for this repository (tools/lectures.json), rendered by tools/slides.py and encoded by tools/slideshow.swift. No third-party material."
+  }
+}

@@ -1,0 +1,2567 @@
+// ZuviloAI API — database schema.
+//
+// Structural, queryable fields (ids, status, dates, foreign keys) are real columns.
+// Nested or type-varying shapes that the domain package already types and validates
+// (lesson content, quiz questions, rubrics, settings sections, …) are stored as JSON
+// text columns and parsed/validated at the boundary — the same pattern the mock
+// services use in memory, now persisted.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Tenancy ─────────────────────────────────────────────────────────────
+
+/// One academy on the platform. Every academy-owned row carries its id (`tenantId`), and
+/// `lib/tenancy.ts` scopes every query to the academy of the signed-in account. The academy that
+/// existed before tenancy is Tenant #1 (`tenant-1`), created by the tenant_foundation migration.
+model Tenant {
+  id              String    @id @default(cuid())
+  name            String
+  /// Unique across the platform; `DEFAULT_TENANT_SLUG` names the academy anonymous visitors see.
+  slug            String    @unique
+  status          String    @default("active") // 'active' | 'suspended' | 'archived' — enforced on every request (SAAS-019)
+  /// Why the Super Admin last suspended or archived the academy; cleared on reactivation.
+  statusReason    String?
+  statusChangedAt DateTime?
+  ownerUserId     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now()) @updatedAt
+
+  owner                    User?                      @relation("TenantOwner", fields: [ownerUserId], references: [id], onDelete: SetNull)
+  users                    User[]                     @relation("TenantUsers")
+  mediaAssetRows           MediaAsset[]
+  levelRows                Level[]
+  categoryRows             Category[]
+  categoryLevelRows        CategoryLevel[]
+  instructorRows           Instructor[]
+  courseRows               Course[]
+  courseInstructorRows     CourseInstructor[]
+  chapterRows              Chapter[]
+  lessonRows               Lesson[]
+  studentRows              Student[]
+  enrollmentRows           Enrollment[]
+  lessonProgressRows       LessonProgress[]
+  lessonNoteRows           LessonNote[]
+  lessonBookmarkRows       LessonBookmark[]
+  savedCourseRows          SavedCourse[]
+  rankRows                 Rank[]
+  quizRows                 Quiz[]
+  quizAttemptRows          QuizAttempt[]
+  quizSessionRows          QuizSession[]
+  courseAssignmentRows     CourseAssignment[]
+  assignmentDraftRows      AssignmentDraft[]
+  submissionRows           Submission[]
+  certificateTemplateRows  CertificateTemplate[]
+  issuedCertificateRows    IssuedCertificate[]
+  liveClassRows            LiveClass[]
+  liveRegistrationRows     LiveRegistration[]
+  calendarEventRows        CalendarEvent[]
+  settingsRows             Settings[]
+  adminPermissionRows      AdminPermission[]
+  passwordResetTokenRows   PasswordResetToken[]
+  userSessionRows          UserSession[]
+  deviceTokenRows          DeviceToken[]
+  academyPaymentConfigRows AcademyPaymentConfig[]
+  academyGatewayCredRows   AcademyGatewayCredential[]
+  coursePurchaseRows       CoursePurchase[]
+  courseReviewRows         CourseReview[]
+  mlmPlanVersionRows       MlmPlanVersion[]
+  affiliateRows            Affiliate[]
+  mlmPlacementHistoryRows  MlmPlacementHistory[]
+  mlmOrderRows             MlmOrder[]
+  mlmCvLedgerRows          MlmCvLedger[]
+  mlmLegBalanceRows        MlmLegBalance[]
+  coursePaymentEventRows   CoursePaymentEvent[]
+  couponRows               Coupon[]
+  couponRedemptionRows     CouponRedemption[]
+  coursePurchaseRefundRows CoursePurchaseRefund[]
+  pushDeliveryRows         PushDelivery[]
+  notificationSettingsRows NotificationSettings[]
+  appNotificationRows      AppNotification[]
+  emailOutboxRows          EmailOutbox[]
+  subscriptionRows         Subscription[]
+  subscriptionEventRows    SubscriptionEvent[]
+  planChangeRows           PlanChange[]
+  billingProfileRows       BillingProfile[]
+  invoiceRows              Invoice[]
+  paymentRows              Payment[]
+  refundRows               Refund[]
+  paymentMethodRows        PaymentMethod[]
+  usageGuardRows           UsageGuard[]
+  paymentOrderRows         PaymentOrder[]
+  inquiryRows              Inquiry[]
+  invitationRows           Invitation[]
+  pendingAccountRows       PendingAccount[]
+  siteContent              SiteContent?
+  mlmMatchingRuns          MlmMatchingRun[]
+  mlmRankHistory           MlmRankHistory[]
+  mlmRewards               MlmReward[]
+  mlmCommissions           MlmCommission[]
+  mlmWallets               MlmWallet[]
+  mlmWalletEntries         MlmWalletEntry[]
+  mlmKyc                   MlmKyc[]
+  mlmPayoutBatches         MlmPayoutBatch[]
+  mlmWithdrawals           MlmWithdrawal[]
+  mlmProgramState          MlmProgramState[]
+
+  @@index([status])
+}
+
+// ─── Plans ───────────────────────────────────────────────────────────────
+
+/// A platform-level commercial offering (subscriptions.md §4). Platform-owned: no `tenantId`. The
+/// row is who the plan is — code, name, status, place in the list. What it costs lives in its
+/// `PlanVersion` rows, which are never edited: changing a price adds a version, so every record
+/// that points at an older version keeps the terms it was sold on. `lib/plans.ts` is the only writer.
+model Plan {
+  id           String    @id @default(cuid())
+  /// Unique across the platform, in capitals. Fixed once the plan leaves draft.
+  code         String    @unique
+  name         String
+  description  String
+  status       String    @default("draft") // 'draft' | 'active' | 'archived'
+  displayOrder Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
+  archivedAt   DateTime?
+
+  versions      PlanVersion[]
+  subscriptions Subscription[]
+  planChanges   PlanChange[]
+
+  @@index([status, displayOrder])
+}
+
+/// One immutable set of a plan's commercial terms. Append-only: database triggers refuse any UPDATE
+/// or DELETE (migration plan_tables), and `Plan` cannot be deleted while a version points at it.
+/// Amounts are integers in the currency's minor unit — 399900 is ₹3,999. A NULL price means the plan
+/// is not sold on that cycle.
+model PlanVersion {
+  id           String   @id @default(cuid())
+  planId       String
+  /// 1 for the plan's first terms, then 2, 3, … The highest is what new subscriptions are sold.
+  version      Int
+  /// ISO 4217.
+  currency     String
+  monthlyPrice Int?
+  annualPrice  Int?
+  /// 0 when the plan has no trial.
+  trialDays    Int      @default(0)
+  /// How many `PlanFeature` / `PlanLimit` rows this version grants. Fixed with the version: a trigger
+  /// refuses any grant beyond it, so an allowance cannot be added to after it is written. A version
+  /// written before SAAS-002 declares 0 of each, and so grants nothing.
+  featureCount Int      @default(0)
+  limitCount   Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  plan          Plan           @relation(fields: [planId], references: [id], onDelete: Restrict)
+  features      PlanFeature[]
+  limits        PlanLimit[]
+  subscriptions Subscription[]
+  changesTo     PlanChange[]   @relation("PlanChangeTo")
+  changesFrom   PlanChange[]   @relation("PlanChangeFrom")
+
+  @@unique([planId, version])
+}
+
+/// The feature catalogue (`packages/domain/src/entitlement.ts`), mirrored so that a grant is a foreign
+/// key rather than free text. Written only by migrations; a test keeps it equal to the domain's.
+model Feature {
+  /// The catalogue key itself, e.g. `courses.manage`.
+  id           String @id
+  group        String
+  label        String
+  description  String
+  displayOrder Int
+  /// How the feature is delivered (SAAS-025): 'route' (routes refuse without it), 'service' (a service level no
+  /// route checks), 'planned' (sold but not built yet).
+  enforcement  String @default("route")
+
+  grants PlanFeature[]
+}
+
+/// The limit catalogue, mirrored the same way.
+model LimitDefinition {
+  /// The catalogue key itself, e.g. `learners.max`.
+  id           String @id
+  label        String
+  unit         String // 'count' | 'bytes'
+  period       String // 'total' | 'month'
+  displayOrder Int
+
+  grants PlanLimit[]
+}
+
+/// A feature one plan version grants. Append-only, like the version (triggers).
+model PlanFeature {
+  planVersionId String
+  featureKey    String
+
+  planVersion PlanVersion @relation(fields: [planVersionId], references: [id], onDelete: Restrict)
+  feature     Feature     @relation(fields: [featureKey], references: [id], onDelete: Restrict)
+
+  @@id([planVersionId, featureKey])
+  @@index([featureKey])
+}
+
+/// A limit one plan version sets. `value` is in the limit's unit (bytes for storage); NULL is
+/// unlimited. A limit a version does not state grants nothing. Append-only (triggers).
+model PlanLimit {
+  planVersionId String
+  limitKey      String
+  value         BigInt?
+
+  planVersion PlanVersion     @relation(fields: [planVersionId], references: [id], onDelete: Restrict)
+  limit       LimitDefinition @relation(fields: [limitKey], references: [id], onDelete: Restrict)
+
+  @@id([planVersionId, limitKey])
+  @@index([limitKey])
+}
+
+// ─── Usage ───────────────────────────────────────────────────────────────
+
+/// One row per academy and limit, written first by every transaction that would add to that limit
+/// (SAAS-011, `lib/usage.ts`). The write takes the database's lock for the row — SQLite's single writer,
+/// or a row lock on PostgreSQL — so the count and check that follow can never be raced by another
+/// request for the same academy and limit. It holds no figure: usage is counted live.
+model UsageGuard {
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId  String
+  limitKey  String
+  touchedAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([tenantId, limitKey])
+}
+
+// ─── Tax & billing profiles ──────────────────────────────────────────────
+
+/// A tax the platform charges buyers in one country — or one region of it (subscriptions.md §27).
+/// Platform-owned. Which tax applies to whom is this data, never a condition in code: a region's rule
+/// wins over its country's, and a buyer with no rule pays none. Its components are fixed once written
+/// (triggers); a rate change retires the rule and adds a new one, so an invoice's tax can always be
+/// traced to the rule it used. One active rule per country and region.
+model TaxRule {
+  id             String    @id @default(cuid())
+  name           String
+  /// ISO 3166-1 alpha-2, e.g. `IN`.
+  country        String
+  /// A region code within the country (e.g. a state), or null for the whole country.
+  region         String?
+  /// Whether prices already include this tax.
+  inclusive      Boolean   @default(false)
+  /// How many components the rule declares; a trigger refuses any beyond it.
+  componentCount Int
+  createdAt      DateTime  @default(now())
+  retiredAt      DateTime?
+
+  components TaxRuleComponent[]
+
+  @@index([country, region])
+}
+
+/// One tax a rule levies, at a rate in basis points (1800 is 18%). Never updated or deleted.
+model TaxRuleComponent {
+  ruleId   String
+  code     String
+  label    String
+  rateBps  Int
+  position Int
+
+  rule TaxRule @relation(fields: [ruleId], references: [id], onDelete: Restrict)
+
+  @@id([ruleId, code])
+}
+
+/// Who an academy bills as, and where (§27): the address and tax registration its invoices carry and
+/// its tax is decided by. Academy-owned, one per academy. Invoices copy what they print (SAAS-008),
+/// so a later change of address rewrites no invoice.
+model BillingProfile {
+  id              String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId        String   @unique
+  legalName       String
+  email           String
+  addressLine1    String
+  addressLine2    String?
+  city            String
+  region          String?
+  postalCode      String
+  /// ISO 3166-1 alpha-2.
+  country         String
+  /// A tax registration such as a GSTIN or a VAT number, as issued. Not validated against any one country's format.
+  taxRegistration String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now()) @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+}
+
+// ─── Subscriptions ───────────────────────────────────────────────────────
+
+/// An academy's subscription to a plan (subscriptions.md §5). Academy-owned. It holds the plan version
+/// it was sold — never just the plan — so its price and allowance survive any later plan edit, and the
+/// amount it is charged is copied from that version by the server, never taken from a request. Its
+/// status changes only through a named transition in `lib/subscriptions.ts`: the database refuses a
+/// status change the latest `SubscriptionEvent` does not describe, a status an academy cannot start in,
+/// and any delete. At most one live (not cancelled, not expired) subscription per academy.
+model Subscription {
+  id                     String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId               String
+  planId                 String
+  planVersionId          String
+  status                 String // 'trialing' | 'active' | 'past_due' | 'paused' | 'canceling' | 'canceled' | 'expired'
+  billingCycle           String // 'monthly' | 'annual'
+  /// ISO 4217, from the plan version.
+  currency               String
+  /// What each period is charged, in the currency's minor unit, from the plan version.
+  amount                 Int
+  trialStartAt           DateTime?
+  trialEndAt             DateTime?
+  currentPeriodStartAt   DateTime
+  currentPeriodEndAt     DateTime
+  cancelAtPeriodEnd      Boolean   @default(false)
+  cancelRequestedAt      DateTime?
+  canceledAt             DateTime?
+  cancellationReason     String?
+  pausedAt               DateTime?
+  resumesAt              DateTime?
+  /// When the current overdue episode began, and why (the provider's failure reason).
+  pastDueAt              DateTime?
+  pastDueReason          String?
+  /// The grace window after payment retries are exhausted: set only by grace_started (triggers).
+  gracePeriodStartAt     DateTime?
+  gracePeriodEndAt       DateTime?
+  provider               String?
+  providerCustomerId     String?
+  providerSubscriptionId String?
+  /// The paid first-purchase invoice this subscription was created from (self-service checkout), once per
+  /// invoice (unique). Null for a subscription the platform started. Checked by Subscription_from_invoice.
+  sourceInvoiceId        String?   @unique
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @default(now()) @updatedAt
+
+  tenant      Tenant              @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  plan        Plan                @relation(fields: [planId], references: [id], onDelete: Restrict)
+  planVersion PlanVersion         @relation(fields: [planVersionId], references: [id], onDelete: Restrict)
+  events      SubscriptionEvent[]
+  planChanges PlanChange[]
+  invoices    Invoice[]
+  payments    Payment[]
+
+  @@unique([provider, providerSubscriptionId])
+  @@index([tenantId, status])
+  @@index([planVersionId])
+  @@index([status, currentPeriodEndAt])
+}
+
+/// A requested change of plan (SAAS-006; D7–D10). Academy-owned. An upgrade is a quote — its credit and
+/// charge fixed when issued — that waits in `pending_payment` for a confirmed provider payment; a
+/// downgrade is `scheduled` for the period boundary. Every figure is an integer of paise and is never
+/// updated (triggers); only the status moves, along the allowed paths. At most one open change per
+/// subscription. Never deleted.
+model PlanChange {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  subscriptionId    String
+  kind              String // 'upgrade' | 'cycle_upgrade' | 'downgrade' | 'scheduled_change'
+  status            String // 'pending_payment' | 'scheduled' | 'applied' | 'canceled' | 'void' | 'expired'
+  fromPlanVersionId String
+  fromCycle         String
+  fromAmount        Int
+  toPlanId          String
+  toPlanVersionId   String
+  toCycle           String
+  toAmount          Int
+  currency          String
+  /// The unused value of the current period credited (immediate changes; 0 otherwise).
+  credit            Int       @default(0)
+  /// What must be paid before the change applies (immediate changes; 0 otherwise).
+  charge            Int       @default(0)
+  /// Credit a cycle change could not use — recorded, never paid out.
+  forfeited         Int       @default(0)
+  /// The period the quote was priced against.
+  periodStartAt     DateTime
+  periodEndAt       DateTime
+  quotedAt          DateTime
+  /// Limits the academy already exceeds on the new plan, as JSON — shown to the tenant, nothing deleted.
+  conflictsJson     String    @default("[]")
+  requestedById     String?
+  appliedAt         DateTime?
+  closedAt          DateTime?
+  closedReason      String?
+  createdAt         DateTime  @default(now())
+
+  tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Restrict)
+  toPlan       Plan         @relation(fields: [toPlanId], references: [id], onDelete: Restrict)
+  toVersion    PlanVersion  @relation("PlanChangeTo", fields: [toPlanVersionId], references: [id], onDelete: Restrict)
+  fromVersion  PlanVersion  @relation("PlanChangeFrom", fields: [fromPlanVersionId], references: [id], onDelete: Restrict)
+  invoices     Invoice[]
+
+  @@index([tenantId, createdAt])
+  @@index([subscriptionId, status])
+}
+
+/// The lifecycle log (§19): one row per transition, written in the same transaction as the status it
+/// records. Append-only — triggers refuse any UPDATE or DELETE. `id` orders the log; the latest row is
+/// what the database checks a status change against.
+model SubscriptionEvent {
+  id             Int      @id @default(autoincrement())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId       String
+  subscriptionId String
+  /// e.g. `subscription.created`, `subscription.payment.failed`.
+  event          String
+  /// The named transition, or `create` for the first row.
+  transition     String
+  fromStatus     String?
+  toStatus       String
+  actorType      String // 'user' | 'system' | 'provider'
+  /// The account, when a person did it.
+  actorId        String?
+  /// The job or provider, when a person did not; the provider's event reference goes in meta.
+  source         String?
+  metaJson       String   @default("{}")
+  createdAt      DateTime @default(now())
+
+  tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, createdAt])
+  @@index([subscriptionId, id])
+}
+
+// ─── Invoices & payments ─────────────────────────────────────────────────
+
+/// Hands out invoice numbers, one series per calendar year (`INV-2026` → INV-2026-000001, …).
+/// Platform-owned; the counter only ever goes up, and `Invoice.number` is unique besides.
+model InvoiceSequence {
+  series String @id
+  next   Int
+}
+
+/// An invoice (subscriptions.md §15). Academy-owned. Issued from the server's payable amount
+/// (`lib/billing.ts`), with its lines, tax lines and the billing address it was sent to fixed at issue:
+/// nothing a later plan edit, price change or address change does can rewrite it (triggers). Only its
+/// status moves — open → paid (with a paid payment for its total) or open → void. Never deleted.
+model Invoice {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  number            String    @unique
+  purpose           String // 'new_subscription' | 'renewal' | 'plan_change'
+  status            String // 'open' | 'paid' | 'void'
+  subscriptionId    String?
+  planChangeId      String?
+  currency          String
+  /// Minor units. `total = subtotal + taxTotal` always (CHECK); for a tax-inclusive price the subtotal is the net.
+  subtotal          Int
+  taxTotal          Int
+  total             Int
+  inclusive         Boolean
+  taxRuleId         String?
+  linesJson         String
+  taxLinesJson      String
+  /// The billing profile as it stood at issue.
+  billedToJson      String
+  periodStartAt     DateTime?
+  periodEndAt       DateTime?
+  issuedAt          DateTime
+  dueAt             DateTime
+  paidAt            DateTime?
+  voidedAt          DateTime?
+  voidReason        String?
+  provider          String?
+  providerInvoiceId String?
+  createdAt         DateTime  @default(now())
+
+  tenant        Tenant         @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  subscription  Subscription?  @relation(fields: [subscriptionId], references: [id], onDelete: Restrict)
+  planChange    PlanChange?    @relation(fields: [planChangeId], references: [id], onDelete: Restrict)
+  /// First purchase only (purpose `new_subscription`): the plan version and cycle it sells, fixed at issue.
+  /// The subscription created when it is paid gets exactly these (triggers Invoice_sale_*).
+  planVersionId String?
+  billingCycle  String?
+  payments      Payment[]
+  orders        PaymentOrder[]
+
+  @@unique([provider, providerInvoiceId])
+  @@index([tenantId, issuedAt])
+  @@index([subscriptionId])
+  @@index([status])
+}
+
+/// A payment (§14). Academy-owned and immutable once settled: it is written `pending`, `paid` or
+/// `failed`, a pending one settles once, and a paid or failed one is never updated or deleted
+/// (triggers). A refund is a Refund row beside it — the payment itself is never rewritten to say so;
+/// "refunded" / "partially refunded" are read from its refunds. The payment method is masked display
+/// data only; no card number exists anywhere.
+model Payment {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  invoiceId         String?
+  subscriptionId    String?
+  provider          String
+  providerPaymentId String
+  amount            Int
+  currency          String
+  status            String // 'pending' | 'paid' | 'failed'
+  failureCode       String?
+  failureMessage    String?
+  methodKind        String?
+  methodBrand       String?
+  methodLast4       String?
+  paidAt            DateTime?
+  failedAt          DateTime?
+  createdAt         DateTime  @default(now())
+
+  tenant       Tenant        @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  invoice      Invoice?      @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: Restrict)
+  refunds      Refund[]
+
+  @@unique([provider, providerPaymentId])
+  @@index([tenantId, createdAt])
+  @@index([invoiceId])
+}
+
+/// A checkout (§43; SAAS-009): the provider order an open invoice is paid through. Its amount and currency
+/// are the invoice's, fixed when the order is made — the browser never names one — and the database checks
+/// both against the invoice (trigger PaymentOrder_matches_invoice). It settles once, when a payment the
+/// provider itself reports as captured is recorded against it; it is never deleted.
+model PaymentOrder {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  invoiceId         String
+  provider          String
+  providerOrderId   String
+  amount            Int
+  currency          String
+  status            String    @default("created") // 'created' | 'paid'
+  /// The provider payment that settled it.
+  providerPaymentId String?
+  /// `test` or `live`: the gateway credentials the order was created with, and the only ones that may confirm,
+  /// reconcile or refund it (SAAS-017). Null for an order made before gateways had environments.
+  environment       String?
+  createdAt         DateTime  @default(now())
+  paidAt            DateTime?
+
+  tenant  Tenant  @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, providerOrderId])
+  @@index([invoiceId])
+  @@index([tenantId, createdAt])
+}
+
+/// A provider webhook as it was received (§17, §18; SAAS-010) — the platform's receipt, and its idempotency
+/// key: one row per provider event, unique on (provider, providerEventId), so a redelivered event repeats no
+/// side effect. Only a signed webhook is ever stored. The body is not kept — it carries the payer's contact
+/// details — only its SHA-256 and the ids processing needs. Never deleted; see trigger WebhookEvent_receipt.
+model WebhookEvent {
+  id              String    @id @default(cuid())
+  provider        String
+  providerEventId String
+  eventType       String
+  /// SHA-256 of the exact signed body, hex. A replay of the same body under another event id is caught by it.
+  payloadHash     String
+  /// The ids the event names (payment, order, refund) and its reported status, as JSON — never contact or card data.
+  referenceJson   String    @default("{}")
+  status          String    @default("received") // 'received' | 'processed' | 'ignored' | 'failed'
+  attempts        Int       @default(1)
+  /// Why the last attempt failed, or why the event was ignored — our words, redacted.
+  note            String?
+  receivedAt      DateTime  @default(now())
+  processedAt     DateTime?
+
+  @@unique([provider, providerEventId])
+  @@index([provider, payloadHash])
+  @@index([status, receivedAt])
+}
+
+/// A payment gateway the platform can take payments through (SAAS-017; decision D11). One row per provider.
+/// Platform-owned: gateways are configured by the Super Admin, not by an academy. Credentials are stored only
+/// encrypted (AES-256-GCM, `lib/credentialVault.ts`) under a key that is a deployment secret and never in the
+/// database; `credentialHint` holds only what is safe to show (a public key id, masked). At most one gateway
+/// is active, and only an enabled, configured one (index PaymentGatewayConfig_one_active, trigger
+/// PaymentGatewayConfig_active_valid). Switching the active gateway affects only new payments.
+model PaymentGatewayConfig {
+  id          String   @id @default(cuid())
+  /// The provider id from the gateway registry: `razorpay`, `vyapargateway`.
+  provider    String   @unique
+  enabled     Boolean  @default(false)
+  isActive    Boolean  @default(false)
+  /// `test` or `live`: whose credentials new payments through this gateway use. The active gateway's
+  /// environment must have credentials (trigger PaymentGatewayConfig_active_ready).
+  environment String   @default("test")
+  /// Bumped on every change, so a cached adapter is rebuilt.
+  version     Int      @default(1)
+  updatedById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+/// A gateway's credentials for one environment (SAAS-017): test and live are kept apart, so a test key can
+/// never serve a live payment. Encrypted with AES-256-GCM under PAYMENT_CREDENTIALS_KEY; replaced in place,
+/// never deleted.
+model PaymentGatewayCredential {
+  id           String   @id @default(cuid())
+  provider     String
+  /// `test` or `live`.
+  environment  String
+  /// The encrypted credentials.
+  cipher       String
+  /// Which encryption key sealed them — a fingerprint, never the key.
+  keyId        String
+  /// Safe to show: e.g. {"hint":{"keyId":"rzp_test_…AbCd"},"secretsSet":["keySecret"]}. Never a secret.
+  hint         String   @default("{}")
+  configuredAt DateTime @default(now())
+  updatedById  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+
+  @@unique([provider, environment])
+}
+
+/// A refund (§29): a separate financial event against a paid payment, full or partial. The refunds of a
+/// payment can never add up to more than it (trigger), and the payment row is never touched. Pending
+/// until the provider settles it; never deleted.
+model Refund {
+  id               String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId         String
+  paymentId        String
+  amount           Int
+  currency         String
+  reason           String
+  status           String // 'pending' | 'succeeded' | 'failed'
+  provider         String
+  providerRefundId String?
+  requestedById    String?
+  failureMessage   String?
+  settledAt        DateTime?
+  createdAt        DateTime  @default(now())
+
+  tenant  Tenant  @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  payment Payment @relation(fields: [paymentId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, providerRefundId])
+  @@index([tenantId, createdAt])
+  @@index([paymentId])
+}
+
+/// A saved way to pay (§16): the provider's reference and what is safe to print — "Visa •••• 4242",
+/// "UPI". There is no column a card number, expiry-with-number or security code could go in; `last4`
+/// is exactly four digits (CHECK). Removed, never deleted.
+model PaymentMethod {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  provider          String
+  providerMethodRef String
+  kind              String // 'card' | 'upi' | 'netbanking' | 'mandate' | 'invoice'
+  brand             String
+  last4             String?
+  expMonth          Int?
+  expYear           Int?
+  isDefault         Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+  removedAt         DateTime?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, providerMethodRef])
+  @@index([tenantId])
+}
+
+// ─── Identity ────────────────────────────────────────────────────────────
+
+model User {
+  id               String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId         String?
+  email            String    @unique
+  /// Mobile number given at registration; not unique, the email identifies the account.
+  phone            String?
+  passwordHash     String
+  name             String
+  role             String // 'student' | 'instructor' | 'admin' | 'superadmin'
+  descriptor       String    @default("")
+  instructorId     String?
+  /// Set when a super admin deactivates the account; null means active. Only academy admins are
+  /// deactivated today (`/superadmin/admins/:id/deactivate`) — a learner is suspended through
+  /// `Student.suspended` and an instructor through `Instructor.status`, both unchanged.
+  deactivatedAt    DateTime?
+  /// Tokens that carry no session id and were issued before this instant are refused (SAAS-020): set by
+  /// logout-all, a password change and a password reset, so tokens from before sessions existed end too.
+  tokensValidAfter DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @default(now()) @updatedAt
+
+  student        Student?
+  instructor     Instructor?           @relation(fields: [instructorId], references: [id])
+  notifications  AppNotification[]
+  notifSettings  NotificationSettings?
+  calendarEvents CalendarEvent[]       @relation("CalendarOwner")
+  resetTokens    PasswordResetToken[]
+  sessions       UserSession[]
+  devices        DeviceToken[]
+  auditEvents    AuditLog[]
+  permissions    AdminPermission[]
+  ownedTenants   Tenant[]              @relation("TenantOwner")
+  affiliate      Affiliate?
+
+  tenant Tenant? @relation("TenantUsers", fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([instructorId])
+  @@index([tenantId])
+}
+
+/// Forgot-password links. Only the SHA-256 hash of the token is stored; a token is single use.
+/// A device registered for push notifications (SAAS-021), bound to the session that registered it: ending the
+/// session removes it. A token belongs to one account at a time — registering it again moves it.
+model DeviceToken {
+  id         String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId   String?
+  userId     String
+  sessionId  String?
+  /// 'android' | 'ios' | 'web'
+  platform   String
+  token      String   @unique
+  createdAt  DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([sessionId])
+  @@index([tenantId])
+}
+
+/// One push hint for one in-app notification (SAAS-021): at most one per notification, retried with backoff,
+/// held until the recipient's quiet hours end. The payload is only the notification's id and category.
+model PushDelivery {
+  id             String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId       String?
+  userId         String
+  notificationId String    @unique
+  /// 'queued' | 'sending' | 'sent' | 'failed' | 'skipped'
+  status         String    @default("queued")
+  attempts       Int       @default(0)
+  nextAttemptAt  DateTime  @default(now())
+  lastAttemptAt  DateTime?
+  sentAt         DateTime?
+  /// Devices reached, and the last failure in plain words (never a provider secret).
+  delivered      Int       @default(0)
+  error          String?
+  createdAt      DateTime  @default(now())
+
+  notification AppNotification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  tenant       Tenant?         @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([status, nextAttemptAt])
+  @@index([tenantId])
+}
+
+/// A signed-in session (SAAS-020). Its id travels in the token as `sid`; the per-request account read checks it,
+/// so revoking the row ends that token on the next request. Never deleted by the app except when long expired.
+model UserSession {
+  id            String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId      String?
+  userId        String
+  createdAt     DateTime  @default(now())
+  /// When the token issued with it expires.
+  expiresAt     DateTime
+  revokedAt     DateTime?
+  /// 'logout' | 'logout-all' | 'revoked' | 'password-changed' | 'password-reset'
+  revokedReason String?
+  /// The client that signed in, as it described itself (truncated). Shown in the session list; never trusted.
+  userAgent     String?
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([tenantId])
+  @@index([expiresAt])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId  String?
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([tenantId])
+}
+
+/// A self-serve registration waiting for its email to be verified (SAAS-026). Platform-owned: no academy
+/// exists until the code is confirmed, and then `lib/signup.ts` provisions one and records its id here.
+/// The password and the code are stored only as hashes; a row is never a sign-in.
+model PendingSignup {
+  id               String    @id @default(cuid())
+  email            String
+  adminName        String
+  academyName      String
+  slug             String
+  passwordHash     String
+  /// HMAC of the 6-digit code under the server secret, bound to this row's id.
+  codeHash         String
+  attempts         Int       @default(0)
+  expiresAt        DateTime
+  lastSentAt       DateTime
+  /// Codes sent for this registration, the first included — capped, so one registration cannot flood an address.
+  sendCount        Int       @default(1)
+  /// Set once, when the code is confirmed; a consumed row can never be confirmed again.
+  consumedAt       DateTime?
+  /// The plan and cycle chosen before registering, kept so the choice survives a refresh and the first sign-in.
+  planId           String?
+  cycle            String?
+  /// The academy the confirmed signup created.
+  createdAcademyId String?
+  createdAt        DateTime  @default(now())
+
+  @@index([email])
+  @@index([expiresAt])
+}
+
+/// A learner or instructor who registered themselves, waiting for their email to be verified. Academy-owned: the
+/// academy is the one the link named (a join link, an invitation or a course link), fixed when the row is made and never
+/// taken from a request body. Nothing that can sign in exists until the code is confirmed; then `lib/pendingAccounts.ts`
+/// creates the account through the same path an unverified registration used. The password and the code are hashes.
+model PendingAccount {
+  id            String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId      String
+  /// 'student' | 'instructor' — fixed by the door it came through, never by the request.
+  role          String
+  email         String
+  name          String
+  /// An instructor's title, when they gave one.
+  title         String?
+  passwordHash  String
+  /// HMAC of the 6-digit code under the server secret, bound to this row's id (lib/verificationCode.ts).
+  codeHash      String
+  attempts      Int       @default(0)
+  sendCount     Int       @default(1)
+  expiresAt     DateTime
+  lastSentAt    DateTime
+  /// Set once, when the code is confirmed; a consumed row can never be confirmed again.
+  consumedAt    DateTime?
+  /// The invitation or course link the registration came through; checked again when the account is created.
+  invitationId  String?
+  courseId      String?
+  createdUserId String?
+  /// The registrant's mobile number, and an instructor's application (JSON: bio, expertise, yearsTeaching, links).
+  phone         String?
+  profileJson   String?
+  /// The affiliate program referral the registrant arrived with (MLM-001), carried to the account when the code is confirmed.
+  referralCode  String?
+  preferredLeg  String?
+  /// The leg the sponsor's link named, which is not the registrant's own preference.
+  requestedLeg  String?
+  createdAt     DateTime  @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, email])
+  @@index([email])
+  @@index([expiresAt])
+}
+
+/// A request to the platform team (SAAS-027, SAAS-029): a demo, sales or support request from the company website
+/// (no academy — `tenantId` null), or a support request an academy's admin raises from their workspace (their
+/// academy, from the server context). The Super Admin's inbox lists both. A request is never deleted.
+model Inquiry {
+  id           String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null for a website visitor's request.
+  tenantId     String?
+  /// `demo` · `sales` · `support`
+  kind         String
+  /// `new` · `in_progress` · `closed`
+  status       String    @default("new")
+  name         String
+  email        String
+  organisation String?
+  phone        String?
+  /// What the visitor said they need, e.g. the learners they expect.
+  size         String?
+  subject      String?
+  message      String
+  /// The signed-in admin who raised it, for an academy's request.
+  userId       String?
+  /// The platform team's private note on how it was handled.
+  note         String?
+  handledById  String?
+  closedAt     DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+  @@index([status, createdAt])
+}
+
+/// One permission an academy admin holds. Keys live in `packages/domain` (`PermissionKey`) — this
+/// table stores only who holds which. Grants exist for the `admin` role alone: instructors keep
+/// role-and-scope authorization, and a super admin's reach comes from its own router, not from here.
+model AdminPermission {
+  id        String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId  String
+  userId    String
+  key       String
+  grantedAt DateTime @default(now())
+  grantedBy String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([userId, key])
+  @@index([userId])
+  @@index([tenantId])
+}
+
+/// Platform audit trail. Written by Super Admin operations through `lib/audit.ts`, never by the
+/// academy's own routes, and read back at `GET /superadmin/audit`. The actor's email is kept
+/// alongside the reference so the trail still names who acted after an account is removed.
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actorEmail String
+  actorRole  String
+  /// Who did it (§36): `user` (a person — actorId/actorEmail/actorRole), `system` (a scheduled job) or `provider` (the payment provider). Checked by trigger AuditLog_actor_shape.
+  actorType  String   @default("user")
+  /// The job or provider a `system` or `provider` event names; null for a person.
+  source     String?
+  action     String
+  targetType String
+  targetId   String?
+  /// Extra context for the event, as JSON text (the schema's convention for shaped values).
+  metaJson   String   @default("{}")
+  createdAt  DateTime @default(now())
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([actorId])
+  @@index([action])
+}
+
+/// Outgoing email queue. Rows are written by the API; a transport (log/SMTP) drains them.
+model EmailOutbox {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId          String?
+  toEmail           String
+  toName            String?
+  subject           String
+  text              String
+  templateKey       String
+  status            String    @default("queued") // 'queued' | 'sending' | 'sent' | 'failed'
+  error             String?
+  createdAt         DateTime  @default(now())
+  sentAt            DateTime?
+  /// Delivery (SAAS-021): attempts made, when the next may run, when the last began.
+  attempts          Int       @default(0)
+  nextAttemptAt     DateTime?
+  lastAttemptAt     DateTime?
+  /// The same message to the same address within the dedup window is not queued twice.
+  dedupKey          String?
+  /// The transport's reference for the sent message, when it gives one.
+  providerMessageId String?
+
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([status, createdAt])
+  @@index([status, nextAttemptAt])
+  @@index([dedupKey])
+  @@index([toEmail])
+  @@index([tenantId])
+}
+
+/// An uploaded file (lesson video/document, assignment attachment). Stored on disk under UPLOAD_DIR with a random name.
+model MediaAsset {
+  id           String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  ownerUserId  String
+  kind         String // 'video' | 'document' | 'image'
+  originalName String
+  mime         String
+  sizeBytes    Int
+  storageName  String   @unique
+  createdAt    DateTime @default(now())
+
+  /// Courses showing this image as their cover.
+  coverOf Course[] @relation("CourseCoverImage")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([ownerUserId])
+  @@index([tenantId])
+}
+
+// ─── Catalog ─────────────────────────────────────────────────────────────
+
+model Level {
+  id       String  @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId String
+  name     String
+  order    Int
+  summary  String?
+
+  courses    Course[]
+  categories CategoryLevel[]
+  tenant     Tenant          @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId    String
+  name        String
+  description String
+  order       Int
+  status      String // 'active' | 'hidden'
+  glyph       String
+  updatedAt   DateTime @updatedAt
+
+  courses Course[]
+  levels  CategoryLevel[]
+  tenant  Tenant          @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+/// Categories may span several levels — many-to-many join.
+model CategoryLevel {
+  categoryId String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId   String
+  levelId    String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  level      Level    @relation(fields: [levelId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([categoryId, levelId])
+  @@index([tenantId])
+}
+
+model Instructor {
+  id            String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId      String
+  name          String
+  title         String
+  yearsTeaching Int?
+  email         String   @unique
+  bio           String   @default("")
+  expertiseJson String   @default("[]")
+  status        String // 'active' | 'invited' | 'inactive'
+  joinedAt      DateTime @default(now())
+  city          String   @default("")
+  languagesJson String   @default("[]")
+  phone         String?
+  photoJson     String?
+  /// Links an applicant gave: a portfolio, a profile (docs/16 §2.5).
+  linksJson     String   @default("[]")
+
+  users        User[]
+  courses      CourseInstructor[]
+  liveClasses  LiveClass[]
+  calendarOwns CalendarEvent[]    @relation("CalendarInstructor")
+  tenant       Tenant             @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+model Course {
+  id                    String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId              String
+  slug                  String
+  title                 String
+  subtitle              String    @default("")
+  description           String    @default("")
+  levelId               String
+  categoryId            String
+  format                String
+  language              String    @default("en-IN")
+  coverMotif            String
+  liveSessions          Int       @default(0)
+  estimatedWeeks        Int?
+  certificateTitle      String?
+  /// Whole rupees, all-inclusive (what the learner pays). Read with `pricing`: only a `paid` course charges it.
+  priceAmount           Int?
+  priceCurrency         String    @default("INR")
+  /// `free` | `paid` | `unset`. `unset` is a course whose price was never chosen by an admin (it was filled from the
+  /// academy default before pricing existed): nobody can enrol themselves or buy it until an admin chooses.
+  /// A lower price the course sells at now, in whole rupees; null for none. Always below priceAmount.
+  salePrice             Int?
+  pricing               String    @default("unset")
+  enrolledCount         Int       @default(0)
+  status                String    @default("draft") // 'draft' | 'published' | 'archived'
+  visibility            String    @default("public")
+  outcomesJson          String    @default("[]")
+  tagsJson              String    @default("[]")
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  publishedAt           DateTime?
+  rating                Float?
+  ratingCount           Int?
+  certificateTemplateId String?
+  /// An uploaded cover image (a staff-uploaded `MediaAsset` of kind image). Null draws `coverMotif` instead.
+  coverImageId          String?
+
+  level               Level                @relation(fields: [levelId], references: [id])
+  category            Category             @relation(fields: [categoryId], references: [id])
+  certificateTemplate CertificateTemplate? @relation(fields: [certificateTemplateId], references: [id])
+  instructors         CourseInstructor[]
+  chapters            Chapter[]
+  enrollments         Enrollment[]
+  quizzes             Quiz[]
+  assignments         CourseAssignment[]
+  liveClasses         LiveClass[]
+  calendar            CalendarEvent[]
+  issuedCertificates  IssuedCertificate[]
+  purchases           CoursePurchase[]
+  coupons             Coupon[]
+  reviews             CourseReview[]
+  coverImage         MediaAsset?          @relation("CourseCoverImage", fields: [coverImageId], references: [id], onDelete: SetNull)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([tenantId, slug])
+  @@index([categoryId])
+  @@index([coverImageId])
+  @@index([levelId])
+  @@index([status])
+}
+
+model CourseInstructor {
+  courseId     String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  instructorId String
+  course       Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  instructor   Instructor @relation(fields: [instructorId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([courseId, instructorId])
+  @@index([tenantId])
+}
+
+model Chapter {
+  id           String  @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  courseId     String
+  title        String
+  summary      String?
+  objective    String?
+  estimatedMin Int?
+  status       String  @default("draft")
+  position     Int
+
+  course  Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons Lesson[]
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([courseId])
+  @@index([tenantId])
+}
+
+model Lesson {
+  id             String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId       String
+  chapterId      String
+  courseId       String
+  title          String
+  type           String // LessonType
+  durationMin    Int      @default(0)
+  isPreview      Boolean  @default(false)
+  status         String   @default("draft")
+  updatedAt      DateTime @updatedAt
+  description    String?
+  objectivesJson String   @default("[]")
+  contentJson    String   @default("{}")
+  settingsJson   String   @default("{}")
+  position       Int
+
+  chapter    Chapter           @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  progress   LessonProgress[]
+  notes      LessonNote[]
+  bookmarks  LessonBookmark[]
+  quiz       Quiz?
+  assignment CourseAssignment?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([chapterId])
+  @@index([courseId])
+  @@index([tenantId])
+}
+
+// ─── People ──────────────────────────────────────────────────────────────
+
+model Student {
+  id            String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId      String
+  userId        String    @unique
+  phone         String?
+  city          String    @default("")
+  joinedAt      DateTime  @default(now())
+  lastActiveAt  DateTime  @default(now())
+  suspended     Boolean   @default(false)
+  suspendReason String?
+  rankId        String?
+  /// Last inactivity nudge, so a quiet learner is nudged at most once a week.
+  nudgedAt      DateTime?
+
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rank         Rank?               @relation(fields: [rankId], references: [id])
+  enrollments  Enrollment[]
+  progress     LessonProgress[]
+  notes        LessonNote[]
+  bookmarks    LessonBookmark[]
+  savedCourses SavedCourse[]
+  quizAttempts QuizAttempt[]
+  quizSessions QuizSession[]
+  submissions  Submission[]
+  liveRegs     LiveRegistration[]
+  certificates IssuedCertificate[]
+  purchases    CoursePurchase[]
+  drafts       AssignmentDraft[]
+  affiliate    Affiliate?
+  reviews      CourseReview[]
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([rankId])
+  @@index([tenantId])
+}
+
+model Enrollment {
+  id           String          @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  studentId    String
+  courseId     String
+  enrolledAt   DateTime        @default(now())
+  status       String          @default("active") // EnrollmentStatus
+  progress     Int             @default(0)
+  source       String          @default("self")
+  lastActiveAt DateTime?
+  completedAt  DateTime?
+  expiresAt    DateTime?
+  lastLessonId String?
+  /// The verified purchase that opened a paid course (source `purchase`); null for every other way in.
+  purchaseId   String?         @unique
+  purchase     CoursePurchase? @relation(fields: [purchaseId], references: [id], onDelete: Restrict)
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course  Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([studentId, courseId])
+  @@index([courseId])
+  @@index([tenantId])
+}
+
+model LessonProgress {
+  id             String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId       String
+  studentId      String
+  lessonId       String
+  state          String    @default("not-started") // ProgressState
+  fraction       Float?
+  positionSec    Int?
+  completedAt    DateTime?
+  lastAccessedAt DateTime?
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  lesson  Lesson  @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([studentId, lessonId])
+  @@index([lessonId])
+  @@index([tenantId])
+}
+
+model LessonNote {
+  studentId String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId  String
+  lessonId  String
+  text      String   @default("")
+  savedAt   DateTime @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  lesson  Lesson  @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([studentId, lessonId])
+  @@index([tenantId])
+}
+
+model LessonBookmark {
+  studentId String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId  String
+  lessonId  String
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  lesson  Lesson  @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([studentId, lessonId])
+  @@index([tenantId])
+}
+
+/// One learner's review of one course (docs/16, D-PLAT-11). `Course.rating` and `ratingCount` are recomputed from the
+/// published rows in the same transaction as any change here.
+model CourseReview {
+  id        String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId  String
+  studentId String
+  courseId  String
+  /// 1 to 5, checked by the database.
+  rating    Int
+  /// Plain text, at most 2000 characters, checked by the database.
+  comment   String   @default("")
+  /// `published` | `hidden`, checked by the database. A learner's edit never changes it.
+  status    String   @default("published")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course  Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  tenant  Tenant  @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([studentId, courseId])
+  @@index([courseId, status])
+  @@index([tenantId])
+}
+
+model SavedCourse {
+  studentId String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId  String
+  courseId  String
+  savedAt   DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([studentId, courseId])
+  @@index([tenantId])
+}
+
+model Rank {
+  id           String @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  title        String
+  order        Int
+  descriptor   String
+  criteriaJson String @default("[]")
+
+  students Student[]
+  tenant   Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+// ─── Quizzes ─────────────────────────────────────────────────────────────
+
+model Quiz {
+  id            String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId      String
+  courseId      String
+  chapterId     String?
+  lessonId      String?  @unique
+  title         String
+  instructions  String   @default("")
+  status        String   @default("draft")
+  questionsJson String   @default("[]")
+  settingsJson  String   @default("{}")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  course   Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lesson   Lesson?       @relation(fields: [lessonId], references: [id])
+  attempts QuizAttempt[]
+  sessions QuizSession[]
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([courseId])
+  @@index([tenantId])
+}
+
+model QuizAttempt {
+  id          String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId    String
+  quizId      String
+  studentId   String
+  answersJson String   @default("{}")
+  resultJson  String   @default("{}")
+  percent     Int      @default(0)
+  passed      Boolean  @default(false)
+  durationSec Int?
+  createdAt   DateTime @default(now())
+  /// The session this attempt finished (A2). Null for attempts made before sessions existed.
+  sessionId   String?  @unique
+
+  quiz    Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  student Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  session QuizSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([quizId])
+  @@index([studentId])
+  @@index([tenantId])
+}
+
+/// A learner's attempt at a quiz from the moment the server starts it (A2, packages/domain/src/quizSession.ts).
+/// Starting consumes an attempt. The deadline is the server's; the answers are those it accepted before the
+/// deadline. Finishing — submitted by the learner, or expired and closed by the server — writes the QuizAttempt.
+model QuizSession {
+  id             String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId       String
+  quizId         String
+  studentId      String
+  /// 1 for the learner's first attempt at the quiz, counting attempts made before sessions existed.
+  attemptNo      Int
+  status         String    @default("active") // QuizSessionStatus: active | submitted | expired
+  startedAt      DateTime  @default(now())
+  /// Null for an untimed quiz.
+  deadlineAt     DateTime?
+  /// The questions as they stood when the attempt started, with their key: scoring reads these, never the client.
+  questionsJson  String
+  /// The quiz's settings as they stood when the attempt started — its pass mark among them — so editing the quiz
+  /// while the attempt is open changes nothing about how it is scored.
+  settingsJson   String    @default("{}")
+  /// The question and option order this learner was shown (QuizOrder).
+  orderJson      String    @default("{}")
+  answersJson    String    @default("{}")
+  /// The highest save number accepted, so a save that arrives late cannot overwrite a newer one.
+  answersSeq     Int       @default(0)
+  answersSavedAt DateTime?
+  /// The client's key for the start request: a retried start answers with the same session.
+  startKey       String?
+  finishedAt     DateTime?
+  updatedAt      DateTime  @updatedAt
+
+  quiz    Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  student Student      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  attempt QuizAttempt?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([quizId, studentId, attemptNo])
+  @@index([studentId, quizId])
+  @@index([status, deadlineAt])
+  @@index([tenantId])
+}
+
+// ─── Assignments ─────────────────────────────────────────────────────────
+
+model CourseAssignment {
+  id              String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId        String
+  courseId        String
+  chapterId       String?
+  lessonId        String?  @unique
+  title           String
+  instructions    String   @default("")
+  attachmentsJson String   @default("[]")
+  format          String   @default("text")
+  wordLimit       Int?
+  dueJson         String   @default("{\"kind\":\"none\"}")
+  acceptsLate     Boolean  @default(true)
+  latePenalty     Int      @default(0)
+  rubricJson      String   @default("[]")
+  maxScore        Int      @default(100)
+  passMark        Int      @default(60)
+  status          String   @default("draft")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  course      Course            @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lesson      Lesson?           @relation(fields: [lessonId], references: [id])
+  submissions Submission[]
+  drafts      AssignmentDraft[]
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([courseId])
+  @@index([tenantId])
+}
+
+/// A learner's unsent work on an assignment — one per learner and assignment, replaced on every save.
+model AssignmentDraft {
+  studentId    String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  assignmentId String
+  text         String   @default("")
+  filesJson    String   @default("[]")
+  chartJson    String?
+  savedAt      DateTime @default(now()) @updatedAt
+
+  student    Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  assignment CourseAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([studentId, assignmentId])
+  @@index([tenantId])
+}
+
+model Submission {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  assignmentId      String
+  studentId         String
+  attempt           Int       @default(1)
+  submittedAt       DateTime  @default(now())
+  late              Boolean   @default(false)
+  text              String?
+  filesJson         String    @default("[]")
+  chartJson         String?
+  reviewStatus      String    @default("waiting") // ReviewStatus
+  reviewerId        String?
+  scoresJson        String    @default("{}")
+  points            Float?
+  score             Float?
+  feedback          String    @default("")
+  privateNote       String?
+  reviewUpdatedAt   DateTime?
+  /// When instructors were told this review is overdue (null until then).
+  overdueNotifiedAt DateTime?
+
+  assignment CourseAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  student    Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([assignmentId])
+  @@index([studentId])
+  @@index([tenantId])
+}
+
+// ─── Certificates ────────────────────────────────────────────────────────
+
+model CertificateTemplate {
+  id              String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId        String
+  name            String
+  style           String
+  accent          String
+  heading         String
+  statement       String
+  signatoriesJson String   @default("[]")
+  showScore       Boolean  @default(true)
+  showHours       Boolean  @default(true)
+  isDefault       Boolean  @default(false)
+  updatedAt       DateTime @updatedAt
+
+  certificates IssuedCertificate[]
+  courses      Course[]
+  tenant       Tenant              @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+model IssuedCertificate {
+  id            String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId      String
+  credentialId  String    @unique
+  studentId     String
+  courseId      String
+  title         String
+  templateId    String
+  status        String    @default("pending") // IssuedCertificateStatus
+  completedAt   DateTime
+  issuedAt      DateTime?
+  revokedAt     DateTime?
+  revokedReason String?
+  finalScore    Float?
+  hours         Float     @default(0)
+  verifications Int       @default(0)
+
+  student  Student             @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course   Course              @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  template CertificateTemplate @relation(fields: [templateId], references: [id])
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([studentId])
+  @@index([courseId])
+  @@index([tenantId])
+}
+
+// ─── Live classes ────────────────────────────────────────────────────────
+
+model LiveClass {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  courseId          String
+  title             String
+  instructorId      String
+  startsAt          DateTime
+  durationMin       Int
+  capacity          Int?
+  cancelled         Boolean   @default(false)
+  cancelReason      String?
+  /// Set when the host opens the built-in room; the class is live from here until `endedAt`.
+  startedAt         DateTime?
+  endedAt           DateTime?
+  /// The video room's name, minted on first start. Unguessable, so the class id alone never lets anyone in.
+  roomName          String?   @unique
+  /// `{durationMin, availableUntil, status, fileName?}` — written by the video service's recording webhook.
+  recordingJson     String?
+  description       String?
+  agendaJson        String    @default("[]")
+  visibility        String    @default("enrolled")
+  meetingJson       String    @default("{\"kind\":\"room\"}")
+  remindersJson     String    @default("[]")
+  /// Reminder offsets (minutes before start) already sent, so the scheduler never repeats one.
+  remindersSentJson String    @default("[]")
+  chapterId         String?
+
+  course        Course             @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  instructor    Instructor         @relation(fields: [instructorId], references: [id])
+  registrations LiveRegistration[]
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([courseId])
+  @@index([instructorId])
+  @@index([tenantId])
+}
+
+model LiveRegistration {
+  liveClassId  String
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  studentId    String
+  registeredAt DateTime  @default(now())
+  /// Taken by the room: true once the learner joins; false for the rest when the host ends the class.
+  attended     Boolean?
+  /// When the learner first went into the room.
+  joinedAt     DateTime?
+
+  liveClass LiveClass @relation(fields: [liveClassId], references: [id], onDelete: Cascade)
+  student   Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([liveClassId, studentId])
+  @@index([tenantId])
+}
+
+// ─── Calendar ────────────────────────────────────────────────────────────
+
+model CalendarEvent {
+  id           String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  type         String // CalendarEventType
+  title        String
+  description  String?
+  timing       String // CalendarTiming
+  startsAt     DateTime
+  durationMin  Int?
+  courseId     String?
+  chapterId    String?
+  instructorId String?
+  quizId       String?
+  milestone    String?
+  audience     String?
+  ownerId      String?
+  notifyMin    Int?
+  /// When the `notifyMin` reminder went out (null until then).
+  notifiedAt   DateTime?
+  done         Boolean   @default(false)
+  cancelled    Boolean   @default(false)
+  sourceJson   String?
+
+  course     Course?     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  instructor Instructor? @relation("CalendarInstructor", fields: [instructorId], references: [id])
+  /// The account that added the event (any role) — never a Student row.
+  owner      User?       @relation("CalendarOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([courseId])
+  @@index([startsAt])
+  @@index([ownerId])
+  @@index([tenantId])
+}
+
+// ─── Notifications ───────────────────────────────────────────────────────
+
+model AppNotification {
+  id                  String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId            String?
+  recipientId         String
+  category            String // NotificationCategory
+  title               String
+  summary             String
+  bodyJson            String    @default("[]")
+  createdAt           DateTime  @default(now())
+  readAt              DateTime?
+  important           Boolean   @default(false)
+  actor               String?
+  factsJson           String?
+  actionJson          String?
+  secondaryActionJson String?
+
+  /// Recipient is a User (admins and instructors receive notifications too).
+  recipient User          @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  /// Its push hint, when one was sent for it (SAAS-021).
+  push      PushDelivery?
+
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([recipientId, createdAt])
+  @@index([tenantId])
+}
+
+model NotificationSettings {
+  userId         String    @id
+  /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
+  tenantId       String?
+  categoriesJson String    @default("[]")
+  emailDigest    String    @default("instant")
+  quietHoursJson String    @default("{\"enabled\":false,\"from\":\"22:00\",\"to\":\"07:00\"}")
+  pausedUntil    DateTime?
+  smsNumber      String    @default("")
+  /// When the last daily/weekly digest email was composed for this account.
+  lastDigestAt   DateTime?
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+// ─── Settings (one row per academy) ──────────────────────────────────────
+
+model Settings {
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String @id
+  generalJson       String
+  coursesJson       String
+  learningJson      String
+  certificatesJson  String
+  notificationsJson String
+  appearanceJson    String
+  updatedAtJson     String
+  updatedByJson     String
+  tenant            Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+}
+
+// ─── Platform branding ───────────────────────────────────────────────────
+
+/// A logo or favicon the Super Admin uploaded for the platform itself: the ZuviloAI website, its sign-in
+/// screens and the workspace chrome. At most one row per kind; no row means the built-in ZuviloAI asset, which
+/// every client carries. Platform-owned: an academy's own appearance lives in `Settings` and never reaches here.
+/// The file is on disk under UPLOAD_DIR/branding with a name the server chose, new for every upload.
+model PlatformBrandAsset {
+  /// `logo` or `favicon`.
+  kind         String   @id
+  storageName  String   @unique
+  /// The uploaded file's name, cleaned — shown to the Super Admin, never used on disk.
+  originalName String
+  mime         String
+  sizeBytes    Int
+  width        Int
+  height       Int
+  updatedById  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+}
+
+// ─── Help centre ─────────────────────────────────────────────────────────
+
+model HelpCategory {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  order       Int
+
+  articles HelpArticle[]
+}
+
+model HelpArticle {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  categoryId  String
+  title       String
+  summary     String
+  body        String
+  audience    String   @default("all")
+  tagsJson    String   @default("[]")
+  readMinutes Int      @default(3)
+  updatedAt   DateTime @updatedAt
+  popular     Boolean  @default(false)
+
+  category HelpCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([categoryId])
+}
+
+/// Who is running a scheduled job right now (SAAS-022). A process takes the lease before running the job and
+/// gives it back after; a lease whose holder died expires and is taken over. The platform's own table.
+model JobLease {
+  job         String    @id
+  /// `host:pid:boot` of the process holding it.
+  holder      String
+  acquiredAt  DateTime
+  expiresAt   DateTime
+  lastRunAt   DateTime?
+  /// 'ok' | 'failed' — of the last run that finished.
+  lastOutcome String?
+  lastHolder  String?
+}
+
+/// An Admin's invitation for one learner to join their LMS (`/invite/<token>`). The link is the credential: only
+/// the SHA-256 of its token is stored. It is scoped to its Admin's workspace (`tenantId`) and role, expires, and is
+/// used once — the account it creates or signs in belongs to that workspace, whatever the client sends.
+model Invitation {
+  id           String    @id @default(cuid())
+  /// The Admin workspace this invitation joins — see lib/tenancy.ts.
+  tenantId     String
+  /// Only 'student' today; staff are invited through their pre-created account (Instructors module).
+  role         String    @default("student")
+  tokenHash    String    @unique
+  /// When set, only this address may accept.
+  email        String?
+  createdById  String?
+  expiresAt    DateTime
+  usedAt       DateTime?
+  usedByUserId String?
+  revokedAt    DateTime?
+  createdAt    DateTime  @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, createdAt])
+}
+
+/// An academy's own online payments for course sales: which gateway, which environment, and whether it is on. The money
+/// a learner pays settles to the academy's account, never the platform's. One row per academy.
+model AcademyPaymentConfig {
+  id          String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId    String   @unique
+  /// `razorpay`: the only gateway implemented for course sales.
+  provider    String   @default("razorpay")
+  /// `test` or `live`: whose credentials new purchases use. A production process refuses `test` for new purchases.
+  environment String   @default("test")
+  enabled     Boolean  @default(false)
+  updatedById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+}
+
+/// An academy's gateway credentials for one environment, encrypted under PAYMENT_CREDENTIALS_KEY like the platform's.
+/// Test and live are kept apart; replaced in place, never returned or logged.
+model AcademyGatewayCredential {
+  id          String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId    String
+  provider    String
+  environment String
+  cipher      String
+  keyId       String
+  /// Safe to show: the masked key id. Never a secret.
+  hint        String   @default("{}")
+  updatedById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([tenantId, provider, environment])
+  @@index([tenantId])
+}
+
+/// A learner's purchase of a paid course: one gateway order, priced by the server. `created` until the gateway
+/// confirms; `paid` opens the enrolment (once); `failed` and `expired` open nothing. Amount, currency, learner,
+/// course and order never change once written (trigger).
+model CoursePurchase {
+  id                String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId          String
+  studentId         String
+  courseId          String
+  /// The charge in minor units (paise), from the course's price when the order was made.
+  amount            Int
+  currency          String    @default("INR")
+  /// The course price shown to the learner, in whole rupees, kept for the receipt.
+  listPrice         Int
+  provider          String
+  environment       String
+  providerOrderId   String
+  providerPaymentId String?
+  /// `created` | `paid` | `failed` | `expired`.
+  status            String    @default("created")
+  failureCode       String?
+  failureMessage    String?
+  /// Money the gateway took that opens nothing (a second payment for a course the learner already has, or a course
+  /// no longer for sale): recorded and flagged for the academy, never refunded automatically.
+  reviewReason      String?
+  /// `ORD-YYYY-NNNNNN`, from OrderSequence: what a learner and a receipt call this order (docs/16 §2.4). Fixed by trigger.
+  orderNumber       String?   @unique
+  /// What a coupon took off `amount`, in paise; `amount` is what was charged. Fixed by trigger.
+  discountAmount    Int       @default(0)
+  couponId          String?
+  couponCode        String?
+  /// Set when a refund of the whole order settled. `status` stays `paid`: the money was taken, and that stays true.
+  refundedAt        DateTime?
+  /// The gateway reported a lost dispute (docs/15 §6.8).
+  chargebackAt      DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @default(now()) @updatedAt
+  paidAt            DateTime?
+  /// After this an unpaid order is not reused for a new checkout; a payment that still arrives is recorded.
+  expiresAt         DateTime
+
+  tenant     Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  student    Student                @relation(fields: [studentId], references: [id], onDelete: Restrict)
+  course     Course                 @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  enrollment Enrollment?
+  mlmOrder   MlmOrder?
+  refunds    CoursePurchaseRefund[]
+  redemption CouponRedemption?
+
+  @@unique([provider, providerOrderId])
+  @@unique([provider, providerPaymentId])
+  @@index([tenantId])
+  @@index([studentId, courseId])
+  @@index([courseId])
+  @@index([status, createdAt])
+}
+
+/// A course-payment webhook already received: one row per (academy, provider, event id), so a redelivery or a replay
+/// changes nothing.
+model CoursePaymentEvent {
+  id          String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId    String
+  provider    String
+  eventId     String
+  eventType   String
+  payloadHash String
+  receivedAt  DateTime  @default(now())
+  processedAt DateTime?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([tenantId, provider, eventId])
+  @@index([tenantId])
+}
+
+// ─── Affiliate program (MLM-000) ──────────────────────────────────────────
+
+/// One version of the affiliate program's plan (docs/15 §4.2): every compensation term as data. Platform-owned; the
+/// academy whose learners are the affiliates is `programTenantId`. At most one version is `active` (trigger); terms,
+/// ranks and cap bands are sealed once a version leaves draft (triggers), so what a commission names is what it was
+/// computed under. Amounts are 64-bit integers in minor units: group CV targets reach ₹500 crore.
+model MlmPlanVersion {
+  id                     String    @id @default(cuid())
+  version                Int       @unique
+  status                 String    @default("draft") // 'draft' | 'active' | 'retired'
+  programTenantId        String
+  eligibleCourseIdsJson  String    @default("[]")
+  currency               String    @default("INR")
+  cvBasisPoints          Int       @default(10000)
+  matchingRateBps        Int       @default(1000)
+  payoutCeilingBps       Int       @default(2500)
+  normalPayoutBps        Int       @default(1500)
+  matchingRunHourIst     Int       @default(2)
+  cvEligibilityDelayDays Int       @default(0)
+  capOverflowPolicy      String    @default("flush") // 'flush' | 'carry'
+  carryForwardPolicy     String    @default("indefinite") // 'indefinite' | 'expire-days'
+  carryExpiryDays        Int?
+  spilloverRule          String    @default("extreme-outer") // 'extreme-outer' | 'breadth-first'
+  withdrawalMinAmount    BigInt    @default(0)
+  withdrawalRequiresKyc  Boolean   @default(true)
+  tdsBps                 Int       @default(0)
+  liabilityPeriod        String    @default("month")
+  note                   String    @default("")
+  createdAt              DateTime  @default(now())
+  activatedAt            DateTime?
+  retiredAt              DateTime?
+
+  programTenant Tenant        @relation(fields: [programTenantId], references: [id], onDelete: Restrict)
+  tiers         MlmRankTier[]
+  capBands      MlmCapBand[]
+  orders        MlmOrder[]
+
+  @@index([status])
+  @@index([programTenantId])
+}
+
+/// A daily matching cap band of a version; ranks point at one by key.
+model MlmCapBand {
+  id            String @id @default(cuid())
+  planVersionId String
+  key           String
+  label         String
+  dailyCap      BigInt
+  order         Int
+
+  planVersion MlmPlanVersion @relation(fields: [planVersionId], references: [id], onDelete: Cascade)
+
+  @@unique([planVersionId, key])
+  @@unique([planVersionId, order])
+}
+
+/// One of a version's rank tiers, in ascending order of group CV; half of `groupCv` must come from each leg.
+model MlmRankTier {
+  id              String  @id @default(cuid())
+  planVersionId   String
+  order           Int
+  name            String
+  groupCv         BigInt
+  rewardKind      String // 'recognition' | 'certificate' | 'cash'
+  rewardAmount    BigInt  @default(0)
+  rewardCapAmount BigInt?
+  capBandKey      String
+  vestingDays     Int     @default(0)
+
+  planVersion MlmPlanVersion @relation(fields: [planVersionId], references: [id], onDelete: Cascade)
+
+  @@unique([planVersionId, order])
+  @@unique([planVersionId, name])
+}
+
+/// A learner of the program academy in the affiliate program (MLM-001, docs/15 §4.3). Academy-owned. The sponsor (who
+/// referred them) and the binary placement (where they sit) are separate relations; placement is written by the
+/// genealogy module (MLM-002). `code` is the referral credential on every link, unique across the platform. Never
+/// deleted (trigger); termination is final (trigger); sponsor and parent must be in the same academy (trigger).
+model Affiliate {
+  id                   String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId             String
+  userId               String    @unique
+  studentId            String    @unique
+  code                 String    @unique
+  status               String    @default("pending") // 'pending' | 'active' | 'suspended' | 'terminated'
+  sponsorId            String?
+  placementParentId    String?
+  placementLeg         String? // 'A' | 'B'
+  /// The ids of every ancestor on the placement path, root first, as JSON text: one read for "credit every ancestor".
+  pathIdsJson          String    @default("[]")
+  depth                Int       @default(0)
+  /// Where this affiliate's own referrals are placed (§6.3).
+  preferredLeg         String    @default("A")
+  /// The leg of the sponsor that the sponsor's link named (§6.3); null when it named none. Read only to place this affiliate.
+  requestedLeg         String?
+  activatedAt          DateTime?
+  /// The eligible course purchase that activated the affiliate (CV module, MLM-003).
+  activationPurchaseId String?
+  kycStatus            String    @default("none") // 'none' | 'submitted' | 'verified' | 'rejected'
+  currentRankOrder     Int       @default(0)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @default(now()) @updatedAt
+
+  tenant            Tenant                @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  user              User                  @relation(fields: [userId], references: [id], onDelete: Restrict)
+  student           Student               @relation(fields: [studentId], references: [id], onDelete: Restrict)
+  sponsor           Affiliate?            @relation("AffiliateSponsor", fields: [sponsorId], references: [id], onDelete: Restrict)
+  referrals         Affiliate[]           @relation("AffiliateSponsor")
+  placementParent   Affiliate?            @relation("AffiliatePlacement", fields: [placementParentId], references: [id], onDelete: Restrict)
+  placementChildren Affiliate[]           @relation("AffiliatePlacement")
+  placementHistory  MlmPlacementHistory[]
+  orders            MlmOrder[]
+  cvLedger          MlmCvLedger[]
+  legBalance        MlmLegBalance?
+  matchingRuns      MlmMatchingRun[]
+  rankHistory       MlmRankHistory[]
+  rewards           MlmReward[]
+  commissions       MlmCommission[]
+  wallet            MlmWallet?
+  walletEntries     MlmWalletEntry[]
+  kyc               MlmKyc?
+  withdrawals       MlmWithdrawal[]
+
+  @@unique([placementParentId, placementLeg])
+  @@index([tenantId])
+  @@index([tenantId, status])
+  @@index([sponsorId])
+  @@index([placementParentId])
+}
+
+/// Every placement and move of an affiliate (MLM-002), append-only (triggers): where they came from, where they went,
+/// by rule or by a person's hand, and why.
+model MlmPlacementHistory {
+  id           String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId     String
+  affiliateId  String
+  fromParentId String?
+  fromLeg      String?
+  toParentId   String?
+  toLeg        String?
+  reason       String // 'sponsor-direct' | 'spillover' | 'manual' | 'root'
+  actorType    String   @default("system") // 'system' | 'user'
+  actorId      String?
+  note         String?
+  createdAt    DateTime @default(now())
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+  @@index([tenantId, createdAt])
+  @@index([affiliateId])
+}
+
+/// A verified sale of an eligible course (MLM-003): what it generated in CV and where it stands. Terms fixed and a
+/// reversal final (triggers); never deleted.
+model MlmOrder {
+  id                       String    @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId                 String
+  purchaseId               String    @unique
+  buyerAffiliateId         String?
+  sponsorAffiliateIdAtSale String?
+  planVersionId            String
+  netAmount                BigInt
+  cv                       BigInt
+  currency                 String    @default("INR")
+  status                   String    @default("pending") // 'pending' | 'eligible' | 'reversed'
+  paidAt                   DateTime
+  eligibleAt               DateTime?
+  reversedAt               DateTime?
+  reversalReason           String? // 'refund' | 'chargeback' | 'manual'
+  creditedAncestors        Int       @default(0)
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @default(now()) @updatedAt
+
+  tenant         Tenant         @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  purchase       CoursePurchase @relation(fields: [purchaseId], references: [id], onDelete: Restrict)
+  buyerAffiliate Affiliate?     @relation(fields: [buyerAffiliateId], references: [id], onDelete: Restrict)
+  planVersion    MlmPlanVersion @relation(fields: [planVersionId], references: [id], onDelete: Restrict)
+  ledger         MlmCvLedger[]
+
+  @@index([tenantId])
+  @@index([tenantId, status])
+  @@index([buyerAffiliateId])
+  @@index([paidAt])
+}
+
+/// One ancestor's credit (or its reversal) for one order: the CV ledger, immutable (triggers).
+model MlmCvLedger {
+  id          String   @id @default(cuid())
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId    String
+  affiliateId String
+  leg         String // 'A' | 'B'
+  orderId     String
+  kind        String // 'sale' | 'reversal'
+  amount      BigInt
+  createdAt   DateTime @default(now())
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+  order     MlmOrder  @relation(fields: [orderId], references: [id], onDelete: Restrict)
+
+  @@unique([orderId, affiliateId, kind])
+  @@index([tenantId])
+  @@index([affiliateId, createdAt])
+}
+
+/// An affiliate's running leg pools, rebuildable from the ledger: lifetime eligible CV per leg (ranks) and what is
+/// still unmatched (carry-forward). The row is the lock for the affiliate's matching run.
+model MlmLegBalance {
+  affiliateId         String   @id
+  /// The academy this row belongs to — see lib/tenancy.ts.
+  tenantId            String
+  lifetimeA           BigInt   @default(0)
+  lifetimeB           BigInt   @default(0)
+  unmatchedA          BigInt   @default(0)
+  unmatchedB          BigInt   @default(0)
+  matchedLifetime     BigInt   @default(0)
+  lastMatchingRunDate String?
+  version             Int      @default(0)
+  updatedAt           DateTime @default(now()) @updatedAt
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+// ─── Course sales on the platform (docs/16 §2.4) ─────────────────────────
+
+/// The last order number given out in a year.
+model OrderSequence {
+  year Int @id
+  last Int @default(0)
+}
+
+model Coupon {
+  id              String    @id @default(cuid())
+  tenantId        String
+  code            String
+  description     String    @default("")
+  /// 'percent' | 'fixed'. The code, the kind and the discount are fixed by trigger.
+  kind            String
+  percentBps      Int?
+  amountOff       Int?
+  startsAt        DateTime?
+  endsAt          DateTime?
+  maxUses         Int?
+  perLearnerLimit Int       @default(1)
+  courseId        String?
+  /// 'active' | 'disabled'. Never deleted.
+  status          String    @default("active")
+  usedCount       Int       @default(0)
+  createdById     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now()) @updatedAt
+
+  tenant      Tenant             @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  course      Course?            @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  redemptions CouponRedemption[]
+
+  @@unique([tenantId, code])
+}
+
+/// One paid order's use of a coupon. Never changed or deleted.
+model CouponRedemption {
+  id             String   @id @default(cuid())
+  tenantId       String
+  couponId       String
+  purchaseId     String   @unique
+  studentId      String
+  discountAmount Int
+  createdAt      DateTime @default(now())
+
+  tenant   Tenant         @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  coupon   Coupon         @relation(fields: [couponId], references: [id], onDelete: Restrict)
+  purchase CoursePurchase @relation(fields: [purchaseId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+  @@index([couponId, studentId])
+}
+
+/// A refund of a whole order. At most one per purchase is under way or done; only a failed one leaves room for another.
+model CoursePurchaseRefund {
+  id               String    @id @default(cuid())
+  tenantId         String
+  purchaseId       String
+  amount           Int
+  reason           String
+  note             String?
+  requestedById    String?
+  provider         String
+  providerRefundId String?
+  /// 'requested' | 'pending' | 'succeeded' | 'failed'
+  status           String
+  failureMessage   String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @default(now()) @updatedAt
+  settledAt        DateTime?
+
+  tenant   Tenant         @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  purchase CoursePurchase @relation(fields: [purchaseId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, providerRefundId])
+  @@index([tenantId])
+  @@index([purchaseId])
+}
+
+/// The public website's editable document (docs/16 §2.6): one per workspace.
+model SiteContent {
+  id          String   @id @default(cuid())
+  tenantId    String   @unique
+  contentJson String
+  updatedAt   DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+}
+
+// ─── The affiliate program's earnings (docs/15 MLM-004 to MLM-007) ───
+
+/// What one member's run saw and paid on one day (IST). One per member and day; immutable (triggers).
+model MlmMatchingRun {
+  id             String   @id @default(cuid())
+  tenantId       String
+  affiliateId    String
+  runDate        String
+  planVersionId  String
+  rankOrderAtRun Int
+  capBandKey     String
+  availableA     BigInt
+  availableB     BigInt
+  matchedCv      BigInt
+  grossIncome    BigInt
+  dailyCap       BigInt
+  cappedIncome   BigInt
+  flushedCv      BigInt
+  carryAAfter    BigInt
+  carryBAfter    BigInt
+  heldByCeiling  BigInt   @default(0)
+  createdAt      DateTime @default(now())
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@unique([affiliateId, runDate])
+  @@index([tenantId, runDate])
+}
+
+/// Each rank a member reached, once. Append-only (triggers).
+model MlmRankHistory {
+  id            String   @id @default(cuid())
+  tenantId      String
+  affiliateId   String
+  tierOrder     Int
+  tierName      String
+  lifetimeA     BigInt
+  lifetimeB     BigInt
+  planVersionId String
+  achievedAt    DateTime @default(now())
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@unique([affiliateId, tierOrder])
+  @@index([tenantId, achievedAt])
+}
+
+/// A rank's reward on its way through approval, vesting, funding and payment.
+model MlmReward {
+  id            String    @id @default(cuid())
+  tenantId      String
+  affiliateId   String
+  /// A plain id, written in the same transaction as the history row (the tenancy check reads committed rows).
+  rankHistoryId String    @unique
+  tierOrder     Int
+  tierName      String
+  groupCv       BigInt
+  kind          String // 'recognition' | 'certificate' | 'cash'
+  amount        BigInt
+  capAmount     BigInt?
+  vestingDays   Int       @default(0)
+  status        String    @default("qualified") // 'qualified' | 'approved' | 'vesting' | 'funded' | 'paid' | 'rejected'
+  vestsAt       DateTime?
+  note          String?
+  needsReview   Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, status])
+  @@index([affiliateId])
+}
+
+/// Every earning or reversal. Its money never changes; only a held one moves on (triggers).
+model MlmCommission {
+  id            String    @id @default(cuid())
+  tenantId      String
+  affiliateId   String
+  kind          String // 'matching' | 'rank_reward' | 'reversal'
+  /// Signed, minor units.
+  amount        BigInt
+  status        String // 'paid_to_wallet' | 'held' | 'written_off' | 'split'
+  holdReason    String?
+  /// The month (IST) it counts against the ceiling, once settled.
+  period        String?
+  heldPeriod    String?
+  runId         String?
+  rewardId      String?
+  orderId       String?
+  planVersionId String
+  /// The hold this row was divided from.
+  splitFromId   String?
+  createdAt     DateTime  @default(now())
+  settledAt     DateTime?
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, status, createdAt])
+  @@index([tenantId, period])
+  @@index([affiliateId, createdAt])
+}
+
+/// Balances, a cache of the entries below that a nightly check compares with them.
+model MlmWallet {
+  affiliateId String   @id
+  tenantId    String
+  available   BigInt   @default(0)
+  held        BigInt   @default(0)
+  paid        BigInt   @default(0)
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+/// The wallet's source of truth. Immutable (triggers).
+model MlmWalletEntry {
+  id             String   @id @default(cuid())
+  tenantId       String
+  affiliateId    String
+  type           String
+  availableDelta BigInt   @default(0)
+  heldDelta      BigInt   @default(0)
+  paidDelta      BigInt   @default(0)
+  commissionId   String?
+  withdrawalId   String?
+  note           String?
+  createdAt      DateTime @default(now())
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+  @@index([affiliateId, createdAt])
+}
+
+/// Identity and bank details. PAN and account number are sealed (lib/credentialVault.ts) and shown masked.
+model MlmKyc {
+  affiliateId      String    @id
+  tenantId         String
+  status           String    @default("submitted") // 'submitted' | 'verified' | 'rejected'
+  legalName        String
+  sealed           String
+  sealedKeyId      String
+  panLast4         String
+  bankAccountLast4 String
+  ifsc             String
+  accountHolder    String
+  upiId            String?
+  documentIdsJson  String    @default("[]")
+  rejectionReason  String?
+  submittedAt      DateTime  @default(now())
+  reviewedAt       DateTime?
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, status])
+}
+
+/// Approved withdrawals grouped for one bank run.
+model MlmPayoutBatch {
+  id         String    @id @default(cuid())
+  tenantId   String
+  reference  String    @unique
+  count      Int
+  total      BigInt
+  createdAt  DateTime  @default(now())
+  exportedAt DateTime?
+  closedAt   DateTime?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId])
+}
+
+/// A request against the available balance. One open per member; paid is final (triggers).
+model MlmWithdrawal {
+  id               String    @id @default(cuid())
+  tenantId         String
+  affiliateId      String
+  amount           BigInt
+  tdsAmount        BigInt    @default(0)
+  netAmount        BigInt
+  status           String    @default("requested")
+  bankSnapshotJson String
+  sealed           String
+  sealedKeyId      String
+  payoutBatchId    String?
+  reference        String?
+  rejectionReason  String?
+  createdAt        DateTime  @default(now())
+  decidedAt        DateTime?
+  paidAt           DateTime?
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  affiliate Affiliate @relation(fields: [affiliateId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, status])
+  @@index([affiliateId])
+}
+
+/// What a program's jobs have finished, per workspace: the last matching day completed, the last nightly check.
+model MlmProgramState {
+  tenantId  String
+  key       String
+  value     String
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@id([tenantId, key])
+}

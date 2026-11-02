@@ -1,0 +1,4 @@
+Captured 2026-09-30T05:13:53Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /assignments/submissions/cmumqihj9007xmmos74j4712i/review admin errors/review-refused.json '{"decision":"graded","feedback":"ok"}'
+HTTP status: 409
+Tokens and e-mail addresses scrubbed.

@@ -1,0 +1,77 @@
+.region {
+  position: fixed;
+  z-index: var(--z-toast);
+  right: var(--s-5);
+  bottom: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+.mobile {
+  left: var(--s-3);
+  right: var(--s-3);
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  width: min(92vw, 380px);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-lg);
+  animation: global(om-toast) 220ms var(--ease) both;
+}
+.mobile .toast {
+  width: 100%;
+}
+.toast > svg {
+  flex: none;
+}
+.success > svg {
+  color: var(--accent-ink);
+}
+.info > svg {
+  color: var(--info-ink);
+}
+.warn > svg {
+  color: var(--warn-ink);
+}
+.error > svg {
+  color: var(--danger-ink);
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+.title {
+  display: block;
+  font-weight: 600;
+  font-size: var(--fs-ui);
+  color: var(--text);
+}
+.body {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.action {
+  align-self: center;
+  border: 0;
+  background: transparent;
+  color: var(--accent-ink);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: var(--r-xs);
+  cursor: pointer;
+}
+.action:hover {
+  background: var(--accent-soft);
+}

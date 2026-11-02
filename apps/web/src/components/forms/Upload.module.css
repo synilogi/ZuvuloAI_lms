@@ -1,0 +1,103 @@
+/* Simulated uploads: drop zone, progress and the resulting file card */
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: var(--s-6) var(--s-4);
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  text-align: center;
+  outline: none;
+  transition:
+    border-color var(--t-fast),
+    background var(--t-fast);
+}
+.drop > svg {
+  color: var(--accent);
+}
+.dropOver {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dropError {
+  border-color: var(--danger);
+}
+.dropTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+}
+.dropHint {
+  margin-bottom: 6px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.dropErrorText {
+  font-size: var(--fs-caption);
+  color: var(--danger-ink);
+}
+.uploading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+}
+.uploadingHead {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.uploadingHead > svg {
+  color: var(--accent-ink);
+}
+.uploadingName {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.uploadingText {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.fileCard {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.fileIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.fileText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.fileName {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fileMeta {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}

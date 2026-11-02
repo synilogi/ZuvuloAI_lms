@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cmudqd7tk000lmmgz0mp93je3",
+    "name": "Acharya Vinod Shastri",
+    "title": "Predictive Astrologer",
+    "yearsTeaching": 20,
+    "email": "user@example.test",
+    "bio": "Specialises in dasha timing and transit analysis for two decades of practising astrologers.",
+    "expertise": [
+      "Vimshottari Dasha",
+      "Transits",
+      "Muhurta"
+    ],
+    "status": "active",
+    "joinedAt": "2025-04-21T06:37:07.159Z",
+    "city": "Varanasi",
+    "languages": [
+      "English",
+      "Hindi"
+    ]
+  },
+  {
+    "id": "cmudqd7ti000jmmgzsa8zg84a",
+    "name": "Dr. Meenakshi Iyer",
+    "title": "Jyotish Acharya",
+    "yearsTeaching": 14,
+    "email": "user@example.test",
+    "bio": "Twenty years of chart readings and fourteen years teaching foundational Jyotish to serious students.",
+    "expertise": [
+      "Nakshatras",
+      "Chart reading",
+      "Remedial astrology"
+    ],
+    "status": "active",
+    "joinedAt": "2024-08-04T06:37:07.157Z",
+    "city": "Chennai",
+    "languages": [
+      "English",
+      "Tamil"
+    ]
+  },
+  {
+    "id": "cmudqd7tm000nmmgz6sh28hgd",
+    "name": "Pt. Sanjay Rathore",
+    "title": "KP & Divisional Charts Specialist",
+    "yearsTeaching": 11,
+    "email": "user@example.test",
+    "bio": "Trains advanced students in Krishnamurti Paddhati and divisional chart interpretation.",
+    "expertise": [
+      "KP System",
+      "Divisional charts",
+      "Horary astrology"
+    ],
+    "status": "active",
+    "joinedAt": "2026-01-26T06:37:07.161Z",
+    "city": "Jaipur",
+    "languages": [
+      "English",
+      "Hindi"
+    ]
+  }
+]

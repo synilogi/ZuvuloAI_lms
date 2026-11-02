@@ -1,0 +1,446 @@
+.page {
+  max-width: var(--container-page);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.subtle {
+  color: var(--faint);
+  font-weight: 400;
+}
+.editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: start;
+}
+.form {
+  min-width: 0;
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.messages:not(:empty) {
+  margin-bottom: var(--s-5);
+}
+.form section {
+  scroll-margin-top: 84px;
+}
+.threeUp {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  gap: var(--s-4);
+}
+.motif {
+  width: 100%;
+  border-radius: var(--r-sm);
+}
+
+/* Instructors */
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--s-2);
+  border-radius: var(--r-md);
+  outline: none;
+}
+.peopleInvalid {
+  box-shadow: 0 0 0 1px var(--danger);
+  padding: var(--s-2);
+}
+.person {
+  display: flex;
+  padding: 8px var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: border-color var(--t-fast);
+}
+.person:hover {
+  border-color: var(--border-strong);
+}
+.person:has(input:checked) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface));
+}
+.personLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+.personText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.3;
+}
+.personName {
+  font-weight: 600;
+}
+.personTitle {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+}
+.fieldError {
+  margin-top: 6px;
+  font-size: var(--fs-caption);
+  color: var(--danger-ink);
+}
+.emptyPeople {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-md);
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+  outline: none;
+}
+
+/* A labelled group that is not a single control: instructors, cover. */
+.group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.groupLabel {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.groupHint {
+  margin: 2px 0 var(--s-3);
+  font-size: var(--fs-caption);
+  color: var(--faint);
+  line-height: 1.4;
+}
+.groupBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+}
+.optionalTag {
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  color: var(--faint);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Course content */
+.contentCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-4);
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-2, var(--surface));
+}
+.contentIcon {
+  flex: none;
+  color: var(--accent);
+}
+.contentText {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.contentTitle {
+  font-weight: 600;
+}
+.contentHint {
+  margin-top: 2px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* Additional settings: one toggle, then the optional sections */
+.more {
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--border);
+}
+.moreToggle {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  width: 100%;
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--t-fast),
+    background var(--t-fast);
+}
+.moreToggle:hover {
+  border-color: var(--border-strong);
+}
+.moreToggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.moreText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.moreTitle {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.moreHint {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.moreCaret {
+  flex: none;
+  color: var(--faint);
+  transition: transform var(--t-fast);
+}
+.moreCaretOpen {
+  transform: rotate(180deg);
+}
+.morePanel {
+  margin-top: var(--s-5);
+}
+
+/* Aside */
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  min-width: 0;
+}
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+.summaryCover {
+  border-radius: var(--r-md);
+}
+.summaryText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 4px;
+}
+.summaryTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+.summarySubtitle {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.saveState {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+  font-size: var(--fs-caption);
+  color: var(--accent-ink);
+}
+.saveStateDirty {
+  color: var(--warn-ink);
+}
+.actions {
+  display: flex;
+  gap: var(--s-2);
+}
+.actions > * {
+  flex: 1;
+}
+.readiness {
+  padding: 0 4px;
+}
+.readinessHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.readinessCount {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+.readinessList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.readyItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.readyItem:hover > span:first-of-type {
+  text-decoration: underline;
+}
+.readyItem:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-xs);
+}
+.readyState {
+  margin-left: auto;
+  font-size: var(--fs-meta);
+  color: var(--faint);
+}
+.readyMet .readyState {
+  color: var(--accent-ink);
+}
+.readinessList svg {
+  flex: none;
+  color: var(--faint);
+}
+.readyMet {
+  color: var(--text);
+}
+.readinessList .readyMet svg {
+  color: var(--accent);
+}
+.readinessNote {
+  margin-top: var(--s-3);
+  font-size: var(--fs-caption);
+  color: var(--faint);
+  text-wrap: pretty;
+}
+.sectionNav {
+  display: none;
+}
+.mobileBar {
+  display: flex;
+  width: 100%;
+}
+.mobileBar .actions {
+  width: 100%;
+}
+.skeletonSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-bottom: var(--s-6);
+}
+
+@media (min-width: 1100px) {
+  .editor {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+  .aside {
+    position: sticky;
+    top: 0;
+  }
+  .sectionNav {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4px;
+    border-left: 1px solid var(--border);
+  }
+  .sectionNav a {
+    margin-left: -1px;
+    padding: 4px 0 4px 12px;
+    border-left: 2px solid transparent;
+    font-size: var(--fs-body-sm);
+    color: var(--muted);
+  }
+  .sectionNav a:hover {
+    color: var(--text);
+    border-left-color: var(--border-strong);
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .form {
+    padding: var(--s-4);
+  }
+  /* Actions move to the sticky bar; the readiness list follows the form. */
+  .summaryCard {
+    display: none;
+  }
+}
+
+/* The uploaded cover image: its preview beside Replace and Remove; stacked on narrow screens. */
+.coverImage {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: var(--s-4);
+  align-items: start;
+}
+.coverImagePreview {
+  width: 100%;
+}
+.coverImageActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+}
+.coverImageActions > :first-child:not(button) {
+  flex-basis: 100%;
+}
+@media (max-width: 640px) {
+  .coverImage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* The paid price: a short number field under the Free / Paid choice. */
+.priceField {
+  max-width: 260px;
+}

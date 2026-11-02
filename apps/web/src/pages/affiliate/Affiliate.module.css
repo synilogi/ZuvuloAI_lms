@@ -1,0 +1,167 @@
+/* The learner's affiliate workspace: referral card, status, activation — written for someone who is not technical. */
+
+.page {
+  max-width: var(--container-page);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.narrow {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-card);
+  padding: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.panelTitle {
+  margin: 0;
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  color: var(--text);
+}
+.panelHint {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.muted {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  letter-spacing: 0.12em;
+  color: var(--text);
+}
+.linkRow {
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+}
+.linkRow input {
+  flex: 1;
+  min-width: 0;
+}
+.qr {
+  width: 160px;
+  height: 160px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: #fff;
+  padding: var(--s-2);
+}
+.referralCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  align-items: flex-start;
+}
+.referralText {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--s-2);
+  margin: 0;
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+.factLabel {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--muted);
+}
+.factValue {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+.courseRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.legChoice {
+  display: flex;
+  gap: var(--s-2);
+}
+.steps {
+  margin: 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  font-size: var(--fs-body-sm);
+  color: var(--text);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+/* The leg figures (MLM-003): four tiles, the matchable one marked. */
+.panelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--s-3);
+}
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.figureAccent {
+  border-color: var(--accent);
+}
+.figureValue {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.negative {
+  color: var(--danger-ink);
+}

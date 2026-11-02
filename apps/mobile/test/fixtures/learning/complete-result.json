@@ -1,0 +1,55 @@
+{
+  "snapshot": {
+    "courseId": "cmudqd8e8001rmmgzw9ydq2ly",
+    "lessons": {
+      "cmudqd8eg001vmmgzl6ymelfw": {
+        "lessonId": "cmudqd8eg001vmmgzl6ymelfw",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-17T06:37:08.009Z"
+      },
+      "cmudqd8ej001xmmgz7y4351pu": {
+        "lessonId": "cmudqd8ej001xmmgz7y4351pu",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-19T06:37:08.011Z"
+      },
+      "cmudqd8en001zmmgzg3xageb9": {
+        "lessonId": "cmudqd8en001zmmgzg3xageb9",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-21T06:37:08.013Z"
+      },
+      "cmudqd8es0023mmgzwqae9u8i": {
+        "lessonId": "cmudqd8es0023mmgzwqae9u8i",
+        "state": "in-progress",
+        "fraction": 0.4,
+        "positionSec": 300
+      },
+      "cmudqd8eu0025mmgzos5jra6a": {
+        "lessonId": "cmudqd8eu0025mmgzos5jra6a",
+        "state": "not-started"
+      },
+      "cmudqd8ex0027mmgzs5l716tb": {
+        "lessonId": "cmudqd8ex0027mmgzs5l716tb",
+        "state": "not-started"
+      },
+      "cmudqd8ez0029mmgz7hfhtfb4": {
+        "lessonId": "cmudqd8ez0029mmgz7hfhtfb4",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-23T12:45:01.297Z"
+      }
+    },
+    "lastLessonId": "cmudqd8ez0029mmgz7hfhtfb4",
+    "lastActiveAt": "2026-09-23T12:45:01.297Z"
+  },
+  "progress": {
+    "completed": 4,
+    "total": 7,
+    "percent": 63,
+    "remainingMin": 53,
+    "state": "in-progress"
+  },
+  "courseCompleted": false
+}

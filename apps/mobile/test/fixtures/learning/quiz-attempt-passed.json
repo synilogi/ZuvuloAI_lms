@@ -1,0 +1,49 @@
+{
+  "snapshot": {
+    "courseId": "cmudqd8f4002bmmgzh5bprztq",
+    "lessons": {
+      "cmudqd8f9002fmmgzknd8eqfe": {
+        "lessonId": "cmudqd8f9002fmmgzknd8eqfe",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-15T06:37:08.099Z"
+      },
+      "cmudqd8fb002hmmgzk019y26l": {
+        "lessonId": "cmudqd8fb002hmmgzk019y26l",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-17T06:37:08.101Z"
+      },
+      "cmudqd8fe002lmmgz1ebuo0jv": {
+        "lessonId": "cmudqd8fe002lmmgz1ebuo0jv",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-19T06:37:08.103Z"
+      },
+      "cmudqd8fg002nmmgzzmk53feh": {
+        "lessonId": "cmudqd8fg002nmmgzzmk53feh",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-21T06:37:08.105Z"
+      },
+      "cmudqd8fi002pmmgzt3n0jr3z": {
+        "lessonId": "cmudqd8fi002pmmgzt3n0jr3z",
+        "state": "completed",
+        "fraction": 1,
+        "positionSec": 300,
+        "completedAt": "2026-09-23T13:32:51.351Z"
+      }
+    },
+    "lastLessonId": "cmudqd8fi002pmmgzt3n0jr3z",
+    "lastActiveAt": "2026-09-23T13:32:51.351Z"
+  },
+  "progress": {
+    "completed": 5,
+    "total": 5,
+    "percent": 100,
+    "remainingMin": 0,
+    "state": "completed"
+  },
+  "chapterCompleted": "Magha to Moola",
+  "courseCompleted": true
+}

@@ -1,0 +1,124 @@
+/* Badge: pill, 3px 9px, 11.5px/600, tone-soft background with a tone hairline, tone-ink text, 6px dot */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+  background: var(--tone-soft);
+  color: var(--tone-ink);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tone) 16%, transparent);
+}
+.withIcon {
+  padding-left: 7px;
+}
+.sm {
+  padding: 1px 7px;
+  font-size: var(--fs-label);
+}
+.sm.withIcon {
+  padding-left: 5px;
+}
+.outline {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tone) 35%, var(--border));
+}
+.solid {
+  background: var(--tone);
+  color: var(--accent-fg);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tone);
+  flex: none;
+}
+
+.accent {
+  --tone: var(--accent);
+  --tone-soft: var(--accent-soft);
+  --tone-ink: var(--accent-ink);
+}
+.info {
+  --tone: var(--info);
+  --tone-soft: var(--info-soft);
+  --tone-ink: var(--info-ink);
+}
+.warn {
+  --tone: var(--warn);
+  --tone-soft: var(--warn-soft);
+  --tone-ink: var(--warn-ink);
+}
+.danger {
+  --tone: var(--danger);
+  --tone-soft: var(--danger-soft);
+  --tone-ink: var(--danger-ink);
+}
+.neutral {
+  --tone: var(--neutral);
+  --tone-soft: var(--neutral-soft);
+  --tone-ink: var(--neutral-ink);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  padding: 1px 7px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  background: var(--tone-soft);
+  color: var(--tone-ink);
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 2px 6px;
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  box-shadow: inset 0 -1px 0 var(--border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.kbdPlain {
+  background: transparent;
+  padding: 0;
+  font-weight: 400;
+  color: var(--faint);
+}
+
+/* Icon chip: 30px, r-sm, tone-soft */
+.chip {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-md);
+  background: var(--tone-soft);
+  color: var(--tone-ink);
+}
+.chipLg {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-md);
+}
+.chipXl {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-lg);
+}

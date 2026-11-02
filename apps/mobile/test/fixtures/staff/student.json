@@ -1,0 +1,123 @@
+{
+  "student": {
+    "id": "cmumqigxx000xmmossb0hdlxp",
+    "name": "Ananya Rao",
+    "email": "user@example.test",
+    "city": "Bengaluru",
+    "joinedAt": "2026-09-09T13:51:07.844Z",
+    "lastActiveAt": "2026-09-30T07:19:56.496Z",
+    "rankId": "cmumqigp5000ammosyemfxgw2"
+  },
+  "status": "active",
+  "quietDays": 0,
+  "rank": {
+    "id": "cmumqigp5000ammosyemfxgw2",
+    "title": "Rank I · Beginner",
+    "order": 1,
+    "descriptor": "Just getting started."
+  },
+  "enrollments": [
+    {
+      "enrollment": {
+        "id": "cmumqihe50041mmosqrcpcpas",
+        "studentId": "cmumqigxx000xmmossb0hdlxp",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "enrolledAt": "2026-08-31T06:48:31.501Z",
+        "status": "active",
+        "progress": 38,
+        "source": "self",
+        "lastActiveAt": "2026-09-30T07:19:56.494Z",
+        "lastLessonId": "cmumqihbs001zmmose9rrw1rg"
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "levelTitle": "Beginner",
+      "categoryId": "cmumqigpm000dmmos3nzis7ri",
+      "instructorNames": [
+        "Dr. Meenakshi Iyer"
+      ],
+      "chapters": {
+        "done": 1,
+        "total": 2
+      },
+      "lessons": {
+        "done": 3,
+        "total": 7
+      },
+      "lastLessonTitle": "The twelve rashis"
+    },
+    {
+      "enrollment": {
+        "id": "cmumqihej004bmmos7ft870i6",
+        "studentId": "cmumqigxx000xmmossb0hdlxp",
+        "courseId": "cmumqihc7002bmmosdnc8er9m",
+        "enrolledAt": "2026-09-19T07:52:03.766Z",
+        "status": "completed",
+        "progress": 100,
+        "source": "self",
+        "lastActiveAt": "2026-09-26T02:49:31.174Z",
+        "completedAt": "2026-09-29T13:51:08.442Z"
+      },
+      "courseTitle": "The 27 Nakshatras in Depth",
+      "levelTitle": "Intermediate",
+      "categoryId": "cmumqigpm000dmmos3nzis7ri",
+      "instructorNames": [
+        "Dr. Meenakshi Iyer"
+      ],
+      "chapters": {
+        "done": 2,
+        "total": 2
+      },
+      "lessons": {
+        "done": 5,
+        "total": 5
+      },
+      "certificateTitle": "Certificate in The 27 Nakshatras in Depth"
+    },
+    {
+      "enrollment": {
+        "id": "cmumqihew004nmmosg348le8o",
+        "studentId": "cmumqigxx000xmmossb0hdlxp",
+        "courseId": "cmumqihco002rmmosr0ijyuku",
+        "enrolledAt": "2026-09-08T02:04:58.126Z",
+        "status": "active",
+        "progress": 15,
+        "source": "self",
+        "lastActiveAt": "2026-09-28T13:05:19.047Z"
+      },
+      "courseTitle": "Reading the Dasha System",
+      "levelTitle": "Intermediate",
+      "categoryId": "cmumqigpq000fmmoskhnc3409",
+      "instructorNames": [
+        "Acharya Vinod Shastri"
+      ],
+      "chapters": {
+        "done": 0,
+        "total": 2
+      },
+      "lessons": {
+        "done": 1,
+        "total": 4
+      },
+      "lastLessonTitle": "Calculating the balance at birth"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cmumqihje0081mmos9mwzxbat",
+      "courseId": "cmumqihc7002bmmosdnc8er9m",
+      "courseTitle": "Certificate in The 27 Nakshatras in Depth",
+      "title": "Certificate in The 27 Nakshatras in Depth",
+      "issuedAt": "2026-08-31T13:51:08.617Z",
+      "credentialId": "SA-JY-2026-00142"
+    }
+  ],
+  "summary": {
+    "enrolled": 3,
+    "active": 2,
+    "completed": 1,
+    "avgProgress": 51,
+    "studyMinutes": 169,
+    "submissions": 11,
+    "avgScore": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "downgrade",
+  "when": "period_end",
+  "appliesAt": "2027-09-30T13:06:26.550Z",
+  "to": {
+    "planId": "cmumqijur00kkmmoslkcygj8f",
+    "planName": "Starter",
+    "cycle": "monthly",
+    "amount": 149900
+  },
+  "currency": "INR",
+  "credit": 0,
+  "charge": 0,
+  "forfeited": 0,
+  "payable": null,
+  "needsBillingAddress": false,
+  "conflicts": [
+    {
+      "limit": "courses.max",
+      "usage": 12,
+      "newLimit": 10
+    }
+  ]
+}

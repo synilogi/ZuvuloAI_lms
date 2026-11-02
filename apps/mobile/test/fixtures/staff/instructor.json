@@ -1,0 +1,252 @@
+{
+  "instructor": {
+    "id": "cmumqigq0000lmmosg7u679j6",
+    "name": "Acharya Vinod Shastri",
+    "title": "Predictive Astrologer",
+    "yearsTeaching": 20,
+    "email": "user@example.test",
+    "bio": "Specialises in dasha timing and transit analysis for two decades of practising astrologers.",
+    "expertise": [
+      "Vimshottari Dasha",
+      "Transits",
+      "Muhurta"
+    ],
+    "status": "active",
+    "joinedAt": "2025-04-27T13:51:07.559Z",
+    "city": "Varanasi",
+    "languages": [
+      "English",
+      "Hindi"
+    ]
+  },
+  "courses": [
+    {
+      "id": "cmumqihco002rmmosr0ijyuku",
+      "title": "Reading the Dasha System",
+      "status": "published",
+      "levelTitle": "Intermediate",
+      "coverMotif": "orbits",
+      "role": "lead",
+      "coInstructors": [],
+      "enrolled": 12,
+      "activeLearners": 3,
+      "rating": 4.706556565676229,
+      "ratingCount": 149,
+      "completion": 42,
+      "lessons": 4,
+      "updatedAt": "2026-09-29T13:51:11.000Z"
+    },
+    {
+      "id": "cmumqihd50035mmos6u0fhpdn",
+      "title": "Jaimini Astrology: Chara Karakas",
+      "status": "published",
+      "levelTitle": "Advanced",
+      "coverMotif": "ecliptic",
+      "role": "lead",
+      "coInstructors": [],
+      "enrolled": 11,
+      "activeLearners": 2,
+      "rating": 4.600602356565785,
+      "ratingCount": 284,
+      "completion": 27,
+      "lessons": 2,
+      "updatedAt": "2026-09-30T11:42:24.087Z"
+    }
+  ],
+  "reach": {
+    "students": 23,
+    "active": 15,
+    "completed": 8,
+    "newThisMonth": 7,
+    "cities": [
+      {
+        "city": "Surat",
+        "count": 5
+      },
+      {
+        "city": "Coimbatore",
+        "count": 4
+      },
+      {
+        "city": "Bhopal",
+        "count": 3
+      },
+      {
+        "city": "Delhi",
+        "count": 3
+      },
+      {
+        "city": "Bengaluru",
+        "count": 1
+      }
+    ]
+  },
+  "performance": {
+    "rating": 4.6,
+    "ratingCount": 433,
+    "academyRating": 4.7,
+    "completion": 35,
+    "academyCompletion": 42,
+    "reviewHoursMedian": 62,
+    "reviewsOnTime": 33,
+    "reviewed": 3,
+    "toReview": 0,
+    "liveDelivered": 3,
+    "liveUpcoming": 1,
+    "attendance": 100,
+    "enrollmentsByMonth": [
+      {
+        "label": "Feb",
+        "detail": "Feb 2026",
+        "value": 2
+      },
+      {
+        "label": "Mar",
+        "detail": "Mar 2026",
+        "value": 2
+      },
+      {
+        "label": "Apr",
+        "detail": "Apr 2026",
+        "value": 1
+      },
+      {
+        "label": "May",
+        "detail": "May 2026",
+        "value": 1
+      },
+      {
+        "label": "Jun",
+        "detail": "Jun 2026",
+        "value": 2
+      },
+      {
+        "label": "Jul",
+        "detail": "Jul 2026",
+        "value": 2
+      },
+      {
+        "label": "Aug",
+        "detail": "Aug 2026",
+        "value": 4
+      },
+      {
+        "label": "Sept",
+        "detail": "Sept so far",
+        "value": 7
+      }
+    ]
+  },
+  "activity": [
+    {
+      "id": "upd-cmumqihd50035mmos6u0fhpdn",
+      "kind": "course-updated",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "updated Jaimini Astrology: Chara Karakas",
+      "context": "1 chapter",
+      "courseId": "cmumqihd50035mmos6u0fhpdn",
+      "at": "2026-09-30T11:42:24.087Z",
+      "to": "/admin/courses/cmumqihd50035mmos6u0fhpdn/curriculum"
+    },
+    {
+      "id": "upd-cmumqihco002rmmosr0ijyuku",
+      "kind": "course-updated",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "updated Reading the Dasha System",
+      "context": "2 chapters",
+      "courseId": "cmumqihco002rmmosr0ijyuku",
+      "at": "2026-09-29T13:51:11.000Z",
+      "to": "/admin/courses/cmumqihco002rmmosr0ijyuku/curriculum"
+    },
+    {
+      "id": "live-cmuo1l0j802i1mmt9ssvas7q8",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — cancelled by the app",
+      "courseId": "cmumqihd50035mmos6u0fhpdn",
+      "at": "2026-09-28T11:48:48.032Z",
+      "to": "/admin/live/cmuo1l0j802i1mmt9ssvas7q8"
+    },
+    {
+      "id": "live-cmunzanuu025nmmt9k0401mnc",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — cancelled by the app",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-28T10:44:45.349Z",
+      "to": "/admin/live/cmunzanuu025nmmt9k0401mnc"
+    },
+    {
+      "id": "live-cmunx4o9701sdmmt9tv1d2p7b",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — cancelled by the app",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-28T09:44:06.692Z",
+      "to": "/admin/live/cmunx4o9701sdmmt9tv1d2p7b"
+    },
+    {
+      "id": "live-cmunwt6k901ohmmt9hgwa5h02",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — cancelled by the app",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-28T09:35:10.537Z",
+      "to": "/admin/live/cmunwt6k901ohmmt9hgwa5h02"
+    },
+    {
+      "id": "live-cmunwqvvo01klmmt9nsx0kp8n",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — cancelled by the app",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-28T09:33:23.367Z",
+      "to": "/admin/live/cmunwqvvo01klmmt9nsx0kp8n"
+    },
+    {
+      "id": "live-cmuo1kg8l02grmmt9avfho78a",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — a learner is told",
+      "courseId": "cmumqihd50035mmos6u0fhpdn",
+      "at": "2026-09-27T11:48:21.097Z",
+      "to": "/admin/live/cmuo1kg8l02grmmt9avfho78a"
+    },
+    {
+      "id": "live-cmunzamw3023pmmt9mmtoe6u4",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — a learner is told",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-27T10:44:44.091Z",
+      "to": "/admin/live/cmunzamw3023pmmt9mmtoe6u4"
+    },
+    {
+      "id": "live-cmunx4na001qfmmt9vegb29c7",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — a learner is told",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-27T09:44:05.419Z",
+      "to": "/admin/live/cmunx4na001qfmmt9vegb29c7"
+    },
+    {
+      "id": "live-cmunwt5mk01mjmmt9x73ypu7f",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — a learner is told",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-27T09:35:09.325Z",
+      "to": "/admin/live/cmunwt5mk01mjmmt9x73ypu7f"
+    },
+    {
+      "id": "live-cmunwquyk01inmmt964j3p8ct",
+      "kind": "live-scheduled",
+      "actor": "Acharya Vinod Shastri",
+      "summary": "cancelled Fixture class — a learner is told",
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "at": "2026-09-27T09:33:22.191Z",
+      "to": "/admin/live/cmunwquyk01inmmt964j3p8ct"
+    }
+  ]
+}

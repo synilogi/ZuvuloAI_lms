@@ -1,0 +1,4 @@
+Captured 2026-09-30T05:13:36Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /assignments/review instructor staff/review-queue-instructor.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

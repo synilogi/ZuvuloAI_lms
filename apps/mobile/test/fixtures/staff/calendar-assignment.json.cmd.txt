@@ -1,0 +1,4 @@
+Captured 2026-09-30T10:16:18Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /calendar/assignment-cmuny9t09023bmmt9bqtkbn2k admin staff/calendar-assignment.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

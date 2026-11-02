@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "id": "cmumijxw7000hmmy7f6zqwvpy",
+      "recipientId": "cmumibp5m000vmmqd8ndw7y0w",
+      "category": "certificate",
+      "title": "Your certificate for Krishnamurti Paddhati (KP) Fundamentals is ready to claim",
+      "summary": "You finished the course. Claim the certificate to add it to your wallet.",
+      "body": [
+        "You finished the course. Claim the certificate to add it to your wallet."
+      ],
+      "createdAt": "2026-09-29T10:08:19.543Z",
+      "important": true,
+      "facts": [
+        {
+          "label": "Credential",
+          "value": "SA-KP-2026-00004"
+        },
+        {
+          "label": "Hours",
+          "value": "0.5"
+        }
+      ],
+      "action": {
+        "label": "Claim certificate",
+        "to": "/certificates/cmumijxw1000fmmy7hlh504oa"
+      }
+    },
+    {
+      "id": "cmumijxrj0007mmy7isfakcfc",
+      "recipientId": "cmumibp5m000vmmqd8ndw7y0w",
+      "category": "enrollment",
+      "title": "You're enrolled in Krishnamurti Paddhati (KP) Fundamentals",
+      "summary": "Your place is confirmed — 2 lessons are waiting. Start with lesson 1.1 whenever you are ready.",
+      "body": [
+        "Your place is confirmed — 2 lessons are waiting. Start with lesson 1.1 whenever you are ready."
+      ],
+      "createdAt": "2026-09-29T10:08:19.376Z",
+      "facts": [
+        {
+          "label": "Course",
+          "value": "Krishnamurti Paddhati (KP) Fundamentals"
+        },
+        {
+          "label": "Instructors",
+          "value": "Pt. Sanjay Rathore"
+        }
+      ],
+      "action": {
+        "label": "Start the course",
+        "to": "/learn/cmumibpn7003dmmqd9orov440"
+      }
+    },
+    {
+      "id": "cmumijxoj0001mmy7rf7n8arn",
+      "recipientId": "cmumibp5m000vmmqd8ndw7y0w",
+      "category": "assignment",
+      "title": "“Your first assignment: reading a friend’s chart” has been graded",
+      "summary": "You scored 84 / 100 — passed.",
+      "body": [
+        "A clear reading of the ascendant. Say more about the nakshatra next time."
+      ],
+      "createdAt": "2026-09-29T10:08:19.267Z",
+      "actor": "Dr. Meenakshi Iyer",
+      "facts": [
+        {
+          "label": "Score",
+          "value": "84 / 100"
+        },
+        {
+          "label": "Pass mark",
+          "value": "60"
+        },
+        {
+          "label": "Course",
+          "value": "Foundations of Vedic Astrology"
+        }
+      ],
+      "action": {
+        "label": "Read the feedback",
+        "to": "/assignments/cmumibpuy007tmmqd2qxmak5j"
+      }
+    },
+    {
+      "id": "cmumibsn600kjmmqdwjke70je",
+      "recipientId": "cmumibp5m000vmmqd8ndw7y0w",
+      "category": "course",
+      "title": "Continue Foundations of Vedic Astrology",
+      "summary": "You’re 38% through — pick up where you left off.",
+      "body": [
+        "Lesson 3.5, Home and mother: the fourth house, is next."
+      ],
+      "createdAt": "2026-09-29T10:01:59.490Z"
+    },
+    {
+      "id": "cmumibsn300khmmqdvsq96aii",
+      "recipientId": "cmumibp5m000vmmqd8ndw7y0w",
+      "category": "live",
+      "title": "Live class in 2 days",
+      "summary": "Reading dignities in real charts starts soon.",
+      "body": [
+        "Join Dr. Meenakshi Iyer for a live walkthrough of planetary dignity."
+      ],
+      "createdAt": "2026-09-29T10:01:59.488Z",
+      "important": true
+    }
+  ],
+  "total": 5,
+  "unread": 5,
+  "counts": {
+    "course": 1,
+    "assignment": 1,
+    "quiz": 0,
+    "live": 1,
+    "certificate": 1,
+    "enrollment": 1,
+    "system": 0
+  }
+}

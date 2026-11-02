@@ -1,0 +1,19 @@
+{
+  "subscription": {
+    "id": "cmuqtrial00001mmosab12cd3",
+    "tenantId": "tenant-1",
+    "planId": "cmumqijur00kkmmoslkcygj8f",
+    "planVersionId": "ver_starter_1",
+    "status": "trialing",
+    "billingCycle": "monthly",
+    "currency": "INR",
+    "amount": 149900,
+    "currentPeriodStartAt": "2026-10-03T09:30:00.000Z",
+    "currentPeriodEndAt": "2026-10-17T09:30:00.000Z",
+    "cancelAtPeriodEnd": false,
+    "createdAt": "2026-10-03T09:30:00.012Z",
+    "updatedAt": "2026-10-03T09:30:00.012Z",
+    "trialStartAt": "2026-10-03T09:30:00.000Z",
+    "trialEndAt": "2026-10-17T09:30:00.000Z"
+  }
+}

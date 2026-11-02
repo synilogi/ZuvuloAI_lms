@@ -1,0 +1,33 @@
+{
+  "assignment": {
+    "id": "cmum8kcfr007vmmzwwd5td1b4",
+    "courseId": "cmum8kc94002rmmzwf4g28hlf",
+    "chapterId": "cmum8kc9c002zmmzwhwjn975h",
+    "lessonId": "cmum8kc9g0033mmzwqhepmh8t",
+    "title": "Timing exercise",
+    "instructions": "For the sample chart, calculate the current mahadasha and antardasha as of today, and write two paragraphs on what themes are active.",
+    "attachments": [],
+    "format": "text",
+    "due": {
+      "kind": "relative",
+      "days": 10
+    },
+    "acceptsLate": true,
+    "latePenalty": 10,
+    "rubric": [],
+    "maxScore": 100,
+    "passMark": 60,
+    "status": "published",
+    "createdAt": "2026-09-29T05:28:42.231Z",
+    "updatedAt": "2026-09-29T05:28:42.231Z"
+  },
+  "courseTitle": "Reading the Dasha System",
+  "chapterTitle": "Reading Antardashas",
+  "lessonId": "cmum8kc9g0033mmzwqhepmh8t",
+  "state": "overdue",
+  "dueAt": "2026-09-26T19:18:10.538Z",
+  "draft": {
+    "text": "Mahadasha of Jupiter from 2019, antardasha of Saturn now.",
+    "files": []
+  }
+}

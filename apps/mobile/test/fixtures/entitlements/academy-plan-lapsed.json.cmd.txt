@@ -1,0 +1,8 @@
+Constructed 2026-10-03 (constructed-from-source: the local contract server was not running, so this is NOT a capture).
+State: the Growth plan has ended (`expired`): restricted, nothing served, its features kept in
+`lastFeatures` (read-only). One feature key this build does not know is included on purpose.
+Shape: apps/api/src/routes/academyPlan.ts (body built from getTenantEntitlements + currentSubscription;
+`trialEndsAt` only while trialing, `renewsAt` only for a live non-trial subscription) and the
+`AcademyPlan` interface in packages/domain/src/entitlement.ts; values follow
+apps/api/src/routes/onboarding.test.ts.
+Replace with: tool/capture_fixture.sh GET /academy/plan admin entitlements/academy-plan-lapsed.json when the server is up.

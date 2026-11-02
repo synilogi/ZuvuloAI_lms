@@ -1,0 +1,35 @@
+{
+  "message": "This course is not ready to publish.",
+  "issues": [
+    {
+      "id": "identity",
+      "label": "Title and subtitle",
+      "met": false
+    },
+    {
+      "id": "description",
+      "label": "Course description",
+      "met": false
+    },
+    {
+      "id": "instructor",
+      "label": "At least one instructor",
+      "met": false
+    },
+    {
+      "id": "outcomes",
+      "label": "Three or more learning outcomes",
+      "met": false
+    },
+    {
+      "id": "curriculum",
+      "label": "A published chapter with lessons",
+      "met": false
+    },
+    {
+      "id": "lessons",
+      "label": "Five or more lessons",
+      "met": false
+    }
+  ]
+}

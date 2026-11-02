@@ -1,0 +1,4 @@
+Captured 2026-09-23T08:34:30Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /live admin errors/live-create-refused.json '{"title":"Class","courseId":"c","startsAt":"2026-10-01T10:00:00.000Z","durationMin":60,"meeting":{"kind":"external","link":"https://meet.example/x"}}'
+HTTP status: 402
+Tokens and e-mail addresses scrubbed.

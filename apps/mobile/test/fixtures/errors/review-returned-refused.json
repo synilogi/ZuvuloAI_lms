@@ -1,0 +1,9 @@
+{
+  "message": "Check the review before submitting it.",
+  "issues": [
+    {
+      "field": "feedback",
+      "message": "Explain what to change — at least a sentence — so the learner can resubmit."
+    }
+  ]
+}

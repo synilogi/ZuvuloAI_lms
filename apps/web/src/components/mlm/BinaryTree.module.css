@@ -1,0 +1,145 @@
+/* A binary genealogy drawn as nested columns: each node above its two positions, connected by thin rules. */
+
+.scroller {
+  overflow-x: auto;
+  padding: var(--s-3) var(--s-2);
+}
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+}
+.card {
+  position: relative;
+  width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-card);
+  padding: var(--s-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.me {
+  border-color: var(--accent);
+  box-shadow: var(--sh-ring);
+}
+.legTag {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  color: var(--accent-ink);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 0 var(--s-2);
+}
+.cardHead {
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+  min-width: 0;
+}
+.avatar {
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+.cardText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.name {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.name:hover {
+  text-decoration: underline;
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  color: var(--muted);
+}
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+  align-items: center;
+}
+.cardExtra {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.faint {
+  font-size: var(--fs-meta);
+  color: var(--faint);
+}
+.legs {
+  display: flex;
+  gap: var(--s-3);
+  padding-top: var(--s-4);
+  position: relative;
+}
+.legs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: var(--s-4);
+  background: var(--border-strong);
+}
+.leg {
+  position: relative;
+  padding-top: var(--s-3);
+}
+.leg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: var(--s-3);
+  background: var(--border-strong);
+}
+.leg:first-child::after,
+.leg:last-child::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: var(--border-strong);
+  width: 50%;
+}
+.leg:first-child::after {
+  left: 50%;
+}
+.leg:last-child::after {
+  right: 50%;
+}
+.empty {
+  position: relative;
+  width: 180px;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+  padding: var(--s-3);
+  text-align: center;
+  color: var(--faint);
+  font-size: var(--fs-caption);
+}

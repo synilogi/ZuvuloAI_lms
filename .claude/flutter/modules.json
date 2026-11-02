@@ -1,0 +1,451 @@
+{
+ "project": "SyniastroLMS Flutter Application",
+ "scope": "FLUTTER_MOBILE",
+ "spec": "modules.md",
+ "workflow": "workflow.md",
+ "appPath": "apps/mobile",
+ "backend": "apps/api (read-only source of truth)",
+ "notes": "New Flutter client for the existing SyniastroLMS backend. Separate from .claude/modules.json (UI_ONLY), .claude/saas/modules.json (FULL_STACK) and the abandoned React workflow. Never edits apps/api, apps/web, packages or the database. Every module id starts with FLUTTER-. Select the lowest-priority pending module whose dependencies are all completed; a blocked module stops only the modules that depend on it.",
+ "git": {
+  "commitCheckpoints": true,
+  "stagePaths": [
+   "apps/mobile",
+   ".claude/flutter"
+  ]
+ },
+ "verification": [
+  "dart format --output=none --set-exit-if-changed lib test integration_test",
+  "flutter analyze --fatal-infos --fatal-warnings",
+  "flutter test --coverage",
+  "flutter build apk --debug (dev flavor)",
+  "flutter test integration_test (modules that require it)"
+ ],
+ "modules": [
+  {
+   "id": "FLUTTER-000",
+   "name": "Workspace Bootstrap & Tooling",
+   "description": "Create apps/mobile (Flutter stable, Android first, iOS-ready), package id, dev/staging/prod flavors with dart-define-from-file configs, analysis_options, the approved baseline dependencies, test/integration_test scaffolding, verification scripts, and prove the root npm checks are unaffected.",
+   "dependencies": [],
+   "priority": 0,
+   "status": "completed",
+   "completedAt": "2026-09-22",
+   "spec": "modules.md#flutter-000"
+  },
+  {
+   "id": "FLUTTER-001",
+   "name": "Design System & Theme",
+   "description": "The Celestial Ink design system in Flutter: color/typography/spacing/radius/elevation/motion tokens, light and dark themes, bundled Fraunces and Plus Jakarta Sans, Phosphor icons, and the shared component library (buttons, inputs, cards, lists, badges, dialogs, sheets, snackbars, skeletons, and every state view), with a hidden in-app component gallery for review.",
+   "dependencies": [
+    "FLUTTER-000"
+   ],
+   "priority": 1,
+   "status": "completed",
+   "completedAt": "2026-09-22",
+   "spec": "modules.md#flutter-001"
+  },
+  {
+   "id": "FLUTTER-002",
+   "name": "Core Infrastructure",
+   "description": "Environment config, redacting logger, AppFailure/Result types, connectivity monitor, crash-reporter abstraction (no-op until a vendor is chosen), IST/INR/minor-unit formatting, localization scaffold (gen-l10n, English), and the preferences store for non-sensitive settings.",
+   "dependencies": [
+    "FLUTTER-000"
+   ],
+   "priority": 2,
+   "status": "completed",
+   "completedAt": "2026-09-22",
+   "spec": "modules.md#flutter-002"
+  },
+  {
+   "id": "FLUTTER-003",
+   "name": "API Client & Contract Layer",
+   "description": "One Dio-based ApiClient with base-URL handling (/api in production), bearer injection, timeouts, cancellation, retry for idempotent reads, typed error decoding of {message, issues, code} into AppFailure (401/402/403/404/409/413/429/5xx and the stable codes), multipart upload with progress, the local contract server procedure and fixture capture tooling.",
+   "dependencies": [
+    "FLUTTER-002"
+   ],
+   "priority": 3,
+   "status": "completed",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-003"
+  },
+  {
+   "id": "FLUTTER-004",
+   "name": "Secure Session & Authentication",
+   "description": "Sign in, learner registration, forgot password, reset password (token entry and app link), session restore via GET /auth/me, token in secure storage, expiry/401 handling, deactivated/suspended/inactive-instructor refusals, client-side sign-out with full local cleanup, and the Super Admin refusal.",
+   "dependencies": [
+    "FLUTTER-001",
+    "FLUTTER-003"
+   ],
+   "priority": 4,
+   "status": "completed",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-004"
+  },
+  {
+   "id": "FLUTTER-005",
+   "name": "App Shell, Routing & Role Navigation",
+   "description": "go_router with a session-driven redirect, role-specific shells (learner, instructor, academy admin) with bottom navigation and adaptive rail on tablets, splash, not-found, the deep-link route table, and mapping of backend web paths (dashboard 'to' links) to app routes.",
+   "dependencies": [
+    "FLUTTER-004"
+   ],
+   "priority": 5,
+   "status": "completed",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-005"
+  },
+  {
+   "id": "FLUTTER-006",
+   "name": "Authorization, Permissions & Entitlement States",
+   "description": "Permission gating from the user's live permission keys, the refusal-to-state mapping for PERMISSION_DENIED, FEATURE_NOT_INCLUDED, LIMIT_REACHED, SUBSCRIPTION_REQUIRED, SUBSCRIPTION_EXPIRED and 402, academy-wide restricted banners for admins, and the permission-denied / feature-unavailable / subscription-restricted views. UX only; the backend decides.",
+   "dependencies": [
+    "FLUTTER-005"
+   ],
+   "priority": 6,
+   "status": "completed",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-006"
+  },
+  {
+   "id": "FLUTTER-007",
+   "name": "Media Foundation",
+   "description": "Authenticated media: bearer-header image loading and per-session cache, video playback with range requests and position reporting hooks, in-app PDF viewing, file picking with client-side type/size pre-validation matching the server allow-list, multipart upload with progress and cancel, and cache purge on sign-out.",
+   "dependencies": [
+    "FLUTTER-003",
+    "FLUTTER-001"
+   ],
+   "priority": 7,
+   "status": "completed",
+   "startedAt": "2026-09-23",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-007"
+  },
+  {
+   "id": "FLUTTER-008",
+   "name": "Public Experience",
+   "description": "What a visitor sees before signing in: welcome, public course catalog with level/category filters, public course detail with free-preview lessons, certificate verification by credential id, the help centre, and privacy/terms links.",
+   "dependencies": [
+    "FLUTTER-005",
+    "FLUTTER-007"
+   ],
+   "priority": 8,
+   "status": "completed",
+   "startedAt": "2026-09-23",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-008"
+  },
+  {
+   "id": "FLUTTER-009",
+   "name": "Learner Home & My Learning",
+   "description": "The learner home (continue learning, enrolled courses with progress, recent lessons, upcoming live/assignments/quizzes, study week) and My Learning (in progress, completed, saved) from /learning/home and /learning/courses.",
+   "dependencies": [
+    "FLUTTER-006",
+    "FLUTTER-007"
+   ],
+   "priority": 9,
+   "status": "completed",
+   "startedAt": "2026-09-23",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-009"
+  },
+  {
+   "id": "FLUTTER-010",
+   "name": "Explore & Enrollment",
+   "description": "Learner course discovery inside the academy, course learning overview (curriculum, outcomes, instructors, price display), save/unsave, and self-enrollment with the server's enrolment-policy refusals.",
+   "dependencies": [
+    "FLUTTER-009"
+   ],
+   "priority": 10,
+   "status": "completed",
+   "startedAt": "2026-09-23",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-010"
+  },
+  {
+   "id": "FLUTTER-011",
+   "name": "Course Learning & Lesson Player",
+   "description": "Course learning view with collapsible curriculum and server-computed lock states; the lesson player for video, reading, document, practice and live lessons; position reporting, mark complete with the server's completion rules, previous/next, notes, bookmarks, chapter/course completion moments.",
+   "dependencies": [
+    "FLUTTER-010"
+   ],
+   "priority": 11,
+   "status": "completed",
+   "startedAt": "2026-09-23",
+   "completedAt": "2026-09-23",
+   "spec": "modules.md#flutter-011"
+  },
+  {
+   "id": "FLUTTER-012",
+   "name": "Learner Quizzes & Assessments",
+   "description": "The assessments list and the in-lesson quiz taker (single, multiple, true/false, short answer), local timer display only, answers sent to the server for scoring, pass/fail/attempts/retake-wait states from the server, results view.",
+   "dependencies": [
+    "FLUTTER-011"
+   ],
+   "priority": 12,
+   "status": "completed",
+   "startedAt": "2026-09-23",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-012"
+  },
+  {
+   "id": "FLUTTER-013",
+   "name": "Learner Assignments",
+   "description": "Assignment list and detail, persisted drafts (text, files, birth-chart details), file attachments through the media upload, submit with late/closed/deadline refusals, graded review with rubric scores and feedback, resubmission when returned.",
+   "dependencies": [
+    "FLUTTER-011"
+   ],
+   "priority": 13,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-013"
+  },
+  {
+   "id": "FLUTTER-014",
+   "name": "Learner Certificates & Ranks",
+   "description": "Certificate wallet (issued, pending, working towards), certificate detail with a branded, landscape-safe preview rendered from template data, claim a pending certificate, share the public verification link, and the rank ladder.",
+   "dependencies": [
+    "FLUTTER-009"
+   ],
+   "priority": 14,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-014"
+  },
+  {
+   "id": "FLUTTER-015",
+   "name": "Learner Live Classes",
+   "description": "Learner live-class schedule and detail with phase-driven states (upcoming, starting soon, live, ended, cancelled), registration, and joining through the meeting link the server provides.",
+   "dependencies": [
+    "FLUTTER-009"
+   ],
+   "priority": 15,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-015"
+  },
+  {
+   "id": "FLUTTER-016",
+   "name": "Notifications Centre & Preferences",
+   "description": "In-app notification centre for every role (unread/read, categories, mark read, mark all read, remove), notification detail with its deep link, unread badge refreshed on resume and on an interval, and per-category channel preferences with the server's locked categories.",
+   "dependencies": [
+    "FLUTTER-006"
+   ],
+   "priority": 16,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-016"
+  },
+  {
+   "id": "FLUTTER-017",
+   "name": "Profile, Account & App Settings",
+   "description": "Profile view from /auth/me, app settings (theme, text size preview, reduced motion), help centre entry for signed-in roles, about/version/legal, sign out. Profile editing and password change are recorded as Backend capability required.",
+   "dependencies": [
+    "FLUTTER-006"
+   ],
+   "priority": 17,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-017"
+  },
+  {
+   "id": "FLUTTER-018",
+   "name": "Staff Dashboard",
+   "description": "Instructor and academy-admin dashboard from GET /dashboard: headline KPIs with previous-period change, needs-attention items, upcoming live classes, engagement, recent activity and course performance, stacked mobile-first in priority order.",
+   "dependencies": [
+    "FLUTTER-006"
+   ],
+   "priority": 18,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-29",
+   "spec": "modules.md#flutter-018"
+  },
+  {
+   "id": "FLUTTER-019",
+   "name": "Staff Courses & Curriculum",
+   "description": "Staff course list (search, filters, status tabs, paging), course detail with stats, read-only curriculum (chapters and lessons with status), and the consequential lifecycle actions publish, unpublish, archive and restore with confirmation and the server's checklist refusals. Full course/lesson authoring stays on the web unless clarified.",
+   "dependencies": [
+    "FLUTTER-018"
+   ],
+   "priority": 19,
+   "status": "completed",
+   "startedAt": "2026-09-29",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-019"
+  },
+  {
+   "id": "FLUTTER-020",
+   "name": "Staff Assignment Review & Grading",
+   "description": "Review queue and submissions list, submission detail with the learner's text, files and chart, rubric scoring, feedback, grade/return actions validated by the server, and remind-missing.",
+   "dependencies": [
+    "FLUTTER-019",
+    "FLUTTER-007"
+   ],
+   "priority": 20,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-020"
+  },
+  {
+   "id": "FLUTTER-021",
+   "name": "Staff Quizzes Overview",
+   "description": "Quiz list with course/chapter context and quiz detail with attempt statistics and results. Quiz building stays on the web unless clarified.",
+   "dependencies": [
+    "FLUTTER-019"
+   ],
+   "priority": 21,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-021"
+  },
+  {
+   "id": "FLUTTER-022",
+   "name": "Staff Students",
+   "description": "Student roster within the caller's scope (search, course/status filters, sort), student profile with enrollments, progress and activity, enroll into a course, pause/remove an enrollment, message learners, and admin-only suspend/restore \u2014 each behind its permission key.",
+   "dependencies": [
+    "FLUTTER-018"
+   ],
+   "priority": 22,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-022"
+  },
+  {
+   "id": "FLUTTER-023",
+   "name": "Staff Live Classes",
+   "description": "Staff live-class list and detail, schedule and edit a class, start/join through the meeting link, send a reminder, and cancel \u2014 with the server's edit/cancel refusals and the live_classes entitlement.",
+   "dependencies": [
+    "FLUTTER-019"
+   ],
+   "priority": 23,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-023"
+  },
+  {
+   "id": "FLUTTER-024",
+   "name": "Staff Calendar",
+   "description": "Agenda-first calendar for staff (list by day, week strip, month overview on tablets), event detail for live classes, deadlines, quizzes, milestones and own reminders, and create/edit/delete of the events the caller owns.",
+   "dependencies": [
+    "FLUTTER-023"
+   ],
+   "priority": 24,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-024"
+  },
+  {
+   "id": "FLUTTER-025",
+   "name": "Admin Instructors & Certificates",
+   "description": "Academy-admin instructor directory and profile (courses, performance), invite/resend and status changes; certificate register with issue, revoke and restore. Template design stays on the web.",
+   "dependencies": [
+    "FLUTTER-022"
+   ],
+   "priority": 25,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-025"
+  },
+  {
+   "id": "FLUTTER-026",
+   "name": "Admin Reports",
+   "description": "Read-only mobile report summaries: overview KPIs and trend, course performance, learner segments, instructor performance and enrolment cohorts, with period/course/category filters and readable charts; tables become ranked summaries on phones.",
+   "dependencies": [
+    "FLUTTER-018"
+   ],
+   "priority": 26,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-026"
+  },
+  {
+   "id": "FLUTTER-027",
+   "name": "Academy Billing & Provider-Agnostic Checkout",
+   "description": "Academy-admin subscription view from GET /tenant/billing (plan, status, renewal, usage against limits, features, invoices, payments, plans on sale), and a provider-agnostic checkout launcher driven entirely by the backend's CheckoutStart response, with confirm and post-payment re-read. Whether checkout runs in-app or hands off to the web is gated by a store-policy clarification.",
+   "dependencies": [
+    "FLUTTER-006",
+    "FLUTTER-016"
+   ],
+   "priority": 27,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "spec": "modules.md#flutter-027"
+  },
+  {
+   "id": "FLUTTER-028",
+   "name": "Push Notifications & Deep Links",
+   "description": "Verified Android App Links for the academy domain (reset password, verify certificate, course, notification targets), and push notifications (FCM) with payload validation and routing. Push needs a device-registration endpoint the backend does not have: Backend capability required.",
+   "dependencies": [
+    "FLUTTER-016",
+    "FLUTTER-005"
+   ],
+   "priority": 28,
+   "status": "blocked",
+   "startedAt": "2026-09-30",
+   "blockedReason": "C8 \u2014 a Firebase project and its google-services.json. Part A (deep links) is complete and verified on emulator-5554: App Links intent filters, the host/id validation, the router mapping, LinkResume across the session restore, and tool/assetlinks.sh with its deployment note (B13). B4 is settled, so the app's side of POST|GET|DELETE /notifications/devices and the push payload rules are built and tested against the real routes. What needs the credential: adding firebase_core/firebase_messaging (which will not build without google-services.json), the Android 13+ permission request, and a token round-trip with a real test push. Only FLUTTER-030 depends on this module.",
+   "spec": "modules.md#flutter-028"
+  },
+  {
+   "id": "FLUTTER-029",
+   "name": "Integration & End-to-End Test Suite",
+   "description": "On-device integration tests against the local contract server for the learner, instructor and admin journeys, cross-module navigation and deep links, session expiry, offline recovery, and refusal states; golden tests for the design system in light and dark.",
+   "dependencies": [
+    "FLUTTER-012",
+    "FLUTTER-013",
+    "FLUTTER-014",
+    "FLUTTER-015",
+    "FLUTTER-017",
+    "FLUTTER-020",
+    "FLUTTER-021",
+    "FLUTTER-024",
+    "FLUTTER-025",
+    "FLUTTER-026",
+    "FLUTTER-027",
+    "FLUTTER-008"
+   ],
+   "priority": 29,
+   "status": "completed",
+   "startedAt": "2026-09-30",
+   "completedAt": "2026-09-30",
+   "note": "39 new integration tests for FLUTTER-025/026/027 and 18 accessibility checks over the ten screens they added, at 100% and 200% text. The whole device suite then passed twice consecutively on emulator-5554 (Medium_Phone_API_36): 182 tests, 0 failures, 25m32s and 25m37s, the second on a freshly seeded database. The one failure found before those two was this module's own \u2014 it had issued the seed's only pending certificate \u2014 and was fixed at the root (finding 33).",
+   "spec": "modules.md#flutter-029"
+  },
+  {
+   "id": "FLUTTER-030",
+   "name": "Final Hardening & Release",
+   "description": "Full analyze/test/integration pass, Android debug and release builds, and the authentication, authorization, tenant, entitlement, payment, API contract, navigation, deep-link, notification, security, crash-handling, performance, accessibility and device audits; production configuration and a release-readiness checklist. Store upload and signing-key creation need human approval.",
+   "dependencies": [
+    "FLUTTER-029",
+    "FLUTTER-028"
+   ],
+   "priority": 30,
+   "status": "pending",
+   "spec": "modules.md#flutter-030"
+  },
+  {
+   "id": "FLUTTER-031",
+   "name": "Multi-Admin SaaS Integration",
+   "description": "Learners join the Admin's LMS named by a join link or LMS address (POST /auth/register workspace); suspended/closed LMS handling; no person's data survives a change of session; Admin/LMS wording; live E2E with two Admins on the emulator.",
+   "dependencies": [
+    "FLUTTER-004",
+    "FLUTTER-006",
+    "FLUTTER-029"
+   ],
+   "priority": 31,
+   "status": "completed",
+   "completedAt": "2026-10-03",
+   "note": "Uncommitted (owner: do not commit). See progress.md \u203a FLUTTER-031."
+  }
+ ]
+}

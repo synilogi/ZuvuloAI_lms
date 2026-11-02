@@ -1,0 +1,134 @@
+.accent {
+  --tone: var(--accent);
+  --tone-soft: var(--accent-soft);
+  --tone-ink: var(--accent-ink);
+}
+.info {
+  --tone: var(--info);
+  --tone-soft: var(--info-soft);
+  --tone-ink: var(--info-ink);
+}
+.warn {
+  --tone: var(--warn);
+  --tone-soft: var(--warn-soft);
+  --tone-ink: var(--warn-ink);
+}
+.danger {
+  --tone: var(--danger);
+  --tone-soft: var(--danger-soft);
+  --tone-ink: var(--danger-ink);
+}
+.neutral {
+  --tone: var(--faint);
+  --tone-soft: var(--surface-2);
+  --tone-ink: var(--muted);
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  margin: 0 2px;
+  border-radius: 50%;
+  background: var(--danger);
+  animation: global(om-pulse) 1.8s var(--ease) infinite;
+}
+
+/* Inline */
+.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.35;
+}
+.inline > svg {
+  color: var(--tone-ink);
+}
+.inlineLabel {
+  font-weight: 600;
+  color: var(--tone-ink);
+  white-space: nowrap;
+}
+.neutral .inlineLabel {
+  color: var(--muted);
+}
+.inlineDetail {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inlineDetail::before {
+  content: '·';
+  margin-right: 6px;
+  color: var(--faint);
+}
+
+/* Node */
+.node {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  color: var(--tone-ink);
+  background: var(--surface);
+  transition:
+    background var(--t),
+    border-color var(--t),
+    color var(--t),
+    box-shadow var(--t);
+}
+.filled {
+  background: var(--tone);
+  color: var(--accent-fg);
+}
+.settle {
+  animation: global(om-settle) 260ms var(--ease) both;
+}
+.ring {
+  box-shadow: inset 0 0 0 1.5px var(--tone);
+}
+.dashed {
+  border: 1.5px dashed color-mix(in srgb, var(--tone) 70%, var(--surface));
+  color: var(--faint);
+  background: var(--surface);
+}
+.soft {
+  background: var(--tone-soft);
+  color: var(--tone-ink);
+}
+.pulse {
+  background: var(--tone);
+  color: var(--accent-fg);
+  animation: global(om-pulse) 1.8s var(--ease) infinite;
+}
+.pulse::after {
+  content: '';
+  width: 34%;
+  height: 34%;
+  border-radius: 50%;
+  background: var(--surface);
+}
+.partial {
+  background: var(--surface);
+}
+.partial::after {
+  content: '';
+  width: 36%;
+  height: 36%;
+  border-radius: 50%;
+  background: var(--tone);
+}
+.partialArc {
+  position: absolute;
+  inset: 0;
+}
+.partialTrack {
+  stroke: var(--track);
+}
+.partialValue {
+  stroke: var(--tone);
+  transition: stroke-dasharray var(--t-progress);
+}

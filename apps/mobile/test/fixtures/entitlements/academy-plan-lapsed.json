@@ -1,0 +1,15 @@
+{
+  "enforced": true,
+  "status": "expired",
+  "restricted": true,
+  "plan": null,
+  "features": [],
+  "lastFeatures": [
+    "courses.manage",
+    "assessments.manage",
+    "live_classes",
+    "certificates.manage",
+    "reports.basic",
+    "a_feature_from_a_later_build"
+  ]
+}

@@ -1,0 +1,166 @@
+.root {
+  container-type: inline-size;
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+}
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-3);
+}
+.title {
+  font-size: var(--fs-h4);
+  line-height: 1.3;
+}
+.lead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.okIcon {
+  color: var(--accent);
+  flex: none;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.credential {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-6);
+}
+.credential dt {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.credential dd {
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12.5px !important;
+  letter-spacing: 0.02em;
+}
+
+.criteria {
+  list-style: none;
+  display: grid;
+  gap: var(--s-3);
+}
+.criterion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.criterionHead {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--fs-body-sm);
+}
+.criterionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.criterionValue {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.of {
+  font-weight: 400;
+  color: var(--faint);
+}
+.criterionMet .criterionLabel {
+  color: var(--muted);
+}
+
+@container (min-width: 560px) {
+  .criteria {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--s-5);
+  }
+}
+
+/* Seal */
+.seal {
+  flex: none;
+}
+.sealRing,
+.sealInner {
+  fill: none;
+}
+.sealTick {
+  stroke-width: 1.2;
+}
+.sealCheck {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.seal-not-eligible .sealRing {
+  stroke: var(--border-strong);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+.seal-not-eligible .sealInner {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+.seal-not-eligible .sealTick {
+  stroke: var(--border-strong);
+}
+
+.seal-eligible .sealRing {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.seal-eligible .sealInner {
+  fill: var(--accent-soft);
+  stroke: none;
+}
+.seal-eligible .sealTick {
+  stroke: var(--accent);
+}
+.seal-eligible .sealCheck {
+  stroke: var(--accent-ink);
+}
+
+.seal-issued .sealRing {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+.seal-issued .sealInner {
+  fill: var(--accent);
+  stroke: none;
+}
+.seal-issued .sealTick {
+  stroke: var(--accent-ink);
+}
+.seal-issued .sealCheck {
+  stroke: var(--accent-fg);
+}

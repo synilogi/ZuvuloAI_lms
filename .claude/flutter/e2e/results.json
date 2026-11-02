@@ -1,0 +1,1973 @@
+{
+  "checkpoint": {
+    "finishedAt": "2026-10-05T13:25:20+05:30",
+    "module": "FLUTTER-031",
+    "run": "20261005-121714",
+    "scenario": "MA-011",
+    "state": "idle"
+  },
+  "environment": {
+    "android": "16",
+    "animations": "off (window/transition/animator scale 0)",
+    "api": "36",
+    "apiBaseUrlInApp": "http://10.0.2.2:4200",
+    "avd": "Medium_Phone_API_36",
+    "backend": "local contract server http://localhost:4201 (scratch database) behind netem relay http://localhost:4200",
+    "buildInstalledAt": "2026-10-05 11:39:28",
+    "package": "in.synilogictech.syniastrolms.mobile.dev",
+    "serial": "emulator-5554"
+  },
+  "history": {
+    "API-001": [
+      {
+        "attempts": 1,
+        "durationSec": 164.0,
+        "evidence": [
+          "20261001-120352/API-001/01-failure.png",
+          "20261001-120352/API-001/failure-logcat.txt",
+          "20261001-120352/API-001/failure-screen.txt",
+          "20261001-120352/API-001/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 60s: {'label': \"Can't reach SyniastroLMS\"}",
+        "invalidated": "the APK on emulator-5554 had been replaced at 11:59:24 by an IDE debug run of lib/main.dart; results do not describe the E2E build",
+        "lastRun": "2026-10-01T12:14:57+05:30",
+        "module": "FLUTTER-003",
+        "run": "20261001-120352",
+        "status": "FAIL",
+        "title": "Academy unreachable at launch: keep the session, offer Try again"
+      }
+    ],
+    "AUTH-001": [
+      {
+        "attempts": 1,
+        "durationSec": 39.3,
+        "evidence": [
+          "20261001-120352/AUTH-001/01-failure.png",
+          "20261001-120352/AUTH-001/failure-logcat.txt",
+          "20261001-120352/AUTH-001/failure-screen.txt",
+          "20261001-120352/AUTH-001/failure-traceback.txt"
+        ],
+        "failure": "[assertion] Welcome action 'Browse courses': {'label': 'Browse courses', 'cls': 'Button'}",
+        "invalidated": "the APK on emulator-5554 had been replaced at 11:59:24 by an IDE debug run of lib/main.dart; results do not describe the E2E build",
+        "lastRun": "2026-10-01T12:15:37+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-120352",
+        "status": "FAIL",
+        "title": "Cold launch shows Welcome, then the sign-in form"
+      }
+    ],
+    "AUTH-003": [
+      {
+        "attempts": 0,
+        "durationSec": 97.9,
+        "evidence": [
+          "20261001-113750/AUTH-003/01-invalid-email.png"
+        ],
+        "lastRun": "2026-10-01T11:41:21+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "PASS",
+        "title": "Malformed email is refused"
+      }
+    ],
+    "AUTH-004": [
+      {
+        "attempts": 0,
+        "durationSec": 94.5,
+        "evidence": [
+          "20261001-113750/AUTH-004/01-password-required.png"
+        ],
+        "lastRun": "2026-10-01T11:42:56+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "PASS",
+        "title": "Valid email with an empty password is refused"
+      }
+    ],
+    "AUTH-005": [
+      {
+        "attempts": 1,
+        "durationSec": 100.1,
+        "evidence": [
+          "20261001-113750/AUTH-005/01-email-required.png"
+        ],
+        "lastRun": "2026-10-01T11:44:37+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "PASS",
+        "title": "Empty email with a password is refused"
+      }
+    ],
+    "AUTH-007": [
+      {
+        "attempts": 0,
+        "durationSec": 127.5,
+        "evidence": [
+          "20261001-113750/AUTH-007/01-unknown-email.png"
+        ],
+        "lastRun": "2026-10-01T11:49:35+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "PASS",
+        "title": "Unknown email gets the same refusal as a wrong password"
+      }
+    ],
+    "AUTH-008": [
+      {
+        "attempts": 1,
+        "durationSec": 49.1,
+        "evidence": [
+          "20261001-113750/AUTH-008/01-failure.png",
+          "20261001-113750/AUTH-008/failure-logcat.txt",
+          "20261001-113750/AUTH-008/failure-screen.txt",
+          "20261001-113750/AUTH-008/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 15s: {'field': 'Email'}",
+        "lastRun": "2026-10-01T11:50:24+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "FAIL",
+        "title": "Network failure on sign-in, then retry once back online"
+      }
+    ],
+    "AUTH-010": [
+      {
+        "attempts": 0,
+        "durationSec": 131.2,
+        "evidence": [
+          "20261001-113750/AUTH-010/01-restored.png"
+        ],
+        "lastRun": "2026-10-01T11:53:56+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "PASS",
+        "title": "A signed-in session survives a relaunch"
+      }
+    ],
+    "AUTH-011": [
+      {
+        "attempts": 1,
+        "durationSec": 77.2,
+        "evidence": [
+          "20261001-113750/AUTH-011/01-failure.png",
+          "20261001-113750/AUTH-011/failure-logcat.txt",
+          "20261001-113750/AUTH-011/failure-screen.txt",
+          "20261001-113750/AUTH-011/failure-traceback.txt"
+        ],
+        "failure": "[assertion] typing into 'Password' left the field unfocused",
+        "lastRun": "2026-10-01T11:55:13+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "FAIL",
+        "title": "Back from the signed-in home does not return to the sign-in form"
+      }
+    ],
+    "AUTH-012": [
+      {
+        "attempts": 1,
+        "durationSec": 73.7,
+        "evidence": [
+          "20261001-113750/AUTH-012/01-failure.png",
+          "20261001-113750/AUTH-012/failure-logcat.txt",
+          "20261001-113750/AUTH-012/failure-screen.txt",
+          "20261001-113750/AUTH-012/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 30s: {'label': 'Sign in', 'cls': 'Button'}",
+        "lastRun": "2026-10-01T11:56:27+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "FAIL",
+        "title": "Sign out from Profile returns to Welcome and stays signed out"
+      }
+    ],
+    "AUTH-013": [
+      {
+        "attempts": 2,
+        "durationSec": 131.4,
+        "evidence": [
+          "20261001-113750/AUTH-013/01-failure.png",
+          "20261001-113750/AUTH-013/failure-logcat.txt",
+          "20261001-113750/AUTH-013/failure-screen.txt",
+          "20261001-113750/AUTH-013/failure-traceback.txt"
+        ],
+        "failure": "[assertion] signing in should open exactly one session, opened 0",
+        "lastRun": "2026-10-01T11:58:39+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-113750",
+        "status": "FAIL",
+        "title": "Sign out ends the session on the server too"
+      }
+    ],
+    "AUTH-015": [
+      {
+        "attempts": 0,
+        "durationSec": 69.8,
+        "evidence": [
+          "20261001-104747/AUTH-015/01-one-session.png"
+        ],
+        "lastRun": "2026-10-01T11:08:54+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "PASS",
+        "title": "Rapid repeated taps on Sign in open one session"
+      }
+    ],
+    "AUTH-016": [
+      {
+        "attempts": 0,
+        "durationSec": 96.4,
+        "evidence": [
+          "20261001-104747/AUTH-016/01-session-ended.png"
+        ],
+        "lastRun": "2026-10-01T11:10:31+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "PASS",
+        "title": "Session ended elsewhere sends the person back to sign in"
+      }
+    ],
+    "AUTH-017": [
+      {
+        "attempts": 0,
+        "durationSec": 65.8,
+        "evidence": [
+          "20261001-104747/AUTH-017/01-unsupported-role.png"
+        ],
+        "lastRun": "2026-10-01T11:11:37+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "PASS",
+        "title": "Super Admin is told the app is not for them"
+      }
+    ],
+    "AUTH-018": [
+      {
+        "attempts": 0,
+        "durationSec": 86.2,
+        "evidence": [
+          "20261001-104747/AUTH-018/01-register-empty.png",
+          "20261001-104747/AUTH-018/02-register-invalid.png"
+        ],
+        "lastRun": "2026-10-01T11:13:03+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "PASS",
+        "title": "Registration form checks its fields"
+      }
+    ],
+    "AUTH-019": [
+      {
+        "attempts": 1,
+        "durationSec": 197.4,
+        "evidence": [
+          "20261001-104747/AUTH-019/01-failure.png",
+          "20261001-104747/AUTH-019/failure-logcat.txt",
+          "20261001-104747/AUTH-019/failure-screen.txt",
+          "20261001-104747/AUTH-019/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 40s: {'regex': '^Good (morning|afternoon|evening), Qa32917d$'}",
+        "lastRun": "2026-10-01T11:16:21+05:30",
+        "module": "FLUTTER-004",
+        "notes": "created ai_e2e_20261001111303_32917d@example.test",
+        "run": "20261001-104747",
+        "status": "FAIL",
+        "title": "Register a new learner and land on their own home"
+      }
+    ],
+    "AUTH-020": [
+      {
+        "attempts": 1,
+        "durationSec": 83.9,
+        "evidence": [
+          "20261001-104747/AUTH-020/01-failure.png",
+          "20261001-104747/AUTH-020/failure-logcat.txt",
+          "20261001-104747/AUTH-020/failure-screen.txt",
+          "20261001-104747/AUTH-020/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 30s: {'regex': '^Good (morning|afternoon|evening), Qa32917d$'}",
+        "lastRun": "2026-10-01T11:17:45+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "FAIL",
+        "title": "The new account signs out and back in"
+      }
+    ],
+    "AUTH-021": [
+      {
+        "attempts": 0,
+        "durationSec": 72.2,
+        "evidence": [
+          "20261001-104747/AUTH-021/01-duplicate.png"
+        ],
+        "lastRun": "2026-10-01T11:18:57+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "PASS",
+        "title": "Registering the same email twice is refused"
+      }
+    ],
+    "AUTH-022": [
+      {
+        "attempts": 1,
+        "durationSec": 90.2,
+        "evidence": [
+          "20261001-104747/AUTH-022/01-failure.png",
+          "20261001-104747/AUTH-022/failure-logcat.txt",
+          "20261001-104747/AUTH-022/failure-screen.txt",
+          "20261001-104747/AUTH-022/failure-traceback.txt"
+        ],
+        "failure": "[assertion] no e-mail to ai_e2e_20261001111303_32917d@example.test with a link containing '/reset-password/' reached the outbox",
+        "lastRun": "2026-10-01T11:20:28+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "FAIL",
+        "title": "Forgot password: validation, then the neutral confirmation"
+      }
+    ],
+    "AUTH-023": [
+      {
+        "attempts": 1,
+        "durationSec": 18.5,
+        "evidence": [
+          "20261001-104747/AUTH-023/01-failure.png",
+          "20261001-104747/AUTH-023/failure-logcat.txt",
+          "20261001-104747/AUTH-023/failure-screen.txt",
+          "20261001-104747/AUTH-023/failure-traceback.txt"
+        ],
+        "failure": "[assertion] no e-mail to ai_e2e_20261001111303_32917d@example.test with a link containing '/reset-password/' reached the outbox",
+        "lastRun": "2026-10-01T11:20:46+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "FAIL",
+        "title": "Reset link opened in the app sets a new password"
+      }
+    ],
+    "AUTH-024": [
+      {
+        "attempts": 1,
+        "durationSec": 97.0,
+        "evidence": [
+          "20261001-104747/AUTH-024/01-suspended.png",
+          "20261001-104747/AUTH-024/02-failure.png",
+          "20261001-104747/AUTH-024/failure-logcat.txt",
+          "20261001-104747/AUTH-024/failure-screen.txt",
+          "20261001-104747/AUTH-024/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 30s: {'regex': '^Good (morning|afternoon|evening), Qa32917d$'}",
+        "lastRun": "2026-10-01T11:22:24+05:30",
+        "module": "FLUTTER-004",
+        "run": "20261001-104747",
+        "status": "FAIL",
+        "title": "A suspended learner cannot sign in"
+      }
+    ],
+    "BOOT-001": [
+      {
+        "attempts": 0,
+        "durationSec": 26.2,
+        "evidence": [
+          "20261001-120352/BOOT-001/01-app-drawer.png",
+          "20261001-120352/BOOT-001/02-welcome.png"
+        ],
+        "invalidated": "the APK on emulator-5554 had been replaced at 11:59:24 by an IDE debug run of lib/main.dart; results do not describe the E2E build",
+        "lastRun": "2026-10-01T12:04:18+05:30",
+        "module": "FLUTTER-000",
+        "run": "20261001-120352",
+        "status": "PASS",
+        "title": "Open the dev build from the launcher like a person"
+      }
+    ],
+    "CORE-001": [
+      {
+        "attempts": 1,
+        "durationSec": 154.0,
+        "evidence": [
+          "20261001-120352/CORE-001/01-failure.png",
+          "20261001-120352/CORE-001/failure-logcat.txt",
+          "20261001-120352/CORE-001/failure-screen.txt",
+          "20261001-120352/CORE-001/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 20s: {'label': \"You're offline. Showing what was loaded.\"}",
+        "invalidated": "the APK on emulator-5554 had been replaced at 11:59:24 by an IDE debug run of lib/main.dart; results do not describe the E2E build",
+        "lastRun": "2026-10-01T12:12:13+05:30",
+        "module": "FLUTTER-002",
+        "run": "20261001-120352",
+        "status": "FAIL",
+        "title": "Offline banner appears when the device loses its network and clears on return"
+      }
+    ],
+    "DS-001": [
+      {
+        "attempts": 1,
+        "durationSec": 69.7,
+        "evidence": [
+          "20261001-120352/DS-001/01-failure.png",
+          "20261001-120352/DS-001/failure-logcat.txt",
+          "20261001-120352/DS-001/failure-screen.txt",
+          "20261001-120352/DS-001/failure-traceback.txt"
+        ],
+        "failure": "[assertion] not on screen after 40s: {'label': 'Learn Vedic astrology with your academy.'}",
+        "invalidated": "the APK on emulator-5554 had been replaced at 11:59:24 by an IDE debug run of lib/main.dart; results do not describe the E2E build",
+        "lastRun": "2026-10-01T12:05:28+05:30",
+        "module": "FLUTTER-001",
+        "run": "20261001-120352",
+        "status": "FAIL",
+        "title": "The component gallery opens in the dev build and shows every group"
+      }
+    ],
+    "DS-002": [
+      {
+        "attempts": 1,
+        "durationSec": 250.1,
+        "evidence": [
+          "20261001-120352/DS-002/01-failure.png",
+          "20261001-120352/DS-002/failure-logcat.txt",
+          "20261001-120352/DS-002/failure-screen.txt",
+          "20261001-120352/DS-002/failure-traceback.txt"
+        ],
+        "failure": "[assertion] could not scroll to {'label': 'Component gallery'}",
+        "invalidated": "the APK on emulator-5554 had been replaced at 11:59:24 by an IDE debug run of lib/main.dart; results do not describe the E2E build",
+        "lastRun": "2026-10-01T12:09:39+05:30",
+        "module": "FLUTTER-001",
+        "run": "20261001-120352",
+        "status": "FAIL",
+        "title": "Confirm dialog: cancel keeps things, confirm closes"
+      }
+    ]
+  },
+  "modules": {
+    "FLUTTER-000": {
+      "blocked": 0,
+      "deferred": 1,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 1
+    },
+    "FLUTTER-001": {
+      "blocked": 0,
+      "deferred": 3,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-002": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 1
+    },
+    "FLUTTER-003": {
+      "blocked": 0,
+      "deferred": 1,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 1
+    },
+    "FLUTTER-004": {
+      "blocked": 0,
+      "deferred": 19,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 5
+    },
+    "FLUTTER-005": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 5
+    },
+    "FLUTTER-006": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 1,
+      "live": "FAIL",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-007": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-008": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 4
+    },
+    "FLUTTER-009": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-010": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-011": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-012": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-013": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-014": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-015": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-016": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-017": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-018": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-019": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-020": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-021": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-022": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-023": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-024": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 1
+    },
+    "FLUTTER-025": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-026": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-027": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 2
+    },
+    "FLUTTER-028": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 0,
+      "live": "PASS",
+      "not_run": 0,
+      "pass": 3
+    },
+    "FLUTTER-031": {
+      "blocked": 0,
+      "deferred": 0,
+      "fail": 2,
+      "live": "FAIL",
+      "not_run": 0,
+      "pass": 9
+    }
+  },
+  "scenarios": {
+    "API-001": {
+      "attempts": 0,
+      "durationSec": 244.1,
+      "evidence": [
+        "20261002-103704/API-001/01-cannot-reach.png",
+        "20261002-103704/API-001/02-recovered.png"
+      ],
+      "lastRun": "2026-10-02T10:58:16+05:30",
+      "module": "FLUTTER-003",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Academy unreachable at launch: keep the session, offer Try again"
+    },
+    "ASG-001": {
+      "attempts": 0,
+      "durationSec": 41.7,
+      "evidence": [
+        "20261002-103704/ASG-001/01-assignments.png"
+      ],
+      "lastRun": "2026-10-02T11:49:44+05:30",
+      "module": "FLUTTER-013",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Assignments lists this learner's work with its state"
+    },
+    "ASG-002": {
+      "attempts": 1,
+      "durationSec": 71.7,
+      "evidence": [
+        "20261002-103704/ASG-002/01-draft-saved.png"
+      ],
+      "fix": "TEST DEFECT: 'Draft saved now' is announced inside the field's text ('Your work / 4 words / Draft saved now'); matcher now allows it on any line.",
+      "lastRun": "2026-10-02T11:50:56+05:30",
+      "module": "FLUTTER-013",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Write a draft and save it"
+    },
+    "AUTH-001": {
+      "attempts": 1,
+      "durationSec": 61.5,
+      "evidence": [
+        "20261005-112038/AUTH-001/01-welcome.png",
+        "20261005-112038/AUTH-001/02-sign-in.png"
+      ],
+      "lastRun": "2026-10-05T11:21:40+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261005-112038",
+      "status": "PASS",
+      "title": "Cold launch shows Welcome, then the sign-in form"
+    },
+    "AUTH-002": {
+      "attempts": 0,
+      "durationSec": 80.5,
+      "evidence": [
+        "20261003-191924/AUTH-002/01-empty-validation.png"
+      ],
+      "lastRun": "2026-10-03T19:22:02+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-191924",
+      "status": "PASS",
+      "title": "Empty email and password are refused on the device"
+    },
+    "AUTH-003": {
+      "attempts": 0,
+      "durationSec": 88.4,
+      "evidence": [
+        "20261003-193948/AUTH-003/01-invalid-email.png"
+      ],
+      "lastRun": "2026-10-03T19:41:17+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Malformed email is refused"
+    },
+    "AUTH-004": {
+      "attempts": 0,
+      "durationSec": 84.0,
+      "evidence": [
+        "20261003-193948/AUTH-004/01-password-required.png"
+      ],
+      "lastRun": "2026-10-03T19:42:41+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Valid email with an empty password is refused"
+    },
+    "AUTH-005": {
+      "attempts": 0,
+      "durationSec": 86.9,
+      "evidence": [
+        "20261003-193948/AUTH-005/01-email-required.png"
+      ],
+      "lastRun": "2026-10-03T19:44:08+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Empty email with a password is refused"
+    },
+    "AUTH-006": {
+      "attempts": 1,
+      "durationSec": 118.6,
+      "evidence": [
+        "20261003-191924/AUTH-006/01-wrong-password.png"
+      ],
+      "lastRun": "2026-10-03T19:24:02+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-191924",
+      "status": "PASS",
+      "title": "Wrong password is refused and the person stays signed out"
+    },
+    "AUTH-007": {
+      "attempts": 0,
+      "durationSec": 80.7,
+      "evidence": [
+        "20261003-193948/AUTH-007/01-unknown-email.png"
+      ],
+      "lastRun": "2026-10-03T19:45:29+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Unknown email gets the same refusal as a wrong password"
+    },
+    "AUTH-008": {
+      "attempts": 0,
+      "durationSec": 121.7,
+      "evidence": [
+        "20261003-193948/AUTH-008/01-offline-refusal.png",
+        "20261003-193948/AUTH-008/02-retry-signed-in.png"
+      ],
+      "lastRun": "2026-10-03T19:47:31+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Network failure on sign-in, then retry once back online"
+    },
+    "AUTH-009": {
+      "attempts": 3,
+      "durationSec": 113.8,
+      "evidence": [
+        "20261003-191924/AUTH-009/01-busy.png",
+        "20261003-191924/AUTH-009/02-home.png",
+        "20261003-191924/AUTH-009/03-profile.png"
+      ],
+      "fix": "TEST DEFECT: the busy state is real ([disabled] seen at 4.3s) but one a11y dump takes 3-4s on the software-rendered emulator, longer than the 3s hold. Hold raised to 6s.",
+      "lastRun": "2026-10-03T19:25:56+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-191924",
+      "status": "PASS",
+      "title": "Valid sign-in: busy state, then that learner's own home"
+    },
+    "AUTH-010": {
+      "attempts": 0,
+      "durationSec": 118.7,
+      "evidence": [
+        "20261003-193948/AUTH-010/01-restored.png"
+      ],
+      "lastRun": "2026-10-03T19:49:30+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "A signed-in session survives a relaunch"
+    },
+    "AUTH-011": {
+      "attempts": 0,
+      "durationSec": 114.9,
+      "evidence": [
+        "20261003-193948/AUTH-011/01-after-back.png"
+      ],
+      "lastRun": "2026-10-03T19:51:25+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Back from the signed-in home does not return to the sign-in form"
+    },
+    "AUTH-012": {
+      "attempts": 0,
+      "durationSec": 157.4,
+      "evidence": [
+        "20261003-193948/AUTH-012/01-signed-out.png",
+        "20261003-193948/AUTH-012/02-relaunched-signed-out.png"
+      ],
+      "lastRun": "2026-10-03T19:54:03+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Sign out from Profile returns to Welcome and stays signed out"
+    },
+    "AUTH-013": {
+      "attempts": 0,
+      "durationSec": 133.7,
+      "evidence": [
+        "20261003-193948/AUTH-013/01-signed-out.png"
+      ],
+      "fix": "APPLICATION BUG (security), found live in run 1: sign-out was local only although POST /auth/logout exists (B1 settled by SAAS-020); the server session stayed valid up to 7 days. Fixed in AuthApi.logout / AuthRepository.endServerSession / SessionController.signOut (+4 unit tests). Live re-verification deferred to deep QA.",
+      "lastRun": "2026-10-03T19:56:17+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Sign out ends the session on the server too"
+    },
+    "AUTH-014": {
+      "attempts": 2,
+      "durationSec": 210.9,
+      "evidence": [
+        "20261003-191924/AUTH-014/01-signed-in-again.png"
+      ],
+      "fix": "ENVIRONMENT: run 2 hit a launch-time ANR ('Application does not have a focused window') under software rendering; launch now waits for window focus, system animations off, ANR dialogs fail fast.",
+      "lastRun": "2026-10-03T19:29:27+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-191924",
+      "status": "PASS",
+      "title": "Signing in again after signing out"
+    },
+    "AUTH-015": {
+      "attempts": 0,
+      "durationSec": 92.0,
+      "evidence": [
+        "20261003-193948/AUTH-015/01-one-session.png"
+      ],
+      "lastRun": "2026-10-03T19:57:49+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Rapid repeated taps on Sign in open one session"
+    },
+    "AUTH-016": {
+      "attempts": 0,
+      "durationSec": 117.0,
+      "evidence": [
+        "20261003-193948/AUTH-016/01-session-ended.png"
+      ],
+      "lastRun": "2026-10-03T19:59:47+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Session ended elsewhere sends the person back to sign in"
+    },
+    "AUTH-017": {
+      "attempts": 0,
+      "durationSec": 87.1,
+      "evidence": [
+        "20261003-193948/AUTH-017/01-unsupported-role.png"
+      ],
+      "lastRun": "2026-10-03T20:01:14+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Super Admin is told the app is not for them"
+    },
+    "AUTH-018": {
+      "attempts": 0,
+      "durationSec": 120.0,
+      "evidence": [
+        "20261003-193948/AUTH-018/01-register-empty.png",
+        "20261003-193948/AUTH-018/02-register-invalid.png"
+      ],
+      "lastRun": "2026-10-03T20:03:14+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Registration form checks its fields"
+    },
+    "AUTH-019": {
+      "attempts": 0,
+      "durationSec": 264.2,
+      "evidence": [
+        "20261005-113937/AUTH-019/01-new-home.png",
+        "20261005-113937/AUTH-019/02-new-profile.png"
+      ],
+      "lastRun": "2026-10-05T11:44:01+05:30",
+      "module": "FLUTTER-004",
+      "notes": "created ai_e2e_20261005113937_924305@example.test",
+      "run": "20261005-113937",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Register a new learner and land on their own home"
+    },
+    "AUTH-020": {
+      "attempts": 0,
+      "durationSec": 232.3,
+      "evidence": [
+        "20261003-193948/AUTH-020/01-new-account-again.png"
+      ],
+      "lastRun": "2026-10-03T20:09:34+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "The new account signs out and back in"
+    },
+    "AUTH-021": {
+      "attempts": 0,
+      "durationSec": 124.2,
+      "evidence": [
+        "20261003-193948/AUTH-021/01-duplicate.png"
+      ],
+      "lastRun": "2026-10-03T20:11:38+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-193948",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Registering the same email twice is refused"
+    },
+    "AUTH-022": {
+      "attempts": 0,
+      "durationSec": 90.6,
+      "evidence": [
+        "20261003-202430/AUTH-022/01-check-email.png"
+      ],
+      "lastRun": "2026-10-03T20:26:01+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-202430",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Forgot password: validation, then the neutral confirmation"
+    },
+    "AUTH-023": {
+      "attempts": 2,
+      "durationSec": 251.0,
+      "evidence": [
+        "20261003-202606/AUTH-023/01-mismatch.png",
+        "20261003-202606/AUTH-023/02-updated.png",
+        "20261003-202606/AUTH-023/03-new-password-works.png",
+        "20261003-202606/AUTH-023/04-link-used.png"
+      ],
+      "lastRun": "2026-10-03T20:30:17+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261003-202606",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "Reset link opened in the app sets a new password"
+    },
+    "AUTH-024": {
+      "attempts": 4,
+      "durationSec": 165.6,
+      "evidence": [
+        "20261005-114408/AUTH-024/01-suspended.png",
+        "20261005-114408/AUTH-024/02-restored.png"
+      ],
+      "lastRun": "2026-10-05T11:46:54+05:30",
+      "module": "FLUTTER-004",
+      "run": "20261005-114408",
+      "status": "PASS",
+      "tier": "deep-run",
+      "title": "A suspended learner cannot sign in"
+    },
+    "BILL-001": {
+      "attempts": 1,
+      "durationSec": 62.1,
+      "evidence": [
+        "20261002-121426/BILL-001/01-billing.png",
+        "20261002-121426/BILL-001/02-plans.png"
+      ],
+      "fix": "TEST DEFECT: same wide-node tap as SLIV-002 ('See the plans'). UX observation for deep QA: usage reads 'Learners 44 of 0' with no plan.",
+      "lastRun": "2026-10-02T13:21:09+05:30",
+      "module": "FLUTTER-027",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Billing tells the admin the academy has no plan, and lists plans"
+    },
+    "BILL-002": {
+      "attempts": 0,
+      "durationSec": 58.1,
+      "evidence": [
+        "20261002-121426/BILL-002/01-usage-invoices.png"
+      ],
+      "lastRun": "2026-10-02T13:22:08+05:30",
+      "module": "FLUTTER-027",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Billing usage and invoices sections"
+    },
+    "BOOT-001": {
+      "attempts": 0,
+      "durationSec": 17.5,
+      "evidence": [
+        "20261002-103704/BOOT-001/01-app-drawer.png",
+        "20261002-103704/BOOT-001/02-welcome.png"
+      ],
+      "lastRun": "2026-10-02T10:37:22+05:30",
+      "module": "FLUTTER-000",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Open the dev build from the launcher like a person"
+    },
+    "CAL-001": {
+      "attempts": 0,
+      "durationSec": 151.8,
+      "evidence": [
+        "20261002-121426/CAL-001/01-on-agenda.png",
+        "20261002-121426/CAL-001/02-removed.png"
+      ],
+      "lastRun": "2026-10-02T13:10:37+05:30",
+      "module": "FLUTTER-024",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Add a private reminder, see it, remove it"
+    },
+    "CERT-001": {
+      "attempts": 0,
+      "durationSec": 46.6,
+      "evidence": [
+        "20261002-103704/CERT-001/01-wallet.png",
+        "20261002-103704/CERT-001/02-detail.png"
+      ],
+      "lastRun": "2026-10-02T11:51:43+05:30",
+      "module": "FLUTTER-014",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "The wallet shows her issued certificate and its details"
+    },
+    "CERT-002": {
+      "attempts": 0,
+      "durationSec": 41.2,
+      "evidence": [
+        "20261002-103704/CERT-002/01-ranks.png"
+      ],
+      "lastRun": "2026-10-02T11:52:25+05:30",
+      "module": "FLUTTER-014",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "The rank ladder shows where she is"
+    },
+    "CORE-001": {
+      "attempts": 1,
+      "durationSec": 218.7,
+      "evidence": [
+        "20261002-103704/CORE-001/01-offline-banner.png",
+        "20261002-103704/CORE-001/02-back-online.png"
+      ],
+      "fix": "APPLICATION BUG (accessibility): the offline banner was drawn but absent from the accessibility tree \u2014 each tab page's ModalBarrier BlockSemantics hid everything painted before it (the shell's banners). Fixed: app_shell.dart wraps navigationShell in Semantics(container: true). Regression test in test/app/routing/app_shell_test.dart (fails without the fix). Host suite in an isolated worktree: 1827 passed.",
+      "lastRun": "2026-10-02T10:54:11+05:30",
+      "module": "FLUTTER-002",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Offline banner appears when the device loses its network and clears on return"
+    },
+    "DASH-001": {
+      "attempts": 0,
+      "durationSec": 102.5,
+      "evidence": [
+        "20261003-193350/DASH-001/01-dashboard.png"
+      ],
+      "lastRun": "2026-10-03T19:35:33+05:30",
+      "module": "FLUTTER-018",
+      "run": "20261003-193350",
+      "status": "PASS",
+      "title": "The instructor's dashboard shows her figures and next class"
+    },
+    "DASH-002": {
+      "attempts": 1,
+      "durationSec": 113.0,
+      "evidence": [
+        "20261003-193537/DASH-002/01-one-instructor.png",
+        "20261003-193537/DASH-002/02-academy.png"
+      ],
+      "lastRun": "2026-10-03T19:37:31+05:30",
+      "module": "FLUTTER-018",
+      "run": "20261003-193537",
+      "status": "PASS",
+      "title": "Admin switches between the academy and one instructor"
+    },
+    "DASH-003": {
+      "attempts": 0,
+      "durationSec": 444.3,
+      "evidence": [
+        "20261002-121426/DASH-003/01-review-from-dashboard.png"
+      ],
+      "lastRun": "2026-10-02T12:31:13+05:30",
+      "module": "FLUTTER-018",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "\"Do next\" opens the review queue"
+    },
+    "DS-001": {
+      "attempts": 0,
+      "durationSec": 364.1,
+      "evidence": [
+        "20261002-103704/DS-001/01-gallery-top.png",
+        "20261002-103704/DS-001/02-gallery-bottom.png"
+      ],
+      "lastRun": "2026-10-02T10:43:26+05:30",
+      "module": "FLUTTER-001",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "The component gallery opens in the dev build and shows every group"
+    },
+    "DS-002": {
+      "attempts": 1,
+      "durationSec": 314.4,
+      "evidence": [
+        "20261002-132456/DS-002/01-confirm-dialog.png"
+      ],
+      "lastRun": "2026-10-02T13:30:11+05:30",
+      "module": "FLUTTER-001",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "Confirm dialog: cancel keeps things, confirm closes"
+    },
+    "ENT-001": {
+      "attempts": 1,
+      "durationSec": 3.6,
+      "evidence": [
+        "20261003-192931/ENT-001/01-failure.png",
+        "20261003-192931/ENT-001/failure-logcat.txt",
+        "20261003-192931/ENT-001/failure-screen.txt",
+        "20261003-192931/ENT-001/failure-traceback.txt"
+      ],
+      "failure": "[assertion] precondition: the academy is expected to be restricted, the API says {'status': 'trialing', 'restricted': False, 'plan': {'id': 'cmusekd5t00kmmm0ed89euyc4', 'code': 'GROWTH', 'name': 'Growth'}, 'lines': [{'limit': 'learners.max', 'label': 'Learners', 'used': 44, 'allow",
+      "lastRun": "2026-10-03T19:29:35+05:30",
+      "module": "FLUTTER-006",
+      "run": "20261003-192931",
+      "status": "FAIL",
+      "title": "An academy admin is told the academy has no active plan"
+    },
+    "ENT-002": {
+      "attempts": 0,
+      "durationSec": 193.7,
+      "evidence": [
+        "20261003-192931/ENT-002/01-instructor-more.png"
+      ],
+      "lastRun": "2026-10-03T19:32:49+05:30",
+      "module": "FLUTTER-006",
+      "run": "20261003-192931",
+      "status": "PASS",
+      "title": "Instructor and learner do not see the billing banner or Billing"
+    },
+    "ENT-003": {
+      "attempts": 0,
+      "durationSec": 56.2,
+      "evidence": [
+        "20261003-192931/ENT-003/01-learner-kept-out.png"
+      ],
+      "lastRun": "2026-10-03T19:33:46+05:30",
+      "module": "FLUTTER-006",
+      "run": "20261003-192931",
+      "status": "PASS",
+      "title": "A learner following a staff link stays in the learner app"
+    },
+    "EXP-001": {
+      "attempts": 0,
+      "durationSec": 37.6,
+      "evidence": [
+        "20261002-103704/EXP-001/01-explore.png"
+      ],
+      "lastRun": "2026-10-02T11:43:07+05:30",
+      "module": "FLUTTER-010",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Explore shows enrolled and new courses differently"
+    },
+    "EXP-002": {
+      "attempts": 0,
+      "durationSec": 49.6,
+      "evidence": [
+        "20261002-103704/EXP-002/01-saved.png"
+      ],
+      "lastRun": "2026-10-02T11:43:57+05:30",
+      "module": "FLUTTER-010",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Save a course, see it in Saved, unsave it"
+    },
+    "EXP-003": {
+      "attempts": 0,
+      "durationSec": 53.0,
+      "evidence": [
+        "20261002-103704/EXP-003/01-enrol-dialog.png"
+      ],
+      "lastRun": "2026-10-02T11:44:51+05:30",
+      "module": "FLUTTER-010",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Enrol asks first; Cancel enrols nobody"
+    },
+    "HOME-001": {
+      "attempts": 1,
+      "durationSec": 101.2,
+      "evidence": [
+        "20261002-103704/HOME-001/01-home.png"
+      ],
+      "lastRun": "2026-10-02T11:41:35+05:30",
+      "module": "FLUTTER-009",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Home shows this learner's own courses and what is coming up"
+    },
+    "HOME-002": {
+      "attempts": 0,
+      "durationSec": 54.7,
+      "evidence": [
+        "20261002-103704/HOME-002/01-in-progress.png",
+        "20261002-103704/HOME-002/02-saved.png"
+      ],
+      "lastRun": "2026-10-02T11:42:30+05:30",
+      "module": "FLUTTER-009",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "My Learning: in progress, completed and saved"
+    },
+    "INS-001": {
+      "attempts": 0,
+      "durationSec": 224.5,
+      "evidence": [
+        "20261002-121426/INS-001/01-instructor.png"
+      ],
+      "lastRun": "2026-10-02T13:14:22+05:30",
+      "module": "FLUTTER-025",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "The instructor directory and one profile"
+    },
+    "INS-002": {
+      "attempts": 3,
+      "durationSec": 126.6,
+      "evidence": [
+        "20261002-121426/INS-002/01-certificate.png"
+      ],
+      "fix": "TEST DEFECT: same search-field read-back as SCRS-001.",
+      "lastRun": "2026-10-02T13:16:29+05:30",
+      "module": "FLUTTER-025",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "The certificate register finds a credential"
+    },
+    "LEARN-001": {
+      "attempts": 0,
+      "durationSec": 38.8,
+      "evidence": [
+        "20261002-103704/LEARN-001/01-lesson.png"
+      ],
+      "lastRun": "2026-10-02T11:45:30+05:30",
+      "module": "FLUTTER-011",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Resume opens the next lesson of that course"
+    },
+    "LEARN-002": {
+      "attempts": 2,
+      "durationSec": 140.7,
+      "evidence": [
+        "20261002-132456/LEARN-002/01-course.png",
+        "20261002-132456/LEARN-002/02-previous.png"
+      ],
+      "fix": "TEST DEFECT: chapter matched the course description (case-insensitive 'contains'); scroll_to accepted a row peeking above the tab bar. Anchored chapter/lesson matching + stricter visibility.",
+      "lastRun": "2026-10-02T13:34:24+05:30",
+      "module": "FLUTTER-011",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "The course page lists its curriculum and moves between lessons"
+    },
+    "LINK-001": {
+      "attempts": 0,
+      "durationSec": 25.3,
+      "evidence": [
+        "20261002-121426/LINK-001/01-verified.png"
+      ],
+      "lastRun": "2026-10-02T13:22:33+05:30",
+      "module": "FLUTTER-028",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "A certificate verification link opens the public result"
+    },
+    "LINK-002": {
+      "attempts": 0,
+      "durationSec": 23.2,
+      "evidence": [
+        "20261002-121426/LINK-002/01-course-link.png"
+      ],
+      "lastRun": "2026-10-02T13:22:57+05:30",
+      "module": "FLUTTER-028",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "A course link opens that course's public page"
+    },
+    "LINK-003": {
+      "attempts": 3,
+      "durationSec": 85.4,
+      "evidence": [
+        "20261002-121426/LINK-003/01-after-sign-in.png"
+      ],
+      "fix": "APPLICATION BUG (FLUTTER-028 / \u00a75.1): a signed-out protected link (/notifications) redirected to /welcome?next=\u2026, but Welcome's Sign in/Create account opened forms without next, so the person landed on home. Fixed: the welcome route passes next to WelcomeScreen, which hands it to LoginScreen/RegisterScreen (still validated). Regression test in public_next_test.dart (fails without the fix: /home).",
+      "lastRun": "2026-10-02T13:24:22+05:30",
+      "module": "FLUTTER-028",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "A protected link survives signing in from Welcome"
+    },
+    "LIVE-001": {
+      "attempts": 0,
+      "durationSec": 38.8,
+      "evidence": [
+        "20261002-103704/LIVE-001/01-live-detail.png"
+      ],
+      "lastRun": "2026-10-02T11:53:04+05:30",
+      "module": "FLUTTER-015",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Live lists her upcoming class and its detail"
+    },
+    "LIVE-002": {
+      "attempts": 0,
+      "durationSec": 61.7,
+      "evidence": [
+        "20261002-103704/LIVE-002/01-toggled.png"
+      ],
+      "lastRun": "2026-10-02T11:54:06+05:30",
+      "module": "FLUTTER-015",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Take a seat and give it back"
+    },
+    "MA-001": {
+      "attempts": 1,
+      "durationSec": 258.2,
+      "evidence": [
+        "20261005-121714/MA-001/01-join-link-prefilled.png",
+        "20261005-121714/MA-001/02-learner-a-home.png"
+      ],
+      "lastRun": "2026-10-05T12:21:34+05:30",
+      "module": "FLUTTER-031",
+      "notes": "Admin A: e2e-a-qa2d01db \u00b7 Admin B: e2e-b-qae9668b",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "A join link opens Create account for that Admin\u2019s LMS, and the learner joins it"
+    },
+    "MA-002": {
+      "attempts": 1,
+      "durationSec": 298.5,
+      "evidence": [
+        "20261005-121714/MA-002/01-learner-b-home.png"
+      ],
+      "lastRun": "2026-10-05T12:26:34+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "A typed (or pasted) LMS address joins that Admin\u2019s LMS"
+    },
+    "MA-003": {
+      "attempts": 1,
+      "durationSec": 718.3,
+      "evidence": [
+        "20261005-121714/MA-003/01-no-address.png",
+        "20261005-121714/MA-003/02-unknown-address.png"
+      ],
+      "lastRun": "2026-10-05T12:38:34+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "An LMS address nobody has is refused, and an empty one is caught on the device"
+    },
+    "MA-004": {
+      "attempts": 2,
+      "durationSec": 700.7,
+      "evidence": [
+        "20261005-121714/MA-004/01-learner-a-notifications.png",
+        "20261005-121714/MA-004/02-learner-b-notifications.png"
+      ],
+      "lastRun": "2026-10-05T12:50:17+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "Each learner sees only their own Admin\u2019s messages, on the same device one after the other"
+    },
+    "MA-005": {
+      "attempts": 1,
+      "durationSec": 558.2,
+      "evidence": [
+        "20261005-121714/MA-005/01-restored.png"
+      ],
+      "lastRun": "2026-10-05T12:59:37+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "Session restoration keeps the same learner; sign out and back in works"
+    },
+    "MA-006": {
+      "attempts": 0,
+      "durationSec": 185.3,
+      "evidence": [
+        "20261005-121714/MA-006/01-wrong-password.png"
+      ],
+      "lastRun": "2026-10-05T13:02:43+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "Wrong credentials are refused without saying which part was wrong"
+    },
+    "MA-007": {
+      "attempts": 2,
+      "durationSec": 271.7,
+      "evidence": [
+        "20261005-121714/MA-007/01-instructor-a-dashboard.png"
+      ],
+      "lastRun": "2026-10-05T13:07:17+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "An instructor Admin A invited signs in to A\u2019s staff workspace"
+    },
+    "MA-008": {
+      "attempts": 4,
+      "durationSec": 281.6,
+      "evidence": [
+        "20261005-121714/MA-008/01-admin-a-people.png"
+      ],
+      "lastRun": "2026-10-05T13:12:01+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "Admin A signs in on the device and sees only A\u2019s learners"
+    },
+    "MA-009": {
+      "attempts": 2,
+      "durationSec": 5.5,
+      "evidence": [
+        "20261005-121714/MA-009/01-final.png"
+      ],
+      "lastRun": "2026-10-05T13:12:08+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "PASS",
+      "title": "Cross-LMS requests are refused by the API whatever the client sends"
+    },
+    "MA-010": {
+      "attempts": 5,
+      "durationSec": 521.4,
+      "evidence": [
+        "20261005-121714/MA-010/01-suspended-signed-out.png",
+        "20261005-121714/MA-010/02-failure.png",
+        "20261005-121714/MA-010/failure-logcat.txt",
+        "20261005-121714/MA-010/failure-screen.txt",
+        "20261005-121714/MA-010/failure-traceback.txt"
+      ],
+      "failure": "[error] Command '['/Users/mac/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5554', 'exec-out', 'uiautomator', 'dump', '--compressed', '/dev/tty']' timed out after 60 seconds",
+      "lastRun": "2026-10-05T13:20:51+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "FAIL",
+      "title": "A suspended LMS signs its learner out with the reason, and refuses sign-in"
+    },
+    "MA-011": {
+      "attempts": 3,
+      "durationSec": 267.4,
+      "evidence": [
+        "20261005-121714/MA-011/01-failure.png",
+        "20261005-121714/MA-011/failure-logcat.txt",
+        "20261005-121714/MA-011/failure-screen.txt",
+        "20261005-121714/MA-011/failure-traceback.txt"
+      ],
+      "failure": "[error] Command '['/Users/mac/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5554', 'exec-out', 'uiautomator', 'dump', '--compressed', '/dev/tty']' timed out after 60 seconds",
+      "lastRun": "2026-10-05T13:25:20+05:30",
+      "module": "FLUTTER-031",
+      "run": "20261005-121714",
+      "status": "FAIL",
+      "title": "A lapsed plan is shown to Admin A\u2019s instructor as the backend reports it"
+    },
+    "MEDIA-001": {
+      "attempts": 2,
+      "durationSec": 59.9,
+      "evidence": [
+        "20261002-103704/MEDIA-001/01-system-picker.png",
+        "20261002-103704/MEDIA-001/02-back-on-assignment.png"
+      ],
+      "fix": "TEST DEFECT x2: needed a file-format assignment (scenario now creates/deletes its own via the staff API); the crash check counted uiautomator's own FATAL EXCEPTIONs \u2014 now only crashes whose Process: is the app. The picker flow itself completed.",
+      "lastRun": "2026-10-02T11:34:44+05:30",
+      "module": "FLUTTER-007",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Choose a file opens the system picker and coming back is safe"
+    },
+    "MEDIA-002": {
+      "attempts": 2,
+      "durationSec": 52.9,
+      "evidence": [
+        "20261002-103704/MEDIA-002/01-no-media.png"
+      ],
+      "fix": "TEST DEFECT: tapped the 'Free preview' summary instead of the lesson; lessons sit in collapsed chapters. Shared helper open_curriculum_lesson() expands the chapter (anchored match) and taps the lesson row.",
+      "lastRun": "2026-10-02T11:35:37+05:30",
+      "module": "FLUTTER-007",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "A preview lesson without a file says so instead of failing"
+    },
+    "NAV-001": {
+      "attempts": 0,
+      "durationSec": 279.6,
+      "evidence": [
+        "20261002-103704/NAV-001/01-learner-shell.png",
+        "20261002-103704/NAV-001/02-instructor-shell.png",
+        "20261002-103704/NAV-001/03-admin-shell.png"
+      ],
+      "lastRun": "2026-10-02T11:21:35+05:30",
+      "module": "FLUTTER-005",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Each role lands in its own shell"
+    },
+    "NAV-002": {
+      "attempts": 1,
+      "durationSec": 123.8,
+      "evidence": [
+        "20261002-103704/NAV-002/01-back-to-home.png"
+      ],
+      "fix": "APPLICATION BUG (device-only): on Android 16 / targetSdk 36 predictive back, each tab navigator reported canHandlePop:false, so Android closed the app from any tab; host tests miss it (handlePopRoute bypasses Android). Fixed in app_shell.dart: away from the first tab's own page the shell answers canHandlePop:true (listener + post-frame dispatch). Regression test records SystemNavigator.setFrameworkHandlesBack.",
+      "lastRun": "2026-10-02T11:23:39+05:30",
+      "module": "FLUTTER-005",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Tabs switch screens and Back returns to the first tab before leaving"
+    },
+    "NAV-003": {
+      "attempts": 1,
+      "durationSec": 55.1,
+      "evidence": [
+        "20261002-103704/NAV-003/01-assignments-title.png",
+        "20261002-103704/NAV-003/02-certificates-title.png"
+      ],
+      "fix": "APPLICATION BUG (\u00a75.2): the app bar showed the tab label (Home/Dashboard) for every page opened from More. Fixed: title is the longest-matching destination's label. Regression test added.",
+      "lastRun": "2026-10-02T11:24:34+05:30",
+      "module": "FLUTTER-005",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "A More page is titled with its own name"
+    },
+    "NAV-004": {
+      "attempts": 1,
+      "durationSec": 60.3,
+      "evidence": [
+        "20261002-103704/NAV-004/01-back-from-more-page.png"
+      ],
+      "fix": "APPLICATION BUG (\u00a75.5): a More page replaces the first tab's page, so canPop was true and Back exited the app. Fixed: Back leaves only from the first tab's own page; otherwise returns to it. Regression test added.",
+      "lastRun": "2026-10-02T11:25:35+05:30",
+      "module": "FLUTTER-005",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Back from a More page returns to the app, not out of it"
+    },
+    "NAV-005": {
+      "attempts": 0,
+      "durationSec": 111.6,
+      "evidence": [
+        "20261003-193735/NAV-005/01-not-found.png"
+      ],
+      "lastRun": "2026-10-03T19:39:27+05:30",
+      "module": "FLUTTER-005",
+      "run": "20261003-193735",
+      "status": "PASS",
+      "title": "An unknown link shows the not-found screen with a way home"
+    },
+    "NOTIF-001": {
+      "attempts": 0,
+      "durationSec": 32.3,
+      "evidence": [
+        "20261002-103704/NOTIF-001/01-notifications.png"
+      ],
+      "lastRun": "2026-10-02T11:54:38+05:30",
+      "module": "FLUTTER-016",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "The bell opens her notifications"
+    },
+    "NOTIF-002": {
+      "attempts": 0,
+      "durationSec": 49.3,
+      "evidence": [
+        "20261002-103704/NOTIF-002/01-toggled.png"
+      ],
+      "lastRun": "2026-10-02T11:55:28+05:30",
+      "module": "FLUTTER-016",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Mark one notification unread, then read again"
+    },
+    "NOTIF-003": {
+      "attempts": 0,
+      "durationSec": 67.9,
+      "evidence": [
+        "20261002-103704/NOTIF-003/01-preferences.png"
+      ],
+      "lastRun": "2026-10-02T11:56:36+05:30",
+      "module": "FLUTTER-016",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Notification settings open with her channels"
+    },
+    "PROF-001": {
+      "attempts": 0,
+      "durationSec": 38.7,
+      "evidence": [
+        "20261002-103704/PROF-001/01-profile.png"
+      ],
+      "lastRun": "2026-10-02T11:57:15+05:30",
+      "module": "FLUTTER-017",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Profile shows who is signed in"
+    },
+    "PROF-002": {
+      "attempts": 1,
+      "durationSec": 119.2,
+      "evidence": [
+        "20261002-103704/PROF-002/01-dark.png"
+      ],
+      "fix": "TEST TIMING: the restored home appeared after the 30 s limit on a cold relaunch; raised to 60 s.",
+      "lastRun": "2026-10-02T11:59:15+05:30",
+      "module": "FLUTTER-017",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Switch to the dark theme and back"
+    },
+    "PROF-003": {
+      "attempts": 1,
+      "durationSec": 62.8,
+      "evidence": [
+        "20261002-103704/PROF-003/01-about.png"
+      ],
+      "fix": "APPLICATION BUG (FLUTTER-017): the first About this app never showed the version \u2014 appInfoProvider (FutureProvider) was read with .value before anything had loaded it. Fixed: showAboutThisApp awaits appInfoProvider.future. Regression test in profile_screen_test.dart (fails without the fix).",
+      "lastRun": "2026-10-02T12:00:18+05:30",
+      "module": "FLUTTER-017",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "About this app names the app and its version"
+    },
+    "PUB-001": {
+      "attempts": 1,
+      "durationSec": 70.6,
+      "evidence": [
+        "20261002-103704/PUB-001/01-catalogue.png",
+        "20261002-103704/PUB-001/02-course-page.png"
+      ],
+      "lastRun": "2026-10-02T11:36:48+05:30",
+      "module": "FLUTTER-008",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "A visitor browses the catalogue and opens a course"
+    },
+    "PUB-002": {
+      "attempts": 0,
+      "durationSec": 51.0,
+      "evidence": [
+        "20261002-103704/PUB-002/01-intermediate.png"
+      ],
+      "lastRun": "2026-10-02T11:37:39+05:30",
+      "module": "FLUTTER-008",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Level filter narrows the catalogue"
+    },
+    "PUB-003": {
+      "attempts": 0,
+      "durationSec": 100.1,
+      "evidence": [
+        "20261002-103704/PUB-003/01-valid.png",
+        "20261002-103704/PUB-003/02-not-found.png"
+      ],
+      "lastRun": "2026-10-02T11:39:20+05:30",
+      "module": "FLUTTER-008",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Verify a certificate by credential ID, and an unknown ID"
+    },
+    "PUB-004": {
+      "attempts": 0,
+      "durationSec": 33.1,
+      "evidence": [
+        "20261002-103704/PUB-004/01-article.png"
+      ],
+      "lastRun": "2026-10-02T11:39:53+05:30",
+      "module": "FLUTTER-008",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "The help centre opens an article"
+    },
+    "QUIZ-001": {
+      "attempts": 0,
+      "durationSec": 44.5,
+      "evidence": [
+        "20261002-103704/QUIZ-001/01-assessments.png"
+      ],
+      "lastRun": "2026-10-02T11:47:49+05:30",
+      "module": "FLUTTER-012",
+      "run": "20261002-103704",
+      "status": "PASS",
+      "title": "Assessments lists this learner's quizzes with their state"
+    },
+    "QUIZ-002": {
+      "attempts": 7,
+      "durationSec": 159.5,
+      "evidence": [
+        "20261002-132456/QUIZ-002/01-question-1.png",
+        "20261002-132456/QUIZ-002/02-result.png"
+      ],
+      "fix": "TEST DEFECT: a passed quiz row in Assessments is not tappable by design (only available/failed open; spec silent). Reached through the course curriculum instead. UX observation for deep QA: passed quizzes cannot be reopened from the list.",
+      "lastRun": "2026-10-02T13:37:04+05:30",
+      "module": "FLUTTER-012",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "Take a passed quiz again as practice and pass it"
+    },
+    "REP-001": {
+      "attempts": 4,
+      "durationSec": 126.9,
+      "evidence": [
+        "20261002-132456/REP-001/01-overview.png",
+        "20261002-132456/REP-001/02-30-days.png"
+      ],
+      "fix": "TEST DEFECT: 'Filters' is merged into the 'Overview' header's single node; tapped where it is drawn. A11y observation (deep QA): the Filters action is not its own button for TalkBack.",
+      "lastRun": "2026-10-02T13:48:36+05:30",
+      "module": "FLUTTER-026",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "The overview report and a period change"
+    },
+    "REP-002": {
+      "attempts": 0,
+      "durationSec": 114.4,
+      "evidence": [
+        "20261002-121426/REP-002/01-courses-report.png"
+      ],
+      "lastRun": "2026-10-02T13:20:07+05:30",
+      "module": "FLUTTER-026",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Courses report lists the busiest courses"
+    },
+    "REV-001": {
+      "attempts": 0,
+      "durationSec": 310.2,
+      "evidence": [
+        "20261002-121426/REV-001/01-queue.png"
+      ],
+      "lastRun": "2026-10-02T12:50:05+05:30",
+      "module": "FLUTTER-020",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "The review queue lists hand-ins waiting for her"
+    },
+    "REV-002": {
+      "attempts": 0,
+      "durationSec": 47.1,
+      "evidence": [
+        "20261002-121426/REV-002/01-submission.png"
+      ],
+      "lastRun": "2026-10-02T12:50:52+05:30",
+      "module": "FLUTTER-020",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Open a hand-in and see what the learner sent"
+    },
+    "REV-003": {
+      "attempts": 1,
+      "durationSec": 105.8,
+      "evidence": [
+        "20261002-132456/REV-003/01-graded.png"
+      ],
+      "lastRun": "2026-10-02T13:41:50+05:30",
+      "module": "FLUTTER-020",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "Status filters switch the list"
+    },
+    "SCRS-001": {
+      "attempts": 1,
+      "durationSec": 214.8,
+      "evidence": [
+        "20261002-121426/SCRS-001/01-courses.png"
+      ],
+      "fix": "TEST DEFECT: a filled search field no longer exposes its hint (its only name), so read-back by label failed; read-back now uses the focused field. A11y observation (deep QA): filled search fields have no accessible name.",
+      "lastRun": "2026-10-02T12:34:48+05:30",
+      "module": "FLUTTER-019",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "The instructor sees exactly her courses"
+    },
+    "SCRS-002": {
+      "attempts": 1,
+      "durationSec": 119.6,
+      "evidence": [
+        "20261002-121426/SCRS-002/01-course-detail.png",
+        "20261002-121426/SCRS-002/02-curriculum.png"
+      ],
+      "fix": "TEST DEFECT: tapped the 'Curriculum' section header instead of its 'Curriculum' button.",
+      "lastRun": "2026-10-02T12:36:50+05:30",
+      "module": "FLUTTER-019",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Course detail and its curriculum"
+    },
+    "SCRS-003": {
+      "attempts": 2,
+      "durationSec": 64.3,
+      "evidence": [
+        "20261002-132456/SCRS-003/01-draft.png",
+        "20261002-132456/SCRS-003/02-published.png"
+      ],
+      "fix": "TEST DESIGN DEFECT: this academy sends an instructor's publish to admin review (403 'asks an admin to review courses before they go live'), so instructor unpublish\u2192publish is not reversible; the course was left as draft and restored as admin via the API. Scenario now runs as the admin.",
+      "lastRun": "2026-10-02T13:40:04+05:30",
+      "module": "FLUTTER-019",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "Admin unpublishes a course and publishes it back"
+    },
+    "SLIV-001": {
+      "attempts": 0,
+      "durationSec": 227.5,
+      "evidence": [
+        "20261002-121426/SLIV-001/01-class.png"
+      ],
+      "lastRun": "2026-10-02T13:06:24+05:30",
+      "module": "FLUTTER-023",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "The instructor's upcoming classes and one class"
+    },
+    "SLIV-002": {
+      "attempts": 2,
+      "durationSec": 116.0,
+      "evidence": [
+        "20261002-132456/SLIV-002/01-empty-form.png"
+      ],
+      "fix": "TEST DEFECT: the 'Schedule a class' accessibility node spans the row (42-1038 px) but the drawn button is 42-538 px; a centre tap hit empty space (navigation proven in a host test). tap_start() taps near the node's start. Also the form disables 'Schedule it' until filled (no submit-time refusal); scenario now asserts that. A11y observation: node wider than the button.",
+      "lastRun": "2026-10-02T13:46:28+05:30",
+      "module": "FLUTTER-023",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "The schedule form will not send an empty class"
+    },
+    "SQZ-001": {
+      "attempts": 0,
+      "durationSec": 138.4,
+      "evidence": [
+        "20261002-121426/SQZ-001/01-quiz.png"
+      ],
+      "lastRun": "2026-10-02T12:54:37+05:30",
+      "module": "FLUTTER-021",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Quizzes list and one quiz's set-up and results"
+    },
+    "SQZ-002": {
+      "attempts": 1,
+      "durationSec": 62.2,
+      "evidence": [
+        "20261002-132456/SQZ-002/01-answers.png"
+      ],
+      "lastRun": "2026-10-02T13:42:53+05:30",
+      "module": "FLUTTER-021",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "Staff see the answer key"
+    },
+    "STU-001": {
+      "attempts": 1,
+      "durationSec": 160.6,
+      "evidence": [
+        "20261002-121426/STU-001/01-learner.png"
+      ],
+      "fix": "TEST DEFECT: same search-field read-back as SCRS-001.",
+      "lastRun": "2026-10-02T13:01:15+05:30",
+      "module": "FLUTTER-022",
+      "run": "20261002-121426",
+      "status": "PASS",
+      "title": "Search the roster and open a learner"
+    },
+    "STU-002": {
+      "attempts": 1,
+      "durationSec": 98.9,
+      "evidence": [
+        "20261002-132456/STU-002/01-active.png"
+      ],
+      "lastRun": "2026-10-02T13:44:32+05:30",
+      "module": "FLUTTER-022",
+      "run": "20261002-132456",
+      "status": "PASS",
+      "title": "Status filter: Active"
+    }
+  }
+}

@@ -1,0 +1,252 @@
+.accent {
+  --tone: var(--accent);
+  --tone-ink: var(--accent-ink);
+  --tone-track: var(--track);
+}
+.info {
+  --tone: var(--info);
+  --tone-ink: var(--info-ink);
+  --tone-track: color-mix(in srgb, var(--info) 14%, var(--surface-2));
+}
+.warn {
+  --tone: var(--warn);
+  --tone-ink: var(--warn-ink);
+  --tone-track: color-mix(in srgb, var(--warn) 18%, var(--surface-2));
+}
+.danger {
+  --tone: var(--danger);
+  --tone-ink: var(--danger-ink);
+  --tone-track: color-mix(in srgb, var(--danger) 14%, var(--surface-2));
+}
+
+/* ─── Ring ─── */
+.ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+}
+.ring svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.ringTrack {
+  stroke: var(--tone-track);
+}
+.ringValue {
+  stroke: var(--tone);
+  transition:
+    stroke-dashoffset var(--t-progress),
+    stroke-dasharray var(--t-progress);
+}
+.ringThreshold {
+  stroke: var(--text);
+  opacity: 0.55;
+}
+.ringCenter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+.ringValueText {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-numeric);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.ringUnit {
+  font-size: 0.5em;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 1px;
+  letter-spacing: 0;
+  vertical-align: 0.55em;
+}
+.ringCaption {
+  margin-top: 6px;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ─── Meter ─── */
+.meter {
+  min-width: 0;
+}
+.meterRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-2);
+  font-size: var(--fs-caption);
+  margin-bottom: 7px;
+}
+.meterLabel {
+  color: var(--muted);
+}
+.meterValue {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  position: relative;
+  border-radius: var(--r-pill);
+  background: var(--tone-track, var(--track));
+}
+.bar-xs {
+  height: 4px;
+}
+.bar-sm {
+  height: 6px;
+}
+.bar-md {
+  height: 8px;
+}
+.barFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: var(--r-pill);
+  background: var(--tone, var(--accent));
+  transition: width var(--t-progress);
+}
+.barThreshold {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--text);
+  opacity: 0.55;
+  box-shadow: 0 0 0 1.5px var(--surface);
+}
+
+/* ─── Lesson segments ─── */
+.segmentsWrap {
+  min-width: 0;
+}
+.segments {
+  display: flex;
+  gap: 2px;
+  height: 6px;
+}
+.segment {
+  position: relative;
+  flex: 1;
+  min-width: 3px;
+  border-radius: 2px;
+  background: var(--track);
+  overflow: hidden;
+}
+.seg-completed {
+  background: var(--accent);
+}
+.seg-in-progress {
+  background: var(--track);
+}
+.seg-locked {
+  background: var(--surface-2);
+  background-image: var(--hatch);
+}
+.segmentFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--accent);
+}
+.segmentsSummary {
+  margin-top: 7px;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Video ─── */
+.video {
+  min-width: 0;
+}
+.videoBar {
+  position: relative;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--track);
+}
+.videoFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+}
+.videoChapter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--surface);
+}
+.videoHead {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.videoTimes {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-2);
+  margin-top: 8px;
+  font-size: var(--fs-meta);
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.videoResume {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* ─── Score ─── */
+.score {
+  min-width: 0;
+}
+.scoreRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-bottom: 8px;
+}
+.scoreValue {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: var(--tracking-numeric);
+  font-variant-numeric: tabular-nums;
+}
+.scoreVerdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--tone-ink);
+}
+.scorePass {
+  margin-top: 6px;
+  font-size: var(--fs-meta);
+  color: var(--faint);
+  white-space: nowrap;
+}

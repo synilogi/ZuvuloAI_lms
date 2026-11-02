@@ -1,0 +1,108 @@
+/* A plan as it is offered: price, trial, limits and what it includes (the welcome page, the pricing page and Get started). */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cardName {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--fs-h3);
+}
+.cardDescription {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.priceValue {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-variant-numeric: tabular-nums;
+}
+.priceCycle {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+.listTitle {
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.limits,
+.features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--fs-body-sm);
+}
+.limit {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.limitValue {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.feature svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--accent-ink);
+}
+.featureOff {
+  color: var(--faint);
+}
+.featureOff svg {
+  color: var(--faint);
+}
+.cardActions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-top: var(--s-2);
+}
+.cardNote {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+}
+
+.highlighted {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.ribbon {
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: var(--s-4);
+  }
+}

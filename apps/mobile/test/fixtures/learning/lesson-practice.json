@@ -1,0 +1,265 @@
+{
+  "course": {
+    "id": "cmudqd8e8001rmmgzw9ydq2ly",
+    "slug": "foundations-vedic",
+    "title": "Foundations of Vedic Astrology",
+    "subtitle": "Planets, signs, houses and nakshatras — the language of a birth chart.",
+    "description": "A ground-up introduction to Vedic astrology: the nine planets, twelve signs, twelve houses and twenty-seven nakshatras, and how to read them together in a birth chart.",
+    "levelId": "cmudqd7rm0003mmgzrix967b0",
+    "categoryId": "cmudqd7t8000dmmgzkc9qsfwk",
+    "instructorIds": [
+      "cmudqd7ti000jmmgzsa8zg84a"
+    ],
+    "format": "self-paced",
+    "language": "en-IN",
+    "coverMotif": "houses",
+    "chapters": [
+      {
+        "id": "cmudqd8ec001tmmgzjfrfyysr",
+        "title": "The Nine Planets",
+        "summary": "What each graha signifies.",
+        "objective": "By the end of this chapter, learners can name what each planet governs.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8eg001vmmgzl6ymelfw",
+            "title": "Introduction to the Navagrahas",
+            "type": "video",
+            "durationMin": 18,
+            "isPreview": true,
+            "status": "published",
+            "updatedAt": "2026-09-23T12:24:40.361Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "navagrahas-intro.mp4",
+                  "sizeMb": 84
+                },
+                "durationSec": 1080,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8ej001xmmgz7y4351pu",
+            "title": "Benefics and malefics",
+            "type": "reading",
+            "durationMin": 12,
+            "isPreview": true,
+            "status": "published",
+            "updatedAt": "2026-09-23T10:20:16.161Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "Planets are read as functional benefics or malefics depending on the chart they fall in, not fixed labels. Jupiter and Venus are natural benefics; Saturn, Mars, the Sun and the nodes are natural malefics, with Mercury’s nature following its company.\n\nA malefic in a good house can still support a life area it rules, while a benefic in a difficult house can strain it. Judge each placement on its own terms before generalising."
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8en001zmmgzg3xageb9",
+            "title": "Chapter check",
+            "type": "assessment",
+            "durationMin": 10,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.919Z",
+            "objectives": [],
+            "content": {},
+            "settings": {}
+          }
+        ]
+      },
+      {
+        "id": "cmudqd8eq0021mmgzllbpxboh",
+        "title": "Signs and Houses",
+        "summary": "The twelve rashis and bhavas.",
+        "objective": "By the end of this chapter, learners can map a planet to its sign and house meaning together.",
+        "status": "published",
+        "lessons": [
+          {
+            "id": "cmudqd8es0023mmgzwqae9u8i",
+            "title": "The twelve rashis",
+            "type": "video",
+            "durationMin": 22,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.924Z",
+            "objectives": [],
+            "content": {
+              "video": {
+                "file": {
+                  "name": "rashis.mp4",
+                  "sizeMb": 96
+                },
+                "durationSec": 1320,
+                "captions": true,
+                "markers": []
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8eu0025mmgzos5jra6a",
+            "title": "Reading the houses",
+            "type": "reading",
+            "durationMin": 15,
+            "status": "published",
+            "updatedAt": "2026-09-23T12:29:21.278Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "Each of the twelve houses governs a department of life, from the first house of self to the twelfth house of loss and release. A planet’s house placement shapes which department it most strongly colours.\n\nKendras (1, 4, 7, 10) anchor the chart’s structure; trikonas (1, 5, 9) carry fortune and dharma; dusthanas (6, 8, 12) bring struggle that can still mature into strength."
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8ex0027mmgzs5l716tb",
+            "title": "Chart-reading practice",
+            "type": "practice",
+            "durationMin": 25,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.929Z",
+            "objectives": [],
+            "content": {
+              "article": {
+                "body": "Using the sample chart provided, note each planet’s sign and house, then write two sentences on what that combination suggests."
+              }
+            },
+            "settings": {}
+          },
+          {
+            "id": "cmudqd8ez0029mmgz7hfhtfb4",
+            "title": "Your first assignment: reading a friend’s chart",
+            "type": "assignment",
+            "durationMin": 40,
+            "status": "published",
+            "updatedAt": "2026-09-23T06:37:07.932Z",
+            "objectives": [],
+            "content": {
+              "assignment": {
+                "brief": "Cast a birth chart for someone you know (with their permission) and write a half-page summary of their planetary placements — sign, house and one observation per planet.",
+                "dueAfterDays": 7,
+                "maxScore": 100,
+                "submission": "chart"
+              }
+            },
+            "settings": {}
+          }
+        ]
+      }
+    ],
+    "liveSessions": 1,
+    "estimatedWeeks": 4,
+    "certificateTitle": "Certificate in Foundations of Vedic Astrology",
+    "price": {
+      "amount": 2999,
+      "currency": "INR"
+    },
+    "enrolledCount": 15,
+    "status": "published",
+    "visibility": "public",
+    "outcomes": [
+      "Read a birth chart’s planets, signs and houses",
+      "Identify a nakshatra and its ruling deity",
+      "Judge a planet’s basic strength"
+    ],
+    "tags": [
+      "Beginner",
+      "Foundations"
+    ],
+    "createdAt": "2026-09-23T06:37:07.905Z",
+    "updatedAt": "2026-09-23T06:37:11.032Z",
+    "publishedAt": "2026-07-25T06:37:07.902Z",
+    "rating": 4.661066094985708,
+    "ratingCount": 44
+  },
+  "enrolled": true,
+  "snapshot": {
+    "courseId": "cmudqd8e8001rmmgzw9ydq2ly",
+    "lessons": {
+      "cmudqd8eg001vmmgzl6ymelfw": {
+        "lessonId": "cmudqd8eg001vmmgzl6ymelfw",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-17T06:37:08.009Z"
+      },
+      "cmudqd8ej001xmmgz7y4351pu": {
+        "lessonId": "cmudqd8ej001xmmgz7y4351pu",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-19T06:37:08.011Z"
+      },
+      "cmudqd8en001zmmgzg3xageb9": {
+        "lessonId": "cmudqd8en001zmmgzg3xageb9",
+        "state": "completed",
+        "fraction": 1,
+        "completedAt": "2026-09-21T06:37:08.013Z"
+      },
+      "cmudqd8es0023mmgzwqae9u8i": {
+        "lessonId": "cmudqd8es0023mmgzwqae9u8i",
+        "state": "in-progress",
+        "fraction": 0.4,
+        "positionSec": 300
+      },
+      "cmudqd8eu0025mmgzos5jra6a": {
+        "lessonId": "cmudqd8eu0025mmgzos5jra6a",
+        "state": "not-started"
+      },
+      "cmudqd8ez0029mmgz7hfhtfb4": {
+        "lessonId": "cmudqd8ez0029mmgz7hfhtfb4",
+        "state": "not-started"
+      }
+    },
+    "lastLessonId": "cmudqd8ez0029mmgz7hfhtfb4",
+    "lastActiveAt": "2026-09-23T12:44:42.015Z"
+  },
+  "progress": {
+    "completed": 3,
+    "total": 7,
+    "percent": 34,
+    "remainingMin": 93,
+    "state": "in-progress"
+  },
+  "chapterIndex": 1,
+  "lessonIndex": 2,
+  "lesson": {
+    "id": "cmudqd8ex0027mmgzs5l716tb",
+    "title": "Chart-reading practice",
+    "type": "practice",
+    "durationMin": 25,
+    "status": "published",
+    "updatedAt": "2026-09-23T06:37:07.929Z",
+    "objectives": [],
+    "content": {
+      "article": {
+        "body": "Using the sample chart provided, note each planet’s sign and house, then write two sentences on what that combination suggests."
+      }
+    },
+    "settings": {}
+  },
+  "number": "2.3",
+  "position": {
+    "index": 5,
+    "total": 7
+  },
+  "state": "not-started",
+  "access": "open",
+  "previous": {
+    "id": "cmudqd8eu0025mmgzos5jra6a",
+    "title": "Reading the houses"
+  },
+  "next": {
+    "id": "cmudqd8ez0029mmgz7hfhtfb4",
+    "title": "Your first assignment: reading a friend’s chart",
+    "locked": false
+  },
+  "instructorNames": [
+    "Dr. Meenakshi Iyer"
+  ],
+  "note": "",
+  "bookmarked": false,
+  "threshold": 90
+}

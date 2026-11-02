@@ -1,0 +1,65 @@
+{
+  "submission": {
+    "id": "cmunnj61i008dmmt9059izm2l",
+    "assignmentId": "cmunnhrha008bmmt9qqjw257m",
+    "studentId": "cmumqigxx000xmmossb0hdlxp",
+    "attempt": 1,
+    "submittedAt": "2026-09-30T05:15:27.702Z",
+    "late": false,
+    "text": "The lagna is Vrishabha, which steadies the whole chart and gives the person a patient, deliberate way of moving through the world. Venus as lagna lord sits in the ninth, which lifts the chart towards teaching and travel.\n\nThe moon sits in Kataka, in its own sign, so the emotional life is strong and tidal. Feelings arrive in waves and the person reads a room before they speak in it.\n\nThe ruling nakshatra is Pushya, the nourisher, ruled by Saturn and presided over by Brihaspati. It gives the chart its teaching instinct and its patience with slow work, and it explains the pull towards study that the ninth-house Venus only hints at.",
+    "files": [],
+    "review": {
+      "status": "waiting",
+      "scores": {},
+      "feedback": ""
+    }
+  },
+  "assignment": {
+    "id": "cmunnhrha008bmmt9qqjw257m",
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "title": "Rubric fixture: chart interpretation",
+    "instructions": "Interpret the chart you were given. Cover the lagna, the moon sign and the ruling nakshatra, and say what each one suggests about the person. Write at least three paragraphs.",
+    "attachments": [],
+    "format": "text",
+    "due": {
+      "kind": "none"
+    },
+    "acceptsLate": true,
+    "latePenalty": 10,
+    "rubric": [
+      {
+        "id": "lagna",
+        "title": "Lagna reading",
+        "points": 20
+      },
+      {
+        "id": "moon",
+        "title": "Moon sign reading",
+        "points": 20
+      },
+      {
+        "id": "nakshatra",
+        "title": "Nakshatra reading",
+        "points": 10
+      }
+    ],
+    "maxScore": 50,
+    "passMark": 30,
+    "status": "published",
+    "createdAt": "2026-09-30T05:14:22.175Z",
+    "updatedAt": "2026-09-30T05:14:22.175Z"
+  },
+  "courseTitle": "Foundations of Vedic Astrology",
+  "student": {
+    "id": "cmumqigxx000xmmossb0hdlxp",
+    "name": "Ananya Rao",
+    "email": "user@example.test",
+    "city": "Bengaluru",
+    "progress": 38,
+    "enrolledAt": "2026-08-31T06:48:31.501Z"
+  },
+  "queue": {
+    "position": 1,
+    "total": 1
+  }
+}

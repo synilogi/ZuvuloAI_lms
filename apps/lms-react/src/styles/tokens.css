@@ -1,0 +1,253 @@
+/*
+ * ShubhLMS design tokens (REACT-001).
+ *
+ * Values are ported from the ShubhLMS brand ("Celestial Ink": night-sky indigo brand colour, warm parchment
+ * neutrals, Fraunces display type, Plus Jakarta Sans UI type) so the new app reads as the same product. Every
+ * component reads these variables — never a one-off hex or px.
+ *
+ * Themes (D-08): light is the default; dark follows the system preference unless the page sets
+ * data-theme="light", and data-theme="dark" forces it.
+ *
+ * Breakpoints (CSS variables cannot be used inside @media, so these are the numbers every module uses):
+ *   sm 640px · md 768px · lg 1024px · xl 1280px
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ─── A. Foundation tokens ────────────────────────────────────────────── */
+  --bg: oklch(0.966 0.01 78);
+  --surface: oklch(0.995 0.004 78);
+  --surface-2: oklch(0.951 0.012 78);
+  --surface-3: oklch(0.914 0.014 78);
+  --text: oklch(0.22 0.032 291);
+  --muted: oklch(0.465 0.03 291);
+  --faint: oklch(0.615 0.022 291);
+  --border: oklch(0.885 0.014 78);
+
+  --accent: oklch(0.465 0.17 291);
+  --accent-hover: oklch(0.405 0.165 291);
+  --accent-press: oklch(0.345 0.15 291);
+  --accent-soft: oklch(0.945 0.032 291);
+  --accent-ink: oklch(0.4 0.15 291);
+  --accent-fg: #ffffff;
+  --info: oklch(0.565 0.12 231);
+  --info-soft: oklch(0.951 0.024 231);
+  --info-ink: oklch(0.4 0.1 231);
+  --warn: oklch(0.75 0.15 83);
+  --warn-soft: oklch(0.96 0.045 86);
+  --warn-ink: oklch(0.465 0.11 70);
+  --danger: oklch(0.565 0.19 18);
+  --danger-soft: oklch(0.96 0.03 18);
+  --danger-ink: oklch(0.44 0.16 16);
+
+  --r-xs: 5px;
+  --r-sm: 8px;
+  --r-md: 11px;
+  --r-lg: 14px;
+  --r-xl: 18px;
+  --r-pill: 999px;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  --sh-sm: 0 1px 2px oklch(0.22 0.04 291 / 0.08), 0 1px 1px oklch(0.22 0.04 291 / 0.05);
+  --sh-md: 0 6px 20px oklch(0.22 0.04 291 / 0.09), 0 1px 3px oklch(0.22 0.04 291 / 0.06);
+  --sh-lg: 0 26px 60px oklch(0.22 0.04 291 / 0.17), 0 2px 10px oklch(0.22 0.04 291 / 0.07);
+  --sh-ring: 0 0 0 4px oklch(0.465 0.17 291 / 0.18);
+
+  --t-fast: 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --font-display: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* ─── B. LMS extension ────────────────────────────────────────────────── */
+
+  /* Semantic aliases — LMS states map onto the shell's four tones plus neutral */
+  --success: var(--accent);
+  --success-soft: var(--accent-soft);
+  --success-ink: var(--accent-ink);
+  --neutral: var(--faint);
+  --neutral-soft: var(--surface-2);
+  --neutral-ink: var(--muted);
+
+  /* Lines and tracks */
+  --border-strong: color-mix(in srgb, var(--text) 18%, var(--surface));
+  --track: color-mix(in srgb, var(--accent) 13%, var(--surface-2)); /* same-ramp meter track */
+  --track-neutral: var(--surface-3);
+  --hatch: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in srgb, var(--text) 9%, transparent) 5px 6px);
+
+  /* Media stage — video always sits on a deep indigo-black ground, in either theme */
+  --media-ground: #0f0c17;
+  --media-ink: #ffffff;
+
+  /* Overlay scrims — the shell's two backdrop values */
+  --scrim: rgba(10, 8, 16, 0.52);
+  --scrim-light: rgba(10, 8, 16, 0.46);
+
+  /* Surface levels (named roles over the shell's surfaces) */
+  --level-base: var(--bg);
+  --level-primary: var(--surface);
+  --level-secondary: var(--surface-2);
+  --level-sunken: var(--surface-3);
+  --level-elevated-shadow: var(--sh-md);
+  --level-floating-shadow: var(--sh-lg);
+
+  /* Typography — the shell's sizes, named; display/48 is the shell's large numeric */
+  --fs-display: 48px;
+  --fs-h1: 34px;
+  --fs-h1-mobile: 26px;
+  --fs-h2: 24px;
+  --fs-h3: 18px;
+  --fs-h4: 15px;
+  --fs-body-lg: 15px;
+  --fs-body: 14px;
+  --fs-ui: 13.5px; /* buttons, nav items, menu rows */
+  --fs-body-sm: 13px;
+  --fs-caption: 12px;
+  --fs-meta: 11.5px;
+  --fs-label: 11px; /* uppercase section labels */
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-body: 1.5;
+  --lh-reading: 1.72;
+  --tracking-display: -0.008em;
+  --tracking-numeric: -0.01em;
+  --tracking-eyebrow: 0.05em;
+  --tracking-label: 0.08em;
+
+  /* Motion — the shell's curve and durations, plus the overlay/progress durations it already uses */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 240ms;
+  --dur-progress: 300ms;
+  --t-slow: var(--dur-slow) var(--ease);
+  --t-progress: var(--dur-progress) var(--ease);
+
+  /* Layout */
+  --container-page: 1200px; /* shell content width */
+  --container-reading: 720px; /* immersive reading canvas */
+  --container-wide: 1480px; /* dense management views */
+  --sidebar-w: 268px;
+  --sidebar-w-collapsed: 76px;
+  --header-h: 64px;
+  --header-h-mobile: 58px;
+  --bottom-nav-h: 58px;
+  --touch: 44px;
+
+  /* Z-index — the shell's ladder */
+  --z-raised: 1;
+  --z-sticky: 20;
+  --z-tooltip: 60;
+  --z-popover: 70;
+  --z-nav-drawer: 90;
+  --z-search-sheet: 95;
+  --z-drawer: 98;
+  --z-modal: 100;
+  --z-toast: 110;
+
+  /* ─── Additions for the new app ─────────────────────────────────────────── */
+  --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent);
+  --control-h: 40px;
+  --control-h-sm: 32px;
+}
+
+/* Density: compact tightens controls in dense management views. */
+:root[data-density='compact'] {
+  --control-h: 34px;
+  --control-h-sm: 28px;
+  --touch: 36px;
+}
+
+@media (pointer: coarse) {
+  :root {
+    --touch: 44px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: oklch(0.165 0.026 291);
+    --surface: oklch(0.21 0.028 291);
+    --surface-2: oklch(0.258 0.03 291);
+    --surface-3: oklch(0.31 0.032 291);
+    --text: oklch(0.93 0.014 80);
+    --muted: oklch(0.72 0.018 80);
+    --faint: oklch(0.55 0.02 80);
+    --border: oklch(0.325 0.032 291);
+    --accent: oklch(0.735 0.14 291);
+    --accent-hover: oklch(0.79 0.13 291);
+    --accent-press: oklch(0.675 0.14 291);
+    --accent-soft: oklch(0.3 0.06 291);
+    --accent-ink: oklch(0.86 0.08 291);
+    --accent-fg: #0d0a17;
+    --info-soft: oklch(0.3 0.05 231);
+    --info-ink: oklch(0.84 0.08 231);
+    --warn-soft: oklch(0.32 0.06 83);
+    --warn-ink: oklch(0.87 0.09 86);
+    --danger-soft: oklch(0.3 0.07 18);
+    --danger-ink: oklch(0.85 0.09 18);
+    --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --sh-md: 0 6px 22px rgba(0, 0, 0, 0.55);
+    --sh-lg: 0 26px 60px rgba(0, 0, 0, 0.68);
+    --sh-ring: 0 0 0 4px oklch(0.735 0.14 291 / 0.28);
+
+    --track: color-mix(in srgb, var(--accent) 16%, var(--surface-2));
+    --scrim: rgba(0, 0, 0, 0.6);
+    --scrim-light: rgba(0, 0, 0, 0.52);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: oklch(0.165 0.026 291);
+  --surface: oklch(0.21 0.028 291);
+  --surface-2: oklch(0.258 0.03 291);
+  --surface-3: oklch(0.31 0.032 291);
+  --text: oklch(0.93 0.014 80);
+  --muted: oklch(0.72 0.018 80);
+  --faint: oklch(0.55 0.02 80);
+  --border: oklch(0.325 0.032 291);
+  --accent: oklch(0.735 0.14 291);
+  --accent-hover: oklch(0.79 0.13 291);
+  --accent-press: oklch(0.675 0.14 291);
+  --accent-soft: oklch(0.3 0.06 291);
+  --accent-ink: oklch(0.86 0.08 291);
+  --accent-fg: #0d0a17;
+  --info-soft: oklch(0.3 0.05 231);
+  --info-ink: oklch(0.84 0.08 231);
+  --warn-soft: oklch(0.32 0.06 83);
+  --warn-ink: oklch(0.87 0.09 86);
+  --danger-soft: oklch(0.3 0.07 18);
+  --danger-ink: oklch(0.85 0.09 18);
+  --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --sh-md: 0 6px 22px rgba(0, 0, 0, 0.55);
+  --sh-lg: 0 26px 60px rgba(0, 0, 0, 0.68);
+  --sh-ring: 0 0 0 4px oklch(0.735 0.14 291 / 0.28);
+
+  --track: color-mix(in srgb, var(--accent) 16%, var(--surface-2));
+  --scrim: rgba(0, 0, 0, 0.6);
+  --scrim-light: rgba(0, 0, 0, 0.52);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+    --dur-progress: 0ms;
+    --t-fast: 0ms linear;
+    --t: 0ms linear;
+    --t-slow: 0ms linear;
+    --t-progress: 0ms linear;
+  }
+}

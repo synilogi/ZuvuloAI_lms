@@ -1,0 +1,9 @@
+{
+  "ENV_NAME": "dev",
+  "API_BASE_URL": "http://10.0.2.2:4100",
+  "WEB_BASE_URL": "http://10.0.2.2:5173",
+  "BILLING_CHECKOUT_ENABLED": true,
+  "COURSE_CHECKOUT_ENABLED": true,
+  "PUSH_ENABLED": true,
+  "CRASH_REPORTING_ENABLED": false
+}

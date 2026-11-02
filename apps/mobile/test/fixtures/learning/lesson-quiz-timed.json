@@ -1,0 +1,25 @@
+{
+  "id": "cmvoydm15007jmmrotrx5oxax",
+  "courseId": "cmvoydlte001rmmro0lh7xmub",
+  "chapterId": "cmvoydlth001tmmro9hkdhtt5",
+  "lessonId": "cmvoydltn001zmmroczqbyrwj",
+  "title": "Integers: check your understanding",
+  "instructions": "Answer every question. You can retake this quiz.",
+  "status": "published",
+  "questions": [],
+  "questionCount": 3,
+  "totalPoints": 30,
+  "attemptsUsed": 0,
+  "window": "open",
+  "settings": {
+    "passMark": 70,
+    "attempts": 2,
+    "shuffleQuestions": false,
+    "shuffleOptions": true,
+    "showResults": "score-and-answers",
+    "timeLimitMin": 15
+  },
+  "createdAt": "2026-10-26T07:46:32.778Z",
+  "updatedAt": "2026-10-26T07:46:37.081Z",
+  "negativeMarking": false
+}

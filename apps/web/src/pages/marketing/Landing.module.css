@@ -1,0 +1,1397 @@
+/*
+ * The company website's home page (`/`, `/welcome`), in the ZuviloAi brand: ink, paper and one orange. An ink hero
+ * with the product in it, paper sections ruled with hairlines, orange for every mark that points somewhere, and the
+ * serif (Fraunces, italic) for the one word in a heading that carries the promise. The site's colour tokens are set on
+ * the chrome (Marketing.module.css); this file only arranges and types the page, so the dark theme follows on its own.
+ */
+
+.page {
+  --page-max: 1200px;
+  --r-panel: 28px;
+  --r-card: 18px;
+  /* The ink band behind white text — the same in either theme. */
+  --ink: var(--site-ink);
+  --ink-text: #ffffff;
+  --ink-muted: rgb(255 255 255 / 0.72);
+  --ink-faint: rgb(255 255 255 / 0.5);
+  --ink-line: rgb(255 255 255 / 0.16);
+  --ink-accent: var(--site-orange);
+  --landing-heading: var(--font-body);
+  /* The serif italic: one word of a heading, never a paragraph. */
+  --landing-serif: var(--font-serif);
+
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 112px;
+}
+
+.pill {
+  border-radius: var(--r-pill) !important;
+}
+
+/* ─── Section heads ─── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+  scroll-margin-top: calc(var(--header-h) + var(--s-5));
+}
+.intro,
+.introStart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  max-width: 720px;
+}
+.intro {
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+.intro h2,
+.introStart h2 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-wrap: balance;
+}
+.intro h2 em,
+.introStart h2 em,
+.band h2 em,
+.cta h2 em {
+  font-family: var(--landing-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--site-orange-ink);
+}
+/* The eyebrow: a short orange rule, then the label in small caps. */
+.eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--site-orange-ink);
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--site-orange);
+}
+.lead {
+  margin: 0;
+  font-size: 17px;
+  line-height: var(--lh-reading);
+  color: var(--muted);
+}
+.sectionTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+}
+
+/* ─── Hero: ink, edge to edge, the pitch on the left and the product on the right ─── */
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: 48px;
+  min-height: 680px;
+  padding: 56px 0 72px;
+  color: var(--ink-text);
+  /* On the ink, the primary button is orange with ink lettering; everything else reads the site's tokens. */
+  --accent: var(--site-orange);
+  --accent-hover: var(--site-orange-bright);
+  --accent-press: var(--site-orange);
+  --accent-fg: var(--site-ink);
+  --brand-gradient: linear-gradient(135deg, var(--site-orange-bright) 0%, var(--site-orange) 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  top: calc(var(--s-6) * -1 - 2px);
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(60% 55% at 88% 10%, rgb(232 146 58 / 0.28) 0%, transparent 70%),
+    radial-gradient(40% 45% at 10% 95%, rgb(232 146 58 / 0.12) 0%, transparent 70%), var(--ink);
+}
+/* A faint grid, like the lines on a circuit, fading toward the middle. */
+.hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--s-6) * -1 - 2px);
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background-image: linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(70% 70% at 70% 40%, #000 0%, transparent 100%);
+  pointer-events: none;
+}
+.heroCopy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+.heroEyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--ink-line);
+  background: rgb(255 255 255 / 0.06);
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  color: var(--ink-text);
+}
+.heroEyebrowIcon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--site-orange);
+  color: var(--site-ink);
+}
+.heroTitle {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--ink-text);
+  text-wrap: balance;
+}
+.heroTitle em {
+  font-family: var(--landing-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--site-orange);
+}
+.heroText {
+  margin: 0;
+  max-width: 540px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+}
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: 4px;
+}
+.heroActions > :first-child {
+  min-width: 200px;
+  box-shadow: 0 18px 34px -16px rgb(232 146 58 / 0.7);
+}
+.heroActions > :last-child {
+  min-width: 220px;
+  background: rgb(255 255 255 / 0.06) !important;
+  border-color: rgb(255 255 255 / 0.26) !important;
+  color: var(--ink-text) !important;
+}
+.heroActions > :last-child:hover {
+  background: rgb(255 255 255 / 0.12) !important;
+}
+.heroChecks {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: var(--s-3) var(--s-5);
+}
+.heroChecks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.heroChecks svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--site-orange);
+}
+.heroChecks strong {
+  display: block;
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  color: var(--ink-text);
+}
+.heroChecks small {
+  display: block;
+  font-size: var(--fs-caption);
+  color: var(--ink-faint);
+}
+/* The logo's circuit strands, drawn large and faint behind the copy. */
+.heroDeco {
+  position: absolute;
+  z-index: -1;
+  left: -220px;
+  top: -150px;
+  width: 360px;
+  height: 300px;
+  color: var(--site-orange);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* The scene: drawn at a fixed design size, scaled as one piece to the column (LandingPage's HeroScene). */
+.stage {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  /* A cropped scene (on a phone) is cut at the stage's edges rather than widening the page. */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+/* The admin panel, turned a little towards the copy. */
+.sceneDash {
+  position: absolute;
+  left: 0;
+  top: 64px;
+  width: 860px;
+  /* Parallax (landingMotion.ts): the pointer turns it a touch, scrolling lets it sink slower than the phone. */
+  transform: translate3d(calc(var(--px, 0) * -10px), calc(var(--py, 0) * -8px + var(--sy, 0) * 40px), 0) perspective(2600px)
+    rotateY(calc(-9deg + var(--px, 0) * 2deg)) rotateX(calc(3deg - var(--py, 0) * 1.5deg));
+  transform-origin: 0% 50%;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.55));
+}
+/* The student app over the panel's right edge: its middle sits on that edge, half on the panel, half beyond. */
+.scenePhone {
+  position: absolute;
+  left: 752px;
+  top: 128px;
+  transform: translate3d(calc(var(--px, 0) * 16px), calc(var(--py, 0) * 12px - var(--sy, 0) * 70px), 0) rotate(4deg);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* A few strokes of energy beside the phone, as in a product shot. */
+.sceneSpark {
+  position: absolute;
+  left: 972px;
+  top: 64px;
+  width: 70px;
+  height: 70px;
+}
+.sceneSpark i {
+  position: absolute;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--site-orange);
+  transform-origin: left center;
+}
+.sceneSpark i:nth-child(1) {
+  left: 10px;
+  top: 30px;
+  width: 30px;
+  transform: rotate(-70deg);
+}
+.sceneSpark i:nth-child(2) {
+  left: 26px;
+  top: 40px;
+  width: 34px;
+  transform: rotate(-38deg);
+}
+.sceneSpark i:nth-child(3) {
+  left: 34px;
+  top: 58px;
+  width: 30px;
+  transform: rotate(-12deg);
+}
+.float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px 16px 16px;
+  border-radius: 22px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  background: rgb(255 255 255 / 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 30px 60px -30px rgb(0 0 0 / 0.6),
+    0 10px 20px -12px rgb(0 0 0 / 0.3);
+  color: var(--site-ink);
+  white-space: nowrap;
+  transform: translate3d(calc(var(--px, 0) * 22px), calc(var(--py, 0) * 16px - var(--sy, 0) * 36px), 0);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.float strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.float small {
+  display: block;
+  font-size: 16px;
+  color: #5a5a66;
+}
+.floatIcon {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--site-ink);
+  color: var(--site-orange);
+}
+.floatSpark {
+  width: 64px;
+  height: 30px;
+  margin-left: 6px;
+  fill: none;
+  stroke: var(--site-orange);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Pinned over the panel's lower left corner, and below the phone — never over a figure that matters. */
+.floatStudents {
+  left: 56px;
+  top: 600px;
+}
+.floatFinished {
+  left: 640px;
+  top: 700px;
+}
+/* Where the scene is cropped, its cut edge fades out instead of stopping hard. */
+.stage[data-cropped] {
+  mask-image: linear-gradient(90deg, transparent 0, #000 28px);
+}
+/* Framed tighter on a phone (HeroScene crops the scene's left side): the students figure moves into view. */
+.scene[data-cropped] .floatStudents {
+  left: 350px;
+  top: 640px;
+}
+.scene[data-cropped] .floatFinished {
+  top: 690px;
+  left: 700px;
+}
+
+/* ─── The module strip: what one LMS runs, in a row under the hero ─── */
+.strip {
+  margin-top: -64px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2) var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stripLabel {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: var(--s-2);
+}
+.stripItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  color: var(--text);
+}
+.stripItem::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--site-orange);
+}
+
+/* ─── Who it is for ─── */
+.audience {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+.audience li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-card);
+}
+.audience h3 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--text);
+}
+.audience p {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+  color: var(--muted);
+}
+.audienceIcon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--s-2);
+  border-radius: 14px;
+  background: var(--site-ink);
+  color: var(--site-orange);
+}
+.centerLink {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+/* ─── Benefits: an editorial list, numbered ─── */
+.benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.benefits li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5) var(--s-5) var(--s-5) 0;
+  margin-right: var(--s-5);
+  border-top: 2px solid transparent;
+  margin-top: -1px;
+  transition: border-color var(--t);
+}
+.benefits li:hover {
+  border-top-color: var(--site-orange);
+}
+.benefitIndex {
+  font-family: var(--landing-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--site-orange-ink);
+  margin-bottom: var(--s-2);
+}
+.benefitIcon {
+  display: none;
+}
+.benefits h3,
+.included h3 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--text);
+}
+.benefits p,
+.included p {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--muted);
+}
+
+/* ─── Product tour ─── */
+.tourTabs {
+  align-self: center;
+  display: flex;
+  gap: 4px;
+  max-width: 100%;
+  padding: 5px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tourTabs::-webkit-scrollbar {
+  display: none;
+}
+.tourTab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: var(--touch);
+  padding: 0 18px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--t-fast),
+    color var(--t-fast);
+}
+.tourTab svg {
+  color: var(--site-orange-ink);
+}
+.tourTab:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+.tourTab[aria-selected='true'] {
+  background: var(--site-ink);
+  color: #ffffff;
+  font-weight: 700;
+}
+.tourTab[aria-selected='true'] svg {
+  color: var(--site-orange);
+}
+.tourTab:focus-visible {
+  border-radius: var(--r-pill);
+}
+.tourPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.5fr);
+  gap: var(--s-7);
+  align-items: center;
+  padding: 48px;
+  border-radius: var(--r-panel);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.tourPanel:focus-visible {
+  border-radius: var(--r-panel);
+}
+.tourCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+.tourCopy h3 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-wrap: balance;
+}
+.tourCopy p {
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-reading);
+  color: var(--muted);
+}
+.tourCopy ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.tourCopy li {
+  display: flex;
+  gap: var(--s-2);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--text);
+}
+.tourCopy li svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--site-orange);
+}
+.tourLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--site-orange-ink);
+}
+
+/* ─── Also included: a ruled grid ─── */
+.included {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-radius: var(--r-card);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  overflow: hidden;
+}
+.included li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  /* Hairlines between cells, whatever the column count: each cell draws its right and bottom, the list clips the rest. */
+  box-shadow:
+    1px 0 0 var(--border),
+    0 1px 0 var(--border);
+}
+.included h3 {
+  font-size: var(--fs-h4);
+  font-family: var(--font-body);
+}
+.included p {
+  font-size: var(--fs-body-sm);
+}
+.includedIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--s-1);
+  border-radius: 10px;
+  background: var(--site-ink);
+  color: var(--site-orange);
+}
+
+/* ─── Separate LMS band ─── */
+.band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--s-7);
+  align-items: center;
+  padding: 64px;
+  border-radius: var(--r-panel);
+  background: radial-gradient(55% 80% at 100% 0%, rgb(232 146 58 / 0.26) 0%, transparent 65%), var(--ink);
+  color: var(--ink-text);
+  box-shadow: 0 30px 80px -40px rgb(0 0 0 / 0.6);
+}
+.bandText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+.bandEyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-accent);
+}
+.bandEyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--ink-accent);
+}
+.band h2 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--ink-text);
+}
+.band h2 em {
+  color: var(--ink-accent);
+}
+.band p {
+  margin: 0;
+  font-size: 16px;
+  line-height: var(--lh-reading);
+  color: var(--ink-muted);
+}
+.bandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--ink-text);
+}
+.bandLink:focus-visible,
+.ctaLink:focus-visible {
+  outline: 2px solid var(--ink-accent);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+.tree,
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tree {
+  padding: var(--s-5);
+  border-radius: var(--r-card);
+  border: 1px solid var(--ink-line);
+  background: rgb(255 255 255 / 0.05);
+}
+.tree ul {
+  margin-left: 18px;
+  padding-left: var(--s-4);
+  border-left: 1px dashed var(--ink-line);
+}
+.tree li {
+  padding-top: var(--s-3);
+}
+.tree > li {
+  padding-top: 0;
+}
+.treeNode {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--ink-line);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--ink-text);
+}
+.treeNode svg {
+  color: var(--ink-accent);
+  flex: none;
+}
+.treeNodeYou {
+  background: var(--site-orange);
+  border-color: transparent;
+  color: var(--site-ink);
+}
+.treeNodeYou svg {
+  color: var(--site-ink);
+}
+.treeMuted {
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+/* ─── How it works: a timeline ─── */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+.steps li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5) var(--s-4) var(--s-4) 0;
+  border-top: 1px solid var(--border-strong);
+}
+/* The line runs through every step; the number sits on it. */
+.steps li::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 44px;
+  border-top: 3px solid var(--site-orange);
+}
+.stepNum {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--s-2);
+  border-radius: 50%;
+  background: var(--site-ink);
+  color: var(--site-orange);
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: var(--fs-body);
+}
+.steps h3 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: var(--fs-h4);
+  color: var(--text);
+}
+.steps p {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+  color: var(--muted);
+}
+
+/* ─── Pricing ─── */
+.pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+}
+.pricing > ul,
+.pricing > div {
+  width: 100%;
+}
+
+/* ─── FAQ ─── */
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--s-7);
+  align-items: start;
+}
+.faqAside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-5));
+}
+.faqAside .lead {
+  font-size: var(--fs-body);
+}
+
+/* ─── Closing CTA ─── */
+.cta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  padding: 80px var(--s-6);
+  border-radius: var(--r-panel);
+  text-align: center;
+  background: radial-gradient(50% 70% at 50% 110%, rgb(232 146 58 / 0.35) 0%, transparent 70%), var(--ink);
+  color: var(--ink-text);
+  box-shadow: 0 30px 80px -40px rgb(0 0 0 / 0.6);
+  overflow: hidden;
+  isolation: isolate;
+  --accent: var(--site-orange);
+  --accent-fg: var(--site-ink);
+}
+.ctaOrbit {
+  position: absolute;
+  inset: auto auto -320px 50%;
+  width: 640px;
+  height: 640px;
+  translate: -50% 0;
+  border-radius: 50%;
+  border: 1px dashed var(--ink-line);
+  z-index: -1;
+}
+.cta h2 {
+  margin: 0;
+  font-family: var(--landing-heading);
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--ink-text);
+  text-wrap: balance;
+}
+.cta h2 em {
+  color: var(--site-orange);
+}
+.cta p {
+  margin: 0;
+  max-width: 520px;
+  font-size: 16px;
+  line-height: var(--lh-reading);
+  color: var(--ink-muted);
+}
+.ctaActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-2);
+}
+.ctaPrimary {
+  background: var(--site-orange) !important;
+  color: var(--site-ink) !important;
+  border-color: transparent !important;
+  box-shadow: 0 18px 34px -16px rgb(232 146 58 / 0.8) !important;
+}
+.ctaPrimary:hover {
+  background: var(--site-orange-bright) !important;
+}
+.ctaLink {
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.ctaLink:hover {
+  color: var(--ink-text);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1100px) {
+  /* The copy above the scene, both centred; the scene keeps every part, only smaller. */
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    min-height: 0;
+    padding: 48px 0 48px;
+  }
+  .heroCopy {
+    align-items: center;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .heroDeco {
+    left: 50%;
+    translate: -50% 0;
+  }
+  .heroActions {
+    justify-content: center;
+  }
+  .heroChecks {
+    justify-content: center;
+  }
+  .heroChecks li {
+    text-align: left;
+  }
+  .stage {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .strip {
+    margin-top: -40px;
+  }
+  .benefits,
+  .audience {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .included {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .tourPanel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+    padding: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    gap: 88px;
+  }
+  .hero {
+    gap: 40px;
+    padding: 40px 0 40px;
+  }
+  .band,
+  .faq {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .band {
+    padding: 48px 32px;
+    gap: var(--s-6);
+  }
+  .faqAside {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    gap: 64px;
+  }
+  .hero {
+    gap: 32px;
+    padding: 24px 0 32px;
+  }
+  .heroTitle {
+    font-size: clamp(36px, 10.5vw, 46px);
+  }
+  .heroText {
+    font-size: 16px;
+  }
+  .heroActions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .heroActions > * {
+    width: 100%;
+    min-width: 0 !important;
+  }
+  .heroChecks {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    width: fit-content;
+    margin-inline: auto;
+  }
+  .strip {
+    margin-top: -32px;
+    justify-content: flex-start;
+  }
+  .benefits,
+  .audience,
+  .included,
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .benefits li {
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .tourTabs {
+    align-self: stretch;
+  }
+  .tourTab {
+    padding: 0 14px;
+  }
+  .tourPanel {
+    padding: 24px 16px;
+    border-radius: 22px;
+  }
+  .band {
+    padding: 36px 20px;
+    border-radius: 22px;
+  }
+  .cta {
+    padding: 52px 20px;
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tourTab,
+  .tourPanel,
+  .benefits li {
+    transition: none;
+  }
+}
+
+/* ─── Motion ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+ * Only transform, translate, scale and opacity move, so nothing re-lays out and the compositor does the work.
+ * landingMotion.ts decides when sections reveal and feeds the hero's parallax variables; with reduced motion asked for
+ * (system or app setting) it does nothing, and the rules at the end of this block switch every animation off. */
+
+.page {
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The parallax variables, written per frame on the four moving pieces only. Not inherited, so a change restyles the
+ * piece and none of the many elements inside it. */
+@property --px {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+@property --py {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+@property --sy {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes stageIn {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    scale: 0.88;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes bobSlow {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+@keyframes bobFast {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -14px;
+  }
+}
+@keyframes sparkPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    scale: 0.94;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.04;
+  }
+}
+@keyframes swapIn {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* The hero copy arrives line by line. */
+.heroCopy > * {
+  animation: rise 0.8s var(--motion-ease) both;
+}
+.heroCopy > :nth-child(1) {
+  animation-delay: 0.05s;
+}
+.heroCopy > :nth-child(2) {
+  animation-delay: 0.13s;
+}
+.heroCopy > :nth-child(3) {
+  animation-delay: 0.21s;
+}
+.heroCopy > :nth-child(4) {
+  animation-delay: 0.29s;
+}
+.heroCopy > :nth-child(5) {
+  animation-delay: 0.37s;
+}
+.heroCopy > :nth-child(6) {
+  animation-delay: 0.45s;
+}
+
+/* Then the scene rises, the phone and the figures pop in, and everything settles into a slow float — the panel and
+   the phone out of step, so the overlap breathes. */
+.stage {
+  animation: stageIn 1s 0.2s var(--motion-ease) both;
+}
+.sceneDash {
+  animation: bobSlow 9s 1.2s ease-in-out infinite;
+}
+.scenePhone {
+  animation:
+    popIn 0.9s 0.55s var(--motion-ease) both,
+    bobFast 7s 1.45s ease-in-out infinite;
+}
+.floatStudents {
+  animation:
+    popIn 0.8s 0.85s var(--motion-ease) both,
+    bobSlow 8s 1.7s ease-in-out infinite;
+}
+.floatFinished {
+  animation:
+    popIn 0.8s 1s var(--motion-ease) both,
+    bobSlow 7.5s 2.2s ease-in-out infinite;
+}
+.sceneSpark {
+  animation: sparkPulse 3.2s 1.2s ease-in-out infinite both;
+  transform-origin: 30% 70%;
+}
+
+/* Off screen, nothing keeps animating. */
+.hero[data-offscreen] :is(.sceneDash, .scenePhone, .float, .sceneSpark) {
+  animation-play-state: paused;
+}
+
+/* Sections fade and rise in as they arrive; their cards follow one after another. */
+.page > section[data-reveal] {
+  transition:
+    opacity 0.8s var(--motion-ease),
+    translate 0.8s var(--motion-ease);
+}
+.page > section[data-reveal='pending'] {
+  opacity: 0;
+  translate: 0 36px;
+}
+.page > section[data-reveal] :is(.audience, .benefits, .included, .steps) > li {
+  transition:
+    opacity 0.7s var(--motion-ease) calc(0.12s + var(--n, 0) * 0.07s),
+    translate 0.7s var(--motion-ease) calc(0.12s + var(--n, 0) * 0.07s),
+    transform var(--t),
+    box-shadow var(--t),
+    border-color var(--t);
+}
+.page > section[data-reveal='pending'] :is(.audience, .benefits, .included, .steps) > li {
+  opacity: 0;
+  translate: 0 20px;
+}
+:is(.audience, .benefits, .included, .steps) > li:nth-child(2) {
+  --n: 1;
+}
+:is(.audience, .benefits, .included, .steps) > li:nth-child(3) {
+  --n: 2;
+}
+:is(.audience, .benefits, .included, .steps) > li:nth-child(4) {
+  --n: 3;
+}
+:is(.audience, .benefits, .included, .steps) > li:nth-child(5) {
+  --n: 4;
+}
+:is(.audience, .benefits, .included, .steps) > li:nth-child(6) {
+  --n: 5;
+}
+:is(.audience, .benefits, .included, .steps) > li:nth-child(n + 7) {
+  --n: 6;
+}
+
+/* Cards lift a little under the pointer. */
+.audience li,
+.included li {
+  transition:
+    transform var(--t),
+    box-shadow var(--t),
+    border-color var(--t);
+}
+@media (hover: hover) {
+  .audience li:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-card-hover);
+    border-color: var(--border-strong);
+  }
+  /* Buttons rise, and an arrow nudges the way it points. */
+  .pill:hover {
+    transform: translateY(-2px);
+  }
+  .pill:active {
+    transform: translateY(0);
+  }
+  .pill svg {
+    transition: transform var(--t);
+  }
+  .pill:hover svg:last-child {
+    transform: translateX(3px);
+  }
+  .centerLink svg,
+  .tourLink svg,
+  .bandLink svg {
+    transition: transform var(--t);
+  }
+  .centerLink:hover svg,
+  .tourLink:hover svg,
+  .bandLink:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+/* The product tour's panel eases into each area picked. */
+.tourCopy,
+.tourPanel > [data-mock] {
+  animation: swapIn 0.5s var(--motion-ease) both;
+}
+.tourPanel > [data-mock] {
+  animation-delay: 0.06s;
+}
+
+/* Reduced motion — the system's setting or the app's: everything is simply there, and nothing floats. */
+@media (prefers-reduced-motion: reduce) {
+  .heroCopy > *,
+  .stage,
+  .sceneDash,
+  .scenePhone,
+  .float,
+  .sceneSpark,
+  .tourCopy,
+  .tourPanel > [data-mock] {
+    animation: none !important;
+  }
+  .page > section[data-reveal],
+  .page > section[data-reveal] :is(.audience, .benefits, .included, .steps) > li {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
+  }
+}
+:global(:root[data-motion='reduced']) :is(.heroCopy > *, .stage, .sceneDash, .scenePhone, .float, .sceneSpark, .tourCopy),
+:global(:root[data-motion='reduced']) .tourPanel > [data-mock] {
+  animation: none !important;
+}
+
+/* The home page has four steps. */
+@media (min-width: 901px) {
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "window": {
+    "from": "2026-07-01T12:43:53.590Z",
+    "to": "2026-09-30T12:43:53.590Z",
+    "previousFrom": "2026-04-01T12:43:53.590Z",
+    "previousTo": "2026-07-01T12:43:53.590Z"
+  },
+  "courseCount": 6,
+  "rows": [
+    {
+      "instructorId": "cmumqigpx000jmmosxe7nko8c",
+      "name": "Dr. Meenakshi Iyer",
+      "title": "Jyotish Acharya",
+      "courses": 2,
+      "learners": 15,
+      "completionRate": 67,
+      "rating": 4.8,
+      "reviews": 38,
+      "reviewHours": 0,
+      "onTime": 97,
+      "liveClasses": 3,
+      "attendance": 78
+    },
+    {
+      "instructorId": "cmumqigq0000lmmosg7u679j6",
+      "name": "Acharya Vinod Shastri",
+      "title": "Predictive Astrologer",
+      "courses": 2,
+      "learners": 15,
+      "completionRate": 50,
+      "rating": 4.6,
+      "reviews": 1,
+      "reviewHours": 78,
+      "onTime": 0,
+      "liveClasses": 1,
+      "attendance": null
+    },
+    {
+      "instructorId": "cmumqigq2000nmmosiltg8gr7",
+      "name": "Pt. Sanjay Rathore",
+      "title": "KP & Divisional Charts Specialist",
+      "courses": 2,
+      "learners": 7,
+      "completionRate": 60,
+      "rating": 4.7,
+      "reviews": 0,
+      "reviewHours": null,
+      "onTime": null,
+      "liveClasses": 0,
+      "attendance": null
+    }
+  ],
+  "figures": {
+    "reviews": {
+      "value": 39,
+      "previous": 1,
+      "series": [],
+      "unit": "count"
+    },
+    "reviewHours": {
+      "value": 0,
+      "previous": 51,
+      "series": [],
+      "unit": "count"
+    },
+    "onTime": {
+      "value": 95,
+      "previous": 0,
+      "series": [],
+      "unit": "%"
+    },
+    "attendance": {
+      "value": 78,
+      "previous": 100,
+      "series": [],
+      "unit": "%"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "liveClass": {
+        "id": "cmumqihjm0087mmosieytg5to",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Reading dignities in real charts",
+        "instructorId": "cmumqigpx000jmmosxe7nko8c",
+        "startsAt": "2026-10-01T13:51:08.625Z",
+        "durationMin": 60,
+        "capacity": 40,
+        "registered": 0,
+        "attending": 0,
+        "attended": 0,
+        "description": "A live walkthrough of planetary dignity across several real birth charts.",
+        "agenda": [
+          {
+            "title": "Recap of dignity rules",
+            "minutes": 10
+          },
+          {
+            "title": "Live chart reading",
+            "minutes": 40
+          },
+          {
+            "title": "Q&A",
+            "minutes": 10
+          }
+        ],
+        "visibility": "enrolled",
+        "meeting": {
+          "kind": "room"
+        },
+        "reminders": [
+          1440,
+          60
+        ]
+      },
+      "phase": "upcoming",
+      "courseTitle": "Foundations of Vedic Astrology",
+      "instructorName": "Dr. Meenakshi Iyer"
+    }
+  ],
+  "total": 1,
+  "counts": {
+    "upcoming": 1,
+    "live": 0,
+    "history": 3,
+    "cancelled": 12
+  }
+}

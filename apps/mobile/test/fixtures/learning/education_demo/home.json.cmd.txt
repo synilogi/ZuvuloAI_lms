@@ -1,0 +1,4 @@
+Captured 2026-10-13 from the local API (dev database) after `npm run seed:education -- --demo-student ananya@syniastrolms.test`.
+Request: GET /learning/home as the seeded demo learner
+HTTP status: 200
+Tokens and e-mail addresses scrubbed (same rules as tool/capture_fixture.sh).

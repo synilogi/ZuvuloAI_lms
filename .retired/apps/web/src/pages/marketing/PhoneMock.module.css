@@ -1,0 +1,365 @@
+/* The student app in a phone, drawn at a fixed size (290 × 600); the hero scales the whole scene it sits in. */
+
+.phone {
+  position: relative;
+  width: 290px;
+  height: 600px;
+  padding: 10px;
+  border-radius: 48px;
+  background: linear-gradient(145deg, #2b2a3a 0%, #0f0e17 55%, #24222f 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgb(255 255 255 / 0.14),
+    inset 0 0 0 4px #0b0a12,
+    0 40px 80px -24px rgb(24 16 64 / 0.55),
+    0 18px 36px -18px rgb(24 16 64 / 0.4);
+  user-select: none;
+  text-align: left;
+}
+/* Side buttons, a hair outside the frame. */
+.phone::before,
+.phone::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: #1c1b26;
+}
+.phone::before {
+  left: -3px;
+  top: 120px;
+  height: 56px;
+}
+.phone::after {
+  right: -3px;
+  top: 150px;
+  height: 84px;
+}
+
+.screen {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 39px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.35;
+}
+.screen small {
+  display: block;
+  font-size: 9.5px;
+  color: var(--muted);
+}
+.screen strong {
+  font-weight: 700;
+}
+
+/* Status bar and the island */
+.status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 22px 0 26px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.island {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  width: 86px;
+  height: 24px;
+  border-radius: 999px;
+  background: #0b0a12;
+  transform: translateX(-50%);
+}
+.statusIcons {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.battery {
+  position: relative;
+  width: 20px;
+  height: 10px;
+  border-radius: 3px;
+  border: 1.5px solid currentColor;
+}
+.battery::after {
+  content: '';
+  position: absolute;
+  inset: 1px 4px 1px 1px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 14px 0;
+}
+
+.hello {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hello > span:first-child {
+  flex: 1;
+}
+.hello strong {
+  display: block;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+.bell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--sh-xs);
+  color: var(--accent-ink);
+}
+.bell i {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.me {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--hue-orange), var(--hue-pink));
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Continue learning — the app's gradient banner */
+.continue {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  background: radial-gradient(80% 90% at 100% 0%, rgb(255 255 255 / 0.22) 0%, transparent 60%), linear-gradient(135deg, #5b4bff 0%, #6a3de8 55%, #8b3fd9 100%);
+  box-shadow: 0 14px 24px -14px rgb(91 75 255 / 0.8);
+  color: #fff;
+  overflow: hidden;
+}
+.continue small {
+  color: rgb(255 255 255 / 0.8);
+}
+.continueText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.continueText strong {
+  font-size: 13.5px;
+  line-height: 1.2;
+}
+.continueMeta {
+  font-size: 9.5px;
+  color: rgb(255 255 255 / 0.85);
+}
+.continueBar {
+  display: block;
+  height: 5px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.28);
+  overflow: hidden;
+}
+.continueBar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #fff;
+}
+.play {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  color: #5b4bff;
+  box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.4);
+}
+
+/* Shortcuts: 3D art on tinted tiles */
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+.shortcut {
+  --h: var(--hue-violet);
+  --h-soft: var(--hue-violet-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+}
+.shortcut[data-hue='orange'] {
+  --h: var(--hue-orange);
+  --h-soft: var(--hue-orange-soft);
+}
+.shortcut[data-hue='gold'] {
+  --h: var(--hue-gold);
+  --h-soft: var(--hue-gold-soft);
+}
+.shortcut[data-hue='blue'] {
+  --h: var(--hue-blue);
+  --h-soft: var(--hue-blue-soft);
+}
+.shortcutTile {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--h-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--h) 18%, transparent);
+}
+.shortcutTile img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.sectionHead strong {
+  font-size: 13px;
+}
+.sectionHead small {
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.course {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--sh-xs);
+}
+.cover {
+  width: 46px;
+  flex: none;
+  border-radius: 10px;
+}
+.courseText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.courseText strong {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.courseBar {
+  display: block;
+  height: 4px;
+  margin-top: 3px;
+  border-radius: 999px;
+  background: var(--track);
+  overflow: hidden;
+}
+.courseBar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--brand-gradient);
+}
+.coursePct {
+  font-weight: 700;
+  color: var(--text) !important;
+}
+
+/* Bottom bar */
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 8px 8px 4px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: var(--faint);
+}
+.tabIcon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+}
+.tabIcon i {
+  position: absolute;
+  top: 1px;
+  right: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+.tabOn {
+  color: var(--accent-ink);
+  font-weight: 800;
+}
+.tabOn .tabIcon {
+  background: var(--accent-soft);
+}
+.homeBar {
+  display: block;
+  width: 96px;
+  height: 4px;
+  margin: 4px auto 6px;
+  border-radius: 999px;
+  background: var(--text);
+  opacity: 0.85;
+}

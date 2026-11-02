@@ -1,0 +1,9 @@
+{
+  "message": "Check the request and try again.",
+  "issues": [
+    {
+      "path": "password",
+      "message": "Invalid input: expected string, received undefined"
+    }
+  ]
+}

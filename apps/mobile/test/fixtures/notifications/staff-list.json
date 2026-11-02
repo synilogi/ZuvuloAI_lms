@@ -1,0 +1,41 @@
+{
+  "rows": [
+    {
+      "id": "cmumil7yo000nmmy7yluk4lr8",
+      "recipientId": "cmumibp1e000rmmqd71iu9k6u",
+      "category": "assignment",
+      "title": "Karan Mehta submitted “Your first assignment: reading a friend’s chart”",
+      "summary": "Foundations of Vedic Astrology · attempt 1 · late. It is waiting in your review queue.",
+      "body": [
+        "Foundations of Vedic Astrology · attempt 1 · late. It is waiting in your review queue."
+      ],
+      "createdAt": "2026-09-29T10:09:19.249Z",
+      "actor": "Karan Mehta",
+      "facts": [
+        {
+          "label": "Course",
+          "value": "Foundations of Vedic Astrology"
+        },
+        {
+          "label": "Submitted",
+          "value": "29/9/2026, 3:39:19 pm"
+        }
+      ],
+      "action": {
+        "label": "Open the review",
+        "to": "/teach/assignments/submissions/cmumil7y8000lmmy730wk1aji"
+      }
+    }
+  ],
+  "total": 1,
+  "unread": 1,
+  "counts": {
+    "course": 0,
+    "assignment": 1,
+    "quiz": 0,
+    "live": 0,
+    "certificate": 0,
+    "enrollment": 0,
+    "system": 0
+  }
+}

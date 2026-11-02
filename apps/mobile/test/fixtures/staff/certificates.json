@@ -1,0 +1,213 @@
+{
+  "rows": [
+    {
+      "certificate": {
+        "id": "cmumqihje0081mmos9mwzxbat",
+        "credentialId": "SA-JY-2026-00142",
+        "studentId": "cmumqigxx000xmmossb0hdlxp",
+        "courseId": "cmumqihc7002bmmosdnc8er9m",
+        "title": "Certificate in The 27 Nakshatras in Depth",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-08-30T13:51:08.617Z",
+        "issuedAt": "2026-08-31T13:51:08.617Z",
+        "finalScore": 91,
+        "hours": 6,
+        "verifications": 10
+      },
+      "studentName": "Ananya Rao",
+      "studentEmail": "user@example.test",
+      "courseTitle": "The 27 Nakshatras in Depth"
+    },
+    {
+      "certificate": {
+        "id": "cmumqihjh0083mmoshf4glr1a",
+        "credentialId": "SA-JY-2026-00198",
+        "studentId": "cmumqih1p0015mmos2mjmvk96",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Certificate in Foundations of Vedic Astrology",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "revoked",
+        "completedAt": "2026-09-14T13:51:08.620Z",
+        "issuedAt": "2026-09-15T13:51:08.620Z",
+        "revokedAt": "2026-09-30T11:33:52.461Z",
+        "revokedReason": "Issued in error.",
+        "finalScore": 88,
+        "hours": 9,
+        "verifications": 8
+      },
+      "studentName": "Priya Nair",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Foundations of Vedic Astrology"
+    },
+    {
+      "certificate": {
+        "id": "cmumqihjk0085mmosxt5bck3c",
+        "credentialId": "SA-JY-2026-00231",
+        "studentId": "cmumqihbc001pmmost77d68f5",
+        "courseId": "cmumqihco002rmmosr0ijyuku",
+        "title": "Certificate in Reading the Dasha System",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "pending",
+        "completedAt": "2026-09-28T13:51:08.622Z",
+        "finalScore": 79,
+        "hours": 8,
+        "verifications": 0
+      },
+      "studentName": "Vikram Singh",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Reading the Dasha System"
+    },
+    {
+      "certificate": {
+        "id": "cmunmpvza007dmmt9pg5ho3j9",
+        "credentialId": "SA-KP-2026-00004",
+        "studentId": "cmumqih9g001lmmoszgtcvnv1",
+        "courseId": "cmumqihdf003dmmosiq6u19sc",
+        "title": "Certificate in Krishnamurti Paddhati (KP) Fundamentals",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T04:52:41.636Z",
+        "issuedAt": "2026-09-30T04:52:41.742Z",
+        "hours": 0.5,
+        "verifications": 1
+      },
+      "studentName": "Meera Pillai",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Krishnamurti Paddhati (KP) Fundamentals"
+    },
+    {
+      "certificate": {
+        "id": "cmunp69zs00hdmmt9optdzvc7",
+        "credentialId": "SA-JA-2026-00005",
+        "studentId": "cmumqih9g001lmmoszgtcvnv1",
+        "courseId": "cmumqihd50035mmos6u0fhpdn",
+        "title": "Certificate in Jaimini Astrology: Chara Karakas",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T06:01:25.526Z",
+        "issuedAt": "2026-09-30T06:01:25.615Z",
+        "hours": 0.5,
+        "verifications": 1
+      },
+      "studentName": "Meera Pillai",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Jaimini Astrology: Chara Karakas"
+    },
+    {
+      "certificate": {
+        "id": "cmunq2puh00phmmt9r1y611g4",
+        "credentialId": "SA-PH-2026-00006",
+        "studentId": "cmumqih9g001lmmoszgtcvnv1",
+        "courseId": "cmumqihdp003lmmoslirj2d3m",
+        "title": "Certificate in Prashna: Horary Astrology",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T06:26:39.063Z",
+        "issuedAt": "2026-09-30T06:26:39.125Z",
+        "hours": 1,
+        "verifications": 1
+      },
+      "studentName": "Meera Pillai",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Prashna: Horary Astrology"
+    },
+    {
+      "certificate": {
+        "id": "cmunrs5hn00xzmmt9murx4rg3",
+        "credentialId": "SA-KP-2026-00007",
+        "studentId": "cmumqigzt0011mmosdvh2xmuw",
+        "courseId": "cmumqihdf003dmmosiq6u19sc",
+        "title": "Certificate in Krishnamurti Paddhati (KP) Fundamentals",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T07:14:25.353Z",
+        "issuedAt": "2026-09-30T07:14:25.442Z",
+        "hours": 0.5,
+        "verifications": 1
+      },
+      "studentName": "Rohit Sharma",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Krishnamurti Paddhati (KP) Fundamentals"
+    },
+    {
+      "certificate": {
+        "id": "cmunu1nwf016rmmt9eufl9o10",
+        "credentialId": "SA-JA-2026-00008",
+        "studentId": "cmumqigzt0011mmosdvh2xmuw",
+        "courseId": "cmumqihd50035mmos6u0fhpdn",
+        "title": "Certificate in Jaimini Astrology: Chara Karakas",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T08:17:48.349Z",
+        "issuedAt": "2026-09-30T08:17:48.423Z",
+        "hours": 0.5,
+        "verifications": 1
+      },
+      "studentName": "Rohit Sharma",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Jaimini Astrology: Chara Karakas"
+    },
+    {
+      "certificate": {
+        "id": "cmunvcnga01flmmt90cmr0sjc",
+        "credentialId": "SA-PH-2026-00009",
+        "studentId": "cmumqigzt0011mmosdvh2xmuw",
+        "courseId": "cmumqihdp003lmmoslirj2d3m",
+        "title": "Certificate in Prashna: Horary Astrology",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T08:54:20.600Z",
+        "issuedAt": "2026-09-30T08:54:20.668Z",
+        "hours": 1,
+        "verifications": 1
+      },
+      "studentName": "Rohit Sharma",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Prashna: Horary Astrology"
+    },
+    {
+      "certificate": {
+        "id": "cmunxlclb021zmmt935k2y8ua",
+        "credentialId": "SA-KP-2026-00010",
+        "studentId": "cmumqihbc001pmmost77d68f5",
+        "courseId": "cmumqihdf003dmmosiq6u19sc",
+        "title": "Certificate in Krishnamurti Paddhati (KP) Fundamentals",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T09:57:05.662Z",
+        "issuedAt": "2026-09-30T09:57:05.725Z",
+        "hours": 0.5,
+        "verifications": 1
+      },
+      "studentName": "Vikram Singh",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Krishnamurti Paddhati (KP) Fundamentals"
+    },
+    {
+      "certificate": {
+        "id": "cmunztu0602epmmt9owke62br",
+        "credentialId": "SA-JA-2026-00011",
+        "studentId": "cmumqihbc001pmmost77d68f5",
+        "courseId": "cmumqihd50035mmos6u0fhpdn",
+        "title": "Certificate in Jaimini Astrology: Chara Karakas",
+        "templateId": "cmumqihe0003vmmos92qeuavf",
+        "status": "issued",
+        "completedAt": "2026-09-30T10:59:40.708Z",
+        "issuedAt": "2026-09-30T10:59:40.770Z",
+        "hours": 0.5,
+        "verifications": 1
+      },
+      "studentName": "Vikram Singh",
+      "studentEmail": "user@example.test",
+      "courseTitle": "Jaimini Astrology: Chara Karakas"
+    }
+  ],
+  "total": 11,
+  "counts": {
+    "all": 11,
+    "issued": 9,
+    "pending": 1,
+    "revoked": 1
+  }
+}

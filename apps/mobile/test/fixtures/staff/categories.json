@@ -1,0 +1,60 @@
+{
+  "rows": [
+    {
+      "category": {
+        "id": "cmumibowr000dmmqde40gn58b",
+        "name": "Vedic Foundations",
+        "description": "Planets, signs, houses and nakshatras.",
+        "levelIds": [
+          "cmumibovb0001mmqdxe2pp0fd"
+        ],
+        "order": 1,
+        "status": "active",
+        "glyph": "sun",
+        "updatedAt": "2026-09-29T10:01:54.651Z"
+      },
+      "courseCount": 3,
+      "publishedCount": 2,
+      "learnerCount": 24
+    },
+    {
+      "category": {
+        "id": "cmumibowu000fmmqd2rjb4u5c",
+        "name": "Predictive Techniques",
+        "description": "Dashas, transits and timing.",
+        "levelIds": [
+          "cmumibovb0005mmqd2mvnrvz2"
+        ],
+        "order": 2,
+        "status": "active",
+        "glyph": "orbits",
+        "updatedAt": "2026-09-29T10:01:54.654Z"
+      },
+      "courseCount": 1,
+      "publishedCount": 1,
+      "learnerCount": 12
+    },
+    {
+      "category": {
+        "id": "cmumibowx000hmmqd98nt394p",
+        "name": "Specialised Systems",
+        "description": "Jaimini, KP and divisional charts.",
+        "levelIds": [
+          "cmumibovb0004mmqdxg0g3jpf"
+        ],
+        "order": 3,
+        "status": "active",
+        "glyph": "houses",
+        "updatedAt": "2026-09-29T10:01:54.657Z"
+      },
+      "courseCount": 3,
+      "publishedCount": 3,
+      "learnerCount": 26
+    }
+  ],
+  "counts": {
+    "all": 3,
+    "active": 3,
+    "hidden": 0
+  }
+}

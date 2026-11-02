@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "assignment": {
+        "id": "cmumqihj3007tmmosfjcqkxfs",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "chapterId": "cmumqihbu0021mmos6bi0tip1",
+        "lessonId": "cmumqihc20029mmos6t7kl916",
+        "title": "Your first assignment: reading a friend’s chart",
+        "instructions": "Cast a birth chart for someone you know (with their permission) and write a half-page summary of their planetary placements — sign, house and one observation per planet.",
+        "attachments": [],
+        "format": "chart",
+        "due": {
+          "kind": "relative",
+          "days": 7
+        },
+        "acceptsLate": true,
+        "latePenalty": 10,
+        "rubric": [],
+        "maxScore": 100,
+        "passMark": 60,
+        "status": "published",
+        "createdAt": "2026-09-29T13:51:08.608Z",
+        "updatedAt": "2026-09-29T13:51:08.608Z"
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "chapterTitle": "Signs and Houses",
+      "submitted": 11,
+      "toReview": 2,
+      "overdue": 1,
+      "graded": 9,
+      "missing": 8,
+      "avgScore": 62
+    },
+    {
+      "assignment": {
+        "id": "cmumqihj6007vmmoskwneasog",
+        "courseId": "cmumqihco002rmmosr0ijyuku",
+        "chapterId": "cmumqihcx002zmmosskfn7wt5",
+        "lessonId": "cmumqihd10033mmos6zkwd3fn",
+        "title": "Timing exercise",
+        "instructions": "For the sample chart, calculate the current mahadasha and antardasha as of today, and write two paragraphs on what themes are active.",
+        "attachments": [],
+        "format": "text",
+        "due": {
+          "kind": "relative",
+          "days": 10
+        },
+        "acceptsLate": true,
+        "latePenalty": 10,
+        "rubric": [],
+        "maxScore": 100,
+        "passMark": 60,
+        "status": "published",
+        "createdAt": "2026-09-29T13:51:08.610Z",
+        "updatedAt": "2026-09-29T13:51:08.610Z"
+      },
+      "courseTitle": "Reading the Dasha System",
+      "chapterTitle": "Reading Antardashas",
+      "submitted": 3,
+      "toReview": 0,
+      "overdue": 0,
+      "graded": 3,
+      "missing": 9,
+      "avgScore": 68
+    },
+    {
+      "assignment": {
+        "id": "cmunnhrha008bmmt9qqjw257m",
+        "courseId": "cmumqihbi001rmmos6cypzr5m",
+        "title": "Rubric fixture: chart interpretation",
+        "instructions": "Interpret the chart you were given. Cover the lagna, the moon sign and the ruling nakshatra, and say what each one suggests about the person. Write at least three paragraphs.",
+        "attachments": [],
+        "format": "text",
+        "due": {
+          "kind": "none"
+        },
+        "acceptsLate": true,
+        "latePenalty": 10,
+        "rubric": [
+          {
+            "id": "lagna",
+            "title": "Lagna reading",
+            "points": 20
+          },
+          {
+            "id": "moon",
+            "title": "Moon sign reading",
+            "points": 20
+          },
+          {
+            "id": "nakshatra",
+            "title": "Nakshatra reading",
+            "points": 10
+          }
+        ],
+        "maxScore": 50,
+        "passMark": 30,
+        "status": "published",
+        "createdAt": "2026-09-30T05:14:22.175Z",
+        "updatedAt": "2026-09-30T05:14:22.175Z"
+      },
+      "courseTitle": "Foundations of Vedic Astrology",
+      "submitted": 1,
+      "toReview": 1,
+      "overdue": 0,
+      "graded": 0,
+      "missing": 16,
+      "avgScore": null
+    }
+  ],
+  "counts": {
+    "all": 3,
+    "draft": 0,
+    "published": 3,
+    "closed": 0
+  }
+}

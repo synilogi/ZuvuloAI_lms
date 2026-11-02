@@ -1,0 +1,207 @@
+/* Key numbers, one card per figure. The wrapper is a size container, so the grid follows the space it is given — a
+ * full dashboard or a narrower page column. */
+.wrap {
+  container: stats / inline-size;
+  min-width: 0;
+}
+.stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-3);
+}
+@container stats (min-width: 340px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* Two to a row on a phone: tighter padding and a smaller figure, so four cards take one screen, not two. */
+@container stats (max-width: 519px) {
+  .stats {
+    gap: var(--s-2);
+  }
+  .statLink {
+    padding: var(--s-3);
+    gap: 4px;
+  }
+  .statIcon {
+    width: 28px;
+    height: 28px;
+  }
+  .statLabel {
+    font-size: var(--fs-caption);
+  }
+  .statValue {
+    font-size: 24px;
+  }
+  .statHelp,
+  .statNote {
+    font-size: var(--fs-meta);
+  }
+}
+@container stats (min-width: 760px) {
+  .stats[data-columns='4'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .stats[data-columns='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+}
+.stat {
+  --h: var(--hue-violet);
+  --h-soft: var(--hue-violet-soft);
+  --h-ink: var(--hue-violet-ink);
+  min-width: 0;
+}
+.stat[data-hue='blue'] {
+  --h: var(--hue-blue);
+  --h-soft: var(--hue-blue-soft);
+  --h-ink: var(--hue-blue-ink);
+}
+.stat[data-hue='green'] {
+  --h: var(--hue-green);
+  --h-soft: var(--hue-green-soft);
+  --h-ink: var(--hue-green-ink);
+}
+.stat[data-hue='orange'] {
+  --h: var(--hue-orange);
+  --h-soft: var(--hue-orange-soft);
+  --h-ink: var(--hue-orange-ink);
+}
+.stat[data-hue='pink'] {
+  --h: var(--hue-pink);
+  --h-soft: var(--hue-pink-soft);
+  --h-ink: var(--hue-pink-ink);
+}
+.stat[data-hue='gold'] {
+  --h: var(--hue-gold);
+  --h-soft: var(--hue-gold-soft);
+  --h-ink: var(--hue-gold-ink);
+}
+.statLink {
+  position: relative;
+  container-type: inline-size;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+  color: var(--text);
+  overflow: hidden;
+  transition:
+    box-shadow var(--t-fast),
+    border-color var(--t-fast),
+    transform var(--t-fast);
+}
+.statLink::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--h);
+}
+a.statLink:hover {
+  border-color: color-mix(in srgb, var(--h) 35%, var(--border));
+  box-shadow: var(--sh-card-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.statHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+.statIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-md);
+  background: var(--h-soft);
+  color: var(--h-ink);
+}
+.statLabel {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.statCaret {
+  flex: none;
+  color: var(--faint);
+  transition: transform var(--t-fast);
+}
+a.statLink:hover .statCaret {
+  color: var(--h-ink);
+  transform: translateX(2px);
+}
+.statValueRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.statValue {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--tracking-numeric);
+  font-variant-numeric: tabular-nums;
+}
+.statSpark {
+  display: none;
+  margin-bottom: 2px;
+}
+/* The trend line only where the card is wide enough to hold it beside the number. */
+@container (min-width: 230px) {
+  .statSpark {
+    display: block;
+  }
+}
+.statHelp {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.statNote {
+  margin-top: auto;
+  padding-top: var(--s-2);
+  border-top: 1px dashed var(--border);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* A change in words, with an arrow: green when it is good news, red when it is not. */
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.change svg {
+  flex: none;
+}
+.change_good {
+  color: var(--hue-green-ink);
+}
+.change_bad {
+  color: var(--danger-ink);
+}
+.change_flat {
+  color: var(--muted);
+}

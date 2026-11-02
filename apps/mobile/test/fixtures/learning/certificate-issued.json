@@ -1,0 +1,47 @@
+{
+  "certificate": {
+    "id": "cmum8kcfz0081mmzweme7qun1",
+    "credentialId": "SA-JY-2026-00142",
+    "studentId": "cmum8kbu2000xmmzwgfj37kut",
+    "courseId": "cmum8kc8k002bmmzwcpugw8he",
+    "title": "Certificate in The 27 Nakshatras in Depth",
+    "templateId": "cmum8kcak003vmmzw9w1c4v1z",
+    "status": "issued",
+    "completedAt": "2026-08-30T05:28:42.238Z",
+    "issuedAt": "2026-08-31T05:28:42.238Z",
+    "finalScore": 91,
+    "hours": 6,
+    "verifications": 5
+  },
+  "student": {
+    "id": "cmum8kbu2000xmmzwgfj37kut",
+    "name": "Ananya Rao",
+    "email": "user@example.test",
+    "city": "Bengaluru"
+  },
+  "courseTitle": "The 27 Nakshatras in Depth",
+  "levelTitle": "Intermediate",
+  "template": {
+    "id": "cmum8kcak003vmmzw9w1c4v1z",
+    "name": "Classic seal",
+    "style": "classic",
+    "accent": "emerald",
+    "heading": "Certificate of Completion",
+    "statement": "has completed the course of study in",
+    "signatories": [
+      {
+        "name": "Dr. Meenakshi Iyer",
+        "title": "Director of Studies"
+      },
+      {
+        "name": "Kavita Menon",
+        "title": "Academy Director"
+      }
+    ],
+    "showScore": true,
+    "showHours": true,
+    "isDefault": true,
+    "updatedAt": "2026-09-29T05:28:42.045Z"
+  },
+  "verifyUrl": "/verify/SA-JY-2026-00142"
+}

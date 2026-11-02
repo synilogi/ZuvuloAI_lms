@@ -1,0 +1,4 @@
+Captured 2026-09-30T07:29:03Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /students?pageSize=20 admin staff/students.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

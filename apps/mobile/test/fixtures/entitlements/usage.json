@@ -1,0 +1,55 @@
+{
+  "status": null,
+  "restricted": true,
+  "plan": null,
+  "lines": [
+    {
+      "limit": "learners.max",
+      "label": "Learners",
+      "used": 58,
+      "allowed": 0,
+      "remaining": 0,
+      "counts": "Every learner account in the academy."
+    },
+    {
+      "limit": "instructors.max",
+      "label": "Instructors",
+      "used": 3,
+      "allowed": 0,
+      "remaining": 0,
+      "counts": "Instructors not marked inactive (an invited one can accept, so it counts)."
+    },
+    {
+      "limit": "courses.max",
+      "label": "Courses",
+      "used": 6,
+      "allowed": 0,
+      "remaining": 0,
+      "counts": "Courses not archived."
+    },
+    {
+      "limit": "storage.bytes",
+      "label": "Media storage",
+      "used": 0,
+      "allowed": 0,
+      "remaining": 0,
+      "counts": "The size of every uploaded file, in bytes."
+    },
+    {
+      "limit": "live_classes.max",
+      "label": "Live classes a month",
+      "used": 2,
+      "allowed": 0,
+      "remaining": 0,
+      "counts": "Live classes starting in a calendar month (UTC), cancelled ones excepted — the month of the class, not of the request."
+    },
+    {
+      "limit": "admin_accounts.max",
+      "label": "Admin accounts",
+      "used": 1,
+      "allowed": 0,
+      "remaining": 0,
+      "counts": "Academy admin accounts not deactivated."
+    }
+  ]
+}

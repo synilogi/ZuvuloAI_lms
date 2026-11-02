@@ -1,0 +1,26 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.shubhlms.mobile.dev",
+      "sha256_cert_fingerprints": ["42:94:30:E1:23:05:3D:29:E3:5E:36:D4:AC:5E:2A:3B:70:51:37:CE:1F:8B:15:B6:64:20:39:BD:77:F9:EE:C6"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.shubhlms.mobile.staging",
+      "sha256_cert_fingerprints": ["42:94:30:E1:23:05:3D:29:E3:5E:36:D4:AC:5E:2A:3B:70:51:37:CE:1F:8B:15:B6:64:20:39:BD:77:F9:EE:C6"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.shubhlms.mobile",
+      "sha256_cert_fingerprints": ["42:94:30:E1:23:05:3D:29:E3:5E:36:D4:AC:5E:2A:3B:70:51:37:CE:1F:8B:15:B6:64:20:39:BD:77:F9:EE:C6"]
+    }
+  }
+]

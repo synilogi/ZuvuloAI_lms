@@ -1,0 +1,44 @@
+{
+  "ranks": [
+    {
+      "id": "cmum8kblh000bmmzw5hnjfarq",
+      "title": "Rank I · Beginner",
+      "order": 1,
+      "descriptor": "Just getting started.",
+      "criteria": []
+    },
+    {
+      "id": "cmum8kblh000ammzwu946c73p",
+      "title": "Rank II · Intermediate",
+      "order": 2,
+      "descriptor": "Reading full charts.",
+      "criteria": [
+        {
+          "id": "courses",
+          "label": "Courses completed",
+          "current": 0,
+          "required": 2
+        }
+      ]
+    },
+    {
+      "id": "cmum8kblh0009mmzws6sarxr3",
+      "title": "Rank III · Advanced",
+      "order": 3,
+      "descriptor": "Specialised systems.",
+      "criteria": [
+        {
+          "id": "courses",
+          "label": "Courses completed",
+          "current": 0,
+          "required": 4
+        }
+      ]
+    }
+  ],
+  "standing": {
+    "rankId": "cmum8kblh000bmmzw5hnjfarq",
+    "achieved": {},
+    "progress": {}
+  }
+}

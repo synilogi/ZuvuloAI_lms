@@ -1,0 +1,67 @@
+/* The first-plan page: welcome, the plans side by side, and the free trial. */
+
+.page {
+  max-width: var(--container-page);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-3);
+  max-width: 64ch;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.title {
+  font-size: var(--fs-h1);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.lead {
+  color: var(--muted);
+  font-size: var(--fs-body-lg);
+  text-wrap: pretty;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.controlsNote {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+.plans {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-4);
+  align-items: stretch;
+}
+.listTitle {
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: var(--fs-h1-mobile);
+  }
+}

@@ -1,0 +1,229 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.title {
+  font-size: var(--fs-h3);
+}
+.summary {
+  margin-top: 2px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.search {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.filter {
+  flex: 0 1 260px;
+  min-width: 0;
+}
+.filterSmall {
+  flex: 0 1 170px;
+  min-width: 0;
+}
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.impact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 18px;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+
+/* ─── Table grouped by chapter ─── */
+.tablePanel {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+  overflow: hidden;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+}
+.table thead th {
+  padding: 10px var(--s-3);
+  background: var(--surface-2);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+  text-align: left;
+  white-space: nowrap;
+}
+.table td {
+  padding: 10px var(--s-3);
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table tbody tr:not(.groupRow):hover td {
+  background: color-mix(in srgb, var(--surface-2) 55%, transparent);
+}
+.colNumber {
+  width: 56px;
+}
+.colType {
+  width: 130px;
+}
+.colDuration {
+  width: 90px;
+}
+.colStatus {
+  width: 104px;
+}
+.colUpdated {
+  width: 120px;
+}
+.colActions {
+  width: 84px;
+}
+.groupRow th {
+  padding: var(--s-4) var(--s-3) var(--s-2);
+  border-top: 1px solid var(--border);
+  text-align: left;
+  font-weight: 400;
+}
+.table tbody:first-of-type .groupRow th {
+  border-top: 0;
+}
+.groupIndex {
+  margin-right: var(--s-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent-ink);
+  font-variant-numeric: tabular-nums;
+}
+.groupLink {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--text);
+}
+.groupLink:hover {
+  color: var(--accent-ink);
+}
+.groupMeta {
+  margin-left: var(--s-3);
+  font-size: var(--fs-caption);
+  color: var(--faint);
+}
+.number {
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.lessonCell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--s-2);
+}
+.lessonLink {
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.lessonLink:hover {
+  color: var(--accent-ink);
+}
+.type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.type svg {
+  flex: none;
+  color: var(--accent-ink);
+}
+.chapterCell {
+  color: var(--muted);
+}
+.duration,
+.updated {
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ─── Mobile cards ─── */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.groupTitle {
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-h4);
+}
+.cardList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.typeIcon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.cardMeta {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+.cardFlags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}

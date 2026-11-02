@@ -1,0 +1,4 @@
+Captured 2026-09-23T12:45:01Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh POST /learning/courses/cmudqd8e8001rmmgzw9ydq2ly/lessons/cmudqd8es0023mmgzwqae9u8i/complete student errors/complete-needs-watching.json
+HTTP status: 409
+Tokens and e-mail addresses scrubbed.

@@ -1,0 +1,5 @@
+Captured 2026-10-26 from the running API (real responses, scratch data, seed course 'Maths Foundations for Classes 6–8').
+Command: GET /learning/assessments — the row for the timed quiz after one attempt (as a one-row list)
+HTTP status: 200
+E-mail addresses are the scratch learner's; no tokens.
+Edited 2026-10-26: `negativeMarking: false` added by hand, the field the API added after this capture (QUIZ-CONTRACT.md).

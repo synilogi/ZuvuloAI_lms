@@ -1,0 +1,630 @@
+{
+  "scope": {
+    "kind": "academy"
+  },
+  "generatedAt": "2026-09-29T12:37:15.013Z",
+  "kpis": {
+    "courses": {
+      "value": 6,
+      "previous": 6,
+      "series": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        6,
+        6
+      ],
+      "unit": "count"
+    },
+    "students": {
+      "value": 52,
+      "previous": 43,
+      "series": [
+        19,
+        23,
+        25,
+        29,
+        37,
+        41,
+        43,
+        52
+      ],
+      "unit": "count"
+    },
+    "third": {
+      "value": 3,
+      "previous": 3,
+      "series": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "unit": "count"
+    },
+    "completionRate": {
+      "value": 58,
+      "previous": 59,
+      "series": [
+        50,
+        67,
+        58,
+        67,
+        71,
+        70,
+        59,
+        58
+      ],
+      "unit": "%"
+    }
+  },
+  "enrollments": [
+    {
+      "date": "2026-07-08",
+      "value": 0
+    },
+    {
+      "date": "2026-07-15",
+      "value": 1
+    },
+    {
+      "date": "2026-07-22",
+      "value": 1
+    },
+    {
+      "date": "2026-07-29",
+      "value": 5
+    },
+    {
+      "date": "2026-08-05",
+      "value": 0
+    },
+    {
+      "date": "2026-08-12",
+      "value": 4
+    },
+    {
+      "date": "2026-08-19",
+      "value": 4
+    },
+    {
+      "date": "2026-08-26",
+      "value": 5
+    },
+    {
+      "date": "2026-09-02",
+      "value": 6
+    },
+    {
+      "date": "2026-09-09",
+      "value": 4
+    },
+    {
+      "date": "2026-09-16",
+      "value": 2
+    },
+    {
+      "date": "2026-09-23",
+      "value": 4
+    }
+  ],
+  "completions": [
+    {
+      "date": "2026-07-08",
+      "value": 0
+    },
+    {
+      "date": "2026-07-15",
+      "value": 1
+    },
+    {
+      "date": "2026-07-22",
+      "value": 0
+    },
+    {
+      "date": "2026-07-29",
+      "value": 0
+    },
+    {
+      "date": "2026-08-05",
+      "value": 1
+    },
+    {
+      "date": "2026-08-12",
+      "value": 1
+    },
+    {
+      "date": "2026-08-19",
+      "value": 0
+    },
+    {
+      "date": "2026-08-26",
+      "value": 0
+    },
+    {
+      "date": "2026-09-02",
+      "value": 0
+    },
+    {
+      "date": "2026-09-09",
+      "value": 2
+    },
+    {
+      "date": "2026-09-16",
+      "value": 0
+    },
+    {
+      "date": "2026-09-23",
+      "value": 8
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "enrolled": 17,
+      "active": 7,
+      "completionRate": 57,
+      "avgProgress": 61,
+      "rating": 4.614036822381917,
+      "weeklyEnrollments": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "courseId": "cmumibpm9002rmmqdnh0t2kru",
+      "enrolled": 12,
+      "active": 3,
+      "completionRate": 67,
+      "avgProgress": 61,
+      "rating": 4.723348547430604,
+      "weeklyEnrollments": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "courseId": "cmumibpmu0035mmqd1kuzhlid",
+      "enrolled": 11,
+      "active": 2,
+      "completionRate": 33,
+      "avgProgress": 47,
+      "rating": 4.635530103144612,
+      "weeklyEnrollments": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "courseId": "cmumibpn7003dmmqd9orov440",
+      "enrolled": 11,
+      "active": 1,
+      "completionRate": 56,
+      "avgProgress": 63,
+      "rating": 4.897458466734331,
+      "weeklyEnrollments": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "courseId": "cmumibplp002bmmqd9vuh8t77",
+      "enrolled": 7,
+      "active": 2,
+      "completionRate": 100,
+      "avgProgress": 64,
+      "rating": 4.657648416349318,
+      "weeklyEnrollments": [
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "courseId": "cmumibpnj003lmmqdgqikdpvw",
+      "enrolled": 5,
+      "active": 1,
+      "completionRate": 100,
+      "avgProgress": 66,
+      "rating": 4.883368698406737,
+      "weeklyEnrollments": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "activity": [
+    {
+      "date": "2026-09-01",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-02",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-03",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-04",
+      "activeLearners": 1,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-05",
+      "activeLearners": 3,
+      "lessonsCompleted": 2
+    },
+    {
+      "date": "2026-09-06",
+      "activeLearners": 2,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-07",
+      "activeLearners": 2,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-08",
+      "activeLearners": 2,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-09",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-10",
+      "activeLearners": 2,
+      "lessonsCompleted": 2
+    },
+    {
+      "date": "2026-09-11",
+      "activeLearners": 1,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-12",
+      "activeLearners": 3,
+      "lessonsCompleted": 3
+    },
+    {
+      "date": "2026-09-13",
+      "activeLearners": 2,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-14",
+      "activeLearners": 2,
+      "lessonsCompleted": 2
+    },
+    {
+      "date": "2026-09-15",
+      "activeLearners": 2,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-16",
+      "activeLearners": 5,
+      "lessonsCompleted": 4
+    },
+    {
+      "date": "2026-09-17",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-18",
+      "activeLearners": 3,
+      "lessonsCompleted": 3
+    },
+    {
+      "date": "2026-09-19",
+      "activeLearners": 2,
+      "lessonsCompleted": 2
+    },
+    {
+      "date": "2026-09-20",
+      "activeLearners": 5,
+      "lessonsCompleted": 7
+    },
+    {
+      "date": "2026-09-21",
+      "activeLearners": 1,
+      "lessonsCompleted": 1
+    },
+    {
+      "date": "2026-09-22",
+      "activeLearners": 6,
+      "lessonsCompleted": 9
+    },
+    {
+      "date": "2026-09-23",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-24",
+      "activeLearners": 6,
+      "lessonsCompleted": 9
+    },
+    {
+      "date": "2026-09-25",
+      "activeLearners": 0,
+      "lessonsCompleted": 0
+    },
+    {
+      "date": "2026-09-26",
+      "activeLearners": 9,
+      "lessonsCompleted": 12
+    },
+    {
+      "date": "2026-09-27",
+      "activeLearners": 5,
+      "lessonsCompleted": 5
+    },
+    {
+      "date": "2026-09-28",
+      "activeLearners": 5,
+      "lessonsCompleted": 13
+    }
+  ],
+  "engagement": {
+    "lessonsCompleted": {
+      "value": 48,
+      "previous": 18,
+      "series": [
+        4,
+        10,
+        18,
+        48
+      ],
+      "unit": "count"
+    },
+    "quizAttempts": {
+      "value": 7,
+      "previous": 1,
+      "series": [
+        0,
+        0,
+        1,
+        7
+      ],
+      "unit": "count"
+    },
+    "submissions": {
+      "value": 10,
+      "previous": 0,
+      "series": [
+        0,
+        1,
+        0,
+        10
+      ],
+      "unit": "count"
+    },
+    "liveAttendance": {
+      "value": 0,
+      "previous": 0,
+      "series": [
+        10,
+        0,
+        0,
+        0
+      ],
+      "unit": "count"
+    }
+  },
+  "upcomingLive": [
+    {
+      "id": "cmumibpvl0087mmqd5wnh160l",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "title": "Reading dignities in real charts",
+      "instructorId": "cmumibowz000jmmqd1gtm5z8x",
+      "startsAt": "2026-10-01T10:01:55.903Z",
+      "durationMin": 60,
+      "capacity": 40,
+      "registered": 0,
+      "attending": 0,
+      "attended": 0,
+      "description": "A live walkthrough of planetary dignity across several real birth charts.",
+      "agenda": [
+        {
+          "title": "Recap of dignity rules",
+          "minutes": 10
+        },
+        {
+          "title": "Live chart reading",
+          "minutes": 40
+        },
+        {
+          "title": "Q&A",
+          "minutes": 10
+        }
+      ],
+      "visibility": "enrolled",
+      "meeting": {
+        "kind": "room"
+      },
+      "reminders": [
+        1440,
+        60
+      ]
+    }
+  ],
+  "attention": [
+    {
+      "id": "at-risk",
+      "kind": "at-risk",
+      "title": "10 learners at risk of dropping out",
+      "detail": "Quiet for 10 days or more with a course in progress",
+      "count": 10,
+      "severity": "medium",
+      "to": "/admin/students?status=at-risk"
+    }
+  ],
+  "events": [
+    {
+      "id": "live-cmumniazy00dvmmy774gqa5oy",
+      "kind": "live-scheduled",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "scheduled Contract check — cancelled class",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:37:15.013Z",
+      "to": "/admin/live/cmumniazy00dvmmy774gqa5oy"
+    },
+    {
+      "id": "live-cmumlhtbq005pmmy702k4bfvf",
+      "kind": "live-scheduled",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "scheduled Contract check — cancelled class",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:37:15.013Z",
+      "to": "/admin/live/cmumlhtbq005pmmy702k4bfvf"
+    },
+    {
+      "id": "live-cmumibpvl0087mmqd5wnh160l",
+      "kind": "live-scheduled",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "scheduled Reading dignities in real charts",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:37:15.013Z",
+      "to": "/admin/live/cmumibpvl0087mmqd5wnh160l"
+    },
+    {
+      "id": "cert-cmumnjk9v00g3mmy75ihg738v",
+      "kind": "certificate",
+      "actor": "Meera Pillai",
+      "summary": "earned a certificate in Jaimini Astrology: Chara Karakas",
+      "courseId": "cmumibpmu0035mmqd1kuzhlid",
+      "at": "2026-09-29T12:28:00.029Z",
+      "to": "/admin/certificates/cmumnjk9v00g3mmy75ihg738v"
+    },
+    {
+      "id": "sub-cmumn6rs200ahmmy7t3xud7e6",
+      "kind": "submission",
+      "actor": "Vikram Singh",
+      "summary": "handed in Your first assignment: reading a friend’s chart",
+      "context": "Late",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:03.170Z",
+      "to": "/admin/assignments/submissions/cmumn6rs200ahmmy7t3xud7e6"
+    },
+    {
+      "id": "rev-cmumn6rnu00a5mmy7820pl5ub",
+      "kind": "review",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "reviewed Vikram Singh’s Your first assignment: reading a friend’s chart",
+      "context": "Scored 0",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:03.109Z",
+      "to": "/admin/assignments/submissions/cmumn6rnu00a5mmy7820pl5ub"
+    },
+    {
+      "id": "sub-cmumn6rnu00a5mmy7820pl5ub",
+      "kind": "submission",
+      "actor": "Vikram Singh",
+      "summary": "handed in Your first assignment: reading a friend’s chart",
+      "context": "Late",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:03.018Z",
+      "to": "/admin/assignments/submissions/cmumn6rnu00a5mmy7820pl5ub"
+    },
+    {
+      "id": "rev-cmuml915h001xmmy7k8gyy6pz",
+      "kind": "review",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "reviewed Vikram Singh’s Your first assignment: reading a friend’s chart",
+      "context": "Scored 0",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:02.976Z",
+      "to": "/admin/assignments/submissions/cmuml915h001xmmy7k8gyy6pz"
+    },
+    {
+      "id": "rev-cmumn6qa2009pmmy7itpvrasl",
+      "kind": "review",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "reviewed Arjun Das’s Your first assignment: reading a friend’s chart",
+      "context": "Scored 78",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:01.297Z",
+      "to": "/admin/assignments/submissions/cmumn6qa2009pmmy7itpvrasl"
+    },
+    {
+      "id": "sub-cmumn6qa2009pmmy7itpvrasl",
+      "kind": "submission",
+      "actor": "Arjun Das",
+      "summary": "handed in Your first assignment: reading a friend’s chart",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:01.227Z",
+      "to": "/admin/assignments/submissions/cmumn6qa2009pmmy7itpvrasl"
+    },
+    {
+      "id": "rev-cmumn6q35009fmmy7qtfvs57a",
+      "kind": "review",
+      "actor": "Dr. Meenakshi Iyer",
+      "summary": "reviewed Arjun Das’s Your first assignment: reading a friend’s chart",
+      "context": "Scored 0",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:01.193Z",
+      "to": "/admin/assignments/submissions/cmumn6q35009fmmy7qtfvs57a"
+    },
+    {
+      "id": "sub-cmumn6q35009fmmy7qtfvs57a",
+      "kind": "submission",
+      "actor": "Arjun Das",
+      "summary": "handed in Your first assignment: reading a friend’s chart",
+      "courseId": "cmumibpkw001rmmqdg7gbub52",
+      "at": "2026-09-29T12:18:00.978Z",
+      "to": "/admin/assignments/submissions/cmumn6q35009fmmy7qtfvs57a"
+    }
+  ]
+}

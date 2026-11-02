@@ -1,0 +1,211 @@
+.alert {
+  display: flex;
+  gap: var(--s-3);
+  align-items: flex-start;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  font-size: var(--fs-body-sm);
+}
+
+.alertIcon {
+  flex: none;
+  margin-top: 1px;
+}
+
+.alertBody {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.alertTitle {
+  font-weight: 700;
+}
+
+.alertAction {
+  flex: none;
+}
+
+.info {
+  background: var(--info-soft);
+  color: var(--info-ink);
+  border-color: color-mix(in srgb, var(--info) 30%, transparent);
+}
+
+.success {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.warn {
+  background: var(--warn-soft);
+  color: var(--warn-ink);
+  border-color: color-mix(in srgb, var(--warn) 40%, transparent);
+}
+
+.danger {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+  border-color: color-mix(in srgb, var(--danger) 30%, transparent);
+}
+
+.banner {
+  border-radius: 0;
+  border-width: 0 0 1px;
+  padding: var(--s-2) var(--s-5);
+}
+
+.skeleton {
+  display: block;
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-3) 50%, var(--surface-2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.skeletonStack {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.skeletonRow {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 4), 1fr);
+  gap: var(--s-4);
+  align-items: center;
+}
+
+.skeletonKpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--s-4);
+}
+
+.state {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-3);
+  padding: var(--s-7) var(--s-4);
+  text-align: center;
+}
+
+.stateCompact {
+  padding: var(--s-5) var(--s-4);
+}
+
+.stateIcon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.stateIconDanger {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+}
+
+.stateTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+}
+
+.stateText {
+  max-width: 52ch;
+  color: var(--muted);
+}
+
+.stateActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--track);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toaster {
+  position: fixed;
+  z-index: var(--z-toast);
+  right: var(--s-5);
+  bottom: var(--s-5);
+  display: grid;
+  gap: var(--s-2);
+  width: min(380px, calc(100vw - 32px));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 639px) {
+  .toaster {
+    right: 16px;
+    left: 16px;
+    bottom: calc(var(--bottom-nav-h) + 12px);
+    width: auto;
+  }
+}
+
+.toast {
+  box-shadow: var(--sh-md);
+  animation: toastIn var(--dur) var(--ease);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.toastActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toastAction {
+  border: 0;
+  background: none;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}

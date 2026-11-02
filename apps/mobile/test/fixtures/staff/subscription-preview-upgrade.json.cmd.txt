@@ -1,0 +1,6 @@
+Constructed 2026-10-03 (the local contract server was not running, so this is NOT a capture).
+Shape: read field for field from apps/api/src — tenant-plans: lib/plans.ts toRecord (PlanRecord, terms under
+`current`, `displayOrder`), values from the captured tenant-billing-active.json plans, rows served out of
+order on purpose; subscription-record: lib/subscriptions.ts SubscriptionRecord (what /tenant/subscription/cancel
+and /resume answer with); subscription-preview-*: lib/planChanges.ts PlanChangePreview
+(POST /tenant/subscription/preview). Replace with tool/capture_fixture.sh output when the server is up.

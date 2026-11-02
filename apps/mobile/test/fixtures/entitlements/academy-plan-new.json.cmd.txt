@@ -1,0 +1,7 @@
+Constructed 2026-10-03 (constructed-from-source: the local contract server was not running, so this is NOT a capture).
+State: a brand-new academy, plans enforced, never subscribed (`status: null`).
+Shape: apps/api/src/routes/academyPlan.ts (body built from getTenantEntitlements + currentSubscription;
+`trialEndsAt` only while trialing, `renewsAt` only for a live non-trial subscription) and the
+`AcademyPlan` interface in packages/domain/src/entitlement.ts; values follow
+apps/api/src/routes/onboarding.test.ts.
+Replace with: tool/capture_fixture.sh GET /academy/plan admin entitlements/academy-plan-new.json when the server is up.

@@ -1,0 +1,225 @@
+/* ─── Chapter ─── */
+.chapterIntro {
+  display: grid;
+  gap: var(--s-2);
+  padding-bottom: var(--s-6);
+  max-width: 70ch;
+}
+.chapterTitle {
+  font-size: var(--fs-h2);
+}
+.chapterLead {
+  font-size: var(--fs-body-lg);
+  color: var(--muted);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* ─── Section — hairline + index; no box ─── */
+.section {
+  container-type: inline-size;
+  scroll-margin-top: 84px;
+  padding: var(--s-7) 0;
+  border-top: 1px solid var(--border);
+}
+.section:first-of-type {
+  border-top: 0;
+  padding-top: var(--s-2);
+}
+
+.sectionHead {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+.sectionIndex {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+}
+.sectionHeadText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.sectionTitle {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+}
+.sectionLead {
+  font-size: var(--fs-body);
+  color: var(--muted);
+  max-width: 66ch;
+  text-wrap: pretty;
+}
+.api {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.api code,
+.token {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 2px 6px;
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+}
+
+@container (max-width: 560px) {
+  .sectionHead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+  .sectionIndex {
+    font-size: var(--fs-body-sm);
+  }
+}
+
+/* ─── Specimen ─── */
+.specimen {
+  display: grid;
+  gap: var(--s-4);
+  min-width: 0;
+}
+.specimenMain {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.specimenBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-3);
+}
+.specimenLabel {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.specimenToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.stage {
+  min-width: 0;
+}
+.page {
+  padding: 0;
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+}
+.sunken {
+  background: var(--surface-2);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+}
+
+@container (max-width: 520px) {
+  .panel,
+  .sunken {
+    padding: var(--s-4);
+    border-radius: var(--r-md);
+  }
+}
+
+@container (min-width: 900px) {
+  .withNotes {
+    grid-template-columns: minmax(0, 1fr) 248px;
+    gap: var(--s-6);
+    align-items: start;
+  }
+}
+
+.notes {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.noteList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.noteList dt {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 3px;
+}
+.noteList dd {
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@container (min-width: 900px) {
+  .notes {
+    border-left: 1px solid var(--border);
+    padding-left: var(--s-5);
+    padding-top: 26px;
+  }
+}
+
+/* ─── Columns ─── */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+}
+.column {
+  min-width: 0;
+  padding: var(--s-2) var(--s-5) var(--s-2) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.column + .column {
+  padding-left: var(--s-5);
+  border-left: 1px solid var(--border);
+}
+.columnTitle {
+  font-size: var(--fs-h4);
+}
+.columnCaption {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+  margin-top: -6px;
+}
+
+@container (max-width: 720px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .column {
+    padding: var(--s-4) 0;
+  }
+  .column + .column {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+}

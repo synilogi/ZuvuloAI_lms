@@ -1,0 +1,26 @@
+{
+  "event": {
+    "id": "live-cmumqihjm0087mmosieytg5to",
+    "type": "live",
+    "title": "Reading dignities in real charts",
+    "timing": "timed",
+    "startsAt": "2026-10-01T13:51:08.625Z",
+    "durationMin": 60,
+    "courseId": "cmumqihbi001rmmos6cypzr5m",
+    "instructorId": "cmumqigpx000jmmosxe7nko8c",
+    "source": {
+      "kind": "live-class",
+      "id": "cmumqihjm0087mmosieytg5to"
+    }
+  },
+  "courseTitle": "Foundations of Vedic Astrology",
+  "instructorName": "Dr. Meenakshi Iyer",
+  "instructorTitle": "Jyotish Acharya",
+  "phase": "upcoming",
+  "editable": false,
+  "live": {
+    "registered": 0,
+    "capacity": 40
+  },
+  "audienceSize": 17
+}

@@ -1,0 +1,7 @@
+Constructed 2026-10-03 (constructed-from-source: the local contract server was not running, so this is NOT a capture).
+Endpoint: POST /tenant/billing/trial {planId, cycle} → 201 {subscription}.
+Shape: apps/api/src/routes/tenant.ts (`res.status(201).json({ subscription })`) with the raw
+`SubscriptionRecord` of apps/api/src/lib/subscriptions.ts toRecord (optional fields only when set;
+`trialStartAt`/`trialEndAt` present for a trial). Values: the Starter plan's 14-day trial.
+Replace with a capture (tool/capture_fixture.sh POST /tenant/billing/trial admin ...) when the server is up
+on a freshly seeded academy that has never subscribed.

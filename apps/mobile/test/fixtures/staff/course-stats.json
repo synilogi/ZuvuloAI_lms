@@ -1,0 +1,141 @@
+{
+  "courseId": "cmumibpkw001rmmqdg7gbub52",
+  "enrolled": 17,
+  "active": 7,
+  "completionRate": 41,
+  "avgProgress": 61,
+  "weekly": [
+    {
+      "date": "2026-07-07",
+      "value": 0
+    },
+    {
+      "date": "2026-07-14",
+      "value": 1
+    },
+    {
+      "date": "2026-07-21",
+      "value": 0
+    },
+    {
+      "date": "2026-07-28",
+      "value": 2
+    },
+    {
+      "date": "2026-08-04",
+      "value": 0
+    },
+    {
+      "date": "2026-08-11",
+      "value": 1
+    },
+    {
+      "date": "2026-08-18",
+      "value": 1
+    },
+    {
+      "date": "2026-08-25",
+      "value": 2
+    },
+    {
+      "date": "2026-09-01",
+      "value": 2
+    },
+    {
+      "date": "2026-09-08",
+      "value": 1
+    },
+    {
+      "date": "2026-09-15",
+      "value": 0
+    },
+    {
+      "date": "2026-09-22",
+      "value": 2
+    }
+  ],
+  "progressBuckets": [
+    {
+      "label": "0-20%",
+      "value": 5
+    },
+    {
+      "label": "20-40%",
+      "value": 1
+    },
+    {
+      "label": "40-60%",
+      "value": 1
+    },
+    {
+      "label": "60-80%",
+      "value": 2
+    },
+    {
+      "label": "80-100%",
+      "value": 8
+    }
+  ],
+  "recent": [
+    {
+      "studentId": "cmumibpit001lmmqdfjhq4b7z",
+      "name": "Meera Pillai",
+      "enrolledAt": "2026-09-29T11:23:50.931Z",
+      "progress": 0,
+      "status": "active"
+    },
+    {
+      "studentId": "cmumibpgq001hmmqdv7ab8fxr",
+      "name": "Arjun Das",
+      "enrolledAt": "2026-09-29T11:23:44.050Z",
+      "progress": 56,
+      "status": "active"
+    },
+    {
+      "studentId": "cmumibqxj00d4mmqdoq52hc4i",
+      "name": "Imran Chauhan",
+      "enrolledAt": "2026-09-09T10:01:55.903Z",
+      "progress": 100,
+      "status": "completed"
+    },
+    {
+      "studentId": "cmumibp7l0011mmqdqp90wrh9",
+      "name": "Rohit Sharma",
+      "enrolledAt": "2026-09-04T04:44:15.334Z",
+      "progress": 62,
+      "status": "active"
+    },
+    {
+      "studentId": "cmumibp5m000xmmqd5u2n5gg0",
+      "name": "Ananya Rao",
+      "enrolledAt": "2026-09-02T16:53:01.909Z",
+      "progress": 38,
+      "status": "active"
+    },
+    {
+      "studentId": "cmumibpcj0019mmqdxitkrn3z",
+      "name": "Karan Mehta",
+      "enrolledAt": "2026-08-31T14:38:07.380Z",
+      "progress": 8,
+      "status": "active"
+    },
+    {
+      "studentId": "cmumibpkq001pmmqd14b8rvmt",
+      "name": "Vikram Singh",
+      "enrolledAt": "2026-08-29T18:13:41.315Z",
+      "progress": 100,
+      "status": "completed"
+    },
+    {
+      "studentId": "cmumibq0z008smmqd03sqixrg",
+      "name": "Nikhil Kulkarni",
+      "enrolledAt": "2026-08-24T10:01:55.903Z",
+      "progress": 14,
+      "status": "active"
+    }
+  ],
+  "upcomingLive": 1,
+  "certificatesIssued": 0,
+  "reviewsWaiting": 2,
+  "totalMinutes": 142
+}

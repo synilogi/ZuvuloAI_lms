@@ -1,0 +1,1622 @@
+/* Marketing & auth — public landing, sign in, register, privacy, terms and delete account */
+
+/*
+ * The company website's palette, in the ZuviloAi brand: ink, warm paper and one orange. Set here as the same tokens
+ * every component reads, so buttons, links, chips, plan cards and forms take the brand without knowing it. The app
+ * behind the sign-in keeps its own indigo tokens.
+ *   --site-ink          the near-black of the logo: the hero, bands, the footer, primary buttons
+ *   --site-orange       the logo's orange: marks, icons, the one highlighted word
+ *   --site-orange-ink   the orange dark enough to read as text on paper
+ */
+.chrome,
+.authShell {
+  --site-ink: #0b0b10;
+  --site-ink-2: #17171e;
+  --site-orange: #e8923a;
+  --site-orange-bright: #f3a94f;
+  --site-orange-ink: #a8540a;
+
+  --bg: #f8f7f3;
+  --surface: #ffffff;
+  --surface-2: #f1efe9;
+  --surface-3: #e7e4db;
+  --text: #121216;
+  --muted: #595964;
+  --faint: #8a8a95;
+  --border: #e5e2d9;
+  --border-strong: #c9c5b9;
+
+  --accent: #bf5d0c;
+  --accent-hover: #a24d08;
+  --accent-press: #8a4106;
+  --accent-soft: #fcefdf;
+  --accent-ink: var(--site-orange-ink);
+  --accent-fg: #ffffff;
+  --success: #bf5d0c;
+  --success-soft: #fcefdf;
+  --success-ink: var(--site-orange-ink);
+  --sh-ring: 0 0 0 4px rgb(232 146 58 / 0.3);
+  /* Primary buttons are ink; the orange is kept for what points, never for a whole button on paper. */
+  --brand-gradient: linear-gradient(135deg, #1d1d25 0%, var(--site-ink) 100%);
+  --sh-card: 0 1px 2px rgb(18 18 22 / 0.04), 0 2px 8px -2px rgb(18 18 22 / 0.06);
+  --sh-card-hover: 0 14px 30px -12px rgb(18 18 22 / 0.22), 0 2px 6px -2px rgb(18 18 22 / 0.06);
+  /* The company website speaks in bold sans headings (the app keeps its serif display face). */
+  --font-display: var(--font-body);
+  --h: var(--site-orange);
+  --h-soft: var(--accent-soft);
+  --h-ink: var(--site-orange-ink);
+}
+:global(:root[data-theme='dark']) .chrome,
+:global(:root[data-theme='dark']) .authShell {
+  --site-orange-ink: #f1b36a;
+  --bg: #0e0e13;
+  --surface: #16161c;
+  --surface-2: #1e1e26;
+  --surface-3: #282832;
+  --text: #f4f3ef;
+  --muted: #b3b2bb;
+  --faint: #7f7f8b;
+  --border: #2a2a35;
+  --border-strong: #3d3d4a;
+  --accent: #f0a24a;
+  --accent-hover: #f5b366;
+  --accent-press: #e08f2f;
+  --accent-soft: #3a2710;
+  --accent-ink: #f6bf7a;
+  --accent-fg: #0b0b10;
+  --success: #f0a24a;
+  --success-soft: #3a2710;
+  --success-ink: #f6bf7a;
+  --brand-gradient: linear-gradient(135deg, var(--site-orange-bright) 0%, var(--site-orange) 100%);
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --sh-card-hover: 0 14px 30px -12px rgb(0 0 0 / 0.7);
+}
+.chrome {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+/* The home page's canvas: the paper colour with a faint warmth in from its upper corners. */
+.chromeAurora {
+  background: radial-gradient(45% 30% at 100% 0%, rgb(232 146 58 / 0.08) 0%, transparent 70%), var(--bg);
+  background-repeat: no-repeat;
+}
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+  padding: var(--s-6) var(--s-4) var(--s-8);
+  min-width: 0;
+  /* A full-bleed band (the home hero) may reach the window's edges; it never makes the page scroll sideways. */
+  overflow-x: clip;
+}
+/*
+ * The app's page containers centre themselves with `margin: 0 auto`, and an auto cross-axis margin
+ * cancels a flex item's stretch — so inside this flex column they shrink to fit their content and a
+ * wide page (the catalog, reused here from the signed-in app) ends up wider than the phone. Filling
+ * the line puts them back to how they behave in the app shell, whose main is an ordinary block; the
+ * page's own max-width still caps and centres it on a wide screen.
+ */
+.main > * {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ─── Brand lockup ─── */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  color: var(--text);
+}
+.wordmark:hover {
+  text-decoration: none;
+}
+
+/* ─── Header: paper, a hairline, ink links, the ink pill to get started ─── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.headerInner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  min-height: var(--header-h);
+}
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  flex: 1;
+}
+.headerNav a {
+  padding: 8px 12px;
+  border-radius: var(--r-pill);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: var(--fs-body-sm);
+  transition:
+    color var(--t-fast),
+    background var(--t-fast);
+}
+.headerNav a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+  text-decoration: none;
+}
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.headerActions > a {
+  border-radius: var(--r-pill);
+}
+.headerActionsEnd {
+  margin-left: auto;
+}
+.navActive {
+  color: var(--text) !important;
+  background: var(--surface-2);
+}
+.menuButton {
+  display: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text);
+}
+.menuButton:hover {
+  background: var(--surface-2);
+}
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-2) var(--s-4) var(--s-4);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.mobileMenu[hidden] {
+  display: none;
+}
+.mobileMenu a:not([class]) {
+  padding: var(--s-2) 0;
+  color: var(--text);
+  font-weight: 600;
+}
+@media (min-width: 900px) {
+  .mobileMenu {
+    display: none !important;
+  }
+}
+@media (max-width: 899px) {
+  .headerNav {
+    display: none;
+  }
+  .headerInner {
+    justify-content: space-between;
+  }
+  .menuButton {
+    display: inline-grid;
+  }
+}
+@media (max-width: 479px) {
+  .headerCta {
+    display: none;
+  }
+}
+
+/* ─── Hero actions (page heroes and the closing banner) ─── */
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-3);
+}
+.statRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-6);
+  margin: var(--s-4) 0 0;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat dt {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  color: var(--accent-ink);
+}
+.stat dd {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+
+/* ─── Sections ─── */
+.section {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.sectionHead {
+  max-width: var(--container-reading);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.sectionHead h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h2);
+}
+.sectionHead p {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* ─── Featured courses ─── */
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.courseCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+  overflow: hidden;
+}
+.courseCover {
+  aspect-ratio: 16 / 10;
+}
+.courseCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+}
+.courseCardBody h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h4);
+}
+.courseCardBody p {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* ─── Role cards ─── */
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.roleCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  border: 1px solid color-mix(in srgb, var(--h) 18%, var(--border));
+  border-top: 4px solid var(--h);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+.roleCard h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h4);
+}
+.roleCard p {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* ─── Step list ─── */
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--container-reading);
+}
+.stepList li {
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+}
+.stepList h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h4);
+  margin-bottom: 2px;
+}
+.stepList p {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* ─── Testimonials ─── */
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.testimonialCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+}
+.testimonialQuoteMark {
+  color: var(--accent-ink);
+}
+.testimonialQuote {
+  color: var(--text);
+  text-wrap: pretty;
+  flex: 1;
+}
+.testimonialStars {
+  display: flex;
+  gap: 2px;
+  color: var(--accent-ink);
+}
+.testimonialName {
+  font-weight: 600;
+  margin-top: var(--s-2);
+}
+.testimonialRole {
+  font-size: var(--fs-caption);
+  color: var(--muted);
+}
+
+/* ─── CTA banner: ink, with the orange rising from below ─── */
+.ctaBanner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  text-align: center;
+  padding: var(--s-8) var(--s-5);
+  border-radius: 28px;
+  background: radial-gradient(50% 70% at 50% 110%, rgb(232 146 58 / 0.35) 0%, transparent 70%), var(--site-ink);
+  color: #ffffff;
+  box-shadow: 0 30px 80px -40px rgb(0 0 0 / 0.6);
+}
+.ctaBanner h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.06;
+  color: #ffffff;
+  text-wrap: balance;
+}
+.ctaBannerPrimary {
+  background: var(--site-orange) !important;
+  color: var(--site-ink) !important;
+  border-color: transparent !important;
+  border-radius: var(--r-pill) !important;
+  box-shadow: 0 18px 34px -16px rgb(232 146 58 / 0.8) !important;
+}
+.ctaBannerPrimary:hover {
+  background: var(--site-orange-bright) !important;
+}
+.ctaBanner p {
+  color: rgb(255 255 255 / 0.74);
+  max-width: 480px;
+}
+.ctaSecondaryLink {
+  align-self: center;
+  color: rgb(255 255 255 / 0.74);
+  font-weight: 600;
+}
+.ctaSecondaryLink:hover {
+  color: #ffffff;
+}
+
+/* ─── Footer: ink, the orange only on the column titles ─── */
+.footer {
+  margin-top: var(--s-6);
+  background: var(--site-ink);
+  color: rgb(255 255 255 / 0.72);
+}
+.footerInner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-6);
+  justify-content: space-between;
+  padding: var(--s-7) var(--s-4) var(--s-6);
+}
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  max-width: 340px;
+}
+/* The lockup set for a dark ground: the artwork's light cut is hidden here and its dark cut shown. */
+.footerBrand img:first-child {
+  display: none !important;
+}
+.footerBrand img + img {
+  display: block !important;
+}
+.footerBrand p {
+  color: rgb(255 255 255 / 0.66);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+}
+.footerBrand a {
+  color: #ffffff;
+  font-weight: 600;
+}
+.footerCols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-6) var(--s-7);
+}
+.footerCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  min-width: 140px;
+}
+.footerCol h2 {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--site-orange);
+  margin-bottom: 4px;
+}
+.footerCol a {
+  color: rgb(255 255 255 / 0.72);
+  font-size: var(--fs-body-sm);
+}
+.footerCol a:hover {
+  color: #ffffff;
+}
+.footerBottom {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  justify-content: space-between;
+  padding: var(--s-4) var(--s-4) var(--s-5);
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  font-size: var(--fs-caption);
+  color: rgb(255 255 255 / 0.5);
+}
+.footerBottom a {
+  color: rgb(255 255 255 / 0.78);
+}
+.footerLegal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+}
+
+/* ─── Auth split layout: the form on a clean surface, a brand panel on the ink ground ─── */
+.authShell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 44%);
+  background: var(--surface);
+}
+.authMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-5);
+  padding: var(--s-5) var(--s-6);
+  overflow-y: auto;
+  background: radial-gradient(60% 40% at 50% 0%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 70%), var(--surface);
+}
+.authTop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.authBrand {
+  display: inline-flex;
+  align-items: center;
+}
+.authBrand:hover {
+  text-decoration: none;
+}
+.authHome {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--sh-xs);
+  color: var(--muted);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  transition:
+    color var(--t-fast),
+    border-color var(--t-fast);
+}
+.authHome:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  text-decoration: none;
+}
+.authCard {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin: auto 0;
+  padding: var(--s-2) 0;
+}
+.authTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 30px;
+  line-height: 1.15;
+}
+.authSubtitle {
+  color: var(--muted);
+  text-wrap: pretty;
+  line-height: 1.6;
+  margin-top: calc(var(--s-2) * -1);
+}
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  margin-top: var(--s-1);
+}
+.authForm input {
+  height: 44px;
+}
+.passwordRow {
+  position: relative;
+  display: flex;
+}
+.passwordRow input {
+  flex: 1;
+  padding-right: 44px;
+}
+.passwordToggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  color: var(--faint);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color var(--t-fast),
+    background var(--t-fast);
+}
+.passwordToggle:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+.forgotLink {
+  align-self: flex-end;
+  padding: 2px 0;
+  border: 0;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: none;
+  cursor: pointer;
+  margin-top: calc(var(--s-3) * -1);
+}
+.forgotLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.authSwitch {
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+}
+.authSwitch a {
+  font-weight: 600;
+}
+.authLegal {
+  font-size: var(--fs-caption);
+  color: var(--faint);
+  text-align: center;
+}
+.authLegal a {
+  color: var(--muted);
+}
+
+.authPanel {
+  /* The brand panel is the logo's ink, with the orange for its marks — over the app's indigo ink tokens. */
+  --surface: var(--site-ink);
+  --surface-2: #17171e;
+  --surface-3: #22222b;
+  --border: #272730;
+  --text: #ffffff;
+  --muted: rgb(255 255 255 / 0.74);
+  --faint: rgb(255 255 255 / 0.5);
+  --accent: var(--site-orange);
+  --accent-hover: var(--site-orange-bright);
+  --accent-soft: #3a2710;
+  --accent-ink: var(--site-orange);
+  --accent-fg: var(--site-ink);
+  --brand-gradient: linear-gradient(135deg, var(--site-orange-bright) 0%, var(--site-orange) 100%);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-6);
+  padding: var(--s-7) clamp(var(--s-5), 4vw, var(--s-8));
+  background:
+    radial-gradient(70% 55% at 100% 0%, rgb(232 146 58 / 0.34) 0%, transparent 70%),
+    radial-gradient(50% 45% at 0% 100%, rgb(232 146 58 / 0.14) 0%, transparent 70%), var(--surface);
+}
+/* A faint grid, fading out toward the panel's edges. */
+.authPanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(70% 60% at 50% 45%, black 0%, transparent 100%);
+}
+.authPanelBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  max-width: 480px;
+}
+.authEyebrow {
+  align-self: flex-start;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: rgb(255 255 255 / 0.08);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  color: var(--accent-ink);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.authHeadline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-wrap: balance;
+}
+.authModules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.authModules li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  background: rgb(255 255 255 / 0.06);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
+  color: var(--text);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+}
+.authModules svg {
+  color: var(--accent-ink);
+}
+.authValueList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin: var(--s-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.authValueList li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border-radius: var(--r-lg);
+  background: rgb(255 255 255 / 0.05);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(6px);
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+  line-height: 1.5;
+}
+.authValueIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-md);
+  background: var(--brand-gradient);
+  color: var(--site-ink);
+  box-shadow: 0 6px 16px -6px rgb(232 146 58 / 0.8);
+}
+.authPanelFoot {
+  font-size: var(--fs-caption);
+  color: var(--faint);
+  max-width: 480px;
+}
+.checkboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  font-size: var(--fs-body-sm);
+  color: var(--text);
+}
+.checkboxRow input {
+  margin-top: 3px;
+  flex: none;
+}
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+@media (max-width: 1023px) {
+  .authShell {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 40%);
+  }
+  .authMain {
+    padding: var(--s-5) var(--s-5);
+  }
+  .authPanel {
+    padding: var(--s-6) var(--s-5);
+  }
+}
+@media (max-width: 767px) {
+  .authShell {
+    grid-template-columns: 1fr;
+  }
+  .authPanel {
+    display: none;
+  }
+  .authMain {
+    padding: var(--s-4) var(--s-4) var(--s-5);
+  }
+  .authTitle {
+    font-size: 26px;
+  }
+}
+
+/* ─── Legal pages ─── */
+.legal {
+  max-width: var(--container-reading);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.legalHead h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h1);
+}
+.muted {
+  color: var(--muted);
+  font-size: var(--fs-caption);
+}
+.legal section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.legal h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h3);
+}
+.legal section p,
+.legal section li {
+  color: var(--text);
+  text-wrap: pretty;
+}
+.legal ul,
+.legal ol {
+  padding-left: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+/* The delete-account form, set apart from the reading text around it. */
+.legalForm {
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.legalNote {
+  padding: var(--s-3) var(--s-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+
+/* ─── Public course page ─────────────────────────────────────────────── */
+.coursePage {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--s-6) var(--s-5) var(--s-8);
+}
+/* Content reads down the page; the enrol card rides alongside it. */
+.courseLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--s-7);
+  align-items: start;
+}
+.courseMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-7);
+  min-width: 0;
+}
+
+.courseEyebrow {
+  display: block;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--s-2);
+}
+.courseTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h1);
+  line-height: 1.12;
+  margin: 0 0 var(--s-3);
+}
+.courseSubtitle {
+  font-size: var(--fs-body-lg);
+  color: var(--muted);
+  margin: 0;
+  max-width: 60ch;
+}
+.courseFacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-4);
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.courseFacts > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+/* The enrol card */
+.courseBuy {
+  position: sticky;
+  top: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.courseBuyCover {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-md);
+}
+.coursePrice {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+}
+.courseBuyNote {
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.courseBuyFacts {
+  list-style: none;
+  margin: var(--s-1) 0 0;
+  padding: var(--s-4) 0 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+
+/* Sections */
+.courseSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.courseSection > h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+}
+.courseSectionNote {
+  margin: calc(var(--s-3) * -1) 0 0;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+}
+.courseDescription {
+  margin: 0;
+  max-width: 68ch;
+  line-height: 1.7;
+}
+.courseOutcomes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-3) var(--s-5);
+}
+.courseOutcomes li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  line-height: 1.5;
+}
+.courseOutcomes svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--accent);
+}
+.coursePreview {
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.coursePreview h3 {
+  margin: 0 0 var(--s-3);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h4);
+}
+.courseTeachers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.courseTeachers li {
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+}
+.courseTeacherName {
+  display: block;
+  margin-bottom: 2px;
+}
+.courseTeacherBio {
+  margin: var(--s-2) 0 0;
+  max-width: 62ch;
+  line-height: 1.65;
+}
+.courseCta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.courseCtaText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+.courseCtaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.courseTags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .courseLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* On a narrow screen the card belongs under the title, before the long read. */
+  .courseBuy {
+    position: static;
+    order: -1;
+  }
+  .coursePage {
+    padding: var(--s-5) var(--s-4) var(--s-7);
+  }
+  .courseTitle {
+    font-size: var(--fs-h1-mobile);
+  }
+}
+
+/* ─── Company website pages (SAAS-027): paper, hairlines, orange marks ─────────────────────── */
+.pageHero {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+  padding: var(--s-5) 0 var(--s-6);
+  border-bottom: 1px solid var(--border);
+}
+.pageHero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: 1.02;
+  max-width: 900px;
+  text-wrap: balance;
+}
+.pageHero p {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-reading);
+  color: var(--muted);
+  max-width: 680px;
+  text-wrap: pretty;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--site-orange-ink);
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--site-orange);
+}
+.heroLeft {
+  justify-content: flex-start;
+}
+.heroActions > a {
+  border-radius: var(--r-pill);
+}
+@media (max-width: 767px) {
+  .pageHero h1 {
+    font-size: clamp(30px, 9vw, 40px);
+  }
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+  transition:
+    border-color var(--t),
+    box-shadow var(--t),
+    transform var(--t);
+}
+@media (hover: hover) {
+  .featureCard:hover,
+  .solutionCard:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--sh-card-hover);
+    transform: translateY(-3px);
+  }
+}
+/* The card's icon chip: the orange on ink. */
+.featureCard > span:first-child,
+.solutionCard > span:first-child {
+  background: var(--site-ink);
+  color: var(--site-orange);
+  border-radius: 12px;
+}
+.featureCard h3 {
+  font-size: var(--fs-h4);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-top: var(--s-2);
+}
+.featureCard p {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+  text-wrap: pretty;
+}
+
+.solutionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--s-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.solutionCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+  transition:
+    border-color var(--t),
+    box-shadow var(--t),
+    transform var(--t);
+}
+.solutionCard h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: var(--fs-h3);
+  color: var(--text);
+}
+.solutionCard > p {
+  color: var(--muted);
+}
+.checkList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  font-size: var(--fs-body-sm);
+}
+.checkList li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+}
+.checkList svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--site-orange);
+}
+
+/* Steps as a timeline: a hairline across, an orange tick where each step starts. */
+.numberedSteps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr));
+  gap: var(--s-4);
+}
+.numberedSteps li {
+  counter-increment: step;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5) var(--s-4) var(--s-4) 0;
+  border-top: 1px solid var(--border-strong);
+}
+.numberedSteps li::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 44px;
+  border-top: 3px solid var(--site-orange);
+}
+.numberedSteps li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--site-orange-ink);
+}
+.numberedSteps h3 {
+  font-size: var(--fs-h4);
+  font-weight: 800;
+}
+.numberedSteps p {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+}
+
+.faqList {
+  max-width: var(--container-reading);
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-strong);
+}
+.faqItem {
+  border-bottom: 1px solid var(--border);
+}
+.faqItem summary {
+  cursor: pointer;
+  padding: var(--s-4) 0;
+  padding-right: var(--s-6);
+  font-weight: 700;
+  font-size: var(--fs-body-lg);
+  list-style: none;
+  position: relative;
+}
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+/* The marker: an orange plus, turned to a minus when open. */
+.faqItem summary::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  translate: 0 -50%;
+  background:
+    linear-gradient(var(--site-orange), var(--site-orange)) center / 14px 2px no-repeat,
+    linear-gradient(var(--site-orange), var(--site-orange)) center / 2px 14px no-repeat;
+  transition: transform var(--t);
+}
+.faqItem[open] summary::after {
+  transform: rotate(45deg);
+}
+.faqItem summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-xs);
+}
+.faqItem p {
+  padding: 0 var(--s-6) var(--s-4) 0;
+  color: var(--muted);
+  line-height: var(--lh-reading);
+  text-wrap: pretty;
+}
+
+.pricingControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.pricingNote {
+  color: var(--muted);
+  font-size: var(--fs-body-sm);
+}
+.planGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--s-4);
+  align-items: stretch;
+}
+.compareWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-strong);
+  border-radius: 18px;
+  background: var(--surface);
+}
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+  min-width: 560px;
+}
+.compareTable th,
+.compareTable td {
+  padding: var(--s-3) var(--s-4);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.compareTable thead th {
+  font-weight: 800;
+  background: var(--site-ink);
+  color: #ffffff;
+}
+.compareTable thead th:first-child {
+  border-top-left-radius: 17px;
+}
+.compareTable thead th:last-child {
+  border-top-right-radius: 17px;
+}
+.compareTable tbody th {
+  font-weight: 500;
+}
+.compareTable td {
+  font-variant-numeric: tabular-nums;
+}
+.compareTable tr:last-child th,
+.compareTable tr:last-child td {
+  border-bottom: none;
+}
+.yes {
+  color: var(--site-orange-ink);
+}
+.no {
+  color: var(--faint);
+}
+
+.contactLayout {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: var(--s-6);
+  align-items: start;
+}
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--sh-card);
+}
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+.contactAside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.asideCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  font-size: var(--fs-body-sm);
+}
+.asideCard:first-child {
+  background: var(--site-ink);
+  border-color: transparent;
+  color: #ffffff;
+}
+.asideCard:first-child h2 {
+  color: #ffffff;
+}
+.asideCard:first-child p {
+  color: rgb(255 255 255 / 0.72);
+}
+.asideCard:first-child a {
+  color: var(--site-orange);
+  font-weight: 700;
+}
+.asideCard h2 {
+  font-size: var(--fs-body-lg);
+  font-weight: 800;
+}
+.asideCard p {
+  color: var(--muted);
+}
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+@media (max-width: 899px) {
+  .contactLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.contactForm {
+  min-width: 0;
+}
+.topicSwitch {
+  max-width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 599px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  .contactForm {
+    padding: var(--s-4);
+  }
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--s-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.valueGrid li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border-strong);
+}
+.valueGrid h3 {
+  font-size: var(--fs-h4);
+  font-weight: 800;
+}
+.valueGrid p {
+  color: var(--muted);
+  line-height: var(--lh-body);
+  text-wrap: pretty;
+}
+
+/* The serif word in a banner heading, as on the home page. */
+.serifWord {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--site-orange);
+}
+
+.courseReviewList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.courseReviewList li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+.courseReviewHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+}
+.courseReviewComment {
+  margin: 0;
+  max-width: 68ch;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}

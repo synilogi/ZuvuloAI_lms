@@ -1,0 +1,130 @@
+{
+  "week": [
+    {
+      "date": "2026-09-23",
+      "minutes": 37
+    },
+    {
+      "date": "2026-09-24",
+      "minutes": 0
+    },
+    {
+      "date": "2026-09-25",
+      "minutes": 32
+    },
+    {
+      "date": "2026-09-26",
+      "minutes": 0
+    },
+    {
+      "date": "2026-09-27",
+      "minutes": 49
+    },
+    {
+      "date": "2026-09-28",
+      "minutes": 0
+    },
+    {
+      "date": "2026-09-29",
+      "minutes": 47
+    }
+  ],
+  "events": [
+    {
+      "id": "lp-cmumijxvm000dmmy7zo0jsq7a",
+      "kind": "lesson-completed",
+      "title": "Star and sub lords",
+      "at": "2026-09-29T10:08:19.521Z"
+    },
+    {
+      "id": "lp-cmumijxup000bmmy7gp77kj7z",
+      "kind": "lesson-completed",
+      "title": "Placidus house cusps",
+      "at": "2026-09-29T10:08:19.488Z"
+    },
+    {
+      "id": "qa-cmumibpup007nmmqdidckmpj4",
+      "kind": "assessment-passed",
+      "title": "The Nine Planets: check your understanding",
+      "at": "2026-09-29T10:01:55.874Z"
+    },
+    {
+      "id": "sub-cmumibpv5007xmmqdvbblc2g8",
+      "kind": "assignment-submitted",
+      "title": "Your first assignment: reading a friend’s chart",
+      "at": "2026-09-27T10:01:55.887Z"
+    },
+    {
+      "id": "lp-cmumibpox004pmmqdnktepx6w",
+      "kind": "lesson-completed",
+      "title": "The 120-year cycle",
+      "at": "2026-09-27T10:01:55.664Z"
+    },
+    {
+      "id": "lp-cmumibpos004lmmqdsnkor7ok",
+      "kind": "lesson-completed",
+      "title": "Nakshatra quiz",
+      "at": "2026-09-27T10:01:55.659Z"
+    },
+    {
+      "id": "lp-cmumibpoa0047mmqdojwwbrv1",
+      "kind": "lesson-completed",
+      "title": "Chapter check",
+      "at": "2026-09-27T10:01:55.641Z"
+    },
+    {
+      "id": "lp-cmumibpop004jmmqd1rk0m11x",
+      "kind": "lesson-completed",
+      "title": "Working with padas",
+      "at": "2026-09-25T10:01:55.657Z"
+    },
+    {
+      "id": "lp-cmumibpo80045mmqdbu4n3ke5",
+      "kind": "lesson-completed",
+      "title": "Benefics and malefics",
+      "at": "2026-09-25T10:01:55.639Z"
+    },
+    {
+      "id": "lp-cmumibpon004hmmqdozug4xdr",
+      "kind": "lesson-completed",
+      "title": "The Pitru nakshatras",
+      "at": "2026-09-23T10:01:55.655Z"
+    },
+    {
+      "id": "lp-cmumibpo60043mmqdi1i1i7ub",
+      "kind": "lesson-completed",
+      "title": "Introduction to the Navagrahas",
+      "at": "2026-09-23T10:01:55.637Z"
+    },
+    {
+      "id": "lp-cmumibpol004fmmqdyi5yhb45",
+      "kind": "lesson-completed",
+      "title": "Rohini through Ashlesha",
+      "at": "2026-09-21T10:01:55.652Z"
+    },
+    {
+      "id": "lp-cmumibpoj004dmmqdtcxjybms",
+      "kind": "lesson-completed",
+      "title": "Ashwini, Bharani and Krittika",
+      "at": "2026-09-19T10:01:55.650Z"
+    },
+    {
+      "id": "enr-cmumibpo10041mmqd406q9w72",
+      "kind": "enrolled",
+      "title": "Enrolled in Foundations of Vedic Astrology",
+      "at": "2026-09-02T16:53:01.909Z"
+    },
+    {
+      "id": "enr-cmumibpof004bmmqdfrcxmaa9",
+      "kind": "enrolled",
+      "title": "Enrolled in The 27 Nakshatras in Depth",
+      "at": "2026-08-28T04:22:15.201Z"
+    },
+    {
+      "id": "enr-cmumibpou004nmmqde5qu2raz",
+      "kind": "enrolled",
+      "title": "Enrolled in Reading the Dasha System",
+      "at": "2026-08-15T04:06:08.855Z"
+    }
+  ]
+}

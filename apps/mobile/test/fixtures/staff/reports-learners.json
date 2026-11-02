@@ -1,0 +1,294 @@
+{
+  "window": {
+    "from": "2026-07-01T12:43:53.107Z",
+    "to": "2026-09-30T12:43:53.107Z",
+    "previousFrom": "2026-04-01T12:43:53.107Z",
+    "previousTo": "2026-07-01T12:43:53.107Z"
+  },
+  "courseCount": 6,
+  "kpis": {
+    "learners": {
+      "value": 28,
+      "previous": 5,
+      "series": [],
+      "unit": "count"
+    },
+    "active": {
+      "value": 13,
+      "previous": 5,
+      "series": [],
+      "unit": "count"
+    },
+    "atRisk": {
+      "value": 10,
+      "previous": 0,
+      "series": [],
+      "unit": "count"
+    },
+    "avgProgress": {
+      "value": 59,
+      "previous": 50,
+      "series": [],
+      "unit": "%"
+    }
+  },
+  "segments": {
+    "all": 28,
+    "new": 21,
+    "active": 13,
+    "at-risk": 10,
+    "inactive": 5,
+    "completers": 13
+  },
+  "statuses": {
+    "active": 13,
+    "at-risk": 10,
+    "inactive": 5,
+    "suspended": 0
+  },
+  "progressBands": [
+    {
+      "label": "0–24%",
+      "value": 6
+    },
+    {
+      "label": "25–49%",
+      "value": 4
+    },
+    {
+      "label": "50–74%",
+      "value": 7
+    },
+    {
+      "label": "75–99%",
+      "value": 6
+    },
+    {
+      "label": "Finished",
+      "value": 5
+    }
+  ],
+  "rows": [
+    {
+      "studentId": "cmumqijfq00hwmmostzlihhfi",
+      "name": "Gaurav Rao",
+      "city": "Patna",
+      "status": "active",
+      "courses": 1,
+      "completed": 1,
+      "avgProgress": 100,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-28T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqihzx00ahmmosu8kuqpra",
+      "name": "Kavya Reddy",
+      "city": "Patna",
+      "status": "inactive",
+      "courses": 1,
+      "completed": 1,
+      "avgProgress": 100,
+      "assignmentAvg": 84,
+      "lastActiveAt": "2026-09-13T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqiht0009lmmosp7gvl08g",
+      "name": "Manish Banerjee",
+      "city": "Coimbatore",
+      "status": "inactive",
+      "courses": 1,
+      "completed": 1,
+      "avgProgress": 100,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-09T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqijqo00jimmos1g5tpft8",
+      "name": "Nandini Banerjee",
+      "city": "Mumbai",
+      "status": "active",
+      "courses": 1,
+      "completed": 1,
+      "avgProgress": 100,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-28T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqijdd00himmosoaxjvibo",
+      "name": "Ritu Rao",
+      "city": "Coimbatore",
+      "status": "inactive",
+      "courses": 2,
+      "completed": 2,
+      "avgProgress": 100,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-07-15T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqihbc001pmmost77d68f5",
+      "name": "Vikram Singh",
+      "city": "Jaipur",
+      "status": "active",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 94,
+      "assignmentAvg": 0,
+      "lastActiveAt": "2026-09-30T11:51:53.577Z"
+    },
+    {
+      "studentId": "cmumqij6p00ghmmosaagkqpyl",
+      "name": "Suresh Ghosh",
+      "city": "Hyderabad",
+      "status": "at-risk",
+      "courses": 1,
+      "completed": 0,
+      "avgProgress": 86,
+      "assignmentAvg": 60,
+      "lastActiveAt": "2026-09-16T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqigzt0011mmosdvh2xmuw",
+      "name": "Rohit Sharma",
+      "city": "Pune",
+      "status": "active",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 81,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-30T08:54:20.594Z"
+    },
+    {
+      "studentId": "cmumqiig100d4mmosflkinszs",
+      "name": "Imran Chauhan",
+      "city": "Indore",
+      "status": "active",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 75,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-28T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqijb100h4mmos0hk6zhlx",
+      "name": "Prakash Rao",
+      "city": "Coimbatore",
+      "status": "active",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 75,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-28T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqii9000bzmmos8gn1o5uf",
+      "name": "Ritu Joshi",
+      "city": "Nagpur",
+      "status": "at-risk",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 75,
+      "assignmentAvg": 60,
+      "lastActiveAt": "2026-08-26T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqih5l001dmmosej26nbyq",
+      "name": "Sneha Iyer",
+      "city": "Chennai",
+      "status": "active",
+      "courses": 1,
+      "completed": 0,
+      "avgProgress": 71,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-28T13:51:08.120Z"
+    },
+    {
+      "studentId": "cmumqih1p0015mmos2mjmvk96",
+      "name": "Priya Nair",
+      "city": "Kochi",
+      "status": "active",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 61,
+      "assignmentAvg": 88,
+      "lastActiveAt": "2026-09-27T13:51:07.980Z"
+    },
+    {
+      "studentId": "cmumqigxx000xmmossb0hdlxp",
+      "name": "Ananya Rao",
+      "city": "Bengaluru",
+      "status": "active",
+      "courses": 3,
+      "completed": 1,
+      "avgProgress": 51,
+      "assignmentAvg": 0,
+      "lastActiveAt": "2026-09-30T11:29:26.972Z"
+    },
+    {
+      "studentId": "cmumqih7i001hmmoswshn1xza",
+      "name": "Arjun Das",
+      "city": "Kolkata",
+      "status": "active",
+      "courses": 2,
+      "completed": 0,
+      "avgProgress": 51,
+      "assignmentAvg": 4,
+      "lastActiveAt": "2026-09-30T11:51:29.721Z"
+    },
+    {
+      "studentId": "cmumqiir900elmmos6wz12xkf",
+      "name": "Aditi Sinha",
+      "city": "Lucknow",
+      "status": "at-risk",
+      "courses": 1,
+      "completed": 0,
+      "avgProgress": 50,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-06T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqijht00i5mmoszti4lf4b",
+      "name": "Lakshmi Kulkarni",
+      "city": "Delhi",
+      "status": "at-risk",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 50,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-07T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqiioy00e9mmosy0gf36pa",
+      "name": "Vivek Menon",
+      "city": "Hyderabad",
+      "status": "at-risk",
+      "courses": 2,
+      "completed": 1,
+      "avgProgress": 50,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-09T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqihvc009tmmosok9ilzui",
+      "name": "Divya Banerjee",
+      "city": "Surat",
+      "status": "at-risk",
+      "courses": 2,
+      "completed": 0,
+      "avgProgress": 45,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-14T13:51:08.625Z"
+    },
+    {
+      "studentId": "cmumqij4g00g8mmos3xw2p91y",
+      "name": "Kavya Ghosh",
+      "city": "Bhopal",
+      "status": "active",
+      "courses": 1,
+      "completed": 0,
+      "avgProgress": 25,
+      "assignmentAvg": null,
+      "lastActiveAt": "2026-09-28T13:51:08.625Z"
+    }
+  ],
+  "total": 28
+}

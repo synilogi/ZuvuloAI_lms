@@ -1,0 +1,209 @@
+{
+  "window": {
+    "from": "2026-07-01T12:43:52.867Z",
+    "to": "2026-09-30T12:43:52.867Z",
+    "previousFrom": "2026-04-01T12:43:52.867Z",
+    "previousTo": "2026-07-01T12:43:52.867Z"
+  },
+  "courseCount": 6,
+  "rows": [
+    {
+      "courseId": "cmumqihbi001rmmos6cypzr5m",
+      "title": "Foundations of Vedic Astrology",
+      "categoryTitle": "Vedic Foundations",
+      "instructorNames": [
+        "Dr. Meenakshi Iyer"
+      ],
+      "status": "published",
+      "enrollments": 12,
+      "previousEnrollments": 3,
+      "completions": 4,
+      "completionRate": 57,
+      "activeLearners": 13,
+      "avgProgress": 51,
+      "quizPassRate": 55,
+      "assignmentPassRate": 9,
+      "rating": 4.798859190813784,
+      "trend": [
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        3,
+        1,
+        1,
+        0,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "courseId": "cmumqihd50035mmos6u0fhpdn",
+      "title": "Jaimini Astrology: Chara Karakas",
+      "categoryTitle": "Specialised Systems",
+      "instructorNames": [
+        "Acharya Vinod Shastri"
+      ],
+      "status": "published",
+      "enrollments": 7,
+      "previousEnrollments": 1,
+      "completions": 2,
+      "completionRate": 33,
+      "activeLearners": 7,
+      "avgProgress": 62,
+      "quizPassRate": null,
+      "assignmentPassRate": null,
+      "rating": 4.600602356565785,
+      "trend": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "courseId": "cmumqihco002rmmosr0ijyuku",
+      "title": "Reading the Dasha System",
+      "categoryTitle": "Predictive Techniques",
+      "instructorNames": [
+        "Acharya Vinod Shastri"
+      ],
+      "status": "published",
+      "enrollments": 6,
+      "previousEnrollments": 3,
+      "completions": 2,
+      "completionRate": 67,
+      "activeLearners": 8,
+      "avgProgress": 57,
+      "quizPassRate": null,
+      "assignmentPassRate": 100,
+      "rating": 4.706556565676229,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "courseId": "cmumqihc7002bmmosdnc8er9m",
+      "title": "The 27 Nakshatras in Depth",
+      "categoryTitle": "Vedic Foundations",
+      "instructorNames": [
+        "Dr. Meenakshi Iyer"
+      ],
+      "status": "published",
+      "enrollments": 5,
+      "previousEnrollments": 0,
+      "completions": 1,
+      "completionRate": 100,
+      "activeLearners": 5,
+      "avgProgress": 58,
+      "quizPassRate": 100,
+      "assignmentPassRate": null,
+      "rating": 4.842720776091521,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "courseId": "cmumqihdp003lmmoslirj2d3m",
+      "title": "Prashna: Horary Astrology",
+      "categoryTitle": "Specialised Systems",
+      "instructorNames": [
+        "Pt. Sanjay Rathore"
+      ],
+      "status": "published",
+      "enrollments": 3,
+      "previousEnrollments": 0,
+      "completions": 2,
+      "completionRate": 100,
+      "activeLearners": 3,
+      "avgProgress": 74,
+      "quizPassRate": null,
+      "assignmentPassRate": null,
+      "rating": 4.662219857411197,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "courseId": "cmumqihdf003dmmosiq6u19sc",
+      "title": "Krishnamurti Paddhati (KP) Fundamentals",
+      "categoryTitle": "Specialised Systems",
+      "instructorNames": [
+        "Pt. Sanjay Rathore"
+      ],
+      "status": "published",
+      "enrollments": 2,
+      "previousEnrollments": 5,
+      "completions": 2,
+      "completionRate": 56,
+      "activeLearners": 5,
+      "avgProgress": 70,
+      "quizPassRate": null,
+      "assignmentPassRate": null,
+      "rating": 4.755414382070394,
+      "trend": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

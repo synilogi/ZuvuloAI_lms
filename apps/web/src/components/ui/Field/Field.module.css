@@ -1,0 +1,159 @@
+.field {
+  display: block;
+  min-width: 0;
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 7px;
+}
+.optional {
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  color: var(--faint);
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: var(--fs-caption);
+  line-height: 1.4;
+  color: var(--faint);
+}
+.message svg {
+  margin-top: 1px;
+}
+.error {
+  color: var(--danger-ink);
+}
+.success {
+  color: var(--accent-ink);
+}
+
+/* Control: 40px, r-md, hairline + inset shadow; focus → accent border + soft ring */
+.control {
+  width: 100%;
+  height: var(--d-control-h, 40px);
+  padding: 0 12px;
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in srgb, var(--border-strong) 55%, var(--border));
+  background: var(--surface);
+  box-shadow: var(--sh-xs);
+  color: var(--text);
+  font-size: var(--fs-body);
+  transition:
+    border-color var(--t-fast),
+    box-shadow var(--t-fast),
+    background var(--t-fast);
+  appearance: none;
+}
+.control:hover:not(:disabled):not(:focus) {
+  border-color: var(--border-strong);
+}
+.control:focus,
+.control[data-force='focus'] {
+  border-color: var(--accent);
+  box-shadow: var(--sh-ring);
+  outline: none;
+}
+.control:disabled {
+  background: var(--surface-2);
+  color: var(--faint);
+  cursor: not-allowed;
+}
+.control[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+.control[aria-invalid='true']:focus {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 16%, transparent);
+}
+.control[data-valid='true'] {
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+}
+
+textarea.control {
+  height: auto;
+  min-height: 96px;
+  padding: 10px 12px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.selectWrap {
+  position: relative;
+  display: block;
+}
+.selectWrap .control {
+  padding-right: 34px;
+  cursor: pointer;
+}
+.selectCaret {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--faint);
+  pointer-events: none;
+}
+
+.searchWrap {
+  position: relative;
+  display: block;
+}
+.searchWrap .control {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+.searchIcon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--faint);
+  pointer-events: none;
+}
+.searchEnd {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+.searchWrap .control::-webkit-search-cancel-button {
+  display: none;
+}
+.clear {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--r-xs);
+  background: transparent;
+  color: var(--faint);
+  cursor: pointer;
+  transition:
+    background var(--t-fast),
+    color var(--t-fast);
+}
+.clear:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+@media (max-width: 767px) {
+  /* 16px prevents iOS zoom on focus */
+  .control {
+    font-size: 16px;
+    height: max(var(--d-control-h, 40px), 44px);
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "category": "course",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    },
+    {
+      "category": "assignment",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    },
+    {
+      "category": "quiz",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    },
+    {
+      "category": "live",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    },
+    {
+      "category": "certificate",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    },
+    {
+      "category": "enrollment",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    },
+    {
+      "category": "system",
+      "channels": {
+        "app": true,
+        "email": true,
+        "sms": false
+      }
+    }
+  ],
+  "emailDigest": "instant",
+  "quietHours": {
+    "enabled": false,
+    "from": "22:00",
+    "to": "07:00"
+  },
+  "smsNumber": ""
+}

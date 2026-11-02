@@ -1,0 +1,22 @@
+{
+  "kind": "upgrade",
+  "when": "on_payment",
+  "appliesAt": "2026-10-03T09:20:00.000Z",
+  "to": {
+    "planId": "cmumqijvi00kqmmos8aae9wgq",
+    "planName": "Enterprise",
+    "cycle": "annual",
+    "amount": 24999000
+  },
+  "currency": "INR",
+  "credit": 3989995,
+  "charge": 4999993,
+  "forfeited": 0,
+  "payable": {
+    "net": 4999993,
+    "tax": 899999,
+    "gross": 5899992
+  },
+  "needsBillingAddress": false,
+  "conflicts": []
+}

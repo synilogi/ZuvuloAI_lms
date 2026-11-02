@@ -1,0 +1,35 @@
+{
+  "user": {
+    "id": "cmudqd7vn000pmmgzpxxtyqen",
+    "name": "Kavita Menon",
+    "email": "user@example.test",
+    "role": "admin",
+    "descriptor": "Academy admin",
+    "permissions": [
+      "catalog.view",
+      "catalog.edit",
+      "catalog.publish",
+      "catalog.archive",
+      "catalog.categories.manage",
+      "assessment.view",
+      "assessment.edit",
+      "assessment.grade",
+      "learners.view",
+      "learners.enroll",
+      "learners.suspend",
+      "learners.message",
+      "instructors.view",
+      "instructors.manage",
+      "instructors.status",
+      "certificates.issue",
+      "certificates.revoke",
+      "certificates.templates.manage",
+      "live.manage",
+      "live.notify",
+      "reports.view",
+      "reports.instructors.view",
+      "settings.view",
+      "settings.edit"
+    ]
+  }
+}

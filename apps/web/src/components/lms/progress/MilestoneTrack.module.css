@@ -1,0 +1,185 @@
+.root {
+  container-type: inline-size;
+}
+
+.trackArea {
+  position: relative;
+  padding-top: 30px;
+  margin: 0 7px;
+}
+.track {
+  position: relative;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--track);
+  overflow: hidden;
+}
+.fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  transition: width var(--t-progress);
+}
+
+.you {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left var(--t-progress);
+}
+.youLabel {
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--text);
+  color: var(--surface);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.you::after {
+  content: '';
+  width: 1px;
+  height: 8px;
+  background: var(--text);
+  opacity: 0.4;
+}
+
+.marker {
+  position: absolute;
+  top: calc(30px + 3px);
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow:
+    0 0 0 2px var(--surface),
+    inset 0 0 0 1.5px var(--border-strong);
+  color: var(--accent-fg);
+}
+.reached {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.emphasis:not(.reached) {
+  width: 22px;
+  height: 22px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  box-shadow:
+    0 0 0 2px var(--surface),
+    inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+/* Labels — positioned on wide containers */
+.labels {
+  position: relative;
+  list-style: none;
+  margin: 14px 7px 0;
+  height: 52px;
+}
+.label {
+  position: absolute;
+  left: var(--at);
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+  font-size: var(--fs-caption);
+  line-height: 1.35;
+}
+.center {
+  transform: translateX(-50%);
+  align-items: center;
+  text-align: center;
+}
+.start {
+  align-items: flex-start;
+}
+.end {
+  transform: translateX(-100%);
+  align-items: flex-end;
+  text-align: right;
+}
+.twoRows {
+  height: 100px;
+}
+.row2 {
+  top: 48px;
+}
+.row2::before {
+  content: '';
+  position: absolute;
+  top: -46px;
+  height: 42px;
+  width: 1px;
+  background: var(--border);
+  left: 50%;
+}
+.end.row2::before {
+  left: auto;
+  right: 0;
+}
+.start.row2::before {
+  left: 0;
+}
+.labelAt {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.labelText {
+  color: var(--muted);
+  font-weight: 500;
+}
+.labelDetail {
+  color: var(--faint);
+  font-size: var(--fs-meta);
+}
+.labelReached .labelText {
+  color: var(--text);
+}
+.labelNext .labelText {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+@container (max-width: 559px) {
+  .row2::before {
+    display: none;
+  }
+  .labels,
+  .twoRows {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .label,
+  .center,
+  .end,
+  .start {
+    position: static;
+    transform: none;
+    max-width: none;
+    flex-direction: row;
+    align-items: baseline;
+    text-align: left;
+    gap: 10px;
+  }
+  .labelAt {
+    width: 34px;
+    flex: none;
+  }
+  .labelDetail::before {
+    content: '· ';
+  }
+}

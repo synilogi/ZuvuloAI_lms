@@ -1,0 +1,23 @@
+{
+  "courseId": "cmumibpkw001rmmqdg7gbub52",
+  "enrolled": 17,
+  "chapters": {
+    "cmumibpl0001tmmqdntu7n6nb": {
+      "completionRate": 75,
+      "startedRate": 82
+    },
+    "cmumibpla0021mmqdzdh35keb": {
+      "completionRate": 51,
+      "startedRate": 56
+    }
+  },
+  "lessons": {
+    "cmumibpl3001vmmqdn56u2m9u": 82,
+    "cmumibpl5001xmmqd60epwcf1": 71,
+    "cmumibpl7001zmmqde4hlf67r": 71,
+    "cmumibplc0023mmqd2mqx94hc": 59,
+    "cmumibple0025mmqd43surjo5": 53,
+    "cmumibplg0027mmqd1a8zh10n": 47,
+    "cmumibpli0029mmqd579vjokr": 47
+  }
+}

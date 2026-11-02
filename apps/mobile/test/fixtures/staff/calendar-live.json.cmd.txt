@@ -1,0 +1,4 @@
+Captured 2026-09-30T10:16:18Z from the local contract server (real API, scratch database, seed data).
+Command: tool/capture_fixture.sh GET /calendar/live-cmumqihjm0087mmosieytg5to admin staff/calendar-live.json
+HTTP status: 200
+Tokens and e-mail addresses scrubbed.

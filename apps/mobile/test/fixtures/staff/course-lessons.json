@@ -1,0 +1,183 @@
+{
+  "rows": [
+    {
+      "lesson": {
+        "id": "cmumibpl3001vmmqdn56u2m9u",
+        "title": "Introduction to the Navagrahas",
+        "type": "video",
+        "durationMin": 18,
+        "isPreview": true,
+        "status": "published",
+        "updatedAt": "2026-09-29T13:04:06.886Z",
+        "objectives": [],
+        "content": {
+          "video": {
+            "file": {
+              "name": "navagrahas-intro.mp4",
+              "sizeMb": 84
+            },
+            "durationSec": 1080,
+            "captions": true,
+            "markers": []
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpl0001tmmqdntu7n6nb",
+      "chapterTitle": "The Nine Planets",
+      "chapterIndex": 0,
+      "lessonIndex": 0
+    },
+    {
+      "lesson": {
+        "id": "cmumibpl5001xmmqd60epwcf1",
+        "title": "Benefics and malefics",
+        "type": "reading",
+        "durationMin": 12,
+        "status": "published",
+        "updatedAt": "2026-09-29T13:16:14.696Z",
+        "objectives": [],
+        "content": {
+          "article": {
+            "body": "Planets are read as functional benefics or malefics depending on the chart they fall in, not fixed labels. Jupiter and Venus are natural benefics; Saturn, Mars, the Sun and the nodes are natural malefics, with Mercury’s nature following its company.\n\nA malefic in a good house can still support a life area it rules, while a benefic in a difficult house can strain it. Judge each placement on its own terms before generalising."
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpl0001tmmqdntu7n6nb",
+      "chapterTitle": "The Nine Planets",
+      "chapterIndex": 0,
+      "lessonIndex": 1
+    },
+    {
+      "lesson": {
+        "id": "cmumibpl7001zmmqde4hlf67r",
+        "title": "Chapter check",
+        "type": "assessment",
+        "durationMin": 10,
+        "status": "published",
+        "updatedAt": "2026-09-29T10:01:55.532Z",
+        "objectives": [],
+        "content": {
+          "quiz": {
+            "quizId": "cmumibpuj007jmmqdzkik7r11",
+            "questions": 3,
+            "passMark": 70,
+            "attempts": 3
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpl0001tmmqdntu7n6nb",
+      "chapterTitle": "The Nine Planets",
+      "chapterIndex": 0,
+      "lessonIndex": 2
+    },
+    {
+      "lesson": {
+        "id": "cmumibplc0023mmqd2mqx94hc",
+        "title": "The twelve rashis",
+        "type": "video",
+        "durationMin": 22,
+        "status": "published",
+        "updatedAt": "2026-09-29T10:01:55.536Z",
+        "objectives": [],
+        "content": {
+          "video": {
+            "file": {
+              "name": "rashis.mp4",
+              "sizeMb": 96
+            },
+            "durationSec": 1320,
+            "captions": true,
+            "markers": []
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpla0021mmqdzdh35keb",
+      "chapterTitle": "Signs and Houses",
+      "chapterIndex": 1,
+      "lessonIndex": 0
+    },
+    {
+      "lesson": {
+        "id": "cmumibple0025mmqd43surjo5",
+        "title": "Reading the houses",
+        "type": "reading",
+        "durationMin": 15,
+        "status": "published",
+        "updatedAt": "2026-09-29T10:01:55.538Z",
+        "objectives": [],
+        "content": {
+          "article": {
+            "body": "Each of the twelve houses governs a department of life, from the first house of self to the twelfth house of loss and release. A planet’s house placement shapes which department it most strongly colours.\n\nKendras (1, 4, 7, 10) anchor the chart’s structure; trikonas (1, 5, 9) carry fortune and dharma; dusthanas (6, 8, 12) bring struggle that can still mature into strength."
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpla0021mmqdzdh35keb",
+      "chapterTitle": "Signs and Houses",
+      "chapterIndex": 1,
+      "lessonIndex": 1
+    },
+    {
+      "lesson": {
+        "id": "cmumibplg0027mmqd1a8zh10n",
+        "title": "Chart-reading practice",
+        "type": "practice",
+        "durationMin": 25,
+        "status": "published",
+        "updatedAt": "2026-09-29T10:01:55.540Z",
+        "objectives": [],
+        "content": {
+          "article": {
+            "body": "Using the sample chart provided, note each planet’s sign and house, then write two sentences on what that combination suggests."
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpla0021mmqdzdh35keb",
+      "chapterTitle": "Signs and Houses",
+      "chapterIndex": 1,
+      "lessonIndex": 2
+    },
+    {
+      "lesson": {
+        "id": "cmumibpli0029mmqd579vjokr",
+        "title": "Your first assignment: reading a friend’s chart",
+        "type": "assignment",
+        "durationMin": 40,
+        "status": "published",
+        "updatedAt": "2026-09-29T10:01:55.543Z",
+        "objectives": [],
+        "content": {
+          "assignment": {
+            "assignmentId": "cmumibpuy007tmmqd2qxmak5j",
+            "brief": "Cast a birth chart for someone you know (with their permission) and write a half-page summary of their planetary placements — sign, house and one observation per planet.",
+            "dueAfterDays": 7,
+            "maxScore": 100,
+            "submission": "chart"
+          }
+        },
+        "settings": {}
+      },
+      "chapterId": "cmumibpla0021mmqdzdh35keb",
+      "chapterTitle": "Signs and Houses",
+      "chapterIndex": 1,
+      "lessonIndex": 3
+    }
+  ],
+  "counts": {
+    "all": 7,
+    "published": 7,
+    "draft": 0,
+    "byType": {
+      "video": 2,
+      "reading": 2,
+      "assessment": 1,
+      "practice": 1,
+      "assignment": 1
+    }
+  }
+}

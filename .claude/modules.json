@@ -1,0 +1,223 @@
+{
+  "project": "SyniastroLMS UI",
+  "scope": "UI_ONLY",
+  "modules": [
+    {
+      "id": "LMS-000",
+      "name": "LMS Foundation & Design System",
+      "priority": 0,
+      "status": "completed",
+      "dependencies": [],
+      "spec": null,
+      "notes": "Shell-aligned tokens, density modes, UI primitives, overlays, LMS progress/status/course components, role navigation, command palette, mock services, /design-system playground."
+    },
+    {
+      "id": "LMS-001",
+      "name": "LMS Dashboard",
+      "priority": 1,
+      "status": "completed",
+      "dependencies": [],
+      "spec": "dashboard.md",
+      "notes": "Admin dashboard at /admin and instructor-scoped overview at /teach: KPI band, course performance trend + table, needs-attention triage, live this week, learning activity chart, quick actions, recent activity, top courses; loading, empty (onboarding), error states; seeded academy data layer."
+    },
+    {
+      "id": "LMS-002",
+      "name": "Course Management",
+      "priority": 2,
+      "status": "completed",
+      "dependencies": [
+        "LMS-001"
+      ],
+      "spec": "courses.md",
+      "notes": "Course list (status tabs, search, category/instructor filters, sort, list/grid, mobile cards + filter sheet), create/edit form with validation, error summary, readiness and unsaved-changes guard, course details (snapshot, about, curriculum summary, details), curriculum outline with reorder, learner preview with device width, publish/unpublish/archive/restore dialogs. Shared by /admin and /teach."
+    },
+    {
+      "id": "LMS-003",
+      "name": "Course Categories",
+      "priority": 3,
+      "status": "completed",
+      "dependencies": [
+        "LMS-002"
+      ],
+      "spec": "categories.md",
+      "notes": "Category list (status tabs, search, sort, table with emblem, description, course counts, status, updated, inline edit + menu with move up/down and delete; mobile cards), create/edit panel (name, description, emblem, levels, status, display order) with validation, duplicate-name errors and discard guard, details panel with courses, delete confirmation that reassigns courses."
+    },
+    {
+      "id": "LMS-004",
+      "name": "Chapter Management",
+      "priority": 4,
+      "status": "completed",
+      "dependencies": [
+        "LMS-002"
+      ],
+      "spec": "chapters.md",
+      "notes": "Curriculum chapter management inside the course: chapter rows with number, title, summary, lessons, duration, learner completion and status; expand/collapse all; add/edit chapter panel (title, description, objective, estimated duration, visibility, position); duplicate; publish/move to draft; move-to-position dialog; drag or arrow reorder; delete with impact and acknowledgement; chapter overview page with objective, figures, per-lesson completion and prev/next."
+    },
+    {
+      "id": "LMS-005",
+      "name": "Lesson Management",
+      "priority": 5,
+      "status": "completed",
+      "dependencies": [
+        "LMS-004"
+      ],
+      "spec": "lessons.md",
+      "notes": "Lesson list grouped by chapter (type tabs, search, chapter/status/sort filters, actions, move to chapter, delete; mobile cards) and lesson editor with Content (title, type picker, per-type content editors with simulated upload, details, objectives, free preview, status and publish readiness), Settings (completion rule, access, placement, delete) and Preview (learner view, desktop/mobile) tabs; unsaved-changes guard; sticky mobile save."
+    },
+    {
+      "id": "LMS-006",
+      "name": "Quiz UI",
+      "priority": 6,
+      "status": "completed",
+      "dependencies": [
+        "LMS-005"
+      ],
+      "spec": "quizzes.md",
+      "notes": "Quiz list (status tabs, search, course filter, pass-rate meters, duplicate, delete; mobile cards) and quiz builder with Questions (title, instructions, course/chapter, ordered question rail or mobile selector, add/duplicate/move/delete, question editor for single, multiple, true/false and short answer with correct answers, points, explanation, required), Settings (pass mark, attempts, time limit, shuffling, results visibility), learner Preview (QuizTaker with progress, timer, answer checking and result) and Results (figures, score distribution, question difficulty) tabs; validation summary, unsaved-changes guard."
+    },
+    {
+      "id": "LMS-007",
+      "name": "Assignment UI",
+      "priority": 7,
+      "status": "completed",
+      "dependencies": [
+        "LMS-005"
+      ],
+      "spec": "assignments.md",
+      "notes": "Assignment list with a cross-assignment review queue (oldest first, overdue called out), assignment editor (title, instructions, resources upload placeholder, submission type, word limit, due date policy, late penalty, rubric or maximum score, pass mark, status) with learner Preview and Submissions tabs, submission list (to review / graded / returned / not submitted, remind, pagination, mobile cards) and submission review (response, brief, learner, rubric scoring with quick scores, late penalty, feedback, private note, save draft / request resubmission / submit review, next in queue). Review counts on the dashboard, sidebar badge and meter are derived from submissions."
+    },
+    {
+      "id": "LMS-008",
+      "name": "Student UI",
+      "priority": 8,
+      "status": "completed",
+      "dependencies": [
+        "LMS-002"
+      ],
+      "spec": "students.md",
+      "notes": "Student list (/admin/students, /teach/students as Learners) with avatar, name, email, courses, progress, last active, status and actions; status tabs with counts, search by name/email/ID, course filter, sorting, pagination, bulk message, mobile cards. Student profile with identity header, rank, status, summary figures and tabs: Overview (at-risk nudge, courses, recent activity, rank, certificates), Courses (enrollments with progress, source, certificate, pause/resume, remove), Progress (chapter ring and list per course, 12-week study time, quizzes, assignments linked to reviews) and Activity (day-grouped timeline with type and course filters). Message, enroll and suspend dialogs."
+    },
+    {
+      "id": "LMS-009",
+      "name": "Instructor UI",
+      "priority": 9,
+      "status": "completed",
+      "dependencies": [
+        "LMS-002"
+      ],
+      "spec": "instructors.md",
+      "notes": "Instructor list (/admin/instructors) with avatar, name and title, expertise, courses, students, rating and completion, reviews waiting, status and actions; status tabs, search, expertise filter, sort, mobile cards. Add / edit form with display image placeholder, identity, bio, expertise and languages, assigned courses (sole-instructor lock) and access status, validation summary, readiness checklist and leave guard. Profile with header, figures and tabs: Overview (about, course portfolio, student reach by city, recent activity), Courses and Performance (rating and completion against the academy, review speed, live teaching, monthly enrollments, by course). Resend invitation, deactivate / withdraw / reactivate."
+    },
+    {
+      "id": "LMS-010",
+      "name": "Learning Experience",
+      "priority": 10,
+      "status": "completed",
+      "dependencies": [
+        "LMS-005"
+      ],
+      "spec": "learning-experience.md",
+      "notes": "Learner home (/home: resume panel, courses, recently accessed lessons, coming up, study rhythm, saved), My learning (/my-learning/in-progress|completed|saved with enroll), course learning overview (/learn/:courseId: progress ring, path of chapters, curriculum, certificate, assignments, live classes, outcomes, enroll/save when not enrolled) and lesson player (/learn/:courseId/lessons/:lessonId) with video (simulated playback, seek, speed, captions, chapters, resume), article, practice, PDF reader, quiz (QuizTaker, pass completes), assignment (hand-in, drafts, feedback) and live session views; completion rules per type, chapter and quiz unlocking, notes, bookmarks, previous/next, celebrations, desktop curriculum sidebar and mobile sheet with sticky actions. Learner assignments (/assignments, /assignments/:id) and assessments (/assessments). Progress, submissions and quiz results flow back to admin views."
+    },
+    {
+      "id": "LMS-011",
+      "name": "Certificate UI",
+      "priority": 11,
+      "status": "completed",
+      "dependencies": [
+        "LMS-010"
+      ],
+      "spec": "certificates.md",
+      "notes": "Admin certificate list (/admin/certificates: certificate, course, learner, issue date, credential ID, status, verification, actions; status tabs, search, course filter, pagination, ready-to-issue notice, mobile cards), certificate detail (branded document preview, learner, record, verification, template; issue, revoke with reason, restore; view / download / share dialogs), templates gallery and editor with live preview (layout, colour, wording, score and hours, signatories, courses, default), learner certificates (/certificates: claim, earned with actions, working towards; detail) and public verification (/verify/:credentialId). The certificate document scales with its width so it stays legible on phones."
+    },
+    {
+      "id": "LMS-012",
+      "name": "Live Class UI",
+      "priority": 12,
+      "status": "completed",
+      "dependencies": [
+        "LMS-010"
+      ],
+      "spec": "live-classes.md",
+      "notes": "Live class schedule (/admin/live, /teach/live: upcoming timeline grouped by day with seats, status and host actions; live now; history table with attendance and recordings; cancelled with reasons; search, course and instructor filters, pagination, mobile cards), schedule and edit (title, description, course and chapter, instructor, date and times, academy room or outside link, capacity, who can join, agenda, reminders; validation, leave guard, started classes refuse edits), class detail (session facts, agenda with times, attendees and attendance, instructor, reminder schedule and send-now, recording with views, previous/next session, cancel with reason, host room check), learner live classes (/live: live-now hero, coming up with register / cancel registration, recordings) and learner class detail (/live/:liveId). Joining, hosting and recordings are simulated."
+    },
+    {
+      "id": "LMS-013",
+      "name": "LMS Calendar",
+      "priority": 13,
+      "status": "completed",
+      "dependencies": [
+        "LMS-012"
+      ],
+      "spec": "calendar.md",
+      "notes": "Unified schedule at /admin/calendar and /teach/calendar: month grid (event chips, more-per-day, selected-day panel, arrow-key and Page Up/Down day navigation), week time grid (all-day row, side-by-side overlaps, now line) and list view grouped by day (earlier days folded); today/prev/next, view switch, event-type filter chips with counts, course and instructor filters. Events: live classes (from the live schedule), assignment deadlines for cohort courses and fixed dates (learners due and handed in), quiz windows and sittings, course milestones (cohort starts, chapter opens, enrolment closes, cohort wraps up, launch) and reminders (just me, or sent to a course’s learners). Event detail panel (drawer / bottom sheet with an addressable URL): type, course, chapter, instructor, date and time, length, who’s included, notification, notes, places or hand-in progress with learners, quiz facts, and the action for the type; mark reminders done, delete with confirmation, derived events link to their own editors. Add / edit event page for quizzes, milestones and reminders with validation, leave guard and sticky mobile actions. States: loading, error, nothing scheduled, filters hiding everything, selected day with no events. Phones default to the list view; the month view shows dots with the day’s agenda below."
+    },
+    {
+      "id": "LMS-014",
+      "name": "LMS Notifications",
+      "priority": 14,
+      "status": "completed",
+      "dependencies": [
+        "LMS-010"
+      ],
+      "spec": "notifications.md",
+      "notes": "Notification centre for learners (/notifications), instructors (/teach/notifications) and admins (/admin/notifications): All / Unread, type filter with counts, grouped by Today, Yesterday, Earlier this week and Earlier; unread emphasis, important badge, category icon, relative time; per-row mark read / unread, remove with Undo, link to that type’s settings; mark all as read, clear all (with confirmation), show older. Notification detail: category, title, time and sender, summary, body, facts, primary and secondary actions to the real page, mark unread, remove, why you got it (channels) with a link to the setting, more of the same type; opening a notification reads it. Preferences: pause (an hour, until 8 AM, a week) with resume, grouped per role (learning / teaching / academy / account) with in-app, email and text-message switches and plain descriptions, account notices locked on, email digest (as they happen, daily, weekly), quiet hours for text messages; validation, unsaved changes, discard, leave guard, sticky mobile actions. Header bell shows the unread count and the newest five with mark all read, see all and preferences; the mobile bell opens the centre. Types: course update, assignment, quiz, live class, certificate, enrolment, system. States: loading, error, no notifications, all caught up, nothing of a type, not found."
+    },
+    {
+      "id": "LMS-015",
+      "name": "LMS Reports",
+      "priority": 15,
+      "status": "completed",
+      "dependencies": [
+        "LMS-008",
+        "LMS-010"
+      ],
+      "spec": "reports.md",
+      "notes": "Reports at /admin/reports with tabs and URL filters (period: 30 days, 90 days, 6 months, 12 months; category; course; instructor; learner group on the learner and enrolment reports) and every figure compared with the period before. Overview: KPI band (enrolments, completion rate, active learners, average progress), over-time trend with a measure switch, learning activity (quiz attempts, pass rate, average score; assignments handed in, passed, on time, median review time; lessons completed, lessons per learner, live attendance), where learners are, by category, top courses. Courses: completion and progress bars, sortable course table with enrolment change, pass rates, rating and trend, CSV export; course drill-down with funnel, chapters reached, trend, quiz and assignment tables. Learner progress: KPIs, progress distribution, groups (new, active, at risk, inactive, finished), searchable sortable paged learner table, CSV export. Instructors: review figures, completion by instructor, review load, instructor table, CSV export. Enrolment and completion: KPIs, enrolment and completion charts, routes (self, cohort, admin, scholarship), category table, monthly intake completion table (30/60/90 days, to date), CSV export. States: loading, no data, nothing matches the filters (with reset), error. Mobile: KPI bands in two columns, tables become lists or scroll inside their panels."
+    },
+    {
+      "id": "LMS-016",
+      "name": "LMS Settings",
+      "priority": 16,
+      "status": "completed",
+      "dependencies": [
+        "LMS-001"
+      ],
+      "spec": "settings.md",
+      "notes": "Settings at /admin/settings (opens General) with the shell’s nested Settings navigation — General, Courses, Learning, Certificates, Notifications, Appearance — plus an in-page section list with descriptions that becomes a section picker below 1024px. Each section is its own form with an unsaved-changes save bar (Discard, Save changes, Ctrl/⌘+S), validation with an error summary, a leave guard, saved feedback and “last changed by”. General: academy name, display label, support email, learner language, default course visibility, enrolment policy, access length, new-lesson defaults. Courses: default format, chapter release, price, instructors per course, review before publishing, archiving, ratings and enrolment counts in the catalog. Learning: lesson progress threshold, course completion rule, chapter gate, quiz attempts and retake wait, late-work policy and penalty, at-risk days, learner preferences. Certificates: award on/off, issue automatically or after a check, minimum score, validity, default template, fields shown, credential prefix, public verification — with a live certificate preview. Notifications: sender and reply-to, text messages, learner messages (enrolment, live reminders, deadline reminders, weekly summary, inactivity nudge, certificate issued) and staff alerts. Appearance: brand name, accent colour, welcome message, learner theme, spacing, cover art — with a live learner-home preview. Loading and error states; account menu opens Academy settings."
+    },
+    {
+      "id": "LMS-017",
+      "name": "Marketing & Auth Pages",
+      "priority": 17,
+      "status": "completed",
+      "dependencies": [
+        "LMS-000"
+      ],
+      "spec": null,
+      "notes": "Added after the final audit for a client walkthrough: a public marketing site and the entry points into the demo. Landing page (/welcome): sticky header with Courses / Verify a certificate / Help Centre and Sign in / Get started; hero with stat row (16 courses, 9 instructors, 48-hr review); featured-courses grid using real catalog titles and CourseCover/Rating; three-workspace explainer (learner / instructor / admin); a three-step how-it-finishes list; testimonials; a closing CTA banner; footer with Product, Support and Legal columns. Sign in (/login) and create account (/register) share a split AuthChrome (value-prop panel + form, panel hidden below 768px with the brand mark moved above the form): validated email/password/name fields with an ErrorSummary and inline messages, a password visibility toggle, and a forgot-password modal (email validation, success toast, no email actually sent). Login adds a “Continue as” ChoiceCards picker (Learner / Instructor / Academy admin) that reuses the existing demo switchRole mechanism and hands off into that workspace with a signed-in toast; register always creates a learner account, requires agreeing to Terms/Privacy (opened in a new tab so the form isn’t lost) and lands on /home with a welcome toast. Privacy (/privacy) and Terms (/terms) are long-form reading pages in the same site chrome. SignedOutPage’s “Sign in again” now points at /login instead of /. All five routes are top-level siblings of the app shell, like the existing signed-out route, so they never compete with the shell’s catch-all."
+    },
+    {
+      "id": "LMS-018",
+      "name": "Knowledge Base",
+      "priority": 18,
+      "status": "completed",
+      "dependencies": [
+        "LMS-000"
+      ],
+      "spec": null,
+      "notes": "Added after the final audit alongside the marketing pages. A Help Centre shared by all three roles at /help, /teach/help and /admin/help: hub (search, six topic tiles with article counts, popular articles), category page (icon, description, in-category search, article list) and article page (breadcrumb back to its category, read time and updated date, a small safe-markdown renderer for the body, a Yes / Not really feedback control with a thank-you state, and up to three related articles). 24 hand-written articles across 6 categories (Getting started, Courses & lessons, Assignments & quizzes, Live classes & calendar, Certificates & reports, Academy settings), each tagged for learners, instructors, admins or everyone via a non-gating AudienceBadge — nothing is hidden by role, since a client walkthrough should let anyone read anything. Added a Support nav group (Help Centre) for students and a Help Centre item to the instructor and admin sidebars; wired into the header’s HelpDialog and the account menu’s ProfileDialog. Foundation: domain `help.ts` (HelpCategory, HelpArticle), `HelpService` contract and mock implementation with the usual latency/scenario simulation."
+    },
+    {
+      "id": "LMS-019",
+      "name": "Subscription & Plan Management",
+      "priority": 19,
+      "status": "completed",
+      "dependencies": [
+        "LMS-000"
+      ],
+      "spec": "subscriptions.md",
+      "notes": "Platform subscription layer under the Super Admin workspace at /superadmin/subscriptions, as four tabs. Overview: KPI band (active, trial, past due, canceling, MRR, ARR), MRR trend, new subscriptions a month with upgrade/downgrade/cancellation totals, subscribers by plan, where subscriptions stand, and a “closing soon” watch list of trials and grace periods. Plans: status tabs, search, sort, table/mobile cards, row menu (edit, duplicate as draft, archive/restore); create and edit with identity, cycles and prices, trial, per-limit Unlimited, grouped feature switches, visibility and a readiness checklist, validation with an error summary, leave guard and sticky mobile actions; plan detail with pricing, subscribers by state, limits, features in and out, a six-month trend and who is on it. Subscribers: status tabs with counts, search, plan/cycle/payment/renewal-window filters and sort (mobile filter sheet), pagination, cards below 768px; subscriber detail with trial, grace-period and cancellation notices, subscription and billing facts, masked payment method, invoices, academy panel and a history rail, plus change plan / pause / resume / cancel / reactivate confirmations. Billing: payment history with status tabs, search, plan filter, totals for the filtered set, and an invoice sheet (line items, subtotal, tax, total) with a real CSV download and a print that sends only the sheet to paper. Prototype only: no gateway, no enforcement, no PDF; the same in-memory records serve both mock and http mode."
+    }
+  ]
+}
