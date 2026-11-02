@@ -295,6 +295,8 @@ The checklist is in [`docs/09-SECURITY.md`](docs/09-SECURITY.md). The highlights
 
 The public website's marketplace (bundles, mentors, blog, site management) is in [`docs/17-WEBSITE-MARKETPLACE.md`](docs/17-WEBSITE-MARKETPLACE.md).
 
+The database is MySQL 8.4: see [`docs/18-MYSQL.md`](docs/18-MYSQL.md) for how to run it and test against it. Older mentions of SQLite and `dev.db` in these docs describe the time before that move.
+
 The conversion from multi-tenant SaaS is told in [`docs/16-PLATFORM-CONVERSION.md`](docs/16-PLATFORM-CONVERSION.md), and the
 affiliate program in [`docs/15-MLM-AFFILIATE-ARCHITECTURE.md`](docs/15-MLM-AFFILIATE-ARCHITECTURE.md). Retired SaaS code is kept in `.retired/`.
 

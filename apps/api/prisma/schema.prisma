@@ -11,7 +11,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -22,12 +22,12 @@ datasource db {
 /// existed before tenancy is Tenant #1 (`tenant-1`), created by the tenant_foundation migration.
 model Tenant {
   id              String    @id @default(cuid())
-  name            String
+  name            String    @db.Text
   /// Unique across the platform; `DEFAULT_TENANT_SLUG` names the academy anonymous visitors see.
   slug            String    @unique
   status          String    @default("active") // 'active' | 'suspended' | 'archived' — enforced on every request (SAAS-019)
   /// Why the Super Admin last suspended or archived the academy; cleared on reactivation.
-  statusReason    String?
+  statusReason    String?   @db.Text
   statusChangedAt DateTime?
   ownerUserId     String?
   createdAt       DateTime  @default(now())
@@ -128,8 +128,8 @@ model Plan {
   id           String    @id @default(cuid())
   /// Unique across the platform, in capitals. Fixed once the plan leaves draft.
   code         String    @unique
-  name         String
-  description  String
+  name         String    @db.Text
+  description  String    @db.Text
   status       String    @default("draft") // 'draft' | 'active' | 'archived'
   displayOrder Int       @default(0)
   createdAt    DateTime  @default(now())
@@ -153,7 +153,7 @@ model PlanVersion {
   /// 1 for the plan's first terms, then 2, 3, … The highest is what new subscriptions are sold.
   version      Int
   /// ISO 4217.
-  currency     String
+  currency     String   @db.Text
   monthlyPrice Int?
   annualPrice  Int?
   /// 0 when the plan has no trial.
@@ -180,13 +180,13 @@ model PlanVersion {
 model Feature {
   /// The catalogue key itself, e.g. `courses.manage`.
   id           String @id
-  group        String
-  label        String
-  description  String
+  group        String @db.Text
+  label        String @db.Text
+  description  String @db.Text
   displayOrder Int
   /// How the feature is delivered (SAAS-025): 'route' (routes refuse without it), 'service' (a service level no
   /// route checks), 'planned' (sold but not built yet).
-  enforcement  String @default("route")
+  enforcement  String @default(dbgenerated("('route')")) @db.Text
 
   grants PlanFeature[]
 }
@@ -195,9 +195,9 @@ model Feature {
 model LimitDefinition {
   /// The catalogue key itself, e.g. `learners.max`.
   id           String @id
-  label        String
-  unit         String // 'count' | 'bytes'
-  period       String // 'total' | 'month'
+  label        String @db.Text
+  unit         String @db.Text // 'count' | 'bytes'
+  period       String @db.Text // 'total' | 'month'
   displayOrder Int
 
   grants PlanLimit[]
@@ -255,7 +255,7 @@ model UsageGuard {
 /// traced to the rule it used. One active rule per country and region.
 model TaxRule {
   id             String    @id @default(cuid())
-  name           String
+  name           String    @db.Text
   /// ISO 3166-1 alpha-2, e.g. `IN`.
   country        String
   /// A region code within the country (e.g. a state), or null for the whole country.
@@ -276,7 +276,7 @@ model TaxRule {
 model TaxRuleComponent {
   ruleId   String
   code     String
-  label    String
+  label    String @db.Text
   rateBps  Int
   position Int
 
@@ -292,17 +292,17 @@ model BillingProfile {
   id              String   @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId        String   @unique
-  legalName       String
-  email           String
-  addressLine1    String
-  addressLine2    String?
-  city            String
-  region          String?
-  postalCode      String
+  legalName       String   @db.Text
+  email           String   @db.Text
+  addressLine1    String   @db.Text
+  addressLine2    String?  @db.Text
+  city            String   @db.Text
+  region          String?  @db.Text
+  postalCode      String   @db.Text
   /// ISO 3166-1 alpha-2.
-  country         String
+  country         String   @db.Text
   /// A tax registration such as a GSTIN or a VAT number, as issued. Not validated against any one country's format.
-  taxRegistration String?
+  taxRegistration String?  @db.Text
   createdAt       DateTime @default(now())
   updatedAt       DateTime @default(now()) @updatedAt
 
@@ -324,9 +324,9 @@ model Subscription {
   planId                 String
   planVersionId          String
   status                 String // 'trialing' | 'active' | 'past_due' | 'paused' | 'canceling' | 'canceled' | 'expired'
-  billingCycle           String // 'monthly' | 'annual'
+  billingCycle           String    @db.Text // 'monthly' | 'annual'
   /// ISO 4217, from the plan version.
-  currency               String
+  currency               String    @db.Text
   /// What each period is charged, in the currency's minor unit, from the plan version.
   amount                 Int
   trialStartAt           DateTime?
@@ -336,17 +336,17 @@ model Subscription {
   cancelAtPeriodEnd      Boolean   @default(false)
   cancelRequestedAt      DateTime?
   canceledAt             DateTime?
-  cancellationReason     String?
+  cancellationReason     String?   @db.Text
   pausedAt               DateTime?
   resumesAt              DateTime?
   /// When the current overdue episode began, and why (the provider's failure reason).
   pastDueAt              DateTime?
-  pastDueReason          String?
+  pastDueReason          String?   @db.Text
   /// The grace window after payment retries are exhausted: set only by grace_started (triggers).
   gracePeriodStartAt     DateTime?
   gracePeriodEndAt       DateTime?
   provider               String?
-  providerCustomerId     String?
+  providerCustomerId     String?   @db.Text
   providerSubscriptionId String?
   /// The paid first-purchase invoice this subscription was created from (self-service checkout), once per
   /// invoice (unique). Null for a subscription the platform started. Checked by Subscription_from_invoice.
@@ -378,16 +378,16 @@ model PlanChange {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId          String
   subscriptionId    String
-  kind              String // 'upgrade' | 'cycle_upgrade' | 'downgrade' | 'scheduled_change'
+  kind              String    @db.Text // 'upgrade' | 'cycle_upgrade' | 'downgrade' | 'scheduled_change'
   status            String // 'pending_payment' | 'scheduled' | 'applied' | 'canceled' | 'void' | 'expired'
   fromPlanVersionId String
-  fromCycle         String
+  fromCycle         String    @db.Text
   fromAmount        Int
   toPlanId          String
   toPlanVersionId   String
-  toCycle           String
+  toCycle           String    @db.Text
   toAmount          Int
-  currency          String
+  currency          String    @db.Text
   /// The unused value of the current period credited (immediate changes; 0 otherwise).
   credit            Int       @default(0)
   /// What must be paid before the change applies (immediate changes; 0 otherwise).
@@ -399,11 +399,11 @@ model PlanChange {
   periodEndAt       DateTime
   quotedAt          DateTime
   /// Limits the academy already exceeds on the new plan, as JSON — shown to the tenant, nothing deleted.
-  conflictsJson     String    @default("[]")
-  requestedById     String?
+  conflictsJson     String    @default(dbgenerated("('[]')")) @db.Text
+  requestedById     String?   @db.Text
   appliedAt         DateTime?
   closedAt          DateTime?
-  closedReason      String?
+  closedReason      String?   @db.Text
   createdAt         DateTime  @default(now())
 
   tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -426,17 +426,17 @@ model SubscriptionEvent {
   tenantId       String
   subscriptionId String
   /// e.g. `subscription.created`, `subscription.payment.failed`.
-  event          String
+  event          String   @db.Text
   /// The named transition, or `create` for the first row.
-  transition     String
-  fromStatus     String?
-  toStatus       String
-  actorType      String // 'user' | 'system' | 'provider'
+  transition     String   @db.Text
+  fromStatus     String?  @db.Text
+  toStatus       String   @db.Text
+  actorType      String   @db.Text // 'user' | 'system' | 'provider'
   /// The account, when a person did it.
-  actorId        String?
+  actorId        String?  @db.Text
   /// The job or provider, when a person did not; the provider's event reference goes in meta.
-  source         String?
-  metaJson       String   @default("{}")
+  source         String?  @db.Text
+  metaJson       String   @default(dbgenerated("('{}')")) @db.Text
   createdAt      DateTime @default(now())
 
   tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -464,28 +464,28 @@ model Invoice {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId          String
   number            String    @unique
-  purpose           String // 'new_subscription' | 'renewal' | 'plan_change'
+  purpose           String    @db.Text // 'new_subscription' | 'renewal' | 'plan_change'
   status            String // 'open' | 'paid' | 'void'
   subscriptionId    String?
   planChangeId      String?
-  currency          String
+  currency          String    @db.Text
   /// Minor units. `total = subtotal + taxTotal` always (CHECK); for a tax-inclusive price the subtotal is the net.
   subtotal          Int
   taxTotal          Int
   total             Int
   inclusive         Boolean
-  taxRuleId         String?
-  linesJson         String
-  taxLinesJson      String
+  taxRuleId         String?   @db.Text
+  linesJson         String    @db.Text
+  taxLinesJson      String    @db.Text
   /// The billing profile as it stood at issue.
-  billedToJson      String
+  billedToJson      String    @db.Text
   periodStartAt     DateTime?
   periodEndAt       DateTime?
   issuedAt          DateTime
   dueAt             DateTime
   paidAt            DateTime?
   voidedAt          DateTime?
-  voidReason        String?
+  voidReason        String?   @db.Text
   provider          String?
   providerInvoiceId String?
   createdAt         DateTime  @default(now())
@@ -495,8 +495,8 @@ model Invoice {
   planChange    PlanChange?    @relation(fields: [planChangeId], references: [id], onDelete: Restrict)
   /// First purchase only (purpose `new_subscription`): the plan version and cycle it sells, fixed at issue.
   /// The subscription created when it is paid gets exactly these (triggers Invoice_sale_*).
-  planVersionId String?
-  billingCycle  String?
+  planVersionId String?        @db.Text
+  billingCycle  String?        @db.Text
   payments      Payment[]
   orders        PaymentOrder[]
 
@@ -520,13 +520,13 @@ model Payment {
   provider          String
   providerPaymentId String
   amount            Int
-  currency          String
-  status            String // 'pending' | 'paid' | 'failed'
-  failureCode       String?
-  failureMessage    String?
-  methodKind        String?
-  methodBrand       String?
-  methodLast4       String?
+  currency          String    @db.Text
+  status            String    @db.Text // 'pending' | 'paid' | 'failed'
+  failureCode       String?   @db.Text
+  failureMessage    String?   @db.Text
+  methodKind        String?   @db.Text
+  methodBrand       String?   @db.Text
+  methodLast4       String?   @db.Text
   paidAt            DateTime?
   failedAt          DateTime?
   createdAt         DateTime  @default(now())
@@ -553,13 +553,13 @@ model PaymentOrder {
   provider          String
   providerOrderId   String
   amount            Int
-  currency          String
-  status            String    @default("created") // 'created' | 'paid'
+  currency          String    @db.Text
+  status            String    @default(dbgenerated("('created')")) @db.Text // 'created' | 'paid'
   /// The provider payment that settled it.
-  providerPaymentId String?
+  providerPaymentId String?   @db.Text
   /// `test` or `live`: the gateway credentials the order was created with, and the only ones that may confirm,
   /// reconcile or refund it (SAAS-017). Null for an order made before gateways had environments.
-  environment       String?
+  environment       String?   @db.Text
   createdAt         DateTime  @default(now())
   paidAt            DateTime?
 
@@ -579,15 +579,15 @@ model WebhookEvent {
   id              String    @id @default(cuid())
   provider        String
   providerEventId String
-  eventType       String
+  eventType       String    @db.Text
   /// SHA-256 of the exact signed body, hex. A replay of the same body under another event id is caught by it.
   payloadHash     String
   /// The ids the event names (payment, order, refund) and its reported status, as JSON — never contact or card data.
-  referenceJson   String    @default("{}")
+  referenceJson   String    @default(dbgenerated("('{}')")) @db.Text
   status          String    @default("received") // 'received' | 'processed' | 'ignored' | 'failed'
   attempts        Int       @default(1)
   /// Why the last attempt failed, or why the event was ignored — our words, redacted.
-  note            String?
+  note            String?   @db.Text
   receivedAt      DateTime  @default(now())
   processedAt     DateTime?
 
@@ -610,10 +610,10 @@ model PaymentGatewayConfig {
   isActive    Boolean  @default(false)
   /// `test` or `live`: whose credentials new payments through this gateway use. The active gateway's
   /// environment must have credentials (trigger PaymentGatewayConfig_active_ready).
-  environment String   @default("test")
+  environment String   @default(dbgenerated("('test')")) @db.Text
   /// Bumped on every change, so a cached adapter is rebuilt.
   version     Int      @default(1)
-  updatedById String?
+  updatedById String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
 }
@@ -627,13 +627,13 @@ model PaymentGatewayCredential {
   /// `test` or `live`.
   environment  String
   /// The encrypted credentials.
-  cipher       String
+  cipher       String   @db.Text
   /// Which encryption key sealed them — a fingerprint, never the key.
-  keyId        String
+  keyId        String   @db.Text
   /// Safe to show: e.g. {"hint":{"keyId":"rzp_test_…AbCd"},"secretsSet":["keySecret"]}. Never a secret.
-  hint         String   @default("{}")
+  hint         String   @default(dbgenerated("('{}')")) @db.Text
   configuredAt DateTime @default(now())
-  updatedById  String?
+  updatedById  String?  @db.Text
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now()) @updatedAt
 
@@ -649,13 +649,13 @@ model Refund {
   tenantId         String
   paymentId        String
   amount           Int
-  currency         String
-  reason           String
-  status           String // 'pending' | 'succeeded' | 'failed'
+  currency         String    @db.Text
+  reason           String    @db.Text
+  status           String    @db.Text // 'pending' | 'succeeded' | 'failed'
   provider         String
   providerRefundId String?
-  requestedById    String?
-  failureMessage   String?
+  requestedById    String?   @db.Text
+  failureMessage   String?   @db.Text
   settledAt        DateTime?
   createdAt        DateTime  @default(now())
 
@@ -676,9 +676,9 @@ model PaymentMethod {
   tenantId          String
   provider          String
   providerMethodRef String
-  kind              String // 'card' | 'upi' | 'netbanking' | 'mandate' | 'invoice'
-  brand             String
-  last4             String?
+  kind              String    @db.Text // 'card' | 'upi' | 'netbanking' | 'mandate' | 'invoice'
+  brand             String    @db.Text
+  last4             String?   @db.Text
   expMonth          Int?
   expYear           Int?
   isDefault         Boolean   @default(false)
@@ -699,11 +699,11 @@ model User {
   tenantId         String?
   email            String    @unique
   /// Mobile number given at registration; not unique, the email identifies the account.
-  phone            String?
-  passwordHash     String
-  name             String
-  role             String // 'student' | 'instructor' | 'admin' | 'superadmin'
-  descriptor       String    @default("")
+  phone            String?   @db.Text
+  passwordHash     String    @db.Text
+  name             String    @db.Text
+  role             String    @db.Text // 'student' | 'instructor' | 'admin' | 'superadmin'
+  descriptor       String    @default(dbgenerated("('')")) @db.Text
   instructorId     String?
   /// Set when a super admin deactivates the account; null means active. Only academy admins are
   /// deactivated today (`/superadmin/admins/:id/deactivate`) — a learner is suspended through
@@ -744,7 +744,7 @@ model DeviceToken {
   userId     String
   sessionId  String?
   /// 'android' | 'ios' | 'web'
-  platform   String
+  platform   String   @db.Text
   token      String   @unique
   createdAt  DateTime @default(now())
   lastSeenAt DateTime @default(now())
@@ -763,7 +763,7 @@ model PushDelivery {
   id             String    @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
   tenantId       String?
-  userId         String
+  userId         String    @db.Text
   notificationId String    @unique
   /// 'queued' | 'sending' | 'sent' | 'failed' | 'skipped'
   status         String    @default("queued")
@@ -773,7 +773,7 @@ model PushDelivery {
   sentAt         DateTime?
   /// Devices reached, and the last failure in plain words (never a provider secret).
   delivered      Int       @default(0)
-  error          String?
+  error          String?   @db.Text
   createdAt      DateTime  @default(now())
 
   notification AppNotification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
@@ -795,9 +795,9 @@ model UserSession {
   expiresAt     DateTime
   revokedAt     DateTime?
   /// 'logout' | 'logout-all' | 'revoked' | 'password-changed' | 'password-reset'
-  revokedReason String?
+  revokedReason String?   @db.Text
   /// The client that signed in, as it described itself (truncated). Shown in the session list; never trusted.
-  userAgent     String?
+  userAgent     String?   @db.Text
 
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -831,12 +831,12 @@ model PasswordResetToken {
 model PendingSignup {
   id               String    @id @default(cuid())
   email            String
-  adminName        String
-  academyName      String
-  slug             String
-  passwordHash     String
+  adminName        String    @db.Text
+  academyName      String    @db.Text
+  slug             String    @db.Text
+  passwordHash     String    @db.Text
   /// HMAC of the 6-digit code under the server secret, bound to this row's id.
-  codeHash         String
+  codeHash         String    @db.Text
   attempts         Int       @default(0)
   expiresAt        DateTime
   lastSentAt       DateTime
@@ -845,10 +845,10 @@ model PendingSignup {
   /// Set once, when the code is confirmed; a consumed row can never be confirmed again.
   consumedAt       DateTime?
   /// The plan and cycle chosen before registering, kept so the choice survives a refresh and the first sign-in.
-  planId           String?
-  cycle            String?
+  planId           String?   @db.Text
+  cycle            String?   @db.Text
   /// The academy the confirmed signup created.
-  createdAcademyId String?
+  createdAcademyId String?   @db.Text
   createdAt        DateTime  @default(now())
 
   @@index([email])
@@ -864,14 +864,14 @@ model PendingAccount {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId      String
   /// 'student' | 'instructor' — fixed by the door it came through, never by the request.
-  role          String
+  role          String    @db.Text
   email         String
-  name          String
+  name          String    @db.Text
   /// An instructor's title, when they gave one.
-  title         String?
-  passwordHash  String
+  title         String?   @db.Text
+  passwordHash  String    @db.Text
   /// HMAC of the 6-digit code under the server secret, bound to this row's id (lib/verificationCode.ts).
-  codeHash      String
+  codeHash      String    @db.Text
   attempts      Int       @default(0)
   sendCount     Int       @default(1)
   expiresAt     DateTime
@@ -879,17 +879,17 @@ model PendingAccount {
   /// Set once, when the code is confirmed; a consumed row can never be confirmed again.
   consumedAt    DateTime?
   /// The invitation or course link the registration came through; checked again when the account is created.
-  invitationId  String?
-  courseId      String?
-  createdUserId String?
+  invitationId  String?   @db.Text
+  courseId      String?   @db.Text
+  createdUserId String?   @db.Text
   /// The registrant's mobile number, and an instructor's application (JSON: bio, expertise, yearsTeaching, links).
-  phone         String?
-  profileJson   String?
+  phone         String?   @db.Text
+  profileJson   String?   @db.Text
   /// The affiliate program referral the registrant arrived with (MLM-001), carried to the account when the code is confirmed.
-  referralCode  String?
-  preferredLeg  String?
+  referralCode  String?   @db.Text
+  preferredLeg  String?   @db.Text
   /// The leg the sponsor's link named, which is not the registrant's own preference.
-  requestedLeg  String?
+  requestedLeg  String?   @db.Text
   createdAt     DateTime  @default(now())
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -907,22 +907,22 @@ model Inquiry {
   /// The academy this row belongs to — see lib/tenancy.ts. Null for a website visitor's request.
   tenantId     String?
   /// `demo` · `sales` · `support`
-  kind         String
+  kind         String    @db.Text
   /// `new` · `in_progress` · `closed`
   status       String    @default("new")
-  name         String
-  email        String
-  organisation String?
-  phone        String?
+  name         String    @db.Text
+  email        String    @db.Text
+  organisation String?   @db.Text
+  phone        String?   @db.Text
   /// What the visitor said they need, e.g. the learners they expect.
-  size         String?
-  subject      String?
-  message      String
+  size         String?   @db.Text
+  subject      String?   @db.Text
+  message      String    @db.Text
   /// The signed-in admin who raised it, for an academy's request.
-  userId       String?
+  userId       String?   @db.Text
   /// The platform team's private note on how it was handled.
-  note         String?
-  handledById  String?
+  note         String?   @db.Text
+  handledById  String?   @db.Text
   closedAt     DateTime?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -943,7 +943,7 @@ model AdminPermission {
   userId    String
   key       String
   grantedAt DateTime @default(now())
-  grantedBy String?
+  grantedBy String?  @db.Text
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -960,17 +960,17 @@ model AdminPermission {
 model AuditLog {
   id         String   @id @default(cuid())
   actorId    String?
-  actorEmail String
-  actorRole  String
+  actorEmail String   @db.Text
+  actorRole  String   @db.Text
   /// Who did it (§36): `user` (a person — actorId/actorEmail/actorRole), `system` (a scheduled job) or `provider` (the payment provider). Checked by trigger AuditLog_actor_shape.
-  actorType  String   @default("user")
+  actorType  String   @default(dbgenerated("('user')")) @db.Text
   /// The job or provider a `system` or `provider` event names; null for a person.
-  source     String?
+  source     String?  @db.Text
   action     String
-  targetType String
-  targetId   String?
+  targetType String   @db.Text
+  targetId   String?  @db.Text
   /// Extra context for the event, as JSON text (the schema's convention for shaped values).
-  metaJson   String   @default("{}")
+  metaJson   String   @default(dbgenerated("('{}')")) @db.Text
   createdAt  DateTime @default(now())
 
   actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
@@ -986,12 +986,12 @@ model EmailOutbox {
   /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
   tenantId          String?
   toEmail           String
-  toName            String?
-  subject           String
-  text              String
-  templateKey       String
+  toName            String?   @db.Text
+  subject           String    @db.Text
+  text              String    @db.Text
+  templateKey       String    @db.Text
   status            String    @default("queued") // 'queued' | 'sending' | 'sent' | 'failed'
-  error             String?
+  error             String?   @db.Text
   createdAt         DateTime  @default(now())
   sentAt            DateTime?
   /// Delivery (SAAS-021): attempts made, when the next may run, when the last began.
@@ -1001,7 +1001,7 @@ model EmailOutbox {
   /// The same message to the same address within the dedup window is not queued twice.
   dedupKey          String?
   /// The transport's reference for the sent message, when it gives one.
-  providerMessageId String?
+  providerMessageId String?   @db.Text
 
   tenant Tenant? @relation(fields: [tenantId], references: [id], onDelete: Restrict)
 
@@ -1018,15 +1018,15 @@ model MediaAsset {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId     String
   ownerUserId  String
-  kind         String // 'video' | 'document' | 'image'
-  originalName String
-  mime         String
+  kind         String   @db.Text // 'video' | 'document' | 'image'
+  originalName String   @db.Text
+  mime         String   @db.Text
   sizeBytes    Int
   storageName  String   @unique
   createdAt    DateTime @default(now())
 
   /// Courses showing this image as their cover.
-  coverOf Course[] @relation("CourseCoverImage")
+  coverOf   Course[]   @relation("CourseCoverImage")
   /// Set when the Super Admin placed this image on the public website: only such images are served without a session.
   siteImage SiteImage?
 
@@ -1042,9 +1042,9 @@ model Level {
   id       String  @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId String
-  name     String
+  name     String  @db.Text
   order    Int
-  summary  String?
+  summary  String? @db.Text
 
   courses    Course[]
   categories CategoryLevel[]
@@ -1057,11 +1057,11 @@ model Category {
   id          String   @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId    String
-  name        String
-  description String
+  name        String   @db.Text
+  description String   @db.Text
   order       Int
-  status      String // 'active' | 'hidden'
-  glyph       String
+  status      String   @db.Text // 'active' | 'hidden'
+  glyph       String   @db.Text
   updatedAt   DateTime @updatedAt
 
   courses Course[]
@@ -1090,20 +1090,20 @@ model Instructor {
   id            String   @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId      String
-  name          String
-  title         String
+  name          String   @db.Text
+  title         String   @db.Text
   yearsTeaching Int?
   email         String   @unique
-  bio           String   @default("")
-  expertiseJson String   @default("[]")
-  status        String // 'active' | 'invited' | 'inactive'
+  bio           String   @default(dbgenerated("('')")) @db.Text
+  expertiseJson String   @default(dbgenerated("('[]')")) @db.Text
+  status        String   @db.Text // 'active' | 'invited' | 'inactive'
   joinedAt      DateTime @default(now())
-  city          String   @default("")
-  languagesJson String   @default("[]")
-  phone         String?
-  photoJson     String?
+  city          String   @default(dbgenerated("('')")) @db.Text
+  languagesJson String   @default(dbgenerated("('[]')")) @db.Text
+  phone         String?  @db.Text
+  photoJson     String?  @db.Text
   /// Links an applicant gave: a portfolio, a profile (docs/16 §2.5).
-  linksJson     String   @default("[]")
+  linksJson     String   @default(dbgenerated("('[]')")) @db.Text
 
   users        User[]
   courses      CourseInstructor[]
@@ -1119,30 +1119,30 @@ model Course {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId              String
   slug                  String
-  title                 String
-  subtitle              String    @default("")
-  description           String    @default("")
+  title                 String    @db.Text
+  subtitle              String    @default(dbgenerated("('')")) @db.Text
+  description           String    @default(dbgenerated("('')")) @db.Text
   levelId               String
   categoryId            String
-  format                String
-  language              String    @default("en-IN")
-  coverMotif            String
+  format                String    @db.Text
+  language              String    @default(dbgenerated("('en-IN')")) @db.Text
+  coverMotif            String    @db.Text
   liveSessions          Int       @default(0)
   estimatedWeeks        Int?
-  certificateTitle      String?
+  certificateTitle      String?   @db.Text
   /// Whole rupees, all-inclusive (what the learner pays). Read with `pricing`: only a `paid` course charges it.
   priceAmount           Int?
-  priceCurrency         String    @default("INR")
+  priceCurrency         String    @default(dbgenerated("('INR')")) @db.Text
   /// `free` | `paid` | `unset`. `unset` is a course whose price was never chosen by an admin (it was filled from the
   /// academy default before pricing existed): nobody can enrol themselves or buy it until an admin chooses.
   /// A lower price the course sells at now, in whole rupees; null for none. Always below priceAmount.
   salePrice             Int?
-  pricing               String    @default("unset")
+  pricing               String    @default(dbgenerated("('unset')")) @db.Text
   enrolledCount         Int       @default(0)
   status                String    @default("draft") // 'draft' | 'published' | 'archived'
-  visibility            String    @default("public")
-  outcomesJson          String    @default("[]")
-  tagsJson              String    @default("[]")
+  visibility            String    @default(dbgenerated("('public')")) @db.Text
+  outcomesJson          String    @default(dbgenerated("('[]')")) @db.Text
+  tagsJson              String    @default(dbgenerated("('[]')")) @db.Text
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
   publishedAt           DateTime?
@@ -1167,7 +1167,7 @@ model Course {
   coupons             Coupon[]
   bundleLinks         CourseBundleCourse[]
   reviews             CourseReview[]
-  coverImage         MediaAsset?          @relation("CourseCoverImage", fields: [coverImageId], references: [id], onDelete: SetNull)
+  coverImage          MediaAsset?          @relation("CourseCoverImage", fields: [coverImageId], references: [id], onDelete: SetNull)
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
 
@@ -1197,11 +1197,11 @@ model Chapter {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId     String
   courseId     String
-  title        String
-  summary      String?
-  objective    String?
+  title        String  @db.Text
+  summary      String? @db.Text
+  objective    String? @db.Text
   estimatedMin Int?
-  status       String  @default("draft")
+  status       String  @default(dbgenerated("('draft')")) @db.Text
   position     Int
 
   course  Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
@@ -1219,16 +1219,16 @@ model Lesson {
   tenantId       String
   chapterId      String
   courseId       String
-  title          String
-  type           String // LessonType
+  title          String   @db.Text
+  type           String   @db.Text // LessonType
   durationMin    Int      @default(0)
   isPreview      Boolean  @default(false)
-  status         String   @default("draft")
+  status         String   @default(dbgenerated("('draft')")) @db.Text
   updatedAt      DateTime @updatedAt
-  description    String?
-  objectivesJson String   @default("[]")
-  contentJson    String   @default("{}")
-  settingsJson   String   @default("{}")
+  description    String?  @db.Text
+  objectivesJson String   @default(dbgenerated("('[]')")) @db.Text
+  contentJson    String   @default(dbgenerated("('{}')")) @db.Text
+  settingsJson   String   @default(dbgenerated("('{}')")) @db.Text
   position       Int
 
   chapter    Chapter           @relation(fields: [chapterId], references: [id], onDelete: Cascade)
@@ -1252,33 +1252,33 @@ model Student {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId      String
   userId        String    @unique
-  phone         String?
-  city          String    @default("")
+  phone         String?   @db.Text
+  city          String    @default(dbgenerated("('')")) @db.Text
   joinedAt      DateTime  @default(now())
   lastActiveAt  DateTime  @default(now())
   suspended     Boolean   @default(false)
-  suspendReason String?
+  suspendReason String?   @db.Text
   rankId        String?
   /// Last inactivity nudge, so a quiet learner is nudged at most once a week.
   nudgedAt      DateTime?
 
-  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  rank         Rank?               @relation(fields: [rankId], references: [id])
-  enrollments  Enrollment[]
-  progress     LessonProgress[]
-  notes        LessonNote[]
-  bookmarks    LessonBookmark[]
-  savedCourses SavedCourse[]
-  quizAttempts QuizAttempt[]
-  quizSessions QuizSession[]
-  submissions  Submission[]
-  liveRegs     LiveRegistration[]
-  certificates IssuedCertificate[]
-  purchases    CoursePurchase[]
+  user            User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rank            Rank?               @relation(fields: [rankId], references: [id])
+  enrollments     Enrollment[]
+  progress        LessonProgress[]
+  notes           LessonNote[]
+  bookmarks       LessonBookmark[]
+  savedCourses    SavedCourse[]
+  quizAttempts    QuizAttempt[]
+  quizSessions    QuizSession[]
+  submissions     Submission[]
+  liveRegs        LiveRegistration[]
+  certificates    IssuedCertificate[]
+  purchases       CoursePurchase[]
   bundlePurchases BundlePurchase[]
-  drafts       AssignmentDraft[]
-  affiliate    Affiliate?
-  reviews      CourseReview[]
+  drafts          AssignmentDraft[]
+  affiliate       Affiliate?
+  reviews         CourseReview[]
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
 
@@ -1293,13 +1293,13 @@ model Enrollment {
   studentId    String
   courseId     String
   enrolledAt   DateTime        @default(now())
-  status       String          @default("active") // EnrollmentStatus
+  status       String          @default(dbgenerated("('active')")) @db.Text // EnrollmentStatus
   progress     Int             @default(0)
-  source       String          @default("self")
+  source       String          @default(dbgenerated("('self')")) @db.Text
   lastActiveAt DateTime?
   completedAt  DateTime?
   expiresAt    DateTime?
-  lastLessonId String?
+  lastLessonId String?         @db.Text
   /// The verified purchase that opened a paid course (source `purchase`); null for every other way in.
   purchaseId   String?         @unique
   purchase     CoursePurchase? @relation(fields: [purchaseId], references: [id], onDelete: Restrict)
@@ -1320,7 +1320,7 @@ model LessonProgress {
   tenantId       String
   studentId      String
   lessonId       String
-  state          String    @default("not-started") // ProgressState
+  state          String    @default(dbgenerated("('not-started')")) @db.Text // ProgressState
   fraction       Float?
   positionSec    Int?
   completedAt    DateTime?
@@ -1341,7 +1341,7 @@ model LessonNote {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId  String
   lessonId  String
-  text      String   @default("")
+  text      String   @default(dbgenerated("('')")) @db.Text
   savedAt   DateTime @updatedAt
 
   student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
@@ -1379,7 +1379,7 @@ model CourseReview {
   /// 1 to 5, checked by the database.
   rating    Int
   /// Plain text, at most 2000 characters, checked by the database.
-  comment   String   @default("")
+  comment   String   @default(dbgenerated("('')")) @db.Text
   /// `published` | `hidden`, checked by the database. A learner's edit never changes it.
   status    String   @default("published")
   createdAt DateTime @default(now())
@@ -1413,10 +1413,10 @@ model Rank {
   id           String @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId     String
-  title        String
+  title        String @db.Text
   order        Int
-  descriptor   String
-  criteriaJson String @default("[]")
+  descriptor   String @db.Text
+  criteriaJson String @default(dbgenerated("('[]')")) @db.Text
 
   students Student[]
   tenant   Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -1431,13 +1431,13 @@ model Quiz {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId      String
   courseId      String
-  chapterId     String?
+  chapterId     String?  @db.Text
   lessonId      String?  @unique
-  title         String
-  instructions  String   @default("")
-  status        String   @default("draft")
-  questionsJson String   @default("[]")
-  settingsJson  String   @default("{}")
+  title         String   @db.Text
+  instructions  String   @default(dbgenerated("('')")) @db.Text
+  status        String   @default(dbgenerated("('draft')")) @db.Text
+  questionsJson String   @default(dbgenerated("('[]')")) @db.Text
+  settingsJson  String   @default(dbgenerated("('{}')")) @db.Text
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
@@ -1458,8 +1458,8 @@ model QuizAttempt {
   tenantId    String
   quizId      String
   studentId   String
-  answersJson String   @default("{}")
-  resultJson  String   @default("{}")
+  answersJson String   @default(dbgenerated("('{}')")) @db.Text
+  resultJson  String   @default(dbgenerated("('{}')")) @db.Text
   percent     Int      @default(0)
   passed      Boolean  @default(false)
   durationSec Int?
@@ -1494,18 +1494,18 @@ model QuizSession {
   /// Null for an untimed quiz.
   deadlineAt     DateTime?
   /// The questions as they stood when the attempt started, with their key: scoring reads these, never the client.
-  questionsJson  String
+  questionsJson  String    @db.Text
   /// The quiz's settings as they stood when the attempt started — its pass mark among them — so editing the quiz
   /// while the attempt is open changes nothing about how it is scored.
-  settingsJson   String    @default("{}")
+  settingsJson   String    @default(dbgenerated("('{}')")) @db.Text
   /// The question and option order this learner was shown (QuizOrder).
-  orderJson      String    @default("{}")
-  answersJson    String    @default("{}")
+  orderJson      String    @default(dbgenerated("('{}')")) @db.Text
+  answersJson    String    @default(dbgenerated("('{}')")) @db.Text
   /// The highest save number accepted, so a save that arrives late cannot overwrite a newer one.
   answersSeq     Int       @default(0)
   answersSavedAt DateTime?
   /// The client's key for the start request: a retried start answers with the same session.
-  startKey       String?
+  startKey       String?   @db.Text
   finishedAt     DateTime?
   updatedAt      DateTime  @updatedAt
 
@@ -1528,20 +1528,20 @@ model CourseAssignment {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId        String
   courseId        String
-  chapterId       String?
+  chapterId       String?  @db.Text
   lessonId        String?  @unique
-  title           String
-  instructions    String   @default("")
-  attachmentsJson String   @default("[]")
-  format          String   @default("text")
+  title           String   @db.Text
+  instructions    String   @default(dbgenerated("('')")) @db.Text
+  attachmentsJson String   @default(dbgenerated("('[]')")) @db.Text
+  format          String   @default(dbgenerated("('text')")) @db.Text
   wordLimit       Int?
-  dueJson         String   @default("{\"kind\":\"none\"}")
+  dueJson         String   @default(dbgenerated("('{\"kind\":\"none\"}')")) @db.Text
   acceptsLate     Boolean  @default(true)
   latePenalty     Int      @default(0)
-  rubricJson      String   @default("[]")
+  rubricJson      String   @default(dbgenerated("('[]')")) @db.Text
   maxScore        Int      @default(100)
   passMark        Int      @default(60)
-  status          String   @default("draft")
+  status          String   @default(dbgenerated("('draft')")) @db.Text
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -1562,9 +1562,9 @@ model AssignmentDraft {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId     String
   assignmentId String
-  text         String   @default("")
-  filesJson    String   @default("[]")
-  chartJson    String?
+  text         String   @default(dbgenerated("('')")) @db.Text
+  filesJson    String   @default(dbgenerated("('[]')")) @db.Text
+  chartJson    String?  @db.Text
   savedAt      DateTime @default(now()) @updatedAt
 
   student    Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
@@ -1585,16 +1585,16 @@ model Submission {
   attempt           Int       @default(1)
   submittedAt       DateTime  @default(now())
   late              Boolean   @default(false)
-  text              String?
-  filesJson         String    @default("[]")
-  chartJson         String?
-  reviewStatus      String    @default("waiting") // ReviewStatus
-  reviewerId        String?
-  scoresJson        String    @default("{}")
+  text              String?   @db.Text
+  filesJson         String    @default(dbgenerated("('[]')")) @db.Text
+  chartJson         String?   @db.Text
+  reviewStatus      String    @default(dbgenerated("('waiting')")) @db.Text // ReviewStatus
+  reviewerId        String?   @db.Text
+  scoresJson        String    @default(dbgenerated("('{}')")) @db.Text
   points            Float?
   score             Float?
-  feedback          String    @default("")
-  privateNote       String?
+  feedback          String    @default(dbgenerated("('')")) @db.Text
+  privateNote       String?   @db.Text
   reviewUpdatedAt   DateTime?
   /// When instructors were told this review is overdue (null until then).
   overdueNotifiedAt DateTime?
@@ -1615,12 +1615,12 @@ model CertificateTemplate {
   id              String   @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId        String
-  name            String
-  style           String
-  accent          String
-  heading         String
-  statement       String
-  signatoriesJson String   @default("[]")
+  name            String   @db.Text
+  style           String   @db.Text
+  accent          String   @db.Text
+  heading         String   @db.Text
+  statement       String   @db.Text
+  signatoriesJson String   @default(dbgenerated("('[]')")) @db.Text
   showScore       Boolean  @default(true)
   showHours       Boolean  @default(true)
   isDefault       Boolean  @default(false)
@@ -1640,13 +1640,13 @@ model IssuedCertificate {
   credentialId  String    @unique
   studentId     String
   courseId      String
-  title         String
+  title         String    @db.Text
   templateId    String
-  status        String    @default("pending") // IssuedCertificateStatus
+  status        String    @default(dbgenerated("('pending')")) @db.Text // IssuedCertificateStatus
   completedAt   DateTime
   issuedAt      DateTime?
   revokedAt     DateTime?
-  revokedReason String?
+  revokedReason String?   @db.Text
   finalScore    Float?
   hours         Float     @default(0)
   verifications Int       @default(0)
@@ -1669,28 +1669,28 @@ model LiveClass {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId          String
   courseId          String
-  title             String
+  title             String    @db.Text
   instructorId      String
   startsAt          DateTime
   durationMin       Int
   capacity          Int?
   cancelled         Boolean   @default(false)
-  cancelReason      String?
+  cancelReason      String?   @db.Text
   /// Set when the host opens the built-in room; the class is live from here until `endedAt`.
   startedAt         DateTime?
   endedAt           DateTime?
   /// The video room's name, minted on first start. Unguessable, so the class id alone never lets anyone in.
   roomName          String?   @unique
   /// `{durationMin, availableUntil, status, fileName?}` — written by the video service's recording webhook.
-  recordingJson     String?
-  description       String?
-  agendaJson        String    @default("[]")
-  visibility        String    @default("enrolled")
-  meetingJson       String    @default("{\"kind\":\"room\"}")
-  remindersJson     String    @default("[]")
+  recordingJson     String?   @db.Text
+  description       String?   @db.Text
+  agendaJson        String    @default(dbgenerated("('[]')")) @db.Text
+  visibility        String    @default(dbgenerated("('enrolled')")) @db.Text
+  meetingJson       String    @default(dbgenerated("('{\"kind\":\"room\"}')")) @db.Text
+  remindersJson     String    @default(dbgenerated("('[]')")) @db.Text
   /// Reminder offsets (minutes before start) already sent, so the scheduler never repeats one.
-  remindersSentJson String    @default("[]")
-  chapterId         String?
+  remindersSentJson String    @default(dbgenerated("('[]')")) @db.Text
+  chapterId         String?   @db.Text
 
   course        Course             @relation(fields: [courseId], references: [id], onDelete: Cascade)
   instructor    Instructor         @relation(fields: [instructorId], references: [id])
@@ -1729,25 +1729,25 @@ model CalendarEvent {
   id           String    @id @default(cuid())
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId     String
-  type         String // CalendarEventType
-  title        String
-  description  String?
-  timing       String // CalendarTiming
+  type         String    @db.Text // CalendarEventType
+  title        String    @db.Text
+  description  String?   @db.Text
+  timing       String    @db.Text // CalendarTiming
   startsAt     DateTime
   durationMin  Int?
   courseId     String?
-  chapterId    String?
+  chapterId    String?   @db.Text
   instructorId String?
-  quizId       String?
-  milestone    String?
-  audience     String?
+  quizId       String?   @db.Text
+  milestone    String?   @db.Text
+  audience     String?   @db.Text
   ownerId      String?
   notifyMin    Int?
   /// When the `notifyMin` reminder went out (null until then).
   notifiedAt   DateTime?
   done         Boolean   @default(false)
   cancelled    Boolean   @default(false)
-  sourceJson   String?
+  sourceJson   String?   @db.Text
 
   course     Course?     @relation(fields: [courseId], references: [id], onDelete: Cascade)
   instructor Instructor? @relation("CalendarInstructor", fields: [instructorId], references: [id])
@@ -1769,17 +1769,17 @@ model AppNotification {
   /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
   tenantId            String?
   recipientId         String
-  category            String // NotificationCategory
-  title               String
-  summary             String
-  bodyJson            String    @default("[]")
+  category            String    @db.Text // NotificationCategory
+  title               String    @db.Text
+  summary             String    @db.Text
+  bodyJson            String    @default(dbgenerated("('[]')")) @db.Text
   createdAt           DateTime  @default(now())
   readAt              DateTime?
   important           Boolean   @default(false)
-  actor               String?
-  factsJson           String?
-  actionJson          String?
-  secondaryActionJson String?
+  actor               String?   @db.Text
+  factsJson           String?   @db.Text
+  actionJson          String?   @db.Text
+  secondaryActionJson String?   @db.Text
 
   /// Recipient is a User (admins and instructors receive notifications too).
   recipient User          @relation(fields: [recipientId], references: [id], onDelete: Cascade)
@@ -1796,11 +1796,11 @@ model NotificationSettings {
   userId         String    @id
   /// The academy this row belongs to — see lib/tenancy.ts. Null only for platform-level rows (a super admin and what belongs to one).
   tenantId       String?
-  categoriesJson String    @default("[]")
-  emailDigest    String    @default("instant")
-  quietHoursJson String    @default("{\"enabled\":false,\"from\":\"22:00\",\"to\":\"07:00\"}")
+  categoriesJson String    @default(dbgenerated("('[]')")) @db.Text
+  emailDigest    String    @default(dbgenerated("('instant')")) @db.Text
+  quietHoursJson String    @default(dbgenerated("('{\"enabled\":false,\"from\":\"22:00\",\"to\":\"07:00\"}')")) @db.Text
   pausedUntil    DateTime?
-  smsNumber      String    @default("")
+  smsNumber      String    @default(dbgenerated("('')")) @db.Text
   /// When the last daily/weekly digest email was composed for this account.
   lastDigestAt   DateTime?
 
@@ -1815,14 +1815,14 @@ model NotificationSettings {
 model Settings {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId          String @id
-  generalJson       String
-  coursesJson       String
-  learningJson      String
-  certificatesJson  String
-  notificationsJson String
-  appearanceJson    String
-  updatedAtJson     String
-  updatedByJson     String
+  generalJson       String @db.Text
+  coursesJson       String @db.Text
+  learningJson      String @db.Text
+  certificatesJson  String @db.Text
+  notificationsJson String @db.Text
+  appearanceJson    String @db.Text
+  updatedAtJson     String @db.Text
+  updatedByJson     String @db.Text
   tenant            Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
 }
 
@@ -1837,12 +1837,12 @@ model PlatformBrandAsset {
   kind         String   @id
   storageName  String   @unique
   /// The uploaded file's name, cleaned — shown to the Super Admin, never used on disk.
-  originalName String
-  mime         String
+  originalName String   @db.Text
+  mime         String   @db.Text
   sizeBytes    Int
   width        Int
   height       Int
-  updatedById  String?
+  updatedById  String?  @db.Text
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now()) @updatedAt
 }
@@ -1851,9 +1851,9 @@ model PlatformBrandAsset {
 
 model HelpCategory {
   id          String @id @default(cuid())
-  name        String
-  description String
-  icon        String
+  name        String @db.Text
+  description String @db.Text
+  icon        String @db.Text
   order       Int
 
   articles HelpArticle[]
@@ -1863,11 +1863,11 @@ model HelpArticle {
   id          String   @id @default(cuid())
   slug        String   @unique
   categoryId  String
-  title       String
-  summary     String
-  body        String
-  audience    String   @default("all")
-  tagsJson    String   @default("[]")
+  title       String   @db.Text
+  summary     String   @db.Text
+  body        String   @db.Text
+  audience    String   @default(dbgenerated("('all')")) @db.Text
+  tagsJson    String   @default(dbgenerated("('[]')")) @db.Text
   readMinutes Int      @default(3)
   updatedAt   DateTime @updatedAt
   popular     Boolean  @default(false)
@@ -1882,13 +1882,13 @@ model HelpArticle {
 model JobLease {
   job         String    @id
   /// `host:pid:boot` of the process holding it.
-  holder      String
+  holder      String    @db.Text
   acquiredAt  DateTime
   expiresAt   DateTime
   lastRunAt   DateTime?
   /// 'ok' | 'failed' — of the last run that finished.
-  lastOutcome String?
-  lastHolder  String?
+  lastOutcome String?   @db.Text
+  lastHolder  String?   @db.Text
 }
 
 /// An Admin's invitation for one learner to join their LMS (`/invite/<token>`). The link is the credential: only
@@ -1899,14 +1899,14 @@ model Invitation {
   /// The Admin workspace this invitation joins — see lib/tenancy.ts.
   tenantId     String
   /// Only 'student' today; staff are invited through their pre-created account (Instructors module).
-  role         String    @default("student")
+  role         String    @default(dbgenerated("('student')")) @db.Text
   tokenHash    String    @unique
   /// When set, only this address may accept.
-  email        String?
-  createdById  String?
+  email        String?   @db.Text
+  createdById  String?   @db.Text
   expiresAt    DateTime
   usedAt       DateTime?
-  usedByUserId String?
+  usedByUserId String?   @db.Text
   revokedAt    DateTime?
   createdAt    DateTime  @default(now())
 
@@ -1922,11 +1922,11 @@ model AcademyPaymentConfig {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId    String   @unique
   /// `razorpay`: the only gateway implemented for course sales.
-  provider    String   @default("razorpay")
+  provider    String   @default(dbgenerated("('razorpay')")) @db.Text
   /// `test` or `live`: whose credentials new purchases use. A production process refuses `test` for new purchases.
-  environment String   @default("test")
+  environment String   @default(dbgenerated("('test')")) @db.Text
   enabled     Boolean  @default(false)
-  updatedById String?
+  updatedById String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
 
@@ -1941,11 +1941,11 @@ model AcademyGatewayCredential {
   tenantId    String
   provider    String
   environment String
-  cipher      String
-  keyId       String
+  cipher      String   @db.Text
+  keyId       String   @db.Text
   /// Safe to show: the masked key id. Never a secret.
-  hint        String   @default("{}")
-  updatedById String?
+  hint        String   @default(dbgenerated("('{}')")) @db.Text
+  updatedById String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
 
@@ -1966,26 +1966,26 @@ model CoursePurchase {
   courseId          String
   /// The charge in minor units (paise), from the course's price when the order was made.
   amount            Int
-  currency          String    @default("INR")
+  currency          String    @default(dbgenerated("('INR')")) @db.Text
   /// The course price shown to the learner, in whole rupees, kept for the receipt.
   listPrice         Int
   provider          String
-  environment       String
+  environment       String    @db.Text
   providerOrderId   String
   providerPaymentId String?
   /// `created` | `paid` | `failed` | `expired`.
   status            String    @default("created")
-  failureCode       String?
-  failureMessage    String?
+  failureCode       String?   @db.Text
+  failureMessage    String?   @db.Text
   /// Money the gateway took that opens nothing (a second payment for a course the learner already has, or a course
   /// no longer for sale): recorded and flagged for the academy, never refunded automatically.
-  reviewReason      String?
+  reviewReason      String?   @db.Text
   /// `ORD-YYYY-NNNNNN`, from OrderSequence: what a learner and a receipt call this order (docs/16 §2.4). Fixed by trigger.
   orderNumber       String?   @unique
   /// What a coupon took off `amount`, in paise; `amount` is what was charged. Fixed by trigger.
   discountAmount    Int       @default(0)
-  couponId          String?
-  couponCode        String?
+  couponId          String?   @db.Text
+  couponCode        String?   @db.Text
   /// Set when a refund of the whole order settled. `status` stays `paid`: the money was taken, and that stays true.
   refundedAt        DateTime?
   /// The gateway reported a lost dispute (docs/15 §6.8).
@@ -1998,14 +1998,14 @@ model CoursePurchase {
   /// After this an unpaid order is not reused for a new checkout; a payment that still arrives is recorded.
   expiresAt         DateTime
 
-  tenant     Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Restrict)
-  student    Student                @relation(fields: [studentId], references: [id], onDelete: Restrict)
-  course     Course                 @relation(fields: [courseId], references: [id], onDelete: Restrict)
-  enrollment Enrollment?
-  mlmOrder   MlmOrder?
-  refunds    CoursePurchaseRefund[]
-  redemption CouponRedemption?
-  bundlePurchase BundlePurchase? @relation(fields: [bundlePurchaseId], references: [id], onDelete: Restrict)
+  tenant         Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  student        Student                @relation(fields: [studentId], references: [id], onDelete: Restrict)
+  course         Course                 @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  enrollment     Enrollment?
+  mlmOrder       MlmOrder?
+  refunds        CoursePurchaseRefund[]
+  redemption     CouponRedemption?
+  bundlePurchase BundlePurchase?        @relation(fields: [bundlePurchaseId], references: [id], onDelete: Restrict)
 
   @@unique([provider, providerOrderId])
   @@unique([provider, providerPaymentId])
@@ -2024,8 +2024,8 @@ model CoursePaymentEvent {
   tenantId    String
   provider    String
   eventId     String
-  eventType   String
-  payloadHash String
+  eventType   String    @db.Text
+  payloadHash String    @db.Text
   receivedAt  DateTime  @default(now())
   processedAt DateTime?
 
@@ -2046,23 +2046,23 @@ model MlmPlanVersion {
   version                Int       @unique
   status                 String    @default("draft") // 'draft' | 'active' | 'retired'
   programTenantId        String
-  eligibleCourseIdsJson  String    @default("[]")
-  currency               String    @default("INR")
+  eligibleCourseIdsJson  String    @default(dbgenerated("('[]')")) @db.Text
+  currency               String    @default(dbgenerated("('INR')")) @db.Text
   cvBasisPoints          Int       @default(10000)
   matchingRateBps        Int       @default(1000)
   payoutCeilingBps       Int       @default(2500)
   normalPayoutBps        Int       @default(1500)
   matchingRunHourIst     Int       @default(2)
   cvEligibilityDelayDays Int       @default(0)
-  capOverflowPolicy      String    @default("flush") // 'flush' | 'carry'
-  carryForwardPolicy     String    @default("indefinite") // 'indefinite' | 'expire-days'
+  capOverflowPolicy      String    @default(dbgenerated("('flush')")) @db.Text // 'flush' | 'carry'
+  carryForwardPolicy     String    @default(dbgenerated("('indefinite')")) @db.Text // 'indefinite' | 'expire-days'
   carryExpiryDays        Int?
-  spilloverRule          String    @default("extreme-outer") // 'extreme-outer' | 'breadth-first'
+  spilloverRule          String    @default(dbgenerated("('extreme-outer')")) @db.Text // 'extreme-outer' | 'breadth-first'
   withdrawalMinAmount    BigInt    @default(0)
   withdrawalRequiresKyc  Boolean   @default(true)
   tdsBps                 Int       @default(0)
-  liabilityPeriod        String    @default("month")
-  note                   String    @default("")
+  liabilityPeriod        String    @default(dbgenerated("('month')")) @db.Text
+  note                   String    @default(dbgenerated("('')")) @db.Text
   createdAt              DateTime  @default(now())
   activatedAt            DateTime?
   retiredAt              DateTime?
@@ -2081,7 +2081,7 @@ model MlmCapBand {
   id            String @id @default(cuid())
   planVersionId String
   key           String
-  label         String
+  label         String @db.Text
   dailyCap      BigInt
   order         Int
 
@@ -2098,10 +2098,10 @@ model MlmRankTier {
   order           Int
   name            String
   groupCv         BigInt
-  rewardKind      String // 'recognition' | 'certificate' | 'cash'
+  rewardKind      String  @db.Text // 'recognition' | 'certificate' | 'cash'
   rewardAmount    BigInt  @default(0)
   rewardCapAmount BigInt?
-  capBandKey      String
+  capBandKey      String  @db.Text
   vestingDays     Int     @default(0)
 
   planVersion MlmPlanVersion @relation(fields: [planVersionId], references: [id], onDelete: Cascade)
@@ -2126,16 +2126,16 @@ model Affiliate {
   placementParentId    String?
   placementLeg         String? // 'A' | 'B'
   /// The ids of every ancestor on the placement path, root first, as JSON text: one read for "credit every ancestor".
-  pathIdsJson          String    @default("[]")
+  pathIdsJson          String    @default(dbgenerated("('[]')")) @db.Text
   depth                Int       @default(0)
   /// Where this affiliate's own referrals are placed (§6.3).
-  preferredLeg         String    @default("A")
+  preferredLeg         String    @default(dbgenerated("('A')")) @db.Text
   /// The leg of the sponsor that the sponsor's link named (§6.3); null when it named none. Read only to place this affiliate.
-  requestedLeg         String?
+  requestedLeg         String?   @db.Text
   activatedAt          DateTime?
   /// The eligible course purchase that activated the affiliate (CV module, MLM-003).
-  activationPurchaseId String?
-  kycStatus            String    @default("none") // 'none' | 'submitted' | 'verified' | 'rejected'
+  activationPurchaseId String?   @db.Text
+  kycStatus            String    @default(dbgenerated("('none')")) @db.Text // 'none' | 'submitted' | 'verified' | 'rejected'
   currentRankOrder     Int       @default(0)
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @default(now()) @updatedAt
@@ -2174,14 +2174,14 @@ model MlmPlacementHistory {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId     String
   affiliateId  String
-  fromParentId String?
-  fromLeg      String?
-  toParentId   String?
-  toLeg        String?
-  reason       String // 'sponsor-direct' | 'spillover' | 'manual' | 'root'
-  actorType    String   @default("system") // 'system' | 'user'
-  actorId      String?
-  note         String?
+  fromParentId String?  @db.Text
+  fromLeg      String?  @db.Text
+  toParentId   String?  @db.Text
+  toLeg        String?  @db.Text
+  reason       String   @db.Text // 'sponsor-direct' | 'spillover' | 'manual' | 'root'
+  actorType    String   @default(dbgenerated("('system')")) @db.Text // 'system' | 'user'
+  actorId      String?  @db.Text
+  note         String?  @db.Text
   createdAt    DateTime @default(now())
 
   tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -2200,16 +2200,16 @@ model MlmOrder {
   tenantId                 String
   purchaseId               String    @unique
   buyerAffiliateId         String?
-  sponsorAffiliateIdAtSale String?
+  sponsorAffiliateIdAtSale String?   @db.Text
   planVersionId            String
   netAmount                BigInt
   cv                       BigInt
-  currency                 String    @default("INR")
+  currency                 String    @default(dbgenerated("('INR')")) @db.Text
   status                   String    @default("pending") // 'pending' | 'eligible' | 'reversed'
   paidAt                   DateTime
   eligibleAt               DateTime?
   reversedAt               DateTime?
-  reversalReason           String? // 'refund' | 'chargeback' | 'manual'
+  reversalReason           String?   @db.Text // 'refund' | 'chargeback' | 'manual'
   creditedAncestors        Int       @default(0)
   createdAt                DateTime  @default(now())
   updatedAt                DateTime  @default(now()) @updatedAt
@@ -2232,7 +2232,7 @@ model MlmCvLedger {
   /// The academy this row belongs to — see lib/tenancy.ts.
   tenantId    String
   affiliateId String
-  leg         String // 'A' | 'B'
+  leg         String   @db.Text // 'A' | 'B'
   orderId     String
   kind        String // 'sale' | 'reversal'
   amount      BigInt
@@ -2258,7 +2258,7 @@ model MlmLegBalance {
   unmatchedA          BigInt   @default(0)
   unmatchedB          BigInt   @default(0)
   matchedLifetime     BigInt   @default(0)
-  lastMatchingRunDate String?
+  lastMatchingRunDate String?  @db.Text
   version             Int      @default(0)
   updatedAt           DateTime @default(now()) @updatedAt
 
@@ -2280,9 +2280,9 @@ model Coupon {
   id              String    @id @default(cuid())
   tenantId        String
   code            String
-  description     String    @default("")
+  description     String    @default(dbgenerated("('')")) @db.Text
   /// 'percent' | 'fixed'. The code, the kind and the discount are fixed by trigger.
-  kind            String
+  kind            String    @db.Text
   percentBps      Int?
   amountOff       Int?
   startsAt        DateTime?
@@ -2291,9 +2291,9 @@ model Coupon {
   perLearnerLimit Int       @default(1)
   courseId        String?
   /// 'active' | 'disabled'. Never deleted.
-  status          String    @default("active")
+  status          String    @default(dbgenerated("('active')")) @db.Text
   usedCount       Int       @default(0)
-  createdById     String?
+  createdById     String?   @db.Text
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @default(now()) @updatedAt
 
@@ -2328,14 +2328,14 @@ model CoursePurchaseRefund {
   tenantId         String
   purchaseId       String
   amount           Int
-  reason           String
-  note             String?
-  requestedById    String?
+  reason           String    @db.Text
+  note             String?   @db.Text
+  requestedById    String?   @db.Text
   provider         String
   providerRefundId String?
   /// 'requested' | 'pending' | 'succeeded' | 'failed'
-  status           String
-  failureMessage   String?
+  status           String    @db.Text
+  failureMessage   String?   @db.Text
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @default(now()) @updatedAt
   settledAt        DateTime?
@@ -2352,7 +2352,7 @@ model CoursePurchaseRefund {
 model SiteContent {
   id          String   @id @default(cuid())
   tenantId    String   @unique
-  contentJson String
+  contentJson String   @db.Text
   updatedAt   DateTime @updatedAt
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -2379,13 +2379,13 @@ model BlogPost {
   tenantId    String
   slug        String
   /// 'article' | 'resource' | 'webinar' | 'workshop' | 'community' | 'career'.
-  kind        String    @default("article")
-  title       String
-  excerpt     String    @default("")
-  body        String    @default("")
-  coverUrl    String    @default("")
+  kind        String    @default(dbgenerated("('article')")) @db.Text
+  title       String    @db.Text
+  excerpt     String    @default(dbgenerated("('')")) @db.Text
+  body        String    @default(dbgenerated("('')")) @db.Text
+  coverUrl    String    @default(dbgenerated("('')")) @db.Text
   /// Where a webinar is held or a resource lives; empty when the page itself is the content.
-  externalUrl String    @default("")
+  externalUrl String    @default(dbgenerated("('')")) @db.Text
   /// When a webinar or workshop takes place.
   eventAt     DateTime?
   /// 'draft' | 'published'. A published post with `publishAt` ahead stays hidden until then.
@@ -2405,14 +2405,14 @@ model CourseBundle {
   id          String    @id @default(cuid())
   tenantId    String
   slug        String
-  title       String
-  summary     String    @default("")
-  description String    @default("")
-  coverUrl    String    @default("")
+  title       String    @db.Text
+  summary     String    @default(dbgenerated("('')")) @db.Text
+  description String    @default(dbgenerated("('')")) @db.Text
+  coverUrl    String    @default(dbgenerated("('')")) @db.Text
   /// Whole rupees, all-inclusive, as a course's price is.
   price       Int
   /// 'draft' | 'published' | 'archived'. Bundles with orders are archived, never deleted.
-  status      String    @default("draft")
+  status      String    @default(dbgenerated("('draft')")) @db.Text
   /// A published bundle with `publishAt` ahead stays hidden until then.
   publishAt   DateTime?
   order       Int       @default(0)
@@ -2450,24 +2450,24 @@ model BundlePurchase {
   bundleId          String
   /// The charge in paise, fixed when the order is made.
   amount            Int
-  currency          String    @default("INR")
+  currency          String    @default(dbgenerated("('INR')")) @db.Text
   /// The bundle's price in whole rupees when the order was made, for the receipt.
   price             Int
   /// JSON array of `{ courseId, listPrice }` when the order was made: what this order buys, whatever the bundle becomes.
-  termsJson         String
+  termsJson         String    @db.Text
   provider          String
-  environment       String
+  environment       String    @db.Text
   providerOrderId   String
   providerPaymentId String?
   /// 'created' | 'paid' | 'expired'.
   status            String    @default("created")
-  failureCode       String?
-  failureMessage    String?
-  reviewReason      String?
+  failureCode       String?   @db.Text
+  failureMessage    String?   @db.Text
+  reviewReason      String?   @db.Text
   orderNumber       String?   @unique
   /// 'requested' | 'pending' | 'succeeded' | 'failed'; null until a refund is asked for.
-  refundStatus      String?
-  providerRefundId  String?
+  refundStatus      String?   @db.Text
+  providerRefundId  String?   @db.Text
   refundedAt        DateTime?
   chargebackAt      DateTime?
   paidAt            DateTime?
@@ -2495,9 +2495,9 @@ model MlmMatchingRun {
   tenantId       String
   affiliateId    String
   runDate        String
-  planVersionId  String
+  planVersionId  String   @db.Text
   rankOrderAtRun Int
-  capBandKey     String
+  capBandKey     String   @db.Text
   availableA     BigInt
   availableB     BigInt
   matchedCv      BigInt
@@ -2523,10 +2523,10 @@ model MlmRankHistory {
   tenantId      String
   affiliateId   String
   tierOrder     Int
-  tierName      String
+  tierName      String   @db.Text
   lifetimeA     BigInt
   lifetimeB     BigInt
-  planVersionId String
+  planVersionId String   @db.Text
   achievedAt    DateTime @default(now())
 
   tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -2544,15 +2544,15 @@ model MlmReward {
   /// A plain id, written in the same transaction as the history row (the tenancy check reads committed rows).
   rankHistoryId String    @unique
   tierOrder     Int
-  tierName      String
+  tierName      String    @db.Text
   groupCv       BigInt
-  kind          String // 'recognition' | 'certificate' | 'cash'
+  kind          String    @db.Text // 'recognition' | 'certificate' | 'cash'
   amount        BigInt
   capAmount     BigInt?
   vestingDays   Int       @default(0)
   status        String    @default("qualified") // 'qualified' | 'approved' | 'vesting' | 'funded' | 'paid' | 'rejected'
   vestsAt       DateTime?
-  note          String?
+  note          String?   @db.Text
   needsReview   Boolean   @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @default(now()) @updatedAt
@@ -2569,20 +2569,20 @@ model MlmCommission {
   id            String    @id @default(cuid())
   tenantId      String
   affiliateId   String
-  kind          String // 'matching' | 'rank_reward' | 'reversal'
+  kind          String    @db.Text // 'matching' | 'rank_reward' | 'reversal'
   /// Signed, minor units.
   amount        BigInt
   status        String // 'paid_to_wallet' | 'held' | 'written_off' | 'split'
-  holdReason    String?
+  holdReason    String?   @db.Text
   /// The month (IST) it counts against the ceiling, once settled.
   period        String?
-  heldPeriod    String?
-  runId         String?
-  rewardId      String?
+  heldPeriod    String?   @db.Text
+  runId         String?   @db.Text
+  rewardId      String?   @db.Text
   orderId       String?
-  planVersionId String
+  planVersionId String    @db.Text
   /// The hold this row was divided from.
-  splitFromId   String?
+  splitFromId   String?   @db.Text
   createdAt     DateTime  @default(now())
   settledAt     DateTime?
 
@@ -2620,7 +2620,7 @@ model MlmWalletEntry {
   paidDelta      BigInt   @default(0)
   commissionId   String?
   withdrawalId   String?
-  note           String?
+  note           String?  @db.Text
   createdAt      DateTime @default(now())
 
   tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
@@ -2635,16 +2635,16 @@ model MlmKyc {
   affiliateId      String    @id
   tenantId         String
   status           String    @default("submitted") // 'submitted' | 'verified' | 'rejected'
-  legalName        String
-  sealed           String
-  sealedKeyId      String
-  panLast4         String
-  bankAccountLast4 String
-  ifsc             String
-  accountHolder    String
-  upiId            String?
-  documentIdsJson  String    @default("[]")
-  rejectionReason  String?
+  legalName        String    @db.Text
+  sealed           String    @db.Text
+  sealedKeyId      String    @db.Text
+  panLast4         String    @db.Text
+  bankAccountLast4 String    @db.Text
+  ifsc             String    @db.Text
+  accountHolder    String    @db.Text
+  upiId            String?   @db.Text
+  documentIdsJson  String    @default(dbgenerated("('[]')")) @db.Text
+  rejectionReason  String?   @db.Text
   submittedAt      DateTime  @default(now())
   reviewedAt       DateTime?
 
@@ -2679,12 +2679,12 @@ model MlmWithdrawal {
   tdsAmount        BigInt    @default(0)
   netAmount        BigInt
   status           String    @default("requested")
-  bankSnapshotJson String
-  sealed           String
-  sealedKeyId      String
-  payoutBatchId    String?
-  reference        String?
-  rejectionReason  String?
+  bankSnapshotJson String    @db.Text
+  sealed           String    @db.Text
+  sealedKeyId      String    @db.Text
+  payoutBatchId    String?   @db.Text
+  reference        String?   @db.Text
+  rejectionReason  String?   @db.Text
   createdAt        DateTime  @default(now())
   decidedAt        DateTime?
   paidAt           DateTime?
@@ -2700,7 +2700,7 @@ model MlmWithdrawal {
 model MlmProgramState {
   tenantId  String
   key       String
-  value     String
+  value     String   @db.Text
   updatedAt DateTime @updatedAt
 
   tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Restrict)

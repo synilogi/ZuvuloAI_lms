@@ -837,8 +837,10 @@ export async function selfEnrol(studentId: string, courseId: string) {
     if (rules.enrollmentPolicy === 'approval') throw conflict('Enrolment needs approval — ask an instructor or your admin to add you to the course.');
     if (rules.enrollmentPolicy === 'invite') throw conflict('Courses here are joined by invitation. Contact your admin to join the course.');
     await db.$transaction([
-      db.enrollment.create({ data: { ...tenant(), studentId, courseId, source: 'self', expiresAt: expiryFor(new Date(), rules.accessMonths) } }),
+      // The course's row first: inserting the enrolment takes a shared lock on it, and learners who then all ask to upgrade
+      // that lock to write the count would deadlock each other.
       db.course.update({ where: { id: courseId }, data: { enrolledCount: { increment: 1 } } }),
+      db.enrollment.create({ data: { ...tenant(), studentId, courseId, source: 'self', expiresAt: expiryFor(new Date(), rules.accessMonths) } }),
     ]);
     await confirmEnrolment(studentId, courseId, 'self');
   }

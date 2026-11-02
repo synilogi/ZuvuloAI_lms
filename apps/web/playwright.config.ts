@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './e2e',
   timeout: 90_000,
-  // Each worker drives a browser against one API and one SQLite file; more than two starves a shared machine.
+  // Each worker drives a browser against one API and one database; more than two starves a shared machine.
   workers: Number(process.env.E2E_WORKERS ?? 2),
   expect: { timeout: 15_000 },
   fullyParallel: false,

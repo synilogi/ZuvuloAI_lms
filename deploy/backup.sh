@@ -16,6 +16,9 @@ DAILY=$DATA/backups/daily
 KEEP=${BACKUP_KEEP:-14}
 # Cron runs with a minimal PATH; node, npm and npx live in /usr/bin on the CloudPanel image.
 export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+if [ -d "$HOME/.nvm/versions/node" ]; then
+  PATH="$HOME/.nvm/versions/node/$(ls -1 "$HOME/.nvm/versions/node" | sort -V | tail -1)/bin:$PATH"
+fi
 
 umask 077
 mkdir -p "$DAILY"

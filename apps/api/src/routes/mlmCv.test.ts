@@ -105,7 +105,7 @@ describe('a verified sale of the eligible course', () => {
       expect.objectContaining({ leg: 'A', kind: 'sale', amount: 1_000_000, order: expect.objectContaining({ buyerName: 'CV Deep', status: 'eligible' }) }),
     ]);
     // The ledger cannot be touched.
-    await expect(platformDb.$executeRawUnsafe(`DELETE FROM "MlmCvLedger" WHERE "orderId" = ?`, order.id)).rejects.toThrow(/never deleted/);
+    await expect(platformDb.$executeRawUnsafe(`DELETE FROM \`MlmCvLedger\` WHERE \`orderId\` = ?`, order.id)).rejects.toThrow(/never deleted/);
   });
 
   it('is reversed once by the Super Admin, negating the credits and never below zero', async () => {

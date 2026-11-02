@@ -9,7 +9,7 @@
  * rebuilds `test.db` before every run — an E2E run is only meaningful against a database it knows
  * the shape of.
  *
- * That database is its own: `apps/api/prisma/e2e.db` (or `E2E_DB_FILE`), deleted and rebuilt (migrate → demo seed →
+ * That database is its own, named by `E2E_DATABASE_URL` and ending in `_e2e`: dropped and rebuilt (migrate → demo seed →
  * permission backfill → E2E Super Admin) on every run. A developer's `dev.db` is never opened.
  *
  * Isolation — a run touches nothing a developer owns and reaches nothing outside the machine:
@@ -19,12 +19,12 @@
  *   - every outside provider is pinned off whatever `apps/api/.env` says: mail is stored in the outbox and never sent,
  *     no Razorpay, JaaS or push keys, and gateway credentials are sealed under a throwaway key made for this run.
  *
- * Example, fully isolated: E2E_DB_FILE=/tmp/x/e2e.db E2E_WEB_OUT=/tmp/x/web E2E_UPLOAD_DIR=/tmp/x/uploads
+ * Example, fully isolated: E2E_DATABASE_URL=mysql://root@127.0.0.1:3306/run1_e2e E2E_WEB_OUT=/tmp/x/web E2E_UPLOAD_DIR=/tmp/x/uploads
  *   E2E_OUTPUT_DIR=/tmp/x/results E2E_API_PORT=4300 E2E_WEB_PORT=4373 npm run e2e
  */
 import { spawn, spawnSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
-import { mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import { mkdirSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
@@ -36,7 +36,8 @@ const apiRoot = resolve(webRoot, '../api');
 
 // Where this run keeps everything it writes. Nothing defaults into a folder a developer owns.
 const scratch = mkdtempSync(join(tmpdir(), 'zuviloai-e2e-'));
-const dbFile = resolve(process.env.E2E_DB_FILE || resolve(apiRoot, 'prisma/e2e.db'));
+const databaseUrl = process.env.E2E_DATABASE_URL || 'mysql://root:root@127.0.0.1:3306/zuviloai_e2e';
+if (!/_e2e(\?|$)/.test(databaseUrl)) throw new Error('E2E_DATABASE_URL must name a database ending in _e2e: this run drops it.');
 const webOut = resolve(process.env.E2E_WEB_OUT || join(scratch, 'web'));
 const uploadDir = resolve(process.env.E2E_UPLOAD_DIR || join(scratch, 'uploads'));
 const outputDir = resolve(process.env.E2E_OUTPUT_DIR || join(scratch, 'results'));
@@ -45,7 +46,7 @@ const webPort = process.env.E2E_WEB_PORT || '4173';
 const apiUrl = `http://localhost:${apiPort}`;
 const webUrl = `http://localhost:${webPort}`;
 if (webOut === resolve(webRoot, 'dist')) throw new Error('E2E_WEB_OUT must not be apps/web/dist — that build is the developer’s own.');
-for (const dir of [dirname(dbFile), uploadDir, outputDir]) mkdirSync(dir, { recursive: true });
+for (const dir of [uploadDir, outputDir]) mkdirSync(dir, { recursive: true });
 
 /**
  * Outside services, pinned off for every step of the run. `dotenv/config` (loaded by the API) never overwrites a
@@ -124,10 +125,9 @@ process.on('SIGTERM', () => process.exit(143));
 
 async function main() {
   // Every step below, and the API itself, runs against this file and nothing else.
-  console.log(`[e2e] Database ${dbFile} · frontend build ${webOut} · uploads ${uploadDir} · results ${outputDir}`);
+  console.log(`[e2e] Database ${new URL(databaseUrl).pathname.slice(1)} · frontend build ${webOut} · uploads ${uploadDir} · results ${outputDir}`);
   console.log(`[e2e] API ${apiUrl} · web ${webUrl} · mail stored, never sent · no payment, live or push keys`);
-  for (const suffix of ['', '-journal', '-wal', '-shm']) rmSync(`${dbFile}${suffix}`, { force: true });
-  const dbEnv = { ...process.env, ...SAFE_PROVIDERS, DATABASE_URL: `file:${dbFile}`, SEED_QUIET: '1' };
+  const dbEnv = { ...process.env, ...SAFE_PROVIDERS, DATABASE_URL: databaseUrl, SEED_QUIET: '1' };
   const step = (label, args) =>
     new Promise((resolvePromise, reject) => {
       console.log(`[e2e] ${label}…`);
@@ -135,7 +135,8 @@ async function main() {
       collect(child, 'db');
       child.on('exit', (code) => (code === 0 ? resolvePromise() : reject(new Error(`${label} exited ${code}`))));
     });
-  await step(`Building the E2E database (${dbFile})`, ['prisma', 'migrate', 'deploy']);
+  await step('Emptying the E2E database', ['tsx', 'scripts/recreate-database.ts']);
+  await step('Building the E2E database', ['prisma', 'migrate', 'deploy']);
   await step('Seeding the demo academy', ['tsx', 'prisma/seed.ts']);
   await step('Granting the demo admins their permissions', ['tsx', 'scripts/backfill-admin-permissions.ts']);
   await step('Writing the affiliate plan draft', ['tsx', 'scripts/seed-mlm-plan.ts']);
@@ -207,7 +208,7 @@ async function main() {
     // Anything after `npm run e2e --` goes to Playwright: a spec file, `--grep`, and so on.
     const pw = run(npx, ['playwright', 'test', '--output', outputDir, ...process.argv.slice(2)], {
       cwd: webRoot,
-      env: { ...process.env, WEB_BASE_URL: webUrl, E2E_API_URL: apiUrl, E2E_DB_FILE: dbFile },
+      env: { ...process.env, WEB_BASE_URL: webUrl, E2E_API_URL: apiUrl, E2E_DATABASE_URL: databaseUrl },
     });
     collect(pw, 'playwright');
     pw.on('exit', (code) => resolvePromise(code ?? 1));

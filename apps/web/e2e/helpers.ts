@@ -27,31 +27,25 @@ export const navTo = (page: Page, href: string) => page.locator(`a[href="${href}
 
 /**
  * The verification code the API emailed to `email` (SAAS-026), read from the E2E database's outbox — the
- * registrant's inbox, as far as a test can see it. `run-e2e.mjs` builds that database (`E2E_DB_FILE`, else
- * `apps/api/prisma/e2e.db`).
+ * registrant's inbox, as far as a test can see it. `run-e2e.mjs` builds that database (`E2E_DATABASE_URL`).
  */
 export async function emailedSignupCode(email: string, templateKey = 'signup-verification'): Promise<string> {
-  const { DatabaseSync } = await import('node:sqlite');
-  const { fileURLToPath } = await import('node:url');
-  // `run-e2e.mjs` passes the run's database as E2E_DB_FILE.
-  const file = process.env.E2E_DB_FILE ?? fileURLToPath(new URL('../../api/prisma/e2e.db', import.meta.url));
-  const db = new DatabaseSync(file, { readOnly: true });
+  const { PrismaClient } = await import('@prisma/client');
+  // `run-e2e.mjs` passes the run's database as E2E_DATABASE_URL.
+  const db = new PrismaClient({ datasourceUrl: process.env.E2E_DATABASE_URL });
   try {
     for (let i = 0; i < 40; i++) {
-      let row: { text?: string } | undefined;
-      try {
-        row = db.prepare('SELECT text FROM EmailOutbox WHERE toEmail = ? AND templateKey = ? ORDER BY createdAt DESC LIMIT 1').get(email, templateKey) as
-          { text?: string } | undefined;
-      } catch (err) {
-        // Other specs write to the same database at the same moment: a locked read is simply tried again.
-        if (!/locked|busy/i.test(String(err))) throw err;
-      }
-      const code = row?.text?.match(/\b(\d{6})\b/)?.[1];
+      const rows = await db.$queryRawUnsafe<{ text?: string }[]>(
+        'SELECT text FROM EmailOutbox WHERE toEmail = ? AND templateKey = ? ORDER BY createdAt DESC LIMIT 1',
+        email.toLowerCase(),
+        templateKey,
+      );
+      const code = rows[0]?.text?.match(/\b(\d{6})\b/)?.[1];
       if (code) return code;
       await new Promise((r) => setTimeout(r, 250));
     }
   } finally {
-    db.close();
+    await db.$disconnect();
   }
   throw new Error(`No verification code was emailed to ${email}`);
 }

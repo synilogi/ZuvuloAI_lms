@@ -1,5 +1,7 @@
 # 03 — Database Specification
 
+> The database is now MySQL 8.4 (`docs/18-MYSQL.md`). Where this document says SQLite, it describes the design before that move.
+
 > **Since 1 Nov 2026 the product is one centralized learning platform, not multi-tenant SaaS.** Where this document describes academies, plans, subscriptions, invoices or per-academy gateways, [`16-PLATFORM-CONVERSION.md`](16-PLATFORM-CONVERSION.md) is the current account and this text is history.
 
 **Added by the conversion (all additive; nothing dropped):** `20261101120000_platform_workspace` (`User.phone`, `Instructor.linksJson`, `PendingAccount.phone`, `profileJson`), `20261101130000_course_orders` (`OrderSequence`, `Course.salePrice`, purchase `orderNumber`, `discountAmount`, `couponId`, `couponCode`, `refundedAt`, `Coupon`, `CouponRedemption`, `CoursePurchaseRefund`), `20261101140000_site_content` (`SiteContent`), `20261101150000_mlm_earnings` (`MlmMatchingRun`, `MlmRankHistory`, `MlmReward`, `MlmCommission`, `MlmWallet`, `MlmWalletEntry`, `MlmKyc`, `MlmPayoutBatch`, `MlmWithdrawal`, with immutability triggers), `20261101180000_course_reviews` (`CourseReview`). The retired SaaS tables stay until a separate, approved drop.

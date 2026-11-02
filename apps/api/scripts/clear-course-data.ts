@@ -19,7 +19,7 @@
  * Before deleting it writes a consistent copy of the database (`VACUUM INTO`) next to it, under backups/, and never
  * prunes older backups. Every delete runs in one transaction: all of it happens, or none of it does. */
 import 'dotenv/config';
-import { chmodSync, existsSync, mkdirSync, statSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import path from 'node:path';
 
 import { asPlatform } from '../src/lib/db.js';
@@ -37,10 +37,8 @@ async function main() {
   if (env === 'production' && !production) throw new Error('NODE_ENV is production. Add --production to confirm this is intended. Nothing was changed.');
   if (env !== 'production' && env !== 'development' && env !== 'staging') throw new Error(`NODE_ENV is ${env ? `"${env}"` : 'not set'}. Nothing was changed.`);
   const url = process.env.DATABASE_URL ?? '';
-  if (!url.startsWith('file:')) throw new Error('DATABASE_URL is not a SQLite file: URL. Nothing was changed.');
-  const file = path.resolve(path.join(import.meta.dirname, '..', 'prisma'), url.slice('file:'.length).split('?')[0]);
-  if (!existsSync(file)) throw new Error(`No database at ${file}. Nothing was changed.`);
-  log(`Database: ${file} (NODE_ENV=${env})`);
+  if (!url.startsWith('mysql://')) throw new Error('DATABASE_URL is not a mysql:// address. Nothing was changed.');
+  log(`Database: ${new URL(url).pathname.slice(1)} (NODE_ENV=${env})`);
 
   const db = asPlatform('an approved one-off reset clears course and learning data and keeps accounts');
   try {
@@ -118,14 +116,8 @@ async function main() {
     if (!apply) return log('Dry run: nothing was changed. Add --apply (and CLEAR_COURSE_DATA=yes) to delete.');
     if (process.env.CLEAR_COURSE_DATA !== 'yes') throw new Error('Set CLEAR_COURSE_DATA=yes to delete. Nothing was changed.');
 
-    const dir = path.resolve(process.env.DB_BACKUP_DIR ?? path.join(path.dirname(file), 'backups'));
-    mkdirSync(dir, { recursive: true, mode: 0o700 });
-    const stamp = new Date().toISOString().replace(/[-:]/g, '').replace('T', '-').replace(/\..*$/, '');
-    const backup = path.join(dir, `before-course-clear-${path.basename(file, path.extname(file))}-${stamp}.db`);
-    if (backup.includes("'")) throw new Error(`Refusing a backup path with a quote in it: ${backup}`);
-    await db.$executeRawUnsafe(`VACUUM INTO '${backup}'`);
-    chmodSync(backup, 0o600);
-    log(`Backup: ${backup} (${(statSync(backup).size / 1_048_576).toFixed(1)} MB)`);
+    // The same copy deploy.sh takes before a migration. A failed backup stops here, before anything has changed.
+    execSync('npx tsx scripts/backup-db.ts', { cwd: path.join(import.meta.dirname, '..'), stdio: 'inherit' });
 
     const results = await db.$transaction((Object.keys(plan) as Model[]).map((m) => delegate(m).deleteMany({ where: plan[m] }) as never));
     log('Deleted:', (Object.keys(plan) as Model[]).map((m, i) => `${m} ${(results[i] as { count: number }).count}`).join(', '));
@@ -136,7 +128,7 @@ async function main() {
       emailOutbox: await db.emailOutbox.count(),
     };
     for (const [k, n] of Object.entries(after))
-      if (n !== kept[k as keyof typeof kept]) throw new Error(`${k} changed from ${kept[k as keyof typeof kept]} to ${n}. Restore ${backup}.`);
+      if (n !== kept[k as keyof typeof kept]) throw new Error(`${k} changed from ${kept[k as keyof typeof kept]} to ${n}. Restore the backup db:backup just took.`);
     log('Accounts, academies and the email outbox are unchanged.');
   } finally {
     await db.$disconnect();

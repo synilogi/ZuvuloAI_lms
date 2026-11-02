@@ -10,6 +10,11 @@
 #                                                 (first deploy seeded over ssh, or a rollback)
 set -euo pipefail
 
+# CloudPanel keeps node under the site user's nvm, which a non-interactive shell does not load.
+if ! command -v node >/dev/null && [ -d "$HOME/.nvm/versions/node" ]; then
+  PATH="$HOME/.nvm/versions/node/$(ls -1 "$HOME/.nvm/versions/node" | sort -V | tail -1)/bin:$PATH"
+fi
+
 APP=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 SITE=$(dirname "$APP")
 DATA=$SITE/data
@@ -111,7 +116,7 @@ cd "$APP/apps/api"
 npx prisma generate
 
 log "Backing up the database"
-# A consistent copy (VACUUM INTO) under $DATA/backups, owner-only, newest DB_BACKUP_KEEP kept — taken before
+# A consistent copy (mysqldump, gzipped) under $DATA/backups, owner-only, newest DB_BACKUP_KEEP kept — taken before
 # every migration so a bad release can be rolled back with its data. A failed backup stops the deploy here,
 # before anything has changed. Copy these off the server too; they never belong in git or under the web root.
 DB_BACKUP_DIR=${DB_BACKUP_DIR:-$DATA/backups} npm run db:backup --silent

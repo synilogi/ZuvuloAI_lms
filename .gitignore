@@ -32,3 +32,7 @@ playwright-report/
 coverage/
 *.log
 .DS_Store
+
+# Database backups
+backups/
+*.sql.gz

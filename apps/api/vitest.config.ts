@@ -2,14 +2,14 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    // Every suite shares one SQLite file; run files one at a time to avoid write locks.
+    // Every suite shares one database and its fixtures: run files one at a time.
     fileParallelism: false,
     testTimeout: 20_000,
     // Test servers bind 127.0.0.1 — see src/test/setup.ts.
     setupFiles: ['./src/test/setup.ts'],
     env: {
       NODE_ENV: 'test',
-      DATABASE_URL: 'file:./test.db',
+      DATABASE_URL: process.env.TEST_DATABASE_URL ?? 'mysql://root:root@127.0.0.1:3306/zuviloai_test',
       JWT_SECRET: 'test-secret',
       CORS_ORIGIN: 'http://localhost:5173',
       RATE_LIMIT_MAX: '100000',

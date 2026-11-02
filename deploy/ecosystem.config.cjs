@@ -34,10 +34,9 @@ module.exports = {
       cwd: path.join(APP, 'apps', 'api'),
       script: path.join(APP, 'node_modules', 'tsx', 'dist', 'cli.mjs'),
       args: 'src/index.ts',
-      // Absolute: the @reboot cron that resurrects PM2 runs with a minimal PATH.
-      interpreter: '/usr/bin/node',
-      // One instance: the notification scheduler in src/index.ts is in-process, and SQLite
-      // wants a single writer. Scaling out means LIVE_REMINDERS=off plus Postgres.
+      // The node running PM2, by absolute path: the @reboot cron has a minimal PATH, and CloudPanel keeps node under the user's nvm.
+      interpreter: process.execPath,
+      // One instance: the notification scheduler in src/index.ts is in-process. Scaling out means LIVE_REMINDERS=off on the others.
       instances: 1,
       exec_mode: 'fork',
       autorestart: true,

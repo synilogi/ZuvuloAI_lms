@@ -314,6 +314,8 @@ async function markPaid(row: PurchaseRow, providerPaymentId: string): Promise<Se
   const rules = await learnerRules();
   const opened: string[] = [];
   const result = await db.$transaction(async (tx) => {
+    // A deadlock runs this again from the top.
+    opened.length = 0;
     const claimed = await tx.bundlePurchase.updateMany({
       where: { id: row.id, status: { in: ['created', 'expired'] }, providerPaymentId: null },
       data: { status: 'paid', providerPaymentId, paidAt: new Date(), failureCode: null, failureMessage: null },

@@ -163,12 +163,14 @@ describe('the ledgers are immutable', () => {
     const { me } = await pair();
     await run();
     const row = await platformDb.mlmMatchingRun.findFirstOrThrow({ where: { affiliateId: me.id } });
-    await expect(platformDb.$executeRawUnsafe(`UPDATE "MlmMatchingRun" SET "matchedCv" = 1 WHERE "id" = ?`, row.id)).rejects.toThrow(/never changed/);
-    await expect(platformDb.$executeRawUnsafe(`DELETE FROM "MlmMatchingRun" WHERE "id" = ?`, row.id)).rejects.toThrow(/never deleted/);
+    await expect(platformDb.$executeRawUnsafe(`UPDATE \`MlmMatchingRun\` SET \`matchedCv\` = 1 WHERE \`id\` = ?`, row.id)).rejects.toThrow(/never changed/);
+    await expect(platformDb.$executeRawUnsafe(`DELETE FROM \`MlmMatchingRun\` WHERE \`id\` = ?`, row.id)).rejects.toThrow(/never deleted/);
     const entry = await platformDb.mlmWalletEntry.findFirstOrThrow({ where: { affiliateId: me.id } });
-    await expect(platformDb.$executeRawUnsafe(`UPDATE "MlmWalletEntry" SET "availableDelta" = 1 WHERE "id" = ?`, entry.id)).rejects.toThrow(/never changed/);
+    await expect(platformDb.$executeRawUnsafe(`UPDATE \`MlmWalletEntry\` SET \`availableDelta\` = 1 WHERE \`id\` = ?`, entry.id)).rejects.toThrow(
+      /never changed/,
+    );
     const commission = await platformDb.mlmCommission.findFirstOrThrow({ where: { affiliateId: me.id } });
-    await expect(platformDb.$executeRawUnsafe(`UPDATE "MlmCommission" SET "amount" = 1 WHERE "id" = ?`, commission.id)).rejects.toThrow(/fixed/);
+    await expect(platformDb.$executeRawUnsafe(`UPDATE \`MlmCommission\` SET \`amount\` = 1 WHERE \`id\` = ?`, commission.id)).rejects.toThrow(/fixed/);
   });
 });
 

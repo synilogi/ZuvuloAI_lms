@@ -121,6 +121,14 @@ export const BILLING_ERROR_CODES: readonly ErrorCode[] = [
   'WORKSPACE_CLOSED',
 ];
 
+/** MySQL ended this work because it collided with another transaction: a deadlock, or a lock it waited too long for. Nothing was saved. */
+export function isWriteConflict(err: unknown): boolean {
+  if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2034') return true;
+  return err instanceof Error && /\b(1213|1205)\b|deadlock|write conflict|lock wait timeout/i.test(err.message);
+}
+
+const BUSY_MESSAGE = 'The server is busy right now, and nothing was saved. Please try again.';
+
 const CODE_FOR_STATUS: Record<number, ErrorCode> = {
   400: 'VALIDATION_FAILED',
   401: 'UNAUTHENTICATED',
@@ -142,6 +150,7 @@ export function stableCodes(err: unknown, req: Request, res: Response, next: Nex
     if (err.code) return next(err);
     return next(new ApiError(err.status, err.message, err.issues, CODE_FOR_STATUS[err.status] ?? 'CONFLICT'));
   }
+  if (isWriteConflict(err)) return next(new ApiError(503, BUSY_MESSAGE));
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     if (err.code === 'P2025') return next(new ApiError(404, 'Not found.', undefined, 'NOT_FOUND'));
     if (err.code === 'P2002') return next(new ApiError(409, 'That already exists.', undefined, 'CONFLICT'));
@@ -213,6 +222,8 @@ export function errorHandler(err: unknown, req: Request, res: Response, _next: N
     if (code === 'LIMIT_FILE_SIZE') return void res.status(413).json({ message: 'The file is too large.' });
     return void res.status(400).json({ message: 'The upload could not be read. Send one file in the `file` field.' });
   }
+
+  if (isWriteConflict(err)) return void res.status(503).json({ message: BUSY_MESSAGE });
 
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     // Known database outcomes map to ordinary HTTP results instead of a 500.

@@ -167,8 +167,14 @@ const ids = (rows: { id: string }[]) => rows.map((r) => r.id);
 /* ─── The schema, as the migrations built it ─────────────────────────── */
 
 describe('tenant schema', () => {
-  const pragma = <T>(sql: string) => platformDb.$queryRawUnsafe<T[]>(sql);
-  const columns = (table: string) => pragma<{ name: string; notnull: number | bigint }>(`PRAGMA table_info("${table}")`);
+  const read = <T>(sql: string, ...params: unknown[]) => platformDb.$queryRawUnsafe<T[]>(sql, ...params);
+  const columns = async (table: string) => {
+    const rows = await read<{ name: string; nullable: string }>(
+      'SELECT COLUMN_NAME AS name, IS_NULLABLE AS nullable FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?',
+      table,
+    );
+    return rows.map((r) => ({ name: r.name, notnull: r.nullable === 'NO' ? 1 : 0 }));
+  };
 
   it('classifies every model exactly once', () => {
     const all = Prisma.dmmf.datamodel.models.map((m) => m.name).sort();
@@ -200,22 +206,28 @@ describe('tenant schema', () => {
 
   it('backs every tenantId with a foreign key to Tenant that cannot cascade a delete', async () => {
     for (const model of [...TENANT_OWNED_MODELS, ...TENANT_OR_PLATFORM_MODELS]) {
-      const fks = await pragma<{ table: string; from: string; to: string; on_delete: string }>(`PRAGMA foreign_key_list("${model}")`);
+      const fks = await read<{ table: string; from: string; to: string; on_delete: string }>(
+        `SELECT k.REFERENCED_TABLE_NAME AS \`table\`, k.COLUMN_NAME AS \`from\`, k.REFERENCED_COLUMN_NAME AS \`to\`, r.DELETE_RULE AS on_delete
+           FROM information_schema.KEY_COLUMN_USAGE k
+           JOIN information_schema.REFERENTIAL_CONSTRAINTS r ON r.CONSTRAINT_SCHEMA = k.CONSTRAINT_SCHEMA AND r.CONSTRAINT_NAME = k.CONSTRAINT_NAME
+          WHERE k.TABLE_SCHEMA = DATABASE() AND k.TABLE_NAME = ? AND k.REFERENCED_TABLE_NAME IS NOT NULL`,
+        model,
+      );
       const fk = fks.find((f) => f.from === 'tenantId');
-      expect(fk, model).toMatchObject({ table: 'Tenant', to: 'id' });
+      // A server on Windows reports table names in lower case.
+      expect(fk?.table.toLowerCase(), model).toBe('tenant');
+      expect(fk?.to, model).toBe('id');
       expect(fk!.on_delete, model).toBe('RESTRICT');
     }
   });
 
   it('indexes every tenantId, so every scoped query has an index to use', async () => {
     for (const model of [...TENANT_OWNED_MODELS, ...TENANT_OR_PLATFORM_MODELS]) {
-      const indexes = await pragma<{ name: string }>(`PRAGMA index_list("${model}")`);
-      let leading = false;
-      for (const { name } of indexes) {
-        const cols = await pragma<{ seqno: number | bigint; name: string }>(`PRAGMA index_info("${name}")`);
-        if (cols.find((c) => Number(c.seqno) === 0)?.name === 'tenantId') leading = true;
-      }
-      expect(leading, `${model} has an index led by tenantId`).toBe(true);
+      const leading = await read<{ name: string }>(
+        `SELECT INDEX_NAME AS name FROM information_schema.STATISTICS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND SEQ_IN_INDEX = 1 AND COLUMN_NAME = 'tenantId'`,
+        model,
+      );
+      expect(leading.length > 0, `${model} has an index led by tenantId`).toBe(true);
     }
   });
 

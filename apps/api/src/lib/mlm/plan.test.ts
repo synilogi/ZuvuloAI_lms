@@ -98,8 +98,8 @@ describe('editing and activating', () => {
     expect(await asPlatform(() => activeMlmPlan())).toMatchObject({ id: draft.id });
     await expect(asPlatform(() => updateMlmPlanVersion(actor, draft.id, terms()))).rejects.toMatchObject({ status: 409 });
     // The database agrees: a sealed tier cannot be touched even by a direct write (raw SQL carries the trigger's words; the client wraps them).
-    await expect(platformDb.$executeRawUnsafe(`DELETE FROM "MlmRankTier" WHERE "planVersionId" = ?`, draft.id)).rejects.toThrow(/left draft/);
-    await expect(platformDb.$executeRawUnsafe(`UPDATE "MlmPlanVersion" SET "matchingRateBps" = 1 WHERE "id" = ?`, draft.id)).rejects.toThrow(
+    await expect(platformDb.$executeRawUnsafe(`DELETE FROM \`MlmRankTier\` WHERE \`planVersionId\` = ?`, draft.id)).rejects.toThrow(/left draft/);
+    await expect(platformDb.$executeRawUnsafe(`UPDATE \`MlmPlanVersion\` SET \`matchingRateBps\` = 1 WHERE \`id\` = ?`, draft.id)).rejects.toThrow(
       /add a new version/,
     );
   });
@@ -119,7 +119,7 @@ describe('editing and activating', () => {
     }
     // The database refuses a second active version even without the service.
     await expect(
-      platformDb.$executeRawUnsafe(`UPDATE "MlmPlanVersion" SET "status" = 'active', "activatedAt" = CURRENT_TIMESTAMP WHERE "id" = ?`, empty.id),
+      platformDb.$executeRawUnsafe(`UPDATE \`MlmPlanVersion\` SET \`status\` = 'active', \`activatedAt\` = CURRENT_TIMESTAMP WHERE \`id\` = ?`, empty.id),
     ).rejects.toThrow(/already active/);
     expect((await asPlatform(() => listMlmPlanVersions())).filter((v) => v.status === 'active')).toHaveLength(1);
   });
@@ -151,7 +151,7 @@ describe('editing and activating', () => {
     expect(retired.status).toBe('retired');
     expect(await asPlatform(() => activeMlmPlan())).toBeNull();
     await expect(asPlatform(() => deleteMlmPlanDraft(actor, retired.id))).rejects.toMatchObject({ status: 409 });
-    await expect(platformDb.$executeRawUnsafe(`DELETE FROM "MlmPlanVersion" WHERE "id" = ?`, retired.id)).rejects.toThrow(/never deleted/);
+    await expect(platformDb.$executeRawUnsafe(`DELETE FROM \`MlmPlanVersion\` WHERE \`id\` = ?`, retired.id)).rejects.toThrow(/never deleted/);
     await expect(asPlatform(() => retireMlmPlanVersion(actor, retired.id))).rejects.toMatchObject({ status: 409 });
   });
 });

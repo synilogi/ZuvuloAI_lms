@@ -209,11 +209,7 @@ describe('buying a bundle', () => {
     const started = await start(learner, bundle.id);
     fake.pay(started.checkout.orderId, 'paid');
     await runInTenant(ACADEMY, async () => {
-      await platformDb.$executeRawUnsafe(
-        `UPDATE "BundlePurchase" SET "createdAt" = ? WHERE "id" = ?`,
-        new Date(Date.now() - 120_000).toISOString(),
-        started.purchase.id,
-      );
+      await platformDb.$executeRawUnsafe(`UPDATE BundlePurchase SET createdAt = ? WHERE id = ?`, new Date(Date.now() - 120_000), started.purchase.id);
       await reconcileBundlePurchases();
     });
     expect((await learner.get(`/learning/bundle-purchases/${started.purchase.id}`)).body).toMatchObject({ status: 'paid', enrolled: true });
@@ -223,7 +219,7 @@ describe('buying a bundle', () => {
     const { bundle } = await newBundle();
     const learner = await newStudent();
     const started = await start(learner, bundle.id);
-    await expect(platformDb.$executeRawUnsafe(`UPDATE "BundlePurchase" SET "amount" = 1 WHERE "id" = ?`, started.purchase.id)).rejects.toThrow(/fixed/);
+    await expect(platformDb.$executeRawUnsafe(`UPDATE \`BundlePurchase\` SET \`amount\` = 1 WHERE \`id\` = ?`, started.purchase.id)).rejects.toThrow(/fixed/);
   });
 });
 
