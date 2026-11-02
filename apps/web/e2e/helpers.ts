@@ -35,11 +35,12 @@ export async function emailedSignupCode(email: string, templateKey = 'signup-ver
   const db = new PrismaClient({ datasourceUrl: process.env.E2E_DATABASE_URL });
   try {
     for (let i = 0; i < 40; i++) {
-      const rows = await db.$queryRawUnsafe<{ text?: string }[]>(
+      // Typed by hand: this file is checked before the deploy has generated the Prisma client.
+      const rows = (await db.$queryRawUnsafe(
         'SELECT text FROM EmailOutbox WHERE toEmail = ? AND templateKey = ? ORDER BY createdAt DESC LIMIT 1',
         email.toLowerCase(),
         templateKey,
-      );
+      )) as { text?: string }[];
       const code = rows[0]?.text?.match(/\b(\d{6})\b/)?.[1];
       if (code) return code;
       await new Promise((r) => setTimeout(r, 250));
