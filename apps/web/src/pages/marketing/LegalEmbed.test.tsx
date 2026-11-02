@@ -19,7 +19,7 @@ describe('the policies, opened from the app', () => {
     const html = at(`/${path}?embed=app`, page);
     expect(html).toContain(heading);
     // Each policy names who provides the service, and gives a contact that receives mail.
-    expect(html).toContain(COMPANY.legalName);
+    expect(html).toContain(COMPANY.name);
     expect(html).toContain(COMPANY.email);
     expect(html).not.toMatch(/(privacy|legal)@zuviloai\.com/);
     expect(html).not.toContain('<footer');

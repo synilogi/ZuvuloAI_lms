@@ -100,7 +100,7 @@ export const CONTACT_TOPICS = [
   { value: 'support', label: 'Support' },
 ] as const;
 
-export const SUPPORT_EMAIL = 'synilogicteam@gmail.com';
+export const SUPPORT_EMAIL = 'help@zuviloai.com';
 
 /*
  * The company behind ZuviloAI, as its owner confirmed it on 2026-10-23 — the one place the website reads it from.
@@ -111,7 +111,7 @@ export const SUPPORT_EMAIL = 'synilogicteam@gmail.com';
  * The support mailbox is a Gmail address until zuviloai.com has a mailbox of its own (no MX record as of 2026-10-23).
  */
 export const COMPANY = {
-  legalName: 'Synilogic Tech Private Limited',
+  name: 'ZuviloAI',
   addressLines: ['Gumanpura', 'Kota, Rajasthan 324007', 'India'],
   phone: '+91 96490 96197',
   phoneHref: 'tel:+919649096197',

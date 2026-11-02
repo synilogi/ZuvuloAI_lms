@@ -166,9 +166,7 @@ export function MarketingFooter() {
       <div className={styles.footerInner}>
         <div className={styles.footerBrand}>
           <Wordmark />
-          <p>
-            {content.footerAbout} Run by {COMPANY.legalName}, Kota.
-          </p>
+          <p>{content.footerAbout}</p>
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
           {content.socials.length > 0 && (
             <ul className={styles.footerSocials} aria-label="Follow us">
@@ -200,7 +198,7 @@ export function MarketingFooter() {
       </div>
       <div className={styles.footerBottom}>
         <span>
-          © {new Date().getFullYear()} {COMPANY.legalName}. ZuviloAI is a product of {COMPANY.legalName}, {COMPANY_ADDRESS}.
+          © {new Date().getFullYear()} {COMPANY.name}, {COMPANY_ADDRESS}.
         </span>
         <span>
           <a href={COMPANY.phoneHref}>{COMPANY.phone}</a> · Made in India. Prices in INR.

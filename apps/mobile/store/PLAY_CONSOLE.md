@@ -27,7 +27,7 @@ Update this file when the app starts collecting something new.
 | Package | `com.shubhlms.mobile` |
 | App icon | `store/play_store_icon_512.png` |
 | Category | Education |
-| Contact email | synilogicteam@gmail.com (for now; `help@zuviloai.com` once the domain receives mail) |
+| Contact email | help@zuviloai.com |
 | Website | https://zuviloai.com |
 | Privacy policy | https://zuviloai.com/privacy |
 

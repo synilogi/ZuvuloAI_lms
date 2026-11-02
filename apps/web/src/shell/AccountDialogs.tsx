@@ -70,7 +70,7 @@ export function HelpDialog({ open, onClose, focus = 'help' }: { open: boolean; o
             <li>
               <EnvelopeSimple size={18} aria-hidden="true" />
               <span>
-                Write to <a href="mailto:synilogicteam@gmail.com">synilogicteam@gmail.com</a> — replies within a working day.
+                Write to <a href="mailto:help@zuviloai.com">help@zuviloai.com</a> — replies within a working day.
               </span>
             </li>
           </ul>

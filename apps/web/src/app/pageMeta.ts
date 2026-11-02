@@ -50,7 +50,7 @@ const PUBLIC_PAGES: Record<string, PageText> = {
   },
   '/about': {
     title: 'About',
-    description: 'ZuviloAI is an online course platform run by Synilogic Tech Private Limited in Kota, India.',
+    description: 'ZuviloAI is an online course platform based in Kota, India.',
   },
   '/faq': {
     title: 'Frequently asked questions',

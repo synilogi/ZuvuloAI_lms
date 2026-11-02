@@ -16,9 +16,7 @@ export default function PrivacyPage() {
 
         <section>
           <h2>Who we are</h2>
-          <p>
-            ZuviloAI is a product of {COMPANY.legalName}, {COMPANY_ADDRESS}. We decide what is collected on the platform and why, as this policy describes.
-          </p>
+          <p>ZuviloAI is based at {COMPANY_ADDRESS}. We decide what is collected on the platform and why, as this policy describes.</p>
         </section>
 
         <section>
@@ -138,7 +136,7 @@ export default function PrivacyPage() {
         <section>
           <h2>Contact and grievances</h2>
           <p>
-            Questions about this policy, requests about your data, and complaints go to {COMPANY.legalName} at{' '}
+            Questions about this policy, requests about your data, and complaints go to {COMPANY.name} at{' '}
             <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> or <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>, or by post to {COMPANY_ADDRESS}. Mark a
             complaint “Grievance” and we acknowledge it within 24 hours and resolve it within 30 days. For help using the platform, see the{' '}
             <Link to="/support">Help Centre</Link>.

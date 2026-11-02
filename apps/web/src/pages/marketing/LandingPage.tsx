@@ -57,7 +57,7 @@ const HOME_SCHEMA = {
       '@type': 'Organization',
       '@id': 'https://zuviloai.com/#organization',
       name: 'ZuviloAI',
-      legalName: COMPANY.legalName,
+      legalName: COMPANY.name,
       url: 'https://zuviloai.com/',
       logo: 'https://zuviloai.com/icon-512.png',
       email: COMPANY.email,

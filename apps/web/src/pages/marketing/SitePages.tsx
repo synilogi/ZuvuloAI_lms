@@ -6,7 +6,7 @@ import { useAsync } from '@/hooks/useAsync';
 import { useJsonLd } from '@/hooks/useJsonLd';
 import { services } from '@/services';
 import { MarketingChrome } from './MarketingChrome';
-import { COMPANY, SUPPORT_EMAIL } from './siteContent';
+import { SUPPORT_EMAIL } from './siteContent';
 import { CtaBanner, FaqList, PageHero, SectionHead } from './SiteParts';
 import styles from './Marketing.module.css';
 
@@ -24,8 +24,8 @@ export function AboutPage() {
           </LinkButton>
         }
       >
-        ZuviloAI is an online course platform run by {COMPANY.legalName}. We publish courses from approved instructors and look after everything around them:
-        lessons, assessments, live classes, certificates and payments.
+        ZuviloAI is an online course platform. We publish courses from approved instructors and look after everything around them: lessons, assessments, live
+        classes, certificates and payments.
       </PageHero>
       <section className={styles.section} aria-labelledby="about-what">
         <SectionHead id="about-what" title="What we care about" />

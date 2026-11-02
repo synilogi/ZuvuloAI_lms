@@ -5051,7 +5051,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileContactSupportBody.
   ///
   /// In en, this message translates to:
-  /// **'Email synilogicteam@gmail.com. We reply within a working day.'**
+  /// **'Email help@zuviloai.com. We reply within a working day.'**
   String get profileContactSupportBody;
 
   /// No description provided for @supportEmailSubject.

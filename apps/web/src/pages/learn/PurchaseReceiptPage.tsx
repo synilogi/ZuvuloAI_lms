@@ -88,7 +88,7 @@ export default function PurchaseReceiptPage() {
             <p className={styles.order}>{purchase.orderNumber}</p>
           </div>
           <address className={styles.company}>
-            <strong>{COMPANY.legalName}</strong>
+            <strong>{COMPANY.name}</strong>
             {COMPANY.addressLines.map((line) => (
               <span key={line}>{line}</span>
             ))}

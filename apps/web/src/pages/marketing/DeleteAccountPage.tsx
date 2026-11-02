@@ -173,8 +173,8 @@ export default function DeleteAccountPage() {
         <section>
           <h2>If you can’t sign in</h2>
           <p>
-            Write to <a href="mailto:synilogicteam@gmail.com">synilogicteam@gmail.com</a> from the email address on the account and ask us to delete it. We’ll
-            confirm and complete the deletion within 30 days.
+            Write to <a href="mailto:help@zuviloai.com">help@zuviloai.com</a> from the email address on the account and ask us to delete it. We’ll confirm and
+            complete the deletion within 30 days.
           </p>
         </section>
 

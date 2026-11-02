@@ -10,7 +10,7 @@ const DEFAULTS: LmsSettings = {
   general: {
     academyName: 'ZuviloAI Academy',
     lmsLabel: 'Learning',
-    supportEmail: 'synilogicteam@gmail.com',
+    supportEmail: 'help@zuviloai.com',
     language: 'en-IN',
     defaultVisibility: 'public',
     enrollment: 'open',

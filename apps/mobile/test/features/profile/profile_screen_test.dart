@@ -254,7 +254,7 @@ void main() {
     await tapScrolled(tester, find.text('Contact support'));
 
     expect(opened.single.scheme, 'mailto');
-    expect(opened.single.path, 'synilogicteam@gmail.com');
+    expect(opened.single.path, 'help@zuviloai.com');
   });
 
   group('deleting the account (Google Play policy)', () {

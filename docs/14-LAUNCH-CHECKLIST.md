@@ -15,7 +15,7 @@ Status keys: ✅ done and verified · ⬜ to do · 🔒 needs the owner's decisi
 
 ### Decided by the owner (2026-10-23)
 
-- ✅ **Company:** Synilogic Tech Private Limited, Gumanpura, Kota, Rajasthan 324007, India, +91 96490 96197. These are on the website's footer, Contact, Terms, Privacy and Refund pages, from one source: `COMPANY` in `apps/web/src/pages/marketing/siteContent.tsx`.
+- ✅ **Company:** ZuviloAI, Gumanpura, Kota, Rajasthan 324007, India, +91 96490 96197. These are on the website's footer, Contact, Terms, Privacy and Refund pages, from one source: `COMPANY` in `apps/web/src/pages/marketing/siteContent.tsx`.
 - ✅ **Refunds are reviewed by hand.** Nothing refunds automatically, cancellation included. Only a super admin can refund, with a reason, at `POST /superadmin/payments/:id/refund`. Money paid against a voided invoice is recorded and flagged `refund review needed`. Tests pin both behaviours.
 - ✅ **No plan checkout in the mobile app.** `BILLING_CHECKOUT_ENABLED` is `false` in `config/prod.json` and `config/staging.json`, and a test fails any config that reaches zuviloai.com with it on. Plans are bought on the website.
 

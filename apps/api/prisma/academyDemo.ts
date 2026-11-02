@@ -1220,7 +1220,7 @@ export async function seedDemoAcademyContent(opts: DemoAcademyOptions): Promise<
         generalJson: JSON.stringify({
           academyName,
           lmsLabel: 'Learning',
-          supportEmail: 'synilogicteam@gmail.com',
+          supportEmail: 'help@zuviloai.com',
           language: 'en-IN',
           defaultVisibility: 'public',
           enrollment: 'open',

@@ -19,7 +19,7 @@ export default function RefundPolicyPage() {
 
         <section>
           <h2>What this covers</h2>
-          <p>This policy covers the courses you buy from {COMPANY.legalName} on ZuviloAI. Free courses have no payment to refund.</p>
+          <p>This policy covers the courses you buy on ZuviloAI. Free courses have no payment to refund.</p>
         </section>
 
         <section>
@@ -67,8 +67,8 @@ export default function RefundPolicyPage() {
         <section>
           <h2>Contact</h2>
           <p>
-            {COMPANY.legalName}, {COMPANY_ADDRESS} · <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> · <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>.
-            The full terms are in the <Link to="/terms">terms of service</Link>.
+            {COMPANY.name}, {COMPANY_ADDRESS} · <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> · <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>. The
+            full terms are in the <Link to="/terms">terms of service</Link>.
           </p>
         </section>
 

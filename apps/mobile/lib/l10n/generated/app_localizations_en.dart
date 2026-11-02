@@ -3055,7 +3055,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileContactSupportBody =>
-      'Email synilogicteam@gmail.com. We reply within a working day.';
+      'Email help@zuviloai.com. We reply within a working day.';
 
   @override
   String get supportEmailSubject => 'ZuviloAI app support';

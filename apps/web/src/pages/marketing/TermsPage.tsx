@@ -16,10 +16,7 @@ export default function TermsPage() {
 
         <section>
           <h2>Agreement</h2>
-          <p>
-            ZuviloAI is provided by {COMPANY.legalName}, {COMPANY_ADDRESS} (“we”). By creating an account, buying a course or using ZuviloAI, you agree to these
-            terms.
-          </p>
+          <p>ZuviloAI, {COMPANY_ADDRESS} (“we”), provides this service. By creating an account, buying a course or using ZuviloAI, you agree to these terms.</p>
         </section>
 
         <section>
@@ -104,7 +101,7 @@ export default function TermsPage() {
         <section>
           <h2>Contact</h2>
           <p>
-            Questions about these terms go to {COMPANY.legalName} at <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> or{' '}
+            Questions about these terms go to {COMPANY.name} at <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> or{' '}
             <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>.
           </p>
         </section>

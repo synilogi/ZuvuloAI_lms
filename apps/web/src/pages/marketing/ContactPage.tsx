@@ -142,7 +142,7 @@ export default function ContactPage() {
           <div className={styles.asideCard}>
             <h2>Company</h2>
             <address>
-              {COMPANY.legalName}
+              {COMPANY.name}
               {COMPANY.addressLines.map((line) => (
                 <span key={line}>
                   <br />
