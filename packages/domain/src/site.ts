@@ -331,6 +331,8 @@ export interface AdminBundle extends PublicBundle {
   courseIds: string[];
   /** Orders ever made: a bundle with any is archived rather than deleted. */
   orderCount: number;
+  /** Whether a visitor can buy it now. A published bundle stops selling when a course leaves sale or joins the affiliate plan. */
+  onSale: boolean;
 }
 
 export interface BundleInput {

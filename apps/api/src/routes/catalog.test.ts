@@ -88,6 +88,16 @@ describe('courses: rules from settings', () => {
   });
 });
 
+describe('the public instructor list', () => {
+  it('shows contact details to admins only', async () => {
+    const hasContact = (i: { email?: string; phone?: string }) => !!i.email || !!i.phone;
+    expect((await anon().get('/catalog/instructors')).body.some(hasContact)).toBe(false);
+    expect((await instructor.get('/catalog/instructors')).body.some(hasContact)).toBe(false);
+    // The instructor form reads this list to refuse an email already taken.
+    expect((await admin.get('/catalog/instructors')).body.some((i: { email: string }) => !!i.email)).toBe(true);
+  });
+});
+
 describe('partial updates change only what they are sent', () => {
   it('keeps a course’s instructors, texts and tags when only its title is sent', async () => {
     const instructorId = (await admin.get('/catalog/instructors')).body[0].id as string;

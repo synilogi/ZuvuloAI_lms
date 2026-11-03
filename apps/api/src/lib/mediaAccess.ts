@@ -1,4 +1,5 @@
 import { db } from './db.js';
+import { runAsPlatform } from './tenancy.js';
 
 /*
  * Who may read an uploaded file (SAAS-023). Files live in exactly three places: a lesson's content, an assignment's
@@ -19,7 +20,19 @@ import { db } from './db.js';
 type Viewer = { sub: string; role: string; instructorId?: string; studentId?: string };
 type Asset = { id: string; ownerUserId: string };
 
-const STAFF = new Set(['admin', 'instructor']);
+const STAFF = new Set(['superadmin', 'admin', 'instructor']);
+
+/**
+ * Whether a member of staff uploaded a file. Read as the platform: a Super Admin works in the academy's workspace but
+ * belongs to no academy, so the academy's view of `User` cannot see them. Callers have already found the file itself
+ * in their own academy, and only the uploader's role is read.
+ */
+export async function isStaffUpload(ownerUserId: string): Promise<boolean> {
+  const owner = await runAsPlatform('a file’s uploader may be a platform account', () =>
+    db.user.findUnique({ where: { id: ownerUserId }, select: { role: true } }),
+  );
+  return !!owner && STAFF.has(owner.role);
+}
 
 /**
  * A grant is kept briefly: a video streams as many range requests, each of which would ask again. Only grants —
@@ -49,8 +62,7 @@ export async function canReadMedia(viewer: Viewer, asset: Asset): Promise<boolea
 export const clearMediaAccessCache = () => cache.clear();
 
 async function decide(viewer: Viewer, asset: Asset): Promise<boolean> {
-  const owner = await db.user.findUnique({ where: { id: asset.ownerUserId }, select: { role: true } });
-  const ownerIsStaff = !!owner && STAFF.has(owner.role);
+  const ownerIsStaff = await isStaffUpload(asset.ownerUserId);
 
   if (viewer.role === 'instructor') {
     if (ownerIsStaff) return true;

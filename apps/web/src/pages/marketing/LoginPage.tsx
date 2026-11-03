@@ -1,5 +1,5 @@
 import { useId, useState, type FormEvent } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import type { Role } from '@syniastrolms/domain';
 import { Eye, EyeSlash } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/Button/Button';
@@ -70,7 +70,7 @@ function ForgotPasswordModal({ open, onClose }: { open: boolean; onClose: () => 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const { switchRole, login } = useSession();
+  const { switchRole, login, isAuthenticated, role: sessionRole } = useSession();
   const toast = useToast();
   const passwordId = useId();
   const [email, setEmail] = useState('');
@@ -121,6 +121,9 @@ export default function LoginPage() {
     toast({ kind: 'success', title: `Signed in as ${personas[role].name}`, text: personas[role].descriptor });
     navigate(ROLE_HOME[role], { replace: true });
   };
+
+  // Already signed in (opening an old link, or back after a dropped connection): straight on to where they were going.
+  if (API_MODE === 'http' && isAuthenticated && !submitting) return <Navigate to={safeNext(params.get('next'), ROLE_HOME[sessionRole])} replace />;
 
   return (
     <AuthChrome eyebrow="Welcome back">

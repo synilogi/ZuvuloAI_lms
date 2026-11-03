@@ -74,8 +74,9 @@ function mapPublic(row: BundleRow): PublicBundle {
   };
 }
 
-const mapAdmin = (row: BundleRow): AdminBundle => ({
+const mapAdmin = (row: BundleRow, eligible: readonly string[]): AdminBundle => ({
   ...mapPublic(row),
+  onSale: onSale(row, eligible, new Date()),
   status: row.status as AdminBundle['status'],
   ...(row.publishAt ? { publishAt: row.publishAt.toISOString() } : {}),
   order: row.order,
@@ -128,8 +129,11 @@ export async function bundleOffer(bundleId: string, now = new Date()) {
 }
 
 export async function listAdminBundles(): Promise<AdminBundle[]> {
-  const rows = await db.courseBundle.findMany({ include: BUNDLE_INCLUDE, orderBy: [{ order: 'asc' }, { createdAt: 'desc' }] });
-  return rows.map(mapAdmin);
+  const [rows, eligible] = await Promise.all([
+    db.courseBundle.findMany({ include: BUNDLE_INCLUDE, orderBy: [{ order: 'asc' }, { createdAt: 'desc' }] }),
+    eligibleCourseIds(),
+  ]);
+  return rows.map((row) => mapAdmin(row, eligible));
 }
 
 async function uniqueSlug(title: string, exceptId?: string) {
@@ -181,7 +185,7 @@ export async function createBundle(req: Request, input: BundleInput): Promise<Ad
     targetId: row.id,
     meta: { title: row.title, price: row.price, courses: input.courseIds.length },
   });
-  return mapAdmin(row);
+  return mapAdmin(row, await eligibleCourseIds());
 }
 
 export async function updateBundle(req: Request, id: string, input: BundleInput): Promise<AdminBundle> {
@@ -197,7 +201,7 @@ export async function updateBundle(req: Request, id: string, input: BundleInput)
     targetId: id,
     meta: { title: row.title, price: row.price, status: row.status, courses: input.courseIds.length },
   });
-  return mapAdmin(row);
+  return mapAdmin(row, await eligibleCourseIds());
 }
 
 /** A bundle anyone ever ordered stays on record: it can be archived, not deleted. */

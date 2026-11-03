@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { validateLiveClass, deriveLiveClassPhase, canJoin, canStartRoom, type LiveClassInput, type LiveClassPhase } from '@syniastrolms/domain';
 
 import { db } from '../lib/db.js';
-import { tenant, currentTenantId, runInTenant } from '../lib/tenancy.js';
+import { tenant, currentTenantId, runAsPlatform, runInTenant } from '../lib/tenancy.js';
 import { asyncHandler, badRequest, conflict, forbidden, notFound } from '../lib/errors.js';
 import { requireAuth, requireRole, signGrant, verifyGrant } from '../lib/auth.js';
 import { hasPermission, requireStaffPermission } from '../lib/permissions.js';
@@ -455,7 +455,10 @@ liveRouter.post(
 const roomConfig = () => liveRoomConfig();
 
 async function whoIs(userId: string) {
-  const user = await db.user.findUnique({ where: { id: userId }, select: { id: true, name: true, email: true } });
+  // Read as the platform: a Super Admin hosts in the workspace but belongs to no academy.
+  const user = await runAsPlatform('an account reading its own row, by the id its verified token names', () =>
+    db.user.findUnique({ where: { id: userId }, select: { id: true, name: true, email: true } }),
+  );
   if (!user) throw notFound('Account not found.');
   return user;
 }

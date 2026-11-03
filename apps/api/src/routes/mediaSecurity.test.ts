@@ -4,6 +4,7 @@ import { readdirSync } from 'node:fs';
 
 import { MEDIA_KINDS, contentDisposition, ensureUploadDir, matchesSignature } from '../lib/media.js';
 import { forTenant } from '../lib/db.js';
+import { provisionSuperAdmin } from '../lib/provisionSuperAdmin.js';
 import { T, db, platformDb } from '../test/db.js';
 import { anon, as, newStudent, unique, type Client } from '../test/helpers.js';
 
@@ -11,6 +12,13 @@ import { anon, as, newStudent, unique, type Client } from '../test/helpers.js';
  * the download says about it. */
 
 const PDF = Buffer.from('%PDF-1.7\n%âãÏÓ\n', 'latin1');
+/** A freshly provisioned Super Admin: a platform account, which belongs to no academy. */
+const newSuperAdmin = async () => {
+  const email = `platform-${unique()}@example.com`;
+  await provisionSuperAdmin({ email, password: 'platform-owner-password', name: 'Platform Owner' });
+  return as({ email, password: 'platform-owner-password' });
+};
+
 let admin: Client;
 let instructor: Client;
 
@@ -80,6 +88,33 @@ describe('a file is read only where the reader may open it', () => {
       const later = await newStudent('Draft Reader');
       expect((await later.post(`/learning/courses/${course.id}/enroll`)).status).toBe(200);
       expect((await later.get(`/media/${id}`)).status).toBe(404);
+    } finally {
+      await db.courseAssignment.delete({ where: { id: assignment.id } });
+    }
+  });
+
+  it('treats what the Super Admin uploaded as course material, for instructors and enrolled learners', async () => {
+    const superAdmin = await newSuperAdmin();
+    const stored = await superAdmin.upload('/media/upload').attach('file', PDF, { filename: `owner-brief-${unique()}.pdf`, contentType: 'application/pdf' });
+    const id = stored.body.id as string;
+    const course = await db.course.findFirstOrThrow({ where: { status: 'published', visibility: 'public', pricing: 'free' } });
+    const assignment = await db.courseAssignment.create({
+      data: {
+        ...T,
+        courseId: course.id,
+        title: `Owner brief ${unique()}`,
+        format: 'text',
+        status: 'published',
+        attachmentsJson: JSON.stringify([{ id, name: 'brief.pdf', sizeMb: 0.1 }]),
+      },
+    });
+    try {
+      expect((await instructor.get(`/media/${id}`)).status).toBe(200);
+      const enrolled = await newStudent('Owner Material Reader');
+      const outsider = await newStudent('Owner Material Outsider');
+      expect((await enrolled.post(`/learning/courses/${course.id}/enroll`)).status).toBe(200);
+      expect((await enrolled.get(`/media/${id}`)).status).toBe(200);
+      expect((await outsider.get(`/media/${id}`)).status).toBe(404);
     } finally {
       await db.courseAssignment.delete({ where: { id: assignment.id } });
     }

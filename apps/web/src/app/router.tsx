@@ -9,6 +9,9 @@ import { workspaceRedirect } from '@/lib/workspaceAccess';
 import { AppShell } from '@/shell/AppShell';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { PageLoading } from '@/pages/PageLoading';
+import { Button } from '@/components/ui/Button/Button';
+import { StateMessage } from '@/components/ui/Feedback/Feedback';
+import { getToken } from '@/services/http/client';
 import { MarketingChrome } from '@/pages/marketing/MarketingChrome';
 
 const DesignSystemLayout = lazy(() => import('@/pages/design-system/DesignSystemLayout'));
@@ -288,6 +291,21 @@ function RequireSession({ children }: { children: ReactNode }) {
   if (API_MODE !== 'http') return <>{children}</>;
   if (authLoading) return <PageLoading />;
   if (!isAuthenticated) {
+    // The sign-in is still good but the server didn't answer (a deploy restarting it, a dropped connection): not a reason to ask for the password.
+    if (getToken())
+      return (
+        <StateMessage
+          kind="error"
+          title="We can’t reach the server"
+          actions={
+            <Button variant="primary" onClick={() => window.location.reload()}>
+              Try again
+            </Button>
+          }
+        >
+          You’re still signed in. Check your connection and try again.
+        </StateMessage>
+      );
     // A visitor at the root is on the website, not at a locked door.
     if (location.pathname === '/') return lazyPage(<Landing />);
     const next = encodeURIComponent(`${location.pathname}${location.search}`);

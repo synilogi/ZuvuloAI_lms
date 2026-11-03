@@ -272,7 +272,7 @@ dashboardRouter.get(
       attention.push({
         id: 'captions',
         kind: 'accessibility',
-        title: `${plural(worstCaptions[1], 'video')} in ${titleOf.get(worstCaptions[0]) ?? 'a course'} have no captions`,
+        title: `${plural(worstCaptions[1], 'video')} in ${titleOf.get(worstCaptions[0]) ?? 'a course'} ${worstCaptions[1] === 1 ? 'has' : 'have'} no captions`,
         detail: 'Learners who study with sound off can’t follow them',
         count: worstCaptions[1],
         severity: 'low',

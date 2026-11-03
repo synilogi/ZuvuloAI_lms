@@ -222,7 +222,7 @@ export function VerifyPage() {
 
   return (
     <div className={styles.narrow}>
-      <PageHeader title="Verify a certificate" description="Enter the credential ID printed at the foot of an ZuviloAI certificate." />
+      <PageHeader title="Verify a certificate" description="Enter the credential ID printed at the foot of a ZuviloAI certificate." />
       <form className={styles.verifyForm} onSubmit={submit}>
         <Field label="Credential ID" hideLabel>
           <Input value={value} onChange={(e) => setValue(e.target.value)} placeholder="SA-JY-2026-04817" aria-label="Credential ID" />

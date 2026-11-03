@@ -26,7 +26,7 @@ interface Session {
 const SessionContext = createContext<Session | null>(null);
 const KEY = 'syniastrolms:demo-role';
 /** Design-system device frames pass role in the URL and must not overwrite the parent's stored role. */
-const isFramed = new URLSearchParams(window.location.search).has('frame');
+const isFramed = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('frame');
 
 const GUEST: UserProfile = { id: 'guest', name: 'Guest', email: '', role: 'student', descriptor: 'Not signed in' };
 

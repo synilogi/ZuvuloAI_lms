@@ -7,6 +7,7 @@ import { tenant } from '../lib/tenancy.js';
 import { asyncHandler, badRequest, conflict, forbidden, notFound } from '../lib/errors.js';
 import { requireAuth, requireRole } from '../lib/auth.js';
 import { requireStaffPermission } from '../lib/permissions.js';
+import { isStaffUpload } from '../lib/mediaAccess.js';
 import { COURSE_INCLUDE, mapCourse } from '../lib/mapCourse.js';
 import { assertCourseAccess, courseScopeWhere, instructorScope } from '../lib/scope.js';
 import { getSettings } from '../lib/settings.js';
@@ -84,9 +85,7 @@ async function assertUniqueTitle(title: string, excludeId?: string) {
  */
 async function assertCoverImage(mediaId: string) {
   const asset = await db.mediaAsset.findUnique({ where: { id: mediaId }, select: { kind: true, ownerUserId: true } });
-  const owner = asset ? await db.user.findUnique({ where: { id: asset.ownerUserId }, select: { role: true } }) : null;
-  if (!asset || !owner || (owner.role !== 'admin' && owner.role !== 'superadmin' && owner.role !== 'instructor'))
-    throw badRequest('The cover image was not found. Upload it again.');
+  if (!asset || !(await isStaffUpload(asset.ownerUserId))) throw badRequest('The cover image was not found. Upload it again.');
   if (asset.kind !== 'image') throw badRequest('The cover must be a PNG, JPG or WebP image.');
 }
 

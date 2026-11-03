@@ -5,6 +5,7 @@ import { db } from '../lib/db.js';
 import { asyncHandler, notFound } from '../lib/errors.js';
 import { contentDisposition, ensureUploadDir } from '../lib/media.js';
 import { COURSE_INCLUDE, mapCategory, mapCourse, mapInstructor, mapLevel, withoutLessonContent } from '../lib/mapCourse.js';
+import { isAdminRole } from '../lib/scope.js';
 import { getSettings } from '../lib/settings.js';
 import { publicCourseReviews } from '../lib/courseReviews.js';
 import { parseQuery, queryInt, z } from '../lib/validate.js';
@@ -39,9 +40,11 @@ catalogRouter.get(
 
 catalogRouter.get(
   '/instructors',
-  asyncHandler(async (_req, res) => {
+  asyncHandler(async (req, res) => {
     const instructors = await db.instructor.findMany({ where: STAFF_ONLY, orderBy: { name: 'asc' } });
-    res.json(instructors.map(mapInstructor));
+    // A teacher's contact details are for the people who run the platform: this list is public.
+    const admin = !req.accountClosed && isAdminRole(req.auth?.role);
+    res.json(instructors.map(mapInstructor).map((i) => (admin ? i : { ...i, email: '', phone: undefined })));
   }),
 );
 

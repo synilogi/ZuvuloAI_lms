@@ -25,6 +25,8 @@ import { BRAND_NAME } from '@/branding/defaults';
 import { LinkButton } from '@/components/ui/Button/Button';
 import { useAsync } from '@/hooks/useAsync';
 import { API_MODE } from '@/lib/apiMode';
+import { homeFor } from '@/lib/roleHome';
+import { useSession } from '@/providers/SessionProvider';
 import { services } from '@/services';
 import { ExploreMenu } from './MegaMenu';
 import { COMPANY, COMPANY_ADDRESS, SUPPORT_EMAIL } from './siteContent';
@@ -109,6 +111,9 @@ export function MarketingHeader() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const location = useLocation();
+  const { isAuthenticated, role } = useSession();
+  // The demo build always has a persona; only a real account has somewhere to go back to.
+  const signedIn = API_MODE === 'http' && isAuthenticated;
   // A link followed from the menu closes it.
   useEffect(() => setOpen(false), [location.pathname, location.search, location.hash]);
 
@@ -128,12 +133,20 @@ export function MarketingHeader() {
           )}
         </nav>
         <div className={styles.headerActions}>
-          <LinkButton to="/login" variant="secondary" size="sm">
-            Login
-          </LinkButton>
-          <LinkButton to="/register" variant="primary" size="sm" className={styles.headerCta}>
-            Sign up
-          </LinkButton>
+          {signedIn ? (
+            <LinkButton to={homeFor(role)} variant="primary" size="sm" className={styles.headerCta}>
+              My dashboard
+            </LinkButton>
+          ) : (
+            <>
+              <LinkButton to="/login" variant="secondary" size="sm">
+                Login
+              </LinkButton>
+              <LinkButton to="/register" variant="primary" size="sm" className={styles.headerCta}>
+                Sign up
+              </LinkButton>
+            </>
+          )}
           <button type="button" className={styles.menuButton} aria-expanded={open} aria-controls={menuId} onClick={() => setOpen((v) => !v)}>
             {open ? <X size={20} aria-hidden="true" /> : <List size={20} aria-hidden="true" />}
             <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
@@ -149,10 +162,18 @@ export function MarketingHeader() {
         <Link to="/categories">Categories</Link>
         <Link to="/blog">Blog and resources</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/login">Login</Link>
-        <LinkButton to="/register" variant="primary" block>
-          Sign up
-        </LinkButton>
+        {signedIn ? (
+          <LinkButton to={homeFor(role)} variant="primary" block>
+            My dashboard
+          </LinkButton>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <LinkButton to="/register" variant="primary" block>
+              Sign up
+            </LinkButton>
+          </>
+        )}
       </nav>
     </header>
   );

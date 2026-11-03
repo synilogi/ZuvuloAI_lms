@@ -11,6 +11,7 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import { db, inAcademy } from '../test/db.js';
 import { liveRoomConfig, liveRoomUsable, verifyJaasSignature } from '../lib/liveRoom.js';
 import { closeStaleRooms, keepRecording, RECORDING_DIR } from '../lib/liveSessions.js';
+import { provisionSuperAdmin } from '../lib/provisionSuperAdmin.js';
 import { ACADEMY } from '../test/db.js';
 import { app, as, newStudent, unique, type Client } from '../test/helpers.js';
 
@@ -54,6 +55,16 @@ async function enrolled(name: string) {
 }
 
 describe('live room: start, join, end, attendance', () => {
+  it('lets the Super Admin host, though that account belongs to no academy', async () => {
+    const email = `live-owner-${unique()}@example.com`;
+    await provisionSuperAdmin({ email, password: 'platform-owner-password', name: 'Platform Owner' });
+    const owner = await as({ email, password: 'platform-owner-password' });
+    const created = await instructor.post('/live', input(`Owner room ${unique()}`));
+    const started = await owner.post(`/live/${created.body.id}/start`);
+    expect(started.status, JSON.stringify(started.body)).toBe(200);
+    await owner.post(`/live/${created.body.id}/end`);
+  });
+
   it('runs a class from the host’s start to their end, taking attendance on the way', async () => {
     const present = await enrolled('Comes On Time');
     const walkIn = await enrolled('Walks In');

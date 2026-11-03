@@ -136,11 +136,18 @@ export default function BundlesPage() {
                     <span className={styles.cellMeta}>/bundles/{b.slug}</span>
                   </td>
                   <td>
-                    <Badge tone={STATUS_TONE[b.status]}>
-                      {b.status === 'published' && b.publishAt && Date.parse(b.publishAt) > Date.now()
-                        ? 'Scheduled'
-                        : b.status[0].toUpperCase() + b.status.slice(1)}
-                    </Badge>
+                    {b.status === 'published' && !b.onSale && !(b.publishAt && Date.parse(b.publishAt) > Date.now()) ? (
+                      <>
+                        <Badge tone="warn">Not on sale</Badge>
+                        <span className={styles.cellMeta}>A course here is unpublished, free or on the affiliate plan.</span>
+                      </>
+                    ) : (
+                      <Badge tone={STATUS_TONE[b.status]}>
+                        {b.status === 'published' && b.publishAt && Date.parse(b.publishAt) > Date.now()
+                          ? 'Scheduled'
+                          : b.status[0].toUpperCase() + b.status.slice(1)}
+                      </Badge>
+                    )}
                   </td>
                   <td>{plural(b.courseIds.length, 'course')}</td>
                   <td>{formatINR(b.price)}</td>

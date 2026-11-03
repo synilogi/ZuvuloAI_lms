@@ -25,7 +25,8 @@ export const SECTION_META: Record<SettingsPage, { label: string; description: st
   payments: { label: 'Course payments', description: 'Razorpay keys and course sales', icon: CreditCard },
 };
 
-const ORDER: SettingsPage[] = ['general', 'courses', 'payments', 'learning', 'certificates', 'notifications', 'appearance'];
+/** The sections with a page here: payments and branding are the Super Admin's, under /superadmin. */
+const ORDER: SettingsPage[] = ['general', 'courses', 'learning', 'certificates', 'notifications'];
 
 export interface SettingsOutlet {
   record: SettingsRecord;

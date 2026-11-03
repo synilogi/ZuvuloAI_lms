@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { MemoryRouter } from 'react-router-dom';
 import PrivacyPage from './PrivacyPage';
@@ -6,6 +6,9 @@ import TermsPage from './TermsPage';
 import RefundPolicyPage from './RefundPolicyPage';
 import { COMPANY } from './siteContent';
 import { MarketingChrome } from './MarketingChrome';
+
+// Rendered on the server here, where the session provider's browser storage doesn't exist: a visitor.
+vi.mock('@/providers/SessionProvider', () => ({ useSession: () => ({ isAuthenticated: false, role: 'student' }) }));
 
 /* The mobile app shows the policies inside itself (`?embed=app`): only the policy text, no site header or footer. */
 const at = (url: string, node: React.ReactNode) => renderToStaticMarkup(<MemoryRouter initialEntries={[url]}>{node}</MemoryRouter>);

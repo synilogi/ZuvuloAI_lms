@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { forTenant } from '../lib/db.js';
+import { provisionSuperAdmin } from '../lib/provisionSuperAdmin.js';
 import { T, db, platformDb } from '../test/db.js';
 import { anon, as, newStudent, unique, type Client } from '../test/helpers.js';
 
@@ -13,6 +14,13 @@ const PNG = Buffer.from(
   'hex',
 );
 const PDF = Buffer.from('%PDF-1.7\n%âãÏÓ\n', 'latin1');
+
+/** A freshly provisioned Super Admin: a platform account, which belongs to no academy. */
+const newSuperAdmin = async () => {
+  const email = `platform-${unique()}@example.com`;
+  await provisionSuperAdmin({ email, password: 'platform-owner-password', name: 'Platform Owner' });
+  return as({ email, password: 'platform-owner-password' });
+};
 
 let admin: Client;
 let instructor: Client;
@@ -60,6 +68,17 @@ describe('saving a cover image', () => {
     expect((await admin.get(`/courses/${course.id}`)).body.coverImageUrl).toBe(`/catalog/covers/${imageId}`);
     const list = await admin.get('/courses', { pageSize: 100, sort: 'created' });
     expect(list.body.rows.find((c: { id: string }) => c.id === course.id)?.coverImageUrl).toBe(`/catalog/covers/${imageId}`);
+  });
+
+  it('accepts an image the Super Admin uploaded, though that account belongs to no academy', async () => {
+    const superAdmin = await newSuperAdmin();
+    const imageId = await uploadImage(superAdmin);
+    const course = await createCourse(superAdmin, { coverImageId: imageId });
+    expect(course.coverImageUrl).toBe(`/catalog/covers/${imageId}`);
+    expect((await superAdmin.get(`/catalog/covers/${imageId}`)).status).toBe(200);
+    // And on a course that already exists.
+    const replacement = await uploadImage(superAdmin);
+    expect((await superAdmin.patch(`/courses/${course.id}`, { coverImageId: replacement })).status).toBe(200);
   });
 
   it('lets an instructor set the cover of a course they teach, and not of one they do not', async () => {

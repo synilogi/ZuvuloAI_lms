@@ -292,6 +292,9 @@ describe('the affiliate program', () => {
     expect((await request(app).get(`/public/bundles/${bundle.slug}`)).status).toBe(404);
     const learner = await newStudent();
     expect((await learner.post(`/learning/bundles/${bundle.id}/purchase`, {})).status).toBe(404);
+    // The owner is told: it still reads published, and says it isn't selling.
+    const row = (await owner.get('/superadmin/sales/bundles')).body.find((b: { id: string }) => b.id === bundle.id);
+    expect(row).toMatchObject({ status: 'published', onSale: false });
   });
 
   it('records no order and no volume for a sale made before a course joined the plan', async () => {

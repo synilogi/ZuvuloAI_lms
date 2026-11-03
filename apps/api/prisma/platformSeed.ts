@@ -1,7 +1,8 @@
 /* The platform's starting configuration: the one workspace and the shared Help Centre (docs/16 §3.5).
  * Safe in every environment, production included — it never deletes or edits anything an operator made:
  *   - the workspace row is added only when no tenant carries DEFAULT_TENANT_SLUG;
- *   - the Help Centre only when it has no category at all.
+ *   - the Help Centre only when it has no category at all;
+ *   - the course levels, learner ranks and a certificate template only when the workspace has none.
  * No account, course or learner is created here. That is the demo seed's job (`prisma/seed.ts`), which exists for
  * development only. Run on its own with `npm run seed:platform`; deploy.sh runs it after migrating. */
 import { asPlatform } from '../src/lib/db.js';
@@ -58,8 +59,61 @@ export async function seedHelpCentre(): Promise<boolean> {
   return true;
 }
 
+/** The course levels a course is placed in. No screen creates them, so without these no course can be saved. */
+export async function seedLevels(): Promise<boolean> {
+  const tenantId = (await platform.tenant.findUniqueOrThrow({ where: { slug: workspaceSlug() }, select: { id: true } })).id;
+  if ((await platform.level.count({ where: { tenantId } })) > 0) return false;
+  await platform.level.createMany({
+    data: [
+      { tenantId, name: 'Beginner', order: 1, summary: 'Building the basics' },
+      { tenantId, name: 'Intermediate', order: 2, summary: 'Practice at working level' },
+      { tenantId, name: 'Advanced', order: 3, summary: 'Depth for experienced learners' },
+    ],
+  });
+  return true;
+}
+
+/** The learner ranks. No screen creates them either, and with none every new learner's meter reads 100%. */
+export async function seedRanks(): Promise<boolean> {
+  const tenantId = (await platform.tenant.findUniqueOrThrow({ where: { slug: workspaceSlug() }, select: { id: true } })).id;
+  if ((await platform.rank.count({ where: { tenantId } })) > 0) return false;
+  const required = (count: number) => JSON.stringify([{ id: 'courses', label: 'Courses completed', current: 0, required: count }]);
+  await platform.rank.createMany({
+    data: [
+      { tenantId, title: 'Rank I · Beginner', order: 1, descriptor: 'Just getting started.', criteriaJson: '[]' },
+      { tenantId, title: 'Rank II · Intermediate', order: 2, descriptor: 'Building real skills.', criteriaJson: required(2) },
+      { tenantId, title: 'Rank III · Advanced', order: 3, descriptor: 'Applying them with confidence.', criteriaJson: required(4) },
+    ],
+  });
+  return true;
+}
+
+/** The default certificate design, so a learner who finishes a course has something to claim before any is designed. */
+export async function seedCertificateTemplate(): Promise<boolean> {
+  const tenantId = (await platform.tenant.findUniqueOrThrow({ where: { slug: workspaceSlug() }, select: { id: true } })).id;
+  if ((await platform.certificateTemplate.count({ where: { tenantId } })) > 0) return false;
+  await platform.certificateTemplate.create({
+    data: {
+      tenantId,
+      name: 'Classic seal',
+      style: 'classic',
+      accent: 'emerald',
+      heading: 'Certificate of Completion',
+      statement: 'has completed the course of study in',
+      signatoriesJson: JSON.stringify([{ name: 'ZuviloAI', title: 'Academic Team' }]),
+      showScore: true,
+      showHours: true,
+      isDefault: true,
+    },
+  });
+  return true;
+}
+
 /** Everything a new platform starts with. Idempotent. */
 export async function seedPlatform(log: (...args: unknown[]) => void = () => undefined) {
   log(`  workspace: ${(await seedWorkspace()) ? 'added' : 'kept'}`);
   log(`  help centre: ${(await seedHelpCentre()) ? 'added' : 'kept'}`);
+  log(`  course levels: ${(await seedLevels()) ? 'added' : 'kept'}`);
+  log(`  learner ranks: ${(await seedRanks()) ? 'added' : 'kept'}`);
+  log(`  certificate template: ${(await seedCertificateTemplate()) ? 'added' : 'kept'}`);
 }

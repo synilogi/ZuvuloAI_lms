@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { signIn } from './helpers';
+import { ADMIN_EMAIL, signIn } from './helpers';
 
 /*
  * The public website (docs/16 §2.6), live against the API: every page renders with one heading and a clean console on desktop
@@ -26,6 +26,25 @@ const PAGES: [string, RegExp][] = [
   ['/teach/apply', /Teach on/],
   ['/login', /Sign in/],
 ];
+
+test('a signed-in account is not asked to sign in again', async ({ page }) => {
+  await signIn(page, ADMIN_EMAIL, /Dashboard/);
+  await page.goto('/courses');
+  await expect(page.getByRole('link', { name: 'My dashboard' }).first()).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Sign up', exact: true })).toHaveCount(0);
+  await page.goto('/login');
+  await expect(page).toHaveURL(/\/admin/);
+});
+
+test('a dropped connection keeps the sign-in and offers a retry', async ({ page }) => {
+  await signIn(page, ADMIN_EMAIL, /Dashboard/);
+  await page.route('**/auth/me', (route) => route.abort('connectionfailed'));
+  await page.reload();
+  await expect(page.getByText('We can’t reach the server')).toBeVisible();
+  await page.unroute('**/auth/me');
+  await page.getByRole('button', { name: 'Try again' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: /Dashboard/ })).toBeVisible({ timeout: 25_000 });
+});
 
 const SHOTS = process.env.SCREENSHOT_DIR;
 

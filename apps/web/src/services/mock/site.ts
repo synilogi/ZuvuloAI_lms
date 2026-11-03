@@ -44,6 +44,7 @@ const toBundle = (id: string, input: Parameters<SiteService['createBundle']>[0],
   order: input.order,
   courseIds: input.courseIds,
   orderCount,
+  onSale: input.status === 'published',
 });
 
 const toPost = (id: string, input: Parameters<SiteService['createPost']>[0]): BlogPost => ({
